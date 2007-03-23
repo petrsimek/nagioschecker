@@ -1,0 +1,112 @@
+<!ENTITY nch.title "Nagios Checker">
+<!ENTITY nch.aboutextension "O rozšíření &nch.title;">
+<!ENTITY nch.about "O rozšíření">
+<!ENTITY nch.close "Zavřít">
+<!ENTITY nch.hosts "Hostitelé">
+<!ENTITY nch.services "Služby">
+
+<!ENTITY nch.menu.options "Nastavení">
+<!ENTITY nch.menu.updatenow "Ihned zaktualizovat">
+
+<!ENTITY nch.prefs.title "Nastavení &nch.title;">
+<!ENTITY nch.prefs.general "Obecné">
+<!ENTITY nch.prefs.filtering "Filtrování">
+<!ENTITY nch.prefs.behavior "Chování">
+<!ENTITY nch.prefs.name "Název">
+<!ENTITY nch.prefs.webinterface "Webové rozhraní Nagiosu">
+<!ENTITY nch.prefs.username "Přihl. jméno">
+<!ENTITY nch.prefs.password "Heslo">
+<!ENTITY nch.prefs.versionolderthan20 "Verze Nagiosu starší než 2.0">
+<!ENTITY nch.prefs.plainpass "Neukládat přihlašovací údaje pomocí Správce hesel prohlížeče">
+<!ENTITY nch.prefs.fullurl "Adresa webového rozhraní Nagiosu">
+<!ENTITY nch.prefs.exampleurl "Např.: http://www.vasefirma.cz/nagios/">
+<!ENTITY nch.prefs.examplestatusurl "Např.: http://www.vasefirma.cz/nagios/cgi-bin/status.cgi">
+<!ENTITY nch.prefs.statusurl "Adresa stavového skriptu">
+<!ENTITY nch.prefs.foundstatusurl "Zjištěná adresa">
+<!ENTITY nch.prefs.locateurl "Zjistit adresu">
+<!ENTITY nch.prefs.updateinterval "Interval aktualizace (v minutách)">
+<!ENTITY nch.prefs.worktime "Pracovní hodiny pluginu (hh:mm)">
+<!ENTITY nch.prefs.utilityrun "Běh programu">
+<!ENTITY nch.prefs.other "Ostatní">
+<!ENTITY nch.prefs.onewindowonly "Spustit jen v okně, otevřeném jako prvním">
+
+<!ENTITY nch.about.original "Původní název">
+<!ENTITY nch.about.version "Verze">
+<!ENTITY nch.about.created "Autor">
+<!ENTITY nch.about.description "Nagios Checker poskytuje indikátor událostí ze síťového monitorovacího systému Nagios. Informace jsou získávány prostřednictvím webového rozhraní jednoho či více systémů Nagios. Nagios Checker běží na pozadí, nevyžaduje otevřenou stránku systému Nagios a umožňuje více možností filtrování výsledků.">
+<!ENTITY nch.about.contributors "Spolupracovníci">
+<!ENTITY nch.about.translators "Překladatelé">
+<!ENTITY nch.about.author "Petr Šimek">
+<!ENTITY nch.about.homepage "Domovská stránka">
+<!ENTITY nch.about.copyrights "Autorská práva">
+<!ENTITY nch.about.nagioscopyrights "Nagios a Nagios logo jsou registrované obchodní známky Ethana Galstada.">
+
+<!ENTITY nch.prefs.display "Zobrazení">
+<!ENTITY nch.prefs.watchedsystems "Sledované systémy Nagios">
+<!ENTITY nch.prefs.addnew "Přidat nový">
+<!ENTITY nch.prefs.edit "Editovat">
+<!ENTITY nch.prefs.remove "Odebrat">
+<!ENTITY nch.prefs.statusbardetaillevel "Úroveň zobrazení informací ve stavovém řádku">
+<!ENTITY nch.prefs.long "Dlouhá">
+<!ENTITY nch.prefs.short "Krátká">
+<!ENTITY nch.prefs.numbersonly "Pouze čísla">
+<!ENTITY nch.prefs.infowindowtype "Typ informačního okna">
+<!ENTITY nch.prefs.allinonewindow "Všechna hlášení v jednom okně">
+<!ENTITY nch.prefs.individualwindows "Samostatné okno pro každý typ hlášení">
+<!ENTITY nch.prefs.showinstatusbar "Zobrazovat ve stavovém řádku">
+<!ENTITY nch.prefs.hostdown "Hostitel neběží">
+<!ENTITY nch.prefs.hostunreachable "Hostitel nedosažitelný">
+<!ENTITY nch.prefs.servicecritical "Kritický stav služby">
+<!ENTITY nch.prefs.servicewarning "Varovný stav služby">
+<!ENTITY nch.prefs.serviceunknown "Neznámý stav služby">
+<!ENTITY nch.prefs.showininfowindow "Zobrazovat v informačním okně">
+<!ENTITY nch.prefs.showinfocolumn "Zobrazovat sloupec Informace v informačním okně">
+<!ENTITY nch.prefs.blinking "Blikání">
+<!ENTITY nch.prefs.off "Vypnuto">
+<!ENTITY nch.prefs.onstatusupdateifnewproblemappears "Při aktualizaci stavu, pokud se objeví nové hlášení">
+<!ENTITY nch.prefs.oneverystatusupdateifatleastoneproblemexists "Při aktualizaci stavu, pokud existuje alespoň jedno hlášení">
+<!ENTITY nch.prefs.sounds "Zvuky">
+<!ENTITY nch.prefs.soundsbytype "Zvuky podle typu hlášení">
+<!ENTITY nch.prefs.nagiossystem "Systém Nagios">
+<!ENTITY nch.prefs.seturlmanually "Nastavit adresu ručně">
+<!ENTITY nch.prefs.filterout "Odfiltrovat">
+<!ENTITY nch.prefs.acknowledged "Hostitele a služby, které jsou potvrzené (ACKNOWLEDGED)">
+<!ENTITY nch.prefs.disabled_notifications "Hostitele a služby, které mají vypnuté notifikace">
+<!ENTITY nch.prefs.disabled_checks "Hostitele a služby, které mají vypnuté kontroly (CHECKS)">
+<!ENTITY nch.prefs.soft_states "Služby ve stavu SOFT">
+<!ENTITY nch.prefs.scheduled_downtime "Hostitele a služby v době plánované odstávky">
+<!ENTITY nch.prefs.services_on_down_hosts "Služby na hostitelích, které neběží nebo jsou nedosažitelné">
+<!ENTITY nch.prefs.services_on_acknowledged_hosts "Služby na hostitelích, které neběží nebo jsou nedosažitelné a jsou potvrzené">
+<!ENTITY nch.prefs.note "Poznámka">
+<!ENTITY nch.prefs.note_sound "Pokud Nagios Checker běží ve více oknech, pak bude zvuk přehráván pouze v okně otevřeném jako prvním.">
+<!ENTITY nch.prefs.after_click_statusbar "Po kliknutí na stavový řádek">
+<!ENTITY nch.prefs.do_nothing "Neprovádět žádnou akci">
+<!ENTITY nch.prefs.goto_main_nagios "Přejít na hlavní stranu systému Nagios">
+<!ENTITY nch.prefs.goto_nagios_section "Přejít na sekci systému Nagios podle kliknutí na příslušný typ problému">
+
+<!ENTITY nch.prefs.open_fullinfowindow "Otevřít statické informační okno se všemi problémy">
+<!ENTITY nch.prefs.open_infowindowbytype "Otevřít statické informační okno s problémy podle kliknutí na příslušný typ problému">
+<!ENTITY nch.prefs.soundfiles "Zvukové soubory">
+<!ENTITY nch.prefs.standardnagiosfile "Standardní soubor z Nagiosu">
+<!ENTITY nch.prefs.customfile "Vlastní soubor">
+<!ENTITY nch.prefs.critical "Kritický">
+<!ENTITY nch.prefs.warning "Varování">
+<!ENTITY nch.prefs.down "Neběží">
+<!ENTITY nch.prefs.unreachable "Nedosažitelný">
+<!ENTITY nch.prefs.replay "Přehrát">
+<!ENTITY nch.prefs.getaliases "Stahovat aliasy k jménům hostitelů">
+<!ENTITY nch.prefs.showaliascolumn "Zobrazovat sloupec Alias hostitele v informačním okně (má smysl pouze pokud je alespoň u jednoho serveru nastaveno stahování aliasů)">
+<!ENTITY nch.prefs.shortwithservername "Krátká s názvem serveru">
+<!ENTITY nch.prefs.numbersonlywithservername "Pouze čísla s názvem serveru">
+<!ENTITY nch.prefs.totalnumbers "S celkovými čísly">
+<!ENTITY nch.prefs.totalnumbersforeveryserver "S celkovými čísly za každý server">
+
+<!ENTITY nch.prefs.alldownhosts "Všechny hostitele, kteří neběží">
+<!ENTITY nch.prefs.allunreachablehosts "Všechny nedosažitelné hostitele">
+<!ENTITY nch.prefs.allwarningservices "Všechny služby ve varovném stavu">
+<!ENTITY nch.prefs.allunknownservices "Všechny služby v neznámém stavu">
+<!ENTITY nch.prefs.allcriticalservices "Všechny služby v kritickém stavu">
+<!ENTITY nch.prefs.blinkalltypesonstatusupdateifnewproblemappears "Blikají všechny typy, pokud se objeví nové hlášení">
+<!ENTITY nch.prefs.blinkaffectedtypesonstatusupdateifnewproblemappears "Blikají jen ty typy, kde se objeví nové hlášení">
+<!ENTITY nch.prefs.blinkalltypesoneverystatusupdateifatleastoneproblemexists "Blikají všechny typy, pokud existuje alespoň jedno hlášení">
+<!ENTITY nch.prefs.aliases "Aliasy">

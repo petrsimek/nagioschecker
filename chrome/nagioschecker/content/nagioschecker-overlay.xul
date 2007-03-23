@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://nagioschecker/skin/nagioschecker.css" type="text/css"?> 
+<!DOCTYPE dialog SYSTEM "chrome://nagioschecker/locale/nagioschecker.dtd">
+
+<overlay id="nagioscheckeroverlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+	<script type="application/x-javascript">
+gMini=false;
+	</script>
+  <script type="application/x-javascript" src="chrome://nagioschecker/content/nagioschecker-passwords.js"/>
+	<script type="application/x-javascript" src="chrome://nagioschecker/content/nagioschecker-parser.js" />
+	<script type="application/x-javascript" src="chrome://nagioschecker/content/nagioschecker.js" />
+	<script type="application/x-javascript">
+		window.addEventListener("load", nagioscheckerLoad, false);
+    window.addEventListener("unload", nagioscheckerUnload, false);
+	</script>
+
+  <stringbundleset id="stringbundleset">
+    <stringbundle id="nch-strings" src="chrome://nagioschecker/locale/nagioschecker.properties"/>
+  </stringbundleset>
+
+	<statusbar id="status-bar">	
+    <popupset>
+      <menupopup id="nagioschecker-menu">
+  	    <menuseparator id="menu-separe" />  
+        <menuitem id="nagioschecker-stoprun" label="" oncommand="nagioschecker.switchStop();" />
+        <menuitem id="nagioschecker-reload" label="&nch.menu.updatenow;" oncommand="nagioschecker.doUpdate();" />
+  	    <menuseparator id="menu-separe2"/>  
+        <menuitem label="&nch.menu.options;..." oncommand="window.openDialog('chrome://nagioschecker/content/nagioschecker-options.xul','nagioschecker-options','centerscreen,dialog,chrome').focus();" />
+<!--
+  	    <menuseparator />  
+        <menuitem label="Mini" oncommand="window.open('chrome://nagioschecker/content/minimode.xul','nagioschecker-omini','centerscreen,chrome,resizable=no').focus();" />
+-->
+  	    <menuseparator />  
+        <menuitem label="&nch.about;..." oncommand="window.openDialog('chrome://nagioschecker/content/nagioschecker-about.xul','nagioschecker-about','centerscreen,dialog,chrome').focus();" />
+      </menupopup>
+    <popup id="nagioschecker-popup" class="nagioschecker-popup" onpopupshown="nagioschecker.popupOpened();" onpopuphidden="nagioschecker.popupClosed();"/>
+    <popup id="nagioschecker-popup-down" class="nagioschecker-popup" onpopupshown="nagioschecker.popupOpened();" onpopuphidden="nagioschecker.popupClosed();"/>
+    <popup id="nagioschecker-popup-unreachable" class="nagioschecker-popup" onpopupshown="nagioschecker.popupOpened();" onpopuphidden="nagioschecker.popupClosed();"/>
+    <popup id="nagioschecker-popup-unknown" class="nagioschecker-popup" onpopupshown="nagioschecker.popupOpened();" onpopuphidden="nagioschecker.popupClosed();"/>
+    <popup id="nagioschecker-popup-warning" class="nagioschecker-popup" onpopupshown="nagioschecker.popupOpened();" onpopuphidden="nagioschecker.popupClosed();"/>
+    <popup id="nagioschecker-popup-critical" class="nagioschecker-popup" onpopupshown="nagioschecker.popupOpened();" onpopuphidden="nagioschecker.popupClosed();"/>
+    </popupset>
+
+    <tooltip id="nagioschecker-tooltip" position="before-start" class="nagioschecker-tooltip" noautohide="true"/>
+  	<tooltip id="nagioschecker-tooltip-down" position="before-start" class="nagioschecker-tooltip" noautohide="true"/>
+  	<tooltip id="nagioschecker-tooltip-unreachable" position="before-start" class="nagioschecker-tooltip" noautohide="true"/>
+  	<tooltip id="nagioschecker-tooltip-unknown" position="before-start" class="nagioschecker-tooltip" noautohide="true"/>
+  	<tooltip id="nagioschecker-tooltip-warning" position="before-start" class="nagioschecker-tooltip" noautohide="true"/>
+  	<tooltip id="nagioschecker-tooltip-critical" position="before-start" class="nagioschecker-tooltip" noautohide="true"/>
+  	<statusbarpanel
+		    context="nagioschecker-menu"
+		    minwidth="20px"
+  		  crop="start"
+		    id="nagioschecker-panel"
+        >
+      <image
+         id="nagioschecker-img"
+         src="chrome://nagioschecker/skin/nagios16.png"
+         style="width:16px;height:16px;margin-left:0px;margin-right:2px;"
+         />
+		  <label id="nagioschecker-hosts-down" hidden="true" value="" class="nagioschecker-down-value"/>
+		  <label id="nagioschecker-hosts-unreachable" hidden="true" class="nagioschecker-unreachable-value" value=""/>
+		  <label id="nagioschecker-services-unknown" hidden="true" class="nagioschecker-unknown-value" value=""/>
+		  <label id="nagioschecker-services-warning" hidden="true" class="nagioschecker-warning-value" value=""/>
+		  <label id="nagioschecker-services-critical" hidden="true" class="nagioschecker-critical-value" value=""/>
+		  <label tooltip="nagioschecker-tooltip" id="nagioschecker-info-label" class="nagioschecker-info-label" hidden="true" value=""/>
+    </statusbarpanel>
+	</statusbar>
+</overlay>
