@@ -1,0 +1,305 @@
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+description.nch {
+	width: 400px;
+}
+
+.nagioschecker-link {
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+caption.nch {
+  font-weight: bold;
+}
+
+.nagioschecker-panel {
+  padding:0;border:0;
+}
+.nagioschecker-panel label{
+}
+
+statusbarpanel .nagioschecker-box {
+  border-right: 1px solid ThreeDShadow
+}
+
+.nagioschecker-label {
+  font-weight: normal;
+}
+
+.nagioschecker-label-new {
+  font-weight: bold;
+  background-color:white;
+  color: red;
+  padding-left:2px;
+  padding-right:2px;
+  -moz-border-radius: 2px;
+  margin:0;
+}
+
+.nagioschecker-down-value {
+  margin-left:2px;
+  margin-right:2px;
+  font-weight: bold;
+  color: #BDBDBD;
+/*
+  background-color:#700000;
+*/
+  background-color:#CC0000;
+
+  padding-left:2px;
+  padding-right:2px;
+  -moz-border-radius: 3px;
+  border: 1px #CC0000 solid;
+}
+
+.nagioschecker-down-value-inverted {
+  margin-left:2px;
+  margin-right:2px;
+  font-weight: bold;
+  color: #700000;
+  background-color:#ffffff;
+  padding-left:2px;
+  padding-right:2px;
+  -moz-border-radius: 3px;
+  border: 1px #ffffff solid;
+}
+
+.nagioschecker-unreachable-value {
+  margin-left:2px;
+  margin-right:2px;
+  font-weight: bold;
+  color: #ffffff;
+  background-color:#CC0000;
+  padding-left:2px;
+  padding-right:2px;
+  -moz-border-radius: 3px;
+  border: 1px #CC0000 solid;
+}
+
+.nagioschecker-unreachable-value-inverted {
+  margin-left:2px;
+  margin-right:2px;
+  font-weight: bold;
+  color: #A30000;
+  background-color:#ffffff;
+  padding-left:2px;
+  padding-right:2px;
+  -moz-border-radius: 3px;
+  border: 1px #ffffff solid;
+}
+
+.nagioschecker-warning-value {
+  margin-left:2px;
+  margin-right:2px;
+  font-weight: bold;
+  color: black;
+  background-color:#E6E600;
+  padding-left:2px;
+  padding-right:2px;
+  -moz-border-radius: 3px;
+  border: 1px #E6E600 solid;
+}
+
+.nagioschecker-allok-value {
+  margin-left:2px;
+  margin-right:2px;
+  font-weight: bold;
+  color: white;
+  background-color:#44CC00;
+  padding-left:2px;
+  padding-right:2px;
+  -moz-border-radius: 3px;
+  border: 1px #44CC00 solid;
+}
+
+.nagioschecker-warning-value-inverted {
+  margin-left:2px;
+  margin-right:2px;
+  font-weight: bold;
+  color: #E6E600;
+  background-color:black;
+  padding-left:2px;
+  padding-right:2px;
+  -moz-border-radius: 3px;
+  border: 1px black solid;
+}
+
+.nagioschecker-unknown-value {
+  margin-left:2px;
+  margin-right:2px;
+  font-weight: bold;
+  color: black;
+  background-color:#FF8B3D;
+  padding-left:2px;
+  padding-right:2px;
+  -moz-border-radius: 3px;
+  border: 1px #FF8B3D solid;
+}
+.nagioschecker-unknown-value-inverted {
+  margin-left:2px;
+  margin-right:2px;
+  font-weight: bold;
+  color: #FF8B3D;
+  background-color:black;
+  padding-left:2px;
+  padding-right:2px;
+  -moz-border-radius: 3px;
+  border: 1px black solid;
+}
+
+.nagioschecker-critical-value {
+  margin-left:2px;
+  margin-right:2px;
+  font-weight: bold;
+  color: white;
+  background-color: #FF0000;
+  padding-left: 2px;
+  padding-right: 2px;
+  -moz-border-radius: 3px;
+  border: 1px #FF0000 solid;
+}
+
+.nagioschecker-critical-value-inverted {
+  margin-left:2px;
+  margin-right:2px;
+  font-weight: bold;
+  color: #EB0000;
+  background-color:white;
+  padding-left:2px;
+  padding-right:2px;
+  -moz-border-radius: 3px;
+  border: 1px white solid;
+}
+
+#nagioschecker-panel-hosts,#nagioschecker-panel-services,#nagioschecker-panel-info {
+  cursor: pointer;
+}
+
+#nagioschecker-panel-hosts,#nagioschecker-panel-services,#nagioschecker-panel-info {
+}
+
+#nagioschecker-panel-services label {
+  padding:0;
+}
+
+.nagioschecker-tooltip-title {
+  font-weight: bold;
+  font-size: 1.2em;
+  margin-bottom: 4px;
+ -moz-border-radius:3px;
+  background-color:#FFFFF;
+}
+
+.nagioschecker-tooltip-down-row {
+	font-weight: bold;
+	color: #BDBDBD;
+	background-color:#CC0000;
+	border:1px #CC0000 solid;
+	-moz-border-radius:3px;
+	cursor:pointer;
+}
+.nagioschecker-tooltip-down-row:hover {
+  background-color:#B30000;
+	border:1px #B30000 solid;
+}
+
+.nagioschecker-tooltip-unreachable-row {
+	font-weight: bold;
+	color: white;
+	background-color:#CC0000;
+	border:1px #CC0000 solid;
+	-moz-border-radius:3px;
+	cursor:pointer;
+}
+.nagioschecker-tooltip-unreachable-row:hover {
+  background-color:#B30000;
+	border:1px #B30000 solid;
+}
+
+
+.nagioschecker-tooltip-critical-row {
+	font-weight: bold;
+	color: white;
+	background-color:#FF0000;
+	border:1px #FF0000 solid;
+	-moz-border-radius:3px;
+	cursor:pointer;
+}
+.nagioschecker-tooltip-critical-row:hover {
+  background-color:#E60000;
+	border:1px #E60000 solid;
+}
+
+.nagioschecker-tooltip-row {
+/*  font-size: 10px;*/
+  padding:0;
+  margin:0;
+}
+
+.nagioschecker-tooltip {
+	-moz-appearance:none;
+	background-color: infobackground;
+/*	border:none;*/
+/*  max-width: 500;*/
+}
+
+.nagioschecker-popup {
+	-moz-appearance:none;
+	background-color: infobackground;
+/*	border:none;*/
+}
+
+.nagioschecker-tooltip-warning-row {
+  font-weight: bold;
+  color: black;
+	-moz-border-radius:3px;
+	border:1px #FFFF3D solid;
+  background-color:#FFFF3D;
+	cursor:pointer;
+}
+.nagioschecker-tooltip-warning-row:hover {
+  background-color:#E6E600;
+	border:1px #E6E600 solid;
+}
+
+
+.nagioschecker-tooltip-unknown-row {
+  font-weight: bold;
+  color: black;
+  background-color:#FF8B3D;
+	-moz-border-radius:3px;
+	border:1px #FF8B3D solid;
+	cursor:pointer;
+}
+.nagioschecker-tooltip-unknown-row:hover {
+  background-color:#FF6633;
+	border:1px #FF6633 solid;
+}
+.nagioschecker-about-box {
+	background-color: white;
+	padding: 13px;
+	padding-top: 5px;
+}
+
+.nagioschecker-about-product-name {
+	font-weight: bold; font-size: x-large;
+}
+
+.nagioschecker-about-sub-title {
+	font-weight: bold;
+}
+
+.nch-status-url {
+  background-color:white;
+  color: black;
+  font-weight:bold;
+}
+
+label.error {
+  color: red;
+  font-style: italic;
+  background-color:white;
+}
+
