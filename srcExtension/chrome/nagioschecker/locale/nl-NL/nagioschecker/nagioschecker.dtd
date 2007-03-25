@@ -1,0 +1,106 @@
+<!ENTITY nch.title "Nagios Checker">
+<!ENTITY nch.aboutextension "Over &nch.title;">
+<!ENTITY nch.about "Over">
+<!ENTITY nch.close "Sluiten">
+<!ENTITY nch.hosts "Hosts">
+<!ENTITY nch.services "Services">
+<!ENTITY nch.menu.options "Instellingen">
+<!ENTITY nch.menu.updatenow "Nu bijwerken">
+<!ENTITY nch.prefs.title "&nch.title; instellingen">
+<!ENTITY nch.prefs.general "Algemeen">
+<!ENTITY nch.prefs.filtering "Filteren">
+<!ENTITY nch.prefs.behavior "Gedrag">
+<!ENTITY nch.prefs.name "Naam">
+<!ENTITY nch.prefs.fullurl "Nagios web-interface adres">
+<!ENTITY nch.prefs.webinterface "Nagios web interface">
+<!ENTITY nch.prefs.username "Gebruikersnaam">
+<!ENTITY nch.prefs.password "Wachtwoord">
+<!ENTITY nch.prefs.versionolderthan20 "Nagios versie ouder dan 2.0">
+<!ENTITY nch.prefs.plainpass "Deze referenties niet opslaan met de Wachtwoordbeheerder van de browser">
+<!ENTITY nch.prefs.exampleurl "Bijv.: http://www.uwbedrijf.net/nagios/">
+<!ENTITY nch.prefs.examplestatusurl "Bijv.: http://www.uwbedrijf.com/nagios/cgi-bin/status.cgi">
+<!ENTITY nch.prefs.statusurl "Status script-URL">
+<!ENTITY nch.prefs.foundstatusurl "URL gelokaliseerd">
+<!ENTITY nch.prefs.locateurl "URL lokaliseren">
+<!ENTITY nch.prefs.updateinterval "Update interval (in minuten)">
+<!ENTITY nch.prefs.utilityrun "Utility draaien">
+<!ENTITY nch.prefs.other "Overig">
+<!ENTITY nch.prefs.onewindowonly "Alleen activeren in het eerst geopende venster">
+<!ENTITY nch.about.original "Oorspronkelijke titel">
+<!ENTITY nch.about.version "Versie">
+<!ENTITY nch.about.created "Schrijver">
+<!ENTITY nch.about.description "Nagios checker geeft u een uitbreidbare statusbalk-indicator voor door Nagios gerapporteerde gebeurtenissen. Deze informatie wordt ingevoegd vanuit de Nagios website en kan meerdere Nagios servers tegelijkertijd monitoren. Nagios Checker draait op de achtergrond, vereist geen open Nagios pagina om te kunnen werken en staat selectief filteren van resultaten toe.">
+<!ENTITY nch.about.contributors "Bijdrages van">
+<!ENTITY nch.about.translators "Vertalers">
+<!ENTITY nch.about.author "Petr Simek">
+<!ENTITY nch.about.homepage "Homepage">
+<!ENTITY nch.about.copyrights "Copyrights">
+<!ENTITY nch.about.nagioscopyrights "Nagios en het Nagios logo zijn geregistreerde handelsnamen van Ethan Galstad.">
+<!ENTITY nch.prefs.display "Weergave">
+<!ENTITY nch.prefs.watchedsystems "Gevolgde Nagios pagina(s)">
+<!ENTITY nch.prefs.addnew "Nieuw toevoegen">
+<!ENTITY nch.prefs.edit "Bewerken">
+<!ENTITY nch.prefs.remove "Verwijderen">
+<!ENTITY nch.prefs.statusbardetaillevel "Statusbalk detailniveau">
+<!ENTITY nch.prefs.long "Lang">
+<!ENTITY nch.prefs.short "Kort">
+<!ENTITY nch.prefs.numbersonly "Alleen getallen">
+<!ENTITY nch.prefs.infowindowtype "Type informatievenster">
+<!ENTITY nch.prefs.allinonewindow "Alle problemen in één venster">
+<!ENTITY nch.prefs.individualwindows "Individueel venster voor elk probleem">
+<!ENTITY nch.prefs.showinstatusbar "In statusbalk weergeven">
+<!ENTITY nch.prefs.hostdown "Host down">
+<!ENTITY nch.prefs.hostunreachable "Host onbereikbaar">
+<!ENTITY nch.prefs.servicecritical "Service kritiek">
+<!ENTITY nch.prefs.servicewarning "Service waarschuwing">
+<!ENTITY nch.prefs.serviceunknown "Service onbekend">
+<!ENTITY nch.prefs.showininfowindow "In informatievenster weergeven">
+<!ENTITY nch.prefs.showinfocolumn "Informatiekolom in informatievenster weergeven">
+<!ENTITY nch.prefs.blinking "Knipperend">
+<!ENTITY nch.prefs.off "Uit">
+<!ENTITY nch.prefs.onstatusupdateifnewproblemappears "Bij statusbijwerking als nieuw probleem ontstaat">
+<!ENTITY nch.prefs.oneverystatusupdateifatleastoneproblemexists "Bij elke statusbijwerking als tenminste één probleem bestaat">
+<!ENTITY nch.prefs.sounds "Geluiden">
+<!ENTITY nch.prefs.soundsbytype "Geluiden per probleemtype">
+<!ENTITY nch.prefs.nagiossystem "Nagios systeem">
+<!ENTITY nch.prefs.seturlmanually "URL handmatig instellen">
+<!ENTITY nch.prefs.filterout "Uitfilteren">
+<!ENTITY nch.prefs.acknowledged "Hosts en services die zijn bevestigd">
+<!ENTITY nch.prefs.disabled_notifications "Hosts en services waarvan de notificaties zijn uitgeschakeld">
+<!ENTITY nch.prefs.disabled_checks "Hosts en services waarvan de checks zijn uitgeschakeld">
+<!ENTITY nch.prefs.soft_states "Services in SOFT status">
+<!ENTITY nch.prefs.scheduled_downtime "Hosts en services die volgens schema down zijn">
+<!ENTITY nch.prefs.services_on_down_hosts "Services of hosts die down of niet bereikbaar zijn">
+<!ENTITY nch.prefs.services_on_acknowledged_hosts "Services op hosts die down of niet bereikbaar zijn waarvan dit bevestigd is">
+<!ENTITY nch.prefs.note "Opmerking">
+<!ENTITY nch.prefs.note_sound "Als Nagios Checker in meer dan één venster draait dan wordt geluid alleen in het eerst geopende venster afgespeeld.">
+<!ENTITY nch.prefs.after_click_statusbar "Na klikken op de statusbalk">
+<!ENTITY nch.prefs.do_nothing "Niets doen">
+<!ENTITY nch.prefs.goto_main_nagios "Naar de Nagios website-startpagina gaan">
+<!ENTITY nch.prefs.goto_nagios_section "Naar de Nagios website-sectie gaan die gerelateerd is aan het aangeklikte probleemtype">
+<!ENTITY nch.prefs.open_fullinfowindow "Statisch informatievenster openen met alle problemen">
+<!ENTITY nch.prefs.open_infowindowbytype "Statische informatievensters openen afhankelijk van aangeklikt type">
+<!ENTITY nch.prefs.open_infowindow "Informatievenster openen">
+<!ENTITY nch.prefs.soundfiles "Geluidsbestanden">
+<!ENTITY nch.prefs.standardnagiosfile "Nagios standaardbestand">
+<!ENTITY nch.prefs.customfile "Aangepast bestand">
+<!ENTITY nch.prefs.critical "Kritiek">
+<!ENTITY nch.prefs.warning "Waarschuwing">
+<!ENTITY nch.prefs.down "Down">
+<!ENTITY nch.prefs.unreachable "Onbereikbaar">
+<!ENTITY nch.prefs.replay "Opnieuw afspelen">
+<!ENTITY nch.prefs.getaliases "Host aliases downloaden">
+<!ENTITY nch.prefs.showaliascolumn "Host alias kolom in informatievenster weergeven (dit heeft alleen maar zin als u de optie om aliases door ten minste één Nagios server te laten downloaden hebt geactiveerd)">
+<!ENTITY nch.prefs.shortwithservername "Kort met servernamen">
+<!ENTITY nch.prefs.numbersonlywithservername "Alleen aantallen met servernamen">
+<!ENTITY nch.prefs.totalnumbers "Met totale aantallen">
+<!ENTITY nch.prefs.totalnumbersforeveryserver "Met totale aantallen voor elke server">
+<!ENTITY nch.prefs.alldownhosts "Alle hosts die down zijn">
+<!ENTITY nch.prefs.allunreachablehosts "Alle onbereikbare hosts">
+<!ENTITY nch.prefs.allwarningservices "Alle waarschuwingsservices">
+<!ENTITY nch.prefs.allunknownservices "Alle onbekende services">
+<!ENTITY nch.prefs.allcriticalservices "Alle kritieke services">
+<!ENTITY nch.prefs.blinkalltypesonstatusupdateifnewproblemappears "Alle types laten knipperen als een nieuw probleem optreedt">
+<!ENTITY nch.prefs.blinkaffectedtypesonstatusupdateifnewproblemappears "Het type waar een nieuw probleem optreedt laten knipperen">
+<!ENTITY nch.prefs.blinkalltypesoneverystatusupdateifatleastoneproblemexists "Alle types laten knipperen als tenminste één probleem bestaat">
+<!ENTITY nch.prefs.aliases "Aliases">

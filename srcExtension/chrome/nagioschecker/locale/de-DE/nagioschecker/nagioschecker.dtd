@@ -1,0 +1,106 @@
+<!ENTITY nch.title "Nagios Checker">
+<!ENTITY nch.aboutextension "Über &nch.title;">
+<!ENTITY nch.about "Über">
+<!ENTITY nch.close "Schließen">
+<!ENTITY nch.hosts "Schließen">
+<!ENTITY nch.services "Service">
+<!ENTITY nch.menu.options "Einstellungen">
+<!ENTITY nch.menu.updatenow "Jetzt aktualisieren">
+<!ENTITY nch.prefs.title "&nch.title; Einstellungen">
+<!ENTITY nch.prefs.general "Allgemein">
+<!ENTITY nch.prefs.filtering "Filter">
+<!ENTITY nch.prefs.behavior "Verhalten">
+<!ENTITY nch.prefs.name "Name">
+<!ENTITY nch.prefs.fullurl "Nagios Webinterface URL">
+<!ENTITY nch.prefs.webinterface "Nagios Webinterface">
+<!ENTITY nch.prefs.username "Benutzername">
+<!ENTITY nch.prefs.password "Passwort">
+<!ENTITY nch.prefs.versionolderthan20 "Die Nagiosversion ist älter als 2.0">
+<!ENTITY nch.prefs.plainpass "Diese Zugangsdaten nich im Passwort-Manager des Browsers speichern">
+<!ENTITY nch.prefs.exampleurl "Z.B.: http://www.ihrefirma.de/nagios/">
+<!ENTITY nch.prefs.examplestatusurl "Z.B.: http://www.ihrefirma.de/nagios/cgi-bin/status.cgi">
+<!ENTITY nch.prefs.statusurl "Status-Skript URL">
+<!ENTITY nch.prefs.foundstatusurl "Festgestellte URL">
+<!ENTITY nch.prefs.locateurl "URL feststellen">
+<!ENTITY nch.prefs.updateinterval "Update-Interval (in Minuten)">
+<!ENTITY nch.prefs.utilityrun "Programmlaufzeit">
+<!ENTITY nch.prefs.other "Sonstiges">
+<!ENTITY nch.prefs.onewindowonly "Nur im ersten Fenster starten">
+<!ENTITY nch.about.original "Original Titel">
+<!ENTITY nch.about.version "Version">
+<!ENTITY nch.about.created "Autor">
+<!ENTITY nch.about.description "Nagios Checker bietet eine erweiterbare Statuszeilenanzeige für Nagios-Ereignisse. Die Informationen werden vom Nagios Web-Interface geholt und es können mehrere Nagios-Server gleichzeitig beobachtet werden. Nagios Checker läuft im Hintergrund, dazu muss die Nagios-Webseite nicht geöffnet sein. Die übermittelten Informationen können entsprechend gefiltert werden.">
+<!ENTITY nch.about.contributors "Mitwirkende">
+<!ENTITY nch.about.translators "Übersetzer">
+<!ENTITY nch.about.author "Petr Simek">
+<!ENTITY nch.about.homepage "Homepage">
+<!ENTITY nch.about.copyrights "Copyrights">
+<!ENTITY nch.about.nagioscopyrights "Nagios und das Nagios-Logo sind eingetragene Warenzeichen von Ethan Galstad.">
+<!ENTITY nch.prefs.display "Anzeige">
+<!ENTITY nch.prefs.watchedsystems "Beobachtete Nagios Systeme">
+<!ENTITY nch.prefs.addnew "Neu hinzufügen">
+<!ENTITY nch.prefs.edit "Bearbeiten">
+<!ENTITY nch.prefs.remove "Entfernen">
+<!ENTITY nch.prefs.statusbardetaillevel "Detail-Level der Statuszeile">
+<!ENTITY nch.prefs.long "Ausführlich">
+<!ENTITY nch.prefs.short "Kurz">
+<!ENTITY nch.prefs.numbersonly "Nur Zahlen">
+<!ENTITY nch.prefs.infowindowtype "Typ des Informationsfensters">
+<!ENTITY nch.prefs.allinonewindow "Alle Probleme innerhalb eines Fensters">
+<!ENTITY nch.prefs.individualwindows "Gesondertes Fenster für jeden Problemtyp">
+<!ENTITY nch.prefs.showinstatusbar "Zeige in Statuszeile">
+<!ENTITY nch.prefs.hostdown "Host unten">
+<!ENTITY nch.prefs.hostunreachable "Host unerreichbar">
+<!ENTITY nch.prefs.servicecritical "Service kritisch">
+<!ENTITY nch.prefs.servicewarning "Service Warnung">
+<!ENTITY nch.prefs.serviceunknown "Service unbekannt">
+<!ENTITY nch.prefs.showininfowindow "Zeige in Informationsfenster">
+<!ENTITY nch.prefs.showinfocolumn "Zeige Informationsspalte im Informationsfenster">
+<!ENTITY nch.prefs.blinking "Blinken">
+<!ENTITY nch.prefs.off "Aus">
+<!ENTITY nch.prefs.onstatusupdateifnewproblemappears "Bei jedem Status-Update falls Probleme auftauchen">
+<!ENTITY nch.prefs.oneverystatusupdateifatleastoneproblemexists "Bei jedem Status-Update falls mindestens ein Problem existiert">
+<!ENTITY nch.prefs.sounds "Klänge">
+<!ENTITY nch.prefs.soundsbytype "Klänge nach Problemtyp">
+<!ENTITY nch.prefs.nagiossystem "Nagios-System">
+<!ENTITY nch.prefs.seturlmanually "URL manuell festlegen">
+<!ENTITY nch.prefs.filterout "Ausfiltern">
+<!ENTITY nch.prefs.acknowledged "Hosts und Services die bestätigt wurden">
+<!ENTITY nch.prefs.disabled_notifications "Hosts und Services deren Benachrichtigungen deaktiviert wurden">
+<!ENTITY nch.prefs.disabled_checks "Hosts und Services deren Überprüfungen deaktiviert wurden">
+<!ENTITY nch.prefs.soft_states "Services im Zustand &apos;SOFT&apos;">
+<!ENTITY nch.prefs.scheduled_downtime "Hosts und Services in festgelegten Auszeiten">
+<!ENTITY nch.prefs.services_on_down_hosts "Services von Hosts die unten oder unerreichbar sind">
+<!ENTITY nch.prefs.services_on_acknowledged_hosts "Services von Hosts die unten oder unerreichbar und bestätigt sind">
+<!ENTITY nch.prefs.note "Notiz">
+<!ENTITY nch.prefs.note_sound "Falls Nagios Checker in mehr als einem Fenster läuft, werden Klänge nur im ersten Fenster abgespielt.">
+<!ENTITY nch.prefs.after_click_statusbar "Nach einem Klick auf die Statuszeile">
+<!ENTITY nch.prefs.do_nothing "Tue gar nichts">
+<!ENTITY nch.prefs.goto_main_nagios "Gehe zur Nagios-Hauptseite">
+<!ENTITY nch.prefs.goto_nagios_section "Gehe zur Nagios-Seite mit dem entsprechenden Problemtyp">
+<!ENTITY nch.prefs.open_fullinfowindow "Öffne das statische Informationsfenster mit allen Problemen">
+<!ENTITY nch.prefs.open_infowindowbytype "Öffne das statische Informationsfenster für den ausgewählten Typ">
+<!ENTITY nch.prefs.open_infowindow "Öffne das Informationsfenster">
+<!ENTITY nch.prefs.soundfiles "Klangdateien">
+<!ENTITY nch.prefs.standardnagiosfile "Nagios Standard-Datei">
+<!ENTITY nch.prefs.customfile "Benutzerdefinierte Datei">
+<!ENTITY nch.prefs.critical "Kritisch">
+<!ENTITY nch.prefs.warning "Warnung">
+<!ENTITY nch.prefs.down "Unten">
+<!ENTITY nch.prefs.unreachable "Unerreichbar">
+<!ENTITY nch.prefs.replay "Wiederholen">
+<!ENTITY nch.prefs.getaliases "Alle Host Aliases herunterladen">
+<!ENTITY nch.prefs.showaliascolumn "Zeige Host-Alias-Zeile im Informationsfenster (Ist nur sinnvoll, wenn Sie den Download von Aliasen für mindestens einen Nagios-Server aktiviert haben)">
+<!ENTITY nch.prefs.shortwithservername "Kurz mit Servernamen">
+<!ENTITY nch.prefs.numbersonlywithservername "Nur Zahlen mit Servernamen">
+<!ENTITY nch.prefs.totalnumbers "Mit vollständigen Zahlen">
+<!ENTITY nch.prefs.totalnumbersforeveryserver "Mit vollständigen Zahlen für jeden Server">
+<!ENTITY nch.prefs.alldownhosts "Alle Hosts die unten sind">
+<!ENTITY nch.prefs.allunreachablehosts "Alle unerreichbaren Hosts">
+<!ENTITY nch.prefs.allwarningservices "Alle Services mit Warnungen">
+<!ENTITY nch.prefs.allunknownservices "Alle unbekannten Services">
+<!ENTITY nch.prefs.allcriticalservices "Alle kritischen Services">
+<!ENTITY nch.prefs.blinkalltypesonstatusupdateifnewproblemappears "Alle Typen blinken, wenn ein neues Problem auftaucht">
+<!ENTITY nch.prefs.blinkaffectedtypesonstatusupdateifnewproblemappears "Den Typ blinken lassen, wenn ein neues Problem auftaucht">
+<!ENTITY nch.prefs.blinkalltypesoneverystatusupdateifatleastoneproblemexists "Alle Typen blinken lassen, wenn mindestens ein Problem existiert">
+<!ENTITY nch.prefs.aliases "Aliases">

@@ -32,19 +32,22 @@
 
 
   <groupbox flex="1" class="nagioschecker-about-box">
-      <label value="&nch.about;:" class="nagioschecker-about-sub-title"/>
-      <description class="nch">&nch.about.description;</description>
-      <separator class="thin"/>
-      <label value="&nch.about.created;:" class="nagioschecker-about-sub-title"/>
-<hbox>
-      <description class="nagioschecker-link" onclick="window.opener.nagioschecker.openTab('http://psimek.fxnet.cz/');window.close();">&nch.about.author;</description>
-
-  <image
- class="nagioschecker-link"
- onclick="window.opener.nagioschecker.openTab('http://psimek.fxnet.cz/nagios-checker/#donations');window.close();"
-         src="chrome://nagioschecker/skin/pp-donate.gif"
-         />
-</hbox>
+	<label value="&nch.about;:" class="nagioschecker-about-sub-title"/>
+	<description class="nch">&nch.about.description;</description>
+	<separator class="thin"/>
+	<hbox flex="1">
+		<vbox>
+    <label value="&nch.about.created;:" class="nagioschecker-about-sub-title"/>
+    	<description class="nagioschecker-link" onclick="window.opener.nagioschecker.openTab('http://psimek.fxnet.cz/');window.close();">&nch.about.author;</description>
+		</vbox>
+		<vbox>
+		<image
+			class="nagioschecker-link"
+			onclick="window.opener.nagioschecker.openTab('http://psimek.fxnet.cz/nagios-checker/#donations');window.close();"
+			src="chrome://nagioschecker/skin/pp-donate.gif"
+         	/>
+		</vbox>
+	</hbox>
       <separator class="thin"/>
       <label value="&nch.about.homepage;:" class="nagioschecker-about-sub-title"/>
       <description  class="nagioschecker-link" onclick="window.opener.nagioschecker.openTab('https://addons.mozilla.org/firefox/3607/');window.close();">addons.mozilla.org/firefox/3607/</description>
@@ -62,7 +65,10 @@
 
   <groupbox flex="1" class="nagioschecker-about-box">
 
-      <label value="&nch.about.contributors;:" class="nagioschecker-about-sub-title"/>
+      <label value="&nch.about.codecontributors;:" class="nagioschecker-about-sub-title"/>
+      <description class="nch">Michal Sviba (CZ)</description>
+      <separator class="thin"/>
+      <label value="&nch.about.ideasandbugreports;:" class="nagioschecker-about-sub-title"/>
       <description class="nch">Marcus Barczak, Carlos Basura, Daniele (IT), Mike Freitas (US), Andrea Gabellini (IT), Raphael Gangneux (UK), Jörgen Hägg (SW), Douglas Hank (US), Axel Jäger (DE), Michael Jewett (CA), Robbert Kouprie (NL), Bernard Li (CA), Erwin Lubbers (NL), Tiago Martins (PT), Aleš Petrovický (CZ), Oliver Regellmann (DE)</description>
       <separator class="thin"/>
       <label value="&nch.about.translators;:" class="nagioschecker-about-sub-title"/>

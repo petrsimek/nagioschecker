@@ -1,0 +1,106 @@
+<!ENTITY nch.title "Nagios Checker">
+<!ENTITY nch.aboutextension "關於 &nch.title;">
+<!ENTITY nch.about "關於">
+<!ENTITY nch.close "關閉">
+<!ENTITY nch.hosts "主機">
+<!ENTITY nch.services "服務">
+<!ENTITY nch.menu.options "設定">
+<!ENTITY nch.menu.updatenow "現在更新">
+<!ENTITY nch.prefs.title "&nch.title; 設定">
+<!ENTITY nch.prefs.general "一般">
+<!ENTITY nch.prefs.filtering "過濾">
+<!ENTITY nch.prefs.behavior "屬性">
+<!ENTITY nch.prefs.name "名稱">
+<!ENTITY nch.prefs.fullurl "Nagios 網頁介面地址">
+<!ENTITY nch.prefs.webinterface "Nagios 網頁介面">
+<!ENTITY nch.prefs.username "用戶名稱">
+<!ENTITY nch.prefs.password "密碼">
+<!ENTITY nch.prefs.versionolderthan20 "Nagios 版本舊於2.0">
+<!ENTITY nch.prefs.plainpass "不用瀏覽器的密碼管理員儲存此憑證">
+<!ENTITY nch.prefs.exampleurl "例如: http://www.yourcompany.cz/nagios/">
+<!ENTITY nch.prefs.examplestatusurl "例如: http://www.yourcompany.com/nagios/cgi-bin/status.cgi">
+<!ENTITY nch.prefs.statusurl "狀態訊息地址">
+<!ENTITY nch.prefs.foundstatusurl "已查找URL">
+<!ENTITY nch.prefs.locateurl "查找URL">
+<!ENTITY nch.prefs.updateinterval "更新間隔 (分鐘)">
+<!ENTITY nch.prefs.utilityrun "程式運行">
+<!ENTITY nch.prefs.other "其它">
+<!ENTITY nch.prefs.onewindowonly "只在視窗開啟後運行">
+<!ENTITY nch.about.original "原標題">
+<!ENTITY nch.about.version "版本">
+<!ENTITY nch.about.created "作者">
+<!ENTITY nch.about.description "Nagios Checker 提供一個可延伸的狀態列提示器去報告 Nagios 事件。此等資訊是剖析自 Nagios 網頁介面及可以同時監控數個 Nagios 伺服器。Nagios Checker 在背景執行，不需要開啟 Nagios 網頁，同時也可以加設結果過濾器。">
+<!ENTITY nch.about.contributors "貢獻者">
+<!ENTITY nch.about.translators "翻譯者">
+<!ENTITY nch.about.author "Petr Simek">
+<!ENTITY nch.about.homepage "主頁">
+<!ENTITY nch.about.copyrights "版權">
+<!ENTITY nch.about.nagioscopyrights "Nagios 與 Nagios 圖示 均屬 Ethan Galstad 的已註冊商標">
+<!ENTITY nch.prefs.display "顯示">
+<!ENTITY nch.prefs.watchedsystems "已監測的Nagios 系統">
+<!ENTITY nch.prefs.addnew "加入">
+<!ENTITY nch.prefs.edit "編輯">
+<!ENTITY nch.prefs.remove "移除">
+<!ENTITY nch.prefs.statusbardetaillevel "狀態列資訊程度">
+<!ENTITY nch.prefs.long "長">
+<!ENTITY nch.prefs.short "短">
+<!ENTITY nch.prefs.numbersonly "只顯示數字">
+<!ENTITY nch.prefs.infowindowtype "資訊視窗類型">
+<!ENTITY nch.prefs.allinonewindow "一個視窗顯示所有問題">
+<!ENTITY nch.prefs.individualwindows "獨立視窗顯示每種類型">
+<!ENTITY nch.prefs.showinstatusbar "在狀態列顯示">
+<!ENTITY nch.prefs.hostdown "主機當掉">
+<!ENTITY nch.prefs.hostunreachable "主機不能連接">
+<!ENTITY nch.prefs.servicecritical "重要服務">
+<!ENTITY nch.prefs.servicewarning "服務警告">
+<!ENTITY nch.prefs.serviceunknown "未知服務">
+<!ENTITY nch.prefs.showininfowindow "在資訊視窗顯示">
+<!ENTITY nch.prefs.showinfocolumn "在資訊視窗顯示資訊欄">
+<!ENTITY nch.prefs.blinking "閃爍">
+<!ENTITY nch.prefs.off "關">
+<!ENTITY nch.prefs.onstatusupdateifnewproblemappears "當狀態更新及新問題出現時使用">
+<!ENTITY nch.prefs.oneverystatusupdateifatleastoneproblemexists "當狀態更新及最少一個問題存在時使用">
+<!ENTITY nch.prefs.sounds "播放聲音">
+<!ENTITY nch.prefs.soundsbytype "根據問題類型播放聲音">
+<!ENTITY nch.prefs.nagiossystem "Nagios系統">
+<!ENTITY nch.prefs.seturlmanually "手動設定url">
+<!ENTITY nch.prefs.filterout "過濾">
+<!ENTITY nch.prefs.acknowledged "允許的主機及服務">
+<!ENTITY nch.prefs.disabled_notifications "停用提示後的主機及服務">
+<!ENTITY nch.prefs.disabled_checks "停用檢查後的主機及服務">
+<!ENTITY nch.prefs.soft_states "SOFT 狀態的服務">
+<!ENTITY nch.prefs.scheduled_downtime "主機及服務暫停">
+<!ENTITY nch.prefs.services_on_down_hosts "服務暫停或主機不能連接">
+<!ENTITY nch.prefs.services_on_acknowledged_hosts "服務暫停或主機不能連接及允許">
+<!ENTITY nch.prefs.note "注意">
+<!ENTITY nch.prefs.note_sound "如果Nagios Checker於多過一個視窗運作，只有第一個被開啟的視窗才會有聲音">
+<!ENTITY nch.prefs.after_click_statusbar "當點擊狀態列後">
+<!ENTITY nch.prefs.do_nothing "無動作">
+<!ENTITY nch.prefs.goto_main_nagios "到 Nagios 主頁">
+<!ENTITY nch.prefs.goto_nagios_section "到 Nagios 問題類型分頁">
+<!ENTITY nch.prefs.open_fullinfowindow "開啟資訊視窗顯示所有問題">
+<!ENTITY nch.prefs.open_infowindowbytype "開啟資訊視窗顯示所選種類的問題">
+<!ENTITY nch.prefs.open_infowindow "開啟資訊視窗">
+<!ENTITY nch.prefs.soundfiles "音效檔">
+<!ENTITY nch.prefs.standardnagiosfile "Nagios 標準檔案">
+<!ENTITY nch.prefs.customfile "自訂檔案">
+<!ENTITY nch.prefs.critical "重要">
+<!ENTITY nch.prefs.warning "警告">
+<!ENTITY nch.prefs.down "當掉">
+<!ENTITY nch.prefs.unreachable "未能連接">
+<!ENTITY nch.prefs.replay "重播">
+<!ENTITY nch.prefs.getaliases "下載的主機別稱">
+<!ENTITY nch.prefs.showaliascolumn "在資訊視窗顯示主機別稱列(適用於已指定使用至少一個Nagios伺服器的下載主機的別稱)">
+<!ENTITY nch.prefs.shortwithservername "只顯示伺服器名稱">
+<!ENTITY nch.prefs.numbersonlywithservername "數字只顯示於有伺服器名稱">
+<!ENTITY nch.prefs.totalnumbers "包含總數">
+<!ENTITY nch.prefs.totalnumbersforeveryserver "每個伺服器包含總數">
+<!ENTITY nch.prefs.alldownhosts "所有當掉的主機">
+<!ENTITY nch.prefs.allunreachablehosts "所有未能連接的主機">
+<!ENTITY nch.prefs.allwarningservices "所有警告的主機">
+<!ENTITY nch.prefs.allunknownservices "所有未知的主機">
+<!ENTITY nch.prefs.allcriticalservices "所有重要的主機">
+<!ENTITY nch.prefs.blinkalltypesonstatusupdateifnewproblemappears "當有新問題時閃爍所有種類">
+<!ENTITY nch.prefs.blinkaffectedtypesonstatusupdateifnewproblemappears "當有新問題時閃爍該種類">
+<!ENTITY nch.prefs.blinkalltypesoneverystatusupdateifatleastoneproblemexists "當有至少一個問題時閃爍所有種類">
+<!ENTITY nch.prefs.aliases "別稱">

@@ -40,6 +40,8 @@
 <!ENTITY nch.about.homepage "Domovská stránka">
 <!ENTITY nch.about.copyrights "Autorská práva">
 <!ENTITY nch.about.nagioscopyrights "Nagios a Nagios logo jsou registrované obchodní známky Ethana Galstada.">
+<!ENTITY nch.about.codecontributors "Přispěvatelé kódu">
+<!ENTITY nch.about.ideasandbugreports "Nápady a hlášení chyb">
 
 <!ENTITY nch.prefs.display "Zobrazení">
 <!ENTITY nch.prefs.watchedsystems "Sledované systémy Nagios">
@@ -110,3 +112,4 @@
 <!ENTITY nch.prefs.blinkaffectedtypesonstatusupdateifnewproblemappears "Blikají jen ty typy, kde se objeví nové hlášení">
 <!ENTITY nch.prefs.blinkalltypesoneverystatusupdateifatleastoneproblemexists "Blikají všechny typy, pokud existuje alespoň jedno hlášení">
 <!ENTITY nch.prefs.aliases "Aliasy">
+<!ENTITY nch.prefs.makedonation "Podpořte vývoj">

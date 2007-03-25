@@ -1,0 +1,106 @@
+<!ENTITY nch.title "Nagios Checker (Нагиос Чекър)">
+<!ENTITY nch.aboutextension "Относно &nch.title;">
+<!ENTITY nch.about "Относно">
+<!ENTITY nch.close "Затваряне">
+<!ENTITY nch.hosts "Обекта">
+<!ENTITY nch.services "Услуги">
+<!ENTITY nch.menu.options "Настройки">
+<!ENTITY nch.menu.updatenow "Обновяване сега">
+<!ENTITY nch.prefs.title "&nch.title; Настройки">
+<!ENTITY nch.prefs.general "Главно">
+<!ENTITY nch.prefs.filtering "Филтриране">
+<!ENTITY nch.prefs.behavior "Поведение">
+<!ENTITY nch.prefs.name "Име">
+<!ENTITY nch.prefs.fullurl "Нагиос уеб интерфейс - адрес">
+<!ENTITY nch.prefs.webinterface "Нагиос уеб интерфейс">
+<!ENTITY nch.prefs.username "Потребител">
+<!ENTITY nch.prefs.password "Парола">
+<!ENTITY nch.prefs.versionolderthan20 "Нагиос версия по-стара от 2.0">
+<!ENTITY nch.prefs.plainpass "Да не се съхраняват тези акридитиви чрез Мениджъра за Пароли на браузъра.">
+<!ENTITY nch.prefs.exampleurl "Т.е.: http://www.твоятакомпания.bg/nagios/">
+<!ENTITY nch.prefs.examplestatusurl "Т.е.: http://www.вашатакомпания.com/nagios/cgi-bin/status.cgi">
+<!ENTITY nch.prefs.statusurl "Скрипт за положението - адрес">
+<!ENTITY nch.prefs.foundstatusurl "Адреса намерен">
+<!ENTITY nch.prefs.locateurl "Намиране на адреса">
+<!ENTITY nch.prefs.updateinterval "Интервал на обновяване (в минути)">
+<!ENTITY nch.prefs.utilityrun "Удобно стартиране">
+<!ENTITY nch.prefs.other "Други">
+<!ENTITY nch.prefs.onewindowonly "Използване само в първия отворен прозорец">
+<!ENTITY nch.about.original "Първоначално заглавие">
+<!ENTITY nch.about.version "Версия">
+<!ENTITY nch.about.created "Автор">
+<!ENTITY nch.about.description "Nagios Checker осигурява разширяем статусбар индикатор за докладваните от Nagios събития. Тази информация е взета от уеб интерфейса на Nagios и могат да се наблюдават множество сървъри едновременно. Nagios Checker работи във фонов режим, не изисква да е отворена страницата на Nagios и позволява избираемо филтриране на резултати.">
+<!ENTITY nch.about.contributors "Разпространители">
+<!ENTITY nch.about.translators "Преводачи">
+<!ENTITY nch.about.author "Petr Simek">
+<!ENTITY nch.about.homepage "Домашна страница">
+<!ENTITY nch.about.copyrights "Запазени права">
+<!ENTITY nch.about.nagioscopyrights "Nagios и логото Nagios са запазена марка на Ethan Galstad.">
+<!ENTITY nch.prefs.display "Изглед">
+<!ENTITY nch.prefs.watchedsystems "Набюдавани Нагиос системи">
+<!ENTITY nch.prefs.addnew "Добавяне на нова">
+<!ENTITY nch.prefs.edit "Редактиране">
+<!ENTITY nch.prefs.remove "Премахване">
+<!ENTITY nch.prefs.statusbardetaillevel "Ниво Подробности на Статусбара">
+<!ENTITY nch.prefs.long "Дълъг">
+<!ENTITY nch.prefs.short "Къс">
+<!ENTITY nch.prefs.numbersonly "Само цифри">
+<!ENTITY nch.prefs.infowindowtype "Тип прозорец за информация">
+<!ENTITY nch.prefs.allinonewindow "Всички проблеми в един прозорец">
+<!ENTITY nch.prefs.individualwindows "Отделен прозорец за всеки проблем">
+<!ENTITY nch.prefs.showinstatusbar "Показване в статусбара">
+<!ENTITY nch.prefs.hostdown "Обект долу">
+<!ENTITY nch.prefs.hostunreachable "Недостъпен обект">
+<!ENTITY nch.prefs.servicecritical "Критична услуга">
+<!ENTITY nch.prefs.servicewarning "Предупреждение за услуга">
+<!ENTITY nch.prefs.serviceunknown "Непозната услуга">
+<!ENTITY nch.prefs.showininfowindow "Показване в информационния прозорец">
+<!ENTITY nch.prefs.showinfocolumn "Показване колона за Информация в информационния прозорец">
+<!ENTITY nch.prefs.blinking "Премигване">
+<!ENTITY nch.prefs.off "Изключено">
+<!ENTITY nch.prefs.onstatusupdateifnewproblemappears "При обновяване, ако има нов проблем">
+<!ENTITY nch.prefs.oneverystatusupdateifatleastoneproblemexists "При всяко обновяване, ако има поне един проблем">
+<!ENTITY nch.prefs.sounds "Звуци">
+<!ENTITY nch.prefs.soundsbytype "Звуци в зависимост от типа проблем">
+<!ENTITY nch.prefs.nagiossystem "Нагиос система">
+<!ENTITY nch.prefs.seturlmanually "Задаване на адрес ръчно">
+<!ENTITY nch.prefs.filterout "Филтриране">
+<!ENTITY nch.prefs.acknowledged "Обекти и услуги, които са били приети">
+<!ENTITY nch.prefs.disabled_notifications "Обекти и услуги, чиито известия са забранени">
+<!ENTITY nch.prefs.disabled_checks "Обекти и услуги, чиито проверки са забранени">
+<!ENTITY nch.prefs.soft_states "Услуги в &quot;SOFT&quot; състояние">
+<!ENTITY nch.prefs.scheduled_downtime "Обекти и услуги, които са в планирано спиране">
+<!ENTITY nch.prefs.services_on_down_hosts "Услуги на обекти, които са долу или са недостъпни">
+<!ENTITY nch.prefs.services_on_acknowledged_hosts "Услуги на обекти, които са долу или са на недостъпни и приети такива">
+<!ENTITY nch.prefs.note "Забележка">
+<!ENTITY nch.prefs.note_sound "Ако Nagios Checker бъде стартиран в повече от един прозорец, то звук ще бъде пуснат само в първият отворен такъв.">
+<!ENTITY nch.prefs.after_click_statusbar "След цъкване на статусбар">
+<!ENTITY nch.prefs.do_nothing "Не прави нищо">
+<!ENTITY nch.prefs.goto_main_nagios "Отиване на основната страница на Нагиос">
+<!ENTITY nch.prefs.goto_nagios_section "Отиване на секцията на страницата на Нагиос съответстваща на цъкнатия вид проблем">
+<!ENTITY nch.prefs.open_fullinfowindow "Open static information window with all problems">
+<!ENTITY nch.prefs.open_infowindowbytype "Open static information windows depending on type clicked">
+<!ENTITY nch.prefs.open_infowindow "Open information window">
+<!ENTITY nch.prefs.soundfiles "Sound Files">
+<!ENTITY nch.prefs.standardnagiosfile "Nagios standard file">
+<!ENTITY nch.prefs.customfile "Custom file">
+<!ENTITY nch.prefs.critical "Critical">
+<!ENTITY nch.prefs.warning "Warning">
+<!ENTITY nch.prefs.down "Down">
+<!ENTITY nch.prefs.unreachable "Unreachable">
+<!ENTITY nch.prefs.replay "Replay">
+<!ENTITY nch.prefs.getaliases "Download host aliases">
+<!ENTITY nch.prefs.showaliascolumn "Show Host alias column in information window (make sense only if you have defined option to download aliases by at least one Nagios server)">
+<!ENTITY nch.prefs.shortwithservername "Short with server names">
+<!ENTITY nch.prefs.numbersonlywithservername "Numbers only with server names">
+<!ENTITY nch.prefs.totalnumbers "With toal numbers">
+<!ENTITY nch.prefs.totalnumbersforeveryserver "With total numbers for every server">
+<!ENTITY nch.prefs.alldownhosts "All down hosts">
+<!ENTITY nch.prefs.allunreachablehosts "All unreachable hosts">
+<!ENTITY nch.prefs.allwarningservices "All warnign services">
+<!ENTITY nch.prefs.allunknownservices "All unknown services">
+<!ENTITY nch.prefs.allcriticalservices "All critical services">
+<!ENTITY nch.prefs.blinkalltypesonstatusupdateifnewproblemappears "Blink all types if a new problem appears">
+<!ENTITY nch.prefs.blinkaffectedtypesonstatusupdateifnewproblemappears "Blink the type where a new problem appears">
+<!ENTITY nch.prefs.blinkalltypesoneverystatusupdateifatleastoneproblemexists "Blink all types if at least one problem exists">
+<!ENTITY nch.prefs.aliases "Aliases">

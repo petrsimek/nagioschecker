@@ -1,0 +1,106 @@
+<!ENTITY nch.title "Nagios Checker">
+<!ENTITY nch.aboutextension "Hakkında &nch.title;">
+<!ENTITY nch.about "Hakkında">
+<!ENTITY nch.close "Kapat">
+<!ENTITY nch.hosts "Ana Sistemler">
+<!ENTITY nch.services "Hizmetler">
+<!ENTITY nch.menu.options "Ayarlar">
+<!ENTITY nch.menu.updatenow "Şimdi güncelle">
+<!ENTITY nch.prefs.title "&nch.title; Ayarlar">
+<!ENTITY nch.prefs.general "Genel">
+<!ENTITY nch.prefs.filtering "Süzgeç">
+<!ENTITY nch.prefs.behavior "Davranış">
+<!ENTITY nch.prefs.name "İsim">
+<!ENTITY nch.prefs.fullurl "Nagios web arabirimi URL">
+<!ENTITY nch.prefs.webinterface "Nagios web arabirimi">
+<!ENTITY nch.prefs.username "Kullanıcı">
+<!ENTITY nch.prefs.password "Şifre">
+<!ENTITY nch.prefs.versionolderthan20 "Nagios sürümü 2.0&apos;dan daha eski">
+<!ENTITY nch.prefs.plainpass "Bu güven belgelerini tarayıcının Şifre Yöneticisini kullanarak saklama">
+<!ENTITY nch.prefs.exampleurl "Ör.: http://www.alanadi.cz/nagios">
+<!ENTITY nch.prefs.examplestatusurl "Ör.: http://www.yourcompany.com/nagios/cgi-bin/status.cgi">
+<!ENTITY nch.prefs.statusurl "Durum betiği URL">
+<!ENTITY nch.prefs.foundstatusurl "Belirlenen URL">
+<!ENTITY nch.prefs.locateurl "URL Bul">
+<!ENTITY nch.prefs.updateinterval "Güncelleme aralığı (dakika)">
+<!ENTITY nch.prefs.utilityrun "Program çalıştır">
+<!ENTITY nch.prefs.other "Diğer">
+<!ENTITY nch.prefs.onewindowonly "Yalnızca ilk açılan pencerede çalış">
+<!ENTITY nch.about.original "Özgün başlık">
+<!ENTITY nch.about.version "Sürüm">
+<!ENTITY nch.about.created "Yazar">
+<!ENTITY nch.about.description "Nagios Checker, Nagios&apos;un raporladığı olayların durum çubuğunda gösterimini sunar. Bu bilgiler Nagios Web arabiriminden elde edilir ve birden fazla Nagios sunucusu eşzamanlı olarak izlenebilir. Nagios Checker arkapilanda çalışır, sonuçları süzülmüş olarak gösterir ve çalışması için açık bir Nagios wep sayfasına ihtiyaç duymaz.">
+<!ENTITY nch.about.contributors "Katılımcılar">
+<!ENTITY nch.about.translators "Çevirmenler">
+<!ENTITY nch.about.author "Petr Simek">
+<!ENTITY nch.about.homepage "Ev sayfası">
+<!ENTITY nch.about.copyrights "Telif">
+<!ENTITY nch.about.nagioscopyrights "Nagios ve Nagios logosu Ethan Galstad&apos;ın ticari markasıdır.">
+<!ENTITY nch.prefs.display "Göster">
+<!ENTITY nch.prefs.watchedsystems "İzlenen Nagios sistemleri">
+<!ENTITY nch.prefs.addnew "Yeni ekle">
+<!ENTITY nch.prefs.edit "Düzenle">
+<!ENTITY nch.prefs.remove "Kaldır">
+<!ENTITY nch.prefs.statusbardetaillevel "Durumçubuğu Ayrıntı Düzeyi">
+<!ENTITY nch.prefs.long "Uzun">
+<!ENTITY nch.prefs.short "Kısa">
+<!ENTITY nch.prefs.numbersonly "Yalnızca sayılar">
+<!ENTITY nch.prefs.infowindowtype "Bilgi penceresi tipi">
+<!ENTITY nch.prefs.allinonewindow "Tüm sorunlar tek pencerede">
+<!ENTITY nch.prefs.individualwindows "Her sorun tipi için özel pencere">
+<!ENTITY nch.prefs.showinstatusbar "Durumçubuğunda göster">
+<!ENTITY nch.prefs.hostdown "Ana sistem kapalı">
+<!ENTITY nch.prefs.hostunreachable "Ana sistem erişilemez">
+<!ENTITY nch.prefs.servicecritical "Hizmet kritik">
+<!ENTITY nch.prefs.servicewarning "Hizmet uyarısı">
+<!ENTITY nch.prefs.serviceunknown "Hizmet bilinmiyor">
+<!ENTITY nch.prefs.showininfowindow "Bilgi penceresinde göster">
+<!ENTITY nch.prefs.showinfocolumn "Bilgi sütununu bilgi penceresinde göster">
+<!ENTITY nch.prefs.blinking "Kırpma">
+<!ENTITY nch.prefs.off "Kapalı">
+<!ENTITY nch.prefs.onstatusupdateifnewproblemappears "Durum çubuğunu eğer yeni bir sorun belirirse güncelle">
+<!ENTITY nch.prefs.oneverystatusupdateifatleastoneproblemexists "Durum çubuğunu tek bir sorun çıksa bile güncelle">
+<!ENTITY nch.prefs.sounds "Sesler">
+<!ENTITY nch.prefs.soundsbytype "Sorun çeşitlerine göre sesler">
+<!ENTITY nch.prefs.nagiossystem "Nagios sistemi">
+<!ENTITY nch.prefs.seturlmanually "Süzgeç iptal">
+<!ENTITY nch.prefs.filterout "Süzgeç iptal">
+<!ENTITY nch.prefs.acknowledged "Tanınan ana sistem ve hizmetler">
+<!ENTITY nch.prefs.disabled_notifications "Uyarıların iptal edildiği ana sistem ve hizmetler">
+<!ENTITY nch.prefs.disabled_checks "Kontrollerin iptal edildiği ana sistem ve hizmetler">
+<!ENTITY nch.prefs.soft_states "&quot;SOFT states&quot; durumundaki servisler">
+<!ENTITY nch.prefs.scheduled_downtime "Programlı aksama süreleri olan ana sistem ve servisler">
+<!ENTITY nch.prefs.services_on_down_hosts "Kapalı veya erişilemeyen ana sistemlerdeki hizmetler">
+<!ENTITY nch.prefs.services_on_acknowledged_hosts "Kapalı veya erişilemeyen hizmetler ve tanınan ana sistemler">
+<!ENTITY nch.prefs.note "Uyarı">
+<!ENTITY nch.prefs.note_sound "Eğer Nagios Checker birden fazla pencerede çalışırsa, ses yalnızca ilk açılan pencereden çıkacaktır.">
+<!ENTITY nch.prefs.after_click_statusbar "Durumçubuğuna tıkladıktan sonra">
+<!ENTITY nch.prefs.do_nothing "Hiçbirşey yapma">
+<!ENTITY nch.prefs.goto_main_nagios "Ana Nagios web sayfasına git">
+<!ENTITY nch.prefs.goto_nagios_section "Tıklanan sorun tipi ile ilgili olarak, bölümlenmiş Nagios web servisine git">
+<!ENTITY nch.prefs.open_fullinfowindow "Tüm sorunlar için durağan bilgi penceresini aç">
+<!ENTITY nch.prefs.open_infowindowbytype "Tıklanan tipe bağlı olarak durağan bilgi penceresi aç">
+<!ENTITY nch.prefs.open_infowindow "Bilgi penceresi aç">
+<!ENTITY nch.prefs.soundfiles "Ses Dosyaları">
+<!ENTITY nch.prefs.standardnagiosfile "Nagios standart dosyası">
+<!ENTITY nch.prefs.customfile "Özgün dosya">
+<!ENTITY nch.prefs.critical "Kritik">
+<!ENTITY nch.prefs.warning "Uyarı">
+<!ENTITY nch.prefs.down "Kapalı">
+<!ENTITY nch.prefs.unreachable "Erişilemez">
+<!ENTITY nch.prefs.replay "Cevapla">
+<!ENTITY nch.prefs.getaliases "Ana bilgisayar takma adı indir.">
+<!ENTITY nch.prefs.showaliascolumn "Bilgi penceresinde Ana bilgisayar takma adı sütununu göster (Eğer en azından bir Nagios sunucusu için takma adları indir seçeneğini işaretlemişseniz)">
+<!ENTITY nch.prefs.shortwithservername "Sunucu isimleri ile birlikte kısalt">
+<!ENTITY nch.prefs.numbersonlywithservername "Yalnızca sunucu adları ile numaralar">
+<!ENTITY nch.prefs.totalnumbers "Toplam numaralarla birlikte">
+<!ENTITY nch.prefs.totalnumbersforeveryserver "Her sunucu için toplam numaralarla birlikte">
+<!ENTITY nch.prefs.alldownhosts "Tüm kapalı ana sistemler">
+<!ENTITY nch.prefs.allunreachablehosts "Tüm erişilemez ana sistemler">
+<!ENTITY nch.prefs.allwarningservices "Tüm uyarı hizmetleri">
+<!ENTITY nch.prefs.allunknownservices "Tüm bilinmeyen hizmetler">
+<!ENTITY nch.prefs.allcriticalservices "Tüm kritik hizmetler">
+<!ENTITY nch.prefs.blinkalltypesonstatusupdateifnewproblemappears "Eğer yeni bir sorum görülürlü tüm tipleri kırpıştır">
+<!ENTITY nch.prefs.blinkaffectedtypesonstatusupdateifnewproblemappears "Yeni bir sorunun görüldüğü tipi kırpıştır">
+<!ENTITY nch.prefs.blinkalltypesoneverystatusupdateifatleastoneproblemexists "En azından bir sorun daha olsa tüm tipleri kırpıştır">
+<!ENTITY nch.prefs.aliases "Takma adlar">

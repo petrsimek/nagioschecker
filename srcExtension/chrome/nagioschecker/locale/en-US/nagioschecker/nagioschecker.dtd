@@ -40,6 +40,8 @@
 <!ENTITY nch.about.homepage "Homepage">
 <!ENTITY nch.about.copyrights "Copyrights">
 <!ENTITY nch.about.nagioscopyrights "Nagios and Nagios logo are registered trademarks of Ethan Galstad.">
+<!ENTITY nch.about.codecontributors "Code Contributors">
+<!ENTITY nch.about.ideasandbugreports "Ideas and Bug Reports">
 
 <!ENTITY nch.prefs.display "Display">
 <!ENTITY nch.prefs.watchedsystems "Nagios Page(s) to Watch">
@@ -111,3 +113,5 @@
 <!ENTITY nch.prefs.blinkaffectedtypesonstatusupdateifnewproblemappears "Blink the type where a new problem appears">
 <!ENTITY nch.prefs.blinkalltypesoneverystatusupdateifatleastoneproblemexists "Blink all types if at least one problem exists">
 <!ENTITY nch.prefs.aliases "Aliases">
+<!ENTITY nch.prefs.makedonation "Make donation">
+
