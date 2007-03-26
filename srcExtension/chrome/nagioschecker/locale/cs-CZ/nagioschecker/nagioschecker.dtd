@@ -115,3 +115,6 @@
 <!ENTITY nch.prefs.makedonation "Podpořte vývoj">
 <!ENTITY nch.prefs.hostsmatchingregexp "Hostitelé odpovídající regulárnímu výrazu">
 <!ENTITY nch.prefs.servicesmatchingregexp "Služby odpovídající regulárnímu výrazu">
+
+<!ENTITY nch.prefs.disable "Vypnout">
+<!ENTITY nch.prefs.disabled "Vypnutý">

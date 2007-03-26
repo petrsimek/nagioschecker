@@ -162,6 +162,12 @@ NCH.prototype = {
         catch (e2) {
           var gAli=false;
         }
+        try {
+          var gDis = this.preferences.getBoolPref("extensions.nagioschecker."+(i+1)+".disabled");
+        }
+        catch (e2) {
+          var gDis=false;
+        }
           var auth = pm.getAuth((i+1));
           this._servers.push({
                   url:surl,
@@ -171,7 +177,8 @@ NCH.prototype = {
                   password:(pPass) ? this.preferences.getCharPref("extensions.nagioschecker."+(i+1)+".password") : ((auth.password) ? auth.password : ''),
                   versionOlderThan20:this.preferences.getBoolPref("extensions.nagioschecker."+(i+1)+".vot20"),
                   getAliases:gAli,
-                  aliases:{}
+                  aliases:{},
+                  disabled:gDis,
                   });
         }
       }

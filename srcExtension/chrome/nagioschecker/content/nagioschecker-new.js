@@ -7,7 +7,8 @@ function doOK() {
     password: document.getElementById('nch-general-password').value,
     versionOlderThan20: document.getElementById('nch-general-vot20').checked,
     plainPass: document.getElementById('nch-general-plainpass').checked,
-    getAliases: document.getElementById('nch-general-getaliases').checked
+    getAliases: document.getElementById('nch-general-getaliases').checked,
+    disabled: document.getElementById('nch-general-disabled').checked
   }
   window.arguments[2](window.arguments[1],edited);
 }
@@ -105,7 +106,7 @@ function nchLoadPreferences() {
     document.getElementById('nch-general-vot20').checked=server.versionOlderThan20;
     document.getElementById('nch-general-plainpass').checked=server.plainPass;
     document.getElementById('nch-general-getaliases').checked=server.getAliases;
-
+    document.getElementById('nch-general-disabled').checked=server.disabled;
   }
 
   nchControlPreferences();
@@ -123,6 +124,7 @@ function nchControlPreferences() {
     document.getElementById('find-button').removeAttribute('disabled');
     document.getElementById('find-progress').removeAttribute('disabled');
     document.getElementById('nch-general-getaliases').removeAttribute('disabled');
+    document.getElementById('nch-general-disabled').removeAttribute('disabled');
   }
   else {
     document.getElementById('nch-general-username').setAttribute('disabled','true');
@@ -131,6 +133,7 @@ function nchControlPreferences() {
     document.getElementById('find-button').setAttribute('disabled','true');
     document.getElementById('find-progress').setAttribute('disabled','true');
     document.getElementById('nch-general-getaliases').setAttribute('disabled','true');
+    document.getElementById('nch-general-disabled').setAttribute('disabled','true');
   }
 	
 	return true;

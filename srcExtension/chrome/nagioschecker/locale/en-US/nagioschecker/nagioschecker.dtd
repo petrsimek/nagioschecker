@@ -116,3 +116,6 @@
 <!ENTITY nch.prefs.makedonation "Make donation">
 <!ENTITY nch.prefs.hostsmatchingregexp "Hosts matching regular expression">
 <!ENTITY nch.prefs.servicesmatchingregexp "Services matching regular expression">
+
+<!ENTITY nch.prefs.disable "Disable">
+<!ENTITY nch.prefs.disabled "Disabled">

@@ -52,4 +52,7 @@
     <checkbox id="nch-new-set_url_manually" label="&nch.prefs.seturlmanually;" oncommand="handleSetManually();"/>
     <label value="&nch.prefs.examplestatusurl;"/>
   </groupbox>
+	<groupbox>
+    <checkbox id="nch-general-disabled" label="&nch.prefs.disabled;"/>
+  </groupbox>
 </dialog>

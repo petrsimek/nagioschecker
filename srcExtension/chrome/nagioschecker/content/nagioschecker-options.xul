@@ -49,6 +49,7 @@
           <hbox>
             <button id="add-new-button" label="&nch.prefs.addnew;" oncommand="gNCHOptions.addNewServer();"/>
 	          <button id="edit-button" label="&nch.prefs.edit;" oncommand="gNCHOptions.editSelectedServer();" disabled="true"/>
+	          <button id="able-button" label="&nch.prefs.disable;" oncommand="gNCHOptions.ableSelectedServer();" disabled="true"/>
 	          <button id="remove-button" label="&nch.prefs.remove;" oncommand="gNCHOptions.removeSelectedServer();" disabled="true"/>
           </hbox>
         </groupbox>

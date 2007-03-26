@@ -125,6 +125,15 @@ NCHOptions.prototype = {
       me.onAddedServer(pos,added);
     });
   },
+  ableSelectedServer: function () {
+    var selections = GetTreeSelections(this._tree);
+    var i = selections[0];
+    var me = this;
+	this._servers[i].disabled=!this._servers[i].disabled;
+      this._view._rowCount = this._servers.length;
+//      this._tree.treeBoxObject.rowCountChanged(this._servers.length-1, 1);
+      this._tree.treeBoxObject.ensureRowIsVisible(this._servers.length-1);
+  },
 
   onAddedServer: function(pos,added) {
     if (pos) {
@@ -312,6 +321,7 @@ NCHOptions.prototype = {
           prefs.setBoolPref("extensions.nagioschecker."+(i+1)+".getaliases",this._servers[j].getAliases);
           prefs.setCharPref("extensions.nagioschecker."+(i+1)+".username",(this._servers[j].plainPass) ? this._servers[j].username : "");
           prefs.setCharPref("extensions.nagioschecker."+(i+1)+".password",(this._servers[j].plainPass) ? this._servers[j].password : "");
+          prefs.setBoolPref("extensions.nagioschecker."+(i+1)+".disabled",(this._servers[j].disabled));
           if (!this._servers[j].plainPass) {
             pm.saveAuth((this._servers[j].username) ? this._servers[j].username : "",(this._servers[j].password) ? this._servers[j].password : "",(i+1));  
           }
@@ -462,6 +472,12 @@ NCHOptions.prototype = {
         catch (e) {
           var getAli = false;
         }
+        try {
+          var getDis = prefs.getBoolPref("extensions.nagioschecker."+(i+1)+".disabled");
+        }
+        catch (e) {
+          var getDis = false;
+        }
         
         try {
         if (surl) {
@@ -473,6 +489,7 @@ NCHOptions.prototype = {
                   versionOlderThan20:vot20,
                   plainPass:pPass,
                   getAliases:getAli,
+                  disabled:getDis,
                   username:(pPass) ? prefs.getCharPref("extensions.nagioschecker."+(i+1)+".username") : ((auth.user) ? auth.user : ''),
                   password:(pPass) ? prefs.getCharPref("extensions.nagioschecker."+(i+1)+".password") : ((auth.password) ? auth.password : '')
                   });
