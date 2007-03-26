@@ -71,12 +71,12 @@
               <checkbox prefstring="extensions.nagioschecker.filter_out_all_warning" id="nch-general-filter_out_all_warning" label="&nch.prefs.allwarningservices;"/>
               <checkbox prefstring="extensions.nagioschecker.filter_out_all_unknown" id="nch-general-filter_out_all_unknown" label="&nch.prefs.allunknownservices;"/>
 				<hbox>
-        <checkbox prefstring="extensions.nagioschecker.filter_out_regexp_hosts" id="nch-general-filter_out_regexp_hosts" label="Hosts matching regular expression:"/>
-				<textbox prefstring="extensions.nagioschecker.filter_out_regexp_hosts_value" id="nch-general-filter_out_regexp_hosts_value" size="20"/>
+        			<checkbox prefstring="extensions.nagioschecker.filter_out_regexp_hosts" id="nch-general-filter_out_regexp_hosts" label="&nch.prefs.hostsmatchingregexp;:"/>
+					<textbox prefstring="extensions.nagioschecker.filter_out_regexp_hosts_value" id="nch-general-filter_out_regexp_hosts_value" size="20"/>
 				</hbox>
 				<hbox>
-        <checkbox prefstring="extensions.nagioschecker.filter_out_regexp_services" id="nch-general-filter_out_regexp_services" label="Services matching regular expression:"/>
-				<textbox prefstring="extensions.nagioschecker.filter_out_regexp_services_value" id="nch-general-filter_out_regexp_services_value" size="20"/>
+        			<checkbox prefstring="extensions.nagioschecker.filter_out_regexp_services" id="nch-general-filter_out_regexp_services" label="&nch.prefs.servicesmatchingregexp;:"/>
+					<textbox prefstring="extensions.nagioschecker.filter_out_regexp_services_value" id="nch-general-filter_out_regexp_services_value" size="20"/>
 				</hbox>
 
             </vbox>

@@ -113,3 +113,5 @@
 <!ENTITY nch.prefs.blinkalltypesoneverystatusupdateifatleastoneproblemexists "Blikají všechny typy, pokud existuje alespoň jedno hlášení">
 <!ENTITY nch.prefs.aliases "Aliasy">
 <!ENTITY nch.prefs.makedonation "Podpořte vývoj">
+<!ENTITY nch.prefs.hostsmatchingregexp "Hostitelé odpovídající regulárnímu výrazu">
+<!ENTITY nch.prefs.servicesmatchingregexp "Služby odpovídající regulárnímu výrazu">

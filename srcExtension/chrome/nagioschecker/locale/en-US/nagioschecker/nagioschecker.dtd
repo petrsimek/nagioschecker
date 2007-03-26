@@ -114,4 +114,5 @@
 <!ENTITY nch.prefs.blinkalltypesoneverystatusupdateifatleastoneproblemexists "Blink all types if at least one problem exists">
 <!ENTITY nch.prefs.aliases "Aliases">
 <!ENTITY nch.prefs.makedonation "Make donation">
-
+<!ENTITY nch.prefs.hostsmatchingregexp "Hosts matching regular expression">
+<!ENTITY nch.prefs.servicesmatchingregexp "Services matching regular expression">
