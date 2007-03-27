@@ -42,6 +42,7 @@
               <splitter class="tree-splitter"/>
               <treecol id="urlCol" label="&nch.prefs.fullurl;" flex="2"/>
               <treecol id="aliasCol" label="&nch.prefs.aliases;" flex="3"/>
+              <treecol id="disCol" label="Disabled" flex="3"/>
             </treecols>
             <treechildren/>
           </tree>

@@ -1239,8 +1239,8 @@ function NCHToolTip(showColInfo,showColAlias) {
 					return a.durationSec-b.durationSec;				
 				});
 				for(var j = 0;j<this.headers[i].problems.length;j++) {
-					var serPo = this.headers[i].serPo;
-  			  		this.createRow(this.headers[i].problems[j],serPo);
+					var serPo = this.headers[i].servPos;
+  			  		this.createRow(this.headers[i].problems[j],i,serPo);
         		}
         	}
         	else {
@@ -1308,7 +1308,7 @@ function NCHToolTip(showColInfo,showColAlias) {
 
 
   
-  this.createRow = function(problem,i) {
+  this.createRow = function(problem,i,serPo) {
 
 		var row = document.createElement("row");
     var status_text = "";
@@ -1335,7 +1335,7 @@ function NCHToolTip(showColInfo,showColAlias) {
         break;
     }
 
-		row.setAttribute("onclick","nagioschecker.hideNchPopup('"+this._tooltip.id+"');nagioschecker.openTab(nagioschecker.createUrlDevice('"+i+"','"+problem.host+"',"+((problem.service) ? "'"+problem.service+"'" : "null")+"))");
+		row.setAttribute("onclick","nagioschecker.hideNchPopup('"+this._tooltip.id+"');nagioschecker.openTab(nagioschecker.createUrlDevice('"+serPo+"','"+problem.host+"',"+((problem.service) ? "'"+problem.service+"'" : "null")+"))");
 
  		this._rows.appendChild(row);
 

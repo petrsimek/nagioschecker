@@ -63,6 +63,11 @@ NCHOptions.prototype = {
     var selections = GetTreeSelections(this._tree);
     document.getElementById("remove-button").disabled = (selections.length < 1);
     document.getElementById("edit-button").disabled = (selections.length < 1);
+    document.getElementById("able-button").disabled = (selections.length < 1);
+
+    var i = selections[0];
+	document.getElementById("able-button").value = (this._servers[i].disabled) ? "Enable" : "Disa";
+
   },
 
   alertServers: function() {
@@ -131,8 +136,8 @@ NCHOptions.prototype = {
     var me = this;
 	this._servers[i].disabled=!this._servers[i].disabled;
       this._view._rowCount = this._servers.length;
-//      this._tree.treeBoxObject.rowCountChanged(this._servers.length-1, 1);
-      this._tree.treeBoxObject.ensureRowIsVisible(this._servers.length-1);
+      this._tree.treeBoxObject.rowCountChanged(this._servers.length, 0);
+      this._tree.treeBoxObject.ensureRowIsVisible(this._servers.length);
   },
 
   onAddedServer: function(pos,added) {
@@ -188,13 +193,15 @@ NCHOptions.prototype = {
       return this._rowCount; 
     },
     getCellText: function (aRow, aColumn) {
-      switch( typeof(aColumn)=="object" ? aColumn.id : aColumn ) { //compatibility betweeen 1.7 and 1.8 
+      switch( typeof(aColumn)=="object" ? aColumn.id : aColumn ) {
         case "nameCol":
           return (gNCHOptions._servers[aRow]==null) ? "" : gNCHOptions._servers[aRow].name;
         case "urlCol":
           return (gNCHOptions._servers[aRow]==null) ? "" : gNCHOptions._servers[aRow].url;
         case "aliasCol":
           return (gNCHOptions._servers[aRow]==null) ? "" : (gNCHOptions._servers[aRow].getAliases) ? gNCHOptions.bundle.getString("yes") : gNCHOptions.bundle.getString("no");
+        case "disCol":
+          return (gNCHOptions._servers[aRow]==null) ? "" : (gNCHOptions._servers[aRow].disabled) ? gNCHOptions.bundle.getString("yes") : gNCHOptions.bundle.getString("no");
         default:
           return null;
       }
