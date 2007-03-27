@@ -755,7 +755,7 @@ NCH.prototype = {
     var newProblems={};
     for(var i=0;i<problems.length;i++) {
 
-      ttIndi["all"][0].addHeader(this._servers[i].name);
+      ttIndi["all"][0].addHeader(this._servers[i].name,i);
         if (problems[i]["_error"]) {
          	  ttIndi["all"][0].addError();
             ttIndi["isError"]=true;
@@ -769,7 +769,7 @@ NCH.prototype = {
 			    var probls = (problems[i]["_error"]) ? null : problems[i][this.pt[x]];
 
   			  if (((probls) && (probls.length)) || (!probls)){
-         	  ttIndi[this.pt[x]][0].addHeader(this._servers[i].name);
+         	  ttIndi[this.pt[x]][0].addHeader(this._servers[i].name,i);
 			    }		  	
 
           if (!probls) {
@@ -1230,21 +1230,22 @@ function NCHToolTip(showColInfo,showColAlias) {
 		row.appendChild(lInfo);
     }
 
-	  for(var i = 0;i<this.headers.length;i++) {
-      if ((this.headers[i].problems.length) || (this.headers[i].error)) {
-		    this.createHeader(this.headers[i].data);  
-        if (!this.headers[i].error) {
+	 for(var i = 0;i<this.headers.length;i++) {
+    	if ((this.headers[i].problems.length) || (this.headers[i].error)) {
+			this.createHeader(this.headers[i].data);  
+        	if (!this.headers[i].error) {
 
-	  		this.headers[i].problems.sort(function (a,b) {
-				    return a.durationSec-b.durationSec;				
-				  });
-	      for(var j = 0;j<this.headers[i].problems.length;j++) {
-  			  this.createRow(this.headers[i].problems[j],i);
-        }
-        }
-        else {
-          this.createError();
-        }
+	  			this.headers[i].problems.sort(function (a,b) {
+					return a.durationSec-b.durationSec;				
+				});
+				for(var j = 0;j<this.headers[i].problems.length;j++) {
+					var serPo = this.headers[i].serPo;
+  			  		this.createRow(this.headers[i].problems[j],serPo);
+        		}
+        	}
+        	else {
+         	this.createError();
+        	}
       }
     }
 
@@ -1292,8 +1293,8 @@ function NCHToolTip(showColInfo,showColAlias) {
 
 
   }
-  this.addHeader= function(name) {
-		this.headers[++this.actH]={data:name,error:false,problems:[],aliases:{},news:{}};
+  this.addHeader= function(name,serPo) {
+		this.headers[++this.actH]={data:name,error:false,problems:[],aliases:{},news:{},servPos:serPo};
 	}
   this.addError= function() {
 		this.headers[this.actH].error=true;
@@ -1333,7 +1334,8 @@ function NCHToolTip(showColInfo,showColAlias) {
         status_text = nagioschecker.bundle.getString("alertCritical1")
         break;
     }
-			row.setAttribute("onclick","nagioschecker.hideNchPopup('"+this._tooltip.id+"');nagioschecker.openTab(nagioschecker.createUrlDevice('"+i+"','"+problem.host+"',"+((problem.service) ? "'"+problem.service+"'" : "null")+"))");
+
+		row.setAttribute("onclick","nagioschecker.hideNchPopup('"+this._tooltip.id+"');nagioschecker.openTab(nagioschecker.createUrlDevice('"+i+"','"+problem.host+"',"+((problem.service) ? "'"+problem.service+"'" : "null")+"))");
 
  		this._rows.appendChild(row);
 
