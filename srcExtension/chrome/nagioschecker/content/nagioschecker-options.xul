@@ -11,7 +11,7 @@
 	orient="vertical"
 	ondialogaccept="return gNCHOptions.savePref();"
 	buttons="accept,cancel,extra2"
-  buttonlabelextra2="Make donation..."
+  buttonlabelextra2="&nch.prefs.makedonation;..."
   ondialogextra2="window.opener.nagioschecker.openTab('http://psimek.fxnet.cz/nagios-checker/#donations');window.close();">
 
   <script type="application/x-javascript" src="chrome://nagioschecker/content/nagioschecker-passwords.js"/>

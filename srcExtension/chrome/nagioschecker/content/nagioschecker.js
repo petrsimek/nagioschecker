@@ -522,7 +522,8 @@ NCH.prototype = {
       }
       else {
         if (this.one_window_only) {
-          this.setNoData("disabledData");
+//          this.setNoData("disabledData");
+          this.setIcon("disabled");
         }
         else {
           this.results=firstWin.nagioschecker.results;
@@ -621,7 +622,8 @@ NCH.prototype = {
       if (win.nagioschecker) {
         if (!this.isStopped) {        
           if ((this.one_window_only) && (cnt>0)) {
-            win.nagioschecker.setNoData("disabledData");
+//            win.nagioschecker.setNoData("disabledData");
+            win.nagioschecker.setIcon("disabled");
           }
           else {
             if (ttIndi==null) {
@@ -633,7 +635,8 @@ NCH.prototype = {
           }
         }
         else {
-          win.nagioschecker.setNoData("stopped");
+//          win.nagioschecker.setNoData("stopped");
+          win.nagioschecker.setIcon("stop");
         }
       }
       cnt++;
@@ -1079,10 +1082,6 @@ NCH.prototype = {
       var sound = Components.classes["@mozilla.org/sound;1"].createInstance(Components.interfaces.nsISound);
           var ioService = Components.classes["@mozilla.org/network/io-service;1"].getService(Components.interfaces.nsIIOService);
           var soundUri = ioService.newURI(wav, null, null);
-/*
-      var soundUri = Components.classes['@mozilla.org/network/standard-url;1'].createInstance(Components.interfaces.nsIURI);
-      soundUri.spec = "chrome://nagioschecker/content/"+wav;
-*/
       sound.play(soundUri);
     }
     catch(e) {
@@ -1136,16 +1135,28 @@ NCH.prototype = {
   setIcon: function(type) {
 
     var ico = document.getElementById('nagioschecker-img');
-    if (type == "loading") {
-      ico.setAttribute("src","chrome://nagioschecker/skin/Throbber.gif");
-    } else if (type == "nagios") {
-      ico.setAttribute("src","chrome://nagioschecker/skin/nagios16.png");
-    } else if (type == "sleepy") {
-      ico.setAttribute("src","chrome://nagioschecker/skin/nagiosZzz.png");
-    }
+	switch (type) {
+		case "loading":
+			ico.setAttribute("src","chrome://nagioschecker/skin/Throbber.gif");
+			break;
+		case "nagios":
+			ico.setAttribute("src","chrome://nagioschecker/skin/nagios16.png");
+			break;
+		case "sleepy":
+			ico.setAttribute("src","chrome://nagioschecker/skin/nagiosZzz.png");
+			break;
+		case "disabled":
+			ico.setAttribute("src","chrome://nagioschecker/skin/nag-disabled.png");
+		    ico.setAttribute("tooltiptext",nagioschecker.bundle.getString("disabledRun"));
+			break;
+		case "stop":
+			ico.setAttribute("src","chrome://nagioschecker/skin/nag-stop.png");
+		    ico.setAttribute("tooltiptext",nagioschecker.bundle.getString("stoppedRun"));
+			break;
+	}
   },
 
-  // retrive actual time and workingtime thnen calculate whether or not check Nagios status
+  // retrive actual time and workingtime then calculate whether or not check Nagios status
   // sets sleepy icon
   isCheckingTime: function() {
 	var bRet = false;
