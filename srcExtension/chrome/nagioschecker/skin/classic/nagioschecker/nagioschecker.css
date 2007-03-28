@@ -303,3 +303,7 @@ label.error {
   background-color:white;
 }
 
+#hostList treechildren::-moz-tree-cell-text(disServer) {
+	font-style: italic;
+	color:silver;
+}

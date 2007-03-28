@@ -74,12 +74,13 @@ NCHParser.prototype = {
   fetchServer: function(pos) {
           this.problems[pos]={"down":[],"unreachable":[],"unknown":[],"warning":[],"critical":[],"_error":false};			
           this.missingAliases[pos]=[];			
+  		if (!this._servers[pos].disabled) {
           var urlServices = (this._servers[pos].versionOlderThan20) ? this._servers[pos].urlstatus+"?host=all&servicestatustypes=248" : this._servers[pos].urlstatus+"?host=all&servicestatustypes=28";
           var urlHosts = this._servers[pos].urlstatus+"?hostgroup=all&style=hostdetail&hoststatustypes=12";
           var urlExt = this._servers[pos].urlstatus.replace(/status\.cgi/,"extinfo.cgi");
           var user = this._servers[pos].username;
           var pass = this._servers[pos].password;
-          var me = this;
+		   var me = this;
           this.loadDataAsync(urlHosts,user,pass,false,function (doc1) {
             me.parseNagiosHostsHtml(pos,doc1);
             me.loadDataAsync(urlServices,user,pass,false,function (doc2) {
@@ -94,6 +95,15 @@ NCHParser.prototype = {
 					});   			
             });        
           });
+     }
+     else {
+	              if (this._servers.length==pos+1) {
+	      			  this.manager.handleProblems(this.problems);
+	              }
+	              else {
+	                this.fetchServer(pos+1);
+	              }
+     }
   },
   loadMissingAlias: function(apos,pos,username,password,callback) {
 //		alert("lma:"+apos+" "+pos);
@@ -270,14 +280,17 @@ NCHParser.prototype = {
   parseSide: function(text,url) {
 
     var urlst = "";
-
+alert(url);
     if (text!=null) {
       var adr = new RegExp('(http|https)\:\/\/([a-zA-Z0-9\-\.\:]*)/', 'g').exec(url);
-
+alert(adr);
       var token = new RegExp('(href|HREF)="(.*)status.cgi','mi').exec(text);
       if (token) {
+alert(token[2]);
         var slash = new RegExp('\/(.*)', 'g').exec(token[2]);
+alert(slash);
         urlst=(slash[1]) ? adr[1]+"://"+adr[2]+token[2]+"status.cgi" : url+token[2]+"status.cgi";
+alert(urlst);
       }
 
     }

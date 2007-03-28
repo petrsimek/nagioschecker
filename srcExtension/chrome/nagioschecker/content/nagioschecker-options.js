@@ -66,7 +66,7 @@ NCHOptions.prototype = {
     document.getElementById("able-button").disabled = (selections.length < 1);
 
     var i = selections[0];
-	document.getElementById("able-button").value = (this._servers[i].disabled) ? "Enable" : "Disa";
+	document.getElementById("able-button").setAttribute("label",(this._servers[i].disabled) ? gNCHOptions.bundle.getString("enable") : gNCHOptions.bundle.getString("disable"));
 
   },
 
@@ -133,11 +133,10 @@ NCHOptions.prototype = {
   ableSelectedServer: function () {
     var selections = GetTreeSelections(this._tree);
     var i = selections[0];
-    var me = this;
 	this._servers[i].disabled=!this._servers[i].disabled;
-      this._view._rowCount = this._servers.length;
-      this._tree.treeBoxObject.rowCountChanged(this._servers.length, 0);
-      this._tree.treeBoxObject.ensureRowIsVisible(this._servers.length);
+    this._tree.treeBoxObject.invalidate();
+	document.getElementById("able-button").setAttribute("label",(this._servers[i].disabled) ? gNCHOptions.bundle.getString("enable") : gNCHOptions.bundle.getString("disable"));
+      
   },
 
   onAddedServer: function(pos,added) {
@@ -214,9 +213,19 @@ NCHOptions.prototype = {
     getProgressMode: function(aRow, aColumn) {},
     getCellValue: function(aRow, aColumn) {},
     cycleHeader: function(aColId, aElt) {},
-    getRowProperties: function(aRow, aColumn, aProperty) {},
+    getRowProperties: function(aRow, aProperty) {
+    },
     getColumnProperties: function(aColumn, aColumnElement, aProperty) {},
-    getCellProperties: function(aRow, aProperty) {}
+    getCellProperties: function(aRow, aCol,aProperty) {
+    
+		if (gNCHOptions._servers[aRow].disabled){
+			var aserv=Components.classes["@mozilla.org/atom-service;1"].
+              getService(Components.interfaces.nsIAtomService);
+			aProperty.AppendElement(aserv.getAtom("disServer"));
+		}
+    
+    
+    }
   },
 
   selectFile: function(into) {
