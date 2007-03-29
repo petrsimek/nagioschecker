@@ -622,7 +622,7 @@ NCH.prototype = {
       if (win.nagioschecker) {
         if (!this.isStopped) {        
           if ((this.one_window_only) && (cnt>0)) {
-//            win.nagioschecker.setNoData("disabledData");
+          	win.nagioschecker.setNoData("");
             win.nagioschecker.setIcon("disabled");
           }
           else {
@@ -635,7 +635,7 @@ NCH.prototype = {
           }
         }
         else {
-//          win.nagioschecker.setNoData("stopped");
+          win.nagioschecker.setNoData("");
           win.nagioschecker.setIcon("stop");
         }
       }
