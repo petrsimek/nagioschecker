@@ -20,6 +20,13 @@
     <stringbundle id="nch-strings" src="chrome://nagioschecker/locale/nagioschecker.properties"/>
   </stringbundleset>
 
+  <tabbox maxwidth="500px">
+    <tabs>
+      <tab label="&nch.prefs.general;"/>
+      <tab label="&nch.prefs.other;"/>
+    </tabs>
+    <tabpanels flex="1">
+      <tabpanel  orient="vertical">
   <vbox>
     <label value="&nch.prefs.name;:" control="nch-general-name"/>
     <textbox id="nch-general-name" flex="1" size="50"/>
@@ -38,7 +45,6 @@
         <textbox id="nch-general-password" size="10" value="" type="password"/>
 			</hbox>
       <checkbox id="nch-general-plainpass" label="&nch.prefs.plainpass;" oncommand="warnPlainPass();"/>
-      <checkbox id="nch-general-getaliases" label="&nch.prefs.getaliases;"/>
     </vbox>
   </groupbox>
 	<groupbox>
@@ -52,7 +58,14 @@
     <checkbox id="nch-new-set_url_manually" label="&nch.prefs.seturlmanually;" oncommand="handleSetManually();"/>
     <label value="&nch.prefs.examplestatusurl;"/>
   </groupbox>
+      </tabpanel>
+      <tabpanel  orient="vertical">
 	<groupbox>
-    <checkbox id="nch-general-disabled" label="&nch.prefs.disabled;"/>
-  </groupbox>
+		<caption class="nch" label="&nch.prefs.other;"/>	
+		<checkbox id="nch-general-disabled" label="&nch.prefs.disabled;"/>
+		<checkbox id="nch-general-getaliases" label="&nch.prefs.getaliases;"/>
+	</groupbox>
+      </tabpanel>
+    </tabpanels>
+  </tabbox>
 </dialog>

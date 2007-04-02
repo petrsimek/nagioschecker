@@ -130,13 +130,13 @@ NCHOptions.prototype = {
       me.onAddedServer(pos,added);
     });
   },
+  
   ableSelectedServer: function () {
     var selections = GetTreeSelections(this._tree);
     var i = selections[0];
 	this._servers[i].disabled=!this._servers[i].disabled;
     this._tree.treeBoxObject.invalidate();
-	document.getElementById("able-button").setAttribute("label",(this._servers[i].disabled) ? gNCHOptions.bundle.getString("enable") : gNCHOptions.bundle.getString("disable"));
-      
+	document.getElementById("able-button").setAttribute("label",(this._servers[i].disabled) ? gNCHOptions.bundle.getString("enable") : gNCHOptions.bundle.getString("disable"));    
   },
 
   onAddedServer: function(pos,added) {
@@ -149,6 +149,8 @@ NCHOptions.prototype = {
       this._tree.treeBoxObject.rowCountChanged(this._servers.length-1, 1);
       this._tree.treeBoxObject.ensureRowIsVisible(this._servers.length-1);
     }
+    this._tree.treeBoxObject.invalidate();
+
   },
 
   removeSelectedServer: function() {
