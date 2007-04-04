@@ -694,15 +694,22 @@ NCH.prototype = {
   },
 
   urlOpened: function(url) {
-      found = false;
-      var b = window.getBrowser();
-      var br = b.browsers;
+      var found = false;
+      try {
+	      var b = window.getBrowser();
+	      var br = b.browsers;
+	      if (br == undefined) 
+		      return false;
+      }
+      catch (e) {
+		return false;
+      }
       for (var i=0;i<br.length;i++) {
         var nsu = br[i].currentURI;
         if (nsu) {
           var eurl=nsu.prePath+nsu.path;
           if (eurl==url) {
-          found=b.tabContainer.childNodes[i];
+          	found=b.tabContainer.childNodes[i];
           }
         }
       }
@@ -712,7 +719,20 @@ NCH.prototype = {
   openTab: function(url) {
       var foundTab = this.urlOpened(url);
       if (!foundTab) {
-      	window.getBrowser().selectedTab = window.getBrowser().addTab(url);        
+      	try {
+	      	var br = window.getBrowser().browsers;
+      	}
+      	catch (e) {
+      		var br = undefined;
+      	}
+		if (br != undefined) {
+			window.getBrowser().selectedTab = window.getBrowser().addTab(url);
+		} else {
+			var uri = Components.classes["@mozilla.org/network/standard-url;1"].createInstance(Components.interfaces.nsIURI);
+			uri.spec = url;
+			var protocolSvc = Components.classes["@mozilla.org/uriloader/external-protocol-service;1"].getService(Components.interfaces.nsIExternalProtocolService);
+			protocolSvc.loadUrl(uri);
+		}       	    	
       }
       else {
       	window.getBrowser().selectedTab = foundTab;        
