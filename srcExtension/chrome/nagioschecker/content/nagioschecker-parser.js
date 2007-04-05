@@ -327,22 +327,34 @@ NCHParser.prototype = {
 //alert(token[2]);
 	var cgiUri = parseUri(token[2]+'status.cgi');
 
-//alert(sideUri.source+"-"+sideUri.protocol+"-"+sideUri.directoryPath+"-"+sideUri.fileName);
-//alert(urlUri.source+"-"+urlUri.protocol+"-"+urlUri.directoryPath+"-"+urlUri.fileName);
-//alert(cgiUri.source+"-"+cgiUri.protocol+"-"+cgiUri.directoryPath+"-"+cgiUri.fileName+"="+cgiUri.domain);
+//alert(sideUri.source+"-"+sideUri.protocol+"-"+sideUri.authority+"-"+sideUri.directoryPath+"-"+sideUri.fileName);
+//alert(urlUri.source+"-"+urlUri.protocol+"-"+urlUri.authority+"-"+urlUri.directoryPath+"-"+urlUri.fileName);
+//alert(cgiUri.source+"-"+cgiUri.protocol+"-"+cgiUri.authority+"-"+cgiUri.directoryPath+"-"+cgiUri.fileName+"="+cgiUri.domain);
 
 //        var slash = new RegExp('\/(.*)', 'g').exec(token[2]);
-        var isRelative = new RegExp('\/(.*)', 'g').exec(cgiUri.directoryPath);
-
+        var tmpr = new RegExp('^\/(.*)', 'g').exec(cgiUri.source);
+        var isNotRelative = (tmpr) ? tmpr[1] : false;
+//alert(isNotRelative);
 	if (cgiUri.protocol!="") {
 		urlst = cgiUri.source;		
 	}
 	else {
-		if (isRelative) {
-			urlst = sideUri.protocol+'://'+sideUri.authority+'/'+cgiUri.path;
+		if (isNotRelative) {
+			if (sideUri.protocol!="") {
+				urlst = sideUri.protocol+'://'+sideUri.authority+cgiUri.path;
+			}
+			else {
+				urlst = urlUri.protocol+'://'+urlUri.authority+cgiUri.path;
+			}
 		}
-		else {
-			urlst = urlUri.protocol+'://'+urlUri.authority+cgiUri.path;
+		else {		
+			if (sideUri.protocol!="") {
+				urlst = sideUri.protocol+'://'+sideUri.authority+sideUri.directoryPath+cgiUri.source;
+			}
+			else {
+				urlst = urlUri.protocol+'://'+urlUri.authority+sideUri.directoryPath+cgiUri.source;
+			}
+//			urlst = sideUri.protocol+'://'+sideUri.authority+cgiUri.path;
 		}
 	}
 
