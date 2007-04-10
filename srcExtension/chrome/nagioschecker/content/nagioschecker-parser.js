@@ -104,55 +104,54 @@ NCHParser.prototype = {
   },
 
   fetchServer: function(pos) {
-          this.problems[pos]={"down":[],"unreachable":[],"unknown":[],"warning":[],"critical":[],"_error":false};			
-          this.missingAliases[pos]=[];			
-  		if (!this._servers[pos].disabled) {
-          var urlServices = (this._servers[pos].versionOlderThan20) ? this._servers[pos].urlstatus+"?host=all&servicestatustypes=248" : this._servers[pos].urlstatus+"?host=all&servicestatustypes=28";
-          var urlHosts = this._servers[pos].urlstatus+"?hostgroup=all&style=hostdetail&hoststatustypes=12";
-          var urlExt = this._servers[pos].urlstatus.replace(/status\.cgi/,"extinfo.cgi");
-          var user = this._servers[pos].username;
-          var pass = this._servers[pos].password;
-		   var me = this;
-          this.loadDataAsync(urlHosts,user,pass,false,function (doc1) {
-            me.parseNagiosHostsHtml(pos,doc1);
+	this.problems[pos]={"down":[],"unreachable":[],"unknown":[],"warning":[],"critical":[],"_error":false};			
+	this.missingAliases[pos]=[];			
+	if (!this._servers[pos].disabled) {
+		var urlServices = (this._servers[pos].versionOlderThan20) ? this._servers[pos].urlstatus+"?host=all&servicestatustypes=248" : this._servers[pos].urlstatus+"?host=all&servicestatustypes=28";
+		var urlHosts = this._servers[pos].urlstatus+"?hostgroup=all&style=hostdetail&hoststatustypes=12";
+		var urlExt = this._servers[pos].urlstatus.replace(/status\.cgi/,"extinfo.cgi");
+		var user = this._servers[pos].username;
+		var pass = this._servers[pos].password;
+		var me = this;
+		this.loadDataAsync(urlHosts,user,pass,false,function (doc1) {
+			me.parseNagiosHostsHtml(pos,doc1);
             me.loadDataAsync(urlServices,user,pass,false,function (doc2) {
-              me.parseNagiosServicesHtml(pos,doc2);
-				  me.loadMissingAlias(0,pos,user,pass,function () {
-	              if (me._servers.length==pos+1) {
-	      			  me.manager.handleProblems(me.problems);
-	              }
-	              else {
-	                me.fetchServer(pos+1);
-	              }
-					});   			
+            	me.parseNagiosServicesHtml(pos,doc2);
+				me.loadMissingAlias(0,pos,user,pass,function () {
+					if (me._servers.length==pos+1) {
+						me.manager.handleProblems(me.problems);
+					}
+					else {
+						me.fetchServer(pos+1);
+					}
+				});   			
             });        
-          });
+		});
      }
      else {
-	              if (this._servers.length==pos+1) {
-	      			  this.manager.handleProblems(this.problems);
-	              }
-	              else {
-	                this.fetchServer(pos+1);
-	              }
+		if (this._servers.length==pos+1) {
+			this.manager.handleProblems(this.problems);
+		}
+		else {
+			this.fetchServer(pos+1);
+		}
      }
   },
+
   loadMissingAlias: function(apos,pos,username,password,callback) {
-//		alert("lma:"+apos+" "+pos);
-		if (this.missingAliases[pos][apos]) {
-			var extinfo = this._servers[pos].urlstatus.replace(/status\.cgi/,"extinfo.cgi");
-			var urlExt = extinfo+"?type=1&host="+this.missingAliases[pos][apos];
-			var me=this;
-	      this.loadDataAsync(urlExt,username,password,false,function (doc2) {
+	if (this.missingAliases[pos][apos]) {
+		var extinfo = this._servers[pos].urlstatus.replace(/status\.cgi/,"extinfo.cgi");
+		var urlExt = extinfo+"?type=1&host="+this.missingAliases[pos][apos];
+		var me=this;
+		this.loadDataAsync(urlExt,username,password,false,function (doc2) {
 				me.parseAlias(pos,me.missingAliases[pos][apos],doc2);
-//				alert("parse "+urlExt);
 				me.manager._servers[pos][me.missingAliases[pos][apos]]=me.missingAliases[pos][apos];
 				me.loadMissingAlias(apos+1,pos,username,password,callback);				
 			});
-		}
-		else {
+	}
+	else {
 		callback();
-		}
+	}
   },
 
   loadDataAsync: function(url,username,password,rettext,callback) {
@@ -208,19 +207,27 @@ NCHParser.prototype = {
   downloadStatus: function(url,username,password,callback) {
     var me = this;
     this.loadDataAsync(url,username,password,true,function (doc1) {
-      var side = me.parseFrame(doc1,url);
-		 if (side!="") {
-	    me.loadDataAsync(side,username,password,true,function(par) {
-		      var urlst = me.parseSide(par,url,side);
-		      callback(urlst);
-			});
+		var nuvola = me.parseNuvolaJs(doc1,url);
+		if (nuvola!="") {
+	    	me.loadDataAsync(nuvola,username,password,true,function(par) {
+			var urlst = me.parseNuvolaJsStatus(par,url);
+						callback(urlst);
+					});
 		}
 		else {
-		      callback("");
-		}
-    });
-    
 
+			var side = me.parseFrame(doc1,url);
+			if (side!="") {
+		    	me.loadDataAsync(side,username,password,true,function(par) {
+					var urlst = me.parseSide(par,url,side);
+						callback(urlst);
+					});
+			}
+			else {
+		      callback("");
+			}
+		}
+    	});
   },
 
   nagiosDateToTimestamp: function(ndate) {
@@ -309,59 +316,83 @@ NCHParser.prototype = {
     return ret;
   },
 
-  parseSide: function(text,url,side) {
-
-	var sideUri = parseUri(side);
-	var urlUri = parseUri(url);
-    var urlst = "";
-    if (text!=null) {
-//      var adr = new RegExp('(http|https)\:\/\/([a-zA-Z0-9\-\.\:]*)/', 'g').exec(url);
-      var adr = new RegExp('(http|https)\:\/\/([a-zA-Z0-9\-\.\:]*)/', 'g').exec(side);
-//alert(url);
-//alert(side);
-//alert(adr);
-
-      var token = new RegExp('(href|HREF)="(.*)status.cgi','mi').exec(text);
-
-      if (token) {
-//alert(token[2]);
-	var cgiUri = parseUri(token[2]+'status.cgi');
-
-//alert(sideUri.source+"-"+sideUri.protocol+"-"+sideUri.authority+"-"+sideUri.directoryPath+"-"+sideUri.fileName);
-//alert(urlUri.source+"-"+urlUri.protocol+"-"+urlUri.authority+"-"+urlUri.directoryPath+"-"+urlUri.fileName);
-//alert(cgiUri.source+"-"+cgiUri.protocol+"-"+cgiUri.authority+"-"+cgiUri.directoryPath+"-"+cgiUri.fileName+"="+cgiUri.domain);
-
-//        var slash = new RegExp('\/(.*)', 'g').exec(token[2]);
+  parseNuvolaJsStatus: function (text,url) {
+    var urlst ="";
+    var pattern = /var(\s*)cgipath(\s*)=(\s*)"(.*)";/g;
+    var token = text.split(pattern);
+    if (token) {
+		var cgiUri = parseUri(token[4]+'status.cgi');
+		var urlUri = parseUri(url);
         var tmpr = new RegExp('^\/(.*)', 'g').exec(cgiUri.source);
         var isNotRelative = (tmpr) ? tmpr[1] : false;
-//alert(isNotRelative);
-	if (cgiUri.protocol!="") {
-		urlst = cgiUri.source;		
-	}
-	else {
-		if (isNotRelative) {
-			if (sideUri.protocol!="") {
-				urlst = sideUri.protocol+'://'+sideUri.authority+cgiUri.path;
+		if (cgiUri.protocol!="") {
+			urlst = cgiUri.source;		
+		}
+		else {
+			if (isNotRelative) {
+				urlst = urlUri.protocol + '://' + urlUri.authority;
+				urlst += cgiUri.path;
 			}
-			else {
-				urlst = urlUri.protocol+'://'+urlUri.authority+cgiUri.path;
+			else {		
+				urlst = urlUri.protocol + '://' + urlUri.authority;
+				urlst += urlUri.directoryPath + cgiUri.source;
 			}
 		}
-		else {		
-			if (sideUri.protocol!="") {
-				urlst = sideUri.protocol+'://'+sideUri.authority+sideUri.directoryPath+cgiUri.source;
-			}
-			else {
-				urlst = urlUri.protocol+'://'+urlUri.authority+sideUri.directoryPath+cgiUri.source;
-			}
-//			urlst = sideUri.protocol+'://'+sideUri.authority+cgiUri.path;
-		}
-	}
+    }
+    return urlst;
+  },
 
-//lert(slash);
-//alert(slash[1]);
-//        urlst=(slash[1]) ? adr[1]+"://"+adr[2]+token[2]+"status.cgi" : side+token[2]+"status.cgi";
-//alert(urlst);
+
+  parseNuvolaJs: function(text,url) {
+    var urlst ="";
+    var token = new RegExp('(src|SRC)="(.*)config.js"', 'g').exec(text);
+    if (token) {
+		var nuvolaJsUri = parseUri(token[2]+'config.js');
+		var urlUri = parseUri(url);
+        var tmpr = new RegExp('^\/(.*)', 'g').exec(nuvolaJsUri.source);
+        var isNotRelative = (tmpr) ? tmpr[1] : false;
+		if (nuvolaJsUri.protocol!="") {
+			urlst = nuvolaJsUri.source;		
+		}
+		else {
+			if (isNotRelative) {
+				urlst = urlUri.protocol + '://' + urlUri.authority;
+				urlst += nuvolaJsUri.path;
+			}
+			else {		
+				urlst = urlUri.protocol + '://' + urlUri.authority;
+				urlst += urlUri.directoryPath + nuvolaJsUri.source;
+			}
+		}
+    }
+    return urlst;
+  },
+
+
+  parseSide: function(text,url,side) {
+
+    var urlst = "";
+    if (text!=null) {
+      var token = new RegExp('(href|HREF)="(.*)status.cgi','mi').exec(text);
+      if (token) {
+		var sideUri = parseUri(side);
+		var urlUri = parseUri(url);
+		var cgiUri = parseUri(token[2]+'status.cgi');
+        var tmpr = new RegExp('^\/(.*)', 'g').exec(cgiUri.source);
+        var isNotRelative = (tmpr) ? tmpr[1] : false;
+		if (cgiUri.protocol!="") {
+			urlst = cgiUri.source;		
+		}
+		else {
+			if (isNotRelative) {
+				urlst = (sideUri.protocol!="") ? sideUri.protocol + '://' + sideUri.authority : urlUri.protocol + '://' + urlUri.authority;
+				urlst += cgiUri.path;
+			}
+			else {		
+				urlst = (sideUri.protocol!="") ? sideUri.protocol + '://' + sideUri.authority : urlUri.protocol + '://' + urlUri.authority;
+				urlst += sideUri.directoryPath + cgiUri.source;
+			}
+		}
       }
 
     }
