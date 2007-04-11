@@ -774,12 +774,16 @@ NCH.prototype = {
           "critical":[new NCHToolTip(this.showColInfo,this.showColAlias),0,0,[],[]],
           "isError":false
           };
-
+// var paket = new NCHPaket();
     var newProblems={};
     for(var i=0;i<problems.length;i++) {
 
+// paket.addTooltipHeader('all',this._servers[i].name,i);
+
       ttIndi["all"][0].addHeader(this._servers[i].name,i);
         if (problems[i]["_error"]) {
+
+// paket.addError('all');
          	  ttIndi["all"][0].addError();
             ttIndi["isError"]=true;
         }
@@ -792,10 +796,12 @@ NCH.prototype = {
 			    var probls = (problems[i]["_error"]) ? null : problems[i][this.pt[x]];
 
   			  if (((probls) && (probls.length)) || (!probls)){
+// paket.addTooltipHeader(this.pt[x],this._servers[i].name,i);
          	  ttIndi[this.pt[x]][0].addHeader(this._servers[i].name,i);
 			    }		  	
 
           if (!probls) {
+// paket.addError(this.pt[x]);
          	  ttIndi[this.pt[x]][0].addError();
             ttIndi["isError"]=true;
           }
@@ -805,7 +811,6 @@ NCH.prototype = {
 
 			    for (var j =0;j<probls.length;j++) {
 
-//alert(this.filterOutREHostsValue+":"+probls[j].host+":"+(new RegExp(this.filterOutREHostsValue))+":"+probls[j].host.match(new RegExp("^"+this.filterOutREHostsValue)));
 				    if  (
             	(!this.filterOutAll[st])
 					    &&
@@ -831,6 +836,7 @@ NCH.prototype = {
 						    var uniq = this._servers[i].name+"-"+probls[j].host+"-"+probls[j].service+"-"+probls[j].status;
 	            	newProblems[uniq]=probls[j];
 
+				    			// paket.addProblem(i,this.pt[x],this.oldProblems[uniq],probls[j],this._servers[i].aliases[probls[j].host]);
 				    		if (!this.oldProblems[uniq]) {
 							    ttIndi["all"][2] = (ttIndi["all"][2]) ? ttIndi["all"][2]+1 : 1;
 							    ttIndi["all"][4][i] = (ttIndi["all"][4][i]) ? ttIndi["all"][4][i]+1 : 1;
@@ -958,7 +964,7 @@ NCH.prototype = {
 
 
   updateStatus: function(ttIndi,firstRun) {
-
+	 // paket.createTooltip();
     if (ttIndi["all"][0]) {
       ttIndi["all"][0].create(document.getElementById('nagioschecker-popup'));
 	    ttIndi["all"][0].create(document.getElementById('nagioschecker-tooltip'));
@@ -971,7 +977,7 @@ NCH.prototype = {
       }
     }
 
-
+	//this.resetBehavior(paket.isAtLeastOne());
     this.resetBehavior((ttIndi["all"][1]>0));
 
     var fld = {
