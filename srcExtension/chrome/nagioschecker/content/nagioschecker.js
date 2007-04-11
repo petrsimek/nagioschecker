@@ -1,5 +1,6 @@
-var nagioschecker = null;
 
+
+var nagioschecker = null;
 var nagioscheckerLoad = function() {
 
   nagioschecker = new NCH();
@@ -610,7 +611,7 @@ NCH.prototype = {
 	}
 	},
 
-  updateAllClients: function(ttIndi) {
+  updateAllClients: function(paket) {
   
     var wm = Components.classes["@mozilla.org/appshell/window-mediator;1"]
                    .getService(Components.interfaces.nsIWindowMediator);
@@ -626,11 +627,11 @@ NCH.prototype = {
             win.nagioschecker.setIcon("disabled");
           }
           else {
-            if (ttIndi==null) {
+            if (paket==null) {
               win.nagioschecker.setNoData("noProblem");
             }
             else {
-              win.nagioschecker.updateStatus(ttIndi,false);
+              win.nagioschecker.updateStatus(paket,false);
             }
           }
         }
@@ -765,27 +766,13 @@ NCH.prototype = {
 
 
   enumerateStatus: function(problems) {
-		var ttIndi={
-          "all":[new NCHToolTip(this.showColInfo,this.showColAlias),0,0,[],[]],
-          "down":[new NCHToolTip(this.showColInfo,this.showColAlias),0,0,[],[]],
-          "unreachable":[new NCHToolTip(this.showColInfo,this.showColAlias),0,0,[],[]],
-          "unknown":[new NCHToolTip(this.showColInfo,this.showColAlias),0,0,[],[]],
-          "warning":[new NCHToolTip(this.showColInfo,this.showColAlias),0,0,[],[]],
-          "critical":[new NCHToolTip(this.showColInfo,this.showColAlias),0,0,[],[]],
-          "isError":false
-          };
-// var paket = new NCHPaket();
+ var paket = new NCHPaket(this.showColInfo,this.showColAlias);
     var newProblems={};
     for(var i=0;i<problems.length;i++) {
-
-// paket.addTooltipHeader('all',this._servers[i].name,i);
-
-      ttIndi["all"][0].addHeader(this._servers[i].name,i);
+	 paket.addTooltipHeader('all',this._servers[i].name,i);
         if (problems[i]["_error"]) {
 
-// paket.addError('all');
-         	  ttIndi["all"][0].addError();
-            ttIndi["isError"]=true;
+		 paket.addError('all');
         }
 
         var st = null;
@@ -796,14 +783,11 @@ NCH.prototype = {
 			    var probls = (problems[i]["_error"]) ? null : problems[i][this.pt[x]];
 
   			  if (((probls) && (probls.length)) || (!probls)){
-// paket.addTooltipHeader(this.pt[x],this._servers[i].name,i);
-         	  ttIndi[this.pt[x]][0].addHeader(this._servers[i].name,i);
+			 paket.addTooltipHeader(this.pt[x],this._servers[i].name,i);
 			    }		  	
 
           if (!probls) {
-// paket.addError(this.pt[x]);
-         	  ttIndi[this.pt[x]][0].addError();
-            ttIndi["isError"]=true;
+			 paket.addError(this.pt[x]);
           }
           else {
 
@@ -834,21 +818,9 @@ NCH.prototype = {
 					    ) {
 
 						    var uniq = this._servers[i].name+"-"+probls[j].host+"-"+probls[j].service+"-"+probls[j].status;
-	            	newProblems[uniq]=probls[j];
+			            	newProblems[uniq]=probls[j];
 
-				    			// paket.addProblem(i,this.pt[x],this.oldProblems[uniq],probls[j],this._servers[i].aliases[probls[j].host]);
-				    		if (!this.oldProblems[uniq]) {
-							    ttIndi["all"][2] = (ttIndi["all"][2]) ? ttIndi["all"][2]+1 : 1;
-							    ttIndi["all"][4][i] = (ttIndi["all"][4][i]) ? ttIndi["all"][4][i]+1 : 1;
-							    ttIndi[this.pt[x]][2] = (ttIndi[this.pt[x]][2]) ? ttIndi[this.pt[x]][2]+1 : 1;
-							    ttIndi[this.pt[x]][4][i] = (ttIndi[this.pt[x]][4][i]) ? ttIndi[this.pt[x]][4][i]+1 : 1;
-						    }
-						    ttIndi[st][1] = (ttIndi[st][1]) ? ttIndi[st][1]+1 : 1;
-						    ttIndi[st][3][i] = (ttIndi[st][3][i]) ? ttIndi[st][3][i]+1 : 1;
-						    ttIndi["all"][0].addRow(probls[j],this._servers[i].aliases[probls[j].host],(!this.oldProblems[uniq]));
-						    ttIndi[st][0].addRow(probls[j],this._servers[i].aliases[probls[j].host],(!this.oldProblems[uniq]));
-						    ttIndi["all"][1] = (ttIndi["all"][1]) ? ttIndi["all"][1]+1 : 1;
-						    ttIndi["all"][3][i] = (ttIndi["all"][3][i]) ? ttIndi["all"][3][i]+1 : 1;
+				    		paket.addProblem(i,this.pt[x],this.oldProblems[uniq],probls[j],this._servers[i].aliases[probls[j].host]);
 				    }
   				  if ((this.pt[x]=="down") || (this.pt[x]=="unreachable")) {
 					    isNotUp[probls[j].host]=true;
@@ -866,7 +838,7 @@ NCH.prototype = {
     }
 
     this.oldProblems=newProblems;
-    this.results=ttIndi;
+    this.results = paket;
 
   },
 
@@ -963,22 +935,9 @@ NCH.prototype = {
   },
 
 
-  updateStatus: function(ttIndi,firstRun) {
-	 // paket.createTooltip();
-    if (ttIndi["all"][0]) {
-      ttIndi["all"][0].create(document.getElementById('nagioschecker-popup'));
-	    ttIndi["all"][0].create(document.getElementById('nagioschecker-tooltip'));
-    }
-
-    for(var i=0;i<this.pt.length;i++) {
-      if ((ttIndi[this.pt[i]]) && (ttIndi[this.pt[i]][0])) {
-        ttIndi[this.pt[i]][0].create(document.getElementById('nagioschecker-tooltip-'+this.pt[i]));
-        ttIndi[this.pt[i]][0].create(document.getElementById('nagioschecker-popup-'+this.pt[i]));
-      }
-    }
-
-	//this.resetBehavior(paket.isAtLeastOne());
-    this.resetBehavior((ttIndi["all"][1]>0));
+  updateStatus: function(paket,firstRun) {
+	  paket.createTooltip();
+	this.resetBehavior(paket.isAtLeastOne());
 
     var fld = {
               "down":document.getElementById('nagioschecker-hosts-down'),
@@ -998,28 +957,29 @@ NCH.prototype = {
     if (this.infoType>2) {
       for (var pType in fld) {
         var x = "";
-        for (var i = 0; i < ttIndi[pType][3].length; i++) {
-          if (ttIndi[pType][3][i]>0) {
-              x+=((x) ? " + " : "")+((this.infoType<5) ? this._servers[i].name+' ' : '')+ttIndi[pType][3][i];
+        var pbt = paket.getProblemsByType(pType);
+        for (var i = 0; i < pbt.length; i++) {
+          if (pbt[i]>0) {
+              x+=((x) ? " + " : "")+((this.infoType<5) ? this._servers[i].name+' ' : '')+pbt[i];
           }
         }
-    	  fld[pType].setAttribute("value", this.getCorrectBundleString(ttIndi[pType][1],infoTypes[pType][(this.infoType==3) ? 1 : 2],x));
+    	  fld[pType].setAttribute("value", this.getCorrectBundleString(paket.countProblemsByType(pType),infoTypes[pType][(this.infoType==3) ? 1 : 2],x));
       }
 
     }
     else {
-    	fld["down"].setAttribute("value", this.getCorrectBundleString(ttIndi["down"][1],infoTypes["down"][this.infoType],""));
-  	  fld["unreachable"].setAttribute("value", this.getCorrectBundleString(ttIndi["unreachable"][1],infoTypes["unreachable"][this.infoType],""));
-		  fld["unknown"].setAttribute("value", this.getCorrectBundleString(ttIndi["unknown"][1],infoTypes["unknown"][this.infoType],""));
-		  fld["warning"].setAttribute("value", this.getCorrectBundleString(ttIndi["warning"][1],infoTypes["warning"][this.infoType],""));
-		  fld["critical"].setAttribute("value", this.getCorrectBundleString(ttIndi["critical"][1],infoTypes["critical"][this.infoType],""));
+    	fld["down"].setAttribute("value", this.getCorrectBundleString(paket.countProblemsByType("down"),infoTypes["down"][this.infoType],""));
+  	  fld["unreachable"].setAttribute("value", this.getCorrectBundleString(paket.countProblemsByType("unreachable"),infoTypes["unreachable"][this.infoType],""));
+		  fld["unknown"].setAttribute("value", this.getCorrectBundleString(paket.countProblemsByType("unknown"),infoTypes["unknown"][this.infoType],""));
+		  fld["warning"].setAttribute("value", this.getCorrectBundleString(paket.countProblemsByType("warning"),infoTypes["warning"][this.infoType],""));
+		  fld["critical"].setAttribute("value", this.getCorrectBundleString(paket.countProblemsByType("critical"),infoTypes["critical"][this.infoType],""));
     }
 
-    fld["down"].setAttribute("hidden", (((ttIndi["down"][1]==0) || (!this.showSb["down"])) ? "true" : "false"));
-    fld["unreachable"].setAttribute("hidden", (((ttIndi["unreachable"][1]==0) || (!this.showSb["unreachable"])) ? "true" : "false"));
-    fld["unknown"].setAttribute("hidden", (((ttIndi["unknown"][1]==0) || (!this.showSb["unknown"])) ? "true" : "false"));
-    fld["warning"].setAttribute("hidden", (((ttIndi["warning"][1]==0) || (!this.showSb["warning"])) ? "true" : "false"));
-    fld["critical"].setAttribute("hidden", (((ttIndi["critical"][1]==0) || (!this.showSb["critical"])) ? "true" : "false"));
+    fld["down"].setAttribute("hidden", (((paket.countProblemsByType("down")==0) || (!this.showSb["down"])) ? "true" : "false"));
+    fld["unreachable"].setAttribute("hidden", (((paket.countProblemsByType("unreachable")==0) || (!this.showSb["unreachable"])) ? "true" : "false"));
+    fld["unknown"].setAttribute("hidden", (((paket.countProblemsByType("unknown")==0) || (!this.showSb["unknown"])) ? "true" : "false"));
+    fld["warning"].setAttribute("hidden", (((paket.countProblemsByType("warning")==0) || (!this.showSb["warning"])) ? "true" : "false"));
+    fld["critical"].setAttribute("hidden", (((paket.countProblemsByType("critical")==0) || (!this.showSb["critical"])) ? "true" : "false"));
 
     document.getElementById('nagioschecker-info-label').setAttribute("hidden", "true");
 /*
@@ -1030,21 +990,21 @@ NCH.prototype = {
     this.setLoading(false);
 
 
-    if (ttIndi["all"][1]>0) {
+    if (paket.countProblemsByType("all")>0) {
 
       var whichBlink = {
                   };      
 
       for (var pType in fld) {
-        whichBlink[pType]=((ttIndi[pType][2]>0) || (this.blinking==2)) ? true : false;
+        whichBlink[pType]=((paket.countOldProblemsByType(pType)>0) || (this.blinking==2)) ? true : false;
       }
 
-      if ((this.blinking==3) || (this.blinking==2) || ((this.blinking==1) && (ttIndi["all"][2]>0)) && (!firstRun)){
+      if ((this.blinking==3) || (this.blinking==2) || ((this.blinking==1) && (paket.countOldProblemsByType("all")>0)) && (!firstRun)){
         this.blinkLabel(12,whichBlink);
       }
     }
     else {
-      if (ttIndi["isError"]) {
+      if (paket.isError) {
         this.setNoData("error");
       }
       else {
@@ -1092,15 +1052,16 @@ NCH.prototype = {
 
 
 
- playSound: function(ttIndi) {
+ playSound: function(paket) {
 	var wav = null;
-	if (ttIndi["down"][1]>0) {
+	
+	if (paket.countProblemsByType("down")>0) {
 		wav = this.sndDown;
 	}
-	else if (ttIndi["critical"][1]>0) {
+	else if (paket.countProblemsByType("critical")>0) {
 		wav = this.sndCritical;
 	}
-	else if (ttIndi["warning"][1]>0) {
+	else if (paket.countProblemsByType("warning")>0) {
 		wav = this.sndWarning;
 	}
 	if (wav!=null) {
@@ -1423,3 +1384,63 @@ function NCHToolTip(showColInfo,showColAlias) {
     }
   }
 }
+
+function NCHPaket(sci,sca) {
+	this.showColInfo = sci;
+	this.showColAlias = sca;
+	this.pt = ["down","unreachable","unknown","warning","critical"];
+	this.all = [new NCHToolTip(this.showColInfo,this.showColAlias),0,0,[],[]];
+	this.down = [new NCHToolTip(this.showColInfo,this.showColAlias),0,0,[],[]];
+	this.unreachable = [new NCHToolTip(this.showColInfo,this.showColAlias),0,0,[],[]];
+	this.unknown = [new NCHToolTip(this.showColInfo,this.showColAlias),0,0,[],[]];
+	this.warning = [new NCHToolTip(this.showColInfo,this.showColAlias),0,0,[],[]];
+	this.critical = [new NCHToolTip(this.showColInfo,this.showColAlias),0,0,[],[]];
+	this.isError = false;
+	this.addTooltipHeader = function(to,header,serverPos) {
+	 	this[to][0].addHeader(header,serverPos);
+	}
+	this.addError = function(to) {
+		this[to][0].addError();
+		this["isError"]=true;
+	}
+	this.addProblem = function(serverPos,problemType,isOld,problem,aliasName) {
+		if (!isOld) {
+			this["all"][2] = (this["all"][2]) ? this["all"][2]+1 : 1;
+			this["all"][4][serverPos] = (this["all"][4][serverPos]) ? this["all"][4][serverPos]+1 : 1;
+			this[problemType][2] = (this[problemType][2]) ? this[problemType][2]+1 : 1;
+			this[problemType][4][serverPos] = (this[problemType][4][serverPos]) ? this[problemType][4][serverPos]+1 : 1;
+		} 	
+		this[problemType][1] = (this[problemType][1]) ? this[problemType][1]+1 : 1;
+		this[problemType][3][serverPos] = (this[problemType][3][serverPos]) ? this[problemType][3][serverPos]+1 : 1;
+		this["all"][0].addRow(problem,aliasName,(!isOld));
+		this[problemType][0].addRow(problem,aliasName,(!isOld));
+		this["all"][1] = (this["all"][1]) ? this["all"][1]+1 : 1;
+		this["all"][3][serverPos] = (this["all"][3][serverPos]) ? this["all"][3][serverPos]+1 : 1;
+	}
+	this.getProblemsByType = function(problemType) {
+	 	return this[problemType][3];
+	}
+	this.countProblemsByType = function(problemType) {
+ 		return this[problemType][1];
+	}
+	this.countOldProblemsByType = function(problemType) {
+	 	return this[problemType][2];
+	}
+	this.createTooltip = function() {
+	    if (this["all"][0]) {
+	      this["all"][0].create(document.getElementById('nagioschecker-popup'));
+		    this["all"][0].create(document.getElementById('nagioschecker-tooltip'));
+	    }
+
+    	for(var i=0;i<this.pt.length;i++) {
+	      if ((this[this.pt[i]]) && (this[this.pt[i]][0])) {
+	        this[this.pt[i]][0].create(document.getElementById('nagioschecker-tooltip-'+this.pt[i]));
+	        this[this.pt[i]][0].create(document.getElementById('nagioschecker-popup-'+this.pt[i]));
+	      }
+	    }
+	}
+	this.isAtLeastOne =  function() {
+		return (this["all"][1]>0);
+	}
+}
+
