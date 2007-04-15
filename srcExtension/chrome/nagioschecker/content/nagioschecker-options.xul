@@ -75,11 +75,11 @@
               <checkbox prefstring="extensions.nagioschecker.filter_out_all_warning" id="nch-general-filter_out_all_warning" label="&nch.prefs.allwarningservices;"/>
               <checkbox prefstring="extensions.nagioschecker.filter_out_all_unknown" id="nch-general-filter_out_all_unknown" label="&nch.prefs.allunknownservices;"/>
 				<hbox>
-        			<checkbox prefstring="extensions.nagioschecker.filter_out_regexp_hosts" id="nch-general-filter_out_regexp_hosts" label="&nch.prefs.hostsmatchingregexp;:"/>
+        			<checkbox prefstring="extensions.nagioschecker.filter_out_regexp_hosts" id="nch-general-filter_out_regexp_hosts" label="&nch.prefs.hostsmatchingregexp;:" oncommand="document.getElementById('nch-general-filter_out_regexp_hosts_value').disabled = (!this.checked)"/>
 					<textbox prefstring="extensions.nagioschecker.filter_out_regexp_hosts_value" id="nch-general-filter_out_regexp_hosts_value" size="20"/>
 				</hbox>
 				<hbox>
-        			<checkbox prefstring="extensions.nagioschecker.filter_out_regexp_services" id="nch-general-filter_out_regexp_services" label="&nch.prefs.servicesmatchingregexp;:"/>
+        			<checkbox prefstring="extensions.nagioschecker.filter_out_regexp_services" id="nch-general-filter_out_regexp_services" label="&nch.prefs.servicesmatchingregexp;:" oncommand="document.getElementById('nch-general-filter_out_regexp_services_value').disabled = (!this.checked)"/>
 					<textbox prefstring="extensions.nagioschecker.filter_out_regexp_services_value" id="nch-general-filter_out_regexp_services_value" size="20"/>
 				</hbox>
 

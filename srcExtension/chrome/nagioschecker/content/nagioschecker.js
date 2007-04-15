@@ -936,12 +936,14 @@ NCH.prototype = {
 
 
   updateStatus: function(paket,firstRun) {
-	  paket.createTooltip();
+
+	paket.createTooltip();
+
 	this.resetBehavior(paket.isAtLeastOne());
 
     var fld = {
               "down":document.getElementById('nagioschecker-hosts-down'),
-            	"unreachable": document.getElementById('nagioschecker-hosts-unreachable'),
+	           	"unreachable": document.getElementById('nagioschecker-hosts-unreachable'),
   	          "unknown": document.getElementById('nagioschecker-services-unknown'),
   	          "warning": document.getElementById('nagioschecker-services-warning'),
   	          "critical": document.getElementById('nagioschecker-services-critical')
@@ -982,18 +984,13 @@ NCH.prototype = {
     fld["critical"].setAttribute("hidden", (((paket.countProblemsByType("critical")==0) || (!this.showSb["critical"])) ? "true" : "false"));
 
     document.getElementById('nagioschecker-info-label').setAttribute("hidden", "true");
-/*
-    if (gMini) {
-      this.adjustSize(null,true);  
-    }
-*/
+
     this.setLoading(false);
 
 
     if (paket.countProblemsByType("all")>0) {
 
-      var whichBlink = {
-                  };      
+      var whichBlink = {};      
 
       for (var pType in fld) {
         whichBlink[pType]=((paket.countOldProblemsByType(pType)>0) || (this.blinking==2)) ? true : false;
