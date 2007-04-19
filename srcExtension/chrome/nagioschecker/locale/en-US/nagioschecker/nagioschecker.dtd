@@ -119,3 +119,5 @@
 
 <!ENTITY nch.prefs.disable "Disable">
 <!ENTITY nch.prefs.disabled "Disabled">
+<!ENTITY nch.prefs.onaddons "On Mozilla Add-ons site">
+<!ENTITY nch.prefs.projecthome "Project's home">

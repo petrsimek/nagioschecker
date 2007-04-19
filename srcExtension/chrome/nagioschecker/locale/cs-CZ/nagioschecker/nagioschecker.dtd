@@ -118,3 +118,5 @@
 
 <!ENTITY nch.prefs.disable "Vypnout">
 <!ENTITY nch.prefs.disabled "Vypnutý">
+<!ENTITY nch.prefs.onaddons "Na webu Mozilla Add-ons">
+<!ENTITY nch.prefs.projecthome "Stránky projektu">

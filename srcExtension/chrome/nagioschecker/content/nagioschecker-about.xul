@@ -50,7 +50,8 @@
 	</hbox>
       <separator class="thin"/>
       <label value="&nch.about.homepage;:" class="nagioschecker-about-sub-title"/>
-      <description  class="nagioschecker-link" onclick="window.opener.nagioschecker.openTab('https://addons.mozilla.org/firefox/3607/');window.close();">addons.mozilla.org/firefox/3607/</description>
+      <description  class="nagioschecker-link" onclick="window.opener.nagioschecker.openTab('https://addons.mozilla.org/firefox/3607/');window.close();">&nch.prefs.onaddons;</description>
+      <description  class="nagioschecker-link" onclick="window.opener.nagioschecker.openTab('http://code.google.com/p/nagioschecker/');window.close();">&nch.prefs.projecthome;</description>
       <separator class="thin"/>
       <label value="&nch.about.copyrights;:" class="nagioschecker-about-sub-title"/>
       <description class="nch">&nch.about.nagioscopyrights;</description>
