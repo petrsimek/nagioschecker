@@ -43,7 +43,7 @@
 		<vbox>
 		<image
 			class="nagioschecker-link"
-			onclick="window.opener.nagioschecker.openTab('http://psimek.fxnet.cz/nagios-checker/#donations');window.close();"
+			onclick="window.opener.nagioschecker.openTab('https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&amp;business=petr%2esimek%40centrum%2ecz&amp;item_name=Nagios%20Checker&amp;no_shipping=0&amp;cn=Feedback&amp;tax=0&amp;currency_code=USD&amp;lc=CZ&amp;bn=PP%2dDonationsBF&amp;charset=UTF%2d8');window.close();"
 			src="chrome://nagioschecker/skin/pp-donate.gif"
          	/>
 		</vbox>
