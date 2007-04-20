@@ -78,29 +78,29 @@
 <!ENTITY nch.prefs.do_nothing "Не прави нищо">
 <!ENTITY nch.prefs.goto_main_nagios "Отиване на основната страница на Нагиос">
 <!ENTITY nch.prefs.goto_nagios_section "Отиване на секцията на страницата на Нагиос съответстваща на цъкнатия вид проблем">
-<!ENTITY nch.prefs.open_fullinfowindow "Open static information window with all problems">
-<!ENTITY nch.prefs.open_infowindowbytype "Open static information windows depending on type clicked">
-<!ENTITY nch.prefs.open_infowindow "Open information window">
-<!ENTITY nch.prefs.soundfiles "Sound Files">
-<!ENTITY nch.prefs.standardnagiosfile "Nagios standard file">
-<!ENTITY nch.prefs.customfile "Custom file">
-<!ENTITY nch.prefs.critical "Critical">
-<!ENTITY nch.prefs.warning "Warning">
-<!ENTITY nch.prefs.down "Down">
-<!ENTITY nch.prefs.unreachable "Unreachable">
-<!ENTITY nch.prefs.replay "Replay">
-<!ENTITY nch.prefs.getaliases "Download host aliases">
-<!ENTITY nch.prefs.showaliascolumn "Show Host alias column in information window (make sense only if you have defined option to download aliases by at least one Nagios server)">
-<!ENTITY nch.prefs.shortwithservername "Short with server names">
-<!ENTITY nch.prefs.numbersonlywithservername "Numbers only with server names">
-<!ENTITY nch.prefs.totalnumbers "With toal numbers">
-<!ENTITY nch.prefs.totalnumbersforeveryserver "With total numbers for every server">
-<!ENTITY nch.prefs.alldownhosts "All down hosts">
-<!ENTITY nch.prefs.allunreachablehosts "All unreachable hosts">
-<!ENTITY nch.prefs.allwarningservices "All warnign services">
-<!ENTITY nch.prefs.allunknownservices "All unknown services">
-<!ENTITY nch.prefs.allcriticalservices "All critical services">
-<!ENTITY nch.prefs.blinkalltypesonstatusupdateifnewproblemappears "Blink all types if a new problem appears">
-<!ENTITY nch.prefs.blinkaffectedtypesonstatusupdateifnewproblemappears "Blink the type where a new problem appears">
-<!ENTITY nch.prefs.blinkalltypesoneverystatusupdateifatleastoneproblemexists "Blink all types if at least one problem exists">
-<!ENTITY nch.prefs.aliases "Aliases">
+<!ENTITY nch.prefs.open_fullinfowindow "Отваряне статичния информационен прозорец с всички проблеми">
+<!ENTITY nch.prefs.open_infowindowbytype "Отваряне статични информационни прозорци в зависимост от цъкнатият тип">
+<!ENTITY nch.prefs.open_infowindow "Отвари информационният прозорец">
+<!ENTITY nch.prefs.soundfiles "Звукови Файлове">
+<!ENTITY nch.prefs.standardnagiosfile "Нагиос стандартен файл">
+<!ENTITY nch.prefs.customfile "Предпочитан файл">
+<!ENTITY nch.prefs.critical "Критичен">
+<!ENTITY nch.prefs.warning "Предупреждение">
+<!ENTITY nch.prefs.down "Долу">
+<!ENTITY nch.prefs.unreachable "Недостъпен">
+<!ENTITY nch.prefs.replay "Повтори">
+<!ENTITY nch.prefs.getaliases "Сваляне адресите на обектите">
+<!ENTITY nch.prefs.showaliascolumn "Показване колона с адрес на обекта в информационният прозорец (има смисъл само ако сте определили опция за сваляне на адресите от поне един Нагиос сървър)">
+<!ENTITY nch.prefs.shortwithservername "Накратко с имена на сървъри">
+<!ENTITY nch.prefs.numbersonlywithservername "Числа само с имена на сървъри">
+<!ENTITY nch.prefs.totalnumbers "С общи числа">
+<!ENTITY nch.prefs.totalnumbersforeveryserver "С общи числа за всеки сървър">
+<!ENTITY nch.prefs.alldownhosts "Всички обекти долу">
+<!ENTITY nch.prefs.allunreachablehosts "Всички недостъпни обекти">
+<!ENTITY nch.prefs.allwarningservices "Всички услуги с предупреждения">
+<!ENTITY nch.prefs.allunknownservices "Всички непознати услуги">
+<!ENTITY nch.prefs.allcriticalservices "Всички критични услуги">
+<!ENTITY nch.prefs.blinkalltypesonstatusupdateifnewproblemappears "Премигване на всички видове, ако се появи нов проблем">
+<!ENTITY nch.prefs.blinkaffectedtypesonstatusupdateifnewproblemappears "Премигване на вида, в който се появи нов проблем">
+<!ENTITY nch.prefs.blinkalltypesoneverystatusupdateifatleastoneproblemexists "Премигване на всички видове, ако поне един проблем съществува">
+<!ENTITY nch.prefs.aliases "Адреси">
