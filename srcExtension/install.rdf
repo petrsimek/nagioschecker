@@ -30,25 +30,5 @@
     <em:optionsURL>chrome://nagioschecker/content/nagioschecker-options.xul</em:optionsURL>
     <em:aboutURL>chrome://nagioschecker/content/nagioschecker-about.xul</em:aboutURL>
     <!-- Packages, Skins and Locales that this extension registers -->
-<!--
-    <em:file>
-      <Description about="urn:mozilla:extension:file:nagioschecker.jar">
-        <em:package>content/nagioschecker/</em:package>
-        <em:skin>skin/classic/nagioschecker/</em:skin>
-        <em:locale>locale/en-US/nagioschecker/</em:locale>
-        <em:locale>locale/cs-CZ/nagioschecker/</em:locale>
-        <em:locale>locale/fr-FR/nagioschecker/</em:locale>
-        <em:locale>locale/it-IT/nagioschecker/</em:locale>
-        <em:locale>locale/pt-BR/nagioschecker/</em:locale>
-        <em:locale>locale/ru-RU/nagioschecker/</em:locale>
-        <em:locale>locale/es-ES/nagioschecker/</em:locale>
-        <em:locale>locale/nl-NL/nagioschecker/</em:locale>
-        <em:locale>locale/zh-TW/nagioschecker/</em:locale>
-        <em:locale>locale/tr-TR/nagioschecker/</em:locale>
-        <em:locale>locale/de-DE/nagioschecker/</em:locale>
-        <em:locale>locale/bg-BG/nagioschecker/</em:locale>
-      </Description>
-    </em:file>
--->
-  <em:homepageURL/><em:iconURL/><em:updateURL/><em:targetPlatform/></Description>
+	  <em:homepageURL/><em:iconURL/><em:updateURL/><em:targetPlatform/></Description>
 </RDF>
