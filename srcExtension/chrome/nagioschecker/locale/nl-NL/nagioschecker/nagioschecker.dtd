@@ -23,6 +23,7 @@
 <!ENTITY nch.prefs.foundstatusurl "URL gelokaliseerd">
 <!ENTITY nch.prefs.locateurl "URL lokaliseren">
 <!ENTITY nch.prefs.updateinterval "Update interval (in minuten)">
+<!ENTITY nch.prefs.worktime "Plugin werkuren (hh:mm)">
 <!ENTITY nch.prefs.utilityrun "Utility draaien">
 <!ENTITY nch.prefs.other "Overig">
 <!ENTITY nch.prefs.onewindowonly "Alleen activeren in het eerst geopende venster">
@@ -36,6 +37,8 @@
 <!ENTITY nch.about.homepage "Homepage">
 <!ENTITY nch.about.copyrights "Copyrights">
 <!ENTITY nch.about.nagioscopyrights "Nagios en het Nagios logo zijn geregistreerde handelsnamen van Ethan Galstad.">
+<!ENTITY nch.about.codecontributors "Bijdragen aan de code van">
+<!ENTITY nch.about.ideasandbugreports "Ideeën en foutrapporten">
 <!ENTITY nch.prefs.display "Weergave">
 <!ENTITY nch.prefs.watchedsystems "Gevolgde Nagios pagina(s)">
 <!ENTITY nch.prefs.addnew "Nieuw toevoegen">
@@ -104,3 +107,10 @@
 <!ENTITY nch.prefs.blinkaffectedtypesonstatusupdateifnewproblemappears "Het type waar een nieuw probleem optreedt laten knipperen">
 <!ENTITY nch.prefs.blinkalltypesoneverystatusupdateifatleastoneproblemexists "Alle types laten knipperen als tenminste één probleem bestaat">
 <!ENTITY nch.prefs.aliases "Aliases">
+<!ENTITY nch.prefs.makedonation "Donatie doen">
+<!ENTITY nch.prefs.hostsmatchingregexp "Hosts die overeenkomen met een reguliere expressie">
+<!ENTITY nch.prefs.servicesmatchingregexp "Services die overeenkomen met een reguliere expressie">
+<!ENTITY nch.prefs.disable "Uitschakelen">
+<!ENTITY nch.prefs.disabled "Uitgeschakeld">
+<!ENTITY nch.prefs.onaddons "Op de Mozilla Add-ons site">
+<!ENTITY nch.prefs.projecthome "Homepage van het project">

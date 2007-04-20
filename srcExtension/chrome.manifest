@@ -9,17 +9,16 @@ content	nagioschecker	chrome/nagioschecker/content/  xpcnativewrappers=no
 locale	nagioschecker	en-US	chrome/nagioschecker/locale/en-US/nagioschecker/
 locale	nagioschecker	cs-CZ	chrome/nagioschecker/locale/cs-CZ/nagioschecker/
 
-locale	nagioschecker	fr-FR	jar:chrome/nagioschecker.jar!/locale/fr-FR/nagioschecker/
-locale	nagioschecker	it-IT	jar:chrome/nagioschecker.jar!/locale/it-IT/nagioschecker/
-locale	nagioschecker	ru-RU	jar:chrome/nagioschecker.jar!/locale/ru-RU/nagioschecker/
-locale	nagioschecker	pt-BR	jar:chrome/nagioschecker.jar!/locale/pt-BR/nagioschecker/
-locale	nagioschecker	es-ES	jar:chrome/nagioschecker.jar!/locale/es-ES/nagioschecker/
-locale	nagioschecker	nl-NL	jar:chrome/nagioschecker.jar!/locale/nl-NL/nagioschecker/
-locale	nagioschecker	bg-BG	jar:chrome/nagioschecker.jar!/locale/bg-BG/nagioschecker/
-
-locale	nagioschecker	zh-TW	jar:chrome/nagioschecker.jar!/locale/zh-TW/nagioschecker/
-locale	nagioschecker	tr-TR	jar:chrome/nagioschecker.jar!/locale/tr-TR/nagioschecker/
-locale	nagioschecker	de-DE	jar:chrome/nagioschecker.jar!/locale/de-DE/nagioschecker/
+locale	nagioschecker	fr-FR	chrome/nagioschecker/locale/fr-FR/nagioschecker/
+locale	nagioschecker	it-IT	chrome/nagioschecker/locale/it-IT/nagioschecker/
+locale	nagioschecker	ru-RU	chrome/nagioschecker/locale/ru-RU/nagioschecker/
+locale	nagioschecker	pt-BR	chrome/nagioschecker/locale/pt-BR/nagioschecker/
+locale	nagioschecker	es-ES	chrome/nagioschecker/locale/es-ES/nagioschecker/
+locale	nagioschecker	nl-NL	chrome/nagioschecker/locale/nl-NL/nagioschecker/
+locale	nagioschecker	bg-BG	chrome/nagioschecker/locale/bg-BG/nagioschecker/
+locale	nagioschecker	zh-TW	chrome/nagioschecker/locale/zh-TW/nagioschecker/
+locale	nagioschecker	tr-TR	chrome/nagioschecker/locale/tr-TR/nagioschecker/
+locale	nagioschecker	de-DE	chrome/nagioschecker/locale/de-DE/nagioschecker/
 
 
 skin	nagioschecker	classic/1.0	chrome/nagioschecker/skin/classic/nagioschecker/
