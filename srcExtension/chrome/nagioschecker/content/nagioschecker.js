@@ -1122,12 +1122,15 @@ NCH.prototype = {
 	switch (type) {
 		case "loading":
 			ico.setAttribute("src","chrome://nagioschecker/skin/Throbber.gif");
+		    ico.removeAttribute("tooltiptext");
 			break;
 		case "nagios":
 			ico.setAttribute("src","chrome://nagioschecker/skin/nagios16.png");
+		    ico.removeAttribute("tooltiptext");
 			break;
 		case "sleepy":
 			ico.setAttribute("src","chrome://nagioschecker/skin/nagiosZzz.png");
+		    ico.removeAttribute("tooltiptext");
 			break;
 		case "disabled":
 			ico.setAttribute("src","chrome://nagioschecker/skin/nag-disabled.png");
