@@ -23,6 +23,7 @@
 <!ENTITY nch.prefs.foundstatusurl "Местоположение">
 <!ENTITY nch.prefs.locateurl "Определить адрес скрипта">
 <!ENTITY nch.prefs.updateinterval "Интервал обновления (в минутах)">
+<!ENTITY nch.prefs.worktime "Часы работы (чч:мм)">
 <!ENTITY nch.prefs.utilityrun "Запуск приложения">
 <!ENTITY nch.prefs.other "Другое">
 <!ENTITY nch.prefs.onewindowonly "Запускать только в первом окне">
@@ -36,6 +37,8 @@
 <!ENTITY nch.about.homepage "Сайт проекта">
 <!ENTITY nch.about.copyrights "Права">
 <!ENTITY nch.about.nagioscopyrights "Nagios и логотип Nagios являются зарегистрированными торговыми марками Ethan Galstad.">
+<!ENTITY nch.about.codecontributors "Участники проекта">
+<!ENTITY nch.about.ideasandbugreports "Идеи и помощь в отладке">
 <!ENTITY nch.prefs.display "Представление">
 <!ENTITY nch.prefs.watchedsystems "Мониторинг систем Nagios">
 <!ENTITY nch.prefs.addnew "Добавить">
@@ -104,3 +107,10 @@
 <!ENTITY nch.prefs.blinkaffectedtypesonstatusupdateifnewproblemappears "Мерцает тип, для которого появилась проблема">
 <!ENTITY nch.prefs.blinkalltypesoneverystatusupdateifatleastoneproblemexists "Мерцают все типы появляется хотя бы одна проблема">
 <!ENTITY nch.prefs.aliases "Алиасы">
+<!ENTITY nch.prefs.makedonation "Пожертвования">
+<!ENTITY nch.prefs.hostsmatchingregexp "Хосты, соответствующие рег.выражению">
+<!ENTITY nch.prefs.servicesmatchingregexp "Сервисы, соответствующие рег.выражению">
+<!ENTITY nch.prefs.disable "Отключить">
+<!ENTITY nch.prefs.disabled "Отключено">
+<!ENTITY nch.prefs.onaddons "На сайте дополнений организации Mozilla">
+<!ENTITY nch.prefs.projecthome "Сайт проекта">

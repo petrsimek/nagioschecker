@@ -2,7 +2,7 @@
 <!ENTITY nch.aboutextension "Über &nch.title;">
 <!ENTITY nch.about "Über">
 <!ENTITY nch.close "Schließen">
-<!ENTITY nch.hosts "Schließen">
+<!ENTITY nch.hosts "Hosts">
 <!ENTITY nch.services "Service">
 <!ENTITY nch.menu.options "Einstellungen">
 <!ENTITY nch.menu.updatenow "Jetzt aktualisieren">
@@ -23,6 +23,7 @@
 <!ENTITY nch.prefs.foundstatusurl "Festgestellte URL">
 <!ENTITY nch.prefs.locateurl "URL feststellen">
 <!ENTITY nch.prefs.updateinterval "Update-Interval (in Minuten)">
+<!ENTITY nch.prefs.worktime "Plugin Arbeitszeit (hh:mm)">
 <!ENTITY nch.prefs.utilityrun "Programmlaufzeit">
 <!ENTITY nch.prefs.other "Sonstiges">
 <!ENTITY nch.prefs.onewindowonly "Nur im ersten Fenster starten">
@@ -36,6 +37,8 @@
 <!ENTITY nch.about.homepage "Homepage">
 <!ENTITY nch.about.copyrights "Copyrights">
 <!ENTITY nch.about.nagioscopyrights "Nagios und das Nagios-Logo sind eingetragene Warenzeichen von Ethan Galstad.">
+<!ENTITY nch.about.codecontributors "Programmcode Beitragende">
+<!ENTITY nch.about.ideasandbugreports "Ideen und Fehlerberichte">
 <!ENTITY nch.prefs.display "Anzeige">
 <!ENTITY nch.prefs.watchedsystems "Beobachtete Nagios Systeme">
 <!ENTITY nch.prefs.addnew "Neu hinzufügen">
@@ -104,3 +107,10 @@
 <!ENTITY nch.prefs.blinkaffectedtypesonstatusupdateifnewproblemappears "Den Typ blinken lassen, wenn ein neues Problem auftaucht">
 <!ENTITY nch.prefs.blinkalltypesoneverystatusupdateifatleastoneproblemexists "Alle Typen blinken lassen, wenn mindestens ein Problem existiert">
 <!ENTITY nch.prefs.aliases "Aliases">
+<!ENTITY nch.prefs.makedonation "Spenden">
+<!ENTITY nch.prefs.hostsmatchingregexp "Hosts die einem regulärem Ausdruck entsprechen">
+<!ENTITY nch.prefs.servicesmatchingregexp "Services die einem regulärem Ausdruck entsprechen">
+<!ENTITY nch.prefs.disable "Deaktivieren">
+<!ENTITY nch.prefs.disabled "Deaktiviert">
+<!ENTITY nch.prefs.onaddons "Auf der Nozilla Add-On Seite">
+<!ENTITY nch.prefs.projecthome "Projekt-WebSeite">

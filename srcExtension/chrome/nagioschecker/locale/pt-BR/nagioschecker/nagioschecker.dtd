@@ -23,6 +23,7 @@
 <!ENTITY nch.prefs.foundstatusurl "Caminho da URL">
 <!ENTITY nch.prefs.locateurl "Localizar URL">
 <!ENTITY nch.prefs.updateinterval "Intervalo de atualização (em minutos)">
+<!ENTITY nch.prefs.worktime "Plugin trabalhando a tantas horas (hh:mm)">
 <!ENTITY nch.prefs.utilityrun "Executar utilitário">
 <!ENTITY nch.prefs.other "Outros">
 <!ENTITY nch.prefs.onewindowonly "Executar somente na primeira janela aberta">
@@ -36,6 +37,8 @@
 <!ENTITY nch.about.homepage "Homepage">
 <!ENTITY nch.about.copyrights "Copyrights">
 <!ENTITY nch.about.nagioscopyrights "Nagios e a logo do Nagios são marcas registradas de Ethan Galstad.">
+<!ENTITY nch.about.codecontributors "Contribuidores do Código">
+<!ENTITY nch.about.ideasandbugreports "Idéias e relatórios de bug">
 <!ENTITY nch.prefs.display "Mostrar">
 <!ENTITY nch.prefs.watchedsystems "Sessões Nagios">
 <!ENTITY nch.prefs.addnew "Adicionar novo">
@@ -104,3 +107,10 @@
 <!ENTITY nch.prefs.blinkaffectedtypesonstatusupdateifnewproblemappears "Piscar somente o tipo quando um novo problema aparecer">
 <!ENTITY nch.prefs.blinkalltypesoneverystatusupdateifatleastoneproblemexists "Piscar todos os tipos se pelo menos um problema existir">
 <!ENTITY nch.prefs.aliases "Apelidos">
+<!ENTITY nch.prefs.makedonation "Faça uma doação">
+<!ENTITY nch.prefs.hostsmatchingregexp "Hosts que combinam com a expressão regular">
+<!ENTITY nch.prefs.servicesmatchingregexp "Serviços que combinam com a expressão regular">
+<!ENTITY nch.prefs.disable "Desabilitar">
+<!ENTITY nch.prefs.disabled "Desabilitado">
+<!ENTITY nch.prefs.onaddons "No site de add-ons do Mozilla">
+<!ENTITY nch.prefs.projecthome "Página do projeto">

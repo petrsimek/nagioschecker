@@ -23,6 +23,7 @@
 <!ENTITY nch.prefs.foundstatusurl "已查找URL">
 <!ENTITY nch.prefs.locateurl "查找URL">
 <!ENTITY nch.prefs.updateinterval "更新間隔 (分鐘)">
+<!ENTITY nch.prefs.worktime "插件運行時數(hh:mm)">
 <!ENTITY nch.prefs.utilityrun "程式運行">
 <!ENTITY nch.prefs.other "其它">
 <!ENTITY nch.prefs.onewindowonly "只在視窗開啟後運行">
@@ -36,6 +37,8 @@
 <!ENTITY nch.about.homepage "主頁">
 <!ENTITY nch.about.copyrights "版權">
 <!ENTITY nch.about.nagioscopyrights "Nagios 與 Nagios 圖示 均屬 Ethan Galstad 的已註冊商標">
+<!ENTITY nch.about.codecontributors "程式貢獻者">
+<!ENTITY nch.about.ideasandbugreports "意見及問題回報">
 <!ENTITY nch.prefs.display "顯示">
 <!ENTITY nch.prefs.watchedsystems "已監測的Nagios 系統">
 <!ENTITY nch.prefs.addnew "加入">
@@ -104,3 +107,10 @@
 <!ENTITY nch.prefs.blinkaffectedtypesonstatusupdateifnewproblemappears "當有新問題時閃爍該種類">
 <!ENTITY nch.prefs.blinkalltypesoneverystatusupdateifatleastoneproblemexists "當有至少一個問題時閃爍所有種類">
 <!ENTITY nch.prefs.aliases "別稱">
+<!ENTITY nch.prefs.makedonation "貢獻給作者">
+<!ENTITY nch.prefs.hostsmatchingregexp "主機符合指定運算式">
+<!ENTITY nch.prefs.servicesmatchingregexp "服務符合指定運算式">
+<!ENTITY nch.prefs.disable "停用">
+<!ENTITY nch.prefs.disabled "已停用">
+<!ENTITY nch.prefs.onaddons "於Mozilla 的附加元件頁">
+<!ENTITY nch.prefs.projecthome "主頁">

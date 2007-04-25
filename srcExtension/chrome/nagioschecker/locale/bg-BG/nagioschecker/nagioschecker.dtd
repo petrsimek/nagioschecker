@@ -23,6 +23,7 @@
 <!ENTITY nch.prefs.foundstatusurl "Адреса намерен">
 <!ENTITY nch.prefs.locateurl "Намиране на адреса">
 <!ENTITY nch.prefs.updateinterval "Интервал на обновяване (в минути)">
+<!ENTITY nch.prefs.worktime "Работно време на добавката">
 <!ENTITY nch.prefs.utilityrun "Удобно стартиране">
 <!ENTITY nch.prefs.other "Други">
 <!ENTITY nch.prefs.onewindowonly "Използване само в първия отворен прозорец">
@@ -36,6 +37,8 @@
 <!ENTITY nch.about.homepage "Домашна страница">
 <!ENTITY nch.about.copyrights "Запазени права">
 <!ENTITY nch.about.nagioscopyrights "Nagios и логото Nagios са запазена марка на Ethan Galstad.">
+<!ENTITY nch.about.codecontributors "Сътрудници по писането на кода">
+<!ENTITY nch.about.ideasandbugreports "Идеи и Доклади за грешки">
 <!ENTITY nch.prefs.display "Изглед">
 <!ENTITY nch.prefs.watchedsystems "Набюдавани Нагиос системи">
 <!ENTITY nch.prefs.addnew "Добавяне на нова">
@@ -104,3 +107,10 @@
 <!ENTITY nch.prefs.blinkaffectedtypesonstatusupdateifnewproblemappears "Премигване на вида, в който се появи нов проблем">
 <!ENTITY nch.prefs.blinkalltypesoneverystatusupdateifatleastoneproblemexists "Премигване на всички видове, ако поне един проблем съществува">
 <!ENTITY nch.prefs.aliases "Адреси">
+<!ENTITY nch.prefs.makedonation "Направете дарение">
+<!ENTITY nch.prefs.hostsmatchingregexp "Обекти отговарящи на обичайната фраза">
+<!ENTITY nch.prefs.servicesmatchingregexp "Услуги отговарящи на обичайната фраза">
+<!ENTITY nch.prefs.disable "Забраняване">
+<!ENTITY nch.prefs.disabled "Забранен">
+<!ENTITY nch.prefs.onaddons "В сайта на Мозила Добавки">
+<!ENTITY nch.prefs.projecthome "Дома на проекта">

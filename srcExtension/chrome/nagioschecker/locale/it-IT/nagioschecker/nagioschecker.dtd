@@ -23,6 +23,7 @@
 <!ENTITY nch.prefs.foundstatusurl "Indirizzo web individuato">
 <!ENTITY nch.prefs.locateurl "Individua indirizzo web">
 <!ENTITY nch.prefs.updateinterval "Intervallo di aggiornamento (in minuti)">
+<!ENTITY nch.prefs.worktime "Orario di funzionamento (hh:mm)">
 <!ENTITY nch.prefs.utilityrun "Tempo di esecuzione della utility">
 <!ENTITY nch.prefs.other "Varie">
 <!ENTITY nch.prefs.onewindowonly "Esegui solo nella prima finestra aperta">
@@ -33,9 +34,11 @@
 <!ENTITY nch.about.contributors "Collaboratori">
 <!ENTITY nch.about.translators "Traduttori">
 <!ENTITY nch.about.author "Petr Simek">
-<!ENTITY nch.about.homepage "Sito web">
+<!ENTITY nch.about.homepage "Siti web">
 <!ENTITY nch.about.copyrights "Copyright">
 <!ENTITY nch.about.nagioscopyrights "Nagios ed il logo Nagios sono marchi registrati di Ethan Galstad">
+<!ENTITY nch.about.codecontributors "Codice">
+<!ENTITY nch.about.ideasandbugreports "Idee e segnalazioni di bug">
 <!ENTITY nch.prefs.display "Aspetto">
 <!ENTITY nch.prefs.watchedsystems "Sistemi di Nagios osservati">
 <!ENTITY nch.prefs.addnew "Aggiungi...">
@@ -104,3 +107,10 @@
 <!ENTITY nch.prefs.blinkaffectedtypesonstatusupdateifnewproblemappears "per il servizio o l&apos;avviso selezionato se si presenta un nuovo problema">
 <!ENTITY nch.prefs.blinkalltypesoneverystatusupdateifatleastoneproblemexists "per ogni servizio ed avviso se si presenta almeno un problema">
 <!ENTITY nch.prefs.aliases "Alias">
+<!ENTITY nch.prefs.makedonation "Effettua una donazione">
+<!ENTITY nch.prefs.hostsmatchingregexp "Server corrispondenti ad espressioni regolari">
+<!ENTITY nch.prefs.servicesmatchingregexp "Servizi corrispondenti ad espressioni regolari">
+<!ENTITY nch.prefs.disable "Disattiva">
+<!ENTITY nch.prefs.disabled "Disattivato">
+<!ENTITY nch.prefs.onaddons "Nagios Checker su addons.mozilla.org">
+<!ENTITY nch.prefs.projecthome "Sito web di Nagios Checker">
