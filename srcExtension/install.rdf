@@ -30,5 +30,5 @@
     <em:optionsURL>chrome://nagioschecker/content/nagioschecker-options.xul</em:optionsURL>
     <em:aboutURL>chrome://nagioschecker/content/nagioschecker-about.xul</em:aboutURL>
     <!-- Packages, Skins and Locales that this extension registers -->
-	  <em:homepageURL/><em:iconURL/><em:updateURL/><em:targetPlatform/></Description>
+	  <em:homepageURL>http://code.google.com/p/nagioschecker/</em:homepageURL><em:iconURL/><em:targetPlatform/></Description>
 </RDF>
