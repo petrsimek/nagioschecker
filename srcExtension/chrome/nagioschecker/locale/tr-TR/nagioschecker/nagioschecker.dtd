@@ -23,6 +23,7 @@
 <!ENTITY nch.prefs.foundstatusurl "Belirlenen URL">
 <!ENTITY nch.prefs.locateurl "URL Bul">
 <!ENTITY nch.prefs.updateinterval "Güncelleme aralığı (dakika)">
+<!ENTITY nch.prefs.worktime "Plugin çalışma saatleri (ss:dd)">
 <!ENTITY nch.prefs.utilityrun "Program çalıştır">
 <!ENTITY nch.prefs.other "Diğer">
 <!ENTITY nch.prefs.onewindowonly "Yalnızca ilk açılan pencerede çalış">
@@ -30,12 +31,14 @@
 <!ENTITY nch.about.version "Sürüm">
 <!ENTITY nch.about.created "Yazar">
 <!ENTITY nch.about.description "Nagios Checker, Nagios&apos;un raporladığı olayların durum çubuğunda gösterimini sunar. Bu bilgiler Nagios Web arabiriminden elde edilir ve birden fazla Nagios sunucusu eşzamanlı olarak izlenebilir. Nagios Checker arkapilanda çalışır, sonuçları süzülmüş olarak gösterir ve çalışması için açık bir Nagios wep sayfasına ihtiyaç duymaz.">
-<!ENTITY nch.about.contributors "Katılımcılar">
+<!ENTITY nch.about.contributors "Katkıda bulunanlar">
 <!ENTITY nch.about.translators "Çevirmenler">
 <!ENTITY nch.about.author "Petr Simek">
 <!ENTITY nch.about.homepage "Ev sayfası">
 <!ENTITY nch.about.copyrights "Telif">
 <!ENTITY nch.about.nagioscopyrights "Nagios ve Nagios logosu Ethan Galstad&apos;ın ticari markasıdır.">
+<!ENTITY nch.about.codecontributors "Koda Katkıda Bulunanlar">
+<!ENTITY nch.about.ideasandbugreports "Fikirler ve Hata Raporları">
 <!ENTITY nch.prefs.display "Göster">
 <!ENTITY nch.prefs.watchedsystems "İzlenen Nagios sistemleri">
 <!ENTITY nch.prefs.addnew "Yeni ekle">
@@ -104,3 +107,10 @@
 <!ENTITY nch.prefs.blinkaffectedtypesonstatusupdateifnewproblemappears "Yeni bir sorunun görüldüğü tipi kırpıştır">
 <!ENTITY nch.prefs.blinkalltypesoneverystatusupdateifatleastoneproblemexists "En azından bir sorun daha olsa tüm tipleri kırpıştır">
 <!ENTITY nch.prefs.aliases "Takma adlar">
+<!ENTITY nch.prefs.makedonation "Bağış yap">
+<!ENTITY nch.prefs.hostsmatchingregexp "Düzenli ifadeyle eşleşen ana sistemler">
+<!ENTITY nch.prefs.servicesmatchingregexp "Düzenli ifadeyle eşleşen hizmetler">
+<!ENTITY nch.prefs.disable "Etkisiz kıl">
+<!ENTITY nch.prefs.disabled "Etkisiz kılındı">
+<!ENTITY nch.prefs.onaddons "Mozilla eklenti sitesinde">
+<!ENTITY nch.prefs.projecthome "Projenin ev sayfası">
