@@ -1,0 +1,26 @@
+0.9:
+* BUGFIX: opening links from popup
+* NEW: option to disable/enable server
+* NEW: regexp on host or service
+* NEW: option to specify working hours (by M.Sviba)
+* NEW: special icons for Not Allowed and Stopped status
+* BUGFIX: opening links from Thunderbird (by I.Musil)
+* INTERNAL: new uri parsing (based on parseUri() function)
+* BUGFIX: icon tooltips were not removed correctly
+
+0.8:
+
+* NEW: option to set custom WAVs
+* NEW: option to open the clickable tooltip
+* NEW: option to download host aliases
+* NEW: indicator (exclamation mark) of new problem in tooltip
+* NEW: option to show total numbers in statusbar splited by server
+* BUGFIX: removed stylesheets that impact other extensions
+* INTERNAL: added timeout for problems download (30 sec)
+* INTERNAL: faster load of the Settings dialog
+* NEW: new colors and rounded corners :-)
+* NEW: [Show in info window] option remade as Filter out
+* NEW: option to blink only the types affected
+* INTERNAL: max-height tooltip
+
+ 
