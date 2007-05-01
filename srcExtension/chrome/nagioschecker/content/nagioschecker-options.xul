@@ -52,8 +52,10 @@
           <hbox>
             <button id="add-new-button" label="&nch.prefs.addnew;" oncommand="gNCHOptions.addNewServer();"/>
 	          <button id="edit-button" label="&nch.prefs.edit;" oncommand="gNCHOptions.editSelectedServer();" disabled="true"/>
-	          <button id="able-button" label="&nch.prefs.disable;" oncommand="gNCHOptions.ableSelectedServer();" disabled="true"/>
+	          <button id="able-button" label="&nch.prefs.disable;" oncommand="gNCHOptions.actionOnSelectedServer('able');" disabled="true"/>
 	          <button id="remove-button" label="&nch.prefs.remove;" oncommand="gNCHOptions.removeSelectedServer();" disabled="true"/>
+	          <button id="up-button" label="&nch.prefs.moveup;" oncommand="gNCHOptions.actionOnSelectedServer('up');" disabled="true"/>
+	          <button id="down-button" label="&nch.prefs.movedown;" oncommand="gNCHOptions.actionOnSelectedServer('down');" disabled="true"/>
           </hbox>
         </groupbox>
       </tabpanel>

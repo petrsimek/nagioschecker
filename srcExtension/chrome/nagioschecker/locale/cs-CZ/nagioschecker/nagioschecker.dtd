@@ -120,3 +120,6 @@
 <!ENTITY nch.prefs.disabled "Vypnutý">
 <!ENTITY nch.prefs.onaddons "Na webu Mozilla Add-ons">
 <!ENTITY nch.prefs.projecthome "Stránky projektu">
+
+<!ENTITY nch.prefs.moveup "Posunout nahoru">
+<!ENTITY nch.prefs.movedown "Posunout dolů">

@@ -68,6 +68,11 @@ NCHOptions.prototype = {
     var i = selections[0];
 	document.getElementById("able-button").setAttribute("label",(this._servers[i].disabled) ? gNCHOptions.bundle.getString("enable") : gNCHOptions.bundle.getString("disable"));
 
+///    alert(i+";"+this._servers.length);
+
+	document.getElementById("up-button").disabled = (i==0);    
+    document.getElementById("down-button").disabled = (i==(this._servers.length-1));
+
   },
 
   alertServers: function() {
@@ -131,14 +136,40 @@ NCHOptions.prototype = {
     });
   },
   
-  ableSelectedServer: function () {
+  actionOnSelectedServer: function(action) {
     var selections = GetTreeSelections(this._tree);
-    var i = selections[0];
-	this._servers[i].disabled=!this._servers[i].disabled;
-    this._tree.treeBoxObject.invalidate();
-	document.getElementById("able-button").setAttribute("label",(this._servers[i].disabled) ? gNCHOptions.bundle.getString("enable") : gNCHOptions.bundle.getString("disable"));    
+	var i = selections[0];
+  	switch (action) {
+  		case "able":
+			this._servers[i].disabled=!this._servers[i].disabled;
+		    this._tree.treeBoxObject.invalidate();
+			document.getElementById("able-button").setAttribute("label",(this._servers[i].disabled) ? gNCHOptions.bundle.getString("enable") : gNCHOptions.bundle.getString("disable"));    
+  			break;
+  		case "up":
+		    if (i>0) {
+				var tmp = this._servers[i];
+				this._servers[i]=this._servers[i-1];
+				this._servers[i-1]=tmp;
+				this._tree.treeBoxObject.view.selection.select(i-1);
+		      	this._tree.treeBoxObject.ensureRowIsVisible(i-1);
+			    this._tree.treeBoxObject.invalidate();
+		    }
+			document.getElementById("up-button").disabled = ((i-1)==0);    
+			break;
+  		case "down":
+		    if (i<(this._servers.length-1)) {
+				var tmp = this._servers[i];
+				this._servers[i]=this._servers[i+1];
+				this._servers[i+1]=tmp;
+				this._tree.treeBoxObject.view.selection.select(i+1);
+		      	this._tree.treeBoxObject.ensureRowIsVisible(i+1);
+			    this._tree.treeBoxObject.invalidate();
+		    }
+		    document.getElementById("down-button").disabled = ((i+1)==(this._servers.length-1));
+  			break;
+  	}
   },
-
+  
   onAddedServer: function(pos,added) {
     if (pos) {
       this.setServer((pos-1),added);

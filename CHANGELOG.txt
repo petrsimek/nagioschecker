@@ -1,3 +1,6 @@
+0.10
+* NEW: ability to change ordering of servers
+
 0.9:
 * BUGFIX: opening links from popup
 * NEW: option to disable/enable server
