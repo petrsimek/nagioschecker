@@ -769,7 +769,7 @@ NCH.prototype = {
  var paket = new NCHPaket(this.showColInfo,this.showColAlias);
     var newProblems={};
     for(var i=0;i<problems.length;i++) {
-	 paket.addTooltipHeader('all',this._servers[i].name,i);
+	 paket.addTooltipHeader('all',this._servers[i].name,i,problems[i]["_time"]);
         if (problems[i]["_error"]) {
 
 		 paket.addError('all');
@@ -1230,7 +1230,7 @@ function NCHToolTip(showColInfo,showColAlias) {
 
 	 for(var i = 0;i<this.headers.length;i++) {
     	if ((this.headers[i].problems.length) || (this.headers[i].error)) {
-			this.createHeader(this.headers[i].data);  
+			this.createHeader(this.headers[i].data,this.headers[i].time);  
         	if (!this.headers[i].error) {
 
 	  			this.headers[i].problems.sort(function (a,b) {
@@ -1257,7 +1257,7 @@ function NCHToolTip(showColInfo,showColAlias) {
 
 
   }
-  this.createHeader= function(name) {
+  this.createHeader= function(name,time) {
 
     var doc=document;
 
@@ -1266,10 +1266,20 @@ function NCHToolTip(showColInfo,showColAlias) {
 		separator.setAttribute("class", "groove-thin");
 		this._rows.appendChild(separator);
 
+    var hbd = doc.createElement("hbox");
+		this._rows.appendChild(hbd);
+
     var description = doc.createElement("description");
 		description.setAttribute("class", "nagioschecker-tooltip-title");
 		description.setAttribute("value",name);
-		this._rows.appendChild(description);
+		hbd.appendChild(description);
+    var sp = doc.createElement("spacer");
+		sp.setAttribute("flex", "1");
+		hbd.appendChild(sp);
+    var description2 = doc.createElement("description");
+		description2.setAttribute("class", "nagioschecker-tooltip-title-date");
+		description2.setAttribute("value",(time!=null) ? time.toLocaleString() : "");
+		hbd.appendChild(description2);
 
 		var separator = doc.createElement("separator");
 		separator.setAttribute("class", "groove-thin");
@@ -1291,8 +1301,8 @@ function NCHToolTip(showColInfo,showColAlias) {
 
 
   }
-  this.addHeader= function(name,serPo) {
-		this.headers[++this.actH]={data:name,error:false,problems:[],aliases:{},news:{},servPos:serPo};
+  this.addHeader= function(name,serPo,timeFetch) {
+		this.headers[++this.actH]={data:name,error:false,problems:[],aliases:{},news:{},servPos:serPo,time:timeFetch};
 	}
   this.addError= function() {
 		this.headers[this.actH].error=true;
@@ -1396,8 +1406,8 @@ function NCHPaket(sci,sca) {
 	this.warning = [new NCHToolTip(this.showColInfo,this.showColAlias),0,0,[],[]];
 	this.critical = [new NCHToolTip(this.showColInfo,this.showColAlias),0,0,[],[]];
 	this.isError = false;
-	this.addTooltipHeader = function(to,header,serverPos) {
-	 	this[to][0].addHeader(header,serverPos);
+	this.addTooltipHeader = function(to,header,serverPos,timeFetch) {
+	 	this[to][0].addHeader(header,serverPos,timeFetch);
 	}
 	this.addError = function(to) {
 		this[to][0].addError();

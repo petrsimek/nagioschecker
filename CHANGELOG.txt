@@ -1,5 +1,6 @@
 0.10
 * NEW: ability to change ordering of servers
+* NEW: time of last download of alerts for each server (shown in tooltip)
 
 0.9:
 * BUGFIX: opening links from popup

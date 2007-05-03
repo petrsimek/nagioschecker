@@ -104,7 +104,7 @@ NCHParser.prototype = {
   },
 
   fetchServer: function(pos) {
-	this.problems[pos]={"down":[],"unreachable":[],"unknown":[],"warning":[],"critical":[],"_error":false};			
+	this.problems[pos]={"down":[],"unreachable":[],"unknown":[],"warning":[],"critical":[],"_error":false,"_time":null};
 	this.missingAliases[pos]=[];			
 	if (!this._servers[pos].disabled) {
 		var urlServices = (this._servers[pos].versionOlderThan20) ? this._servers[pos].urlstatus+"?host=all&servicestatustypes=248" : this._servers[pos].urlstatus+"?host=all&servicestatustypes=28";
@@ -118,6 +118,7 @@ NCHParser.prototype = {
             me.loadDataAsync(urlServices,user,pass,false,function (doc2) {
             	me.parseNagiosServicesHtml(pos,doc2);
 				me.loadMissingAlias(0,pos,user,pass,function () {
+					me.problems[pos]["_time"]=new Date();
 					if (me._servers.length==pos+1) {
 						me.manager.handleProblems(me.problems);
 					}
