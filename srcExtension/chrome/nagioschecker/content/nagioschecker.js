@@ -564,9 +564,9 @@ NCH.prototype = {
 
 	createUrlDevice: function(i,host,service) {
 		var extinfo = this._servers[i].urlstatus.replace(/status\.cgi/,"extinfo.cgi");
-		var url = extinfo+"?type="+((service) ? "2" : "1")+"&host="+host;
+		var url = extinfo+"?type="+((service) ? "2" : "1")+"&host="+escape(host);
 		if (service) {
-			url+="&service="+service;
+			url+="&service="+escape(service);
 		}
 		return url;
 	},

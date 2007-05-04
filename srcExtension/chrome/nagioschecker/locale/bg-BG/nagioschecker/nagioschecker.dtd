@@ -108,8 +108,8 @@
 <!ENTITY nch.prefs.blinkalltypesoneverystatusupdateifatleastoneproblemexists "Премигване на всички видове, ако поне един проблем съществува">
 <!ENTITY nch.prefs.aliases "Адреси">
 <!ENTITY nch.prefs.makedonation "Направете дарение">
-<!ENTITY nch.prefs.hostsmatchingregexp "Обекти отговарящи на обичайната фраза">
-<!ENTITY nch.prefs.servicesmatchingregexp "Услуги отговарящи на обичайната фраза">
+<!ENTITY nch.prefs.hostsmatchingregexp "Обекти отговарящи на следната фраза">
+<!ENTITY nch.prefs.servicesmatchingregexp "Услуги отговарящи на следната фраза">
 <!ENTITY nch.prefs.disable "Забраняване">
 <!ENTITY nch.prefs.disabled "Забранен">
 <!ENTITY nch.prefs.onaddons "В сайта на Мозила Добавки">
