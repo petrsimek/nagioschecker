@@ -23,7 +23,7 @@
 <!ENTITY nch.prefs.foundstatusurl "URL localisée">
 <!ENTITY nch.prefs.locateurl "Localiser l&apos;URL">
 <!ENTITY nch.prefs.updateinterval "Intervalle de mise à jour (en minutes)">
-<!ENTITY nch.prefs.worktime "Plugin working hours (hh:mm)">
+<!ENTITY nch.prefs.worktime "Plage horaire d&apos;exécution de l&apos;extension (hh:mm)">
 <!ENTITY nch.prefs.utilityrun "Utilitaire en fonction">
 <!ENTITY nch.prefs.other "Autre">
 <!ENTITY nch.prefs.onewindowonly "Exécuter uniquement dans la première fenêtre ouverte">
@@ -108,8 +108,8 @@
 <!ENTITY nch.prefs.blinkalltypesoneverystatusupdateifatleastoneproblemexists "Faire clignoter tous les types si au moins un problème existe">
 <!ENTITY nch.prefs.aliases "Alias">
 <!ENTITY nch.prefs.makedonation "Faire une donation">
-<!ENTITY nch.prefs.hostsmatchingregexp "Hosts matching regular expression">
-<!ENTITY nch.prefs.servicesmatchingregexp "Services matching regular expression">
+<!ENTITY nch.prefs.hostsmatchingregexp "Hôtes correspondant à cette expression régulière">
+<!ENTITY nch.prefs.servicesmatchingregexp "Services correspondant à cette expression régulière">
 <!ENTITY nch.prefs.disable "Désactiver">
 <!ENTITY nch.prefs.disabled "Désactivé">
 <!ENTITY nch.prefs.onaddons "Sur le site Mozilla Add-Ons">

@@ -2,6 +2,10 @@
 * NEW: ability to change ordering of servers
 * NEW: time of last download of alerts for each server (shown in tooltip)
 
+0.9.1
+* BUGFIX: Correct input box for server URL in New Server dialog in some translations
+* BUGFIX: Service names are now escaped for correct URL of service info page
+
 0.9:
 * BUGFIX: opening links from popup
 * NEW: option to disable/enable server
