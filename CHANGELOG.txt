@@ -1,3 +1,6 @@
+0.9.2
+* BUGFIX: Correct locating of url for pages without a slash on the end of the url
+
 0.9.1
 * BUGFIX: Correct input box for server URL in New Server dialog in some translations
 * BUGFIX: Service names are now escaped for correct URL of service info page
