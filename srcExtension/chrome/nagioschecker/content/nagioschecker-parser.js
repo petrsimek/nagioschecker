@@ -205,6 +205,11 @@ NCHParser.prototype = {
 
 
   downloadStatus: function(url,username,password,callback) {
+
+	var mainUri = parseUri(url);
+	if (mainUri.path=="") {
+		url+="/";
+	}
     var me = this;
     this.loadDataAsync(url,username,password,true,function (doc1) {
 		var nuvola = me.parseNuvolaJs(doc1,url);
