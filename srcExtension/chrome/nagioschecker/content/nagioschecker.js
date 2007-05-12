@@ -766,46 +766,46 @@ NCH.prototype = {
 
 
   enumerateStatus: function(problems) {
- var paket = new NCHPaket(this.showColInfo,this.showColAlias);
+	var paket = new NCHPaket(this.showColInfo,this.showColAlias);
+
     var newProblems={};
     for(var i=0;i<problems.length;i++) {
-	 paket.addTooltipHeader('all',this._servers[i].name,i,problems[i]["_time"]);
+		paket.addTooltipHeader('all',this._servers[i].name,i,problems[i]["_time"]);
         if (problems[i]["_error"]) {
-
-		 paket.addError('all');
+			paket.addError('all');
         }
 
         var st = null;
-		    var isNotUp = {};
-		    var isAck = {};
+		var isNotUp = {};
+		var isAck = {};
 
- 		    for(var x=0;x<this.pt.length;x++) {
-			    var probls = (problems[i]["_error"]) ? null : problems[i][this.pt[x]];
+		for(var x=0;x<this.pt.length;x++) {
+		
+			var probls = (problems[i]["_error"]) ? null : problems[i][this.pt[x]];
 
-  			  if (((probls) && (probls.length)) || (!probls)){
-			 paket.addTooltipHeader(this.pt[x],this._servers[i].name,i);
-			    }		  	
+			if (((probls) && (probls.length)) || (!probls)){
+				paket.addTooltipHeader(this.pt[x],this._servers[i].name,i);
+			}		  	
 
-          if (!probls) {
-			 paket.addError(this.pt[x]);
-          }
-          else {
+			if (!probls) {
+				paket.addError(this.pt[x]);
+			}
+			else {
+				st=this.pt[x];
 
-   						st=this.pt[x];
+				for (var j =0;j<probls.length;j++) {
 
-			    for (var j =0;j<probls.length;j++) {
-
-				    if  (
-            	(!this.filterOutAll[st])
+					if  (
+						(!this.filterOutAll[st])
 					    &&
-	          	((!probls[j].acknowledged) || ((probls[j].acknowledged) && (!this.filterOutAck))) 
+						((!probls[j].acknowledged) || ((probls[j].acknowledged) && (!this.filterOutAck))) 
 					    &&
 					    ((!probls[j].dischecks) || ((probls[j].dischecks) && (!this.filterOutDisChe))) 
 					    &&
 					    ((!probls[j].disnotifs) || ((probls[j].disnotifs) && (!this.filterOutDisNot)))
 					    &&
 					    ((!probls[j].downtime) || ((probls[j].downtime) && (!this.filterOutDowntime)))
-    			    &&
+    			    	&&
 		    			((!probls[j].isSoft) || ((probls[j].isSoft) && ((!this.filterOutSoftStat) || (isNotUp[probls[j].host]))))
 					    &&
 					    ((!this.filterOutServOnDown) || ((this.filterOutServOnDown) && ((!probls[j].service) || ((probls[j].service) && (!isNotUp[probls[j].host])))))
@@ -817,20 +817,18 @@ NCH.prototype = {
 					    ((!this.filterOutREServices) || ((this.filterOutREServices) && (!probls[j].service.match(new RegExp(this.filterOutREServicesValue)))))
 					    ) {
 
-						    var uniq = this._servers[i].name+"-"+probls[j].host+"-"+probls[j].service+"-"+probls[j].status;
-			            	newProblems[uniq]=probls[j];
-
-				    		paket.addProblem(i,this.pt[x],this.oldProblems[uniq],probls[j],this._servers[i].aliases[probls[j].host]);
+						var uniq = this._servers[i].name+"-"+probls[j].host+"-"+probls[j].service+"-"+probls[j].status;
+						newProblems[uniq]=probls[j];
+						paket.addProblem(i,this.pt[x],this.oldProblems[uniq],probls[j],this._servers[i].aliases[probls[j].host]);
 				    }
-  				  if ((this.pt[x]=="down") || (this.pt[x]=="unreachable")) {
-					    isNotUp[probls[j].host]=true;
+					if ((this.pt[x]=="down") || (this.pt[x]=="unreachable")) {
+						isNotUp[probls[j].host]=true;
 					    if (probls[j].acknowledged) {
 						    isAck[probls[j].host]=true;
 					    }
 				    }
 			    }
-
-          }
+			}
           
 
 

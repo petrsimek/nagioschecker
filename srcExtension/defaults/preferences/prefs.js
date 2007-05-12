@@ -37,7 +37,6 @@ pref("extensions.nagioschecker.filter_out_soft_states", false);
 pref("extensions.nagioschecker.filter_out_downtime", false);
 pref("extensions.nagioschecker.filter_out_services_on_down_hosts", false);
 pref("extensions.nagioschecker.filter_out_services_on_acknowledged_hosts", false);
-
 pref("extensions.nagioschecker.filter_out_all_down", false);
 pref("extensions.nagioschecker.filter_out_all_unreachable", false);
 pref("extensions.nagioschecker.filter_out_all_unknown", false);
@@ -45,7 +44,6 @@ pref("extensions.nagioschecker.filter_out_all_warning", false);
 pref("extensions.nagioschecker.filter_out_all_critical", false);
 pref("extensions.nagioschecker.filter_out_regexp_hosts", false);
 pref("extensions.nagioschecker.filter_out_regexp_services", false);
-
 pref("extensions.nagioschecker.filter_out_regexp_hosts_value", "");
 pref("extensions.nagioschecker.filter_out_regexp_services_value", "");
 
