@@ -1,3 +1,6 @@
+0.9.3
+* BUGFIX: Fixed filtering of services in scheduled downtime
+
 0.9.2
 * BUGFIX: Correct locating of url for pages without a slash on the end of the url
 

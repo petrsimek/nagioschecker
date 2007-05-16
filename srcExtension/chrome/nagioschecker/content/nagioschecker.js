@@ -778,6 +778,7 @@ NCH.prototype = {
         var st = null;
 		    var isNotUp = {};
 		    var isAck = {};
+		    var isSched = {};
 
  		    for(var x=0;x<this.pt.length;x++) {
 			    var probls = (problems[i]["_error"]) ? null : problems[i][this.pt[x]];
@@ -804,8 +805,14 @@ NCH.prototype = {
 					    &&
 					    ((!probls[j].disnotifs) || ((probls[j].disnotifs) && (!this.filterOutDisNot)))
 					    &&
-					    ((!probls[j].downtime) || ((probls[j].downtime) && (!this.filterOutDowntime)))
-    			    &&
+					    ((!this.filterOutDowntime) || ((this.filterOutDowntime) && 
+					            (
+					    		((!probls[j].service) && (!probls[j].downtime))
+				    			|| 
+					    		((probls[j].service) && (!probls[j].downtime) && (!isSched[probls[j].host]))
+					    		)))
+
+	    			    &&
 		    			((!probls[j].isSoft) || ((probls[j].isSoft) && ((!this.filterOutSoftStat) || (isNotUp[probls[j].host]))))
 					    &&
 					    ((!this.filterOutServOnDown) || ((this.filterOutServOnDown) && ((!probls[j].service) || ((probls[j].service) && (!isNotUp[probls[j].host])))))
@@ -826,6 +833,9 @@ NCH.prototype = {
 					    isNotUp[probls[j].host]=true;
 					    if (probls[j].acknowledged) {
 						    isAck[probls[j].host]=true;
+					    }
+					    if (probls[j].downtime) {
+						    isSched[probls[j].host]=true;
 					    }
 				    }
 			    }
