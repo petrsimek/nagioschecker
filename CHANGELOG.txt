@@ -1,3 +1,6 @@
+0.9.4
+* BUGFIX: Fixed empty tooltip/popup in windows other than first
+
 0.9.3
 * BUGFIX: Fixed filtering of services in scheduled downtime
 

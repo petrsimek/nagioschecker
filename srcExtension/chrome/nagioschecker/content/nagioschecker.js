@@ -4,7 +4,6 @@ var nagioschecker = null;
 var nagioscheckerLoad = function() {
 
   nagioschecker = new NCH();
-
   Components.classes["@mozilla.org/observer-service;1"]
             .getService(Components.interfaces.nsIObserverService)
             .addObserver(nagioschecker, "nagioschecker:preferences-changed", false);
@@ -55,6 +54,7 @@ NCH.prototype = {
   sndWarning:null,
   sndCritical:null,
   sndDown:null,
+  win:window,
   preferences: Components.classes["@mozilla.org/preferences-service;1"]
                                 .getService(Components.interfaces.nsIPrefBranch),
 
@@ -947,7 +947,7 @@ NCH.prototype = {
 
   updateStatus: function(paket,firstRun) {
 
-	paket.createTooltip();
+	paket.createTooltip(this.win);
 
 	this.resetBehavior(paket.isAtLeastOne());
 
@@ -1436,16 +1436,17 @@ function NCHPaket(sci,sca) {
 	this.countOldProblemsByType = function(problemType) {
 	 	return this[problemType][2];
 	}
-	this.createTooltip = function() {
+	this.createTooltip = function(win) {
+		var doc = win.document;
 	    if (this["all"][0]) {
-	      this["all"][0].create(document.getElementById('nagioschecker-popup'));
-		    this["all"][0].create(document.getElementById('nagioschecker-tooltip'));
+	      this["all"][0].create(doc.getElementById('nagioschecker-popup'));
+		    this["all"][0].create(doc.getElementById('nagioschecker-tooltip'));
 	    }
 
     	for(var i=0;i<this.pt.length;i++) {
 	      if ((this[this.pt[i]]) && (this[this.pt[i]][0])) {
-	        this[this.pt[i]][0].create(document.getElementById('nagioschecker-tooltip-'+this.pt[i]));
-	        this[this.pt[i]][0].create(document.getElementById('nagioschecker-popup-'+this.pt[i]));
+	        this[this.pt[i]][0].create(doc.getElementById('nagioschecker-tooltip-'+this.pt[i]));
+	        this[this.pt[i]][0].create(doc.getElementById('nagioschecker-popup-'+this.pt[i]));
 	      }
 	    }
 	}
