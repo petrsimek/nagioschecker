@@ -130,10 +130,33 @@ NCH.prototype = {
 
 
   switchStop: function() {
+    var wm = Components.classes["@mozilla.org/appshell/window-mediator;1"]
+                   .getService(Components.interfaces.nsIWindowMediator);
+    var browserWindow = wm.getMostRecentWindow("navigator:browser");
+    var enumerator = wm.getEnumerator("");
+    var cnt=0;
+	var firstWin = null;
+    while(enumerator.hasMoreElements()) {
+      var win = enumerator.getNext();
+      if (cnt==0) {
+      	firstWin=win;
+	    firstWin.nagioschecker.isStopped = (!firstWin.nagioschecker.isStopped);
+      }
+      else {
+      	win.nagioschecker.isStopped = firstWin.nagioschecker.isStopped;
+      }
+      if (win.document) {
+      	
+	    win.document.getElementById('nagioschecker-stoprun').setAttribute("label",(firstWin.nagioschecker.isStopped) ? this.bundle.getString("runagain") : this.bundle.getString("stop"));
+      }
+      cnt++;
+	}
+/*	
     var firstWin = this.getFirstWindow();
     firstWin.nagioschecker.isStopped = (!firstWin.nagioschecker.isStopped);
     document.getElementById('nagioschecker-stoprun').setAttribute("label",(firstWin.nagioschecker.isStopped) ? this.bundle.getString("runagain") : this.bundle.getString("stop"));
-	  this.preferences.setBoolPref("extensions.nagioschecker.stopped",firstWin.nagioschecker.isStopped);
+*/ 
+    this.preferences.setBoolPref("extensions.nagioschecker.stopped",firstWin.nagioschecker.isStopped);
     firstWin.nagioschecker.reload(true);
   },
 
@@ -504,44 +527,38 @@ NCH.prototype = {
 
 	doUpdate: function() {
 
-    if (this.timeoutId) {
-       clearTimeout(this.timeoutId);
-    }
+		if (this.timeoutId) {
+			clearTimeout(this.timeoutId);
+		}
+		if (this._servers.length>0) {
+			if (!this.isStopped) {
+				var firstWin = this.getFirstWindow();
+				if (firstWin==window) {
+					this.setLoading(true);
+					this.parser.fetchAllData(this);
+				}
+				else {
+					if (this.one_window_only) {
+						this.setIcon("disabled");
+					}
+					else {
+						firstWin.nagioschecker.setLoading(true);
+						firstWin.nagioschecker.parser.fetchAllData(nagioschecker);
+/*
 
-    if (this._servers.length>0) {
-    
-    
-    if (!this.isStopped) {
-
-      var firstWin = this.getFirstWindow();
-
-      if (firstWin==window) {
-
-        this.setLoading(true);
-  			this.parser.fetchAllData(this);
-
-      }
-      else {
-        if (this.one_window_only) {
-//          this.setNoData("disabledData");
-          this.setIcon("disabled");
-        }
-        else {
-          this.results=firstWin.nagioschecker.results;
-          this.updateStatus(this.results,true);
-        }
-      }
-
-    }
-    else {
-      this.updateAllClients(this.results);
-      
-    }
-    }
-    else {
-      this.updateAllClients(null);
-    }
-
+						this.results=firstWin.nagioschecker.results;
+						this.updateStatus(this.results,true);
+						*/ 
+					}
+				}
+			}
+			else {
+				this.updateAllClients(this.results);
+      		}
+		}
+		else {
+			this.updateAllClients(null);
+		}
 	},
 
   createUrl: function(server,type) {
@@ -618,8 +635,10 @@ NCH.prototype = {
     var browserWindow = wm.getMostRecentWindow("navigator:browser");
     var enumerator = wm.getEnumerator("");
     var cnt=0;
+//    var firstWin = null;
     while(enumerator.hasMoreElements()) {
       var win = enumerator.getNext();
+//      if (cnt==0) firstWin=win;
       if (win.nagioschecker) {
         if (!this.isStopped) {        
           if ((this.one_window_only) && (cnt>0)) {
@@ -1119,12 +1138,38 @@ NCH.prototype = {
  },
 
   setLoading: function(loading) {
+    var wm = Components.classes["@mozilla.org/appshell/window-mediator;1"]
+                   .getService(Components.interfaces.nsIWindowMediator);
+    var browserWindow = wm.getMostRecentWindow("navigator:browser");
+    var enumerator = wm.getEnumerator("");
+    while(enumerator.hasMoreElements()) {
+      var win = enumerator.getNext();
+      if (win.nagioschecker) {
+		win.nagioschecker.setIcon((loading) ? "loading" : "nagios");
+/*
     if (loading) {
       this.setIcon("loading");
     } else {
       this.setIcon("nagios");
     }
+*/
+      }
+    }
   },
+/*
+  setStopped: function(loading) {
+    var wm = Components.classes["@mozilla.org/appshell/window-mediator;1"]
+                   .getService(Components.interfaces.nsIWindowMediator);
+    var browserWindow = wm.getMostRecentWindow("navigator:browser");
+    var enumerator = wm.getEnumerator("");
+    while(enumerator.hasMoreElements()) {
+      var win = enumerator.getNext();
+      if (win.nagioschecker) {
+//		win.nagioschecker.setIcon((loading) ? "loading" : "nagios");
+      }
+    }
+  },
+*/
 
   setIcon: function(type) {
 
@@ -1151,6 +1196,8 @@ NCH.prototype = {
 		    ico.setAttribute("tooltiptext",nagioschecker.bundle.getString("stoppedRun"));
 			break;
 	}
+
+
   },
 
   // retrive actual time and workingtime then calculate whether or not check Nagios status
