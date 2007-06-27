@@ -544,11 +544,6 @@ NCH.prototype = {
 					else {
 						firstWin.nagioschecker.setLoading(true);
 						firstWin.nagioschecker.parser.fetchAllData(nagioschecker);
-/*
-
-						this.results=firstWin.nagioschecker.results;
-						this.updateStatus(this.results,true);
-						*/ 
 					}
 				}
 			}
@@ -657,6 +652,10 @@ NCH.prototype = {
         else {
           win.nagioschecker.setNoData("");
           win.nagioschecker.setIcon("stop");
+          /*
+          this.setNoData("");
+          this.setIcon("stop");
+          */ 
         }
       }
       cnt++;
@@ -941,7 +940,7 @@ NCH.prototype = {
     var mainPanel=document.getElementById('nagioschecker-panel');
 
 
-    if ((isAny) && (this.infoWindowType>0)) {
+    if ((isAny) && (this.infoWindowType>0) && (!this.isStopped)) {
       if (this.infoWindowType==1) {
         mainPanel.setAttribute("tooltip", "nagioschecker-tooltip");
         for (var pType in fld) {
@@ -1145,7 +1144,7 @@ NCH.prototype = {
     while(enumerator.hasMoreElements()) {
       var win = enumerator.getNext();
       if (win.nagioschecker) {
-		win.nagioschecker.setIcon((loading) ? "loading" : "nagios");
+		win.nagioschecker.setIcon((loading) ? "loading" : ((win.nagioschecker.isStopped) ? "stop" : "nagios"));
 /*
     if (loading) {
       this.setIcon("loading");
@@ -1172,7 +1171,6 @@ NCH.prototype = {
 */
 
   setIcon: function(type) {
-
     var ico = document.getElementById('nagioschecker-img');
 	switch (type) {
 		case "loading":

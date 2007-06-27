@@ -449,6 +449,7 @@ NCHParser.prototype = {
             var downtime=false;
 
             var icons    = getUglyNode(viptd[3],[0,0,0,2,1,1,0]);
+			if (icons.childNodes) {
             for(var j=0;j<icons.childNodes.length;j++) {
               if (icons.childNodes[j] instanceof HTMLTableCellElement) {
                 var ico = getUglyNode(icons.childNodes[j],[0,0]);
@@ -471,7 +472,7 @@ NCHParser.prototype = {
                 }
               }
             }
-
+			}
 
             var status  = getUglyNodeValue(viptd[5],[0]);
             var lastCheck  = this.nagiosDateToTimestamp(getUglyNodeValue(viptd[7],[0]));
@@ -539,6 +540,7 @@ NCHParser.prototype = {
             var downtime=false;
 
             var icons    = getUglyNode(viptd[1],[0,1,0,3,1,1,0]);
+			if (icons.childNodes) {
             for(var j=0;j<icons.childNodes.length;j++) {
               if (icons.childNodes[j] instanceof HTMLTableCellElement) {
                 var ico = getUglyNode(icons.childNodes[j],[0,0]);
@@ -565,6 +567,7 @@ NCHParser.prototype = {
                 }
               }
             }
+			}
 
             var status  = getUglyNodeValue(viptd[3],[0]);
             var lastCheck  = this.nagiosDateToTimestamp(getUglyNodeValue(viptd[5],[0]));
