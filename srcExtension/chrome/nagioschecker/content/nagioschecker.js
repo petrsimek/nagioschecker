@@ -1134,7 +1134,6 @@ NCH.prototype = {
 
     var mainPanel=document.getElementById('nagioschecker-panel');
     mainPanel.removeAttribute("onclick");
-		  		alert('f:'+document.getElementById('nagioschecker-panel').getAttribute("onlick"));
 
 		 if ((this.infoType==2) || (this.infoType==5)) {
 	    infoLabel.setAttribute("value"," 0 ");
