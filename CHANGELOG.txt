@@ -1,3 +1,7 @@
+0.9.5
+* BUGFIX: Stop/Run issues when triggered from window other than first
+* BUGFIX: Fixed filtering of services by regular expression
+
 0.9.4
 * BUGFIX: Fixed empty tooltip/popup in windows other than first
 

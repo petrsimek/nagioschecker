@@ -149,7 +149,7 @@ NCH.prototype = {
       	
 	    win.document.getElementById('nagioschecker-stoprun').setAttribute("label",(firstWin.nagioschecker.isStopped) ? this.bundle.getString("runagain") : this.bundle.getString("stop"));
       }
-		win.nagioschecker.resetBehavior(false);
+		win.nagioschecker.resetBehavior(true);
       cnt++;
 	}
 /*	
@@ -653,7 +653,7 @@ NCH.prototype = {
         else {
           win.nagioschecker.setNoData("");
           win.nagioschecker.setIcon("stop");
-          win.nagioschecker.resetBehavior(false);
+          win.nagioschecker.resetBehavior(true);
           /*
           this.setNoData("");
           this.setIcon("stop");
@@ -897,9 +897,9 @@ NCH.prototype = {
 			}
 			else {
 //				alert('odebranonclick');
-//			  	mainPanel.setAttribute("onclick","alert('x');");
+			  	mainPanel.setAttribute("onclick","void(0);");
 
-		  		mainPanel.removeAttribute("onclick");
+//		  		mainPanel.removeAttribute("onclick");
 			}
 			  break;
 		  default:
@@ -951,7 +951,6 @@ NCH.prototype = {
   	          "critical": document.getElementById('nagioschecker-services-critical')
               };
     var mainPanel=document.getElementById('nagioschecker-panel');
-
 
     if ((isAny) && (this.infoWindowType>0) && (!this.isStopped)) {
       if (this.infoWindowType==1) {
@@ -1159,7 +1158,7 @@ NCH.prototype = {
       var win = enumerator.getNext();
       if (win.nagioschecker) {
 		win.nagioschecker.setIcon((loading) ? "loading" : ((win.nagioschecker.isStopped) ? "stop" : "nagios"));
-		win.nagioschecker.resetBehavior(false);
+		win.nagioschecker.resetBehavior(true);
 /*
     if (loading) {
       this.setIcon("loading");
