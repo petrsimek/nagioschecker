@@ -130,10 +130,34 @@ NCH.prototype = {
 
 
   switchStop: function() {
+    var wm = Components.classes["@mozilla.org/appshell/window-mediator;1"]
+                   .getService(Components.interfaces.nsIWindowMediator);
+    var browserWindow = wm.getMostRecentWindow("navigator:browser");
+    var enumerator = wm.getEnumerator("");
+    var cnt=0;
+	var firstWin = null;
+    while(enumerator.hasMoreElements()) {
+      var win = enumerator.getNext();
+      if (cnt==0) {
+      	firstWin=win;
+	    firstWin.nagioschecker.isStopped = (!firstWin.nagioschecker.isStopped);
+      }
+      else {
+      	win.nagioschecker.isStopped = firstWin.nagioschecker.isStopped;
+      }
+      if (win.document) {
+      	
+	    win.document.getElementById('nagioschecker-stoprun').setAttribute("label",(firstWin.nagioschecker.isStopped) ? this.bundle.getString("runagain") : this.bundle.getString("stop"));
+      }
+		win.nagioschecker.resetBehavior(true);
+      cnt++;
+	}
+/*	
     var firstWin = this.getFirstWindow();
     firstWin.nagioschecker.isStopped = (!firstWin.nagioschecker.isStopped);
     document.getElementById('nagioschecker-stoprun').setAttribute("label",(firstWin.nagioschecker.isStopped) ? this.bundle.getString("runagain") : this.bundle.getString("stop"));
-	  this.preferences.setBoolPref("extensions.nagioschecker.stopped",firstWin.nagioschecker.isStopped);
+*/ 
+    this.preferences.setBoolPref("extensions.nagioschecker.stopped",firstWin.nagioschecker.isStopped);
     firstWin.nagioschecker.reload(true);
   },
 
@@ -179,7 +203,7 @@ NCH.prototype = {
                   versionOlderThan20:this.preferences.getBoolPref("extensions.nagioschecker."+(i+1)+".vot20"),
                   getAliases:gAli,
                   aliases:{},
-                  disabled:gDis,
+                  disabled:gDis
                   });
         }
       }
@@ -504,44 +528,33 @@ NCH.prototype = {
 
 	doUpdate: function() {
 
-    if (this.timeoutId) {
-       clearTimeout(this.timeoutId);
-    }
-
-    if (this._servers.length>0) {
-    
-    
-    if (!this.isStopped) {
-
-      var firstWin = this.getFirstWindow();
-
-      if (firstWin==window) {
-
-        this.setLoading(true);
-  			this.parser.fetchAllData(this);
-
-      }
-      else {
-        if (this.one_window_only) {
-//          this.setNoData("disabledData");
-          this.setIcon("disabled");
-        }
-        else {
-          this.results=firstWin.nagioschecker.results;
-          this.updateStatus(this.results,true);
-        }
-      }
-
-    }
-    else {
-      this.updateAllClients(this.results);
-      
-    }
-    }
-    else {
-      this.updateAllClients(null);
-    }
-
+		if (this.timeoutId) {
+			clearTimeout(this.timeoutId);
+		}
+		if (this._servers.length>0) {
+			if (!this.isStopped) {
+				var firstWin = this.getFirstWindow();
+				if (firstWin==window) {
+					this.setLoading(true);
+					this.parser.fetchAllData(this);
+				}
+				else {
+					if (this.one_window_only) {
+						this.setIcon("disabled");
+					}
+					else {
+						firstWin.nagioschecker.setLoading(true);
+						firstWin.nagioschecker.parser.fetchAllData(nagioschecker);
+					}
+				}
+			}
+			else {
+				this.updateAllClients(this.results);
+      		}
+		}
+		else {
+			this.updateAllClients(null);
+		}
 	},
 
   createUrl: function(server,type) {
@@ -618,8 +631,10 @@ NCH.prototype = {
     var browserWindow = wm.getMostRecentWindow("navigator:browser");
     var enumerator = wm.getEnumerator("");
     var cnt=0;
+//    var firstWin = null;
     while(enumerator.hasMoreElements()) {
       var win = enumerator.getNext();
+//      if (cnt==0) firstWin=win;
       if (win.nagioschecker) {
         if (!this.isStopped) {        
           if ((this.one_window_only) && (cnt>0)) {
@@ -638,6 +653,11 @@ NCH.prototype = {
         else {
           win.nagioschecker.setNoData("");
           win.nagioschecker.setIcon("stop");
+          win.nagioschecker.resetBehavior(true);
+          /*
+          this.setNoData("");
+          this.setIcon("stop");
+          */ 
         }
       }
       cnt++;
@@ -681,8 +701,10 @@ NCH.prototype = {
 		document.getElementById(popupId).hidePopup();
   },
   showNchPopup: function(miniElem, event, popupId) {	
-	  if(event.button == 0) 
+	  if(event.button == 0) {
+//alert('otevren'+popupId);
 		  document.getElementById(popupId).showPopup(miniElem,  -1, -1, 'popup', 'topright' , 'bottomright');
+	  }
   },
 
 
@@ -812,9 +834,9 @@ NCH.prototype = {
 					    &&
 					    ((!this.filterOutServOnAck) || ((this.filterOutServOnAck) && ((!probls[j].service) || ((probls[j].service) && (!isAck[probls[j].host])))))
 					    &&
-					    ((!this.filterOutREHosts) || ((this.filterOutREHosts) && (!probls[j].host.match(new RegExp(this.filterOutREHostsValue)))))
+					    ((!this.filterOutREHosts) || ((this.filterOutREHosts) && (probls[j].host) && (!probls[j].host.match(new RegExp(this.filterOutREHostsValue)))))
 					    &&
-					    ((!this.filterOutREServices) || ((this.filterOutREServices) && (!probls[j].service.match(new RegExp(this.filterOutREServicesValue)))))
+					    ((!this.filterOutREServices) || ((this.filterOutREServices) && (probls[j].service) && (!probls[j].service.match(new RegExp(this.filterOutREServicesValue)))))
 					    ) {
 
 						var uniq = this._servers[i].name+"-"+probls[j].host+"-"+probls[j].service+"-"+probls[j].status;
@@ -857,7 +879,16 @@ NCH.prototype = {
 			  mainPanel.setAttribute("onclick","nagioschecker.statusBarOnClick(event,'main');");
 			  break;
 		  case 3:
-		  	mainPanel.setAttribute("onclick","nagioschecker.showNchPopup(this,event,'nagioschecker-popup');");
+			if (!this.isStopped) {
+//				alert('pridanonclick');
+			  	mainPanel.setAttribute("onclick","nagioschecker.showNchPopup(this,event,'nagioschecker-popup');");
+			}
+			else {
+//				alert('odebranonclick');
+			  	mainPanel.setAttribute("onclick","void(0);");
+
+//		  		mainPanel.removeAttribute("onclick");
+			}
 			  break;
 		  default:
 	  		mainPanel.removeAttribute("onclick");
@@ -865,34 +896,34 @@ NCH.prototype = {
 	  }
 
 	  if (this.oneclick>0) {
-			mainPanel.setAttribute("style","cursor:pointer");
-      for (var pType in fld) {
-        fld[pType].setAttribute("style","cursor:pointer");
-      }
+		mainPanel.setAttribute("style","cursor:pointer");
+    	for (var pType in fld) {
+	      fld[pType].setAttribute("style","cursor:pointer");
+	    }
 	  }
 
 	  if (this.oneclick==2){
-      for (var pType in fld) {
-        fld[pType].setAttribute("style","cursor:pointer");
-      }
-  	  fld["down"].setAttribute("onclick","nagioschecker.statusBarOnClick(event,'hosts');");
-  	  fld["unreachable"].setAttribute("onclick","nagioschecker.statusBarOnClick(event,'hosts');");
-  	  fld["unknown"].setAttribute("onclick","nagioschecker.statusBarOnClick(event,'services');");
-  	  fld["warning"].setAttribute("onclick","nagioschecker.statusBarOnClick(event,'services');");
-  	  fld["critical"].setAttribute("onclick","nagioschecker.statusBarOnClick(event,'services');");
+	      for (var pType in fld) {
+	        fld[pType].setAttribute("style","cursor:pointer");
+	      }
+	  	  fld["down"].setAttribute("onclick","nagioschecker.statusBarOnClick(event,'hosts');");
+	  	  fld["unreachable"].setAttribute("onclick","nagioschecker.statusBarOnClick(event,'hosts');");
+	  	  fld["unknown"].setAttribute("onclick","nagioschecker.statusBarOnClick(event,'services');");
+	  	  fld["warning"].setAttribute("onclick","nagioschecker.statusBarOnClick(event,'services');");
+	  	  fld["critical"].setAttribute("onclick","nagioschecker.statusBarOnClick(event,'services');");
 	  }
 	  else {
-      if (this.oneclick==4) {
-        for (var pType in fld) {
-          fld[pType].setAttribute("style","cursor:pointer");
-    	    fld[pType].setAttribute("onclick","nagioschecker.showNchPopup(this,event,'nagioschecker-popup-"+pType+"');");
-        }
-      }
-      else {
-        for (var pType in fld) {
-          fld[pType].removeAttribute("onclick");
-        }
-      }
+	      if ((this.oneclick==4) && (!this.isStopped)) {
+	        for (var pType in fld) {
+	          fld[pType].setAttribute("style","cursor:pointer");
+	    	    fld[pType].setAttribute("onclick","nagioschecker.showNchPopup(this,event,'nagioschecker-popup-"+pType+"');");
+	        }
+	      }
+	      else {
+	        for (var pType in fld) {
+	          fld[pType].removeAttribute("onclick");
+	        }
+	      }
 	  }
 
     this.resetTooltips(isAny);
@@ -909,8 +940,7 @@ NCH.prototype = {
               };
     var mainPanel=document.getElementById('nagioschecker-panel');
 
-
-    if ((isAny) && (this.infoWindowType>0)) {
+    if ((isAny) && (this.infoWindowType>0) && (!this.isStopped)) {
       if (this.infoWindowType==1) {
         mainPanel.setAttribute("tooltip", "nagioschecker-tooltip");
         for (var pType in fld) {
@@ -1107,15 +1137,41 @@ NCH.prototype = {
  },
 
   setLoading: function(loading) {
+    var wm = Components.classes["@mozilla.org/appshell/window-mediator;1"]
+                   .getService(Components.interfaces.nsIWindowMediator);
+    var browserWindow = wm.getMostRecentWindow("navigator:browser");
+    var enumerator = wm.getEnumerator("");
+    while(enumerator.hasMoreElements()) {
+      var win = enumerator.getNext();
+      if (win.nagioschecker) {
+		win.nagioschecker.setIcon((loading) ? "loading" : ((win.nagioschecker.isStopped) ? "stop" : "nagios"));
+		win.nagioschecker.resetBehavior(true);
+/*
     if (loading) {
       this.setIcon("loading");
     } else {
       this.setIcon("nagios");
     }
+*/
+      }
+    }
   },
+/*
+  setStopped: function(loading) {
+    var wm = Components.classes["@mozilla.org/appshell/window-mediator;1"]
+                   .getService(Components.interfaces.nsIWindowMediator);
+    var browserWindow = wm.getMostRecentWindow("navigator:browser");
+    var enumerator = wm.getEnumerator("");
+    while(enumerator.hasMoreElements()) {
+      var win = enumerator.getNext();
+      if (win.nagioschecker) {
+//		win.nagioschecker.setIcon((loading) ? "loading" : "nagios");
+      }
+    }
+  },
+*/
 
   setIcon: function(type) {
-
     var ico = document.getElementById('nagioschecker-img');
 	switch (type) {
 		case "loading":
@@ -1139,6 +1195,8 @@ NCH.prototype = {
 		    ico.setAttribute("tooltiptext",nagioschecker.bundle.getString("stoppedRun"));
 			break;
 	}
+
+
   },
 
   // retrive actual time and workingtime then calculate whether or not check Nagios status

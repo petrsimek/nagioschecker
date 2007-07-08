@@ -2,6 +2,13 @@
 * NEW: ability to change ordering of servers
 * NEW: time of last download of alerts for each server (shown in tooltip)
 
+0.9.5
+* BUGFIX: Stop/Run issues when triggered from window other than first
+* BUGFIX: Fixed filtering of services by regular expression
+
+0.9.4
+* BUGFIX: Fixed empty tooltip/popup in windows other than first
+
 0.9.2
 * BUGFIX: Correct locating of url for pages without a slash on the end of the url
 
