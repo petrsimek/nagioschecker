@@ -61,7 +61,17 @@
       </tabpanel>
       <tabpanel  orient="vertical">
 	      <groupbox>
-  		      <caption class="nch" label="&nch.prefs.filterout;"/>	
+  		      <caption class="nch" label="Type of Filtering"/>	
+<vbox>
+          <radiogroup prefstring="extensions.nagioschecker.filter_only" id="nch-general-filter_only" orient="horizontal">
+            <radio id="nch-general-filter_only-0" label="&nch.prefs.filterout;" value="0"/>
+            <radio id="nch-general-filter_only-1" label="Filter out all alerts except:" value="1"/>
+          </radiogroup>
+
+</vbox>
+	      </groupbox>
+	      <groupbox>
+  		      <caption class="nch" label="Conditions"/>	
             <vbox>
               <checkbox prefstring="extensions.nagioschecker.filter_out_acknowledged" id="nch-general-filter_out_acknowledged" label="&nch.prefs.acknowledged;"/>
               <checkbox prefstring="extensions.nagioschecker.filter_out_disabled_notifications" id="nch-general-filter_out_disabled_notifications" label="&nch.prefs.disabled_notifications;"/>

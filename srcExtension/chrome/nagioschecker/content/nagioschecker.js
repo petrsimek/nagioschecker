@@ -70,6 +70,7 @@ NCH.prototype = {
   blinking: 2,
   doubleclick: 0,
   oneclick: 0,
+  filterOnly: 0,
   filterOutAck: true,
   filterOutDisNot: false,
   filterOutDisChe: true,
@@ -308,6 +309,13 @@ NCH.prototype = {
     }
     catch(e) {
       this.showColAlias=false;
+    }
+
+    try {
+      this.filterOnly = this.preferences.getIntPref("extensions.nagioschecker.filter_only");
+    }
+    catch(e) {
+      this.filterOnly = 0;
     }
 
     try {
@@ -817,7 +825,7 @@ NCH.prototype = {
 
 				for (var j =0;j<probls.length;j++) {
 
-					if  (
+					var filter_passed =  (
 						(!this.filterOutAll[st])
 					    &&
 						((!probls[j].acknowledged) || ((probls[j].acknowledged) && (!this.filterOutAck))) 
@@ -837,7 +845,11 @@ NCH.prototype = {
 					    ((!this.filterOutREHosts) || ((this.filterOutREHosts) && (probls[j].host) && (!probls[j].host.match(new RegExp(this.filterOutREHostsValue)))))
 					    &&
 					    ((!this.filterOutREServices) || ((this.filterOutREServices) && (probls[j].service) && (!probls[j].service.match(new RegExp(this.filterOutREServicesValue)))))
-					    ) {
+					    );
+					    
+					if (((!this.filterOnly) && (filter_passed))
+						||
+						((this.filterOnly) && (!filter_passed))) {
 
 						var uniq = this._servers[i].name+"-"+probls[j].host+"-"+probls[j].service+"-"+probls[j].status;
 						newProblems[uniq]=probls[j];

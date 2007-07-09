@@ -30,6 +30,8 @@ pref("extensions.nagioschecker.blinking", 2);
 pref("extensions.nagioschecker.play_sound", 2);
 pref("extensions.nagioschecker.click", 0);
 
+pref("extensions.nagioschecker.filter_only", 0);
+
 pref("extensions.nagioschecker.filter_out_acknowledged", true);
 pref("extensions.nagioschecker.filter_out_disabled_notifications", false);
 pref("extensions.nagioschecker.filter_out_disabled_checks", true);

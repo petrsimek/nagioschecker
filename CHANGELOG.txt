@@ -1,6 +1,7 @@
 0.10
 * NEW: ability to change ordering of servers
 * NEW: time of last download of alerts for each server (shown in tooltip)
+* NEW: ability to choose inverse filtering
 
 0.9.5
 * BUGFIX: Stop/Run issues when triggered from window other than first

@@ -326,6 +326,7 @@ NCHOptions.prototype = {
 		var radios = [
        "nch-view-info_type",
        "nch-view-info_window_type",
+       "nch-general-filter_only",
        "nch-behavior-blinking",
        "nch-behavior-play_sound",
        "nch-behavior-oneclick",
@@ -461,6 +462,7 @@ NCHOptions.prototype = {
   		var radios = [
         "nch-view-info_type",
         "nch-view-info_window_type",
+       "nch-general-filter_only",
         "nch-behavior-blinking",
         "nch-behavior-play_sound",
        "nch-behavior-oneclick",
