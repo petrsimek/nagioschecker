@@ -251,9 +251,8 @@ NCHOptions.prototype = {
     getColumnProperties: function(aColumn, aColumnElement, aProperty) {},
     getCellProperties: function(aRow, aCol,aProperty) {
     
-		if (gNCHOptions._servers[aRow].disabled){
-			var aserv=Components.classes["@mozilla.org/atom-service;1"].
-              getService(Components.interfaces.nsIAtomService);
+		if (gNCHOptions._servers[aRow].disabled) {
+			var aserv=Components.classes["@mozilla.org/atom-service;1"].getService(Components.interfaces.nsIAtomService);
 			aProperty.AppendElement(aserv.getAtom("disServer"));
 		}
     
@@ -311,6 +310,7 @@ NCHOptions.prototype = {
         "nch-general-filter_out_downtime",
         "nch-general-filter_out_services_on_down_hosts",
         "nch-general-filter_out_services_on_acknowledged_hosts",
+        "nch-general-filter_out_flapping",
         "nch-behavior-sounds_by_type_down",
         "nch-behavior-sounds_by_type_unreachable",
         "nch-behavior-sounds_by_type_critical",
@@ -449,6 +449,7 @@ NCHOptions.prototype = {
         "nch-general-filter_out_downtime",
         "nch-general-filter_out_services_on_down_hosts",
         "nch-general-filter_out_services_on_acknowledged_hosts",
+        "nch-general-filter_out_flapping",
         "nch-behavior-sounds_by_type_down",
         "nch-behavior-sounds_by_type_unreachable",
         "nch-behavior-sounds_by_type_critical",

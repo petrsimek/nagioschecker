@@ -426,6 +426,7 @@ NCHParser.prototype = {
             var dischecks=false;
             var disnotifs=false;
             var downtime=false;
+            var flapping=false;
 
             var icons    = getUglyNode(viptd[3],[0,0,0,2,1,1,0]);
 			if (icons.childNodes) {
@@ -447,6 +448,9 @@ NCHParser.prototype = {
                     if (tit.match("scheduled downtime")) {
                       downtime=true;
                     }
+                    if (tit.match("flapping")) {
+                      flapping=true;
+                    }
                   }
                 }
               }
@@ -466,13 +470,13 @@ NCHParser.prototype = {
             if ((sto) && (parseInt(sto[1])<parseInt(sto[2]))) {
               isSoft=true;
             }         
-				    if ((status=="UNKNOWN") || (status=="WARNING") || (status=="CRITICAL")) {
-              var tmpo ={"type":"s","host": host,"service":service,"status":this.toLower[status],"lastCheck":lastCheck,"durationSec":durationSec,"duration":duration,"attempt":attempt,"info":info,"acknowledged":acknowledged,"dischecks":dischecks,"disnotifs":disnotifs,"isSoft":isSoft,"downtime":downtime};
+            if ((status=="UNKNOWN") || (status=="WARNING") || (status=="CRITICAL")) {
+              var tmpo ={"type":"s","host": host,"service":service,"status":this.toLower[status],"lastCheck":lastCheck,"durationSec":durationSec,"duration":duration,"attempt":attempt,"info":info,"acknowledged":acknowledged,"dischecks":dischecks,"disnotifs":disnotifs,"isSoft":isSoft,"downtime":downtime,"flapping":flapping};
 	            this.problems[pos][this.toLower[status]].push(tmpo);
   					  if ((this.manager._servers[pos].getAliases) && (!this.manager._servers[pos].aliases[host])) {
 						    this.missingAliases[pos].push(host);
 					    }
-				    }
+				}
             lastHost=host;
           }
         }
@@ -510,6 +514,7 @@ NCHParser.prototype = {
             var dischecks=false;
             var disnotifs=false;
             var downtime=false;
+            var flapping=false;
 
             var icons    = getUglyNode(viptd[1],[0,1,0,3,1,1,0]);
 			if (icons.childNodes) {
@@ -535,6 +540,9 @@ NCHParser.prototype = {
                     if (tit.match("scheduled downtime")) {
                       downtime=true;
                     }
+                    if (tit.match("flapping")) {
+                      flapping=true;
+                    }
                   }
                 }
               }
@@ -548,7 +556,7 @@ NCHParser.prototype = {
             var durationSec  = this.nagiosDurationToSeconds(tmp_dur);
             var info  = getUglyNodeValue(viptd[9],[0]);
 				    if ((status=="DOWN") || (status=="UNREACHABLE")) {
-            	this.problems[pos][this.toLower[status]].push({"type":"h","host": host,"service":null,"status":this.toLower[status],"lastCheck":lastCheck,"durationSec":durationSec,"duration":duration,"attempt":null,"info":info,"acknowledged":acknowledged,"dischecks":dischecks,"disnotifs":disnotifs,"isSoft":false,"downtime":downtime});
+            	this.problems[pos][this.toLower[status]].push({"type":"h","host": host,"service":null,"status":this.toLower[status],"lastCheck":lastCheck,"durationSec":durationSec,"duration":duration,"attempt":null,"info":info,"acknowledged":acknowledged,"dischecks":dischecks,"disnotifs":disnotifs,"isSoft":false,"downtime":downtime,"flapping":flapping});
 					    if ((this.manager._servers[pos].getAliases) && (!this.manager._servers[pos].aliases[host])) {
 						    this.missingAliases[pos].push(host);
 					    }

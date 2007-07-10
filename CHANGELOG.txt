@@ -2,6 +2,8 @@
 * NEW: ability to change ordering of servers
 * NEW: time of last download of alerts for each server (shown in tooltip)
 * NEW: ability to choose inverse filtering
+* NEW: added filtering of flapping hosts and services
+* NEW: support for Flock 0.9+
 
 0.9.5
 * BUGFIX: Stop/Run issues when triggered from window other than first

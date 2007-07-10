@@ -48,6 +48,7 @@ pref("extensions.nagioschecker.filter_out_regexp_hosts", false);
 pref("extensions.nagioschecker.filter_out_regexp_services", false);
 pref("extensions.nagioschecker.filter_out_regexp_hosts_value", "");
 pref("extensions.nagioschecker.filter_out_regexp_services_value", "");
+pref("extensions.nagioschecker.filter_out_flapping", false);
 
 pref("extensions.nagioschecker.sound_warning", 0);
 pref("extensions.nagioschecker.sound_warning_path", "");

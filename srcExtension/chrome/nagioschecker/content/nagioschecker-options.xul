@@ -80,6 +80,7 @@
               <checkbox prefstring="extensions.nagioschecker.filter_out_soft_states" id="nch-general-filter_out_soft_states" label="&nch.prefs.soft_states;"/>
               <checkbox prefstring="extensions.nagioschecker.filter_out_services_on_down_hosts" id="nch-general-filter_out_services_on_down_hosts" label="&nch.prefs.services_on_down_hosts;"/>
               <checkbox prefstring="extensions.nagioschecker.filter_out_services_on_acknowledged_hosts" id="nch-general-filter_out_services_on_acknowledged_hosts" label="&nch.prefs.services_on_acknowledged_hosts;"/>
+              <checkbox prefstring="extensions.nagioschecker.filter_out_flapping" id="nch-general-filter_out_flapping" label="&nch.prefs.allflapping;"/>
               <separator class="thin"/>
               <checkbox prefstring="extensions.nagioschecker.filter_out_all_down" id="nch-general-filter_out_all_down" label="&nch.prefs.alldownhosts;"/>
               <checkbox prefstring="extensions.nagioschecker.filter_out_all_unreachable" id="nch-general-filter_out_all_unreachable" label="&nch.prefs.allunreachablehosts;"/>

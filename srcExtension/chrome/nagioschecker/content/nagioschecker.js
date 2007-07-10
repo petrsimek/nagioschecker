@@ -83,6 +83,7 @@ NCH.prototype = {
   filterOutREHostsValue: "",
   filterOutREServicesValue: "",
   filterOutAll:{"down":false,"unreachable":false,"uknown":false,"warning":false,"critical":false},
+  filterOutFlapping: true,
   soundBT:{},
   parser: null,
   pt:["down","unreachable","unknown","warning","critical"],
@@ -144,7 +145,9 @@ NCH.prototype = {
 	    firstWin.nagioschecker.isStopped = (!firstWin.nagioschecker.isStopped);
       }
       else {
-      	win.nagioschecker.isStopped = firstWin.nagioschecker.isStopped;
+      	if (win.nagioschecker) {
+	      	win.nagioschecker.isStopped = firstWin.nagioschecker.isStopped;
+      	}
       }
       if (win.document) {
       	
@@ -389,6 +392,12 @@ NCH.prototype = {
     }
     catch(e) {
       this.filterOutREServicesValue="";
+    }
+    try {
+      this.filterOutFlapping = this.preferences.getBoolPref("extensions.nagioschecker.filter_out_flapping");
+    }
+    catch(e) {
+      this.filterOutFlapping=false;
     }
 
     try {
@@ -835,6 +844,8 @@ NCH.prototype = {
 					    ((!probls[j].disnotifs) || ((probls[j].disnotifs) && (!this.filterOutDisNot)))
 					    &&
 					    ((!probls[j].downtime) || ((probls[j].downtime) && (!this.filterOutDowntime)))
+					    &&
+					    ((!probls[j].flapping) || ((probls[j].flapping) && (!this.filterOutFlapping)))
     			    	&&
 		    			((!probls[j].isSoft) || ((probls[j].isSoft) && ((!this.filterOutSoftStat) || (isNotUp[probls[j].host]))))
 					    &&
