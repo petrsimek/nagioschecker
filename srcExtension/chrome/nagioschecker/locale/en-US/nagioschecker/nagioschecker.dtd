@@ -124,3 +124,7 @@
 
 <!ENTITY nch.prefs.moveup "Move up">
 <!ENTITY nch.prefs.movedown "Move down">
+
+<!ENTITY nch.prefs.filteroutconditions "alerts by conditions">
+<!ENTITY nch.prefs.filteroutexcept "all alerts except the conditions">
+<!ENTITY nch.prefs.conditions "Conditions">

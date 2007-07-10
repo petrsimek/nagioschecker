@@ -123,3 +123,7 @@
 
 <!ENTITY nch.prefs.moveup "Posunout nahoru">
 <!ENTITY nch.prefs.movedown "Posunout dolů">
+
+<!ENTITY nch.prefs.filteroutconditions "události odpovídající podmínkám">
+<!ENTITY nch.prefs.filteroutexcept "všechny události mimo podmínky">
+<!ENTITY nch.prefs.conditions "Podmínky">
