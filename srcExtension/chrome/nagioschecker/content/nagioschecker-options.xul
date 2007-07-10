@@ -148,6 +148,7 @@
             <checkbox prefstring="extensions.nagioschecker.one_window_only" id="nch-general-one_window_only" label="&nch.prefs.onewindowonly;"/>
             <checkbox prefstring="extensions.nagioschecker.show_window_column_information" id="nch-view-show_window_column_information" label="&nch.prefs.showinfocolumn;"/>
             <checkbox prefstring="extensions.nagioschecker.show_window_column_alias" id="nch-view-show_window_column_alias" label="&nch.prefs.showaliascolumn;"/>
+            <checkbox prefstring="extensions.nagioschecker.show_window_column_flags" id="nch-view-show_window_column_flags" label="&nch.prefs.showflagscolumn;"/>
           </vbox>
         </groupbox>
       </tabpanel>

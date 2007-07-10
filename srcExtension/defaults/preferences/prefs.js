@@ -14,6 +14,7 @@ pref("extensions.nagioschecker.show_statusbar_critical", true);
 
 pref("extensions.nagioschecker.show_window_column_information", true);
 pref("extensions.nagioschecker.show_window_column_alias", false);
+pref("extensions.nagioschecker.show_window_column_flags", false);
 
 pref("extensions.nagioschecker.sounds_by_type_down", true);
 pref("extensions.nagioschecker.sounds_by_type_unreachable", true);

@@ -409,7 +409,7 @@ NCHParser.prototype = {
     if (doc!=null) {
       var ar = getElementsByClass("status",doc,"table");
       if (ar[0]) {
-      var viptr = ar[0].childNodes[1].childNodes;
+      var viptr = (ar[0].childNodes[1]) ? ar[0].childNodes[1].childNodes : ar[0].childNodes[0].childNodes;
       var lastHost="";
       for (var i = 2; i < viptr.length; i+=2) {
         if (viptr[i] instanceof HTMLTableRowElement) {
@@ -501,7 +501,7 @@ NCHParser.prototype = {
     if (doc!=null) {
       var ar = getElementsByClass("status",doc,"table");
       if (ar[0]) {
-      var viptr = ar[0].childNodes[1].childNodes;
+      var viptr = (ar[0].childNodes[1]) ? ar[0].childNodes[1].childNodes : ar[0].childNodes[0].childNodes;
       var lastHost="";
       for (var i = 2; i < viptr.length; i+=2) {
         if (viptr[i] instanceof HTMLTableRowElement) {
@@ -530,9 +530,6 @@ NCHParser.prototype = {
                     }
                     if (tit.match("hecks") && tit.match("have been disabled")) {
                       dischecks=true;
-                    }
-                    if (tit.match("otification") && tit.match("have been disabled")) {
-                      disnotifs=true;
                     }
                     if (tit.match("otification") && tit.match("have been disabled")) {
                       disnotifs=true;

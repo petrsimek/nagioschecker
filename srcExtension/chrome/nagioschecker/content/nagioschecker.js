@@ -66,6 +66,7 @@ NCH.prototype = {
   showSb:{},
   showColInfo:true,
   showColAlias:false,
+  showColFlags:false,
   play_sound: 2,
   blinking: 2,
   doubleclick: 0,
@@ -305,6 +306,13 @@ NCH.prototype = {
     }
     catch(e) {
       this.showColInfo=true;
+    }
+
+    try {
+      this.showColFlags = this.preferences.getBoolPref("extensions.nagioschecker.show_window_column_flags");
+    }
+    catch(e) {
+      this.showColFlags=true;
     }
 
     try {
@@ -805,7 +813,7 @@ NCH.prototype = {
 
 
   enumerateStatus: function(problems) {
-	var paket = new NCHPaket(this.showColInfo,this.showColAlias);
+	var paket = new NCHPaket(this.showColInfo,this.showColAlias,this.showColFlags);
 
     var newProblems={};
     for(var i=0;i<problems.length;i++) {
@@ -1241,13 +1249,14 @@ NCH.prototype = {
 }
 
 
-function NCHToolTip(showColInfo,showColAlias) {
+function NCHToolTip(showColInfo,showColAlias,showColFlags) {
   this._rows=null;
   this.title=title;
   this._vbox=null;
   this.headers = [];
   this.showColInfo=showColInfo;
   this.showColAlias=showColAlias;
+  this.showColFlags=showColFlags;
 	this.actH=-1;
   this.create = function(from) {
     this._tooltip=from;
@@ -1293,6 +1302,11 @@ function NCHToolTip(showColInfo,showColAlias) {
 	  lServ.setAttribute("value", nagioschecker.bundle.getString("service"));
 	  row.appendChild(lServ);
 
+    if (this.showColFlags) {
+ 		var lFlags = doc.createElement("label");
+	  lFlags.setAttribute("value", nagioschecker.bundle.getString("flags"));
+	  row.appendChild(lFlags);
+    }
 		var lStat = doc.createElement("label");
 		lStat.setAttribute("value", nagioschecker.bundle.getString("status"));
 		row.appendChild(lStat);
@@ -1398,6 +1412,8 @@ function NCHToolTip(showColInfo,showColAlias) {
   this.createRow = function(problem,i,serPo) {
 
 		var row = document.createElement("row");
+		
+		
     var status_text = "";
     switch (problem.status) {
       case "down":
@@ -1457,6 +1473,19 @@ function NCHToolTip(showColInfo,showColAlias) {
 		lServ.setAttribute("value", (problem.service==null) ? "-" : problem.service);
 		row.appendChild(lServ);
 
+		var flags="";
+		if (problem.acknowledged) flags+='Ac';
+		if (problem.dischecks) flags+='Ch';
+		if (problem.disnotifs) flags+='Nt';
+		if (problem.downtime) flags+='Dw';
+		if (problem.flapping) flags+='Fl';
+
+    if (this.showColFlags) {
+		var lFlags = document.createElement("label");
+		lFlags.setAttribute("value", flags);
+		row.appendChild(lFlags);
+    }
+
 		var lStat = document.createElement("label");
 		lStat.setAttribute("value", status_text);
 		row.appendChild(lStat);
@@ -1474,16 +1503,17 @@ function NCHToolTip(showColInfo,showColAlias) {
   }
 }
 
-function NCHPaket(sci,sca) {
+function NCHPaket(sci,sca,scf) {
 	this.showColInfo = sci;
 	this.showColAlias = sca;
+	this.showColFlags = scf;
 	this.pt = ["down","unreachable","unknown","warning","critical"];
-	this.all = [new NCHToolTip(this.showColInfo,this.showColAlias),0,0,[],[]];
-	this.down = [new NCHToolTip(this.showColInfo,this.showColAlias),0,0,[],[]];
-	this.unreachable = [new NCHToolTip(this.showColInfo,this.showColAlias),0,0,[],[]];
-	this.unknown = [new NCHToolTip(this.showColInfo,this.showColAlias),0,0,[],[]];
-	this.warning = [new NCHToolTip(this.showColInfo,this.showColAlias),0,0,[],[]];
-	this.critical = [new NCHToolTip(this.showColInfo,this.showColAlias),0,0,[],[]];
+	this.all = [new NCHToolTip(this.showColInfo,this.showColAlias,this.showColFlags),0,0,[],[]];
+	this.down = [new NCHToolTip(this.showColInfo,this.showColAlias,this.showColFlags),0,0,[],[]];
+	this.unreachable = [new NCHToolTip(this.showColInfo,this.showColAlias,this.showColFlags),0,0,[],[]];
+	this.unknown = [new NCHToolTip(this.showColInfo,this.showColAlias,this.showColFlags),0,0,[],[]];
+	this.warning = [new NCHToolTip(this.showColInfo,this.showColAlias,this.showColFlags),0,0,[],[]];
+	this.critical = [new NCHToolTip(this.showColInfo,this.showColAlias,this.showColFlags),0,0,[],[]];
 	this.isError = false;
 	this.addTooltipHeader = function(to,header,serverPos,timeFetch) {
 	 	this[to][0].addHeader(header,serverPos,timeFetch);
