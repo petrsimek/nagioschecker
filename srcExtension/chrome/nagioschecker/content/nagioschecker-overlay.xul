@@ -27,10 +27,8 @@ gMini=false;
         <menuitem id="nagioschecker-reload" label="&nch.menu.updatenow;" oncommand="nagioschecker.doUpdate();" />
   	    <menuseparator id="menu-separe2"/>  
         <menuitem label="&nch.menu.options;..." oncommand="window.openDialog('chrome://nagioschecker/content/nagioschecker-options.xul','nagioschecker-options','centerscreen,dialog,chrome').focus();" />
-<!--
   	    <menuseparator />  
-        <menuitem label="Mini" oncommand="window.open('chrome://nagioschecker/content/minimode.xul','nagioschecker-omini','centerscreen,chrome,resizable=no').focus();" />
--->
+        <menuitem label="Undocked" oncommand="window.open('chrome://nagioschecker/content/undocked.xul','nagioschecker-undocked','centerscreen,chrome,resizable=no').focus();" />
   	    <menuseparator />  
         <menuitem label="&nch.about;..." oncommand="window.openDialog('chrome://nagioschecker/content/nagioschecker-about.xul','nagioschecker-about','centerscreen,dialog,chrome').focus();" />
       </menupopup>
