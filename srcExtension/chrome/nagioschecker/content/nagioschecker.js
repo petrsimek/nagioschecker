@@ -1479,6 +1479,7 @@ function NCHToolTip(showColInfo,showColAlias,showColFlags) {
 		if (problem.disnotifs) flags+='Nt';
 		if (problem.downtime) flags+='Dw';
 		if (problem.flapping) flags+='Fl';
+		if (problem.onlypass) flags+='Pa';
 
     if (this.showColFlags) {
 		var lFlags = document.createElement("label");

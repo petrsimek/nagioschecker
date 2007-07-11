@@ -424,6 +424,7 @@ NCHParser.prototype = {
 
             var acknowledged=false;
             var dischecks=false;
+            var onlypass=false;
             var disnotifs=false;
             var downtime=false;
             var flapping=false;
@@ -441,6 +442,9 @@ NCHParser.prototype = {
                     }
                     if (tit.match("hecks") && tit.match("have been disabled") && !tit.match("only passive")) {
                       dischecks=true;
+                    }
+                    if (tit.match("hecks") && tit.match("have been disabled") && tit.match("only passive")) {
+                      onlypass=true;
                     }
                     if (tit.match("otification") && tit.match("have been disabled")) {
                       disnotifs=true;
@@ -471,7 +475,7 @@ NCHParser.prototype = {
               isSoft=true;
             }         
             if ((status=="UNKNOWN") || (status=="WARNING") || (status=="CRITICAL")) {
-              var tmpo ={"type":"s","host": host,"service":service,"status":this.toLower[status],"lastCheck":lastCheck,"durationSec":durationSec,"duration":duration,"attempt":attempt,"info":info,"acknowledged":acknowledged,"dischecks":dischecks,"disnotifs":disnotifs,"isSoft":isSoft,"downtime":downtime,"flapping":flapping};
+              var tmpo ={"type":"s","host": host,"service":service,"status":this.toLower[status],"lastCheck":lastCheck,"durationSec":durationSec,"duration":duration,"attempt":attempt,"info":info,"acknowledged":acknowledged,"dischecks":dischecks,"disnotifs":disnotifs,"isSoft":isSoft,"downtime":downtime,"flapping":flapping,"onlypass":onlypass};
 	            this.problems[pos][this.toLower[status]].push(tmpo);
   					  if ((this.manager._servers[pos].getAliases) && (!this.manager._servers[pos].aliases[host])) {
 						    this.missingAliases[pos].push(host);
@@ -553,7 +557,7 @@ NCHParser.prototype = {
             var durationSec  = this.nagiosDurationToSeconds(tmp_dur);
             var info  = getUglyNodeValue(viptd[9],[0]);
 				    if ((status=="DOWN") || (status=="UNREACHABLE")) {
-            	this.problems[pos][this.toLower[status]].push({"type":"h","host": host,"service":null,"status":this.toLower[status],"lastCheck":lastCheck,"durationSec":durationSec,"duration":duration,"attempt":null,"info":info,"acknowledged":acknowledged,"dischecks":dischecks,"disnotifs":disnotifs,"isSoft":false,"downtime":downtime,"flapping":flapping});
+            	this.problems[pos][this.toLower[status]].push({"type":"h","host": host,"service":null,"status":this.toLower[status],"lastCheck":lastCheck,"durationSec":durationSec,"duration":duration,"attempt":null,"info":info,"acknowledged":acknowledged,"dischecks":dischecks,"disnotifs":disnotifs,"isSoft":false,"downtime":downtime,"flapping":flapping,"onlypass":false});
 					    if ((this.manager._servers[pos].getAliases) && (!this.manager._servers[pos].aliases[host])) {
 						    this.missingAliases[pos].push(host);
 					    }
