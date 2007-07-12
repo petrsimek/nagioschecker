@@ -1,5 +1,3 @@
-
-
 var nagioschecker = null;
 var nagioscheckerLoad = function() {
 
@@ -89,12 +87,86 @@ NCH.prototype = {
   parser: null,
   pt:["down","unreachable","unknown","warning","critical"],
   results:{},
+  
+  
+   bMoving : false,
+    startX : -1,
+    startY : -1,
+    stickyWindow : null,
+    bDocked : false,
+    bShouldDockTop : false,
+    bShouldDockBottom : false,
+  
+    onUndockMove : function(event) {
+       if (!this.bMoving) return;
+
+        var currentX = event.screenX;
+        var currentY = event.screenY;
+        var deltaX = currentX - this.startX;
+        var deltaY = currentY - this.startY;
+dump('start '+this.startX+':'+this.startY+' current '+currentX+':'+currentY+' delta '+deltaX+':'+deltaY+'\n');
+
+            this.stickyWindow.moveBy(deltaX, deltaY);
+        this.startX = currentX;
+        this.startY = currentY;
+//        this.startX = window.screenX;
+//        this.startY = window.screenY;
+
+
+    },
+
+    onUndockUp : function(event) {
+        if (!this.bMoving) return;
+        this.bMoving = false;
+    },
+
+    onUndockDown : function(event) {
+        if (this.bMoving) return;
+        this.bMoving = true;
+        this.startX = event.screenX;
+        this.startY = event.screenY;
+
+			this.stickyWindow=window;
+
+        if (!this.stickyWindow) return;
+        
+        
+        var myTop    = window.screenY;
+        var myBottom = myTop + window.outerHeight;
+        var stickyWindowTop = this.stickyWindow.screenY;
+        var stickyWindowBottom = stickyWindowTop + this.stickyWindow.outerHeight;
+      
+        dump( myTop - stickyWindowBottom + '\n');
+        dump( stickyWindowTop - myBottom + '\n');
+        var bDockedBottom = ((myTop - stickyWindowBottom) > -3) && ((myTop - stickyWindowBottom) < 5);
+        var bDockedTop = ((stickyWindowTop - myBottom) > -3) && ((stickyWindowTop - myBottom) < 5);
+        this.bDocked = bDockedBottom || bDockedTop;
+        if (this.bDocked) {
+            this.stickyWindow.focus();
+        } else {
+            this.bShouldDockTop = false;
+            this.bShouldDockBottom = false;
+        }
+    },
+  
+  
+  
+  
+  
   start : function() {
-/*
-    if (gMini) {
-      this.adjustSize(null,true);  
-    }
-*/
+	if (gMini) {
+   var resizer = document.getElementById('nagioschecker-mover');
+
+       resizer.addEventListener('mouseup', 
+                function(event) { nagioschecker.onUndockUp(event) }, false);
+       resizer.addEventListener('mousedown', 
+                function(event) { nagioschecker.onUndockDown(event) }, false);
+       resizer.addEventListener('mousemove', 
+                function(event) { nagioschecker.onUndockMove(event) }, false);
+   var resizerPanel = document.getElementById('nagioschecker-panel-move');
+       resizerPanel.addEventListener('mousemove', 
+                function(event) { nagioschecker.onUndockMove(event) }, false);
+	}
     this.parser = new NCHParser();
     this.bundle = document.getElementById("nch-strings");
     this.setNoData(null);
@@ -167,6 +239,11 @@ NCH.prototype = {
   },
 
   reload : function(firstRun) {
+
+    if (gMini) {
+//      this.adjustSize(null,true);  
+		sizeToContent();
+    }
 
     this._servers=[];
     var pm = new  NCHPass();
@@ -1067,6 +1144,13 @@ NCH.prototype = {
         this.setNoData("noProblem");
       }
     }
+    
+    if (gMini) {
+//      this.adjustSize(null,true);  
+		sizeToContent();
+    }
+    
+    
   },
 
 

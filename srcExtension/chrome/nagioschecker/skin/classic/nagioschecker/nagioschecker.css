@@ -299,6 +299,9 @@ statusbarpanel .nagioschecker-box {
 	font-weight: bold;
 }
 
+#nagioschecker-mover {
+    cursor: move; 
+}
 .nch-status-url {
   background-color:white;
   color: black;

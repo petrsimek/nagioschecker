@@ -18,6 +18,9 @@
         orient="horizontal"
         pack="end">
 
+	<script type="application/x-javascript">
+var gMini=true;
+	</script>
   <script type="application/x-javascript" src="chrome://nagioschecker/content/nagioschecker-passwords.js"/>
 	<script type="application/x-javascript" src="chrome://nagioschecker/content/nagioschecker-parser.js" />
 	<script type="application/x-javascript" src="chrome://nagioschecker/content/nagioschecker.js" />
@@ -25,6 +28,10 @@
 		window.addEventListener("load", nagioscheckerLoad, false);
     window.addEventListener("unload", nagioscheckerUnload, false);
 	</script>
+
+  <stringbundleset id="stringbundleset">
+    <stringbundle id="nch-strings" src="chrome://nagioschecker/locale/nagioschecker.properties"/>
+  </stringbundleset>
 
 	<statusbar id="status-bar">	
     <popupset>
@@ -34,10 +41,6 @@
         <menuitem id="nagioschecker-reload" label="&nch.menu.updatenow;" oncommand="nagioschecker.doUpdate();" />
   	    <menuseparator id="menu-separe2"/>  
         <menuitem label="&nch.menu.options;..." oncommand="window.openDialog('chrome://nagioschecker/content/nagioschecker-options.xul','nagioschecker-options','centerscreen,dialog,chrome').focus();" />
-<!--
-  	    <menuseparator />  
-        <menuitem label="Mini" oncommand="window.open('chrome://nagioschecker/content/minimode.xul','nagioschecker-omini','centerscreen,chrome,resizable=no').focus();" />
--->
   	    <menuseparator />  
         <menuitem label="&nch.about;..." oncommand="window.openDialog('chrome://nagioschecker/content/nagioschecker-about.xul','nagioschecker-about','centerscreen,dialog,chrome').focus();" />
       </menupopup>
@@ -55,6 +58,18 @@
   	<tooltip id="nagioschecker-tooltip-unknown" position="before-start" class="nagioschecker-tooltip" noautohide="true"/>
   	<tooltip id="nagioschecker-tooltip-warning" position="before-start" class="nagioschecker-tooltip" noautohide="true"/>
   	<tooltip id="nagioschecker-tooltip-critical" position="before-start" class="nagioschecker-tooltip" noautohide="true"/>
+  	<statusbarpanel
+		    minwidth="20px"
+  		  crop="start"
+		    id="nagioschecker-panel-move"
+        >
+      <image
+         id="nagioschecker-mover"
+         src="chrome://nagioschecker/skin/nagios16.png"
+         style="width:16px;height:16px;margin-left:0px;margin-right:2px;"
+         
+         />
+	</statusbarpanel>
   	<statusbarpanel
 		    context="nagioschecker-menu"
 		    minwidth="20px"
