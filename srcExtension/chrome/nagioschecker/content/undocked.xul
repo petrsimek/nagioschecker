@@ -2,6 +2,7 @@
 
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
 <?xml-stylesheet href="chrome://nagioschecker/skin/nagioschecker.css" type="text/css"?> 
+<?xml-stylesheet href="chrome://nagioschecker/skin/undocked.css" type="text/css"?> 
 
 <!DOCTYPE window SYSTEM "chrome://nagioschecker/locale/nagioschecker.dtd">
 
@@ -33,6 +34,11 @@ var gMini=true;
     <stringbundle id="nch-strings" src="chrome://nagioschecker/locale/nagioschecker.properties"/>
   </stringbundleset>
 
+  <titlebar id="nch-move-titlebar"
+            oncommand=""
+            tooltiptext="Ble">  
+      <toolbarbutton id="nch-move-minimode"/>
+  </titlebar> 
 	<statusbar id="status-bar">	
     <popupset>
       <menupopup id="nagioschecker-menu">
@@ -59,18 +65,6 @@ var gMini=true;
   	<tooltip id="nagioschecker-tooltip-warning" position="before-start" class="nagioschecker-tooltip" noautohide="true"/>
   	<tooltip id="nagioschecker-tooltip-critical" position="before-start" class="nagioschecker-tooltip" noautohide="true"/>
   	<statusbarpanel
-		    minwidth="20px"
-  		  crop="start"
-		    id="nagioschecker-panel-move"
-        >
-      <image
-         id="nagioschecker-mover"
-         src="chrome://nagioschecker/skin/nagios16.png"
-         style="width:16px;height:16px;margin-left:0px;margin-right:2px;"
-         
-         />
-	</statusbarpanel>
-  	<statusbarpanel
 		    context="nagioschecker-menu"
 		    minwidth="20px"
   		  crop="start"
@@ -89,5 +83,4 @@ var gMini=true;
 		  <label tooltip="nagioschecker-tooltip" id="nagioschecker-info-label" class="nagioschecker-info-label" hidden="true" value=""/>
     </statusbarpanel>
 	</statusbar>
-
 </window>

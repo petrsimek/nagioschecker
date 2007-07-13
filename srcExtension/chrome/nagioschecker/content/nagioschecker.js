@@ -96,6 +96,46 @@ NCH.prototype = {
     bDocked : false,
     bShouldDockTop : false,
     bShouldDockBottom : false,
+
+  adjustSize : function(event, firstTime) {
+        var currentX = window.screenX;
+        var currentY = window.screenY;
+        var currentWidth = window.outerWidth;
+        var right = currentX + currentWidth; 
+        sizeToContent();
+
+        var newWidth = window.outerWidth;
+        var left = right - newWidth;
+        
+        this.ensureFitsScreen();
+        moveTo(left, currentY);
+        
+        var me = this;
+        if (firstTime) {
+            // doing sizeToContent once often leaves the minimode in incorrect state
+            // let's do it one more time
+            setTimeout(function() { me.adjustSize(event); }, 100);
+        }
+    },
+
+    ensureFitsScreen : function() {
+        var currentWidth = window.outerWidth;
+        var screenWidth = window.screen.availWidth;
+
+        if (currentWidth > screenWidth) {
+            var panelElem  = document.getElementById('foxytunes-track-title-status-label');
+            var oldTitleWidth = panelElem.getAttribute('width');
+            if (!oldTitleWidth) {
+                oldTitleWidth = 0;
+            }
+            var newTitleWidth = oldTitleWidth - ( currentWidth - screenWidth);
+            if (newTitleWidth < 0) {
+                newTitleWidth = 0;
+            }
+            panelElem.setAttribute('width', newTitleWidth);
+        }            
+        
+    },
   
     onUndockMove : function(event) {
        if (!this.bMoving) return;
@@ -106,9 +146,9 @@ NCH.prototype = {
         var deltaY = currentY - this.startY;
 dump('start '+this.startX+':'+this.startY+' current '+currentX+':'+currentY+' delta '+deltaX+':'+deltaY+'\n');
 
-            this.stickyWindow.moveBy(deltaX, deltaY);
         this.startX = currentX;
         this.startY = currentY;
+            this.stickyWindow.moveBy(deltaX, deltaY);
 //        this.startX = window.screenX;
 //        this.startY = window.screenY;
 
@@ -121,13 +161,15 @@ dump('start '+this.startX+':'+this.startY+' current '+currentX+':'+currentY+' de
     },
 
     onUndockDown : function(event) {
+        if (event.target.tagName != 'titlebar') return;
         if (this.bMoving) return;
         this.bMoving = true;
         this.startX = event.screenX;
         this.startY = event.screenY;
 
-			this.stickyWindow=window;
-
+        var wm = Components.classes["@mozilla.org/appshell/window-mediator;1"]
+                    .getService(Components.interfaces.nsIWindowMediator);
+        this.stickyWindow = wm.getMostRecentWindow('nch:undocked');
         if (!this.stickyWindow) return;
         
         
@@ -135,7 +177,7 @@ dump('start '+this.startX+':'+this.startY+' current '+currentX+':'+currentY+' de
         var myBottom = myTop + window.outerHeight;
         var stickyWindowTop = this.stickyWindow.screenY;
         var stickyWindowBottom = stickyWindowTop + this.stickyWindow.outerHeight;
-      
+/*      
         dump( myTop - stickyWindowBottom + '\n');
         dump( stickyWindowTop - myBottom + '\n');
         var bDockedBottom = ((myTop - stickyWindowBottom) > -3) && ((myTop - stickyWindowBottom) < 5);
@@ -147,6 +189,7 @@ dump('start '+this.startX+':'+this.startY+' current '+currentX+':'+currentY+' de
             this.bShouldDockTop = false;
             this.bShouldDockBottom = false;
         }
+        */ 
     },
   
   
@@ -157,14 +200,11 @@ dump('start '+this.startX+':'+this.startY+' current '+currentX+':'+currentY+' de
 	if (gMini) {
    var resizer = document.getElementById('nagioschecker-mover');
 
-       resizer.addEventListener('mouseup', 
+       window.addEventListener('mouseup', 
                 function(event) { nagioschecker.onUndockUp(event) }, false);
-       resizer.addEventListener('mousedown', 
+       window.addEventListener('mousedown', 
                 function(event) { nagioschecker.onUndockDown(event) }, false);
-       resizer.addEventListener('mousemove', 
-                function(event) { nagioschecker.onUndockMove(event) }, false);
-   var resizerPanel = document.getElementById('nagioschecker-panel-move');
-       resizerPanel.addEventListener('mousemove', 
+       window.addEventListener('mousemove', 
                 function(event) { nagioschecker.onUndockMove(event) }, false);
 	}
     this.parser = new NCHParser();
@@ -242,7 +282,7 @@ dump('start '+this.startX+':'+this.startY+' current '+currentX+':'+currentY+' de
 
     if (gMini) {
 //      this.adjustSize(null,true);  
-		sizeToContent();
+		this.adjustSize(null,true);
     }
 
     this._servers=[];
@@ -756,6 +796,7 @@ dump('start '+this.startX+':'+this.startY+' current '+currentX+':'+currentY+' de
           win.nagioschecker.setNoData("");
           win.nagioschecker.setIcon("stop");
           win.nagioschecker.resetBehavior(true);
+          
           /*
           this.setNoData("");
           this.setIcon("stop");
@@ -979,6 +1020,10 @@ dump('start '+this.startX+':'+this.startY+' current '+currentX+':'+currentY+' de
   	          "warning": document.getElementById('nagioschecker-services-warning'),
   	          "critical": document.getElementById('nagioschecker-services-critical')
               };
+    if (gMini) {
+//      this.adjustSize(null,true);  
+		this.adjustSize(null,true);
+    }
 
     var mainPanel=document.getElementById('nagioschecker-panel');
 
@@ -1146,8 +1191,8 @@ dump('start '+this.startX+':'+this.startY+' current '+currentX+':'+currentY+' de
     }
     
     if (gMini) {
-//      this.adjustSize(null,true);  
-		sizeToContent();
+      this.adjustSize(null,false);  
+//		sizeToContent();
     }
     
     

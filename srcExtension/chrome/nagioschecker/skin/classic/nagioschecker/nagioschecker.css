@@ -318,3 +318,33 @@ label.error {
 	font-style: italic;
 	color:silver;
 }
+
+/************************************************************/
+
+/*
+#nch-move-minimode {
+  -moz-image-region: rect(0px, 4px,  16px, 0px);
+  list-style-image: url("chrome://nagioschecker/skin/dndhandle.png");
+}
+*/
+
+#nch-move-titlebar {
+    cursor: move; 
+}
+
+#nch-move-minimode {
+  -moz-image-region: rect(0px, 4px,  16px, 0px);
+	    list-style-image: url("chrome://nagioschecker/skin/dndhandle.png"); 
+  padding-left: 3px !important;
+  padding-right: 0px !important;
+  margin: 0 !important;
+    border: none !important; 
+    -moz-appearance: none !important;
+  min-width: 4px;
+}
+/*
+#nch-move-minimode image {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+*/

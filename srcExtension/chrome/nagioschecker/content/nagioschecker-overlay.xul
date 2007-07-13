@@ -28,7 +28,7 @@ var gMini=false;
   	    <menuseparator id="menu-separe2"/>  
         <menuitem label="&nch.menu.options;..." oncommand="window.openDialog('chrome://nagioschecker/content/nagioschecker-options.xul','nagioschecker-options','centerscreen,dialog,chrome').focus();" />
   	    <menuseparator />  
-        <menuitem label="Undocked" oncommand="window.openDialog('chrome://nagioschecker/content/undocked.xul','nagioschecker-undocked','chrome,dialog=no,all,resize=no,popup');" />
+        <menuitem label="Undocked" oncommand="window.openDialog('chrome://nagioschecker/content/undocked.xul','nagioschecker-undocked','chrome,dialog=no,resize=no,popup');" />
   	    <menuseparator />  
         <menuitem label="&nch.about;..." oncommand="window.openDialog('chrome://nagioschecker/content/nagioschecker-about.xul','nagioschecker-about','centerscreen,dialog,chrome').focus();" />
       </menupopup>
