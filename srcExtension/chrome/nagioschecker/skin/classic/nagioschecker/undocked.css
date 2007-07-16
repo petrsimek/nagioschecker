@@ -1,3 +1,67 @@
 statusbar resizer {
         display: none;
     } 
+    
+#nch-undocked {
+    background-color: ButtonFace; 
+    border: 1px solid ButtonShadow;
+    -moz-border-radius: 3px;
+    padding: 0px;
+}    
+
+#nagioschecker-panel {
+/*
+	#status-bar {	
+	border-style:none;
+	border: 0;
+	margin: 0;
+*/
+	}
+
+.closebut {
+  list-style-image:  url("chrome://nagioschecker/skin/close.png");
+/*  -moz-appearance: none;*/
+/*  -moz-image-region: rect(0px, 16px, 16px, 0px);*/
+    -moz-image-region: rect(0px, 64px, 16px, 48px);
+  
+  padding: 4px 2px;
+  border: none !important;
+}
+
+.closebut:hover {
+  -moz-image-region: rect(0px, 32px, 16px, 16px);
+}
+
+.closebut:hover:active {
+  -moz-image-region: rect(0px, 48px, 16px, 32px);
+}
+
+/************************************************************/
+
+/*
+#nch-move-minimode {
+  -moz-image-region: rect(0px, 4px,  16px, 0px);
+  list-style-image: url("chrome://nagioschecker/skin/dndhandle.png");
+}
+*/
+
+#nch-move-titlebar {
+    cursor: move; 
+}
+
+#nch-move-minimode {
+  -moz-image-region: rect(0px, 4px,  16px, 0px);
+	    list-style-image: url("chrome://nagioschecker/skin/dndhandle.png"); 
+  padding-left: 3px !important;
+  padding-right: 0px !important;
+  margin: 0 !important;
+    border: none !important; 
+    -moz-appearance: none !important;
+  min-width: 4px;
+}
+/*
+#nch-move-minimode image {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+*/

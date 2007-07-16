@@ -98,6 +98,7 @@ NCH.prototype = {
     bShouldDockBottom : false,
 
   adjustSize : function(event, firstTime) {
+
         var currentX = window.screenX;
         var currentY = window.screenY;
         var currentWidth = window.outerWidth;
@@ -116,6 +117,7 @@ NCH.prototype = {
             // let's do it one more time
             setTimeout(function() { me.adjustSize(event); }, 100);
         }
+
     },
 
     ensureFitsScreen : function() {

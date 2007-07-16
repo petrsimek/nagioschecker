@@ -15,7 +15,7 @@
         screenX="400"
         screenY="400"
         flavor="default"
-        persist="screenX screenY flavor"
+        persist="screenX screenY"
         orient="horizontal"
         pack="end">
 
@@ -82,5 +82,10 @@ var gMini=true;
 		  <label id="nagioschecker-services-critical" hidden="true" class="nagioschecker-critical-value" value=""/>
 		  <label tooltip="nagioschecker-tooltip" id="nagioschecker-info-label" class="nagioschecker-info-label" hidden="true" value=""/>
     </statusbarpanel>
+      <hbox>
+      <image
+         class="statusbarpanel-iconic closebut"
+ onclick="close()"/>
+         </hbox>
 	</statusbar>
 </window>
