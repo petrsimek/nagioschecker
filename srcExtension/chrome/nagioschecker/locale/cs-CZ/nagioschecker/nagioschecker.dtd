@@ -4,9 +4,11 @@
 <!ENTITY nch.close "Zavřít">
 <!ENTITY nch.hosts "Hostitelé">
 <!ENTITY nch.services "Služby">
+<!ENTITY nch.experimental "experimentální">
 
 <!ENTITY nch.menu.options "Nastavení">
 <!ENTITY nch.menu.updatenow "Ihned zaktualizovat">
+<!ENTITY nch.menu.openfloatingwindow "Otevřít plovoucí okno">
 
 <!ENTITY nch.prefs.title "Nastavení &nch.title;">
 <!ENTITY nch.prefs.general "Obecné">
@@ -125,8 +127,6 @@
 <!ENTITY nch.prefs.moveup "Posunout nahoru">
 <!ENTITY nch.prefs.movedown "Posunout dolů">
 
-<!ENTITY nch.prefs.filteroutconditions "události odpovídající podmínkám">
-<!ENTITY nch.prefs.filteroutexcept "všechny události mimo podmínky">
-<!ENTITY nch.prefs.conditions "Podmínky">
 <!ENTITY nch.prefs.showflagscolumn "Zobrazovat sloupec Příznaky v informačním okně">
+<!ENTITY nch.prefs.reverseexp "opak výrazu">
 

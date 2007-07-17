@@ -31,8 +31,6 @@ pref("extensions.nagioschecker.blinking", 2);
 pref("extensions.nagioschecker.play_sound", 2);
 pref("extensions.nagioschecker.click", 0);
 
-pref("extensions.nagioschecker.filter_only", 0);
-
 pref("extensions.nagioschecker.filter_out_acknowledged", true);
 pref("extensions.nagioschecker.filter_out_disabled_notifications", false);
 pref("extensions.nagioschecker.filter_out_disabled_checks", true);
@@ -48,7 +46,9 @@ pref("extensions.nagioschecker.filter_out_all_critical", false);
 pref("extensions.nagioschecker.filter_out_regexp_hosts", false);
 pref("extensions.nagioschecker.filter_out_regexp_services", false);
 pref("extensions.nagioschecker.filter_out_regexp_hosts_value", "");
+pref("extensions.nagioschecker.filter_out_regexp_hosts_reverse", false);
 pref("extensions.nagioschecker.filter_out_regexp_services_value", "");
+pref("extensions.nagioschecker.filter_out_regexp_services_reverse", false);
 pref("extensions.nagioschecker.filter_out_flapping", false);
 
 pref("extensions.nagioschecker.sound_warning", 0);

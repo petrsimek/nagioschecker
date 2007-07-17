@@ -1,29 +1,41 @@
+titlebar {
+  -moz-appearance: none;
+    background-color: -moz-dialog;
+}
+
+statusbarpanel {
+  -moz-appearance: none;
+  border: 0px;
+  padding: 0px;
+    background-color: -moz-dialog;
+}
 statusbar resizer {
         display: none;
-    } 
+  -moz-appearance: none;
+} 
     
 #nch-undocked {
+/*
+	  -moz-appearance: none;
     background-color: ButtonFace; 
     border: 1px solid ButtonShadow;
-    -moz-border-radius: 3px;
+    -moz-border-radius: 3px;*/
     padding: 0px;
+    background: none;
+    background-color: -moz-dialog;
+	margin:0px;    
+	border-style: none;
+    border: 1px solid ButtonShadow !important;   
 }    
 
-#nagioschecker-panel {
-/*
-	#status-bar {	
-	border-style:none;
-	border: 0;
-	margin: 0;
-*/
-	}
+#hbox-close {
+    background-color: -moz-dialog;
+}
 
 .closebut {
   list-style-image:  url("chrome://nagioschecker/skin/close.png");
-/*  -moz-appearance: none;*/
-/*  -moz-image-region: rect(0px, 16px, 16px, 0px);*/
-    -moz-image-region: rect(0px, 64px, 16px, 48px);
-  
+  -moz-appearance: none;
+  -moz-image-region: rect(0px, 64px, 16px, 48px);
   padding: 4px 2px;
   border: none !important;
 }
@@ -38,30 +50,17 @@ statusbar resizer {
 
 /************************************************************/
 
-/*
-#nch-move-minimode {
-  -moz-image-region: rect(0px, 4px,  16px, 0px);
-  list-style-image: url("chrome://nagioschecker/skin/dndhandle.png");
-}
-*/
-
 #nch-move-titlebar {
     cursor: move; 
 }
 
 #nch-move-minimode {
   -moz-image-region: rect(0px, 4px,  16px, 0px);
-	    list-style-image: url("chrome://nagioschecker/skin/dndhandle.png"); 
+  list-style-image: url("chrome://nagioschecker/skin/dndhandle.png"); 
   padding-left: 3px !important;
   padding-right: 0px !important;
   margin: 0 !important;
-    border: none !important; 
-    -moz-appearance: none !important;
+  border: none !important; 
+  -moz-appearance: none !important;
   min-width: 4px;
 }
-/*
-#nch-move-minimode image {
-    padding: 0 !important;
-    margin: 0 !important;
-}
-*/

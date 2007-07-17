@@ -62,16 +62,6 @@
       <tabpanel  orient="vertical">
 	      <groupbox>
   		      <caption class="nch" label="&nch.prefs.filterout;"/>	
-<vbox>
-          <radiogroup prefstring="extensions.nagioschecker.filter_only" id="nch-general-filter_only" orient="horizontal">
-            <radio id="nch-general-filter_only-0" label="&nch.prefs.filteroutconditions;" value="0"/>
-            <radio id="nch-general-filter_only-1" label="&nch.prefs.filteroutexcept;" value="1"/>
-          </radiogroup>
-
-</vbox>
-	      </groupbox>
-	      <groupbox>
-  		      <caption class="nch" label="&nch.prefs.conditions;"/>	
             <vbox>
               <checkbox prefstring="extensions.nagioschecker.filter_out_acknowledged" id="nch-general-filter_out_acknowledged" label="&nch.prefs.acknowledged;"/>
               <checkbox prefstring="extensions.nagioschecker.filter_out_disabled_notifications" id="nch-general-filter_out_disabled_notifications" label="&nch.prefs.disabled_notifications;"/>
@@ -88,12 +78,14 @@
               <checkbox prefstring="extensions.nagioschecker.filter_out_all_warning" id="nch-general-filter_out_all_warning" label="&nch.prefs.allwarningservices;"/>
               <checkbox prefstring="extensions.nagioschecker.filter_out_all_unknown" id="nch-general-filter_out_all_unknown" label="&nch.prefs.allunknownservices;"/>
 				<hbox>
-        			<checkbox prefstring="extensions.nagioschecker.filter_out_regexp_hosts" id="nch-general-filter_out_regexp_hosts" label="&nch.prefs.hostsmatchingregexp;:" oncommand="document.getElementById('nch-general-filter_out_regexp_hosts_value').disabled = (!this.checked)"/>
+        			<checkbox prefstring="extensions.nagioschecker.filter_out_regexp_hosts" id="nch-general-filter_out_regexp_hosts" label="&nch.prefs.hostsmatchingregexp;:" oncommand="gNCHOptions.updateRECheckboxes();"/>
 					<textbox prefstring="extensions.nagioschecker.filter_out_regexp_hosts_value" id="nch-general-filter_out_regexp_hosts_value" size="20"/>
+        			<checkbox prefstring="extensions.nagioschecker.filter_out_regexp_hosts_reverse" id="nch-general-filter_out_regexp_hosts_reverse" label="&nch.prefs.reverseexp;"/>
 				</hbox>
 				<hbox>
-        			<checkbox prefstring="extensions.nagioschecker.filter_out_regexp_services" id="nch-general-filter_out_regexp_services" label="&nch.prefs.servicesmatchingregexp;:" oncommand="document.getElementById('nch-general-filter_out_regexp_services_value').disabled = (!this.checked)"/>
+        			<checkbox prefstring="extensions.nagioschecker.filter_out_regexp_services" id="nch-general-filter_out_regexp_services" label="&nch.prefs.servicesmatchingregexp;:" oncommand="gNCHOptions.updateRECheckboxes();"/>
 					<textbox prefstring="extensions.nagioschecker.filter_out_regexp_services_value" id="nch-general-filter_out_regexp_services_value" size="20"/>
+        			<checkbox prefstring="extensions.nagioschecker.filter_out_regexp_services_reverse" id="nch-general-filter_out_regexp_services_reverse" label="&nch.prefs.reverseexp;"/>
 				</hbox>
 
             </vbox>

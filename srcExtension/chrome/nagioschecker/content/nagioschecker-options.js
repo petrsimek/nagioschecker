@@ -7,6 +7,7 @@ var nchoptionsLoad = function() {
   gNCHOptions.loadPref();
   gNCHOptions.disableSoundCheckboxes();
   gNCHOptions.disableSoundRadios();
+  gNCHOptions.updateRECheckboxes();
 };
 
 var nchoptionsUnload = function() {
@@ -108,7 +109,15 @@ NCHOptions.prototype = {
 
   },
 
-
+  updateRECheckboxes: function() {
+    var ch_h = (document.getElementById('nch-general-filter_out_regexp_hosts').checked);
+    document.getElementById('nch-general-filter_out_regexp_hosts_value').disabled = (!ch_h);
+    document.getElementById('nch-general-filter_out_regexp_hosts_reverse').disabled = (!ch_h);
+    var ch_s = (document.getElementById('nch-general-filter_out_regexp_services').checked);
+    document.getElementById('nch-general-filter_out_regexp_services_value').disabled = (!ch_s);
+    document.getElementById('nch-general-filter_out_regexp_services_reverse').disabled = (!ch_s);
+  	
+  },
   removeAllServers: function() {
     this._servers.length = 0;
 
@@ -300,6 +309,8 @@ NCHOptions.prototype = {
         "nch-general-filter_out_all_unknown",
         "nch-general-filter_out_regexp_hosts",
         "nch-general-filter_out_regexp_services",
+        "nch-general-filter_out_regexp_hosts_reverse",
+        "nch-general-filter_out_regexp_services_reverse",
         "nch-view-show_window_column_information",
         "nch-view-show_window_column_alias",
         "nch-view-show_window_column_flags",
@@ -327,7 +338,6 @@ NCHOptions.prototype = {
 		var radios = [
        "nch-view-info_type",
        "nch-view-info_window_type",
-       "nch-general-filter_only",
        "nch-behavior-blinking",
        "nch-behavior-play_sound",
        "nch-behavior-oneclick",
@@ -440,6 +450,8 @@ NCHOptions.prototype = {
         "nch-general-filter_out_all_unknown",
         "nch-general-filter_out_regexp_hosts",
         "nch-general-filter_out_regexp_services",
+        "nch-general-filter_out_regexp_hosts_reverse",
+        "nch-general-filter_out_regexp_services_reverse",
         "nch-view-show_window_column_information",
         "nch-view-show_window_column_alias",
         "nch-view-show_window_column_flags",
@@ -465,7 +477,6 @@ NCHOptions.prototype = {
   		var radios = [
         "nch-view-info_type",
         "nch-view-info_window_type",
-       "nch-general-filter_only",
         "nch-behavior-blinking",
         "nch-behavior-play_sound",
        "nch-behavior-oneclick",

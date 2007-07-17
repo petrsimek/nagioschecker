@@ -81,6 +81,8 @@ NCH.prototype = {
   filterOutREServices: false,
   filterOutREHostsValue: "",
   filterOutREServicesValue: "",
+  filterOutREHostsReverse: false,
+  filterOutREServicesReverse: false,
   filterOutAll:{"down":false,"unreachable":false,"uknown":false,"warning":false,"critical":false},
   filterOutFlapping: true,
   soundBT:{},
@@ -108,14 +110,14 @@ NCH.prototype = {
         var newWidth = window.outerWidth;
         var left = right - newWidth;
         
-        this.ensureFitsScreen();
+//        this.ensureFitsScreen();
         moveTo(left, currentY);
         
         var me = this;
         if (firstTime) {
             // doing sizeToContent once often leaves the minimode in incorrect state
             // let's do it one more time
-            setTimeout(function() { me.adjustSize(event); }, 100);
+//            setTimeout(function() { me.adjustSize(event); }, 100);
         }
 
     },
@@ -520,6 +522,22 @@ dump('start '+this.startX+':'+this.startY+' current '+currentX+':'+currentY+' de
     catch(e) {
       this.filterOutREServicesValue="";
     }
+
+    try {
+      this.filterOutREHostsReverse = this.preferences.getBoolPref("extensions.nagioschecker.filter_out_regexp_hosts_reverse");
+    }
+    catch(e) {
+      this.filterOutREHostsReverse=false;
+    }
+
+    try {
+      this.filterOutREServicesReverse = this.preferences.getBoolPref("extensions.nagioschecker.filter_out_regexp_services_reverse");
+    }
+    catch(e) {
+      this.filterOutREServicesReverse=false;
+    }
+
+
     try {
       this.filterOutFlapping = this.preferences.getBoolPref("extensions.nagioschecker.filter_out_flapping");
     }
@@ -961,11 +979,11 @@ dump('start '+this.startX+':'+this.startY+' current '+currentX+':'+currentY+' de
 				st=this.pt[x];
 
 				for (var j =0;j<probls.length;j++) {
-
-					var filter_passed =  (
-						(!this.filterOutAll[st])
+			    
+					if (
+						 (!this.filterOutAll[st])
 					    &&
-						((!probls[j].acknowledged) || ((probls[j].acknowledged) && (!this.filterOutAck))) 
+						 ((!probls[j].acknowledged) || ((probls[j].acknowledged) && (!this.filterOutAck))) 
 					    &&
 					    ((!probls[j].dischecks) || ((probls[j].dischecks) && (!this.filterOutDisChe))) 
 					    &&
@@ -974,25 +992,20 @@ dump('start '+this.startX+':'+this.startY+' current '+currentX+':'+currentY+' de
 					    ((!probls[j].downtime) || ((probls[j].downtime) && (!this.filterOutDowntime)))
 					    &&
 					    ((!probls[j].flapping) || ((probls[j].flapping) && (!this.filterOutFlapping)))
-    			    	&&
-		    			((!probls[j].isSoft) || ((probls[j].isSoft) && ((!this.filterOutSoftStat) || (isNotUp[probls[j].host]))))
+    			    	 &&
+		    			 ((!probls[j].isSoft) || ((probls[j].isSoft) && ((!this.filterOutSoftStat) || (isNotUp[probls[j].host]))))
 					    &&
 					    ((!this.filterOutServOnDown) || ((this.filterOutServOnDown) && ((!probls[j].service) || ((probls[j].service) && (!isNotUp[probls[j].host])))))
 					    &&
 					    ((!this.filterOutServOnAck) || ((this.filterOutServOnAck) && ((!probls[j].service) || ((probls[j].service) && (!isAck[probls[j].host])))))
 					    &&
-					    ((!this.filterOutREHosts) || ((this.filterOutREHosts) && (probls[j].host) && (!probls[j].host.match(new RegExp(this.filterOutREHostsValue)))))
+					    ((!this.filterOutREHosts) || ((this.filterOutREHosts) && (probls[j].host) &&  (((!this.filterOutREHostsReverse) && (!probls[j].host.match(new RegExp(this.filterOutREHostsValue)))) || ((this.filterOutREHostsReverse) && (probls[j].host.match(new RegExp(this.filterOutREHostsValue)))))))
 					    &&
-					    ((!this.filterOutREServices) || ((this.filterOutREServices) && (probls[j].service) && (!probls[j].service.match(new RegExp(this.filterOutREServicesValue)))))
-					    );
-					    
-					if (((!this.filterOnly) && (filter_passed))
-						||
-						((this.filterOnly) && (!filter_passed))) {
-
-						var uniq = this._servers[i].name+"-"+probls[j].host+"-"+probls[j].service+"-"+probls[j].status;
-						newProblems[uniq]=probls[j];
-						paket.addProblem(i,this.pt[x],this.oldProblems[uniq],probls[j],this._servers[i].aliases[probls[j].host]);
+					    ((!this.filterOutREServices) || ((this.filterOutREServices) && (probls[j].service) && (((!this.filterOutREServicesReverse) && (!probls[j].service.match(new RegExp(this.filterOutREServicesValue)))) || ((this.filterOutREServicesReverse) && (probls[j].service.match(new RegExp(this.filterOutREServicesValue)))))))
+					    ) {
+							var uniq = this._servers[i].name+"-"+probls[j].host+"-"+probls[j].service+"-"+probls[j].status;
+							newProblems[uniq]=probls[j];
+							paket.addProblem(i,this.pt[x],this.oldProblems[uniq],probls[j],this._servers[i].aliases[probls[j].host]);
 				    }
 					if ((this.pt[x]=="down") || (this.pt[x]=="unreachable")) {
 						isNotUp[probls[j].host]=true;

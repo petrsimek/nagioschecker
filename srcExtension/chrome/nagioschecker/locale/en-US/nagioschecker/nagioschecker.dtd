@@ -4,9 +4,11 @@
 <!ENTITY nch.close "Close">
 <!ENTITY nch.hosts "Hosts">
 <!ENTITY nch.services "Services">
+<!ENTITY nch.experimental "experimental">
 
 <!ENTITY nch.menu.options "Settings">
 <!ENTITY nch.menu.updatenow "Update now">
+<!ENTITY nch.menu.openfloatingwindow "Open floating window">
 
 <!ENTITY nch.prefs.title "&nch.title; Settings">
 <!ENTITY nch.prefs.general "General">
@@ -126,7 +128,5 @@
 <!ENTITY nch.prefs.moveup "Move up">
 <!ENTITY nch.prefs.movedown "Move down">
 
-<!ENTITY nch.prefs.filteroutconditions "alerts by conditions">
-<!ENTITY nch.prefs.filteroutexcept "all alerts except the conditions">
-<!ENTITY nch.prefs.conditions "Conditions">
 <!ENTITY nch.prefs.showflagscolumn "Show Flags column in information window">
+<!ENTITY nch.prefs.reverseexp "reverse expression">
