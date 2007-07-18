@@ -15,11 +15,6 @@ statusbar resizer {
 } 
     
 #nch-undocked {
-/*
-	  -moz-appearance: none;
-    background-color: ButtonFace; 
-    border: 1px solid ButtonShadow;
-    -moz-border-radius: 3px;*/
     padding: 0px;
     background: none;
     background-color: -moz-dialog;

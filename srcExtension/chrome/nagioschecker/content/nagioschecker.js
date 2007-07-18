@@ -91,10 +91,10 @@ NCH.prototype = {
   results:{},
   
   
-   bMoving : false,
+   isMoving : false,
     startX : -1,
     startY : -1,
-    stickyWindow : null,
+    undockedWindow : null,
     bDocked : false,
     bShouldDockTop : false,
     bShouldDockBottom : false,
@@ -110,90 +110,50 @@ NCH.prototype = {
         var newWidth = window.outerWidth;
         var left = right - newWidth;
         
-//        this.ensureFitsScreen();
         moveTo(left, currentY);
         
         var me = this;
         if (firstTime) {
             // doing sizeToContent once often leaves the minimode in incorrect state
             // let's do it one more time
-//            setTimeout(function() { me.adjustSize(event); }, 100);
+            setTimeout(function() { me.adjustSize(event); }, 100);
         }
 
     },
 
-    ensureFitsScreen : function() {
-        var currentWidth = window.outerWidth;
-        var screenWidth = window.screen.availWidth;
-
-        if (currentWidth > screenWidth) {
-            var panelElem  = document.getElementById('foxytunes-track-title-status-label');
-            var oldTitleWidth = panelElem.getAttribute('width');
-            if (!oldTitleWidth) {
-                oldTitleWidth = 0;
-            }
-            var newTitleWidth = oldTitleWidth - ( currentWidth - screenWidth);
-            if (newTitleWidth < 0) {
-                newTitleWidth = 0;
-            }
-            panelElem.setAttribute('width', newTitleWidth);
-        }            
-        
-    },
   
     onUndockMove : function(event) {
-       if (!this.bMoving) return;
+       if (!this.isMoving) return;
 
         var currentX = event.screenX;
         var currentY = event.screenY;
         var deltaX = currentX - this.startX;
         var deltaY = currentY - this.startY;
-dump('start '+this.startX+':'+this.startY+' current '+currentX+':'+currentY+' delta '+deltaX+':'+deltaY+'\n');
+        this.undockedWindow.moveBy(deltaX, deltaY);
 
         this.startX = currentX;
         this.startY = currentY;
-            this.stickyWindow.moveBy(deltaX, deltaY);
-//        this.startX = window.screenX;
-//        this.startY = window.screenY;
 
 
     },
 
     onUndockUp : function(event) {
-        if (!this.bMoving) return;
-        this.bMoving = false;
+        if (!this.isMoving) return;
+        this.isMoving = false;
     },
 
     onUndockDown : function(event) {
         if (event.target.tagName != 'titlebar') return;
-        if (this.bMoving) return;
-        this.bMoving = true;
+        if (this.isMoving) return;
+        this.isMoving = true;
         this.startX = event.screenX;
         this.startY = event.screenY;
 
         var wm = Components.classes["@mozilla.org/appshell/window-mediator;1"]
                     .getService(Components.interfaces.nsIWindowMediator);
-        this.stickyWindow = wm.getMostRecentWindow('nch:undocked');
-        if (!this.stickyWindow) return;
-        
-        
-        var myTop    = window.screenY;
-        var myBottom = myTop + window.outerHeight;
-        var stickyWindowTop = this.stickyWindow.screenY;
-        var stickyWindowBottom = stickyWindowTop + this.stickyWindow.outerHeight;
-/*      
-        dump( myTop - stickyWindowBottom + '\n');
-        dump( stickyWindowTop - myBottom + '\n');
-        var bDockedBottom = ((myTop - stickyWindowBottom) > -3) && ((myTop - stickyWindowBottom) < 5);
-        var bDockedTop = ((stickyWindowTop - myBottom) > -3) && ((stickyWindowTop - myBottom) < 5);
-        this.bDocked = bDockedBottom || bDockedTop;
-        if (this.bDocked) {
-            this.stickyWindow.focus();
-        } else {
-            this.bShouldDockTop = false;
-            this.bShouldDockBottom = false;
-        }
-        */ 
+        this.undockedWindow = wm.getMostRecentWindow('nch:undocked');
+        if (!this.undockedWindow) return;
+
     },
   
   
@@ -285,7 +245,6 @@ dump('start '+this.startX+':'+this.startY+' current '+currentX+':'+currentY+' de
   reload : function(firstRun) {
 
     if (gMini) {
-//      this.adjustSize(null,true);  
 		this.adjustSize(null,true);
     }
 
