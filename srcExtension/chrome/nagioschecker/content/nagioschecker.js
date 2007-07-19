@@ -89,15 +89,38 @@ NCH.prototype = {
   parser: null,
   pt:["down","unreachable","unknown","warning","critical"],
   results:{},
+  isMoving : false,
+  startX : -1,
+  startY : -1,
+  undockedWindow : null,
+
   
   
-   isMoving : false,
-    startX : -1,
-    startY : -1,
-    undockedWindow : null,
-    bDocked : false,
-    bShouldDockTop : false,
-    bShouldDockBottom : false,
+  
+  
+  
+  start : function() {
+	if (gMini) {
+   var resizer = document.getElementById('nagioschecker-mover');
+
+       window.addEventListener('mouseup', 
+                function(event) { nagioschecker.onUndockUp(event) }, false);
+       window.addEventListener('mousedown', 
+                function(event) { nagioschecker.onUndockDown(event) }, false);
+       window.addEventListener('mousemove', 
+                function(event) { nagioschecker.onUndockMove(event) }, false);
+	}
+    this.parser = new NCHParser();
+    this.bundle = document.getElementById("nch-strings");
+    this.setNoData(null);
+    try{
+      var sound = Components.classes["@mozilla.org/sound;1"].createInstance(Components.interfaces.nsISound);
+      sound.init();
+    }
+    catch(e) {}
+
+    this.reload(true);
+  },
 
   adjustSize : function(event, firstTime) {
 
@@ -155,34 +178,6 @@ NCH.prototype = {
         if (!this.undockedWindow) return;
 
     },
-  
-  
-  
-  
-  
-  start : function() {
-	if (gMini) {
-   var resizer = document.getElementById('nagioschecker-mover');
-
-       window.addEventListener('mouseup', 
-                function(event) { nagioschecker.onUndockUp(event) }, false);
-       window.addEventListener('mousedown', 
-                function(event) { nagioschecker.onUndockDown(event) }, false);
-       window.addEventListener('mousemove', 
-                function(event) { nagioschecker.onUndockMove(event) }, false);
-	}
-    this.parser = new NCHParser();
-    this.bundle = document.getElementById("nch-strings");
-    this.setNoData(null);
-    try{
-      var sound = Components.classes["@mozilla.org/sound;1"].createInstance(Components.interfaces.nsISound);
-      sound.init();
-    }
-    catch(e) {}
-
-    this.reload(true);
-  },
-
 
   isFirstWindow: function() {
   
@@ -660,7 +655,7 @@ NCH.prototype = {
 					this.parser.fetchAllData(this);
 				}
 				else {
-					if (this.one_window_only) {
+					if ((this.one_window_only) && (!gMini)){
 						this.setIcon("disabled");
 					}
 					else {
@@ -752,13 +747,11 @@ NCH.prototype = {
     var browserWindow = wm.getMostRecentWindow("navigator:browser");
     var enumerator = wm.getEnumerator("");
     var cnt=0;
-//    var firstWin = null;
     while(enumerator.hasMoreElements()) {
       var win = enumerator.getNext();
-//      if (cnt==0) firstWin=win;
       if (win.nagioschecker) {
         if (!this.isStopped) {        
-          if ((this.one_window_only) && (cnt>0)) {
+          if ((this.one_window_only) && (cnt>0) && (!win.gMini)) {
           	win.nagioschecker.setNoData("");
             win.nagioschecker.setIcon("disabled");
           }
@@ -775,11 +768,6 @@ NCH.prototype = {
           win.nagioschecker.setNoData("");
           win.nagioschecker.setIcon("stop");
           win.nagioschecker.resetBehavior(true);
-          
-          /*
-          this.setNoData("");
-          this.setIcon("stop");
-          */ 
         }
       }
       cnt++;
