@@ -38,7 +38,7 @@ function NCH() {};
 NCH.prototype = {
   bundle: null,
   url: null,
-  update_interval:null,
+//  update_interval:null,
   worktime_from:null,
   worktime_to:null,
   _servers:[],
@@ -46,45 +46,45 @@ NCH.prototype = {
   urlServices: "",
   urlHosts: "",
   urlStatus:"",
-  one_window_only: false,
+//  one_window_only: false,
   timeoutId: null,
   isStopped:false,
-  timoutSec:30,
-  sndWarning:null,
-  sndCritical:null,
-  sndDown:null,
+//  timoutSec:30,
+//  sndWarning:null,
+//  sndCritical:null,
+//  sndDown:null,
   preferences: Components.classes["@mozilla.org/preferences-service;1"]
                                 .getService(Components.interfaces.nsIPrefBranch),
 
 
   oldProblems:{},
 
-  infoType:0,
-  infoWindowType:0,
+//  infoType:0,
+//  infoWindowType:0,
   showSb:{},
-  showColInfo:true,
-  showColAlias:false,
-  showColFlags:false,
-  play_sound: 2,
-  blinking: 2,
-  doubleclick: 0,
-  oneclick: 0,
-  filterOnly: 0,
-  filterOutAck: true,
-  filterOutDisNot: false,
-  filterOutDisChe: true,
-  filterOutSoftStat: false,
-  filterOutDowntime: false,
-  filterOutServOnDown: false,
-  filterOutServOnAck: false,
-  filterOutREHosts: false,
-  filterOutREServices: false,
-  filterOutREHostsValue: "",
-  filterOutREServicesValue: "",
-  filterOutREHostsReverse: false,
-  filterOutREServicesReverse: false,
+//  showColInfo:true,
+//  showColAlias:false,
+//  showColFlags:false,
+//  play_sound: 2,
+//  blinking: 2,
+//  doubleclick: 0,
+//  oneclick: 0,
+//  filterOnly: 0,
+//  filterOutAck: true,
+//  filterOutDisNot: false,
+//  filterOutDisChe: true,
+//  filterOutSoftStat: false,
+//  filterOutDowntime: false,
+//  filterOutServOnDown: false,
+//  filterOutServOnAck: false,
+//  filterOutREHosts: false,
+//  filterOutREServices: false,
+//  filterOutREHostsValue: "",
+//  filterOutREServicesValue: "",
+//  filterOutREHostsReverse: false,
+//  filterOutREServicesReverse: false,
   filterOutAll:{"down":false,"unreachable":false,"uknown":false,"warning":false,"critical":false},
-  filterOutFlapping: true,
+//  filterOutFlapping: true,
   soundBT:{},
   parser: null,
   pt:["down","unreachable","unknown","warning","critical"],
@@ -94,12 +94,10 @@ NCH.prototype = {
   startY : -1,
   undockedWindow : null,
 
-  
-  
-  
-  
+	pref:{},
   
   start : function() {
+  	
 	if (gMini) {
    var resizer = document.getElementById('nagioschecker-mover');
 
@@ -119,7 +117,10 @@ NCH.prototype = {
     }
     catch(e) {}
 
-    this.reload(true);
+		var me = this;
+		setTimeout(function() {
+			me.reload(true);
+		},1000);
   },
 
   adjustSize : function(event, firstTime) {
@@ -228,16 +229,65 @@ NCH.prototype = {
 		win.nagioschecker.resetBehavior(true);
       cnt++;
 	}
-/*	
-    var firstWin = this.getFirstWindow();
-    firstWin.nagioschecker.isStopped = (!firstWin.nagioschecker.isStopped);
-    document.getElementById('nagioschecker-stoprun').setAttribute("label",(firstWin.nagioschecker.isStopped) ? this.bundle.getString("runagain") : this.bundle.getString("stop"));
-*/ 
+
     this.preferences.setBoolPref("extensions.nagioschecker.stopped",firstWin.nagioschecker.isStopped);
     firstWin.nagioschecker.reload(true);
   },
 
   reload : function(firstRun) {
+
+  	this.pref = this.loadPref("extensions.nagioschecker.",{
+			sound_warning:['int',0],
+			sound_warning_path:['char','chrome://nagioschecker/content/warning.wav'],
+			sound_critical:['int',0],
+			sound_critical_path:['char','chrome://nagioschecker/content/critical.wav'],
+			sound_down:['int',0],
+			sound_down_path:['char','chrome://nagioschecker/content/hostdown.wav'],
+			stopped:['bool',false],
+			timeout:['int',30],
+			info_type:['int',0],
+			info_window_type:['int',0],
+			show_statusbar_down:['bool',true],
+			show_statusbar_unreachable:['bool',true],
+			show_statusbar_warning:['bool',true],
+			show_statusbar_critical:['bool',true],
+			show_statusbar_unknown:['bool',true],
+			filter_out_all_down:['bool',false],
+			filter_out_all_unreachable:['bool',false],
+			filter_out_all_warning:['bool',false],
+			filter_out_all_critical:['bool',false],
+			filter_out_all_unknown:['bool',false],
+			sounds_by_type_down:['bool',true],
+			sounds_by_type_unreachable:['bool',true],
+			sounds_by_type_warning:['bool',true],
+			sounds_by_type_critical:['bool',true],
+			sounds_by_type_unknown:['bool',true],
+			show_window_column_information:['bool',true],
+			show_window_column_flags:['bool',true],
+			show_window_column_alias:['bool',false],
+			filter_out_acknowledged:['bool',true],
+			filter_out_disabled_notifications:['bool',true],
+			filter_out_disabled_checks:['bool',true],
+			filter_out_soft_states:['bool',false],
+			filter_out_downtime:['bool',false],
+			filter_out_services_on_down_hosts:['bool',false],
+			filter_out_services_on_acknowledged_hosts:['bool',false],
+			filter_out_regexp_hosts:['bool',false],
+			filter_out_regexp_hosts_value:['char',''],
+			filter_out_regexp_hosts_reverse:['bool',false],
+			filter_out_regexp_services:['bool',false],
+			filter_out_regexp_services_value:['char',''],
+			filter_out_regexp_services_reverse:['bool',false],
+			filter_out_flapping:['bool',false],
+			refresh:['int',5],
+			worktimefrom:['char','08:00'],
+			worktimeto:['char','18:00'],
+			play_sound:['int',2],
+			blinking:['int',2],
+			click:['int',0],
+			one_window_only:['bool',false],
+			});
+
 
     if (gMini) {
 		this.adjustSize(null,true);
@@ -294,274 +344,27 @@ NCH.prototype = {
     
     this.parser.setServers(this._servers);
 
-    this.sndWarning="chrome://nagioschecker/content/warning.wav";
-    try {
-      if (this.preferences.getIntPref("extensions.nagioschecker.sound_warning")) {
-        try {
-          this.sndWarning = "file:///"+this.preferences.getCharPref("extensions.nagioschecker.sound_warning_path");
-        }
-        catch(e) { }
-      }
-    }
-    catch(e) {}
-    
-    this.sndCritical="chrome://nagioschecker/content/critical.wav";
-    try {
-      if (this.preferences.getIntPref("extensions.nagioschecker.sound_critical")) {
-        try {
-          this.sndCritical = "file:///"+this.preferences.getCharPref("extensions.nagioschecker.sound_critical_path");
-        }
-        catch(e) { }
-      }
-    }
-    catch(e) {}
+	this.isStopped = this.pref.stopped;
 
-    this.sndDown="chrome://nagioschecker/content/hostdown.wav";
-    try {
-      if (this.preferences.getIntPref("extensions.nagioschecker.sound_down")) {
-        try {
-          this.sndDown = "file:///"+this.preferences.getCharPref("extensions.nagioschecker.sound_down_path");
-        }
-        catch(e) { }
-      }
-    }
-    catch(e) {}
-
-    try {
-      this.isStopped = this.preferences.getBoolPref("extensions.nagioschecker.stopped");
-    }
-    catch(e) {
-      this.isStopped = false;
-    }
-    try {
-      this.timeoutSec = this.preferences.getIntPref("extensions.nagioschecker.timeout");
-    }
-    catch(e) {
-      this.timeoutSec = 30;
-    }
-
-    this.parser.setTimeout(this.timeoutSec);
-
-    try {
-      this.infoType = this.preferences.getIntPref("extensions.nagioschecker.info_type");
-    }
-    catch(e) {
-      this.infoType = 0;
-    }
-    try {
-      this.infoWindowType = this.preferences.getIntPref("extensions.nagioschecker.info_window_type");
-    }
-    catch(e) {
-      this.infoWindowType = 0;
-    }
+    this.parser.setTimeout(this.pref.timeout);
 
     for (var i in this.pt) {
-      try {
-        this.showSb[this.pt[i]] = this.preferences.getBoolPref("extensions.nagioschecker.show_statusbar_"+this.pt[i]);
-      }
-      catch(e) {
-        this.showSb[this.pt[i]]=true;
-      }
-      try {
-        this.filterOutAll[this.pt[i]] = this.preferences.getBoolPref("extensions.nagioschecker.filter_out_all_"+this.pt[i]);
-      }
-      catch(e) {
-        this.filterOutAll[this.pt[i]]=false;
-      }
-      try {
-        this.soundBT[this.pt[i]] = this.preferences.getBoolPref("extensions.nagioschecker.sounds_by_type_"+this.pt[i]);
-      }
-      catch(e) {
-        this.soundBT[this.pt[i]]=true;
-      }
+    	this.filterOutAll[this.pt[i]]=this.pref['filter_out_all_'+this.pt[i]];
+    	this.showSb[this.pt[i]]=this.pref['show_statusbar_'+this.pt[i]];
+    	this.soundBT[this.pt[i]]=this.pref['sounds_by_type_'+this.pt[i]];
     }
 
-    try {
-      this.showColInfo = this.preferences.getBoolPref("extensions.nagioschecker.show_window_column_information");
-    }
-    catch(e) {
-      this.showColInfo=true;
-    }
+	sWorktimeFrom = this.pref.worktimefrom;
+	while (sWorktimeFrom.length < 5) { // fill up to 5 chars (08:40)
+		sWorktimeFrom = "0"+sWorktimeFrom;
+	}
+	this.worktime_from = ( (sWorktimeFrom.substring(0,2)*60) + (sWorktimeFrom.substring(3,5)*1) )*60;
 
-    try {
-      this.showColFlags = this.preferences.getBoolPref("extensions.nagioschecker.show_window_column_flags");
-    }
-    catch(e) {
-      this.showColFlags=true;
-    }
-
-    try {
-      this.showColAlias = this.preferences.getBoolPref("extensions.nagioschecker.show_window_column_alias");
-    }
-    catch(e) {
-      this.showColAlias=false;
-    }
-
-    try {
-      this.filterOnly = this.preferences.getIntPref("extensions.nagioschecker.filter_only");
-    }
-    catch(e) {
-      this.filterOnly = 0;
-    }
-
-    try {
-      this.filterOutAck = this.preferences.getBoolPref("extensions.nagioschecker.filter_out_acknowledged");
-    }
-    catch(e) {
-      this.filterOutAck=true;
-    }
-
-    try {
-      this.filterOutDisNot = this.preferences.getBoolPref("extensions.nagioschecker.filter_out_disabled_notifications");
-    }
-    catch(e) {
-      this.filterOutDisNot=true;
-    }
-
-    try {
-      this.filterOutDisChe = this.preferences.getBoolPref("extensions.nagioschecker.filter_out_disabled_checks");
-    }
-    catch(e) {
-      this.filterOutDisChe=true;
-    }
-    try {
-      this.filterOutSoftStat = this.preferences.getBoolPref("extensions.nagioschecker.filter_out_soft_states");
-    }
-    catch(e) {
-      this.filterOutSoftStat=false;
-    }
-    try {
-      this.filterOutDowntime = this.preferences.getBoolPref("extensions.nagioschecker.filter_out_downtime");
-    }
-    catch(e) {
-      this.filterOutDowntime=false;
-    }
-    try {
-      this.filterOutServOnDown = this.preferences.getBoolPref("extensions.nagioschecker.filter_out_services_on_down_hosts");
-    }
-    catch(e) {
-      this.filterOutServOnDown=false;
-    }
-    try {
-      this.filterOutServOnAck = this.preferences.getBoolPref("extensions.nagioschecker.filter_out_services_on_acknowledged_hosts");
-    }
-    catch(e) {
-      this.filterOutServOnAck=false;
-    }
-
-    try {
-      this.filterOutREHosts = this.preferences.getBoolPref("extensions.nagioschecker.filter_out_regexp_hosts");
-    }
-    catch(e) {
-      this.filterOutREHosts=false;
-    }
-
-    try {
-      this.filterOutREServices = this.preferences.getBoolPref("extensions.nagioschecker.filter_out_regexp_services");
-    }
-    catch(e) {
-      this.filterOutREServices=false;
-    }
-
-    try {
-      this.filterOutREHostsValue = this.preferences.getCharPref("extensions.nagioschecker.filter_out_regexp_hosts_value");
-    }
-    catch(e) {
-      this.filterOutREHostsValue="";
-    }
-
-    try {
-      this.filterOutREServicesValue = this.preferences.getCharPref("extensions.nagioschecker.filter_out_regexp_services_value");
-    }
-    catch(e) {
-      this.filterOutREServicesValue="";
-    }
-
-    try {
-      this.filterOutREHostsReverse = this.preferences.getBoolPref("extensions.nagioschecker.filter_out_regexp_hosts_reverse");
-    }
-    catch(e) {
-      this.filterOutREHostsReverse=false;
-    }
-
-    try {
-      this.filterOutREServicesReverse = this.preferences.getBoolPref("extensions.nagioschecker.filter_out_regexp_services_reverse");
-    }
-    catch(e) {
-      this.filterOutREServicesReverse=false;
-    }
-
-
-    try {
-      this.filterOutFlapping = this.preferences.getBoolPref("extensions.nagioschecker.filter_out_flapping");
-    }
-    catch(e) {
-      this.filterOutFlapping=false;
-    }
-
-    try {
-      this.update_interval = this.preferences.getIntPref("extensions.nagioschecker.refresh");
-    }
-    catch(e) {
-      this.update_interval=5;
-    }
-
-    try {
-      sWorktimeFrom = this.preferences.getCharPref("extensions.nagioschecker.worktimefrom");
-      while (sWorktimeFrom.length < 5) { // fill up to 5 chars (08:40)
-      	sWorktimeFrom = "0"+sWorktimeFrom;
-      }
-      this.worktime_from = ( (sWorktimeFrom.substring(0,2)*60) + (sWorktimeFrom.substring(3,5)*1) )*60;
-    }
-    catch(e) {
-      this.worktime_from=28800; // 8:00
-    }
-
-    try {
-      sWorktimeTo = this.preferences.getCharPref("extensions.nagioschecker.worktimeto");
-      while (sWorktimeTo.length < 5) { // fill up to 5 chars (08:40)
-      	sWorktimeTo = "0"+sWorktimeTo;
-      }
-      this.worktime_to = ( (sWorktimeTo.substring(0,2)*60) + (sWorktimeTo.substring(3,5)*1) )*60;
-    }
-    catch(e) {
-      this.worktime_to=64800; // 18:00
-    }
-
-    try {
-      this.play_sound = this.preferences.getIntPref("extensions.nagioschecker.play_sound");
-    }
-    catch(e) {
-      this.play_sound=2;
-    }
-
-
-    try {
-      this.blinking = this.preferences.getIntPref("extensions.nagioschecker.blinking");
-    }
-    catch(e) {
-      this.blinking=2;
-    }
-/*
-    try {
-      this.doubleclick = this.preferences.getIntPref("extensions.nagioschecker.doubleclick");
-    }
-    catch(e) {
-      this.doubleclick=0;
-    }
-*/
-    try {
-      this.oneclick = this.preferences.getIntPref("extensions.nagioschecker.click");
-    }
-    catch(e) {
-      this.oneclick=0;
-    }
-    try {
-      this.one_window_only = this.preferences.getBoolPref("extensions.nagioschecker.one_window_only");
-    }
-    catch(e) {
-      this.one_window_only=false;
-    }
+	sWorktimeTo = this.pref.worktimeto;
+	while (sWorktimeTo.length < 5) { // fill up to 5 chars (08:40)
+		sWorktimeTo = "0"+sWorktimeTo;
+	}
+	this.worktime_to = ( (sWorktimeTo.substring(0,2)*60) + (sWorktimeTo.substring(3,5)*1) )*60;
 
     document.getElementById('nagioschecker-stoprun').setAttribute("label",(this.isStopped) ? this.bundle.getString("runagain") : this.bundle.getString("stop"));
 
@@ -655,7 +458,7 @@ NCH.prototype = {
 					this.parser.fetchAllData(this);
 				}
 				else {
-					if ((this.one_window_only) && (!gMini)){
+					if ((this.pref.one_window_only) && (!gMini)){
 						this.setIcon("disabled");
 					}
 					else {
@@ -713,7 +516,7 @@ NCH.prototype = {
 					me.setIcon("sleepy");
 				}
 			}
-			, this.update_interval*60000
+			, this.pref.refresh*60000
 		);
   },
 
@@ -724,9 +527,9 @@ NCH.prototype = {
 		var reallyPlay=false;
 		for(var i=0;i<this.pt.length;i++) {
 			if ( 
-				((this.play_sound==1) && (this.soundBT[this.pt[i]]) && (this.results[this.pt[i]][2]))
+				((this.pref.play_sound==1) && (this.soundBT[this.pt[i]]) && (this.results[this.pt[i]][2]))
 				||
-				((this.play_sound==2) && (this.soundBT[this.pt[i]]) && (this.results[this.pt[i]][1]))
+				((this.pref.play_sound==2) && (this.soundBT[this.pt[i]]) && (this.results[this.pt[i]][1]))
 			) {
 				reallyPlay=true;
 			}
@@ -751,7 +554,7 @@ NCH.prototype = {
       var win = enumerator.getNext();
       if (win.nagioschecker) {
         if (!this.isStopped) {        
-          if ((this.one_window_only) && (cnt>0) && (!win.gMini)) {
+          if ((this.pref.one_window_only) && (cnt>0) && (!win.gMini)) {
           	win.nagioschecker.setNoData("");
             win.nagioschecker.setIcon("disabled");
           }
@@ -821,7 +624,7 @@ NCH.prototype = {
 
 
   statusBarOnClick: function(event,what) {
-    if ((event.button==0) && (this.oneclick)) {
+    if ((event.button==0) && (this.pref.click)) {
       this.openAllTabs(what);
     }
   },
@@ -898,7 +701,8 @@ NCH.prototype = {
 
 
   enumerateStatus: function(problems) {
-	var paket = new NCHPaket(this.showColInfo,this.showColAlias,this.showColFlags);
+
+	var paket = new NCHPaket(this.pref.show_window_column_information,this.pref.show_window_column_alias,this.pref.show_window_column_flags);
 
     var newProblems={};
     for(var i=0;i<problems.length;i++) {
@@ -930,25 +734,25 @@ NCH.prototype = {
 					if (
 						 (!this.filterOutAll[st])
 					    &&
-						 ((!probls[j].acknowledged) || ((probls[j].acknowledged) && (!this.filterOutAck))) 
+						 ((!probls[j].acknowledged) || ((probls[j].acknowledged) && (!this.pref.filter_out_acknowledged))) 
 					    &&
-					    ((!probls[j].dischecks) || ((probls[j].dischecks) && (!this.filterOutDisChe))) 
+					    ((!probls[j].dischecks) || ((probls[j].dischecks) && (!this.pref.filter_out_disabled_checks))) 
 					    &&
-					    ((!probls[j].disnotifs) || ((probls[j].disnotifs) && (!this.filterOutDisNot)))
+					    ((!probls[j].disnotifs) || ((probls[j].disnotifs) && (!this.pref.filter_out_disabled_notifications)))
 					    &&
-					    ((!probls[j].downtime) || ((probls[j].downtime) && (!this.filterOutDowntime)))
+					    ((!probls[j].downtime) || ((probls[j].downtime) && (!this.pref.filter_out_downtime)))
 					    &&
-					    ((!probls[j].flapping) || ((probls[j].flapping) && (!this.filterOutFlapping)))
+					    ((!probls[j].flapping) || ((probls[j].flapping) && (!this.pref.filter_out_flapping)))
     			    	 &&
-		    			 ((!probls[j].isSoft) || ((probls[j].isSoft) && ((!this.filterOutSoftStat) || (isNotUp[probls[j].host]))))
+		    			 ((!probls[j].isSoft) || ((probls[j].isSoft) && ((!this.pref.filter_out_soft_states) || (isNotUp[probls[j].host]))))
 					    &&
-					    ((!this.filterOutServOnDown) || ((this.filterOutServOnDown) && ((!probls[j].service) || ((probls[j].service) && (!isNotUp[probls[j].host])))))
+					    ((!this.pref.filter_out_services_on_down_hosts) || ((this.pref.filter_out_services_on_down_hosts) && ((!probls[j].service) || ((probls[j].service) && (!isNotUp[probls[j].host])))))
 					    &&
-					    ((!this.filterOutServOnAck) || ((this.filterOutServOnAck) && ((!probls[j].service) || ((probls[j].service) && (!isAck[probls[j].host])))))
+					    ((!this.pref.filter_out_services_on_acknowledged_hosts) || ((this.pref.filter_out_services_on_acknowledged_hosts) && ((!probls[j].service) || ((probls[j].service) && (!isAck[probls[j].host])))))
 					    &&
-					    ((!this.filterOutREHosts) || ((this.filterOutREHosts) && (probls[j].host) &&  (((!this.filterOutREHostsReverse) && (!probls[j].host.match(new RegExp(this.filterOutREHostsValue)))) || ((this.filterOutREHostsReverse) && (probls[j].host.match(new RegExp(this.filterOutREHostsValue)))))))
+					    ((!this.pref.filter_out_regexp_hosts) || ((this.pref.filter_out_regexp_hosts) && (probls[j].host) &&  (((!this.pref.filter_out_regexp_hosts_reverse) && (!probls[j].host.match(new RegExp(this.pref.filter_out_regexp_hosts_value)))) || ((this.pref.filter_out_regexp_hosts_reverse) && (probls[j].host.match(new RegExp(this.pref.filter_out_regexp_hosts_value)))))))
 					    &&
-					    ((!this.filterOutREServices) || ((this.filterOutREServices) && (probls[j].service) && (((!this.filterOutREServicesReverse) && (!probls[j].service.match(new RegExp(this.filterOutREServicesValue)))) || ((this.filterOutREServicesReverse) && (probls[j].service.match(new RegExp(this.filterOutREServicesValue)))))))
+					    ((!this.pref.filter_out_regexp_services) || ((this.pref.filter_out_regexp_services) && (probls[j].service) && (((!this.pref.filter_out_regexp_services_reverse) && (!probls[j].service.match(new RegExp(this.pref.filter_out_regexp_services_value)))) || ((this.pref.filter_out_regexp_services_reverse) && (probls[j].service.match(new RegExp(this.pref.filter_out_regexp_services_value)))))))
 					    ) {
 							var uniq = this._servers[i].name+"-"+probls[j].host+"-"+probls[j].service+"-"+probls[j].status;
 							newProblems[uniq]=probls[j];
@@ -989,20 +793,16 @@ NCH.prototype = {
 
     var mainPanel=document.getElementById('nagioschecker-panel');
 
-    switch (this.oneclick) {
+    switch (this.pref.click) {
 		  case 1:
 			  mainPanel.setAttribute("onclick","nagioschecker.statusBarOnClick(event,'main');");
 			  break;
 		  case 3:
 			if (!this.isStopped) {
-//				alert('pridanonclick');
 			  	mainPanel.setAttribute("onclick","nagioschecker.showNchPopup(this,event,'nagioschecker-popup');");
 			}
 			else {
-//				alert('odebranonclick');
 			  	mainPanel.setAttribute("onclick","void(0);");
-
-//		  		mainPanel.removeAttribute("onclick");
 			}
 			  break;
 		  default:
@@ -1010,14 +810,14 @@ NCH.prototype = {
 			  break;		
 	  }
 
-	  if (this.oneclick>0) {
+	  if (this.pref.click>0) {
 		mainPanel.setAttribute("style","cursor:pointer");
     	for (var pType in fld) {
 	      fld[pType].setAttribute("style","cursor:pointer");
 	    }
 	  }
 
-	  if (this.oneclick==2){
+	  if (this.pref.click==2){
 	      for (var pType in fld) {
 	        fld[pType].setAttribute("style","cursor:pointer");
 	      }
@@ -1028,7 +828,7 @@ NCH.prototype = {
 	  	  fld["critical"].setAttribute("onclick","nagioschecker.statusBarOnClick(event,'services');");
 	  }
 	  else {
-	      if ((this.oneclick==4) && (!this.isStopped)) {
+	      if ((this.pref.click==4) && (!this.isStopped)) {
 	        for (var pType in fld) {
 	          fld[pType].setAttribute("style","cursor:pointer");
 	    	    fld[pType].setAttribute("onclick","nagioschecker.showNchPopup(this,event,'nagioschecker-popup-"+pType+"');");
@@ -1055,8 +855,8 @@ NCH.prototype = {
               };
     var mainPanel=document.getElementById('nagioschecker-panel');
 
-    if ((isAny) && (this.infoWindowType>0) && (!this.isStopped)) {
-      if (this.infoWindowType==1) {
+    if ((isAny) && (this.pref.info_window_type>0) && (!this.isStopped)) {
+      if (this.pref.info_window_type==1) {
         mainPanel.setAttribute("tooltip", "nagioschecker-tooltip");
         for (var pType in fld) {
           fld[pType].removeAttribute("tooltip");
@@ -1099,13 +899,13 @@ NCH.prototype = {
           "warning":["fullAlertWarning","shortAlertWarning",""],
           "critical":["fullAlertCritical","shortAlertCritical",""]
           };
-    if (this.infoType>2) {
+    if (this.pref.info_type>2) {
       for (var pType in fld) {
         var x = "";
         var pbt = paket.getProblemsByType(pType);
         for (var i = 0; i < pbt.length; i++) {
           if (pbt[i]>0) {
-              x+=((x) ? " + " : "")+((this.infoType<5) ? this._servers[i].name+' ' : '')+pbt[i];
+              x+=((x) ? " + " : "")+((this.pref.info_type<5) ? this._servers[i].name+' ' : '')+pbt[i];
           }
         }
     	  fld[pType].setAttribute("value", this.getCorrectBundleString(paket.countProblemsByType(pType),infoTypes[pType][(this.infoType==3) ? 1 : 2],x));
@@ -1113,11 +913,11 @@ NCH.prototype = {
 
     }
     else {
-    	fld["down"].setAttribute("value", this.getCorrectBundleString(paket.countProblemsByType("down"),infoTypes["down"][this.infoType],""));
-  	  fld["unreachable"].setAttribute("value", this.getCorrectBundleString(paket.countProblemsByType("unreachable"),infoTypes["unreachable"][this.infoType],""));
-		  fld["unknown"].setAttribute("value", this.getCorrectBundleString(paket.countProblemsByType("unknown"),infoTypes["unknown"][this.infoType],""));
-		  fld["warning"].setAttribute("value", this.getCorrectBundleString(paket.countProblemsByType("warning"),infoTypes["warning"][this.infoType],""));
-		  fld["critical"].setAttribute("value", this.getCorrectBundleString(paket.countProblemsByType("critical"),infoTypes["critical"][this.infoType],""));
+    	fld["down"].setAttribute("value", this.getCorrectBundleString(paket.countProblemsByType("down"),infoTypes["down"][this.pref.info_type],""));
+  	  fld["unreachable"].setAttribute("value", this.getCorrectBundleString(paket.countProblemsByType("unreachable"),infoTypes["unreachable"][this.pref.info_type],""));
+		  fld["unknown"].setAttribute("value", this.getCorrectBundleString(paket.countProblemsByType("unknown"),infoTypes["unknown"][this.pref.info_type],""));
+		  fld["warning"].setAttribute("value", this.getCorrectBundleString(paket.countProblemsByType("warning"),infoTypes["warning"][this.pref.info_type],""));
+		  fld["critical"].setAttribute("value", this.getCorrectBundleString(paket.countProblemsByType("critical"),infoTypes["critical"][this.pref.info_type],""));
     }
 
     fld["down"].setAttribute("hidden", (((paket.countProblemsByType("down")==0) || (!this.showSb["down"])) ? "true" : "false"));
@@ -1136,10 +936,10 @@ NCH.prototype = {
       var whichBlink = {};      
 
       for (var pType in fld) {
-        whichBlink[pType]=((paket.countOldProblemsByType(pType)>0) || (this.blinking==2)) ? true : false;
+        whichBlink[pType]=((paket.countOldProblemsByType(pType)>0) || (this.pref.blinking==2)) ? true : false;
       }
 
-      if ((this.blinking==3) || (this.blinking==2) || ((this.blinking==1) && (paket.countOldProblemsByType("all")>0)) && (!firstRun)){
+      if ((this.pref.blinking==3) || (this.pref.blinking==2) || ((this.pref.blinking==1) && (paket.countOldProblemsByType("all")>0)) && (!firstRun)){
         this.blinkLabel(12,whichBlink);
       }
     }
@@ -1245,7 +1045,7 @@ NCH.prototype = {
     var mainPanel=document.getElementById('nagioschecker-panel');
     mainPanel.removeAttribute("onclick");
 
-		 if ((this.infoType==2) || (this.infoType==5)) {
+		 if ((this.pref.info_type==2) || (this.pref.info_type==5)) {
 	    infoLabel.setAttribute("value"," 0 ");
 		 }
 		 else {
@@ -1266,32 +1066,11 @@ NCH.prototype = {
     while(enumerator.hasMoreElements()) {
       var win = enumerator.getNext();
       if (win.nagioschecker) {
-		win.nagioschecker.setIcon((loading) ? "loading" : ((win.nagioschecker.isStopped) ? "stop" : "nagios"));
-		win.nagioschecker.resetBehavior(true);
-/*
-    if (loading) {
-      this.setIcon("loading");
-    } else {
-      this.setIcon("nagios");
-    }
-*/
+			win.nagioschecker.setIcon((loading) ? "loading" : ((win.nagioschecker.isStopped) ? "stop" : "nagios"));
+			win.nagioschecker.resetBehavior(true);
       }
     }
   },
-/*
-  setStopped: function(loading) {
-    var wm = Components.classes["@mozilla.org/appshell/window-mediator;1"]
-                   .getService(Components.interfaces.nsIWindowMediator);
-    var browserWindow = wm.getMostRecentWindow("navigator:browser");
-    var enumerator = wm.getEnumerator("");
-    while(enumerator.hasMoreElements()) {
-      var win = enumerator.getNext();
-      if (win.nagioschecker) {
-//		win.nagioschecker.setIcon((loading) ? "loading" : "nagios");
-      }
-    }
-  },
-*/
 
   setIcon: function(type) {
     var ico = document.getElementById('nagioschecker-img');
@@ -1335,7 +1114,30 @@ NCH.prototype = {
 
 	bRet = (now > this.worktime_from) && (now < this.worktime_to);
 	return bRet;
-  }
+  },
+  
+	loadPref: function(branch,conf) {
+		var result = {};
+		for (var i in conf) {
+			try {
+				switch (conf[i][0]) {
+					case 'int':
+						result[i] = this.preferences.getIntPref(branch+i);
+						break;
+					case 'bool':
+						result[i] = this.preferences.getBoolPref(branch+i);
+						break;
+					case 'char':
+						result[i] = this.preferences.getCharPref(branch+i);
+						break;
+				}
+	      }
+	      catch(e) {
+				result[i] = conf[i][1];
+	      }
+		}
+		return result;
+	}
 
 }
 

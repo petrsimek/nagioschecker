@@ -30,7 +30,8 @@
 <!ENTITY nch.prefs.worktime "Pracovní hodiny pluginu (hh:mm)">
 <!ENTITY nch.prefs.utilityrun "Běh programu">
 <!ENTITY nch.prefs.other "Ostatní">
-<!ENTITY nch.prefs.onewindowonly "Spustit jen v okně, otevřeném jako prvním">
+<!ENTITY nch.prefs.onewindowonly "Spustit pouze v okně, otevřeném jako prvním">
+<!ENTITY nch.prefs.onewindowonlyexceptfw "Spustit pouze v okně, otevřeném jako prvním (mimo plovoucí okno)">
 
 <!ENTITY nch.about.original "Původní název">
 <!ENTITY nch.about.version "Verze">
@@ -111,7 +112,7 @@
 <!ENTITY nch.prefs.allunknownservices "Všechny služby v neznámém stavu">
 <!ENTITY nch.prefs.allcriticalservices "Všechny služby v kritickém stavu">
 <!ENTITY nch.prefs.blinkalltypesonstatusupdateifnewproblemappears "Blikají všechny typy, pokud se objeví nové hlášení">
-<!ENTITY nch.prefs.blinkaffectedtypesonstatusupdateifnewproblemappears "Blikají jen ty typy, kde se objeví nové hlášení">
+<!ENTITY nch.prefs.blinkaffectedtypesonstatusupdateifnewproblemappears "Blikají pouze ty typy, kde se objeví nové hlášení">
 <!ENTITY nch.prefs.blinkalltypesoneverystatusupdateifatleastoneproblemexists "Blikají všechny typy, pokud existuje alespoň jedno hlášení">
 <!ENTITY nch.prefs.aliases "Aliasy">
 <!ENTITY nch.prefs.makedonation "Podpořte vývoj">
