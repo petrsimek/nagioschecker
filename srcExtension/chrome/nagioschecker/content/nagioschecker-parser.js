@@ -179,7 +179,7 @@ NCHParser.prototype = {
           callback(null);
           return;
         }
-            var result=request.responseText;
+            var result=request.responseText.replace(/[\n\r\t]/g,'');
             var doc = null;
             if (rettext) {
               doc=result;
@@ -415,12 +415,14 @@ NCHParser.prototype = {
         if (viptr[i] instanceof HTMLTableRowElement) {
           var viptd = viptr[i].childNodes;
           if (viptd.length>1) {                
-            var host    = getUglyNodeValue(viptd[1],[0,1,0,1,1,1,0,1,0,0]);
+//            var host    = getUglyNodeValue(viptd[1],[0,1,0,1,1,1,0,1,0,0]);
+            var host    = getUglyNodeValue(viptd[0],[0,0,0,0,0,0,0,0,0,0]);
             if (!host) host=lastHost;
 
 
 
-            var service = getUglyNodeValue(viptd[3],[0,0,0,0,0,1,0,1,0,0]);
+//            var service = getUglyNodeValue(viptd[3],[0,0,0,0,0,1,0,1,0,0]);
+            var service = getUglyNodeValue(viptd[1],[0,0,0,0,0,0,0,0,0,0]);
 
             var acknowledged=false;
             var dischecks=false;
@@ -429,7 +431,8 @@ NCHParser.prototype = {
             var downtime=false;
             var flapping=false;
 
-            var icons    = getUglyNode(viptd[3],[0,0,0,2,1,1,0]);
+//            var icons    = getUglyNode(viptd[3],[0,0,0,2,1,1,0]);
+            var icons    = getUglyNode(viptd[1],[0,0,0,1,0,0,0]);
 			if (icons.childNodes) {
             for(var j=0;j<icons.childNodes.length;j++) {
               if (icons.childNodes[j] instanceof HTMLTableCellElement) {
@@ -461,13 +464,18 @@ NCHParser.prototype = {
             }
 			}
 
-            var status  = getUglyNodeValue(viptd[5],[0]);
-            var lastCheck  = this.nagiosDateToTimestamp(getUglyNodeValue(viptd[7],[0]));
-				    var tmp_dur = getUglyNodeValue(viptd[9],[0]);
+//            var status  = getUglyNodeValue(viptd[5],[0]);
+            var status  = getUglyNodeValue(viptd[2],[0]);
+//            var lastCheck  = this.nagiosDateToTimestamp(getUglyNodeValue(viptd[7],[0]));
+            var lastCheck  = this.nagiosDateToTimestamp(getUglyNodeValue(viptd[3],[0]));
+//		    var tmp_dur = getUglyNodeValue(viptd[9],[0]);
+		    var tmp_dur = getUglyNodeValue(viptd[4],[0]);
             var duration  = this.nagiosDurationToDuration(tmp_dur);
             var durationSec  = this.nagiosDurationToSeconds(tmp_dur);
-            var attempt  = getUglyNodeValue(viptd[11],[0]);
-            var info  = getUglyNodeValue(viptd[13],[0]);
+//            var attempt  = getUglyNodeValue(viptd[11],[0]);
+            var attempt  = getUglyNodeValue(viptd[5],[0]);
+//            var info  = getUglyNodeValue(viptd[13],[0]);
+            var info  = getUglyNodeValue(viptd[6],[0]);
 
             var isSoft = false;
             var sto = new RegExp('([0-9]+)\/([0-9]+)','mig').exec(attempt);
@@ -511,16 +519,17 @@ NCHParser.prototype = {
         if (viptr[i] instanceof HTMLTableRowElement) {
           var viptd = viptr[i].childNodes;
           if (viptd.length>1) {                
-            var host    = getUglyNodeValue(viptd[1],[0,1,0,1,1,1,0,1,0,0]);
+//            var host    = getUglyNodeValue(viptd[1],[0,1,0,1,1,1,0,1,0,0]);
+            var host    = getUglyNodeValue(viptd[0],[0,0,0,0,0,0,0,0,0,0]);
             if (!host) host=lastHost;
-
             var acknowledged=false;
             var dischecks=false;
             var disnotifs=false;
             var downtime=false;
             var flapping=false;
 
-            var icons    = getUglyNode(viptd[1],[0,1,0,3,1,1,0]);
+//            var icons    = getUglyNode(viptd[3],[0,1,0,3,1,1,0]);
+            var icons    = getUglyNode(viptd[1],[0,0,0,1,0,0,0]);
 			if (icons.childNodes) {
             for(var j=0;j<icons.childNodes.length;j++) {
               if (icons.childNodes[j] instanceof HTMLTableCellElement) {
@@ -550,12 +559,16 @@ NCHParser.prototype = {
             }
 			}
 
-            var status  = getUglyNodeValue(viptd[3],[0]);
-            var lastCheck  = this.nagiosDateToTimestamp(getUglyNodeValue(viptd[5],[0]));
-    				var tmp_dur = getUglyNodeValue(viptd[7],[0]);
+//            var status  = getUglyNodeValue(viptd[3],[0]);
+            var status  = getUglyNodeValue(viptd[2],[0]);
+//            var lastCheck  = this.nagiosDateToTimestamp(getUglyNodeValue(viptd[5],[0]));
+            var lastCheck  = this.nagiosDateToTimestamp(getUglyNodeValue(viptd[3],[0]));
+//    				var tmp_dur = getUglyNodeValue(viptd[7],[0]);
+    				var tmp_dur = getUglyNodeValue(viptd[4],[0]);
             var duration  = this.nagiosDurationToDuration(tmp_dur);
             var durationSec  = this.nagiosDurationToSeconds(tmp_dur);
-            var info  = getUglyNodeValue(viptd[9],[0]);
+//            var info  = getUglyNodeValue(viptd[9],[0]);
+            var info  = getUglyNodeValue(viptd[5],[0]);
 				    if ((status=="DOWN") || (status=="UNREACHABLE")) {
             	this.problems[pos][this.toLower[status]].push({"type":"h","host": host,"service":null,"status":this.toLower[status],"lastCheck":lastCheck,"durationSec":durationSec,"duration":duration,"attempt":null,"info":info,"acknowledged":acknowledged,"dischecks":dischecks,"disnotifs":disnotifs,"isSoft":false,"downtime":downtime,"flapping":flapping,"onlypass":false});
 					    if ((this.manager._servers[pos].getAliases) && (!this.manager._servers[pos].aliases[host])) {
