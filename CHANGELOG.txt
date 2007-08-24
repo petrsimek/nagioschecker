@@ -1,11 +1,12 @@
 0.10 (not released yet)
 * NEW: ability to change ordering of servers
 * NEW: time of last download of alerts for each server (shown in tooltip)
-* NEW: ability to choose inverse filtering
+* NEW: ability to choose inverse filtering of regular expressions
 * NEW: added filtering of flapping hosts and services
 * NEW: support for Flock 0.9+
 * NEW: added option to show hosts and services flags in tooltip
-* BUGFIX: Nagios with sourcecode without newlines fixed (Stic)
+* BUGFIX: now handles correctly Nagioses having its source code from unknown reasons without newline chracters
+* INTERNAL: First time succesfully tested on 3rd version of Nagios (3.0a5)
 
 0.9.5
 * BUGFIX: Stop/Run issues when triggered from window other than first
