@@ -126,8 +126,8 @@ NCHParser.prototype = {
 						me.fetchServer(pos+1);
 					}
 				});   			
-            });        
-		});
+            },true);        
+		},true);
      }
      else {
 		if (this._servers.length==pos+1) {
@@ -148,14 +148,14 @@ NCHParser.prototype = {
 				me.parseAlias(pos,me.missingAliases[pos][apos],doc2);
 				me.manager._servers[pos][me.missingAliases[pos][apos]]=me.missingAliases[pos][apos];
 				me.loadMissingAlias(apos+1,pos,username,password,callback);				
-			});
+			},false);
 	}
 	else {
 		callback();
 	}
   },
 
-  loadDataAsync: function(url,username,password,rettext,callback) {
+  loadDataAsync: function(url,username,password,rettext,callback,remove_nl) {
     var doc=null;
     if (url) {
 	    var request=new XMLHttpRequest();
@@ -179,7 +179,8 @@ NCHParser.prototype = {
           callback(null);
           return;
         }
-            var result=request.responseText.replace(/[\n\r\t]/g,'');
+        		
+            var result=(remove_nl) ? request.responseText.replace(/[\n\r\t]/g,'') : request.responseText;
             var doc = null;
             if (rettext) {
               doc=result;
@@ -218,7 +219,7 @@ NCHParser.prototype = {
 	    	me.loadDataAsync(nuvola,username,password,true,function(par) {
 			var urlst = me.parseNuvolaJsStatus(par,url);
 						callback(urlst);
-					});
+					},false);
 		}
 		else {
 
@@ -227,13 +228,13 @@ NCHParser.prototype = {
 		    	me.loadDataAsync(side,username,password,true,function(par) {
 					var urlst = me.parseSide(par,url,side);
 						callback(urlst);
-					});
+					},false);
 			}
 			else {
 		      callback("");
 			}
 		}
-    	});
+    	},false);
   },
 
   nagiosDateToTimestamp: function(ndate) {
