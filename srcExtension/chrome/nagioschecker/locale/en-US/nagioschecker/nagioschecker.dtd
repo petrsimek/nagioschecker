@@ -29,7 +29,6 @@
 <!ENTITY nch.prefs.utilityrun "Utility Run">
 <!ENTITY nch.prefs.other "Other">
 <!ENTITY nch.prefs.onewindowonly "Run only in window opened first">
-<!ENTITY nch.prefs.onewindowonlyexceptfw "Run only in window opened first (except floating window)">
 
 <!ENTITY nch.about.original "Original title">
 <!ENTITY nch.about.version "Version">

@@ -29,7 +29,6 @@
 <!ENTITY nch.prefs.utilityrun "Běh programu">
 <!ENTITY nch.prefs.other "Ostatní">
 <!ENTITY nch.prefs.onewindowonly "Spustit pouze v okně, otevřeném jako prvním">
-<!ENTITY nch.prefs.onewindowonlyexceptfw "Spustit pouze v okně, otevřeném jako prvním (mimo plovoucí okno)">
 
 <!ENTITY nch.about.original "Původní název">
 <!ENTITY nch.about.version "Verze">
