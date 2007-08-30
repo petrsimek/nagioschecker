@@ -110,7 +110,12 @@
 <!ENTITY nch.prefs.makedonation "Effettua una donazione">
 <!ENTITY nch.prefs.hostsmatchingregexp "Server corrispondenti ad espressioni regolari">
 <!ENTITY nch.prefs.servicesmatchingregexp "Servizi corrispondenti ad espressioni regolari">
+<!ENTITY nch.prefs.allflapping "Tutti i server e servizi instabili">
 <!ENTITY nch.prefs.disable "Disattiva">
 <!ENTITY nch.prefs.disabled "Disattivato">
 <!ENTITY nch.prefs.onaddons "Nagios Checker su addons.mozilla.org">
 <!ENTITY nch.prefs.projecthome "Sito web di Nagios Checker">
+<!ENTITY nch.prefs.moveup "Sposta su">
+<!ENTITY nch.prefs.movedown "Sposta giù">
+<!ENTITY nch.prefs.showflagscolumn "Mostra la colonna degli indicatori nella finestra delle informazioni">
+<!ENTITY nch.prefs.reverseexp "Inverti l&apos;espressione">

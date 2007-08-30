@@ -5,7 +5,7 @@
 <overlay id="nagioscheckeroverlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 
 	<script type="application/x-javascript">
-gMini=false;
+var gMini=false;
 	</script>
   <script type="application/x-javascript" src="chrome://nagioschecker/content/nagioschecker-passwords.js"/>
 	<script type="application/x-javascript" src="chrome://nagioschecker/content/nagioschecker-parser.js" />
@@ -26,11 +26,9 @@ gMini=false;
         <menuitem id="nagioschecker-stoprun" label="" oncommand="nagioschecker.switchStop();" />
         <menuitem id="nagioschecker-reload" label="&nch.menu.updatenow;" oncommand="nagioschecker.doUpdate();" />
   	    <menuseparator id="menu-separe2"/>  
+<!-- <menuitem label="Open floating window (experimental)" oncommand="window.openDialog('chrome://nagioschecker/content/undocked.xul','nagioschecker-undocked','chrome,dialog=no,popup');" />
+  	    <menuseparator /> -->  	    
         <menuitem label="&nch.menu.options;..." oncommand="window.openDialog('chrome://nagioschecker/content/nagioschecker-options.xul','nagioschecker-options','centerscreen,dialog,chrome').focus();" />
-<!--
-  	    <menuseparator />  
-        <menuitem label="Mini" oncommand="window.open('chrome://nagioschecker/content/minimode.xul','nagioschecker-omini','centerscreen,chrome,resizable=no').focus();" />
--->
   	    <menuseparator />  
         <menuitem label="&nch.about;..." oncommand="window.openDialog('chrome://nagioschecker/content/nagioschecker-about.xul','nagioschecker-about','centerscreen,dialog,chrome').focus();" />
       </menupopup>

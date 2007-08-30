@@ -191,6 +191,14 @@ statusbarpanel .nagioschecker-box {
  -moz-border-radius:3px;
 }
 
+.nagioschecker-tooltip-title-date {
+  font-weight: bold;
+  font-size: 0.9em;
+  margin-bottom: 4px;
+ -moz-border-radius:3px;
+  background-color:#FFFFFF;
+}
+
 .nagioschecker-tooltip-down-row {
 	font-weight: bold;
 	color: #BDBDBD;
@@ -290,6 +298,9 @@ statusbarpanel .nagioschecker-box {
 	font-weight: bold;
 }
 
+#nagioschecker-mover {
+    cursor: move; 
+}
 .nch-status-url {
   background-color:white;
   color: black;
@@ -306,3 +317,4 @@ label.error {
 	font-style: italic;
 	color:silver;
 }
+

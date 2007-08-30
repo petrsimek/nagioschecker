@@ -7,6 +7,7 @@ var nchoptionsLoad = function() {
   gNCHOptions.loadPref();
   gNCHOptions.disableSoundCheckboxes();
   gNCHOptions.disableSoundRadios();
+  gNCHOptions.updateRECheckboxes();
 };
 
 var nchoptionsUnload = function() {
@@ -103,7 +104,15 @@ NCHOptions.prototype = {
 
   },
 
-
+  updateRECheckboxes: function() {
+    var ch_h = (document.getElementById('nch-general-filter_out_regexp_hosts').checked);
+    document.getElementById('nch-general-filter_out_regexp_hosts_value').disabled = (!ch_h);
+    document.getElementById('nch-general-filter_out_regexp_hosts_reverse').disabled = (!ch_h);
+    var ch_s = (document.getElementById('nch-general-filter_out_regexp_services').checked);
+    document.getElementById('nch-general-filter_out_regexp_services_value').disabled = (!ch_s);
+    document.getElementById('nch-general-filter_out_regexp_services_reverse').disabled = (!ch_s);
+  	
+  },
   removeAllServers: function() {
     this._servers.length = 0;
 
@@ -220,9 +229,8 @@ NCHOptions.prototype = {
     getColumnProperties: function(aColumn, aColumnElement, aProperty) {},
     getCellProperties: function(aRow, aCol,aProperty) {
     
-		if (gNCHOptions._servers[aRow].disabled){
-			var aserv=Components.classes["@mozilla.org/atom-service;1"].
-              getService(Components.interfaces.nsIAtomService);
+		if (gNCHOptions._servers[aRow].disabled) {
+			var aserv=Components.classes["@mozilla.org/atom-service;1"].getService(Components.interfaces.nsIAtomService);
 			aProperty.AppendElement(aserv.getAtom("disServer"));
 		}
     
@@ -270,8 +278,11 @@ NCHOptions.prototype = {
         "nch-general-filter_out_all_unknown",
         "nch-general-filter_out_regexp_hosts",
         "nch-general-filter_out_regexp_services",
+        "nch-general-filter_out_regexp_hosts_reverse",
+        "nch-general-filter_out_regexp_services_reverse",
         "nch-view-show_window_column_information",
         "nch-view-show_window_column_alias",
+        "nch-view-show_window_column_flags",
         "nch-general-one_window_only",
         "nch-general-filter_out_acknowledged",
         "nch-general-filter_out_disabled_notifications",
@@ -280,6 +291,7 @@ NCHOptions.prototype = {
         "nch-general-filter_out_downtime",
         "nch-general-filter_out_services_on_down_hosts",
         "nch-general-filter_out_services_on_acknowledged_hosts",
+        "nch-general-filter_out_flapping",
         "nch-behavior-sounds_by_type_down",
         "nch-behavior-sounds_by_type_unreachable",
         "nch-behavior-sounds_by_type_critical",
@@ -407,8 +419,11 @@ NCHOptions.prototype = {
         "nch-general-filter_out_all_unknown",
         "nch-general-filter_out_regexp_hosts",
         "nch-general-filter_out_regexp_services",
+        "nch-general-filter_out_regexp_hosts_reverse",
+        "nch-general-filter_out_regexp_services_reverse",
         "nch-view-show_window_column_information",
         "nch-view-show_window_column_alias",
+        "nch-view-show_window_column_flags",
         "nch-general-one_window_only",
         "nch-general-filter_out_acknowledged",
         "nch-general-filter_out_disabled_notifications",
@@ -417,6 +432,7 @@ NCHOptions.prototype = {
         "nch-general-filter_out_downtime",
         "nch-general-filter_out_services_on_down_hosts",
         "nch-general-filter_out_services_on_acknowledged_hosts",
+        "nch-general-filter_out_flapping",
         "nch-behavior-sounds_by_type_down",
         "nch-behavior-sounds_by_type_unreachable",
         "nch-behavior-sounds_by_type_critical",

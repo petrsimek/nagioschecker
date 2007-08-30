@@ -17,7 +17,7 @@
 
   <vbox>
       <label value="&nch.title;"  class="nagioschecker-about-product-name"/>
-      <description class="nch">&nch.about.version; 0.9.5</description>
+      <description class="nch">&nch.about.version; 0.10</description>
   </vbox>
       <separator class="thin"/>
 
@@ -70,7 +70,7 @@
       <description class="nch">Ivo Musil (CZ), Michal Sviba (CZ)</description>
       <separator class="thin"/>
       <label value="&nch.about.ideasandbugreports;:" class="nagioschecker-about-sub-title"/>
-      <description class="nch">Marcus Barczak, Carlos Basura, Daniele (IT), Mike Freitas (US), Andrea Gabellini (IT), Raphael Gangneux (UK), Jörgen Hägg (SW), Douglas Hank (US), Axel Jäger (DE), Michael Jewett (CA), Robbert Kouprie (NL), Bernard Li (CA), Geoffrey Lemaire (BE), Erwin Lubbers (NL), Tiago Martins (PT), Aleš Petrovický (CZ), Oliver Regellmann (DE), Phil Wenzlawski (US)</description>
+      <description class="nch">Marcus Barczak, Carlos Basura, Daniele (IT), Mike Freitas (US), Andrea Gabellini (IT), Raphael Gangneux (UK), Jörgen Hägg (SW), Douglas Hank (US), Axel Jäger (DE), Michael Jewett (CA), Robbert Kouprie (NL), Bernard Li (CA), Geoffrey Lemaire (BE), Erwin Lubbers (NL), Tiago Martins (PT), Aleš Petrovický (CZ), Oliver Regellmann (DE), Phil Wenzlawski (DE)</description>
       <separator class="thin"/>
       <label value="&nch.about.translators;:" class="nagioschecker-about-sub-title"/>
       <description class="nch">Celikbas (tr-TR), emz (bg-BG), kennith (zh-TW), markh (nl-NL), MatrixIsAllOver (it-IT), Okaryn (fr-FR), pjf (de-DE), sanchezpaa (es-ES), Humberto Sartini (pt-BR), stalker48 (ru-RU)</description>

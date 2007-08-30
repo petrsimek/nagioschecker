@@ -14,6 +14,7 @@ pref("extensions.nagioschecker.show_statusbar_critical", true);
 
 pref("extensions.nagioschecker.show_window_column_information", true);
 pref("extensions.nagioschecker.show_window_column_alias", false);
+pref("extensions.nagioschecker.show_window_column_flags", false);
 
 pref("extensions.nagioschecker.sounds_by_type_down", true);
 pref("extensions.nagioschecker.sounds_by_type_unreachable", true);
@@ -37,7 +38,6 @@ pref("extensions.nagioschecker.filter_out_soft_states", false);
 pref("extensions.nagioschecker.filter_out_downtime", false);
 pref("extensions.nagioschecker.filter_out_services_on_down_hosts", false);
 pref("extensions.nagioschecker.filter_out_services_on_acknowledged_hosts", false);
-
 pref("extensions.nagioschecker.filter_out_all_down", false);
 pref("extensions.nagioschecker.filter_out_all_unreachable", false);
 pref("extensions.nagioschecker.filter_out_all_unknown", false);
@@ -45,9 +45,11 @@ pref("extensions.nagioschecker.filter_out_all_warning", false);
 pref("extensions.nagioschecker.filter_out_all_critical", false);
 pref("extensions.nagioschecker.filter_out_regexp_hosts", false);
 pref("extensions.nagioschecker.filter_out_regexp_services", false);
-
 pref("extensions.nagioschecker.filter_out_regexp_hosts_value", "");
+pref("extensions.nagioschecker.filter_out_regexp_hosts_reverse", false);
 pref("extensions.nagioschecker.filter_out_regexp_services_value", "");
+pref("extensions.nagioschecker.filter_out_regexp_services_reverse", false);
+pref("extensions.nagioschecker.filter_out_flapping", false);
 
 pref("extensions.nagioschecker.sound_warning", 0);
 pref("extensions.nagioschecker.sound_warning_path", "");

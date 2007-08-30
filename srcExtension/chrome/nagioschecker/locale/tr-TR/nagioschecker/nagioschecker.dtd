@@ -110,7 +110,12 @@
 <!ENTITY nch.prefs.makedonation "Bağış yap">
 <!ENTITY nch.prefs.hostsmatchingregexp "Düzenli ifadeyle eşleşen ana sistemler">
 <!ENTITY nch.prefs.servicesmatchingregexp "Düzenli ifadeyle eşleşen hizmetler">
+<!ENTITY nch.prefs.allflapping "Tüm dalgalanan ana bilisayar ve hizmetler">
 <!ENTITY nch.prefs.disable "Etkisiz kıl">
 <!ENTITY nch.prefs.disabled "Etkisiz kılındı">
 <!ENTITY nch.prefs.onaddons "Mozilla eklenti sitesinde">
 <!ENTITY nch.prefs.projecthome "Projenin ev sayfası">
+<!ENTITY nch.prefs.moveup "Yurkarı taşı">
+<!ENTITY nch.prefs.movedown "Aşağı taşı">
+<!ENTITY nch.prefs.showflagscolumn "Bilgi penceresinde Bayraklar dikeçini göster">
+<!ENTITY nch.prefs.reverseexp "ters ifade">

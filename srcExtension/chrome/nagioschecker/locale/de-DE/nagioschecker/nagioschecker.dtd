@@ -110,7 +110,12 @@
 <!ENTITY nch.prefs.makedonation "Spenden">
 <!ENTITY nch.prefs.hostsmatchingregexp "Hosts die einem regulärem Ausdruck entsprechen">
 <!ENTITY nch.prefs.servicesmatchingregexp "Services die einem regulärem Ausdruck entsprechen">
+<!ENTITY nch.prefs.allflapping "Alle schwankenden Hosts und Services">
 <!ENTITY nch.prefs.disable "Deaktivieren">
 <!ENTITY nch.prefs.disabled "Deaktiviert">
 <!ENTITY nch.prefs.onaddons "Auf der Nozilla Add-On Seite">
 <!ENTITY nch.prefs.projecthome "Projekt-WebSeite">
+<!ENTITY nch.prefs.moveup "nach oben">
+<!ENTITY nch.prefs.movedown "nach unten">
+<!ENTITY nch.prefs.showflagscolumn "Zeige Markierungsspalte im Informationsfenster">
+<!ENTITY nch.prefs.reverseexp "entgegengesetzter Ausdruck">

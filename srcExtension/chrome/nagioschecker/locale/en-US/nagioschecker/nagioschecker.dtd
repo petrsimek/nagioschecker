@@ -116,8 +116,15 @@
 <!ENTITY nch.prefs.makedonation "Make donation">
 <!ENTITY nch.prefs.hostsmatchingregexp "Hosts matching regular expression">
 <!ENTITY nch.prefs.servicesmatchingregexp "Services matching regular expression">
+<!ENTITY nch.prefs.allflapping "All flapping hosts and services">
 
 <!ENTITY nch.prefs.disable "Disable">
 <!ENTITY nch.prefs.disabled "Disabled">
 <!ENTITY nch.prefs.onaddons "On Mozilla Add-ons site">
 <!ENTITY nch.prefs.projecthome "Project's home">
+
+<!ENTITY nch.prefs.moveup "Move up">
+<!ENTITY nch.prefs.movedown "Move down">
+
+<!ENTITY nch.prefs.showflagscolumn "Show Flags column in information window">
+<!ENTITY nch.prefs.reverseexp "reverse expression">
