@@ -11,26 +11,26 @@
 <!ENTITY nch.prefs.filtering "Filteren">
 <!ENTITY nch.prefs.behavior "Gedrag">
 <!ENTITY nch.prefs.name "Naam">
-<!ENTITY nch.prefs.fullurl "Nagios web-interface adres">
-<!ENTITY nch.prefs.webinterface "Nagios web interface">
+<!ENTITY nch.prefs.fullurl "Nagios webinterface-adres">
+<!ENTITY nch.prefs.webinterface "Nagios webinterface">
 <!ENTITY nch.prefs.username "Gebruikersnaam">
 <!ENTITY nch.prefs.password "Wachtwoord">
-<!ENTITY nch.prefs.versionolderthan20 "Nagios versie ouder dan 2.0">
+<!ENTITY nch.prefs.versionolderthan20 "Nagios-versie ouder dan 2.0">
 <!ENTITY nch.prefs.plainpass "Deze referenties niet opslaan met de Wachtwoordbeheerder van de browser">
 <!ENTITY nch.prefs.exampleurl "Bijv.: http://www.uwbedrijf.net/nagios/">
 <!ENTITY nch.prefs.examplestatusurl "Bijv.: http://www.uwbedrijf.com/nagios/cgi-bin/status.cgi">
-<!ENTITY nch.prefs.statusurl "Status script-URL">
+<!ENTITY nch.prefs.statusurl "Statusscript-URL">
 <!ENTITY nch.prefs.foundstatusurl "URL gelokaliseerd">
 <!ENTITY nch.prefs.locateurl "URL lokaliseren">
-<!ENTITY nch.prefs.updateinterval "Update interval (in minuten)">
-<!ENTITY nch.prefs.worktime "Plugin werkuren (hh:mm)">
+<!ENTITY nch.prefs.updateinterval "Update-interval (in minuten)">
+<!ENTITY nch.prefs.worktime "Plug-in werkuren (hh:mm)">
 <!ENTITY nch.prefs.utilityrun "Utility draaien">
 <!ENTITY nch.prefs.other "Overig">
 <!ENTITY nch.prefs.onewindowonly "Alleen activeren in het eerst geopende venster">
 <!ENTITY nch.about.original "Oorspronkelijke titel">
 <!ENTITY nch.about.version "Versie">
 <!ENTITY nch.about.created "Schrijver">
-<!ENTITY nch.about.description "Nagios checker geeft u een uitbreidbare statusbalk-indicator voor door Nagios gerapporteerde gebeurtenissen. Deze informatie wordt ingevoegd vanuit de Nagios website en kan meerdere Nagios servers tegelijkertijd monitoren. Nagios Checker draait op de achtergrond, vereist geen open Nagios pagina om te kunnen werken en staat selectief filteren van resultaten toe.">
+<!ENTITY nch.about.description "Nagios checker geeft u een uitbreidbare statusbalkindicator voor door Nagios gerapporteerde gebeurtenissen. Deze informatie wordt ingevoegd vanuit de Nagios website en kan meerdere Nagios servers tegelijkertijd monitoren. Nagios Checker draait op de achtergrond, vereist geen open Nagios pagina om te kunnen werken en staat selectief filteren van resultaten toe.">
 <!ENTITY nch.about.contributors "Bijdrages van">
 <!ENTITY nch.about.translators "Vertalers">
 <!ENTITY nch.about.author "Petr Simek">
@@ -55,14 +55,14 @@
 <!ENTITY nch.prefs.hostdown "Host down">
 <!ENTITY nch.prefs.hostunreachable "Host onbereikbaar">
 <!ENTITY nch.prefs.servicecritical "Service kritiek">
-<!ENTITY nch.prefs.servicewarning "Service waarschuwing">
+<!ENTITY nch.prefs.servicewarning "Servicewaarschuwing">
 <!ENTITY nch.prefs.serviceunknown "Service onbekend">
 <!ENTITY nch.prefs.showininfowindow "In informatievenster weergeven">
 <!ENTITY nch.prefs.showinfocolumn "Informatiekolom in informatievenster weergeven">
 <!ENTITY nch.prefs.blinking "Knipperend">
 <!ENTITY nch.prefs.off "Uit">
-<!ENTITY nch.prefs.onstatusupdateifnewproblemappears "Bij statusbijwerking als nieuw probleem ontstaat">
-<!ENTITY nch.prefs.oneverystatusupdateifatleastoneproblemexists "Bij elke statusbijwerking als tenminste één probleem bestaat">
+<!ENTITY nch.prefs.onstatusupdateifnewproblemappears "Bij status-update als nieuw probleem ontstaat">
+<!ENTITY nch.prefs.oneverystatusupdateifatleastoneproblemexists "Bij elke status-update als tenminste één probleem bestaat">
 <!ENTITY nch.prefs.sounds "Geluiden">
 <!ENTITY nch.prefs.soundsbytype "Geluiden per probleemtype">
 <!ENTITY nch.prefs.nagiossystem "Nagios systeem">
@@ -110,7 +110,12 @@
 <!ENTITY nch.prefs.makedonation "Donatie doen">
 <!ENTITY nch.prefs.hostsmatchingregexp "Hosts die overeenkomen met een reguliere expressie">
 <!ENTITY nch.prefs.servicesmatchingregexp "Services die overeenkomen met een reguliere expressie">
+<!ENTITY nch.prefs.allflapping "Alle onregelmatige hosts en services">
 <!ENTITY nch.prefs.disable "Uitschakelen">
 <!ENTITY nch.prefs.disabled "Uitgeschakeld">
 <!ENTITY nch.prefs.onaddons "Op de Mozilla Add-ons site">
 <!ENTITY nch.prefs.projecthome "Homepage van het project">
+<!ENTITY nch.prefs.moveup "Omhoog">
+<!ENTITY nch.prefs.movedown "Omlaag">
+<!ENTITY nch.prefs.showflagscolumn "Markeringskolom in informatievenster weergeven">
+<!ENTITY nch.prefs.reverseexp "omgedraaide expressie">

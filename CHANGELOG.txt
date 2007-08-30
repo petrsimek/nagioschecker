@@ -1,4 +1,4 @@
-0.10 (not released yet)
+0.10
 * NEW: ability to change ordering of servers
 * NEW: time of last download of alerts for each server (shown in tooltip)
 * NEW: ability to choose inverse filtering of regular expressions
