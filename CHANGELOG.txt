@@ -1,3 +1,6 @@
+0.10.1
+* INTERNAL: merged omitted bugfixes from versions 0.9.1-0.9.5
+
 0.10
 * NEW: ability to change ordering of servers
 * NEW: time of last download of alerts for each server (shown in tooltip)
