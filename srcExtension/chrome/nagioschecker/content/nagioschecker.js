@@ -53,6 +53,7 @@ NCH.prototype = {
 //  sndWarning:null,
 //  sndCritical:null,
 //  sndDown:null,
+  win:window,
   preferences: Components.classes["@mozilla.org/preferences-service;1"]
                                 .getService(Components.interfaces.nsIPrefBranch),
 
@@ -714,6 +715,7 @@ NCH.prototype = {
         var st = null;
 		var isNotUp = {};
 		var isAck = {};
+		    var isSched = {};
 
 		for(var x=0;x<this.pt.length;x++) {
 		
@@ -740,7 +742,13 @@ NCH.prototype = {
 					    &&
 					    ((!probls[j].disnotifs) || ((probls[j].disnotifs) && (!this.pref.filter_out_disabled_notifications)))
 					    &&
-					    ((!probls[j].downtime) || ((probls[j].downtime) && (!this.pref.filter_out_downtime)))
+					    ((!this.pref.filter_out_downtime) || ((this.pref.filter_out_downtime) && 
+					            (
+					    		((!probls[j].service) && (!probls[j].downtime))
+				    			|| 
+					    		((probls[j].service) && (!probls[j].downtime) && (!isSched[probls[j].host]))
+					    		)))
+
 					    &&
 					    ((!probls[j].flapping) || ((probls[j].flapping) && (!this.pref.filter_out_flapping)))
     			    	 &&

@@ -412,13 +412,35 @@ NCHParser.prototype = {
       if (ar[0]) {
       var viptr = (ar[0].childNodes[1]) ? ar[0].childNodes[1].childNodes : ar[0].childNodes[0].childNodes;
       var lastHost="";
+      var lastHostDowntime="";
       for (var i = 1; i < viptr.length; i+=1) {
         if (viptr[i] instanceof HTMLTableRowElement) {
           var viptd = viptr[i].childNodes;
           if (viptd.length>1) {                
+            var host_downtime=false;
             var host    = getUglyNodeValue(viptd[0],[0,0,0,0,0,0,0,0,0,0]);
-            if (!host) host=lastHost;
+            var icons    = getUglyNode(viptd[0],[0,0,0,1,0,0,0]);
+				try {
+			  for(var j=0;j<icons.childNodes.length;j++) {
+              if (icons.childNodes[j] instanceof HTMLTableCellElement) {
+                var ico = getUglyNode(icons.childNodes[j],[0,0]);
+                if (ico) {
+                  var tit = ico.getAttribute("alt");
+                  if (tit) {
+                    if (tit.match("scheduled downtime")) {
+                      host_downtime=true;
+                    }
+                  }
+                }
+              }
+			  }
+				}
+				catch (e) {}
 
+            if ((!host) && (lastHostDowntime)) {
+				host_downtime=true;
+            }
+            if (!host) host=lastHost;
 
             var service = getUglyNodeValue(viptd[1],[0,0,0,0,0,0,0,0,0,0]);
 
@@ -474,6 +496,9 @@ NCHParser.prototype = {
             if ((sto) && (parseInt(sto[1])<parseInt(sto[2]))) {
               isSoft=true;
             }         
+			if (host_downtime) {
+				downtime=true;
+			}
             if ((status=="UNKNOWN") || (status=="WARNING") || (status=="CRITICAL")) {
               var tmpo ={"type":"s","host": host,"service":service,"status":this.toLower[status],"lastCheck":lastCheck,"durationSec":durationSec,"duration":duration,"attempt":attempt,"info":info,"acknowledged":acknowledged,"dischecks":dischecks,"disnotifs":disnotifs,"isSoft":isSoft,"downtime":downtime,"flapping":flapping,"onlypass":onlypass};
 	            this.problems[pos][this.toLower[status]].push(tmpo);
