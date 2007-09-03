@@ -1011,13 +1011,13 @@ NCH.prototype = {
 	var wav = null;
 	
 	if (paket.countProblemsByType("down")>0) {
-		wav = this.sndDown;
+		wav = this.pref.sound_down_path;
 	}
 	else if (paket.countProblemsByType("critical")>0) {
-		wav = this.sndCritical;
+		wav = this.pref.sound_critical_path;
 	}
 	else if (paket.countProblemsByType("warning")>0) {
-		wav = this.sndWarning;
+		wav = this.pref.sound_warning_path;
 	}
 	if (wav!=null) {
     try {

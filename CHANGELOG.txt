@@ -1,3 +1,6 @@
+0.10.3
+* BUGFIX: sound are playing again
+
 0.10.2
 * INTERNAL: bugfix of "0.10.1 bugfix" Sorry!
 
