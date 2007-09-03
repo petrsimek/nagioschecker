@@ -110,7 +110,7 @@
 <!ENTITY nch.prefs.makedonation "Faire une donation">
 <!ENTITY nch.prefs.hostsmatchingregexp "Hôtes correspondant à cette expression régulière">
 <!ENTITY nch.prefs.servicesmatchingregexp "Services correspondant à cette expression régulière">
-<!ENTITY nch.prefs.allflapping "All flapping hosts and services">
+<!ENTITY nch.prefs.allflapping "Tous les hôtes et services instables">
 <!ENTITY nch.prefs.disable "Désactiver">
 <!ENTITY nch.prefs.disabled "Désactivé">
 <!ENTITY nch.prefs.onaddons "Sur le site Mozilla Add-Ons">
