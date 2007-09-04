@@ -110,7 +110,12 @@
 <!ENTITY nch.prefs.makedonation "Направете дарение">
 <!ENTITY nch.prefs.hostsmatchingregexp "Обекти отговарящи на следната фраза">
 <!ENTITY nch.prefs.servicesmatchingregexp "Услуги отговарящи на следната фраза">
+<!ENTITY nch.prefs.allflapping "Всички нестабилни обекти и услуги">
 <!ENTITY nch.prefs.disable "Забраняване">
 <!ENTITY nch.prefs.disabled "Забранен">
 <!ENTITY nch.prefs.onaddons "В сайта на Мозила Добавки">
 <!ENTITY nch.prefs.projecthome "Дома на проекта">
+<!ENTITY nch.prefs.moveup "Премести нагоре">
+<!ENTITY nch.prefs.movedown "Премести надолу">
+<!ENTITY nch.prefs.showflagscolumn "Покажи колоната Флагове в инфо прозореца">
+<!ENTITY nch.prefs.reverseexp "обратен израз">

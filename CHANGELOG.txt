@@ -1,6 +1,7 @@
 0.10.3
 * BUGFIX: sound are playing again
 * LANG: updated fr-FR locale
+* LANG: updated bg-BG locale
 
 0.10.2
 * INTERNAL: bugfix of "0.10.1 bugfix" Sorry!
