@@ -413,11 +413,11 @@ NCHOptions.prototype = {
   },
 
   replaySoundFile: function(type,wav) {
+  	
       switch (document.getElementById('nch-sounds-'+type).selectedItem.value) {
         case "0":
           var ioService = Components.classes["@mozilla.org/network/io-service;1"].getService(Components.interfaces.nsIIOService);
           var soundUri = ioService.newURI("chrome://nagioschecker/content/"+wav, null, null);
-
           break;
         case "1":
           var fileName=document.getElementById('nch-sounds-'+type+'-custom-path').value;
@@ -425,8 +425,13 @@ NCHOptions.prototype = {
           var soundUri = ioService.newURI("file:///"+fileName, null, null);
           break;
       }
+    try {
       var sound = Components.classes["@mozilla.org/sound;1"].createInstance(Components.interfaces.nsISound);
       sound.play(soundUri);
+    }
+    catch(e) {
+    	alert(e);
+    }
 
   },
 

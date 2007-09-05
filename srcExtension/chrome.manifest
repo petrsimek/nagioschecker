@@ -14,7 +14,7 @@ locale	nagioschecker	it-IT	chrome/nagioschecker/locale/it-IT/nagioschecker/
 locale	nagioschecker	pt-BR	chrome/nagioschecker/locale/pt-BR/nagioschecker/
 #locale	nagioschecker	es-ES	chrome/nagioschecker/locale/es-ES/nagioschecker/
 locale	nagioschecker	nl-NL	chrome/nagioschecker/locale/nl-NL/nagioschecker/
-#locale	nagioschecker	bg-BG	chrome/nagioschecker/locale/bg-BG/nagioschecker/
+locale	nagioschecker	bg-BG	chrome/nagioschecker/locale/bg-BG/nagioschecker/
 locale	nagioschecker	zh-TW	chrome/nagioschecker/locale/zh-TW/nagioschecker/
 locale	nagioschecker	tr-TR	chrome/nagioschecker/locale/tr-TR/nagioschecker/
 locale	nagioschecker	de-DE	chrome/nagioschecker/locale/de-DE/nagioschecker/

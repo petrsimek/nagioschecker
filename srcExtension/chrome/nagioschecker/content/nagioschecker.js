@@ -289,7 +289,6 @@ NCH.prototype = {
 			one_window_only:['bool',false],
 			});
 
-
     if (gMini) {
 		this.adjustSize(null,true);
     }
@@ -795,7 +794,6 @@ NCH.prototype = {
   	          "critical": document.getElementById('nagioschecker-services-critical')
               };
     if (gMini) {
-//      this.adjustSize(null,true);  
 		this.adjustSize(null,true);
     }
 
@@ -814,10 +812,9 @@ NCH.prototype = {
 			}
 			  break;
 		  default:
-	  		mainPanel.removeAttribute("onclick");
+			  	mainPanel.setAttribute("onclick","void(0);");
 			  break;		
 	  }
-
 	  if (this.pref.click>0) {
 		mainPanel.setAttribute("style","cursor:pointer");
     	for (var pType in fld) {
@@ -844,7 +841,7 @@ NCH.prototype = {
 	      }
 	      else {
 	        for (var pType in fld) {
-	          fld[pType].removeAttribute("onclick");
+			  	fld[pType].setAttribute("onclick","void(0);");
 	        }
 	      }
 	  }
@@ -1009,7 +1006,6 @@ NCH.prototype = {
 
  playSound: function(paket) {
 	var wav = null;
-	
 	if (paket.countProblemsByType("down")>0) {
 		wav = this.pref.sound_down_path;
 	}
@@ -1137,6 +1133,9 @@ NCH.prototype = {
 						break;
 					case 'char':
 						result[i] = this.preferences.getCharPref(branch+i);
+						if ((result[i]=='') && (conf[i][1]!='')) {
+							result[i]=conf[i][1];
+						}
 						break;
 				}
 	      }
