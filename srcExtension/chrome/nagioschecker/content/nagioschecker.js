@@ -998,7 +998,7 @@ NCH.prototype = {
      }
   }
   catch (e) {
-    alert(e);
+    dump(e);
   }
   },
 
@@ -1023,7 +1023,7 @@ NCH.prototype = {
       sound.play(soundUri);
     }
     catch(e) {
-      alert(e);
+		dump(e);
     }
 	}
   },
