@@ -1,3 +1,6 @@
+0.10.4
+* BUGFIX: removed annoying alert when there was sometimes problem with playing sound
+
 0.10.3
 * BUGFIX: sounds are playing again
 * BUGFIX: popup of different type sometimes opened at same time
