@@ -1,3 +1,15 @@
+0.10.4
+* BUGFIX: removed annoying alert when there was sometimes problem with playing sound
+
+0.10.3
+* BUGFIX: sounds are playing again
+* BUGFIX: popup of different type sometimes opened at same time
+* LANG: updated fr-FR locale
+* LANG: updated bg-BG locale
+
+0.10.2 (not approved on Mozilla Add-ons)
+* INTERNAL: bugfix of "0.10.1 bugfix" Sorry!
+
 0.10.1
 * INTERNAL: merged omitted bugfixes from versions 0.9.1-0.9.5
 

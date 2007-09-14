@@ -189,6 +189,7 @@ statusbarpanel .nagioschecker-box {
   font-size: 1.2em;
   margin-bottom: 4px;
  -moz-border-radius:3px;
+  background-color:#FFFFFF;
 }
 
 .nagioschecker-tooltip-title-date {

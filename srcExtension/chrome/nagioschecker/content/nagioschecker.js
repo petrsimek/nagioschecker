@@ -2,6 +2,7 @@ var nagioschecker = null;
 var nagioscheckerLoad = function() {
 
   nagioschecker = new NCH();
+
   Components.classes["@mozilla.org/observer-service;1"]
             .getService(Components.interfaces.nsIObserverService)
             .addObserver(nagioschecker, "nagioschecker:preferences-changed", false);
@@ -288,7 +289,6 @@ NCH.prototype = {
 			one_window_only:['bool',false],
 			});
 
-
     if (gMini) {
 		this.adjustSize(null,true);
     }
@@ -550,10 +550,8 @@ NCH.prototype = {
     var browserWindow = wm.getMostRecentWindow("navigator:browser");
     var enumerator = wm.getEnumerator("");
     var cnt=0;
-//    var firstWin = null;
     while(enumerator.hasMoreElements()) {
       var win = enumerator.getNext();
-//      if (cnt==0) firstWin=win;
       if (win.nagioschecker) {
         if (!this.isStopped) {        
           if ((this.pref.one_window_only) && (cnt>0) && (!win.gMini)) {
@@ -750,8 +748,6 @@ NCH.prototype = {
 					    		((probls[j].service) && (!probls[j].downtime) && (!isSched[probls[j].host]))
 					    		)))
 
-	    			    &&
-		    			((!probls[j].isSoft) || ((probls[j].isSoft) && ((!this.filterOutSoftStat) || (isNotUp[probls[j].host]))))
 					    &&
 					    ((!probls[j].flapping) || ((probls[j].flapping) && (!this.pref.filter_out_flapping)))
     			    	 &&
@@ -773,9 +769,6 @@ NCH.prototype = {
 						isNotUp[probls[j].host]=true;
 					    if (probls[j].acknowledged) {
 						    isAck[probls[j].host]=true;
-					    }
-					    if (probls[j].downtime) {
-						    isSched[probls[j].host]=true;
 					    }
 				    }
 			    }
@@ -801,7 +794,6 @@ NCH.prototype = {
   	          "critical": document.getElementById('nagioschecker-services-critical')
               };
     if (gMini) {
-//      this.adjustSize(null,true);  
 		this.adjustSize(null,true);
     }
 
@@ -820,10 +812,9 @@ NCH.prototype = {
 			}
 			  break;
 		  default:
-	  		mainPanel.removeAttribute("onclick");
+			  	mainPanel.setAttribute("onclick","void(0);");
 			  break;		
 	  }
-
 	  if (this.pref.click>0) {
 		mainPanel.setAttribute("style","cursor:pointer");
     	for (var pType in fld) {
@@ -850,7 +841,7 @@ NCH.prototype = {
 	      }
 	      else {
 	        for (var pType in fld) {
-	          fld[pType].removeAttribute("onclick");
+			  	fld[pType].setAttribute("onclick","void(0);");
 	        }
 	      }
 	  }
@@ -894,7 +885,7 @@ NCH.prototype = {
 
   updateStatus: function(paket,firstRun) {
 
-	paket.createTooltip(this.win);
+	paket.createTooltip();
 
 	this.resetBehavior(paket.isAtLeastOne());
 
@@ -1007,7 +998,7 @@ NCH.prototype = {
      }
   }
   catch (e) {
-    alert(e);
+    dump(e);
   }
   },
 
@@ -1015,15 +1006,14 @@ NCH.prototype = {
 
  playSound: function(paket) {
 	var wav = null;
-	
 	if (paket.countProblemsByType("down")>0) {
-		wav = this.sndDown;
+		wav = this.pref.sound_down_path;
 	}
 	else if (paket.countProblemsByType("critical")>0) {
-		wav = this.sndCritical;
+		wav = this.pref.sound_critical_path;
 	}
 	else if (paket.countProblemsByType("warning")>0) {
-		wav = this.sndWarning;
+		wav = this.pref.sound_warning_path;
 	}
 	if (wav!=null) {
     try {
@@ -1033,7 +1023,7 @@ NCH.prototype = {
       sound.play(soundUri);
     }
     catch(e) {
-      alert(e);
+		dump(e);
     }
 	}
   },
@@ -1085,20 +1075,6 @@ NCH.prototype = {
       }
     }
   },
-/*
-  setStopped: function(loading) {
-    var wm = Components.classes["@mozilla.org/appshell/window-mediator;1"]
-                   .getService(Components.interfaces.nsIWindowMediator);
-    var browserWindow = wm.getMostRecentWindow("navigator:browser");
-    var enumerator = wm.getEnumerator("");
-    while(enumerator.hasMoreElements()) {
-      var win = enumerator.getNext();
-      if (win.nagioschecker) {
-//		win.nagioschecker.setIcon((loading) ? "loading" : "nagios");
-      }
-    }
-  },
-*/
 
   setIcon: function(type) {
     var ico = document.getElementById('nagioschecker-img');
@@ -1157,6 +1133,9 @@ NCH.prototype = {
 						break;
 					case 'char':
 						result[i] = this.preferences.getCharPref(branch+i);
+						if ((result[i]=='') && (conf[i][1]!='')) {
+							result[i]=conf[i][1];
+						}
 						break;
 				}
 	      }
@@ -1244,7 +1223,7 @@ function NCHToolTip(showColInfo,showColAlias,showColFlags) {
 
 	 for(var i = 0;i<this.headers.length;i++) {
     	if ((this.headers[i].problems.length) || (this.headers[i].error)) {
-			this.createHeader(this.headers[i].data);  
+			this.createHeader(this.headers[i].data,this.headers[i].time);  
         	if (!this.headers[i].error) {
 
 	  			this.headers[i].problems.sort(function (a,b) {
@@ -1271,7 +1250,7 @@ function NCHToolTip(showColInfo,showColAlias,showColFlags) {
 
 
   }
-  this.createHeader= function(name) {
+  this.createHeader= function(name,time) {
 
     var doc=document;
 
@@ -1280,10 +1259,20 @@ function NCHToolTip(showColInfo,showColAlias,showColFlags) {
 		separator.setAttribute("class", "groove-thin");
 		this._rows.appendChild(separator);
 
+    var hbd = doc.createElement("hbox");
+		this._rows.appendChild(hbd);
+
     var description = doc.createElement("description");
 		description.setAttribute("class", "nagioschecker-tooltip-title");
 		description.setAttribute("value",name);
-		this._rows.appendChild(description);
+		hbd.appendChild(description);
+    var sp = doc.createElement("spacer");
+		sp.setAttribute("flex", "1");
+		hbd.appendChild(sp);
+    var description2 = doc.createElement("description");
+		description2.setAttribute("class", "nagioschecker-tooltip-title-date");
+		description2.setAttribute("value",(time!=null) ? time.toLocaleString() : "");
+		hbd.appendChild(description2);
 
 		var separator = doc.createElement("separator");
 		separator.setAttribute("class", "groove-thin");
@@ -1305,8 +1294,8 @@ function NCHToolTip(showColInfo,showColAlias,showColFlags) {
 
 
   }
-  this.addHeader= function(name,serPo) {
-		this.headers[++this.actH]={data:name,error:false,problems:[],aliases:{},news:{},servPos:serPo};
+  this.addHeader= function(name,serPo,timeFetch) {
+		this.headers[++this.actH]={data:name,error:false,problems:[],aliases:{},news:{},servPos:serPo,time:timeFetch};
 	}
   this.addError= function() {
 		this.headers[this.actH].error=true;
@@ -1427,8 +1416,8 @@ function NCHPaket(sci,sca,scf) {
 	this.warning = [new NCHToolTip(this.showColInfo,this.showColAlias,this.showColFlags),0,0,[],[]];
 	this.critical = [new NCHToolTip(this.showColInfo,this.showColAlias,this.showColFlags),0,0,[],[]];
 	this.isError = false;
-	this.addTooltipHeader = function(to,header,serverPos) {
-	 	this[to][0].addHeader(header,serverPos);
+	this.addTooltipHeader = function(to,header,serverPos,timeFetch) {
+	 	this[to][0].addHeader(header,serverPos,timeFetch);
 	}
 	this.addError = function(to) {
 		this[to][0].addError();
@@ -1457,17 +1446,16 @@ function NCHPaket(sci,sca,scf) {
 	this.countOldProblemsByType = function(problemType) {
 	 	return this[problemType][2];
 	}
-	this.createTooltip = function(win) {
-		var doc = win.document;
+	this.createTooltip = function() {
 	    if (this["all"][0]) {
-	      this["all"][0].create(doc.getElementById('nagioschecker-popup'));
-		    this["all"][0].create(doc.getElementById('nagioschecker-tooltip'));
+	      this["all"][0].create(document.getElementById('nagioschecker-popup'));
+		    this["all"][0].create(document.getElementById('nagioschecker-tooltip'));
 	    }
 
     	for(var i=0;i<this.pt.length;i++) {
 	      if ((this[this.pt[i]]) && (this[this.pt[i]][0])) {
-	        this[this.pt[i]][0].create(doc.getElementById('nagioschecker-tooltip-'+this.pt[i]));
-	        this[this.pt[i]][0].create(doc.getElementById('nagioschecker-popup-'+this.pt[i]));
+	        this[this.pt[i]][0].create(document.getElementById('nagioschecker-tooltip-'+this.pt[i]));
+	        this[this.pt[i]][0].create(document.getElementById('nagioschecker-popup-'+this.pt[i]));
 	      }
 	    }
 	}
