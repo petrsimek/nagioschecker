@@ -1,3 +1,5 @@
+var _showTimerID = null;
+var _tab = null;
 var nagioschecker = null;
 var nagioscheckerLoad = function() {
 
@@ -6,6 +8,7 @@ var nagioscheckerLoad = function() {
   Components.classes["@mozilla.org/observer-service;1"]
             .getService(Components.interfaces.nsIObserverService)
             .addObserver(nagioschecker, "nagioschecker:preferences-changed", false);
+
 
   nagioschecker.start();
 };
@@ -96,6 +99,68 @@ NCH.prototype = {
   undockedWindow : null,
 
 	pref:{},
+_showTimerID: null,
+_refreshTimer: null,
+
+  handleMouseOver: function (aEvent) {
+	if (_showTimerID ) {
+		return;
+	}
+	if ((aEvent.target.id == "nagioschecker-panel")||(aEvent.target.localName == "label")||(aEvent.target.localName == "popup")) {
+dump(aEvent.target.localName+":"+_tab);
+		if (aEvent.target == _tab) {
+			return;
+		}
+		_tab = aEvent.target;
+		var callback = function(self) {
+			document.getElementById('nagioschecker-popup').showPopup(_tab,  -1, -1, 'popup', 'topright' , 'bottomright');
+		};
+		_showTimerID = window.setTimeout(callback, 10, this);
+	}
+  },
+
+  handleMouseOut: function (aEvent) {
+dump('out'+aEvent.target.id);
+	var rel = aEvent.relatedTarget;
+	if (rel) {
+		while (rel) {
+dump(' '+rel.localName+':'+rel.id);
+			if (rel == _tab || rel == document.getElementById('nagioschecker-popup'))
+				return;
+			rel = rel.parentNode;
+		}
+		nagioschecker.abort();
+		return;
+	}
+	var x = aEvent.screenX;
+	var y = aEvent.screenY;
+	if (nagioschecker.isEntering(x, y, document.getElementById('nagioschecker-popup'), true) || 
+		nagioschecker.isEntering(x, y, _tab, true))
+		return;
+	nagioschecker.abort();   	
+  },
+  abort: function() {
+	if (_showTimerID) {
+		window.clearTimeout(_showTimerID);
+		_showTimerID = null;
+	}
+	if (_tab) {
+		document.getElementById('nagioschecker-popup').hidePopup();
+	}
+	_tab = null;  	
+  },
+  
+  isEntering: function(aScreenX,aScreenY,aElement,aAllowOnEdge) {
+dump('x:'+x+' y:'+y+' ax:'+aScreenX+' ay:'+aScreenY+'\n');
+	var x = aElement.boxObject.screenX;
+	var y = aElement.boxObject.screenY;
+	var c = aAllowOnEdge ? 1 : 0;
+	if (x < aScreenX - c && aScreenX < x + aElement.boxObject.width + c && 
+		y < aScreenY - c && aScreenY < y + aElement.boxObject.height + c) {
+		return true;
+	}
+	return false;   	
+  },
   
   start : function() {
   	
@@ -604,10 +669,10 @@ NCH.prototype = {
   },
 
   popupOpened: function() {
-    this.resetTooltips(false);
+//    this.resetTooltips(false);
   },
   popupClosed: function() {
-    this.resetTooltips(true);
+//    this.resetTooltips(true);
   },
 
   hideNchPopup: function(popupId) {
@@ -805,7 +870,7 @@ NCH.prototype = {
 			  break;
 		  case 3:
 			if (!this.isStopped) {
-			  	mainPanel.setAttribute("onclick","nagioschecker.showNchPopup(this,event,'nagioschecker-popup');");
+//			  	mainPanel.setAttribute("onclick","nagioschecker.showNchPopup(this,event,'nagioschecker-popup');");
 			}
 			else {
 			  	mainPanel.setAttribute("onclick","void(0);");
@@ -859,26 +924,58 @@ NCH.prototype = {
   	          "critical": document.getElementById('nagioschecker-services-critical')
               };
     var mainPanel=document.getElementById('nagioschecker-panel');
+    var mainPopup=document.getElementById('nagioschecker-popup');
 
+//	document.getElementById('nagioschecker-services-critical').addEventListener('mouseover',nagioschecker.handleMouseOver,false);
+//	document.getElementById('nagioschecker-services-critical').addEventListener('mouseout',nagioschecker.handleMouseOut,false);
+	mainPopup.addEventListener('mouseover',nagioschecker.handleMouseOver,false);
+	mainPopup.addEventListener('mouseout',nagioschecker.handleMouseOut,false);
+
+	  mainPanel.removeEventListener('mouseover',nagioschecker.handleMouseOver,false);
+	  mainPanel.removeEventListener('mouseout',nagioschecker.handleMouseOut,false);
+      for (var pType in fld) {
+		  fld[pType].removeEventListener('mouseover',nagioschecker.handleMouseOver,false);
+		  fld[pType].removeEventListener('mouseout',nagioschecker.handleMouseOut,false);
+      }
+
+//		  mainPanel.addEventListener('mouseover',nagioschecker.handleMouseOver,false);
+//		  mainPanel.addEventListener('mouseout',nagioschecker.handleMouseOut,false);
+
+dump('RESETOOLTIPS '+isAny+' '+this.pref.info_window_type+' '+this.isStopped+'\n');
     if ((isAny) && (this.pref.info_window_type>0) && (!this.isStopped)) {
       if (this.pref.info_window_type==1) {
-        mainPanel.setAttribute("tooltip", "nagioschecker-tooltip");
-        for (var pType in fld) {
-          fld[pType].removeAttribute("tooltip");
-        } 
+//        mainPanel.setAttribute("tooltip", "nagioschecker-tooltip");
+dump('IWT:1\n');
+		  mainPanel.addEventListener('mouseover',nagioschecker.handleMouseOver,false);
+		  mainPanel.addEventListener('mouseout',nagioschecker.handleMouseOut,false);
+//        for (var pType in fld) {
+//          fld[pType].removeAttribute("tooltip");
+//		  fld[pType].removeEventListener('mouseover',nagioschecker.handleMouseOver,false);
+//		  fld[pType].removeEventListener('mouseout',nagioschecker.handleMouseOut,false);
+//        } 
       }
       else {
-  		  mainPanel.removeAttribute("tooltip");
+dump('IWT:<>1\n');
+//  		  mainPanel.removeAttribute("tooltip");
+//		  mainPanel.removeEventListener('mouseover',nagioschecker.handleMouseOver,false);
+//		  mainPanel.removeEventListener('mouseout',nagioschecker.handleMouseOut,false);
+  		  
         for (var pType in fld) {
-          fld[pType].setAttribute("tooltip", "nagioschecker-tooltip-"+pType);
+		  fld[pType].addEventListener('mouseover',nagioschecker.handleMouseOver,false);
+		  fld[pType].addEventListener('mouseout',nagioschecker.handleMouseOut,false);
+//          fld[pType].setAttribute("tooltip", "nagioschecker-tooltip-"+pType);
         }
       }
     }
     else {
-  	  mainPanel.removeAttribute("tooltip");
-      for (var pType in fld) {
-        fld[pType].removeAttribute("tooltip");
-      }
+//  	  mainPanel.removeAttribute("tooltip");
+//		  mainPanel.removeEventListener('mouseover',nagioschecker.handleMouseOver,false);
+//		  mainPanel.removeEventListener('mouseout',nagioschecker.handleMouseOut,false);
+//      for (var pType in fld) {
+//        fld[pType].removeAttribute("tooltip");
+//		  fld[pType].removeEventListener('mouseover',nagioschecker.handleMouseOver,false);
+//		  fld[pType].removeEventListener('mouseout',nagioschecker.handleMouseOut,false);
+//      }
     }
   },
 
