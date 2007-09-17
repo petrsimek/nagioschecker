@@ -1,5 +1,19 @@
 var _showTimerID = null;
 var _tab = null;
+		var ev2pop = {
+					  'nagioschecker-popup':'nagioschecker-popup',
+					  'nagioschecker-popup-down':'nagioschecker-popup-down',
+					  'nagioschecker-popup-unreachable':'nagioschecker-popup-unreachable',
+					  'nagioschecker-popup-unknown':'nagioschecker-popup-unknown',
+					  'nagioschecker-popup-warning':'nagioschecker-popup-warning',
+					  'nagioschecker-popup-critical':'nagioschecker-popup-critical',
+					  'nagioschecker-panel':'nagioschecker-popup',
+					  'nagioschecker-hosts-down':'nagioschecker-popup-down',
+					  'nagioschecker-hosts-unreachable':'nagioschecker-popup-unreachable',
+					  'nagioschecker-services-unknown':'nagioschecker-popup-unknown',
+					  'nagioschecker-services-warning':'nagioschecker-popup-warning',
+					  'nagioschecker-services-critical':'nagioschecker-popup-critical'};
+
 var nagioschecker = null;
 var nagioscheckerLoad = function() {
 
@@ -106,14 +120,16 @@ _refreshTimer: null,
 	if (_showTimerID ) {
 		return;
 	}
-	if ((aEvent.target.id == "nagioschecker-panel")||(aEvent.target.localName == "label")||(aEvent.target.localName == "popup")) {
-dump(aEvent.target.localName+":"+_tab);
+		if ((aEvent.target.id == "nagioschecker-panel")||(aEvent.target.localName == "label")||(aEvent.target.localName == "popup")) {
+dump(aEvent.target.localName+":"+_tab+":"+ev2pop[aEvent.target.id]);
 		if (aEvent.target == _tab) {
 			return;
 		}
 		_tab = aEvent.target;
+		var relPopup=document.getElementById(ev2pop[aEvent.target.id]);
 		var callback = function(self) {
-			document.getElementById('nagioschecker-popup').showPopup(_tab,  -1, -1, 'popup', 'topright' , 'bottomright');
+			if (relPopup)
+				relPopup.showPopup(_tab,  -1, -1, 'popup', 'topright' , 'bottomright');
 		};
 		_showTimerID = window.setTimeout(callback, 10, this);
 	}
@@ -122,30 +138,40 @@ dump(aEvent.target.localName+":"+_tab);
   handleMouseOut: function (aEvent) {
 dump('out'+aEvent.target.id);
 	var rel = aEvent.relatedTarget;
+	var popupMain = document.getElementById('nagioschecker-popup');
+	var popupDown = document.getElementById('nagioschecker-popup-down');
+	var popupUnreachable = document.getElementById('nagioschecker-popup-unreachable');
+	var popupUnknown = document.getElementById('nagioschecker-popup-unknown');
+	var popupCritical = document.getElementById('nagioschecker-popup-critical');
+	var popupWarning = document.getElementById('nagioschecker-popup-warning');
+	
 	if (rel) {
 		while (rel) {
 dump(' '+rel.localName+':'+rel.id);
-			if (rel == _tab || rel == document.getElementById('nagioschecker-popup'))
+			if (rel == _tab || rel == popupMain || rel == popupDown || rel == popupUnreachable || rel == popupUnknown || rel == popupCritical || rel == popupWarning)
 				return;
 			rel = rel.parentNode;
 		}
-		nagioschecker.abort();
+		nagioschecker.abort(document.getElementById(ev2pop[aEvent.target.id]));
 		return;
 	}
 	var x = aEvent.screenX;
 	var y = aEvent.screenY;
-	if (nagioschecker.isEntering(x, y, document.getElementById('nagioschecker-popup'), true) || 
+	if (nagioschecker.isEntering(x, y, popupMain, true) || nagioschecker.isEntering(x, y, popupDown, true) ||
+		nagioschecker.isEntering(x, y, popupUnreachable, true) || nagioschecker.isEntering(x, y, popupUnknown, true) ||	    
+		nagioschecker.isEntering(x, y, popupCritical, true) || nagioschecker.isEntering(x, y, popupWarning, true) ||	    
 		nagioschecker.isEntering(x, y, _tab, true))
 		return;
-	nagioschecker.abort();   	
+	nagioschecker.abort(document.getElementById(ev2pop[aEvent.target.id]));   	
   },
-  abort: function() {
+  abort: function(relPopup) {
 	if (_showTimerID) {
 		window.clearTimeout(_showTimerID);
 		_showTimerID = null;
 	}
 	if (_tab) {
-		document.getElementById('nagioschecker-popup').hidePopup();
+		if (relPopup)
+			relPopup.hidePopup();
 	}
 	_tab = null;  	
   },
@@ -934,6 +960,9 @@ dump('x:'+x+' y:'+y+' ax:'+aScreenX+' ay:'+aScreenY+'\n');
 	  mainPanel.removeEventListener('mouseover',nagioschecker.handleMouseOver,false);
 	  mainPanel.removeEventListener('mouseout',nagioschecker.handleMouseOut,false);
       for (var pType in fld) {
+		  var pop = document.getElementById('nagioschecker-popup-'+pType);
+		  pop.addEventListener('mouseover',nagioschecker.handleMouseOver,false);
+		  pop.addEventListener('mouseout',nagioschecker.handleMouseOut,false);
 		  fld[pType].removeEventListener('mouseover',nagioschecker.handleMouseOver,false);
 		  fld[pType].removeEventListener('mouseout',nagioschecker.handleMouseOut,false);
       }
@@ -948,6 +977,7 @@ dump('RESETOOLTIPS '+isAny+' '+this.pref.info_window_type+' '+this.isStopped+'\n
 dump('IWT:1\n');
 		  mainPanel.addEventListener('mouseover',nagioschecker.handleMouseOver,false);
 		  mainPanel.addEventListener('mouseout',nagioschecker.handleMouseOut,false);
+		  mainPanel.relatedPopup='nagioschecker-popup';
 //        for (var pType in fld) {
 //          fld[pType].removeAttribute("tooltip");
 //		  fld[pType].removeEventListener('mouseover',nagioschecker.handleMouseOver,false);
@@ -963,7 +993,8 @@ dump('IWT:<>1\n');
         for (var pType in fld) {
 		  fld[pType].addEventListener('mouseover',nagioschecker.handleMouseOver,false);
 		  fld[pType].addEventListener('mouseout',nagioschecker.handleMouseOut,false);
-//          fld[pType].setAttribute("tooltip", "nagioschecker-tooltip-"+pType);
+		  fld[pType].relatedTarget='nagioschecker-popup-'+pType;
+//         fld[pType].setAttribute("tooltip", "nagioschecker-tooltip-"+pType);
         }
       }
     }
