@@ -954,8 +954,8 @@ dump('x:'+x+' y:'+y+' ax:'+aScreenX+' ay:'+aScreenY+'\n');
 
 //	document.getElementById('nagioschecker-services-critical').addEventListener('mouseover',nagioschecker.handleMouseOver,false);
 //	document.getElementById('nagioschecker-services-critical').addEventListener('mouseout',nagioschecker.handleMouseOut,false);
-	mainPopup.addEventListener('mouseover',nagioschecker.handleMouseOver,false);
-	mainPopup.addEventListener('mouseout',nagioschecker.handleMouseOut,false);
+	mainPopup.addEventListener('mouseover',nagioschecker.handleMouseOver,true);
+	mainPopup.addEventListener('mouseout',nagioschecker.handleMouseOut,true);
 
 	  mainPanel.removeEventListener('mouseover',nagioschecker.handleMouseOver,false);
 	  mainPanel.removeEventListener('mouseout',nagioschecker.handleMouseOut,false);
