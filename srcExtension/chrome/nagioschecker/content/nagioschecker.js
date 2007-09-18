@@ -117,26 +117,30 @@ _showTimerID: null,
 _refreshTimer: null,
 
   handleMouseOver: function (aEvent) {
+dump('\n'+nagioschecker.openedPops.length+' out'+aEvent.target.id);
 	if (_showTimerID ) {
 		return;
 	}
 		if ((aEvent.target.id == "nagioschecker-panel")||(aEvent.target.localName == "label")||(aEvent.target.localName == "popup")) {
-dump(aEvent.target.localName+":"+_tab+":"+ev2pop[aEvent.target.id]);
+dump(' '+aEvent.target.localName+":"+_tab+":"+ev2pop[aEvent.target.id]);
 		if (aEvent.target == _tab) {
 			return;
 		}
 		_tab = aEvent.target;
 		var relPopup=document.getElementById(ev2pop[aEvent.target.id]);
 		var callback = function(self) {
-			if (relPopup)
+			if (relPopup) {
 				relPopup.showPopup(_tab,  -1, -1, 'popup', 'topright' , 'bottomright');
+				nagioschecker.openedPops.push(ev2pop[aEvent.target.id]);
+			}
 		};
 		_showTimerID = window.setTimeout(callback, 10, this);
 	}
   },
 
+  openedPops : [],
   handleMouseOut: function (aEvent) {
-dump('out'+aEvent.target.id);
+dump('\nout'+aEvent.target.id);
 	var rel = aEvent.relatedTarget;
 	var popupMain = document.getElementById('nagioschecker-popup');
 	var popupDown = document.getElementById('nagioschecker-popup-down');
@@ -152,7 +156,8 @@ dump(' '+rel.localName+':'+rel.id);
 				return;
 			rel = rel.parentNode;
 		}
-		nagioschecker.abort(document.getElementById(ev2pop[aEvent.target.id]));
+dump('['+aEvent.target.id+']');
+		nagioschecker.abort();
 		return;
 	}
 	var x = aEvent.screenX;
@@ -162,25 +167,31 @@ dump(' '+rel.localName+':'+rel.id);
 		nagioschecker.isEntering(x, y, popupCritical, true) || nagioschecker.isEntering(x, y, popupWarning, true) ||	    
 		nagioschecker.isEntering(x, y, _tab, true))
 		return;
-	nagioschecker.abort(document.getElementById(ev2pop[aEvent.target.id]));   	
+	nagioschecker.abort();   	
   },
-  abort: function(relPopup) {
+  abort: function() {
+dump('ABORT');
 	if (_showTimerID) {
 		window.clearTimeout(_showTimerID);
 		_showTimerID = null;
 	}
 	if (_tab) {
-		if (relPopup)
-			relPopup.hidePopup();
+		for (var i in nagioschecker.openedPops) {
+			if (nagioschecker.openedPops[i])
+				document.getElementById(nagioschecker.openedPops[i]).hidePopup();
+				
+		}
+		nagioschecker.openedPops = [];
+		
 	}
 	_tab = null;  	
   },
   
   isEntering: function(aScreenX,aScreenY,aElement,aAllowOnEdge) {
-dump('x:'+x+' y:'+y+' ax:'+aScreenX+' ay:'+aScreenY+'\n');
 	var x = aElement.boxObject.screenX;
 	var y = aElement.boxObject.screenY;
 	var c = aAllowOnEdge ? 1 : 0;
+dump('x:'+x+' y:'+y+' ax:'+aScreenX+' ay:'+aScreenY+'\n');
 	if (x < aScreenX - c && aScreenX < x + aElement.boxObject.width + c && 
 		y < aScreenY - c && aScreenY < y + aElement.boxObject.height + c) {
 		return true;
