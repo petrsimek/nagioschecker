@@ -1384,6 +1384,7 @@ function NCHToolTip(showColInfo,showColAlias,showColFlags) {
 
     this._vbox = doc.createElement("scrollbox");
     this._vbox.setAttribute("style","overflow: auto");
+    this._vbox.setAttribute("flex","1");
 
 		var grid = doc.createElement("grid");
 		this._vbox.appendChild(grid);
@@ -1443,7 +1444,6 @@ function NCHToolTip(showColInfo,showColAlias,showColFlags) {
 				});
 				for(var j = 0;j<this.headers[i].problems.length;j++) {
 					var serPo = this.headers[i].servPos;
-  			  		this.createRow(this.headers[i].problems[j],i,serPo);
   			  		this.createRow(this.headers[i].problems[j],i,serPo);
         		}
         	}
@@ -1774,12 +1774,12 @@ function NCHPaket(sci,sca,scf) {
 	this.createTooltip = function() {
 	    if (this["all"][0]) {
 	      this["all"][0].create(document.getElementById('nagioschecker-popup'));
-		    this["all"][0].create(document.getElementById('nagioschecker-tooltip'));
+//		    this["all"][0].create(document.getElementById('nagioschecker-tooltip'));
 	    }
 
     	for(var i=0;i<this.pt.length;i++) {
 	      if ((this[this.pt[i]]) && (this[this.pt[i]][0])) {
-	        this[this.pt[i]][0].create(document.getElementById('nagioschecker-tooltip-'+this.pt[i]));
+//	        this[this.pt[i]][0].create(document.getElementById('nagioschecker-tooltip-'+this.pt[i]));
 	        this[this.pt[i]][0].create(document.getElementById('nagioschecker-popup-'+this.pt[i]));
 	      }
 	    }
