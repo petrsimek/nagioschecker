@@ -255,9 +255,14 @@ statusbarpanel .nagioschecker-box {
 
 .nagioschecker-popup {
 /*	-moz-appearance:none;*/
-/*	background-color: infobackground;*/
-/*	border:none;*/
+	background-color: infobackground;
+	border:none;
+	padding:0;
+	margin:0;
+	
 }
+
+
 
 .nagioschecker-tooltip-warning-row {
   font-weight: bold;
@@ -319,3 +324,72 @@ label.error {
 	color:silver;
 }
 
+
+
+tree#poptree treechildren::-moz-tree-row(group)
+{
+    background-color: #DDDDDD;
+	font-weight:bold;
+}
+
+tree#poptree treechildren::-moz-tree-row(critical) {
+  background-color: #FF0000;
+  -moz-border-radius: 3px;
+  border: 1px #FF0000 solid;
+	  margin-left:2px;
+  margin-right:2px;
+  padding-left: 2px;
+  padding-right: 2px;
+  /*
+	  margin-left:2px;
+  margin-right:2px;
+  padding-left: 2px;
+  padding-right: 2px;
+  border: 1px #FF0000 solid;
+  */
+}
+tree#poptree treechildren::-moz-tree-cell-text(critical) {
+  color: white;
+  font-weight: bold;
+}
+tree#poptree treechildren::-moz-tree-row(warning) {
+  color: black;
+  background-color:#E6E600;
+  font-weight: bold;
+}
+
+tree#poptree treechildren::-moz-tree-row(warning) {
+  background-color:#E6E600;
+}
+tree#poptree treechildren::-moz-tree-cell-text(warning) {
+  color: black;
+  font-weight: bold;
+}
+
+tree#poptree {
+padding:0;
+margin:0;
+}
+
+/*
+treechildren::-moz-tree-cell-text(selected)
+{
+    color: black;
+}
+
+treechildren::-moz-tree-row(selected)
+{
+    background-color: #FFC83C;
+}
+
+treechildren::-moz-tree-checkbox(checked)
+{
+    list-style-image: url("chrome://global/skin/checkbox/cbox-check.gif");
+}
+
+tree.da_grid treechildren::-moz-tree-row(even)
+{
+    background-color: #EEEEEE;
+}
+
+*/

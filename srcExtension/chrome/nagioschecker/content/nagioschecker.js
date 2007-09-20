@@ -132,6 +132,11 @@ dump(' '+aEvent.target.localName+":"+_tab+":"+ev2pop[aEvent.target.id]);
 			if (relPopup) {
 //alert(tab.id)				
 				relPopup.showPopup(_tab,  -1, -1, 'popup', 'topleft' , 'bottomleft');
+//dump('\npravd vboxid'+_tab.id+'-id');
+//dump(' '+vb.id);
+//dump('PRED: clientHeight:'+vb.clientHeight+' scrollHeight:'+vb.scrollHeight+' height:'+vb.height+'\n');
+//dump('PRED: clientHeight:'+vb.clientHeight+' scrollHeight:'+vb.scrollHeight+' height:'+vb.height+'\n');
+
 				nagioschecker.openedPops.push(ev2pop[aEvent.target.id]);
 			}
 		};
@@ -1322,10 +1327,10 @@ function NCHToolTip(showColInfo,showColAlias,showColFlags) {
 	this._tooltip.setAttribute("minwidth",ph+"px");
 	this._tooltip.setAttribute("maxwidth",(window.screen.width-300)+"px");
 
-/*
 	this._table = doc.createElement("tree");
 	this._table.setAttribute("rows",10);
 	this._table.setAttribute("flex","1");
+	this._table.setAttribute("id","poptree");
 	var cols = doc.createElement("treecols");
 	this._table.appendChild(cols);
 
@@ -1333,6 +1338,7 @@ function NCHToolTip(showColInfo,showColAlias,showColFlags) {
 	var lHost = doc.createElement("treecol");
 	lHost.setAttribute("label", nagioschecker.bundle.getString("host")+"/"+nagioschecker.bundle.getString("service"));
 	lHost.setAttribute("flex","2");
+	lHost.setAttribute("primary","true");
 	cols.appendChild(lHost);
 
 	var lNew = doc.createElement("treecol");
@@ -1346,14 +1352,7 @@ function NCHToolTip(showColInfo,showColAlias,showColFlags) {
 		lAlias.setAttribute("flex","2");
 		cols.appendChild(lAlias);
 	}
-*/
-/*
-	var lServ = doc.createElement("treecol");
-	lServ.setAttribute("label", nagioschecker.bundle.getString("service"));
-	lServ.setAttribute("flex","2");
-	cols.appendChild(lServ);
-*/
-/*
+
     if (this.showColFlags) {
  		var lFlags = doc.createElement("treecol");
 		lFlags.setAttribute("label", nagioschecker.bundle.getString("flags"));
@@ -1380,14 +1379,50 @@ function NCHToolTip(showColInfo,showColAlias,showColFlags) {
 
 	this._tableContent = doc.createElement("treechildren");
 	this._table.appendChild(this._tableContent);
-*/
 
+/*
     this._vbox = doc.createElement("scrollbox");
-    this._vbox.setAttribute("style","overflow: auto");
+    this._vbox.setAttribute("style","overflow: -moz-scrollbars-horizontal;");
     this._vbox.setAttribute("flex","1");
-
+//dump ('vboxid:'+from.id+'-id');
+//    this._vbox.setAttribute("id",from.id+'-id');
 		var grid = doc.createElement("grid");
 		this._vbox.appendChild(grid);
+		var cls = doc.createElement("columns");
+		grid.appendChild(cls);
+		var cl = doc.createElement("column");
+//		cl.setAttribute("flex","1");
+		cls.appendChild(cl);
+		var cl = doc.createElement("column");
+//		cl.setAttribute("flex","1");
+		cls.appendChild(cl);
+    if (this.showColAlias) {
+		var cl = doc.createElement("column");
+//		cl.setAttribute("flex","1");
+		cls.appendChild(cl);
+    }
+		var cl = doc.createElement("column");
+//		cl.setAttribute("flex","1");
+		cls.appendChild(cl);
+if (this.showColFlags) {		
+		var cl = doc.createElement("column");
+//		cl.setAttribute("flex","1");
+		cls.appendChild(cl);
+}
+		var cl = doc.createElement("column");
+//		cl.setAttribute("flex","1");
+		cls.appendChild(cl);
+		var cl = doc.createElement("column");
+//		cl.setAttribute("flex","1");
+		cls.appendChild(cl);
+    if (this.showColInfo) {
+		var cl = doc.createElement("column");
+//		cl.setAttribute("flex","1");
+		cl.setAttribute("style","max-width:20px;");
+
+
+		cls.appendChild(cl);
+    }
 		this._rows = doc.createElement("rows");
 		grid.appendChild(this._rows);
 
@@ -1396,6 +1431,7 @@ function NCHToolTip(showColInfo,showColAlias,showColFlags) {
 
 		var lNew = doc.createElement("label");
 		lNew.setAttribute("value", "");
+		
 		row.appendChild(lNew);
 
 		var lHost = doc.createElement("label");
@@ -1431,7 +1467,8 @@ function NCHToolTip(showColInfo,showColAlias,showColFlags) {
 		row.appendChild(lInfo);
     }
 
-
+*/
+	
 
 
 	 for(var i = 0;i<this.headers.length;i++) {
@@ -1452,13 +1489,26 @@ function NCHToolTip(showColInfo,showColAlias,showColFlags) {
         	}
       }
     }
+/*    
+		var wi = doc.createElement("window");
+		wi.setAttributeNS("xmlns","html","http://www.w3.org/1999/xhtml");
+		wi.setAttribute("width","500");
+		wi.setAttribute("height","500");
+		
+		var h1 = doc.createElementNS("html","div");
+		h1.appendChild(doc.createTextNode("Pokus"));
+		wi.appendChild(h1);
 
+		this._tooltip.appendChild(wi);
+*/
+
+/*
 		this._tooltip.appendChild(this._vbox);
-//		this._tooltip.appendChild(this._table);
+
+*/		
+		this._tooltip.appendChild(this._table);
 //    this._tooltip.setAttribute("style","max-height:"+ph+"px;");
      
-
-
 	  }
 
 
@@ -1469,20 +1519,21 @@ function NCHToolTip(showColInfo,showColAlias,showColFlags) {
     var doc=document;
 
     if (doc) {
-/*
+
 		var head = doc.createElement("treeitem");
 		head.setAttribute("container","true");
 		head.setAttribute("open","true");
 		this._tableContent.appendChild(head);
 		var trow = doc.createElement("treerow");
+  		trow.setAttribute("properties", "group");
 		head.appendChild(trow);
 		var tcell = doc.createElement("treecell");
 		tcell.setAttribute("label",name);
 		trow.appendChild(tcell);
 		this._groupEl[pos] = doc.createElement("treechildren");
 		head.appendChild(this._groupEl[pos]);
-*/		
-
+		
+/*
 		var separator = doc.createElement("separator");
 		separator.setAttribute("class", "groove-thin");
 		this._rows.appendChild(separator);
@@ -1505,20 +1556,21 @@ function NCHToolTip(showColInfo,showColAlias,showColFlags) {
 		var separator = doc.createElement("separator");
 		separator.setAttribute("class", "groove-thin");
 		this._rows.appendChild(separator);
+*/ 
     }
 
   }
   this.createError= function() {
 
     var doc=document;
-
+/*
 		var row = document.createElement("row");
  		this._rows.appendChild(row);
 		var lErr = document.createElement("label");
 		lErr.setAttribute("class","error");
 		lErr.setAttribute("value", nagioschecker.bundle.getString("downloadError"));
 		row.appendChild(lErr);
-
+*/
 
 
   }
@@ -1538,7 +1590,7 @@ function NCHToolTip(showColInfo,showColAlias,showColFlags) {
 
   
   this.createRow = function(problem,i,serPo) {
-/*
+
 	var titem = document.createElement("treeitem");
 	this._groupEl[i].appendChild(titem);
 	var row = document.createElement("treerow");
@@ -1560,10 +1612,12 @@ function NCHToolTip(showColInfo,showColAlias,showColFlags) {
         break;
       case "warning":
 //    		row.setAttribute("class", "nagioschecker-tooltip-row nagioschecker-tooltip-warning-row");
+    		row.setAttribute("properties", "warning");
         status_text = nagioschecker.bundle.getString("alertWarning1")
         break;
       case "critical":
 //    		row.setAttribute("class", "nagioschecker-tooltip-row nagioschecker-tooltip-critical-row");
+    		row.setAttribute("properties", "critical");
         status_text = nagioschecker.bundle.getString("alertCritical1")
         break;
     }
@@ -1572,6 +1626,7 @@ function NCHToolTip(showColInfo,showColAlias,showColFlags) {
 
 	var lHost = document.createElement("treecell");
 	lHost.setAttribute("label", problem.host+((problem.service==null) ? "" : problem.service));
+ 	lHost.setAttribute("properties", "critical");
 	row.appendChild(lHost);
 
 	var lNew = document.createElement("treecell");
@@ -1590,13 +1645,8 @@ function NCHToolTip(showColInfo,showColAlias,showColFlags) {
 		lAlias.setAttribute("label", (this.headers[i].aliases[problem.host]) ? this.headers[i].aliases[problem.host] : "-");
 		row.appendChild(lAlias);
 	}
-*/
-/*
-	var lServ = document.createElement("treecell");
-	lServ.setAttribute("label", (problem.service==null) ? "-" : problem.service);
-	row.appendChild(lServ);
-*/
-/*
+
+
 	var flags="";
 	if (problem.acknowledged) flags+='Ac';
 	if (problem.dischecks) flags+='Ch';
@@ -1629,9 +1679,7 @@ function NCHToolTip(showColInfo,showColAlias,showColFlags) {
     }
 		
 		
-
-*/
-
+/*
 	var row = document.createElement("row");
 		
     var status_text = "";
@@ -1719,11 +1767,12 @@ function NCHToolTip(showColInfo,showColAlias,showColFlags) {
     if (this.showColInfo) {
 		var lInfo = document.createElement("label");
 		lInfo.setAttribute("value", problem.info);
+		lInfo.setAttribute("style","overflow:hidden;white-space:nowrap;");
 		row.appendChild(lInfo);
     }
 
 
-
+*/
 
 
   }
