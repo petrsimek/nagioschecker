@@ -213,6 +213,9 @@ statusbarpanel .nagioschecker-box {
 	border:1px #B30000 solid;
 }
 
+
+
+
 .nagioschecker-tooltip-unreachable-row {
 	font-weight: bold;
 	color: white;
@@ -319,54 +322,116 @@ label.error {
   background-color:white;
 }
 
-#hostList treechildren::-moz-tree-cell-text(disServer) {
-	font-style: italic;
-	color:silver;
-}
 
-
-
-tree#poptree treechildren::-moz-tree-row(group)
+tree.poptree treechildren::-moz-tree-row(group)
 {
-    background-color: #DDDDDD;
-	font-weight:bold;
+  margin-bottom: 4px;
+ -moz-border-radius:3px;
+  background-color:#FFFFFF;
 }
 
-tree#poptree treechildren::-moz-tree-row(critical) {
-  background-color: #FF0000;
-  -moz-border-radius: 3px;
-  border: 1px #FF0000 solid;
-	  margin-left:2px;
-  margin-right:2px;
-  padding-left: 2px;
-  padding-right: 2px;
-  /*
-	  margin-left:2px;
-  margin-right:2px;
-  padding-left: 2px;
-  padding-right: 2px;
-  border: 1px #FF0000 solid;
-  */
+tree.poptree treechildren::-moz-tree-cell-text(group) {
+  font-weight: bold;
+  color: black;
+  font-weight: bold;
+  font-size: 1.2em;
 }
-tree#poptree treechildren::-moz-tree-cell-text(critical) {
+
+
+
+tree.poptree treechildren::-moz-tree-row(critical) {
+  background-color: #FF0000;
+  border: 1px #FF0000 solid;
+  -moz-border-radius: 3px;
+  margin-left:2px;
+  margin-right:2px;
+  padding-left: 2px;
+  padding-right: 2px;
+}
+
+tree.poptree treechildren:hover::-moz-tree-row(critical) {
+  background-color: black;
+  border: 1px #FF0000 solid;
+  -moz-border-radius: 3px;
+  margin-left:2px;
+  margin-right:2px;
+  padding-left: 2px;
+  padding-right: 2px;
+}
+
+tree.poptree treechildren::-moz-tree-cell-text(critical) {
   color: white;
   font-weight: bold;
 }
-tree#poptree treechildren::-moz-tree-row(warning) {
-  color: black;
+tree.poptree treechildren::-moz-tree-row(warning) {
   background-color:#E6E600;
+  border: 1px #E6E600 solid;
+  -moz-border-radius: 3px;
+  margin-left:2px;
+  margin-right:2px;
+  padding-left: 2px;
+  padding-right: 2px;
+}
+tree.poptree treechildren::-moz-tree-cell-text(warning) {
+  color: black;
+  font-weight: bold;
+}
+tree.poptree treechildren::-moz-tree-row(unknown) {
+  background-color:#FF8B3D;
+  border: 1px #FF8B3D solid;
+  -moz-border-radius: 3px;
+  margin-left:2px;
+  margin-right:2px;
+  padding-left: 2px;
+  padding-right: 2px;
+}
+tree.poptree treechildren::-moz-tree-cell-text(unknown) {
+  color: black;
+  font-weight: bold;
+}
+tree.poptree treechildren::-moz-tree-row(down) {
+  background-color:#CC0000;
+  border: 1px #CC0000 solid;
+  -moz-border-radius: 3px;
+  margin-left:2px;
+  margin-right:2px;
+  padding-left: 2px;
+  padding-right: 2px;
+}
+tree.poptree treechildren::-moz-tree-cell(hover) {
+  background-color:#B30000;
+  border:1px #B30000 solid;
+  -moz-border-radius: 3px;
+  margin-left:2px;
+  margin-right:2px;
+  padding-left: 2px;
+  padding-right: 2px;
+}
+
+
+tree.poptree treechildren::-moz-tree-cell-text(down) {
+  color: #BDBDBD;
+  font-weight: bold;
+}
+tree.poptree treechildren::-moz-tree-row(unreachable) {
+  background-color:#CC0000;
+  border: 1px #CC0000 solid;
+  -moz-border-radius: 3px;
+  margin-left:2px;
+  margin-right:2px;
+  padding-left: 2px;
+  padding-right: 2px;
+}
+tree.poptree treechildren::-moz-tree-cell-text(unreachable) {
+  color: #ffffff;
   font-weight: bold;
 }
 
-tree#poptree treechildren::-moz-tree-row(warning) {
-  background-color:#E6E600;
-}
-tree#poptree treechildren::-moz-tree-cell-text(warning) {
-  color: black;
-  font-weight: bold;
-}
 
-tree#poptree {
+
+
+
+tree.poptree {
 padding:0;
 margin:0;
 }

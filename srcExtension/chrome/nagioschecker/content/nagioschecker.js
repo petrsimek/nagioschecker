@@ -1330,7 +1330,7 @@ function NCHToolTip(showColInfo,showColAlias,showColFlags) {
 	this._table = doc.createElement("tree");
 	this._table.setAttribute("rows",10);
 	this._table.setAttribute("flex","1");
-	this._table.setAttribute("id","poptree");
+	this._table.setAttribute("class","poptree");
 	var cols = doc.createElement("treecols");
 	this._table.appendChild(cols);
 
@@ -1529,6 +1529,7 @@ if (this.showColFlags) {
 		head.appendChild(trow);
 		var tcell = doc.createElement("treecell");
 		tcell.setAttribute("label",name);
+  		tcell.setAttribute("properties", "group");
 		trow.appendChild(tcell);
 		this._groupEl[pos] = doc.createElement("treechildren");
 		head.appendChild(this._groupEl[pos]);
@@ -1597,6 +1598,7 @@ if (this.showColFlags) {
 	titem.appendChild(row);
 
     var status_text = "";
+    var prop = "";
     switch (problem.status) {
       case "down":
 //    		row.setAttribute("class", "nagioschecker-tooltip-row nagioschecker-tooltip-down-row");
@@ -1612,24 +1614,25 @@ if (this.showColFlags) {
         break;
       case "warning":
 //    		row.setAttribute("class", "nagioschecker-tooltip-row nagioschecker-tooltip-warning-row");
-    		row.setAttribute("properties", "warning");
         status_text = nagioschecker.bundle.getString("alertWarning1")
         break;
       case "critical":
 //    		row.setAttribute("class", "nagioschecker-tooltip-row nagioschecker-tooltip-critical-row");
-    		row.setAttribute("properties", "critical");
         status_text = nagioschecker.bundle.getString("alertCritical1")
         break;
     }
+ 	row.setAttribute("properties", problem.status);
+ 	row.setAttribute("class", problem.status+"-class");
 
 
 
 	var lHost = document.createElement("treecell");
 	lHost.setAttribute("label", problem.host+((problem.service==null) ? "" : problem.service));
- 	lHost.setAttribute("properties", "critical");
+ 	lHost.setAttribute("properties", problem.status);
 	row.appendChild(lHost);
 
 	var lNew = document.createElement("treecell");
+ 	lNew.setAttribute("properties", problem.status);
     if (this.headers[i].news[problem.host]) {
 		  lNew.setAttribute("label", " ! ");
 		  lNew.setAttribute("tooltiptext", nagioschecker.bundle.getString("new"));
@@ -1643,6 +1646,7 @@ if (this.showColFlags) {
     if (this.showColAlias) {
 		var lAlias = document.createElement("treecell");
 		lAlias.setAttribute("label", (this.headers[i].aliases[problem.host]) ? this.headers[i].aliases[problem.host] : "-");
+	 	lAlias.setAttribute("properties", problem.status);
 		row.appendChild(lAlias);
 	}
 
@@ -1658,6 +1662,7 @@ if (this.showColFlags) {
     if (this.showColFlags) {
 		var lFlags = document.createElement("treecell");
 		lFlags.setAttribute("label", flags);
+	 	lFlags.setAttribute("properties", problem.status);
 		row.appendChild(lFlags);
     }
 
@@ -1665,16 +1670,19 @@ if (this.showColFlags) {
 
 	var lStat = document.createElement("treecell");
 	lStat.setAttribute("label", status_text);
+ 	lStat.setAttribute("properties", problem.status);
 	row.appendChild(lStat);
 
 	var lTime = document.createElement("treecell");
 	lTime.setAttribute("label", problem.duration);
+ 	lTime.setAttribute("properties", problem.status);
 	row.appendChild(lTime);
 
 
     if (this.showColInfo) {
 		var lInfo = document.createElement("treecell");
 		lInfo.setAttribute("label", problem.info);
+	 	lInfo.setAttribute("properties", problem.status);
 		row.appendChild(lInfo);
     }
 		
