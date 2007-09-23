@@ -1307,6 +1307,8 @@ function NCHToolTip(showColInfo,showColAlias,showColFlags) {
   this._table = null;	
   this._tableContent = null;
   this._groupEl = [];
+
+
 	
   this.create = function(from) {
     this._tooltip=from;
@@ -1328,7 +1330,9 @@ function NCHToolTip(showColInfo,showColAlias,showColFlags) {
 	this._tooltip.setAttribute("maxwidth",(window.screen.width-300)+"px");
 
 	this._table = doc.createElement("tree");
+	this._table.setAttribute("id","results");
 	this._table.setAttribute("rows",10);
+	this._table.setAttribute("hidecolumnpicker","true");
 	this._table.setAttribute("flex","1");
 	this._table.setAttribute("class","poptree");
 	var cols = doc.createElement("treecols");
@@ -1520,6 +1524,17 @@ if (this.showColFlags) {
 
     if (doc) {
 
+		var titem = document.createElement("treeitem");
+		this._groupEl[i].appendChild(titem);
+		var row = document.createElement("treerow");
+  		row.setAttribute("properties", "group");
+		titem.appendChild(row);
+		var tcell = doc.createElement("treecell");
+		tcell.setAttribute("label",name);
+  		tcell.setAttribute("properties", "group");
+		row.appendChild(tcell);
+
+/*
 		var head = doc.createElement("treeitem");
 		head.setAttribute("container","true");
 		head.setAttribute("open","true");
@@ -1533,6 +1548,7 @@ if (this.showColFlags) {
 		trow.appendChild(tcell);
 		this._groupEl[pos] = doc.createElement("treechildren");
 		head.appendChild(this._groupEl[pos]);
+*/ 
 		
 /*
 		var separator = doc.createElement("separator");
@@ -1784,6 +1800,51 @@ if (this.showColFlags) {
 
 
   }
+
+
+
+  this._view: {
+    _rowCount: 0,
+    get rowCount() { 
+      return this._rowCount; 
+    },
+    getCellText: function (aRow, aColumn) {
+      switch( typeof(aColumn)=="object" ? aColumn.id : aColumn ) {
+        case "nameCol":
+          return (gNCHOptions._servers[aRow]==null) ? "" : gNCHOptions._servers[aRow].name;
+        case "urlCol":
+          return (gNCHOptions._servers[aRow]==null) ? "" : gNCHOptions._servers[aRow].url;
+        case "aliasCol":
+          return (gNCHOptions._servers[aRow]==null) ? "" : (gNCHOptions._servers[aRow].getAliases) ? gNCHOptions.bundle.getString("yes") : gNCHOptions.bundle.getString("no");
+        case "disCol":
+          return (gNCHOptions._servers[aRow]==null) ? "" : (gNCHOptions._servers[aRow].disabled) ? gNCHOptions.bundle.getString("yes") : gNCHOptions.bundle.getString("no");
+        default:
+          return null;
+      }
+    },
+    isSeparator: function(aIndex) { return false; },
+    isSorted: function() { return false; },
+    isContainer: function(aIndex) { return false; },
+    setTree: function(aTree){},
+    getImageSrc: function(aRow, aColumn) {},
+    getProgressMode: function(aRow, aColumn) {},
+    getCellValue: function(aRow, aColumn) {},
+    cycleHeader: function(aColId, aElt) {},
+    getRowProperties: function(aRow, aProperty) {
+    },
+    getColumnProperties: function(aColumn, aColumnElement, aProperty) {},
+    getCellProperties: function(aRow, aCol,aProperty) {
+    
+		if (gNCHOptions._servers[aRow].disabled) {
+			var aserv=Components.classes["@mozilla.org/atom-service;1"].getService(Components.interfaces.nsIAtomService);
+			aProperty.AppendElement(aserv.getAtom("disServer"));
+		}
+    
+    
+    }
+  };
+
+
 }
 
 function NCHPaket(sci,sca,scf) {
