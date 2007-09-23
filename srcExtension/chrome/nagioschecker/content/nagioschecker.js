@@ -1029,6 +1029,7 @@ dump('IWT:<>1\n');
 
 
   updateStatus: function(paket,firstRun) {
+	this._paket=paket;
 
 	paket.createTooltip();
 
@@ -1289,7 +1290,71 @@ dump('IWT:<>1\n');
 	      }
 		}
 		return result;
-	}
+	},
+
+
+
+  _view: {
+    _rowCount: 0,
+    get rowCount() { 
+      return this._rowCount; 
+    },
+    getCellText: function (aRow, aColumn) {
+      var aCol = typeof(aColumn)=="object" ? aColumn.id : aColumn;
+	  switch (nagioschecker.paket[aRow]['type') {
+	  	case 'header':
+
+	      switch( aCol ) {
+	        case "hostCol":
+	          return (nagioschecker.paket[aRow]['data']) ? "" : nagioschecker.paket[aRow]['data'];
+			default:
+			  return "";
+	      }
+
+	  	break;
+	  	case 'problem':
+
+      switch( aCol ) {
+        case "hostCol":
+          return (nagioschecker.paket[aRow].data.host==null) ? "" : nagioschecker.paket[aRow].data.host;
+        case "urlCol":
+          return (gNCHOptions._servers[aRow]==null) ? "" : gNCHOptions._servers[aRow].url;
+        case "aliasCol":
+          return (gNCHOptions._servers[aRow]==null) ? "" : (gNCHOptions._servers[aRow].getAliases) ? gNCHOptions.bundle.getString("yes") : gNCHOptions.bundle.getString("no");
+        case "disCol":
+          return (gNCHOptions._servers[aRow]==null) ? "" : (gNCHOptions._servers[aRow].disabled) ? gNCHOptions.bundle.getString("yes") : gNCHOptions.bundle.getString("no");
+        default:
+          return null;
+      }
+
+
+	  	break;
+	  }
+
+    },
+    isSeparator: function(aIndex) { return false; },
+    isSorted: function() { return false; },
+    isContainer: function(aIndex) { return false; },
+    setTree: function(aTree){},
+    getImageSrc: function(aRow, aColumn) {},
+    getProgressMode: function(aRow, aColumn) {},
+    getCellValue: function(aRow, aColumn) {},
+    cycleHeader: function(aColId, aElt) {},
+    getRowProperties: function(aRow, aProperty) {
+    },
+    getColumnProperties: function(aColumn, aColumnElement, aProperty) {},
+    getCellProperties: function(aRow, aCol,aProperty) {
+    
+		if (gNCHOptions._servers[aRow].disabled) {
+			var aserv=Components.classes["@mozilla.org/atom-service;1"].getService(Components.interfaces.nsIAtomService);
+			aProperty.AppendElement(aserv.getAtom("disServer"));
+		}
+    
+    
+    }
+  }
+
+
 
 }
 
@@ -1525,7 +1590,7 @@ if (this.showColFlags) {
     if (doc) {
 
 		var titem = document.createElement("treeitem");
-		this._groupEl[i].appendChild(titem);
+		this._tableContent.appendChild(titem);
 		var row = document.createElement("treerow");
   		row.setAttribute("properties", "group");
 		titem.appendChild(row);
@@ -1609,7 +1674,7 @@ if (this.showColFlags) {
   this.createRow = function(problem,i,serPo) {
 
 	var titem = document.createElement("treeitem");
-	this._groupEl[i].appendChild(titem);
+	this._tableContent.appendChild(titem);
 	var row = document.createElement("treerow");
 	titem.appendChild(row);
 
@@ -1802,49 +1867,6 @@ if (this.showColFlags) {
   }
 
 
-
-  this._view: {
-    _rowCount: 0,
-    get rowCount() { 
-      return this._rowCount; 
-    },
-    getCellText: function (aRow, aColumn) {
-      switch( typeof(aColumn)=="object" ? aColumn.id : aColumn ) {
-        case "nameCol":
-          return (gNCHOptions._servers[aRow]==null) ? "" : gNCHOptions._servers[aRow].name;
-        case "urlCol":
-          return (gNCHOptions._servers[aRow]==null) ? "" : gNCHOptions._servers[aRow].url;
-        case "aliasCol":
-          return (gNCHOptions._servers[aRow]==null) ? "" : (gNCHOptions._servers[aRow].getAliases) ? gNCHOptions.bundle.getString("yes") : gNCHOptions.bundle.getString("no");
-        case "disCol":
-          return (gNCHOptions._servers[aRow]==null) ? "" : (gNCHOptions._servers[aRow].disabled) ? gNCHOptions.bundle.getString("yes") : gNCHOptions.bundle.getString("no");
-        default:
-          return null;
-      }
-    },
-    isSeparator: function(aIndex) { return false; },
-    isSorted: function() { return false; },
-    isContainer: function(aIndex) { return false; },
-    setTree: function(aTree){},
-    getImageSrc: function(aRow, aColumn) {},
-    getProgressMode: function(aRow, aColumn) {},
-    getCellValue: function(aRow, aColumn) {},
-    cycleHeader: function(aColId, aElt) {},
-    getRowProperties: function(aRow, aProperty) {
-    },
-    getColumnProperties: function(aColumn, aColumnElement, aProperty) {},
-    getCellProperties: function(aRow, aCol,aProperty) {
-    
-		if (gNCHOptions._servers[aRow].disabled) {
-			var aserv=Components.classes["@mozilla.org/atom-service;1"].getService(Components.interfaces.nsIAtomService);
-			aProperty.AppendElement(aserv.getAtom("disServer"));
-		}
-    
-    
-    }
-  };
-
-
 }
 
 function NCHPaket(sci,sca,scf) {
@@ -1852,6 +1874,7 @@ function NCHPaket(sci,sca,scf) {
 	this.showColAlias = sca;
 	this.showColFlags = scf;
 	this.pt = ["down","unreachable","unknown","warning","critical"];
+	this.ttip = [];
 	this.all = [new NCHToolTip(this.showColInfo,this.showColAlias,this.showColFlags),0,0,[],[]];
 	this.down = [new NCHToolTip(this.showColInfo,this.showColAlias,this.showColFlags),0,0,[],[]];
 	this.unreachable = [new NCHToolTip(this.showColInfo,this.showColAlias,this.showColFlags),0,0,[],[]];
@@ -1860,6 +1883,7 @@ function NCHPaket(sci,sca,scf) {
 	this.critical = [new NCHToolTip(this.showColInfo,this.showColAlias,this.showColFlags),0,0,[],[]];
 	this.isError = false;
 	this.addTooltipHeader = function(to,header,serverPos,timeFetch) {
+		this.ttip[]={type:'header',data:header};
 	 	this[to][0].addHeader(header,serverPos,timeFetch);
 	}
 	this.addError = function(to) {
@@ -1872,7 +1896,8 @@ function NCHPaket(sci,sca,scf) {
 			this["all"][4][serverPos] = (this["all"][4][serverPos]) ? this["all"][4][serverPos]+1 : 1;
 			this[problemType][2] = (this[problemType][2]) ? this[problemType][2]+1 : 1;
 			this[problemType][4][serverPos] = (this[problemType][4][serverPos]) ? this[problemType][4][serverPos]+1 : 1;
-		} 	
+		}
+		this.ttip[]={type:'problem',data:problem};
 		this[problemType][1] = (this[problemType][1]) ? this[problemType][1]+1 : 1;
 		this[problemType][3][serverPos] = (this[problemType][3][serverPos]) ? this[problemType][3][serverPos]+1 : 1;
 		this["all"][0].addRow(problem,aliasName,(!isOld));
