@@ -14,6 +14,23 @@ var _tab = null;
 					  'nagioschecker-services-warning':'nagioschecker-popup-warning',
 					  'nagioschecker-services-critical':'nagioschecker-popup-critical'};
 
+var treeView = {
+    rowCount : 10000,
+    getCellText : function(row,column){
+      if (column == "hostCol") return "Row "+row;
+      else return "February 18";
+    },
+    setTree: function(treebox){ this.treebox = treebox; },
+    isContainer: function(row){ return false; },
+    isSeparator: function(row){ return false; },
+    isSorted: function(row){ return false; },
+    getLevel: function(row){ return 0; },
+    getImageSrc: function(row,col){ return null; },
+    getRowProperties: function(row,props){},
+    getCellProperties: function(row,col,props){},
+    getColumnProperties: function(colid,col,props){}
+};
+
 var nagioschecker = null;
 var nagioscheckerLoad = function() {
 
@@ -1033,6 +1050,7 @@ dump('IWT:<>1\n');
 
 	paket.createTooltip();
 
+
 	this.resetBehavior(paket.isAtLeastOne());
 
     var fld = {
@@ -1301,12 +1319,14 @@ dump('IWT:<>1\n');
     },
     getCellText: function (aRow, aColumn) {
       var aCol = typeof(aColumn)=="object" ? aColumn.id : aColumn;
-	  switch (nagioschecker.paket[aRow]['type') {
+dump(aRow+":"+aColumn+"\n");
+dump(nagioschecker._paket.ttip[aRow]['type']);
+	  switch (nagioschecker._paket.ttip[aRow]['type']) {
 	  	case 'header':
 
 	      switch( aCol ) {
 	        case "hostCol":
-	          return (nagioschecker.paket[aRow]['data']) ? "" : nagioschecker.paket[aRow]['data'];
+	          return (nagioschecker._paket.ttip[aRow]['data']) ? "" : nagioschecker._paket.ttip[aRow]['data'];
 			default:
 			  return "";
 	      }
@@ -1314,19 +1334,22 @@ dump('IWT:<>1\n');
 	  	break;
 	  	case 'problem':
 
-      switch( aCol ) {
-        case "hostCol":
-          return (nagioschecker.paket[aRow].data.host==null) ? "" : nagioschecker.paket[aRow].data.host;
-        case "urlCol":
-          return (gNCHOptions._servers[aRow]==null) ? "" : gNCHOptions._servers[aRow].url;
-        case "aliasCol":
-          return (gNCHOptions._servers[aRow]==null) ? "" : (gNCHOptions._servers[aRow].getAliases) ? gNCHOptions.bundle.getString("yes") : gNCHOptions.bundle.getString("no");
-        case "disCol":
-          return (gNCHOptions._servers[aRow]==null) ? "" : (gNCHOptions._servers[aRow].disabled) ? gNCHOptions.bundle.getString("yes") : gNCHOptions.bundle.getString("no");
-        default:
-          return null;
-      }
-
+		      switch( aCol ) {
+		        case "hostCol":
+		          return (nagioschecker._paket.ttip[aRow].data.host==null) ? "" : nagioschecker._paket.ttip[aRow].data.host;
+		        case "newCol":
+		          return "?";
+		        case "statusCol":
+		          return (nagioschecker._paket.ttip[aRow].data.status==null) ? "" : nagioschecker._paket.ttip[aRow].data.status;
+		        case "flagsCol":
+		          return (nagioschecker._paket.ttip[aRow].data.status==null) ? "" : nagioschecker._paket.ttip[aRow].data.status;
+		        case "durationCol":
+		          return (nagioschecker._paket.ttip[aRow].data.duration==null) ? "" : nagioschecker._paket.ttip[aRow].data.duration;
+		        case "infoCol":
+		          return (nagioschecker._paket.ttip[aRow].data.info==null) ? "" : nagioschecker._paket.ttip[aRow].data.info;
+		        default:
+		          return null;
+		      }
 
 	  	break;
 	  }
@@ -1335,8 +1358,8 @@ dump('IWT:<>1\n');
     isSeparator: function(aIndex) { return false; },
     isSorted: function() { return false; },
     isContainer: function(aIndex) { return false; },
-    setTree: function(aTree){},
-    getImageSrc: function(aRow, aColumn) {},
+	setTree: function(treebox){ this.treebox = treebox; },
+	getImageSrc: function(aRow, aColumn) {},
     getProgressMode: function(aRow, aColumn) {},
     getCellValue: function(aRow, aColumn) {},
     cycleHeader: function(aColId, aElt) {},
@@ -1344,12 +1367,12 @@ dump('IWT:<>1\n');
     },
     getColumnProperties: function(aColumn, aColumnElement, aProperty) {},
     getCellProperties: function(aRow, aCol,aProperty) {
-    
+/*    
 		if (gNCHOptions._servers[aRow].disabled) {
 			var aserv=Components.classes["@mozilla.org/atom-service;1"].getService(Components.interfaces.nsIAtomService);
 			aProperty.AppendElement(aserv.getAtom("disServer"));
 		}
-    
+*/    
     
     }
   }
@@ -1395,7 +1418,7 @@ function NCHToolTip(showColInfo,showColAlias,showColFlags) {
 	this._tooltip.setAttribute("maxwidth",(window.screen.width-300)+"px");
 
 	this._table = doc.createElement("tree");
-	this._table.setAttribute("id","results");
+	this._table.setAttribute("id","results-"+this._tooltip.id);
 	this._table.setAttribute("rows",10);
 	this._table.setAttribute("hidecolumnpicker","true");
 	this._table.setAttribute("flex","1");
@@ -1407,16 +1430,19 @@ function NCHToolTip(showColInfo,showColAlias,showColFlags) {
 	var lHost = doc.createElement("treecol");
 	lHost.setAttribute("label", nagioschecker.bundle.getString("host")+"/"+nagioschecker.bundle.getString("service"));
 	lHost.setAttribute("flex","2");
+	lHost.setAttribute("id","hostCol");
 	lHost.setAttribute("primary","true");
 	cols.appendChild(lHost);
 
 	var lNew = doc.createElement("treecol");
+	lNew.setAttribute("id","newCol");
 	lNew.setAttribute("label", "");
 	lNew.setAttribute("flex", "1");
 	cols.appendChild(lNew);
 
     if (this.showColAlias) {
 		var lAlias = doc.createElement("treecol");
+		lAlias.setAttribute("id","aliasCol");
 		lAlias.setAttribute("label", nagioschecker.bundle.getString("hostAlias"));
 		lAlias.setAttribute("flex","2");
 		cols.appendChild(lAlias);
@@ -1424,23 +1450,27 @@ function NCHToolTip(showColInfo,showColAlias,showColFlags) {
 
     if (this.showColFlags) {
  		var lFlags = doc.createElement("treecol");
+		lFlags.setAttribute("id","flagsCol");
 		lFlags.setAttribute("label", nagioschecker.bundle.getString("flags"));
 		lFlags.setAttribute("flex","2");
 		cols.appendChild(lFlags);
     }
 
 	var lStat = doc.createElement("treecol");
+	lStat.setAttribute("id","statusCol");
 	lStat.setAttribute("label", nagioschecker.bundle.getString("status"));
 	lStat.setAttribute("flex","2");
 	cols.appendChild(lStat);
 
 	var lTime = doc.createElement("treecol");
+	lTime.setAttribute("id","durationCol");
 	lTime.setAttribute("label", nagioschecker.bundle.getString("duration"));
 	lTime.setAttribute("flex","2");
 	cols.appendChild(lTime);
 
     if (this.showColInfo) {
 		var lInfo = doc.createElement("treecol");
+		lInfo.setAttribute("id","infoCol");
 		lInfo.setAttribute("label", nagioschecker.bundle.getString("information"));
 		lInfo.setAttribute("flex","3");
 		cols.appendChild(lInfo);
@@ -1448,6 +1478,7 @@ function NCHToolTip(showColInfo,showColAlias,showColFlags) {
 
 	this._tableContent = doc.createElement("treechildren");
 	this._table.appendChild(this._tableContent);
+	this._tooltip.appendChild(this._table);
 
 /*
     this._vbox = doc.createElement("scrollbox");
@@ -1537,8 +1568,17 @@ if (this.showColFlags) {
     }
 
 */
-	
-
+/*	
+    this._view._rowCount = this._servers.length;
+    this._tree.treeBoxObject.view = this._view;
+*/
+	dump("TTIPLEN:"+nagioschecker._paket.ttip.length);
+	nagioschecker._view._rowCount=nagioschecker._paket.ttip.length;
+	dump("tab.id:"+this._table.id);
+	dump(nagioschecker._view);
+//	this._table.view=nagioschecker._view;	
+	this._table.view=treeView;	
+/*
 
 	 for(var i = 0;i<this.headers.length;i++) {
     	if ((this.headers[i].problems.length) || (this.headers[i].error)) {
@@ -1558,6 +1598,10 @@ if (this.showColFlags) {
         	}
       }
     }
+*/
+
+
+
 /*    
 		var wi = doc.createElement("window");
 		wi.setAttributeNS("xmlns","html","http://www.w3.org/1999/xhtml");
@@ -1575,7 +1619,6 @@ if (this.showColFlags) {
 		this._tooltip.appendChild(this._vbox);
 
 */		
-		this._tooltip.appendChild(this._table);
 //    this._tooltip.setAttribute("style","max-height:"+ph+"px;");
      
 	  }
@@ -1883,7 +1926,7 @@ function NCHPaket(sci,sca,scf) {
 	this.critical = [new NCHToolTip(this.showColInfo,this.showColAlias,this.showColFlags),0,0,[],[]];
 	this.isError = false;
 	this.addTooltipHeader = function(to,header,serverPos,timeFetch) {
-		this.ttip[]={type:'header',data:header};
+		this.ttip.push({type:'header',data:header});
 	 	this[to][0].addHeader(header,serverPos,timeFetch);
 	}
 	this.addError = function(to) {
@@ -1897,7 +1940,7 @@ function NCHPaket(sci,sca,scf) {
 			this[problemType][2] = (this[problemType][2]) ? this[problemType][2]+1 : 1;
 			this[problemType][4][serverPos] = (this[problemType][4][serverPos]) ? this[problemType][4][serverPos]+1 : 1;
 		}
-		this.ttip[]={type:'problem',data:problem};
+		this.ttip.push({type:'problem',data:problem});
 		this[problemType][1] = (this[problemType][1]) ? this[problemType][1]+1 : 1;
 		this[problemType][3][serverPos] = (this[problemType][3][serverPos]) ? this[problemType][3][serverPos]+1 : 1;
 		this["all"][0].addRow(problem,aliasName,(!isOld));
@@ -1919,13 +1962,14 @@ function NCHPaket(sci,sca,scf) {
 	      this["all"][0].create(document.getElementById('nagioschecker-popup'));
 //		    this["all"][0].create(document.getElementById('nagioschecker-tooltip'));
 	    }
-
+/*
     	for(var i=0;i<this.pt.length;i++) {
 	      if ((this[this.pt[i]]) && (this[this.pt[i]][0])) {
 //	        this[this.pt[i]][0].create(document.getElementById('nagioschecker-tooltip-'+this.pt[i]));
 	        this[this.pt[i]][0].create(document.getElementById('nagioschecker-popup-'+this.pt[i]));
 	      }
 	    }
+*/ 
 	}
 	this.isAtLeastOne =  function() {
 		return (this["all"][1]>0);
