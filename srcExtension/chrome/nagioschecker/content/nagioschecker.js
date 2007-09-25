@@ -17,13 +17,13 @@ var _tab = null;
 var treeView = {
     rowCount : 10000,
     getCellText : function(row,column){
-      if (column == "hostCol") return "Row "+row;
+      if (column.id == "namecol") return "Row "+row;
       else return "February 18";
     },
     setTree: function(treebox){ this.treebox = treebox; },
     isContainer: function(row){ return false; },
     isSeparator: function(row){ return false; },
-    isSorted: function(row){ return false; },
+    isSorted: function(){ return false; },
     getLevel: function(row){ return 0; },
     getImageSrc: function(row,col){ return null; },
     getRowProperties: function(row,props){},
@@ -222,8 +222,10 @@ dump('x:'+x+' y:'+y+' ax:'+aScreenX+' ay:'+aScreenY+'\n');
 	return false;   	
   },
   
+  _super: null,
   start : function() {
-  	
+//		this._super=document.getElementById('my-tree');
+//  		this._super.view=treeView;
 	if (gMini) {
    var resizer = document.getElementById('nagioschecker-mover');
 
@@ -729,6 +731,8 @@ dump('x:'+x+' y:'+y+' ax:'+aScreenX+' ay:'+aScreenY+'\n');
   },
 
   popupOpened: function() {
+//	document.getElementById('my-tree').view = treeView;
+
 //    this.resetTooltips(false);
   },
   popupClosed: function() {
@@ -1310,6 +1314,22 @@ dump('IWT:<>1\n');
 		return result;
 	},
 
+_view2: {
+    rowCount : 10000,
+    getCellText : function(row,column){
+      if (column.id == "hostCol") return "Row "+row;
+      else return "February 18";
+    },
+    setTree: function(treebox){ this.treebox = treebox; },
+    isContainer: function(row){ return false; },
+    isSeparator: function(row){ return false; },
+    isSorted: function(){ return false; },
+    getLevel: function(row){ return 0; },
+    getImageSrc: function(row,col){ return null; },
+    getRowProperties: function(row,props){},
+    getCellProperties: function(row,col,props){},
+    getColumnProperties: function(colid,col,props){}
+},
 
 
   _view: {
@@ -1361,7 +1381,7 @@ dump(nagioschecker._paket.ttip[aRow]['type']);
 	setTree: function(treebox){ this.treebox = treebox; },
 	getImageSrc: function(aRow, aColumn) {},
     getProgressMode: function(aRow, aColumn) {},
-    getCellValue: function(aRow, aColumn) {},
+//    getCellValue: function(aRow, aColumn) {},
     cycleHeader: function(aColId, aElt) {},
     getRowProperties: function(aRow, aProperty) {
     },
@@ -1402,11 +1422,11 @@ function NCHToolTip(showColInfo,showColAlias,showColFlags) {
     this._tooltip=from;
 
     var doc=document;
-
+/*
     while (this._tooltip.childNodes.length > 0) this._tooltip.removeChild(this._tooltip.childNodes[0]);
     this._tooltip.removeAttribute("title");
     this._tooltip.removeAttribute("label");
-
+*/
     if (doc) {
 
     var ph=window.screen.height-300;
@@ -1416,24 +1436,24 @@ function NCHToolTip(showColInfo,showColAlias,showColFlags) {
     pw=(pw<500) ? 500 : pw;
 	this._tooltip.setAttribute("minwidth",ph+"px");
 	this._tooltip.setAttribute("maxwidth",(window.screen.width-300)+"px");
-
+/*
 	this._table = doc.createElement("tree");
 	this._table.setAttribute("id","results-"+this._tooltip.id);
-	this._table.setAttribute("rows",10);
-	this._table.setAttribute("hidecolumnpicker","true");
+//	this._table.setAttribute("rows",10);
+//	this._table.setAttribute("hidecolumnpicker","true");
 	this._table.setAttribute("flex","1");
-	this._table.setAttribute("class","poptree");
+//	this._table.setAttribute("class","poptree");
 	var cols = doc.createElement("treecols");
-	this._table.appendChild(cols);
 
 
 	var lHost = doc.createElement("treecol");
 	lHost.setAttribute("label", nagioschecker.bundle.getString("host")+"/"+nagioschecker.bundle.getString("service"));
 	lHost.setAttribute("flex","2");
 	lHost.setAttribute("id","hostCol");
-	lHost.setAttribute("primary","true");
+//	lHost.setAttribute("primary","true");
 	cols.appendChild(lHost);
-
+*/ 
+/*
 	var lNew = doc.createElement("treecol");
 	lNew.setAttribute("id","newCol");
 	lNew.setAttribute("label", "");
@@ -1475,11 +1495,25 @@ function NCHToolTip(showColInfo,showColAlias,showColFlags) {
 		lInfo.setAttribute("flex","3");
 		cols.appendChild(lInfo);
     }
+*/
+/*
+	this._table.appendChild(cols);
 
 	this._tableContent = doc.createElement("treechildren");
 	this._table.appendChild(this._tableContent);
 	this._tooltip.appendChild(this._table);
+*/
 
+/*
+	nagioschecker._super=document.getElementById('my-tree');
+  		nagioschecker._super.view=treeView;
+  		**/ 
+		nagioschecker._view._rowCount=nagioschecker._paket.ttip.length;
+  		document.getElementById('my-tree').view=nagioschecker._view;
+
+//  		this._table.view=nagioschecker._view;
+		//	nagioschecker._super.view=treeView;
+ 
 /*
     this._vbox = doc.createElement("scrollbox");
     this._vbox.setAttribute("style","overflow: -moz-scrollbars-horizontal;");
@@ -1572,12 +1606,18 @@ if (this.showColFlags) {
     this._view._rowCount = this._servers.length;
     this._tree.treeBoxObject.view = this._view;
 */
+
+/*
 	dump("TTIPLEN:"+nagioschecker._paket.ttip.length);
 	nagioschecker._view._rowCount=nagioschecker._paket.ttip.length;
 	dump("tab.id:"+this._table.id);
 	dump(nagioschecker._view);
 //	this._table.view=nagioschecker._view;	
 	this._table.view=treeView;	
+*/
+
+
+
 /*
 
 	 for(var i = 0;i<this.headers.length;i++) {

@@ -32,7 +32,40 @@ var gMini=false;
   	    <menuseparator />  
         <menuitem label="&nch.about;..." oncommand="window.openDialog('chrome://nagioschecker/content/nagioschecker-about.xul','nagioschecker-about','centerscreen,dialog,chrome').focus();" />
       </menupopup>
-    <popup id="nagioschecker-popup" class="nagioschecker-popup" onpopupshown="nagioschecker.popupOpened();" onpopuphidden="nagioschecker.popupClosed();"/>
+    <popup id="nagioschecker-popup" class="nagioschecker-popup" onpopupshown="nagioschecker.popupOpened();" onpopuphidden="nagioschecker.popupClosed();">
+<tree id="my-tree" flex="1" rows="10">
+  <treecols>
+    <treecol id="hostCol" label="Name" flex="1"/>
+    <treecol id="infoCol" label="Date" flex="1"/>
+  </treecols>
+  <treechildren/>
+</tree>
+<!--
+<tree flex="1">
+
+  <treecols>
+    <treecol id="sender" label="Sender" flex="1"/>
+    <treecol id="subject" label="Subject" flex="2"/>
+  </treecols>
+
+  <treechildren>
+    <treeitem>
+      <treerow>
+        <treecell label="joe@somewhere.com"/>
+        <treecell label="Top secret plans"/>
+      </treerow>
+    </treeitem>
+    <treeitem>
+      <treerow>
+        <treecell label="mel@whereever.com"/>
+        <treecell label="Let's do lunch"/>
+      </treerow>
+    </treeitem>
+  </treechildren>
+
+</tree>
+ --></popup>    
+
     <popup id="nagioschecker-popup-down" class="nagioschecker-popup" onpopupshown="nagioschecker.popupOpened();" onpopuphidden="nagioschecker.popupClosed();"/>
     <popup id="nagioschecker-popup-unreachable" class="nagioschecker-popup" onpopupshown="nagioschecker.popupOpened();" onpopuphidden="nagioschecker.popupClosed();"/>
     <popup id="nagioschecker-popup-unknown" class="nagioschecker-popup" onpopupshown="nagioschecker.popupOpened();" onpopuphidden="nagioschecker.popupClosed();"/>
