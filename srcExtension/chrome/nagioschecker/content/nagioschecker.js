@@ -992,8 +992,8 @@ dump('x:'+x+' y:'+y+' ax:'+aScreenX+' ay:'+aScreenY+'\n');
 
 //	document.getElementById('nagioschecker-services-critical').addEventListener('mouseover',nagioschecker.handleMouseOver,false);
 //	document.getElementById('nagioschecker-services-critical').addEventListener('mouseout',nagioschecker.handleMouseOut,false);
-	mainPopup.addEventListener('mouseover',nagioschecker.handleMouseOver,true);
-	mainPopup.addEventListener('mouseout',nagioschecker.handleMouseOut,true);
+	mainPopup.addEventListener('mouseover',nagioschecker.handleMouseOver,false);
+	mainPopup.addEventListener('mouseout',nagioschecker.handleMouseOut,false);
 
 	  mainPanel.removeEventListener('mouseover',nagioschecker.handleMouseOver,false);
 	  mainPanel.removeEventListener('mouseout',nagioschecker.handleMouseOut,false);
@@ -1314,24 +1314,6 @@ dump('IWT:<>1\n');
 		return result;
 	},
 
-_view2: {
-    rowCount : 10000,
-    getCellText : function(row,column){
-      if (column.id == "hostCol") return "Row "+row;
-      else return "February 18";
-    },
-    setTree: function(treebox){ this.treebox = treebox; },
-    isContainer: function(row){ return false; },
-    isSeparator: function(row){ return false; },
-    isSorted: function(){ return false; },
-    getLevel: function(row){ return 0; },
-    getImageSrc: function(row,col){ return null; },
-    getRowProperties: function(row,props){},
-    getCellProperties: function(row,col,props){},
-    getColumnProperties: function(colid,col,props){}
-},
-
-
   _view: {
     _rowCount: 0,
     get rowCount() { 
@@ -1384,6 +1366,12 @@ dump(nagioschecker._paket.ttip[aRow]['type']);
 //    getCellValue: function(aRow, aColumn) {},
     cycleHeader: function(aColId, aElt) {},
     getRowProperties: function(aRow, aProperty) {
+
+		var aserv=Components.classes["@mozilla.org/atom-service;1"].
+              getService(Components.interfaces.nsIAtomService);
+	    aProperty.AppendElement(aserv.getAtom(nagioschecker._paket.ttip[aRow].data.status));
+    
+    
     },
     getColumnProperties: function(aColumn, aColumnElement, aProperty) {},
     getCellProperties: function(aRow, aCol,aProperty) {
@@ -1509,7 +1497,7 @@ function NCHToolTip(showColInfo,showColAlias,showColFlags) {
   		nagioschecker._super.view=treeView;
   		**/ 
 		nagioschecker._view._rowCount=nagioschecker._paket.ttip.length;
-  		document.getElementById('my-tree').view=nagioschecker._view;
+  		document.getElementById('poptree').view=nagioschecker._view;
 
 //  		this._table.view=nagioschecker._view;
 		//	nagioschecker._super.view=treeView;

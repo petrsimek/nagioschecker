@@ -33,38 +33,19 @@ var gMini=false;
         <menuitem label="&nch.about;..." oncommand="window.openDialog('chrome://nagioschecker/content/nagioschecker-about.xul','nagioschecker-about','centerscreen,dialog,chrome').focus();" />
       </menupopup>
     <popup id="nagioschecker-popup" class="nagioschecker-popup" onpopupshown="nagioschecker.popupOpened();" onpopuphidden="nagioschecker.popupClosed();">
-<tree id="my-tree" flex="1" rows="10">
+<tree id="poptree" flex="1" rows="10" class="poptree">
   <treecols>
-    <treecol id="hostCol" label="Name" flex="1"/>
-    <treecol id="infoCol" label="Date" flex="1"/>
+    <treecol id="hostCol" label="Host/Service" flex="1"/>
+    <treecol id="newCol" label="N" flex="1"/>
+    <treecol id="aliasCol" label="Alias" flex="1"/>
+    <treecol id="statusCol" label="Status" flex="1"/>
+    <treecol id="flagsCol" label="Flags" flex="1"/>
+    <treecol id="durationCol" label="Duration" flex="1"/>
+    <treecol id="infoCol" label="Info" flex="1"/>
   </treecols>
   <treechildren/>
 </tree>
-<!--
-<tree flex="1">
-
-  <treecols>
-    <treecol id="sender" label="Sender" flex="1"/>
-    <treecol id="subject" label="Subject" flex="2"/>
-  </treecols>
-
-  <treechildren>
-    <treeitem>
-      <treerow>
-        <treecell label="joe@somewhere.com"/>
-        <treecell label="Top secret plans"/>
-      </treerow>
-    </treeitem>
-    <treeitem>
-      <treerow>
-        <treecell label="mel@whereever.com"/>
-        <treecell label="Let's do lunch"/>
-      </treerow>
-    </treeitem>
-  </treechildren>
-
-</tree>
- --></popup>    
+</popup>    
 
     <popup id="nagioschecker-popup-down" class="nagioschecker-popup" onpopupshown="nagioschecker.popupOpened();" onpopuphidden="nagioschecker.popupClosed();"/>
     <popup id="nagioschecker-popup-unreachable" class="nagioschecker-popup" onpopupshown="nagioschecker.popupOpened();" onpopuphidden="nagioschecker.popupClosed();"/>
