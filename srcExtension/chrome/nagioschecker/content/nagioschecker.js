@@ -13,7 +13,7 @@ var _tab = null;
 					  'nagioschecker-services-unknown':'nagioschecker-popup-unknown',
 					  'nagioschecker-services-warning':'nagioschecker-popup-warning',
 					  'nagioschecker-services-critical':'nagioschecker-popup-critical'};
-
+/*
 var treeView = {
     rowCount : 10000,
     getCellText : function(row,column){
@@ -30,7 +30,7 @@ var treeView = {
     getCellProperties: function(row,col,props){},
     getColumnProperties: function(colid,col,props){}
 };
-
+*/
 var nagioschecker = null;
 var nagioscheckerLoad = function() {
 
@@ -1399,21 +1399,22 @@ function NCHToolTip(showColInfo,showColAlias,showColFlags) {
   this.showColAlias=showColAlias;
   this.showColFlags=showColFlags;
 	this.actH=-1;
-	
+
+/*	
   this._table = null;	
   this._tableContent = null;
   this._groupEl = [];
-
+*/
 
 	
   this.create = function(from) {
     this._tooltip=from;
 
     var doc=document;
-/*
     while (this._tooltip.childNodes.length > 0) this._tooltip.removeChild(this._tooltip.childNodes[0]);
     this._tooltip.removeAttribute("title");
     this._tooltip.removeAttribute("label");
+/*
 */
     if (doc) {
 
@@ -1496,13 +1497,14 @@ function NCHToolTip(showColInfo,showColAlias,showColFlags) {
 	nagioschecker._super=document.getElementById('my-tree');
   		nagioschecker._super.view=treeView;
   		**/ 
+/*
 		nagioschecker._view._rowCount=nagioschecker._paket.ttip.length;
   		document.getElementById('poptree').view=nagioschecker._view;
-
+*/
 //  		this._table.view=nagioschecker._view;
 		//	nagioschecker._super.view=treeView;
  
-/*
+
     this._vbox = doc.createElement("scrollbox");
     this._vbox.setAttribute("style","overflow: -moz-scrollbars-horizontal;");
     this._vbox.setAttribute("flex","1");
@@ -1589,7 +1591,8 @@ if (this.showColFlags) {
 		row.appendChild(lInfo);
     }
 
-*/
+		this._tooltip.appendChild(this._vbox);
+
 /*	
     this._view._rowCount = this._servers.length;
     this._tree.treeBoxObject.view = this._view;
@@ -1606,7 +1609,7 @@ if (this.showColFlags) {
 
 
 
-/*
+
 
 	 for(var i = 0;i<this.headers.length;i++) {
     	if ((this.headers[i].problems.length) || (this.headers[i].error)) {
@@ -1626,7 +1629,7 @@ if (this.showColFlags) {
         	}
       }
     }
-*/
+
 
 
 
@@ -1659,7 +1662,7 @@ if (this.showColFlags) {
     var doc=document;
 
     if (doc) {
-
+/*
 		var titem = document.createElement("treeitem");
 		this._tableContent.appendChild(titem);
 		var row = document.createElement("treerow");
@@ -1669,7 +1672,7 @@ if (this.showColFlags) {
 		tcell.setAttribute("label",name);
   		tcell.setAttribute("properties", "group");
 		row.appendChild(tcell);
-
+*/
 /*
 		var head = doc.createElement("treeitem");
 		head.setAttribute("container","true");
@@ -1686,7 +1689,7 @@ if (this.showColFlags) {
 		head.appendChild(this._groupEl[pos]);
 */ 
 		
-/*
+
 		var separator = doc.createElement("separator");
 		separator.setAttribute("class", "groove-thin");
 		this._rows.appendChild(separator);
@@ -1709,21 +1712,21 @@ if (this.showColFlags) {
 		var separator = doc.createElement("separator");
 		separator.setAttribute("class", "groove-thin");
 		this._rows.appendChild(separator);
-*/ 
+
     }
 
   }
   this.createError= function() {
 
     var doc=document;
-/*
+
 		var row = document.createElement("row");
  		this._rows.appendChild(row);
 		var lErr = document.createElement("label");
 		lErr.setAttribute("class","error");
 		lErr.setAttribute("value", nagioschecker.bundle.getString("downloadError"));
 		row.appendChild(lErr);
-*/
+
 
 
   }
@@ -1743,7 +1746,7 @@ if (this.showColFlags) {
 
   
   this.createRow = function(problem,i,serPo) {
-
+/*
 	var titem = document.createElement("treeitem");
 	this._tableContent.appendChild(titem);
 	var row = document.createElement("treerow");
@@ -1837,9 +1840,8 @@ if (this.showColFlags) {
 	 	lInfo.setAttribute("properties", problem.status);
 		row.appendChild(lInfo);
     }
+*/		
 		
-		
-/*
 	var row = document.createElement("row");
 		
     var status_text = "";
@@ -1932,7 +1934,6 @@ if (this.showColFlags) {
     }
 
 
-*/
 
 
   }
