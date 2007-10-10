@@ -1506,7 +1506,8 @@ function NCHToolTip(showColInfo,showColAlias,showColFlags) {
  
 
     this._vbox = doc.createElement("scrollbox");
-    this._vbox.setAttribute("style","overflow: -moz-scrollbars-horizontal;");
+//    this._vbox.setAttribute("style","overflow: -moz-scrollbars-horizontal;");
+    this._vbox.setAttribute("style","overflow: auto;");
     this._vbox.setAttribute("flex","1");
 //dump ('vboxid:'+from.id+'-id');
 //    this._vbox.setAttribute("id",from.id+'-id');
