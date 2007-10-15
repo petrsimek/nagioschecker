@@ -1,36 +1,19 @@
 var _showTimerID = null;
 var _tab = null;
-		var ev2pop = {
-					  'nagioschecker-popup':'nagioschecker-popup',
-					  'nagioschecker-popup-down':'nagioschecker-popup-down',
-					  'nagioschecker-popup-unreachable':'nagioschecker-popup-unreachable',
-					  'nagioschecker-popup-unknown':'nagioschecker-popup-unknown',
-					  'nagioschecker-popup-warning':'nagioschecker-popup-warning',
-					  'nagioschecker-popup-critical':'nagioschecker-popup-critical',
-					  'nagioschecker-panel':'nagioschecker-popup',
-					  'nagioschecker-hosts-down':'nagioschecker-popup-down',
-					  'nagioschecker-hosts-unreachable':'nagioschecker-popup-unreachable',
-					  'nagioschecker-services-unknown':'nagioschecker-popup-unknown',
-					  'nagioschecker-services-warning':'nagioschecker-popup-warning',
-					  'nagioschecker-services-critical':'nagioschecker-popup-critical'};
-/*
-var treeView = {
-    rowCount : 10000,
-    getCellText : function(row,column){
-      if (column.id == "namecol") return "Row "+row;
-      else return "February 18";
-    },
-    setTree: function(treebox){ this.treebox = treebox; },
-    isContainer: function(row){ return false; },
-    isSeparator: function(row){ return false; },
-    isSorted: function(){ return false; },
-    getLevel: function(row){ return 0; },
-    getImageSrc: function(row,col){ return null; },
-    getRowProperties: function(row,props){},
-    getCellProperties: function(row,col,props){},
-    getColumnProperties: function(colid,col,props){}
-};
-*/
+var ev2pop = {
+			  'nagioschecker-popup':'nagioschecker-popup',
+			  'nagioschecker-popup-down':'nagioschecker-popup-down',
+			  'nagioschecker-popup-unreachable':'nagioschecker-popup-unreachable',
+			  'nagioschecker-popup-unknown':'nagioschecker-popup-unknown',
+			  'nagioschecker-popup-warning':'nagioschecker-popup-warning',
+			  'nagioschecker-popup-critical':'nagioschecker-popup-critical',
+			  'nagioschecker-panel':'nagioschecker-popup',
+			  'nagioschecker-hosts-down':'nagioschecker-popup-down',
+			  'nagioschecker-hosts-unreachable':'nagioschecker-popup-unreachable',
+			  'nagioschecker-services-unknown':'nagioschecker-popup-unknown',
+			  'nagioschecker-services-warning':'nagioschecker-popup-warning',
+			  'nagioschecker-services-critical':'nagioschecker-popup-critical'};
+
 var nagioschecker = null;
 var nagioscheckerLoad = function() {
 
@@ -72,54 +55,22 @@ function NCH() {};
 NCH.prototype = {
   bundle: null,
   url: null,
-//  update_interval:null,
   worktime_from:null,
   worktime_to:null,
   _servers:[],
+  _serversEnabled:0,
   urlSide: "",
   urlServices: "",
   urlHosts: "",
   urlStatus:"",
-//  one_window_only: false,
   timeoutId: null,
   isStopped:false,
-//  timoutSec:30,
-//  sndWarning:null,
-//  sndCritical:null,
-//  sndDown:null,
   win:window,
   preferences: Components.classes["@mozilla.org/preferences-service;1"]
                                 .getService(Components.interfaces.nsIPrefBranch),
-
-
   oldProblems:{},
-
-//  infoType:0,
-//  infoWindowType:0,
   showSb:{},
-//  showColInfo:true,
-//  showColAlias:false,
-//  showColFlags:false,
-//  play_sound: 2,
-//  blinking: 2,
-//  doubleclick: 0,
-//  oneclick: 0,
-//  filterOnly: 0,
-//  filterOutAck: true,
-//  filterOutDisNot: false,
-//  filterOutDisChe: true,
-//  filterOutSoftStat: false,
-//  filterOutDowntime: false,
-//  filterOutServOnDown: false,
-//  filterOutServOnAck: false,
-//  filterOutREHosts: false,
-//  filterOutREServices: false,
-//  filterOutREHostsValue: "",
-//  filterOutREServicesValue: "",
-//  filterOutREHostsReverse: false,
-//  filterOutREServicesReverse: false,
   filterOutAll:{"down":false,"unreachable":false,"uknown":false,"warning":false,"critical":false},
-//  filterOutFlapping: true,
   soundBT:{},
   parser: null,
   pt:["down","unreachable","unknown","warning","critical"],
@@ -128,10 +79,9 @@ NCH.prototype = {
   startX : -1,
   startY : -1,
   undockedWindow : null,
-
-	pref:{},
-_showTimerID: null,
-_refreshTimer: null,
+  pref:{},
+  _showTimerID: null,
+  _refreshTimer: null,
 
   handleMouseOver: function (aEvent) {
 dump('\n'+nagioschecker.openedPops.length+' out'+aEvent.target.id);
@@ -147,13 +97,7 @@ dump(' '+aEvent.target.localName+":"+_tab+":"+ev2pop[aEvent.target.id]);
 		var relPopup=document.getElementById(ev2pop[aEvent.target.id]);
 		var callback = function(self) {
 			if (relPopup) {
-//alert(tab.id)				
 				relPopup.showPopup(_tab,  -1, -1, 'popup', 'topleft' , 'bottomleft');
-//dump('\npravd vboxid'+_tab.id+'-id');
-//dump(' '+vb.id);
-//dump('PRED: clientHeight:'+vb.clientHeight+' scrollHeight:'+vb.scrollHeight+' height:'+vb.height+'\n');
-//dump('PRED: clientHeight:'+vb.clientHeight+' scrollHeight:'+vb.scrollHeight+' height:'+vb.height+'\n');
-
 				nagioschecker.openedPops.push(ev2pop[aEvent.target.id]);
 			}
 		};
@@ -224,8 +168,6 @@ dump('x:'+x+' y:'+y+' ax:'+aScreenX+' ay:'+aScreenY+'\n');
   
   _super: null,
   start : function() {
-//		this._super=document.getElementById('my-tree');
-//  		this._super.view=treeView;
 	if (gMini) {
    var resizer = document.getElementById('nagioschecker-mover');
 
@@ -413,7 +355,7 @@ dump('x:'+x+' y:'+y+' ax:'+aScreenX+' ay:'+aScreenY+'\n');
 			play_sound:['int',2],
 			blinking:['int',2],
 			click:['int',0],
-			one_window_only:['bool',false],
+			one_window_only:['bool',false]
 			});
 
     if (gMini) {
@@ -462,6 +404,8 @@ dump('x:'+x+' y:'+y+' ax:'+aScreenX+' ay:'+aScreenY+'\n');
                   aliases:{},
                   disabled:gDis
                   });
+		   if (!gDis) this._serversEnabled++;
+           
         }
       }
     }
@@ -687,7 +631,7 @@ dump('x:'+x+' y:'+y+' ax:'+aScreenX+' ay:'+aScreenY+'\n');
           }
           else {
             if (paket==null) {
-              win.nagioschecker.setNoData("noProblem");
+              win.nagioschecker.setNoData("notSet");
             }
             else {
               win.nagioschecker.updateStatus(paket,false);
@@ -1121,7 +1065,7 @@ dump('IWT:<>1\n');
         this.setNoData("error");
       }
       else {
-        this.setNoData("noProblem");
+        this.setNoData((this._serversEnabled>0) ? "noProblem" : "notSet");
       }
     }
     
@@ -1207,26 +1151,40 @@ dump('IWT:<>1\n');
   if (type) {
     var infoLabel = document.getElementById('nagioschecker-info-label');
     infoLabel.setAttribute("hidden", "false");
-    if (type=="noProblem") {
+    if (type=="notSet") {
+      infoLabel.setAttribute("class", "nagioschecker-notset-value");
+      infoLabel.removeAttribute("tooltip");
+      
+      var ico = document.getElementById('nagioschecker-img');
+      ico.removeAttribute("tooltip");
+
+      var mainPanel=document.getElementById('nagioschecker-panel');
+      mainPanel.removeAttribute("onclick");
+
+//    infoLabel.setAttribute("value",nagioschecker.bundle.getString(type));
+    infoLabel.setAttribute("value","Not Set");
+    	
+    }
+    else if (type=="noProblem") {
       infoLabel.setAttribute("class", "nagioschecker-allok-value");
       infoLabel.removeAttribute("tooltip");
       
       var ico = document.getElementById('nagioschecker-img');
       ico.removeAttribute("tooltip");
 
-    var mainPanel=document.getElementById('nagioschecker-panel');
-    mainPanel.removeAttribute("onclick");
+      var mainPanel=document.getElementById('nagioschecker-panel');
+      mainPanel.removeAttribute("onclick");
 
-		 if ((this.pref.info_type==2) || (this.pref.info_type==5)) {
+	  if ((this.pref.info_type==2) || (this.pref.info_type==5)) {
 	    infoLabel.setAttribute("value"," 0 ");
-		 }
-		 else {
+	  }
+	  else {
 	    infoLabel.setAttribute("value",nagioschecker.bundle.getString(type));
-		 }
+	  }
     }
-	 else {
-	    infoLabel.setAttribute("value",(type) ? nagioschecker.bundle.getString(type) : "");
-	 }
+	else {
+	  infoLabel.setAttribute("value",(type) ? nagioschecker.bundle.getString(type) : "");
+	}
   }
  },
 
@@ -1312,80 +1270,7 @@ dump('IWT:<>1\n');
 	      }
 		}
 		return result;
-	},
-
-  _view: {
-    _rowCount: 0,
-    get rowCount() { 
-      return this._rowCount; 
-    },
-    getCellText: function (aRow, aColumn) {
-      var aCol = typeof(aColumn)=="object" ? aColumn.id : aColumn;
-dump(aRow+":"+aColumn+"\n");
-dump(nagioschecker._paket.ttip[aRow]['type']);
-	  switch (nagioschecker._paket.ttip[aRow]['type']) {
-	  	case 'header':
-
-	      switch( aCol ) {
-	        case "hostCol":
-	          return (nagioschecker._paket.ttip[aRow]['data']) ? "" : nagioschecker._paket.ttip[aRow]['data'];
-			default:
-			  return "";
-	      }
-
-	  	break;
-	  	case 'problem':
-
-		      switch( aCol ) {
-		        case "hostCol":
-		          return (nagioschecker._paket.ttip[aRow].data.host==null) ? "" : nagioschecker._paket.ttip[aRow].data.host;
-		        case "newCol":
-		          return "?";
-		        case "statusCol":
-		          return (nagioschecker._paket.ttip[aRow].data.status==null) ? "" : nagioschecker._paket.ttip[aRow].data.status;
-		        case "flagsCol":
-		          return (nagioschecker._paket.ttip[aRow].data.status==null) ? "" : nagioschecker._paket.ttip[aRow].data.status;
-		        case "durationCol":
-		          return (nagioschecker._paket.ttip[aRow].data.duration==null) ? "" : nagioschecker._paket.ttip[aRow].data.duration;
-		        case "infoCol":
-		          return (nagioschecker._paket.ttip[aRow].data.info==null) ? "" : nagioschecker._paket.ttip[aRow].data.info;
-		        default:
-		          return null;
-		      }
-
-	  	break;
-	  }
-
-    },
-    isSeparator: function(aIndex) { return false; },
-    isSorted: function() { return false; },
-    isContainer: function(aIndex) { return false; },
-	setTree: function(treebox){ this.treebox = treebox; },
-	getImageSrc: function(aRow, aColumn) {},
-    getProgressMode: function(aRow, aColumn) {},
-//    getCellValue: function(aRow, aColumn) {},
-    cycleHeader: function(aColId, aElt) {},
-    getRowProperties: function(aRow, aProperty) {
-
-		var aserv=Components.classes["@mozilla.org/atom-service;1"].
-              getService(Components.interfaces.nsIAtomService);
-	    aProperty.AppendElement(aserv.getAtom(nagioschecker._paket.ttip[aRow].data.status));
-    
-    
-    },
-    getColumnProperties: function(aColumn, aColumnElement, aProperty) {},
-    getCellProperties: function(aRow, aCol,aProperty) {
-/*    
-		if (gNCHOptions._servers[aRow].disabled) {
-			var aserv=Components.classes["@mozilla.org/atom-service;1"].getService(Components.interfaces.nsIAtomService);
-			aProperty.AppendElement(aserv.getAtom("disServer"));
-		}
-*/    
-    
-    }
-  }
-
-
+	}
 
 }
 
@@ -1400,13 +1285,6 @@ function NCHToolTip(showColInfo,showColAlias,showColFlags) {
   this.showColFlags=showColFlags;
 	this.actH=-1;
 
-/*	
-  this._table = null;	
-  this._tableContent = null;
-  this._groupEl = [];
-*/
-
-	
   this.create = function(from) {
     this._tooltip=from;
 
@@ -1414,8 +1292,7 @@ function NCHToolTip(showColInfo,showColAlias,showColFlags) {
     while (this._tooltip.childNodes.length > 0) this._tooltip.removeChild(this._tooltip.childNodes[0]);
     this._tooltip.removeAttribute("title");
     this._tooltip.removeAttribute("label");
-/*
-*/
+
     if (doc) {
 
     var ph=window.screen.height-300;
@@ -1425,98 +1302,18 @@ function NCHToolTip(showColInfo,showColAlias,showColFlags) {
     pw=(pw<500) ? 500 : pw;
 	this._tooltip.setAttribute("minwidth",ph+"px");
 	this._tooltip.setAttribute("maxwidth",(window.screen.width-300)+"px");
-/*
-	this._table = doc.createElement("tree");
-	this._table.setAttribute("id","results-"+this._tooltip.id);
-//	this._table.setAttribute("rows",10);
-//	this._table.setAttribute("hidecolumnpicker","true");
-	this._table.setAttribute("flex","1");
-//	this._table.setAttribute("class","poptree");
-	var cols = doc.createElement("treecols");
 
-
-	var lHost = doc.createElement("treecol");
-	lHost.setAttribute("label", nagioschecker.bundle.getString("host")+"/"+nagioschecker.bundle.getString("service"));
-	lHost.setAttribute("flex","2");
-	lHost.setAttribute("id","hostCol");
-//	lHost.setAttribute("primary","true");
-	cols.appendChild(lHost);
-*/ 
-/*
-	var lNew = doc.createElement("treecol");
-	lNew.setAttribute("id","newCol");
-	lNew.setAttribute("label", "");
-	lNew.setAttribute("flex", "1");
-	cols.appendChild(lNew);
-
-    if (this.showColAlias) {
-		var lAlias = doc.createElement("treecol");
-		lAlias.setAttribute("id","aliasCol");
-		lAlias.setAttribute("label", nagioschecker.bundle.getString("hostAlias"));
-		lAlias.setAttribute("flex","2");
-		cols.appendChild(lAlias);
-	}
-
-    if (this.showColFlags) {
- 		var lFlags = doc.createElement("treecol");
-		lFlags.setAttribute("id","flagsCol");
-		lFlags.setAttribute("label", nagioschecker.bundle.getString("flags"));
-		lFlags.setAttribute("flex","2");
-		cols.appendChild(lFlags);
-    }
-
-	var lStat = doc.createElement("treecol");
-	lStat.setAttribute("id","statusCol");
-	lStat.setAttribute("label", nagioschecker.bundle.getString("status"));
-	lStat.setAttribute("flex","2");
-	cols.appendChild(lStat);
-
-	var lTime = doc.createElement("treecol");
-	lTime.setAttribute("id","durationCol");
-	lTime.setAttribute("label", nagioschecker.bundle.getString("duration"));
-	lTime.setAttribute("flex","2");
-	cols.appendChild(lTime);
-
-    if (this.showColInfo) {
-		var lInfo = doc.createElement("treecol");
-		lInfo.setAttribute("id","infoCol");
-		lInfo.setAttribute("label", nagioschecker.bundle.getString("information"));
-		lInfo.setAttribute("flex","3");
-		cols.appendChild(lInfo);
-    }
-*/
-/*
-	this._table.appendChild(cols);
-
-	this._tableContent = doc.createElement("treechildren");
-	this._table.appendChild(this._tableContent);
-	this._tooltip.appendChild(this._table);
-*/
-
-/*
-	nagioschecker._super=document.getElementById('my-tree');
-  		nagioschecker._super.view=treeView;
-  		**/ 
-/*
-		nagioschecker._view._rowCount=nagioschecker._paket.ttip.length;
-  		document.getElementById('poptree').view=nagioschecker._view;
-*/
-//  		this._table.view=nagioschecker._view;
-		//	nagioschecker._super.view=treeView;
- 
 
     this._vbox = doc.createElement("scrollbox");
 //    this._vbox.setAttribute("style","overflow: -moz-scrollbars-horizontal;");
     this._vbox.setAttribute("style","overflow: auto;");
     this._vbox.setAttribute("flex","1");
-//dump ('vboxid:'+from.id+'-id');
 //    this._vbox.setAttribute("id",from.id+'-id');
 		var grid = doc.createElement("grid");
 		this._vbox.appendChild(grid);
 		var cls = doc.createElement("columns");
 		grid.appendChild(cls);
 		var cl = doc.createElement("column");
-//		cl.setAttribute("flex","1");
 		cls.appendChild(cl);
 		var cl = doc.createElement("column");
 //		cl.setAttribute("flex","1");
@@ -1663,32 +1460,6 @@ if (this.showColFlags) {
     var doc=document;
 
     if (doc) {
-/*
-		var titem = document.createElement("treeitem");
-		this._tableContent.appendChild(titem);
-		var row = document.createElement("treerow");
-  		row.setAttribute("properties", "group");
-		titem.appendChild(row);
-		var tcell = doc.createElement("treecell");
-		tcell.setAttribute("label",name);
-  		tcell.setAttribute("properties", "group");
-		row.appendChild(tcell);
-*/
-/*
-		var head = doc.createElement("treeitem");
-		head.setAttribute("container","true");
-		head.setAttribute("open","true");
-		this._tableContent.appendChild(head);
-		var trow = doc.createElement("treerow");
-  		trow.setAttribute("properties", "group");
-		head.appendChild(trow);
-		var tcell = doc.createElement("treecell");
-		tcell.setAttribute("label",name);
-  		tcell.setAttribute("properties", "group");
-		trow.appendChild(tcell);
-		this._groupEl[pos] = doc.createElement("treechildren");
-		head.appendChild(this._groupEl[pos]);
-*/ 
 		
 
 		var separator = doc.createElement("separator");
@@ -1700,15 +1471,11 @@ if (this.showColFlags) {
 
     var description = doc.createElement("description");
 		description.setAttribute("class", "nagioschecker-tooltip-title");
-		description.setAttribute("value",name);
+		description.setAttribute("value",name+((time!=null) ? " ("+time.toLocaleString()+")" : ""));
 		hbd.appendChild(description);
     var sp = doc.createElement("spacer");
 		sp.setAttribute("flex", "1");
 		hbd.appendChild(sp);
-    var description2 = doc.createElement("description");
-		description2.setAttribute("class", "nagioschecker-tooltip-title-date");
-		description2.setAttribute("value",(time!=null) ? time.toLocaleString() : "");
-		hbd.appendChild(description2);
 
 		var separator = doc.createElement("separator");
 		separator.setAttribute("class", "groove-thin");

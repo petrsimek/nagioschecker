@@ -17,7 +17,7 @@
 
   <vbox>
       <label value="&nch.title;"  class="nagioschecker-about-product-name"/>
-      <description class="nch">&nch.about.version; 0.10.4</description>
+      <description class="nch">&nch.about.version; 0.10.9</description>
   </vbox>
       <separator class="thin"/>
 

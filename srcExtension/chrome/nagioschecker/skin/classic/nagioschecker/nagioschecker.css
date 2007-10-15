@@ -189,7 +189,6 @@ statusbarpanel .nagioschecker-box {
   font-size: 1.2em;
   margin-bottom: 4px;
  -moz-border-radius:3px;
-  background-color:#FFFFFF;
 }
 
 .nagioschecker-tooltip-title-date {
@@ -244,7 +243,6 @@ statusbarpanel .nagioschecker-box {
 }
 
 .nagioschecker-tooltip-row {
-/*  font-size: 10px;*/
   padding:0;
   margin:0;
 }
@@ -252,19 +250,10 @@ statusbarpanel .nagioschecker-box {
 .nagioschecker-tooltip {
 	-moz-appearance:none;
 	background-color: infobackground;
-/*	border:none;*/
-/*  max-width: 500;*/
 }
 
 .nagioschecker-popup {
-/*	-moz-appearance:none;*/
 	background-color: infobackground;
-/*
-	border:none;
-	padding:0;
-	margin:0;
-*/	
-	
 }
 
 
@@ -324,158 +313,7 @@ label.error {
   background-color:white;
 }
 
-tree:hover:acive treechildren:hover:active::-moz-tree-row(critical) {
-  background-color: green;
+#hostList treechildren::-moz-tree-cell-text(disServer) {
+	font-style: italic;
+	color:silver;
 }
-
-treechildren::-moz-tree-cell-text(hover) {
-  text-decoration: underline;
-}
-
-tree.poptree treechildren::-moz-tree-row(group)
-{
-  margin-bottom: 4px;
- -moz-border-radius:3px;
-  background-color:#FFFFFF;
-}
-
-tree.poptree treechildren::-moz-tree-cell-text(group) {
-  font-weight: bold;
-  color: black;
-  font-weight: bold;
-  font-size: 1.2em;
-}
-
-
-
-tree.poptree treechildren::-moz-tree-row(critical) {
-  background-color: #FF0000;
-  border: 1px #FF0000 solid;
-  -moz-border-radius: 3px;
-  margin-left:2px;
-  margin-right:2px;
-  padding-left: 2px;
-  padding-right: 2px;
-}
-/*
-tree.poptree treechildren:hover::-moz-tree-row(critical) {
-  background-color: black;
-  border: 1px #FF0000 solid;
-  -moz-border-radius: 3px;
-  margin-left:2px;
-  margin-right:2px;
-  padding-left: 2px;
-  padding-right: 2px;
-}
-*/
-tree.poptree treechildren::-moz-tree-cell-text(critical) {
-  color: white;
-  font-weight: bold;
-}
-tree.poptree treechildren::-moz-tree-row(warning) {
-  background-color:#E6E600;
-  border: 1px #E6E600 solid;
-  -moz-border-radius: 3px;
-  margin-left:2px;
-  margin-right:2px;
-  padding-left: 2px;
-  padding-right: 2px;
-}
-tree.poptree treechildren::-moz-tree-cell-text(warning) {
-  color: black;
-  font-weight: bold;
-}
-tree.poptree treechildren::-moz-tree-row(unknown) {
-  background-color:#FF8B3D;
-  border: 1px #FF8B3D solid;
-  -moz-border-radius: 3px;
-  margin-left:2px;
-  margin-right:2px;
-  padding-left: 2px;
-  padding-right: 2px;
-}
-/*
-treechildren::-moz-tree-row(hover) {
-  background-color:#FF8B3D;
-  border: 1px #FF8B3D solid;
-  -moz-border-radius: 3px;
-  margin-left:2px;
-  margin-right:2px;
-  padding-left: 2px;
-  padding-right: 2px;
-}
-*/
-tree.poptree treechildren::-moz-tree-cell-text(unknown) {
-  color: black;
-  font-weight: bold;
-}
-tree.poptree treechildren::-moz-tree-row(down) {
-  background-color:#CC0000;
-  border: 1px #CC0000 solid;
-  -moz-border-radius: 3px;
-  margin-left:2px;
-  margin-right:2px;
-  padding-left: 2px;
-  padding-right: 2px;
-}
-/*
-tree.poptree treechildren::-moz-tree-cell(hover) {
-  background-color:#B30000;
-  border:1px #B30000 solid;
-  -moz-border-radius: 3px;
-  margin-left:2px;
-  margin-right:2px;
-  padding-left: 2px;
-  padding-right: 2px;
-}
-*/
-
-tree.poptree treechildren::-moz-tree-cell-text(down) {
-  color: #BDBDBD;
-  font-weight: bold;
-}
-tree.poptree treechildren::-moz-tree-row(unreachable) {
-  background-color:#CC0000;
-  border: 1px #CC0000 solid;
-  -moz-border-radius: 3px;
-  margin-left:2px;
-  margin-right:2px;
-  padding-left: 2px;
-  padding-right: 2px;
-}
-tree.poptree treechildren::-moz-tree-cell-text(unreachable) {
-  color: #ffffff;
-  font-weight: bold;
-}
-
-
-
-
-
-tree.poptree {
-padding:0;
-margin:0;
-}
-
-/*
-treechildren::-moz-tree-cell-text(selected)
-{
-    color: black;
-}
-
-treechildren::-moz-tree-row(selected)
-{
-    background-color: #FFC83C;
-}
-
-treechildren::-moz-tree-checkbox(checked)
-{
-    list-style-image: url("chrome://global/skin/checkbox/cbox-check.gif");
-}
-
-tree.da_grid treechildren::-moz-tree-row(even)
-{
-    background-color: #EEEEEE;
-}
-
-*/

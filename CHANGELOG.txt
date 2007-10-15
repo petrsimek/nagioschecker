@@ -1,3 +1,7 @@
+0.10.9 (testing)
+* INTERNAL: New version of popup - tooltip and popup mashup
+* BUGFIX: If there is no server active, then label Not Set is shown instead of No Problem
+
 0.10.4
 * BUGFIX: removed annoying alert when there was sometimes problem with playing sound
 
