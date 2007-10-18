@@ -1304,10 +1304,10 @@ function NCHToolTip(showColInfo,showColAlias,showColFlags) {
 	this._tooltip.setAttribute("maxwidth",(window.screen.width-300)+"px");
 
 
-    this._vbox = doc.createElement("scrollbox");
+    this._vbox = doc.createElement("vbox");
 //    this._vbox.setAttribute("style","overflow: -moz-scrollbars-horizontal;");
-    this._vbox.setAttribute("style","overflow: auto;");
-    this._vbox.setAttribute("flex","1");
+//    this._vbox.setAttribute("flex","1");
+   this._vbox.setAttribute("style","overflow: scroll;");
 //    this._vbox.setAttribute("id",from.id+'-id');
 		var grid = doc.createElement("grid");
 		this._vbox.appendChild(grid);
