@@ -253,7 +253,8 @@ statusbarpanel .nagioschecker-box {
 }
 
 .nagioschecker-popup {
-	background-color: infobackground;
+	-moz-appearance:none;
+		background-color: infobackground;
 }
 
 

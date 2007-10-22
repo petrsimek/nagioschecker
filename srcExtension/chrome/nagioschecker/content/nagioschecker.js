@@ -83,11 +83,22 @@ NCH.prototype = {
   _showTimerID: null,
   _refreshTimer: null,
 
+  handleMouseClick: function (aEvent) {
+	  if(aEvent.button == 0) {
+dump('\nCLICKout'+aEvent.target.id);
+  	nagioschecker.abort();
+dump('\nCLICKover'+aEvent.target.id);
+  	nagioschecker.handleMouseOver(aEvent);
+	  }
+  },
+
+
   handleMouseOver: function (aEvent) {
 dump('\n'+nagioschecker.openedPops.length+' out'+aEvent.target.id);
 	if (_showTimerID ) {
 		return;
 	}
+dump('v')	;
 		if ((aEvent.target.id == "nagioschecker-panel")||(aEvent.target.localName == "label")||(aEvent.target.localName == "popup")) {
 dump(' '+aEvent.target.localName+":"+_tab+":"+ev2pop[aEvent.target.id]);
 		if (aEvent.target == _tab) {
@@ -97,6 +108,7 @@ dump(' '+aEvent.target.localName+":"+_tab+":"+ev2pop[aEvent.target.id]);
 		var relPopup=document.getElementById(ev2pop[aEvent.target.id]);
 		var callback = function(self) {
 			if (relPopup) {
+dump("OTEVREN:"+aEvent.target.id+" "+ev2pop[aEvent.target.id]);
 				relPopup.showPopup(_tab,  -1, -1, 'popup', 'topleft' , 'bottomleft');
 				nagioschecker.openedPops.push(ev2pop[aEvent.target.id]);
 			}
@@ -675,12 +687,8 @@ dump('x:'+x+' y:'+y+' ax:'+aScreenX+' ay:'+aScreenY+'\n');
   },
 
   popupOpened: function() {
-//	document.getElementById('my-tree').view = treeView;
-
-//    this.resetTooltips(false);
   },
   popupClosed: function() {
-//    this.resetTooltips(true);
   },
 
   hideNchPopup: function(popupId) {
@@ -689,7 +697,7 @@ dump('x:'+x+' y:'+y+' ax:'+aScreenX+' ay:'+aScreenY+'\n');
   showNchPopup: function(miniElem, event, popupId) {	
 	  if(event.button == 0) {
 //alert('otevren'+popupId);
-		  document.getElementById(popupId).showPopup(miniElem,  -1, -1, 'popup', 'topright' , 'bottomright');
+		  document.getElementById(popupId).showPopup(miniElem,  -1, -1, 'popup', 'topleft' , 'bottomleft');
 	  }
   },
 
@@ -871,6 +879,7 @@ dump('x:'+x+' y:'+y+' ax:'+aScreenX+' ay:'+aScreenY+'\n');
     }
 
     var mainPanel=document.getElementById('nagioschecker-panel');
+    var mainPopup=document.getElementById('nagioschecker-popup');
 
     switch (this.pref.click) {
 		  case 1:
@@ -878,6 +887,10 @@ dump('x:'+x+' y:'+y+' ax:'+aScreenX+' ay:'+aScreenY+'\n');
 			  break;
 		  case 3:
 			if (!this.isStopped) {
+				mainPanel.addEventListener('click',nagioschecker.handleMouseClick,false);
+		  mainPanel.addEventListener('mouseout',nagioschecker.handleMouseOut,false);
+		  mainPanel.relatedPopup='nagioschecker-popup';
+
 //			  	mainPanel.setAttribute("onclick","nagioschecker.showNchPopup(this,event,'nagioschecker-popup');");
 			}
 			else {
@@ -909,33 +922,29 @@ dump('x:'+x+' y:'+y+' ax:'+aScreenX+' ay:'+aScreenY+'\n');
 	      if ((this.pref.click==4) && (!this.isStopped)) {
 	        for (var pType in fld) {
 	          fld[pType].setAttribute("style","cursor:pointer");
-	    	    fld[pType].setAttribute("onclick","nagioschecker.showNchPopup(this,event,'nagioschecker-popup-"+pType+"');");
+
+		  var pop = document.getElementById('nagioschecker-popup-'+pType);
+		  pop.addEventListener('mouseover',nagioschecker.handleMouseOver,false);
+		  pop.addEventListener('mouseout',nagioschecker.handleMouseOut,false);
+
+		  fld[pType].addEventListener('click',nagioschecker.handleMouseClick,false);
+		  fld[pType].addEventListener('mouseout',nagioschecker.handleMouseOut,false);
+		  fld[pType].relatedTarget='nagioschecker-popup-'+pType;
+
+
+//	    	    fld[pType].setAttribute("onclick","nagioschecker.showNchPopup(this,event,'nagioschecker-popup-"+pType+"');");
 	        }
 	      }
 	      else {
 	        for (var pType in fld) {
 			  	fld[pType].setAttribute("onclick","void(0);");
+
+
 	        }
 	      }
 	  }
 
-    this.resetTooltips(isAny);
 
-  },
-
-  resetTooltips: function(isAny) {
-    var fld = {
-              "down":document.getElementById('nagioschecker-hosts-down'),
-            	"unreachable": document.getElementById('nagioschecker-hosts-unreachable'),
-  	          "unknown": document.getElementById('nagioschecker-services-unknown'),
-  	          "warning": document.getElementById('nagioschecker-services-warning'),
-  	          "critical": document.getElementById('nagioschecker-services-critical')
-              };
-    var mainPanel=document.getElementById('nagioschecker-panel');
-    var mainPopup=document.getElementById('nagioschecker-popup');
-
-//	document.getElementById('nagioschecker-services-critical').addEventListener('mouseover',nagioschecker.handleMouseOver,false);
-//	document.getElementById('nagioschecker-services-critical').addEventListener('mouseout',nagioschecker.handleMouseOut,false);
 	mainPopup.addEventListener('mouseover',nagioschecker.handleMouseOver,false);
 	mainPopup.addEventListener('mouseout',nagioschecker.handleMouseOut,false);
 
@@ -990,7 +999,9 @@ dump('IWT:<>1\n');
 //		  fld[pType].removeEventListener('mouseout',nagioschecker.handleMouseOut,false);
 //      }
     }
+
   },
+
 
 
   updateStatus: function(paket,firstRun) {
@@ -1295,19 +1306,23 @@ function NCHToolTip(showColInfo,showColAlias,showColFlags) {
 
     if (doc) {
 
-    var ph=window.screen.height-300;
-    ph=(ph<500) ? 500 : ph;
-	this._tooltip.setAttribute("maxheight",ph+"px");
-    var pw=window.screen.width-300;
-    pw=(pw<500) ? 500 : pw;
-	this._tooltip.setAttribute("minwidth",ph+"px");
-	this._tooltip.setAttribute("maxwidth",(window.screen.width-300)+"px");
-
-
     this._vbox = doc.createElement("vbox");
+
+
+    var ph=window.screen.height-300;
+    ph=(ph<300) ? 300 : ph;
+//    ph=500;
+	this._tooltip.setAttribute("maxheight",ph+"px");
+
+    var pw=window.screen.width-100;
+    pw=(pw<500) ? 500 : pw;
+	this._tooltip.setAttribute("minwidth","500px");
+	this._tooltip.setAttribute("maxwidth",(window.screen.width-100)+"px");
+
+
 //    this._vbox.setAttribute("style","overflow: -moz-scrollbars-horizontal;");
-//    this._vbox.setAttribute("flex","1");
-   this._vbox.setAttribute("style","overflow: scroll;");
+    this._vbox.setAttribute("flex","1");
+   this._vbox.setAttribute("style","overflow: auto;");
 //    this._vbox.setAttribute("id",from.id+'-id');
 		var grid = doc.createElement("grid");
 		this._vbox.appendChild(grid);
@@ -1391,23 +1406,6 @@ if (this.showColFlags) {
 
 		this._tooltip.appendChild(this._vbox);
 
-/*	
-    this._view._rowCount = this._servers.length;
-    this._tree.treeBoxObject.view = this._view;
-*/
-
-/*
-	dump("TTIPLEN:"+nagioschecker._paket.ttip.length);
-	nagioschecker._view._rowCount=nagioschecker._paket.ttip.length;
-	dump("tab.id:"+this._table.id);
-	dump(nagioschecker._view);
-//	this._table.view=nagioschecker._view;	
-	this._table.view=treeView;	
-*/
-
-
-
-
 
 	 for(var i = 0;i<this.headers.length;i++) {
     	if ((this.headers[i].problems.length) || (this.headers[i].error)) {
@@ -1431,23 +1429,6 @@ if (this.showColFlags) {
 
 
 
-/*    
-		var wi = doc.createElement("window");
-		wi.setAttributeNS("xmlns","html","http://www.w3.org/1999/xhtml");
-		wi.setAttribute("width","500");
-		wi.setAttribute("height","500");
-		
-		var h1 = doc.createElementNS("html","div");
-		h1.appendChild(doc.createTextNode("Pokus"));
-		wi.appendChild(h1);
-
-		this._tooltip.appendChild(wi);
-*/
-
-/*
-		this._tooltip.appendChild(this._vbox);
-
-*/		
 //    this._tooltip.setAttribute("style","max-height:"+ph+"px;");
      
 	  }
@@ -1514,101 +1495,6 @@ if (this.showColFlags) {
 
   
   this.createRow = function(problem,i,serPo) {
-/*
-	var titem = document.createElement("treeitem");
-	this._tableContent.appendChild(titem);
-	var row = document.createElement("treerow");
-	titem.appendChild(row);
-
-    var status_text = "";
-    var prop = "";
-    switch (problem.status) {
-      case "down":
-//    		row.setAttribute("class", "nagioschecker-tooltip-row nagioschecker-tooltip-down-row");
-        status_text = nagioschecker.bundle.getString("alertDown1")
-        break;
-      case "unreachable":
-//    		row.setAttribute("class", "nagioschecker-tooltip-row nagioschecker-tooltip-unreachable-row");
-        status_text = nagioschecker.bundle.getString("alertUnreachable1")
-        break;
-      case "unknown":
-//    		row.setAttribute("class", "nagioschecker-tooltip-row nagioschecker-tooltip-unknown-row");
-        status_text = nagioschecker.bundle.getString("alertUnknown1")
-        break;
-      case "warning":
-//    		row.setAttribute("class", "nagioschecker-tooltip-row nagioschecker-tooltip-warning-row");
-        status_text = nagioschecker.bundle.getString("alertWarning1")
-        break;
-      case "critical":
-//    		row.setAttribute("class", "nagioschecker-tooltip-row nagioschecker-tooltip-critical-row");
-        status_text = nagioschecker.bundle.getString("alertCritical1")
-        break;
-    }
- 	row.setAttribute("properties", problem.status);
- 	row.setAttribute("class", problem.status+"-class");
-
-
-
-	var lHost = document.createElement("treecell");
-	lHost.setAttribute("label", problem.host+((problem.service==null) ? "" : problem.service));
- 	lHost.setAttribute("properties", problem.status);
-	row.appendChild(lHost);
-
-	var lNew = document.createElement("treecell");
- 	lNew.setAttribute("properties", problem.status);
-    if (this.headers[i].news[problem.host]) {
-		  lNew.setAttribute("label", " ! ");
-		  lNew.setAttribute("tooltiptext", nagioschecker.bundle.getString("new"));
-//		  lNew.setAttribute("style", "font-weight:bold;");
-    }
-    else {
-		lNew.setAttribute("label", "");
-    }
-	row.appendChild(lNew);
-
-    if (this.showColAlias) {
-		var lAlias = document.createElement("treecell");
-		lAlias.setAttribute("label", (this.headers[i].aliases[problem.host]) ? this.headers[i].aliases[problem.host] : "-");
-	 	lAlias.setAttribute("properties", problem.status);
-		row.appendChild(lAlias);
-	}
-
-
-	var flags="";
-	if (problem.acknowledged) flags+='Ac';
-	if (problem.dischecks) flags+='Ch';
-	if (problem.disnotifs) flags+='Nt';
-	if (problem.downtime) flags+='Dw';
-	if (problem.flapping) flags+='Fl';
-	if (problem.onlypass) flags+='Pa';
-
-    if (this.showColFlags) {
-		var lFlags = document.createElement("treecell");
-		lFlags.setAttribute("label", flags);
-	 	lFlags.setAttribute("properties", problem.status);
-		row.appendChild(lFlags);
-    }
-
-
-
-	var lStat = document.createElement("treecell");
-	lStat.setAttribute("label", status_text);
- 	lStat.setAttribute("properties", problem.status);
-	row.appendChild(lStat);
-
-	var lTime = document.createElement("treecell");
-	lTime.setAttribute("label", problem.duration);
- 	lTime.setAttribute("properties", problem.status);
-	row.appendChild(lTime);
-
-
-    if (this.showColInfo) {
-		var lInfo = document.createElement("treecell");
-		lInfo.setAttribute("label", problem.info);
-	 	lInfo.setAttribute("properties", problem.status);
-		row.appendChild(lInfo);
-    }
-*/		
 		
 	var row = document.createElement("row");
 		
@@ -1759,14 +1645,12 @@ function NCHPaket(sci,sca,scf) {
 	      this["all"][0].create(document.getElementById('nagioschecker-popup'));
 //		    this["all"][0].create(document.getElementById('nagioschecker-tooltip'));
 	    }
-/*
     	for(var i=0;i<this.pt.length;i++) {
 	      if ((this[this.pt[i]]) && (this[this.pt[i]][0])) {
 //	        this[this.pt[i]][0].create(document.getElementById('nagioschecker-tooltip-'+this.pt[i]));
 	        this[this.pt[i]][0].create(document.getElementById('nagioschecker-popup-'+this.pt[i]));
 	      }
 	    }
-*/ 
 	}
 	this.isAtLeastOne =  function() {
 		return (this["all"][1]>0);
