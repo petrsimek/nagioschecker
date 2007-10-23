@@ -1,5 +1,6 @@
 var _showTimerID = null;
 var _tab = null;
+var MAX_SERVERS=200;
 var ev2pop = {
 			  'nagioschecker-popup':'nagioschecker-popup',
 			  'nagioschecker-popup-down':'nagioschecker-popup-down',
@@ -375,6 +376,7 @@ dump('x:'+x+' y:'+y+' ax:'+aScreenX+' ay:'+aScreenY+'\n');
     }
 
     this._servers=[];
+	this._serversEnabled = 0;
     var pm = new  NCHPass();
 
     this.emptyInfo=[];
@@ -382,7 +384,7 @@ dump('x:'+x+' y:'+y+' ax:'+aScreenX+' ay:'+aScreenY+'\n');
     try {
 
 
-      for(var i=0;i<20;i++) {
+      for(var i=0;i<MAX_SERVERS;i++) {
         
         var surl = this.preferences.getCharPref("extensions.nagioschecker."+(i+1)+".url");
         if (surl) {
@@ -812,7 +814,10 @@ dump("SERVERSENABLED:"+this._serversEnabled);
 				st=this.pt[x];
 
 				for (var j =0;j<probls.length;j++) {
-			    
+dump("\n");
+dump(this.pref.filter_out_regexp_services+" "+((probls[j].service) ? probls[j].service : "null")+" "+this.pref.filter_out_regexp_services_reverse+"\n");
+dump(((probls[j].service) ? probls[j].service.match(new RegExp(this.pref.filter_out_regexp_services_value)) : "no serv"));
+dump("\n");
 					if (
 						 (!this.filterOutAll[st])
 					    &&
@@ -840,7 +845,35 @@ dump("SERVERSENABLED:"+this._serversEnabled);
 					    &&
 					    ((!this.pref.filter_out_regexp_hosts) || ((this.pref.filter_out_regexp_hosts) && (probls[j].host) &&  (((!this.pref.filter_out_regexp_hosts_reverse) && (!probls[j].host.match(new RegExp(this.pref.filter_out_regexp_hosts_value)))) || ((this.pref.filter_out_regexp_hosts_reverse) && (probls[j].host.match(new RegExp(this.pref.filter_out_regexp_hosts_value)))))))
 					    &&
-					    ((!this.pref.filter_out_regexp_services) || ((this.pref.filter_out_regexp_services) && (probls[j].service) && (((!this.pref.filter_out_regexp_services_reverse) && (!probls[j].service.match(new RegExp(this.pref.filter_out_regexp_services_value)))) || ((this.pref.filter_out_regexp_services_reverse) && (probls[j].service.match(new RegExp(this.pref.filter_out_regexp_services_value)))))))
+					    (
+					    	(!this.pref.filter_out_regexp_services)
+					    	||
+					    	(
+					    		(this.pref.filter_out_regexp_services)
+					    		&&
+					    		(
+					    			(!probls[j].service)
+					    			||
+						    		(
+						    			(probls[j].service)
+							    		&&
+							    		(
+							    			(
+							    				(!this.pref.filter_out_regexp_services_reverse)
+							    				&&
+							    				(!probls[j].service.match(new RegExp(this.pref.filter_out_regexp_services_value)))
+							    			)
+							    			||
+							    			(
+							    				(this.pref.filter_out_regexp_services_reverse)
+							    				&&
+							    				(probls[j].service.match(new RegExp(this.pref.filter_out_regexp_services_value)))
+							    			)
+							    		)
+							    	)
+							    )
+						    )
+					    )
 					    ) {
 							var uniq = this._servers[i].name+"-"+probls[j].host+"-"+probls[j].service+"-"+probls[j].status;
 							newProblems[uniq]=probls[j];
@@ -869,7 +902,7 @@ dump("SERVERSENABLED:"+this._serversEnabled);
   resetBehavior: function(isAny) {
     var fld = {
               "down":document.getElementById('nagioschecker-hosts-down'),
-            	"unreachable": document.getElementById('nagioschecker-hosts-unreachable'),
+              "unreachable": document.getElementById('nagioschecker-hosts-unreachable'),
   	          "unknown": document.getElementById('nagioschecker-services-unknown'),
   	          "warning": document.getElementById('nagioschecker-services-warning'),
   	          "critical": document.getElementById('nagioschecker-services-critical')
@@ -1172,8 +1205,7 @@ dump('IWT:<>1\n');
       var mainPanel=document.getElementById('nagioschecker-panel');
       mainPanel.removeAttribute("onclick");
 
-//    infoLabel.setAttribute("value",nagioschecker.bundle.getString(type));
-    infoLabel.setAttribute("value","Not Set");
+    infoLabel.setAttribute("value",nagioschecker.bundle.getString(type));
     	
     }
     else if (type=="noProblem") {
@@ -1194,6 +1226,9 @@ dump('IWT:<>1\n');
 	  }
     }
 	else {
+	  if (type=="error") {
+	  	infoLabel.setAttribute("class", "nagioschecker-notset-value");
+	  }
 	  infoLabel.setAttribute("value",(type) ? nagioschecker.bundle.getString(type) : "");
 	}
   }

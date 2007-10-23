@@ -1,4 +1,5 @@
 var gNCHOptions = null;
+var MAX_SERVERS=200;
 
 var nchoptionsLoad = function() {
 
@@ -40,7 +41,7 @@ NCHOptions.prototype = {
 
   _servers: [],
   _tree: null,
-  _origServerCount: 20,
+  _origServerCount: MAX_SERVERS,
   bundle:null,
 
   addServer: function(server) {
@@ -521,7 +522,7 @@ NCHOptions.prototype = {
    
 
 
-      for(var i=0;i<20;i++) {
+      for(var i=0;i<MAX_SERVERS;i++) {
         try {
           var surl = prefs.getCharPref("extensions.nagioschecker."+(i+1)+".url");
         try {
