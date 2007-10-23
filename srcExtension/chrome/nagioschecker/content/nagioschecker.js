@@ -424,7 +424,7 @@ dump('x:'+x+' y:'+y+' ax:'+aScreenX+' ay:'+aScreenY+'\n');
     catch(e) {
     }
 
-    
+dump("SERVERSENABLED:"+this._serversEnabled);
     this.parser.setServers(this._servers);
 
 	this.isStopped = this.pref.stopped;
@@ -1311,7 +1311,7 @@ function NCHToolTip(showColInfo,showColAlias,showColFlags) {
 
     var ph=window.screen.height-300;
     ph=(ph<300) ? 300 : ph;
-//    ph=500;
+    ph=300;
 	this._tooltip.setAttribute("maxheight",ph+"px");
 
     var pw=window.screen.width-100;
@@ -1320,9 +1320,9 @@ function NCHToolTip(showColInfo,showColAlias,showColFlags) {
 	this._tooltip.setAttribute("maxwidth",(window.screen.width-100)+"px");
 
 
-//    this._vbox.setAttribute("style","overflow: -moz-scrollbars-horizontal;");
+//    this._vbox.setAttribute("style","overflow: -moz-scrollbars-vertical;");
     this._vbox.setAttribute("flex","1");
-   this._vbox.setAttribute("style","overflow: auto;");
+   this._vbox.setAttribute("style","overflow: scroll;");
 //    this._vbox.setAttribute("id",from.id+'-id');
 		var grid = doc.createElement("grid");
 		this._vbox.appendChild(grid);
