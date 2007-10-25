@@ -1060,7 +1060,16 @@ dump('IWT:<>1\n');
           "warning":["fullAlertWarning","shortAlertWarning",""],
           "critical":["fullAlertCritical","shortAlertCritical",""]
           };
-    if (this.pref.info_type>2) {
+	if (this.pref.info_type==6) {
+		var img_cls = "";
+		if (paket.countProblemsByType("warning")>0) img_cls = "nagioschecker-warning-image";
+		if (paket.countProblemsByType("unknown")>0) img_cls = "nagioschecker-unknown-image";
+		if (paket.countProblemsByType("critical")>0) img_cls = "nagioschecker-critical-image";
+		if (paket.countProblemsByType("unreachable")>0) img_cls = "nagioschecker-unreachable-image";
+		if (paket.countProblemsByType("down")>0) img_cls = "nagioschecker-down-image";
+		document.getElementById('nagioschecker-img').setAttribute("class",img_cls);
+	}
+    else if (this.pref.info_type>2) {
       for (var pType in fld) {
         var x = "";
         var pbt = paket.getProblemsByType(pType);
@@ -1081,11 +1090,11 @@ dump('IWT:<>1\n');
 		  fld["critical"].setAttribute("value", this.getCorrectBundleString(paket.countProblemsByType("critical"),infoTypes["critical"][this.pref.info_type],""));
     }
 
-    fld["down"].setAttribute("hidden", (((paket.countProblemsByType("down")==0) || (!this.showSb["down"])) ? "true" : "false"));
-    fld["unreachable"].setAttribute("hidden", (((paket.countProblemsByType("unreachable")==0) || (!this.showSb["unreachable"])) ? "true" : "false"));
-    fld["unknown"].setAttribute("hidden", (((paket.countProblemsByType("unknown")==0) || (!this.showSb["unknown"])) ? "true" : "false"));
-    fld["warning"].setAttribute("hidden", (((paket.countProblemsByType("warning")==0) || (!this.showSb["warning"])) ? "true" : "false"));
-    fld["critical"].setAttribute("hidden", (((paket.countProblemsByType("critical")==0) || (!this.showSb["critical"])) ? "true" : "false"));
+    fld["down"].setAttribute("hidden", (((paket.countProblemsByType("down")==0) || (!this.showSb["down"]) || (this.pref.info_type==6)) ? "true" : "false"));
+    fld["unreachable"].setAttribute("hidden", (((paket.countProblemsByType("unreachable")==0) || (!this.showSb["unreachable"]) || (this.pref.info_type==6)) ? "true" : "false"));
+    fld["unknown"].setAttribute("hidden", (((paket.countProblemsByType("unknown")==0) || (!this.showSb["unknown"]) || (this.pref.info_type==6)) ? "true" : "false"));
+    fld["warning"].setAttribute("hidden", (((paket.countProblemsByType("warning")==0) || (!this.showSb["warning"]) || (this.pref.info_type==6)) ? "true" : "false"));
+    fld["critical"].setAttribute("hidden", (((paket.countProblemsByType("critical")==0) || (!this.showSb["critical"]) || (this.pref.info_type==6)) ? "true" : "false"));
 
     document.getElementById('nagioschecker-info-label').setAttribute("hidden", "true");
 

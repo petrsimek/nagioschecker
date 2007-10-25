@@ -4,6 +4,7 @@
 * BUGFIX: If there is no server active, then label Not Set is shown instead of No Problem
 * BUGFIX: Regexp on services used to remove the whole host - fixed
 * INTERNAL: Limit of number of servers increased to 200
+
 0.10.4
 * BUGFIX: removed annoying alert when there was sometimes problem with playing sound
 

@@ -52,6 +52,7 @@
 <!ENTITY nch.prefs.long "Dlouhá">
 <!ENTITY nch.prefs.short "Krátká">
 <!ENTITY nch.prefs.numbersonly "Pouze čísla">
+<!ENTITY nch.prefs.colorsonly "Pouze barvy">
 <!ENTITY nch.prefs.infowindowtype "Typ informačního okna">
 <!ENTITY nch.prefs.allinonewindow "Všechna hlášení v jednom okně">
 <!ENTITY nch.prefs.individualwindows "Samostatné okno pro každý typ hlášení">

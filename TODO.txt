@@ -1,0 +1,13 @@
+TODO
+
+OPTION: extremely short view of alerts (no No problem, colored background behind N-icon)
+FIX: Force saving password with special chars
+FIX: No colored Error message
+NEW: Sound based on attempt (X/Y)
+
+Bigger things:
+NEW: Save config in external file.
+NEW: New filtering system (Regexps)
+
+My targets:
+NEW: Percentage od download

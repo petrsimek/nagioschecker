@@ -103,6 +103,7 @@
               <radio id="nch-view-info_type-0" label="&nch.prefs.long;" value="0"/>
               <radio id="nch-view-info_type-1" label="&nch.prefs.short;" value="1"/>
               <radio id="nch-view-info_type-2" label="&nch.prefs.numbersonly;" value="2"/>
+              <radio id="nch-view-info_type-6" label="&nch.prefs.colorsonly;" value="6"/>
               </vbox>
               <vbox>
               <label>&nch.prefs.totalnumbersforeveryserver;:</label>

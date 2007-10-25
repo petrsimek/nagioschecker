@@ -52,6 +52,7 @@
 <!ENTITY nch.prefs.long "Long">
 <!ENTITY nch.prefs.short "Short">
 <!ENTITY nch.prefs.numbersonly "Numbers only">
+<!ENTITY nch.prefs.colorsonly "Colors only">
 <!ENTITY nch.prefs.infowindowtype "Information Window Type">
 <!ENTITY nch.prefs.allinonewindow "All problems in one window">
 <!ENTITY nch.prefs.individualwindows "Individual window for each problem type">

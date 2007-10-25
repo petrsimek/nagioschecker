@@ -33,20 +33,6 @@ var gMini=false;
         <menuitem label="&nch.about;..." oncommand="window.openDialog('chrome://nagioschecker/content/nagioschecker-about.xul','nagioschecker-about','centerscreen,dialog,chrome').focus();" />
       </menupopup>
     <popup id="nagioschecker-popup" class="nagioschecker-popup" onpopupshown="nagioschecker.popupOpened();" onpopuphidden="nagioschecker.popupClosed();">
-<!-- 
-<tree id="poptree" flex="1" rows="10" class="poptree">
-  <treecols>
-    <treecol id="hostCol" label="Host/Service" flex="1"/>
-    <treecol id="newCol" label="N" flex="1"/>
-    <treecol id="aliasCol" label="Alias" flex="1"/>
-    <treecol id="statusCol" label="Status" flex="1"/>
-    <treecol id="flagsCol" label="Flags" flex="1"/>
-    <treecol id="durationCol" label="Duration" flex="1"/>
-    <treecol id="infoCol" label="Info" flex="1"/>
-  </treecols>
-  <treechildren/>
-</tree>
- -->
 </popup>    
 
     <popup id="nagioschecker-popup-down" class="nagioschecker-popup" onpopupshown="nagioschecker.popupOpened();" onpopuphidden="nagioschecker.popupClosed();"/>
