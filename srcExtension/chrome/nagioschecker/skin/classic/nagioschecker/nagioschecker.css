@@ -29,7 +29,7 @@ statusbarpanel .nagioschecker-box {
 }
 
 .nagioschecker-label-new {
-  font-weight: bold;
+  font-weight: bold;  
   background-color:white;
   color: red;
   padding-left:2px;
