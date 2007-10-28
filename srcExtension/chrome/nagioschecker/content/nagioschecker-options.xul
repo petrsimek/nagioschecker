@@ -198,6 +198,19 @@
             <radio id="nch-behavior-play_sound-2" label="&nch.prefs.oneverystatusupdateifatleastoneproblemexists;" value="2" oncommand="gNCHOptions.disableSoundCheckboxes();"/>
           </radiogroup>
           <separator class="thin"/>
+<vbox>
+<hbox>          
+<label>Minimal service's attempt to play the sound:</label>
+ <menulist prefstring="extensions.nagioschecker.play_sound_attempt" id="nch-sounds-play_sound_attempt">  
+	<menupopup>
+	  <menuitem id="nch-sounds-play_sound_attempt-1" label="1" value="1"/>
+	  <menuitem id="nch-sounds-play_sound_attempt-2" label="2" value="2"/>
+	  <menuitem id="nch-sounds-play_sound_attempt-3" label="3 or more" value="3"/>
+	</menupopup>
+  </menulist> 
+</hbox>
+</vbox>
+          <separator class="thin"/>
           <description class="nch"><html:strong>&nch.prefs.note;:</html:strong> &nch.prefs.note_sound;</description>
         </groupbox>
   		    <groupbox flex="1">

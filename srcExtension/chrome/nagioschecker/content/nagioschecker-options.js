@@ -344,7 +344,8 @@ NCHOptions.prototype = {
        "nch-behavior-oneclick",
        "nch-sounds-warning",
        "nch-sounds-critical",
-       "nch-sounds-down"
+       "nch-sounds-down",
+       "nch-sounds-play_sound_attempt"
        ];
     for (var i = 0; i < radios.length; ++i) {
   		var radiogroup = document.getElementById(radios[i]);
@@ -488,7 +489,8 @@ NCHOptions.prototype = {
        "nch-behavior-oneclick",
        "nch-sounds-warning",
        "nch-sounds-critical",
-       "nch-sounds-down"
+       "nch-sounds-down",
+       "nch-sounds-play_sound_attempt"
         ];
 		  for (var i = 0; i < radios.length; ++i) {
   			var radiogroup = document.getElementById(radios[i]);

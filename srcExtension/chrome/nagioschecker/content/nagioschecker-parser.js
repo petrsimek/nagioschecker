@@ -491,16 +491,18 @@ NCHParser.prototype = {
             var attempt  = getUglyNodeValue(viptd[5],[0]);
             var info  = getUglyNodeValue(viptd[6],[0]);
 
+
             var isSoft = false;
             var sto = new RegExp('([0-9]+)\/([0-9]+)','mig').exec(attempt);
             if ((sto) && (parseInt(sto[1])<parseInt(sto[2]))) {
               isSoft=true;
             }         
+			var attemptInt = (sto) ? parseInt(sto[1]) : 0;
 			if (host_downtime) {
 				downtime=true;
 			}
             if ((status=="UNKNOWN") || (status=="WARNING") || (status=="CRITICAL")) {
-              var tmpo ={"type":"s","host": host,"service":service,"status":this.toLower[status],"lastCheck":lastCheck,"durationSec":durationSec,"duration":duration,"attempt":attempt,"info":info,"acknowledged":acknowledged,"dischecks":dischecks,"disnotifs":disnotifs,"isSoft":isSoft,"downtime":downtime,"flapping":flapping,"onlypass":onlypass};
+              var tmpo ={"type":"s","host": host,"service":service,"status":this.toLower[status],"lastCheck":lastCheck,"durationSec":durationSec,"duration":duration,"attempt":attempt,"attemptInt":attemptInt,"info":info,"acknowledged":acknowledged,"dischecks":dischecks,"disnotifs":disnotifs,"isSoft":isSoft,"downtime":downtime,"flapping":flapping,"onlypass":onlypass};
 	            this.problems[pos][this.toLower[status]].push(tmpo);
   					  if ((this.manager._servers[pos].getAliases) && (!this.manager._servers[pos].aliases[host])) {
 						    this.missingAliases[pos].push(host);
@@ -581,7 +583,7 @@ NCHParser.prototype = {
             var durationSec  = this.nagiosDurationToSeconds(tmp_dur);
             var info  = getUglyNodeValue(viptd[4],[0]);
 				    if ((status=="DOWN") || (status=="UNREACHABLE")) {
-            	this.problems[pos][this.toLower[status]].push({"type":"h","host": host,"service":null,"status":this.toLower[status],"lastCheck":lastCheck,"durationSec":durationSec,"duration":duration,"attempt":null,"info":info,"acknowledged":acknowledged,"dischecks":dischecks,"disnotifs":disnotifs,"isSoft":false,"downtime":downtime,"flapping":flapping,"onlypass":false});
+            	this.problems[pos][this.toLower[status]].push({"type":"h","host": host,"service":null,"status":this.toLower[status],"lastCheck":lastCheck,"durationSec":durationSec,"duration":duration,"attempt":null,"attemptInt":null,"info":info,"acknowledged":acknowledged,"dischecks":dischecks,"disnotifs":disnotifs,"isSoft":false,"downtime":downtime,"flapping":flapping,"onlypass":false});
 					    if ((this.manager._servers[pos].getAliases) && (!this.manager._servers[pos].aliases[host])) {
 						    this.missingAliases[pos].push(host);
 					    }

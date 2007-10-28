@@ -29,6 +29,7 @@ pref("extensions.nagioschecker.worktimeto", "23:59");
 pref("extensions.nagioschecker.one_window_only", true);
 pref("extensions.nagioschecker.blinking", 2);
 pref("extensions.nagioschecker.play_sound", 2);
+pref("extensions.nagioschecker.play_sound_attempt", 1);
 pref("extensions.nagioschecker.click", 0);
 
 pref("extensions.nagioschecker.filter_out_acknowledged", true);

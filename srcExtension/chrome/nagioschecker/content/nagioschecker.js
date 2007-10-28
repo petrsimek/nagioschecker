@@ -366,6 +366,7 @@ dump('x:'+x+' y:'+y+' ax:'+aScreenX+' ay:'+aScreenY+'\n');
 			worktimefrom:['char','08:00'],
 			worktimeto:['char','18:00'],
 			play_sound:['int',2],
+			play_sound_attempt:['int',1],
 			blinking:['int',2],
 			click:['int',0],
 			one_window_only:['bool',false]
@@ -439,13 +440,13 @@ dump("SERVERSENABLED:"+this._serversEnabled);
     	this.soundBT[this.pt[i]]=this.pref['sounds_by_type_'+this.pt[i]];
     }
 
-	sWorktimeFrom = this.pref.worktimefrom;
+	var sWorktimeFrom = this.pref.worktimefrom;
 	while (sWorktimeFrom.length < 5) { // fill up to 5 chars (08:40)
 		sWorktimeFrom = "0"+sWorktimeFrom;
 	}
 	this.worktime_from = ( (sWorktimeFrom.substring(0,2)*60) + (sWorktimeFrom.substring(3,5)*1) )*60;
 
-	sWorktimeTo = this.pref.worktimeto;
+	var sWorktimeTo = this.pref.worktimeto;
 	while (sWorktimeTo.length < 5) { // fill up to 5 chars (08:40)
 		sWorktimeTo = "0"+sWorktimeTo;
 	}
@@ -610,6 +611,9 @@ dump("SERVERSENABLED:"+this._serversEnabled);
 		this.enumerateStatus(probs);
 		this.updateAllClients(this.results);
 		var reallyPlay=false;
+
+//alert(this.results.all[1]+":"+this.results.all[1]+" "+this.results.sa[1][0]+":"+this.results.sa[1][1]+" "+this.results.sa[2][0]+":"+this.results.sa[2][1]+" "+this.results.sa[3][0]+":"+this.results.sa[3][1])
+
 		for(var i=0;i<this.pt.length;i++) {
 			if ( 
 				((this.pref.play_sound==1) && (this.soundBT[this.pt[i]]) && (this.results[this.pt[i]][2]))
@@ -814,10 +818,6 @@ dump("SERVERSENABLED:"+this._serversEnabled);
 				st=this.pt[x];
 
 				for (var j =0;j<probls.length;j++) {
-dump("\n");
-dump(this.pref.filter_out_regexp_services+" "+((probls[j].service) ? probls[j].service : "null")+" "+this.pref.filter_out_regexp_services_reverse+"\n");
-dump(((probls[j].service) ? probls[j].service.match(new RegExp(this.pref.filter_out_regexp_services_value)) : "no serv"));
-dump("\n");
 					if (
 						 (!this.filterOutAll[st])
 					    &&
@@ -1218,21 +1218,33 @@ dump('IWT:<>1\n');
     	
     }
     else if (type=="noProblem") {
-      infoLabel.setAttribute("class", "nagioschecker-allok-value");
-      infoLabel.removeAttribute("tooltip");
-      
+
       var ico = document.getElementById('nagioschecker-img');
       ico.removeAttribute("tooltip");
 
       var mainPanel=document.getElementById('nagioschecker-panel');
       mainPanel.removeAttribute("onclick");
 
-	  if ((this.pref.info_type==2) || (this.pref.info_type==5)) {
-	    infoLabel.setAttribute("value"," 0 ");
+	  if (this.pref.info_type==6) {
+		ico.setAttribute("class","nagioschecker-allok-image");
+	    infoLabel.setAttribute("hidden", "true");
+
 	  }
 	  else {
-	    infoLabel.setAttribute("value",nagioschecker.bundle.getString(type));
+
+	      infoLabel.setAttribute("class", "nagioschecker-allok-value");
+	      infoLabel.removeAttribute("tooltip");
+      
+
+
+		  if ((this.pref.info_type==2) || (this.pref.info_type==5)) {
+		    infoLabel.setAttribute("value"," 0 ");
+		  }
+		  else {
+		    infoLabel.setAttribute("value",nagioschecker.bundle.getString(type));
+		  }
 	  }
+
     }
 	else {
 	  if (type=="error") {
@@ -1396,6 +1408,9 @@ if (this.showColFlags) {
 		var cl = doc.createElement("column");
 //		cl.setAttribute("flex","1");
 		cls.appendChild(cl);
+		var cl = doc.createElement("column");
+//		cl.setAttribute("flex","1");
+		cls.appendChild(cl);
     if (this.showColInfo) {
 		var cl = doc.createElement("column");
 //		cl.setAttribute("flex","1");
@@ -1434,6 +1449,9 @@ if (this.showColFlags) {
 	  lFlags.setAttribute("value", nagioschecker.bundle.getString("flags"));
 	  row.appendChild(lFlags);
     }
+ 		var lAttempt = doc.createElement("label");
+	  lAttempt.setAttribute("value", "Attempt");
+	  row.appendChild(lAttempt);
 		var lStat = doc.createElement("label");
 		lStat.setAttribute("value", nagioschecker.bundle.getString("status"));
 		row.appendChild(lStat);
@@ -1614,6 +1632,9 @@ if (this.showColFlags) {
 		lFlags.setAttribute("value", flags);
 		row.appendChild(lFlags);
     }
+		var lAttempt = document.createElement("label");
+		lAttempt.setAttribute("value", problem.attempt);
+		row.appendChild(lAttempt);
 
 		var lStat = document.createElement("label");
 		lStat.setAttribute("value", status_text);
@@ -1645,13 +1666,14 @@ function NCHPaket(sci,sca,scf) {
 	this.showColFlags = scf;
 	this.pt = ["down","unreachable","unknown","warning","critical"];
 	this.ttip = [];
-	this.all = [new NCHToolTip(this.showColInfo,this.showColAlias,this.showColFlags),0,0,[],[]];
+	this.all = [new NCHToolTip(this.showColInfo,this.showColAlias,this.showColFlags),0,0,[],[],0,0];
 	this.down = [new NCHToolTip(this.showColInfo,this.showColAlias,this.showColFlags),0,0,[],[]];
 	this.unreachable = [new NCHToolTip(this.showColInfo,this.showColAlias,this.showColFlags),0,0,[],[]];
 	this.unknown = [new NCHToolTip(this.showColInfo,this.showColAlias,this.showColFlags),0,0,[],[]];
 	this.warning = [new NCHToolTip(this.showColInfo,this.showColAlias,this.showColFlags),0,0,[],[]];
 	this.critical = [new NCHToolTip(this.showColInfo,this.showColAlias,this.showColFlags),0,0,[],[]];
 	this.isError = false;
+	this.sa = [null,[0,0],[0,0],[0,0]];
 	this.addTooltipHeader = function(to,header,serverPos,timeFetch) {
 		this.ttip.push({type:'header',data:header});
 	 	this[to][0].addHeader(header,serverPos,timeFetch);
@@ -1661,11 +1683,20 @@ function NCHPaket(sci,sca,scf) {
 		this["isError"]=true;
 	}
 	this.addProblem = function(serverPos,problemType,isOld,problem,aliasName) {
+		var tmp_a = 1;
 		if (!isOld) {
 			this["all"][2] = (this["all"][2]) ? this["all"][2]+1 : 1;
 			this["all"][4][serverPos] = (this["all"][4][serverPos]) ? this["all"][4][serverPos]+1 : 1;
 			this[problemType][2] = (this[problemType][2]) ? this[problemType][2]+1 : 1;
 			this[problemType][4][serverPos] = (this[problemType][4][serverPos]) ? this[problemType][4][serverPos]+1 : 1;
+			if (problem.attemptInt>0) {
+				tmp_a = (problem.attemptInt>3) ? 3 : problem.attemptInt;
+				if (this.sa[tmp_a]) this.sa[tmp_a][1]++;
+			}
+		}
+		if (problem.attemptInt>0) {
+			tmp_a = (problem.attemptInt>3) ? 3 : problem.attemptInt;
+			if (this.sa[tmp_a]) this.sa[tmp_a][0]++;
 		}
 		this.ttip.push({type:'problem',data:problem});
 		this[problemType][1] = (this[problemType][1]) ? this[problemType][1]+1 : 1;
@@ -1674,6 +1705,12 @@ function NCHPaket(sci,sca,scf) {
 		this[problemType][0].addRow(problem,aliasName,(!isOld));
 		this["all"][1] = (this["all"][1]) ? this["all"][1]+1 : 1;
 		this["all"][3][serverPos] = (this["all"][3][serverPos]) ? this["all"][3][serverPos]+1 : 1;
+	}
+	this.checkServiceAttempt = function(value) {
+		return (this.sa[value][0]==this["all"][1]);
+	}
+	this.checkOldServiceAttempt = function(value) {
+		return this.sa[value][1]==this["all"][2];		
 	}
 	this.getProblemsByType = function(problemType) {
 	 	return this[problemType][3];
