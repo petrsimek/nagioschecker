@@ -16,3 +16,4 @@ Attempt in popup
 Sound file for unreachable
 Filter by duration
 Filter by attempt ?
+Filtr na rozmezi duration

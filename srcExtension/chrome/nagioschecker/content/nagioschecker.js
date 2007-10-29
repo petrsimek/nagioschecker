@@ -1420,7 +1420,7 @@ function NCHToolTip(showColInfo,showColAlias,showColFlags) {
 
     var ph=window.screen.height-300;
     ph=(ph<300) ? 300 : ph;
-    ph=300;
+//    ph=300;
 	this._tooltip.setAttribute("maxheight",ph+"px");
 
     var pw=window.screen.width-100;
