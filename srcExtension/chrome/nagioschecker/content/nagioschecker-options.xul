@@ -134,14 +134,21 @@
               <checkbox prefstring="extensions.nagioschecker.show_statusbar_unknown" id="nch-view-show_statusbar_unknown" label="&nch.prefs.serviceunknown;"/>
             </vbox>
           </groupbox>
+		      <groupbox flex="1">
+		        <caption class="nch" label="&nch.prefs.showinfowindowcolumns;"/>	
+            <vbox>
+            <checkbox prefstring="extensions.nagioschecker.show_window_column_information" id="nch-view-show_window_column_information" label="&nch.prefs.infocolumn;"/>
+            <checkbox prefstring="extensions.nagioschecker.show_window_column_alias" id="nch-view-show_window_column_alias" label="&nch.prefs.aliascolumn;"/>
+            <checkbox prefstring="extensions.nagioschecker.show_window_column_flags" id="nch-view-show_window_column_flags" label="&nch.prefs.flagscolumn;"/>
+            <checkbox prefstring="extensions.nagioschecker.show_window_column_attempt" id="nch-view-show_window_column_attempt" label="&nch.prefs.attemptcolumn;"/>
+            <checkbox prefstring="extensions.nagioschecker.show_window_column_status" id="nch-view-show_window_column_status" label="&nch.prefs.statuscolumn;"/>
+            </vbox>
+          </groupbox>
         </hbox>
 		    <groupbox flex="1">
 		      <caption class="nch" label="&nch.prefs.other;"/>	
           <vbox>
             <checkbox prefstring="extensions.nagioschecker.one_window_only" id="nch-general-one_window_only" label="&nch.prefs.onewindowonly;"/>
-            <checkbox prefstring="extensions.nagioschecker.show_window_column_information" id="nch-view-show_window_column_information" label="&nch.prefs.showinfocolumn;"/>
-            <checkbox prefstring="extensions.nagioschecker.show_window_column_alias" id="nch-view-show_window_column_alias" label="&nch.prefs.showaliascolumn;"/>
-            <checkbox prefstring="extensions.nagioschecker.show_window_column_flags" id="nch-view-show_window_column_flags" label="&nch.prefs.showflagscolumn;"/>
           </vbox>
         </groupbox>
       </tabpanel>
@@ -200,12 +207,12 @@
           <separator class="thin"/>
 <vbox>
 <hbox>          
-<label>Minimal service's attempt to play the sound:</label>
+<label>&nch.prefs.minimalservicesattempt;:</label>
  <menulist prefstring="extensions.nagioschecker.play_sound_attempt" id="nch-sounds-play_sound_attempt">  
 	<menupopup>
 	  <menuitem id="nch-sounds-play_sound_attempt-1" label="1" value="1"/>
 	  <menuitem id="nch-sounds-play_sound_attempt-2" label="2" value="2"/>
-	  <menuitem id="nch-sounds-play_sound_attempt-3" label="3 or more" value="3"/>
+	  <menuitem id="nch-sounds-play_sound_attempt-3" label="3+" value="3"/>
 	</menupopup>
   </menulist> 
 </hbox>

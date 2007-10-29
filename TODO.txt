@@ -1,13 +1,15 @@
 TODO
 
 FIX: Force saving password with special chars
-NEW: Sound based on attempt (X/Y)
 
 Bigger things:
 NEW: Save config in external file.
 NEW: New filtering system (Regexps)
 
 My targets:
+
+BUG: COlors only: clincking on logo = no popup
+
 NEW: Percentage od download
 Interval set by user
 Attempt in popup

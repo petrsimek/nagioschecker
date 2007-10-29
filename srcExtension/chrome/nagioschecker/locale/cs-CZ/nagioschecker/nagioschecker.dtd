@@ -63,7 +63,6 @@
 <!ENTITY nch.prefs.servicewarning "Varovný stav služby">
 <!ENTITY nch.prefs.serviceunknown "Neznámý stav služby">
 <!ENTITY nch.prefs.showininfowindow "Zobrazovat v informačním okně">
-<!ENTITY nch.prefs.showinfocolumn "Zobrazovat sloupec Informace v informačním okně">
 <!ENTITY nch.prefs.blinking "Blikání">
 <!ENTITY nch.prefs.off "Vypnuto">
 <!ENTITY nch.prefs.onstatusupdateifnewproblemappears "Při aktualizaci stavu, pokud se objeví nové hlášení">
@@ -98,7 +97,6 @@
 <!ENTITY nch.prefs.unreachable "Nedosažitelný">
 <!ENTITY nch.prefs.replay "Přehrát">
 <!ENTITY nch.prefs.getaliases "Stahovat aliasy k jménům hostitelů">
-<!ENTITY nch.prefs.showaliascolumn "Zobrazovat sloupec Alias hostitele v informačním okně (má smysl pouze pokud je alespoň u jednoho serveru nastaveno stahování aliasů)">
 <!ENTITY nch.prefs.shortwithservername "Krátká s názvem serveru">
 <!ENTITY nch.prefs.numbersonlywithservername "Pouze čísla s názvem serveru">
 <!ENTITY nch.prefs.totalnumbers "S celkovými čísly">
@@ -126,6 +124,12 @@
 <!ENTITY nch.prefs.moveup "Posunout nahoru">
 <!ENTITY nch.prefs.movedown "Posunout dolů">
 
-<!ENTITY nch.prefs.showflagscolumn "Zobrazovat sloupec Příznaky v informačním okně">
 <!ENTITY nch.prefs.reverseexp "opak výrazu">
 
+<!ENTITY nch.prefs.showinfowindowcolumns "Zobrazovat v informačním okně sloupce">
+<!ENTITY nch.prefs.aliascolumn "Hostitel (alias)">
+<!ENTITY nch.prefs.infocolumn "Informace">
+<!ENTITY nch.prefs.flagscolumn "Příznaky">
+<!ENTITY nch.prefs.statuscolumn "Stav">
+<!ENTITY nch.prefs.attemptcolumn "Pokus">
+<!ENTITY nch.prefs.minimalservicesattempt "Minimální pokus (služby) k přehrání zvuku">
