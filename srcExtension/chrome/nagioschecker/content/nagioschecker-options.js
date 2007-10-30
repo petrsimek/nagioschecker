@@ -353,7 +353,10 @@ NCHOptions.prototype = {
   		var radiogroup = document.getElementById(radios[i]);
 		  prefs.setIntPref(radiogroup.getAttribute("prefstring"), radiogroup.selectedItem.value);
 		}		
-		var INTtextboxes = ["nch-general-refresh"];
+		  var INTtextboxes = [
+		  	"nch-general-refresh",
+		  	"nch-advanced-timeout"
+		  	];
   	for (var i = 0; i < INTtextboxes.length; ++i) {
 		  var textbox = document.getElementById(INTtextboxes[i]);
 		  prefs.setIntPref(textbox.getAttribute("prefstring"), textbox.value);
@@ -501,7 +504,10 @@ NCHOptions.prototype = {
         var radioid = radios[i]+'-'+prefs.getIntPref(radiogroup.getAttribute("prefstring"));
 			  radiogroup.selectedItem=document.getElementById(radioid);
 		  }	
-		  var INTtextboxes = ["nch-general-refresh"];
+		  var INTtextboxes = [
+		  	"nch-general-refresh",
+		  	"nch-advanced-timeout"
+		  	];
 		  for (var i = 0; i < INTtextboxes.length; ++i) {
   			var textbox = document.getElementById(INTtextboxes[i]);
 			  var prefstring = textbox.getAttribute("prefstring");

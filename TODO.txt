@@ -11,8 +11,6 @@ My targets:
 BUG: COlors only: clincking on logo = no popup
 
 NEW: Percentage od download
-Interval set by user
-Attempt in popup
 Sound file for unreachable
 Filter by duration
 Filter by attempt ?

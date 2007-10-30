@@ -133,3 +133,6 @@
 <!ENTITY nch.prefs.statuscolumn "Stav">
 <!ENTITY nch.prefs.attemptcolumn "Pokus">
 <!ENTITY nch.prefs.minimalservicesattempt "Minimální pokus (služby) k přehrání zvuku">
+
+<!ENTITY nch.prefs.advanced "Pokročilé">
+<!ENTITY nch.advanced.downloadtimeout "Časový limit stahování status.cgi (ve vteřinách)">

@@ -134,3 +134,6 @@
 <!ENTITY nch.prefs.statuscolumn "Status">
 <!ENTITY nch.prefs.attemptcolumn "Attempt">
 <!ENTITY nch.prefs.minimalservicesattempt "Minimal service's attempt to play the sound">
+
+<!ENTITY nch.prefs.advanced "Advanced">
+<!ENTITY nch.advanced.downloadtimeout "Status.cgi download timeout (in seconds)">

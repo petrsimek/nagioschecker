@@ -1,61 +1,3 @@
-  var MAX_DUMP_DEPTH = 10;
-
-      
-
-       function dumpObj(obj, name, indent, depth) {
-
-              if (depth > MAX_DUMP_DEPTH) {
-
-                     return indent + name + ": <Maximum Depth Reached>\n";
-
-              }
-
-              if (typeof obj == "object") {
-
-                     var child = null;
-
-                     var output = indent + name + "\n";
-
-                     indent += "\t";
-
-                     for (var item in obj)
-
-                     {
-
-                           try {
-
-                                  child = obj[item];
-
-                           } catch (e) {
-
-                                  child = "<Unable to Evaluate>";
-
-                           }
-
-                           if (typeof child == "object") {
-
-                                  output += dumpObj(child, item, indent, depth + 1);
-
-                           } else {
-
-                                  output += indent + item + ": " + child + "\n";
-
-                           }
-
-                     }
-
-                     return output;
-
-              } else {
-
-                     return obj;
-
-              }
-
-       }
-
-      
-
 var _showTimerID = null;
 var _tab = null;
 var MAX_SERVERS=200;
@@ -404,8 +346,10 @@ dump('x:'+x+' y:'+y+' ax:'+aScreenX+' ay:'+aScreenY+'\n');
 			sounds_by_type_critical:['bool',true],
 			sounds_by_type_unknown:['bool',true],
 			show_window_column_information:['bool',true],
-			show_window_column_flags:['bool',true],
+			show_window_column_flags:['bool',false],
 			show_window_column_alias:['bool',false],
+			show_window_column_attempt:['bool',false],
+			show_window_column_status:['bool',true],
 			filter_out_acknowledged:['bool',true],
 			filter_out_disabled_notifications:['bool',true],
 			filter_out_disabled_checks:['bool',true],
@@ -848,7 +792,8 @@ dump("SERVERSENABLED:"+this._serversEnabled);
 
   enumerateStatus: function(problems) {
 
-	var paket = new NCHPaket(this.pref.show_window_column_information,this.pref.show_window_column_alias,this.pref.show_window_column_flags);
+//	var paket = new NCHPaket(this.pref.show_window_column_information,this.pref.show_window_column_alias,this.pref.show_window_column_flags);
+	var paket = new NCHPaket(this.pref);
 
     var newProblems={};
     for(var i=0;i<problems.length;i++) {
@@ -1395,14 +1340,16 @@ dump('IWT:<>1\n');
 }
 
 
-function NCHToolTip(showColInfo,showColAlias,showColFlags) {
+//function NCHToolTip(showColInfo,showColAlias,showColFlags) {
+function NCHToolTip(pref) {
   this._rows=null;
   this.title=title;
   this._vbox=null;
   this.headers = [];
-  this.showColInfo=showColInfo;
-  this.showColAlias=showColAlias;
-  this.showColFlags=showColFlags;
+  this.pref = pref;
+//  this.showColInfo=showColInfo;
+//  this.showColAlias=showColAlias;
+//  this.showColFlags=showColFlags;
 	this.actH=-1;
 
   this.create = function(from) {
@@ -1442,7 +1389,8 @@ function NCHToolTip(showColInfo,showColAlias,showColFlags) {
 		var cl = doc.createElement("column");
 //		cl.setAttribute("flex","1");
 		cls.appendChild(cl);
-    if (this.showColAlias) {
+	if (this.pref.show_window_column_alias) {
+//    if (this.showColAlias) {
 		var cl = doc.createElement("column");
 //		cl.setAttribute("flex","1");
 		cls.appendChild(cl);
@@ -1450,28 +1398,30 @@ function NCHToolTip(showColInfo,showColAlias,showColFlags) {
 		var cl = doc.createElement("column");
 //		cl.setAttribute("flex","1");
 		cls.appendChild(cl);
-if (this.showColFlags) {		
-		var cl = doc.createElement("column");
+		if (this.pref.show_window_column_flags) {
+//if (this.showColFlags) {		
+			var cl = doc.createElement("column");
 //		cl.setAttribute("flex","1");
-		cls.appendChild(cl);
-}
-		var cl = doc.createElement("column");
-//		cl.setAttribute("flex","1");
-		cls.appendChild(cl);
+			cls.appendChild(cl);
+		}
 		var cl = doc.createElement("column");
 //		cl.setAttribute("flex","1");
 		cls.appendChild(cl);
 		var cl = doc.createElement("column");
 //		cl.setAttribute("flex","1");
 		cls.appendChild(cl);
-    if (this.showColInfo) {
 		var cl = doc.createElement("column");
 //		cl.setAttribute("flex","1");
-		cl.setAttribute("style","max-width:20px;");
+		cls.appendChild(cl);
+		if (this.pref.show_window_column_information) {
+//    if (this.showColInfo) {
+			var cl = doc.createElement("column");
+//		cl.setAttribute("flex","1");
+			cl.setAttribute("style","max-width:20px;");
 
 
 		cls.appendChild(cl);
-    }
+    	}
 		this._rows = doc.createElement("rows");
 		grid.appendChild(this._rows);
 
@@ -1487,37 +1437,43 @@ if (this.showColFlags) {
 		lHost.setAttribute("value", nagioschecker.bundle.getString("host"));
 		row.appendChild(lHost);
 
-    if (this.showColAlias) {
-		var lAlias = doc.createElement("label");
-		lAlias.setAttribute("value", nagioschecker.bundle.getString("hostAlias"));
+//    if (this.showColAlias) {
+		if (this.pref.show_window_column_alias) {
+			var lAlias = doc.createElement("label");
+			lAlias.setAttribute("value", nagioschecker.bundle.getString("hostAlias"));
 //		lAlias.setAttribute("maxwidth", "50px");
-		row.appendChild(lAlias);
-	}
+			row.appendChild(lAlias);
+		}
  		var lServ = doc.createElement("label");
 	  lServ.setAttribute("value", nagioschecker.bundle.getString("service"));
 	  row.appendChild(lServ);
 
-    if (this.showColFlags) {
- 		var lFlags = doc.createElement("label");
-	  lFlags.setAttribute("value", nagioschecker.bundle.getString("flags"));
-	  row.appendChild(lFlags);
-    }
- 		var lAttempt = doc.createElement("label");
-	  lAttempt.setAttribute("value", "Attempt");
-	  row.appendChild(lAttempt);
-		var lStat = doc.createElement("label");
-		lStat.setAttribute("value", nagioschecker.bundle.getString("status"));
-		row.appendChild(lStat);
-
+//    if (this.showColFlags) {
+		if (this.pref.show_window_column_flags) {
+ 			var lFlags = doc.createElement("label");
+			  lFlags.setAttribute("value", nagioschecker.bundle.getString("flags"));
+			  row.appendChild(lFlags);
+	    }
+		if (this.pref.show_window_column_attempt) {
+	 		var lAttempt = doc.createElement("label");
+		  lAttempt.setAttribute("value", nagioschecker.bundle.getString("attempt"));
+		  row.appendChild(lAttempt);
+		}
+		if (this.pref.show_window_column_status) {
+			var lStat = doc.createElement("label");
+			lStat.setAttribute("value", nagioschecker.bundle.getString("status"));
+			row.appendChild(lStat);
+		}
 		var lTime = doc.createElement("label");
 		lTime.setAttribute("value", nagioschecker.bundle.getString("duration"));
 		row.appendChild(lTime);
 
-    if (this.showColInfo) {
-		var lInfo = doc.createElement("label");
-		lInfo.setAttribute("value", nagioschecker.bundle.getString("information"));
-		row.appendChild(lInfo);
-    }
+		if (this.pref.show_window_column_information) {
+//    if (this.showColInfo) {
+			var lInfo = doc.createElement("label");
+			lInfo.setAttribute("value", nagioschecker.bundle.getString("information"));
+			row.appendChild(lInfo);
+    	}
 
 		this._tooltip.appendChild(this._vbox);
 
@@ -1586,10 +1542,14 @@ if (this.showColFlags) {
 
 		var row = document.createElement("row");
  		this._rows.appendChild(row);
+
+	    var hbd = doc.createElement("hbox");
+		this._rows.appendChild(hbd);
+
 		var lErr = document.createElement("label");
 		lErr.setAttribute("class","error");
 		lErr.setAttribute("value", nagioschecker.bundle.getString("downloadError"));
-		row.appendChild(lErr);
+		hbd.appendChild(lErr);
 
 
 
@@ -1662,16 +1622,18 @@ if (this.showColFlags) {
 
 
 
-    if (this.showColAlias) {
-		var lAlias = document.createElement("label");
+		if (this.pref.show_window_column_alias) {
+//    if (this.showColAlias) {
+			var lAlias = document.createElement("label");
 
-		lAlias.setAttribute("value", (this.headers[i].aliases[problem.host]) ? this.headers[i].aliases[problem.host] : "-");
+			lAlias.setAttribute("value", (this.headers[i].aliases[problem.host]) ? this.headers[i].aliases[problem.host] : "-");
 			row.appendChild(lAlias);
-	}
+		}
 		var lServ = document.createElement("label");
 		lServ.setAttribute("value", (problem.service==null) ? "-" : problem.service);
 		row.appendChild(lServ);
 
+		if (this.pref.show_window_column_flags) {
 		var flags="";
 		if (problem.acknowledged) flags+='Ac';
 		if (problem.dischecks) flags+='Ch';
@@ -1680,30 +1642,33 @@ if (this.showColFlags) {
 		if (problem.flapping) flags+='Fl';
 		if (problem.onlypass) flags+='Pa';
 
-    if (this.showColFlags) {
-		var lFlags = document.createElement("label");
-		lFlags.setAttribute("value", flags);
-		row.appendChild(lFlags);
-    }
+//    if (this.showColFlags) {
+			var lFlags = document.createElement("label");
+			lFlags.setAttribute("value", flags);
+			row.appendChild(lFlags);
+	    }
+		if (this.pref.show_window_column_attempt) {
 		var lAttempt = document.createElement("label");
 		lAttempt.setAttribute("value", problem.attempt);
 		row.appendChild(lAttempt);
-
+		}
+		if (this.pref.show_window_column_status) {
 		var lStat = document.createElement("label");
 		lStat.setAttribute("value", status_text);
 		row.appendChild(lStat);
-
+		}
 		var lTime = document.createElement("label");
 		lTime.setAttribute("value", problem.duration);
 		row.appendChild(lTime);
 
 
-    if (this.showColInfo) {
-		var lInfo = document.createElement("label");
-		lInfo.setAttribute("value", problem.info);
-		lInfo.setAttribute("style","overflow:hidden;white-space:nowrap;");
-		row.appendChild(lInfo);
-    }
+//    if (this.showColInfo) {
+		if (this.pref.show_window_column_information) {
+			var lInfo = document.createElement("label");
+			lInfo.setAttribute("value", problem.info);
+			lInfo.setAttribute("style","overflow:hidden;white-space:nowrap;");
+			row.appendChild(lInfo);
+    	}
 
 
 
@@ -1713,18 +1678,32 @@ if (this.showColFlags) {
 
 }
 
-function NCHPaket(sci,sca,scf) {
+//function NCHPaket(sci,sca,scf) {
+function NCHPaket(pref) {
+	this.pref = pref;
+
+/*	
 	this.showColInfo = sci;
 	this.showColAlias = sca;
 	this.showColFlags = scf;
+*/ 
 	this.pt = ["down","unreachable","unknown","warning","critical"];
 	this.ttip = [];
+/*
 	this.all = [new NCHToolTip(this.showColInfo,this.showColAlias,this.showColFlags),0,0,[],[],0,0];
 	this.down = [new NCHToolTip(this.showColInfo,this.showColAlias,this.showColFlags),0,0,[],[]];
 	this.unreachable = [new NCHToolTip(this.showColInfo,this.showColAlias,this.showColFlags),0,0,[],[]];
 	this.unknown = [new NCHToolTip(this.showColInfo,this.showColAlias,this.showColFlags),0,0,[],[]];
 	this.warning = [new NCHToolTip(this.showColInfo,this.showColAlias,this.showColFlags),0,0,[],[]];
 	this.critical = [new NCHToolTip(this.showColInfo,this.showColAlias,this.showColFlags),0,0,[],[]];
+*/
+	this.all = [new NCHToolTip(this.pref),0,0,[],[],0,0];
+	this.down = [new NCHToolTip(this.pref),0,0,[],[]];
+	this.unreachable = [new NCHToolTip(this.pref),0,0,[],[]];
+	this.unknown = [new NCHToolTip(this.pref),0,0,[],[]];
+	this.warning = [new NCHToolTip(this.pref),0,0,[],[]];
+	this.critical = [new NCHToolTip(this.pref),0,0,[],[]];
+
 	this.isError = false;
 	this.sa = [null,[0,0],[0,0],[0,0]];
 	this.addTooltipHeader = function(to,header,serverPos,timeFetch) {
