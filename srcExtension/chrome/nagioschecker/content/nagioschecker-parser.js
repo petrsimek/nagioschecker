@@ -83,6 +83,7 @@ function NCHParser() {};
 
 NCHParser.prototype = {
   _servers:[],
+  callback:null,
   problems: [],
   manager:null,
   timeout:30,
@@ -95,8 +96,10 @@ NCHParser.prototype = {
   setTimeout: function (t) {
     this.timeout=t;
   },
-  fetchAllData: function(manager) {
+//  fetchAllData: function(manager) {
+  fetchAllData: function(manager,callback) {
     if (this._servers.length>0) {
+  		this.callback=callback;
   	 this.manager=manager;
     this.problems = [];
     this.fetchServer(0);
@@ -120,7 +123,8 @@ NCHParser.prototype = {
 				me.loadMissingAlias(0,pos,user,pass,function () {
 					me.problems[pos]["_time"]=new Date();
 					if (me._servers.length==pos+1) {
-						me.manager.handleProblems(me.problems);
+//						me.manager.handleProblems(me.problems);
+						me.callback(me.problems);
 					}
 					else {
 						me.fetchServer(pos+1);
@@ -131,6 +135,8 @@ NCHParser.prototype = {
      }
      else {
 		if (this._servers.length==pos+1) {
+//			this.manager.handleProblems(this.problems);
+			this.callback(this.problems);
 			this.manager.handleProblems(this.problems);
 		}
 		else {

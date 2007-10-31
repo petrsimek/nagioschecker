@@ -541,18 +541,37 @@ dump("SERVERSENABLED:"+this._serversEnabled);
 		if (this._servers.length>0) {
 			if (!this.isStopped) {
 				var firstWin = this.getFirstWindow();
-				if (firstWin==window) {
-					this.setLoading(true);
-					this.parser.fetchAllData(this);
+				if ((this.pref.one_window_only) && (firstWin!=window)  && (!gMini)) {
+//				this.updateAllClients(this.results);
+					this.setIcon("disabled");
 				}
 				else {
-					if ((this.pref.one_window_only) && (!gMini)){
-						this.setIcon("disabled");
-					}
-					else {
-						firstWin.nagioschecker.setLoading(true);
-						firstWin.nagioschecker.parser.fetchAllData(nagioschecker);
-					}
+					firstWin.nagioschecker.setLoading(true);
+//					firstWin.nagioschecker.parser.fetchAllData(nagioschecker,function(probs) {nagioschecker.handleProblems(probs)});
+					var me = firstWin.nagioschecker;
+					var me2 = this;
+					firstWin.nagioschecker.parser.fetchAllData(nagioschecker,function(probs) {
+						if (document) {
+							me2.enumerateStatus(probs);
+							me.updateAllClients(me2.results);
+							var reallyPlay=false;
+
+							for(var i=0;i<me.pt.length;i++) {
+								if ( 
+									((me.pref.play_sound==1) && (me.soundBT[me.pt[i]]) && (me.results[me.pt[i]][2]) && me.results.checkServiceAttempt(me.pref.play_sound_attempt))
+									||
+									((me.pref.play_sound==2) && (me.soundBT[me.pt[i]]) && (me.results[me.pt[i]][1]) && me.results.checkOldServiceAttempt(me.pref.play_sound_attempt))
+								) {
+									reallyPlay=true;
+								}
+							}
+
+							if (reallyPlay) {
+								me.playSound(me.results);
+							}
+							me.setNextCheck();
+						}
+					});
 				}
 			}
 			else {
@@ -562,77 +581,6 @@ dump("SERVERSENABLED:"+this._serversEnabled);
 		else {
 			this.updateAllClients(null);
 		}
-	},
-
-  createUrl: function(server,type) {
-		var url="";
-		switch (type) {
-			case "host_problems":
-	        url = server.urlstatus+"?hostgroup=all&style=hostdetail&hoststatustypes=12";
-			break;
-			case "service_problems":
-	        if (server.versionOlderThan20) {
-	          url = server.urlstatus+"?host=all&servicestatustypes=248";
-	        }
-	        else {
-	          url = server.urlstatus+"?host=all&servicestatustypes=28";
-	        }
-			break;
-		}
-		return url;
-	},
-
-	createUrlDevice: function(i,host,service) {
-		var extinfo = this._servers[i].urlstatus.replace(/status\.cgi/,"extinfo.cgi");
-		var url = extinfo+"?type="+((service) ? "2" : "1")+"&host="+escape(host);
-		if (service) {
-			url+="&service="+escape(service);
-		}
-		return url;
-	},
-
-  // plan next check
-  setNextCheck: function(){
-	var me = this;
-	this.timeoutId = setTimeout(
-			function() {
-				if (me.isCheckingTime()) {
-					me.setIcon("loading");
-					me.parser.fetchAllData(me);
-				} else {
-					me.setNextCheck();
-					me.setIcon("sleepy");
-				}
-			}
-			, this.pref.refresh*60000
-		);
-  },
-
-  handleProblems: function(probs) {
-	if (document) {
-		this.enumerateStatus(probs);
-		this.updateAllClients(this.results);
-		var reallyPlay=false;
-
-//alert(this.results.all[1]+":"+this.results.all[1]+" "+this.results.sa[1][0]+":"+this.results.sa[1][1]+" "+this.results.sa[2][0]+":"+this.results.sa[2][1]+" "+this.results.sa[3][0]+":"+this.results.sa[3][1])
-//alert(this.results.checkOldServiceAttempt(1)+" "+this.results.checkOldServiceAttempt(2)+" "+this.results.checkOldServiceAttempt(3));
-//alert(this.results.checkServiceAttempt(1)+" "+this.results.checkServiceAttempt(2)+" "+this.results.checkServiceAttempt(3));
-		for(var i=0;i<this.pt.length;i++) {
-			if ( 
-				((this.pref.play_sound==1) && (this.soundBT[this.pt[i]]) && (this.results[this.pt[i]][2]) && this.results.checkServiceAttempt(this.pref.play_sound_attempt))
-				||
-				((this.pref.play_sound==2) && (this.soundBT[this.pt[i]]) && (this.results[this.pt[i]][1]) && this.results.checkOldServiceAttempt(this.pref.play_sound_attempt))
-			) {
-				reallyPlay=true;
-			}
-		}
-
-		if (reallyPlay) {
-			this.playSound(this.results);
-		}
-		this.setNextCheck();
-
-	}
 	},
 
   updateAllClients: function(paket) {
@@ -668,6 +616,79 @@ dump("SERVERSENABLED:"+this._serversEnabled);
       cnt++;
     }
   },
+
+/*
+  handleProblems: function(probs) {
+	if (document) {
+		this.enumerateStatus(probs);
+		this.updateAllClients(this.results);
+		var reallyPlay=false;
+
+		for(var i=0;i<this.pt.length;i++) {
+			if ( 
+				((this.pref.play_sound==1) && (this.soundBT[this.pt[i]]) && (this.results[this.pt[i]][2]) && this.results.checkServiceAttempt(this.pref.play_sound_attempt))
+				||
+				((this.pref.play_sound==2) && (this.soundBT[this.pt[i]]) && (this.results[this.pt[i]][1]) && this.results.checkOldServiceAttempt(this.pref.play_sound_attempt))
+			) {
+				reallyPlay=true;
+			}
+		}
+
+		if (reallyPlay) {
+			this.playSound(this.results);
+		}
+		this.setNextCheck();
+
+	}
+	},
+*/
+
+  createUrl: function(server,type) {
+		var url="";
+		switch (type) {
+			case "host_problems":
+	        url = server.urlstatus+"?hostgroup=all&style=hostdetail&hoststatustypes=12";
+			break;
+			case "service_problems":
+	        if (server.versionOlderThan20) {
+	          url = server.urlstatus+"?host=all&servicestatustypes=248";
+	        }
+	        else {
+	          url = server.urlstatus+"?host=all&servicestatustypes=28";
+	        }
+			break;
+		}
+		return url;
+	},
+
+	createUrlDevice: function(i,host,service) {
+		var extinfo = this._servers[i].urlstatus.replace(/status\.cgi/,"extinfo.cgi");
+		var url = extinfo+"?type="+((service) ? "2" : "1")+"&host="+escape(host);
+		if (service) {
+			url+="&service="+escape(service);
+		}
+		return url;
+	},
+
+  // plan next check
+  setNextCheck: function(){
+	var me = this;
+	this.timeoutId = setTimeout(
+			function() {
+				if (me.isCheckingTime()) {
+					me.setIcon("loading");
+					me.doUpdate();
+//					me.parser.fetchAllData(me,function(probs) {me.handleProblems(probs)});
+				} else {
+					me.setNextCheck();
+					me.setIcon("sleepy");
+				}
+			}
+			, this.pref.refresh*60000
+		);
+  },
+
+
 
   observe : function(subject, topic, data) {
   	if (topic == "nagioschecker:preferences-changed") {
@@ -792,7 +813,6 @@ dump("SERVERSENABLED:"+this._serversEnabled);
 
   enumerateStatus: function(problems) {
 
-//	var paket = new NCHPaket(this.pref.show_window_column_information,this.pref.show_window_column_alias,this.pref.show_window_column_flags);
 	var paket = new NCHPaket(this.pref);
 
     var newProblems={};
@@ -881,7 +901,6 @@ dump("SERVERSENABLED:"+this._serversEnabled);
 					    ) {
 							var uniq = this._servers[i].name+"-"+probls[j].host+"-"+probls[j].service+"-"+probls[j].status;
 							newProblems[uniq]=probls[j];
-dump("UNIQ:"+uniq+" "+this.oldProblems[uniq]+"\n");
 							paket.addProblem(i,this.pt[x],this.oldProblems[uniq],probls[j],this._servers[i].aliases[probls[j].host]);
 				    }
 					if ((this.pt[x]=="down") || (this.pt[x]=="unreachable")) {
@@ -892,10 +911,7 @@ dump("UNIQ:"+uniq+" "+this.oldProblems[uniq]+"\n");
 				    }
 			    }
 			}
-          
-
-
-		    }
+	    }
     }
 
     this.oldProblems=newProblems;
@@ -1697,12 +1713,21 @@ function NCHPaket(pref) {
 	this.warning = [new NCHToolTip(this.showColInfo,this.showColAlias,this.showColFlags),0,0,[],[]];
 	this.critical = [new NCHToolTip(this.showColInfo,this.showColAlias,this.showColFlags),0,0,[],[]];
 */
+
 	this.all = [new NCHToolTip(this.pref),0,0,[],[],0,0];
 	this.down = [new NCHToolTip(this.pref),0,0,[],[]];
 	this.unreachable = [new NCHToolTip(this.pref),0,0,[],[]];
 	this.unknown = [new NCHToolTip(this.pref),0,0,[],[]];
 	this.warning = [new NCHToolTip(this.pref),0,0,[],[]];
 	this.critical = [new NCHToolTip(this.pref),0,0,[],[]];
+/*
+	this.all = [null,0,0,[],[],0,0];
+	this.down = [null,0,0,[],[]];
+	this.unreachable = [null,0,0,[],[]];
+	this.unknown = [null,0,0,[],[]];
+	this.warning = [null,0,0,[],[]];
+	this.critical = [null,0,0,[],[]];
+*/
 
 	this.isError = false;
 	this.sa = [null,[0,0],[0,0],[0,0]];
@@ -1760,11 +1785,16 @@ dump("pricteno stav:"+this["all"][2]+"\n");
 	 	return this[problemType][2];
 	}
 	this.createTooltip = function() {
+//		this["all"][0]=new NCHToolTip(this.pref);
+
 	    if (this["all"][0]) {
-	      this["all"][0].create(document.getElementById('nagioschecker-popup'));
+        this["all"][0].create(document.getElementById('nagioschecker-popup'));
 	    }
+ 
     	for(var i=0;i<this.pt.length;i++) {
 	      if ((this[this.pt[i]]) && (this[this.pt[i]][0])) {
+//	      if (this[this.pt[i]]) {
+//	      	this[this.pt[i]][0] = new NCHToolTip(this.pref);
 	        this[this.pt[i]][0].create(document.getElementById('nagioschecker-popup-'+this.pt[i]));
 	      }
 	    }
