@@ -137,7 +137,6 @@ NCHParser.prototype = {
 		if (this._servers.length==pos+1) {
 //			this.manager.handleProblems(this.problems);
 			this.callback(this.problems);
-			this.manager.handleProblems(this.problems);
 		}
 		else {
 			this.fetchServer(pos+1);

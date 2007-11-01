@@ -54,6 +54,7 @@ var nagioscheckerUnload = function() {
 function NCH() {};
 
 NCH.prototype = {
+	_uid:0,
   bundle: null,
   url: null,
   worktime_from:null,
@@ -181,6 +182,7 @@ dump('x:'+x+' y:'+y+' ax:'+aScreenX+' ay:'+aScreenY+'\n');
   
   _super: null,
   start : function() {
+	this._uid = Math.floor(Math.random()*10000);
 	if (gMini) {
    var resizer = document.getElementById('nagioschecker-mover');
 
@@ -542,8 +544,8 @@ dump("SERVERSENABLED:"+this._serversEnabled);
 			if (!this.isStopped) {
 				var firstWin = this.getFirstWindow();
 				if ((this.pref.one_window_only) && (firstWin!=window)  && (!gMini)) {
-//				this.updateAllClients(this.results);
-					this.setIcon("disabled");
+				this.updateAllClients(this.results);
+//					this.setIcon("disabled");
 				}
 				else {
 					firstWin.nagioschecker.setLoading(true);
@@ -593,6 +595,7 @@ dump("SERVERSENABLED:"+this._serversEnabled);
     while(enumerator.hasMoreElements()) {
       var win = enumerator.getNext();
       if (win.nagioschecker) {
+dump("win.nagioschecker._uid:"+win.nagioschecker._uid+"\n");
         if (!this.isStopped) {        
           if ((this.pref.one_window_only) && (cnt>0) && (!win.gMini)) {
           	win.nagioschecker.setNoData("");
@@ -1059,9 +1062,8 @@ dump('IWT:<>1\n');
 
 
   updateStatus: function(paket,firstRun) {
-	this._paket=paket;
-
-	paket.createTooltip();
+dump("createTooltip()\n");
+	paket.createTooltip(document);
 
 
 	this.resetBehavior(paket.isAtLeastOne());
@@ -1713,31 +1715,32 @@ function NCHPaket(pref) {
 	this.warning = [new NCHToolTip(this.showColInfo,this.showColAlias,this.showColFlags),0,0,[],[]];
 	this.critical = [new NCHToolTip(this.showColInfo,this.showColAlias,this.showColFlags),0,0,[],[]];
 */
-
+/*
 	this.all = [new NCHToolTip(this.pref),0,0,[],[],0,0];
 	this.down = [new NCHToolTip(this.pref),0,0,[],[]];
 	this.unreachable = [new NCHToolTip(this.pref),0,0,[],[]];
 	this.unknown = [new NCHToolTip(this.pref),0,0,[],[]];
 	this.warning = [new NCHToolTip(this.pref),0,0,[],[]];
 	this.critical = [new NCHToolTip(this.pref),0,0,[],[]];
-/*
-	this.all = [null,0,0,[],[],0,0];
-	this.down = [null,0,0,[],[]];
-	this.unreachable = [null,0,0,[],[]];
-	this.unknown = [null,0,0,[],[]];
-	this.warning = [null,0,0,[],[]];
-	this.critical = [null,0,0,[],[]];
 */
+	this.all = [new Array(),0,0,[],[],0,0];
+	this.down = [new Array(),0,0,[],[]];
+	this.unreachable = [new Array(),0,0,[],[]];
+	this.unknown = [new Array(),0,0,[],[]];
+	this.warning = [new Array(),0,0,[],[]];
+	this.critical = [new Array(),0,0,[],[]];
 
 	this.isError = false;
 	this.sa = [null,[0,0],[0,0],[0,0]];
 	this.addTooltipHeader = function(to,header,serverPos,timeFetch) {
 		this.ttip.push({type:'header',data:header});
-	 	this[to][0].addHeader(header,serverPos,timeFetch);
+//	 	this[to][0].addHeader(header,serverPos,timeFetch);
+	 	this[to][0].push({type:'header',data:header,serverPos:serverPos,timeFetch:timeFetch});
 	}
 	this.addError = function(to) {
-		this[to][0].addError();
+//		this[to][0].addError();
 		this["isError"]=true;
+	 	this[to][0].push({type:'error'});
 	}
 	this.addProblem = function(serverPos,problemType,isOld,problem,aliasName) {
 dump("ADDPROBLEM:"+serverPos+" "+problemType+" "+isOld+" "+problem+" "+aliasName+"\n");
@@ -1760,8 +1763,11 @@ dump("pricteno stav:"+this["all"][2]+"\n");
 		this.ttip.push({type:'problem',data:problem});
 		this[problemType][1] = (this[problemType][1]) ? this[problemType][1]+1 : 1;
 		this[problemType][3][serverPos] = (this[problemType][3][serverPos]) ? this[problemType][3][serverPos]+1 : 1;
-		this["all"][0].addRow(problem,aliasName,(!isOld));
-		this[problemType][0].addRow(problem,aliasName,(!isOld));
+//		this["all"][0].addRow(problem,aliasName,(!isOld));
+	 	this["all"][0].push({type:'problem',data:problem,aliasName:aliasName,isNew:(!isOld)});
+
+//		this[problemType][0].addRow(problem,aliasName,(!isOld));
+	 	this[problemType][0].push({type:'problem',data:problem,aliasName:aliasName,isNew:(!isOld)});
 		this["all"][1] = (this["all"][1]) ? this["all"][1]+1 : 1;
 		this["all"][3][serverPos] = (this["all"][3][serverPos]) ? this["all"][3][serverPos]+1 : 1;
 	}
@@ -1784,18 +1790,52 @@ dump("pricteno stav:"+this["all"][2]+"\n");
 	this.countOldProblemsByType = function(problemType) {
 	 	return this[problemType][2];
 	}
-	this.createTooltip = function() {
-//		this["all"][0]=new NCHToolTip(this.pref);
+	this.createTooltip = function(doc) {
+dump("uid:"+nagioschecker._uid+"\n");
+		var ttall=new NCHToolTip(this.pref);
+dump("this.createTooltip - all\n");
 
+		for(var i in this["all"][0]) {
+			switch (this["all"][0][i]["type"]) {
+				case "header":			
+					ttall.addHeader(this["all"][0][i]["data"],this["all"][0][i]["serverPos"],this["all"][0][i]["timeFetch"]);
+					break;
+				case "error":			
+					ttall.addError();
+					break;
+				case "problem":			
+					ttall.addRow(this["all"][0][i]["data"],this["all"][0][i]["aliasName"],this["all"][0][i]["isNew"]);
+					break;
+			}
+		}
+
+        ttall.create(doc.getElementById('nagioschecker-popup'));
+/*
 	    if (this["all"][0]) {
-        this["all"][0].create(document.getElementById('nagioschecker-popup'));
 	    }
- 
+ */
     	for(var i=0;i<this.pt.length;i++) {
-	      if ((this[this.pt[i]]) && (this[this.pt[i]][0])) {
-//	      if (this[this.pt[i]]) {
-//	      	this[this.pt[i]][0] = new NCHToolTip(this.pref);
-	        this[this.pt[i]][0].create(document.getElementById('nagioschecker-popup-'+this.pt[i]));
+//	      if ((this[this.pt[i]]) && (this[this.pt[i]][0])) {
+	      if (this[this.pt[i]]) {
+dump("this.createTooltip - "+this.pt[i]+"\n");
+				var ttpt=new NCHToolTip(this.pref);
+
+				for(var j in this[this.pt[i]][0]) {
+					switch (this[this.pt[i]][0][j]["type"]) {
+						case "header":			
+							ttall.addHeader(this[this.pt[i]][0][j]["data"],this[this.pt[i]][0][j]["serverPos"],this[this.pt[i]][0][j]["timeFetch"]);
+							break;
+						case "error":			
+							ttall.addError();
+							break;
+						case "problem":			
+							ttall.addRow(this[this.pt[i]][0][j]["data"],this[this.pt[i]][0][j]["aliasName"],this[this.pt[i]][0][j]["isNew"]);
+							break;
+					}
+				}
+
+//	        this[this.pt[i]][0].create(document.getElementById('nagioschecker-popup-'+this.pt[i]));
+	        ttpt.create(doc.getElementById('nagioschecker-popup-'+this.pt[i]));
 	      }
 	    }
 	}
