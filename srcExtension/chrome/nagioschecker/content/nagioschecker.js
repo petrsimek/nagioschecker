@@ -1,3 +1,4 @@
+
 var _showTimerID = null;
 var _tab = null;
 var MAX_SERVERS=200;
@@ -15,6 +16,7 @@ var ev2pop = {
 			  'nagioschecker-services-warning':'nagioschecker-popup-warning',
 			  'nagioschecker-services-critical':'nagioschecker-popup-critical'};
 
+var isFirst = null;
 var nagioschecker = null;
 var nagioscheckerLoad = function() {
 
@@ -321,6 +323,18 @@ dump('x:'+x+' y:'+y+' ax:'+aScreenX+' ay:'+aScreenY+'\n');
 
   reload : function(firstRun) {
 
+    var wm = Components.classes["@mozilla.org/appshell/window-mediator;1"]
+                   .getService(Components.interfaces.nsIWindowMediator);
+    var browserWindow = wm.getMostRecentWindow("navigator:browser");
+    var enumerator = wm.getEnumerator("");
+    var cnt=0;
+    while(enumerator.hasMoreElements()) {
+      var win = enumerator.getNext();
+      win.isFirst = (cnt==0);
+	  cnt++;
+    }
+
+
   	this.pref = this.loadPref("extensions.nagioschecker.",{
 			sound_warning:['int',0],
 			sound_warning_path:['char','chrome://nagioschecker/content/warning.wav'],
@@ -597,27 +611,41 @@ dump("SERVERSENABLED:"+this._serversEnabled);
       if (win.nagioschecker) {
 dump("win.nagioschecker._uid:"+win.nagioschecker._uid+"\n");
         if (!this.isStopped) {        
-          if ((this.pref.one_window_only) && (cnt>0) && (!win.gMini)) {
+          if ((this.pref.one_window_only) && (!win.isFirst) && (!win.gMini)) {
+dump("disabled\n");
           	win.nagioschecker.setNoData("");
             win.nagioschecker.setIcon("disabled");
           }
           else {
             if (paket==null) {
+dump("notset\n");
               win.nagioschecker.setNoData("notSet");
             }
             else {
+dump("updatestatus\n");
               win.nagioschecker.updateStatus(paket,false);
             }
           }
         }
         else {
+dump("stop\n");
           win.nagioschecker.setNoData("");
           win.nagioschecker.setIcon("stop");
           win.nagioschecker.resetBehavior(true);
         }
       }
+      else {
+dump("disabled?\n");
+      	   	win.nagioschecker.setNoData("");
+            win.nagioschecker.setIcon("disabled");
+      	
+      }
       cnt++;
     }
+
+dump("!win.nagioschecker\n");
+
+
   },
 
 /*
@@ -1015,46 +1043,23 @@ dump("win.nagioschecker._uid:"+win.nagioschecker._uid+"\n");
 		  fld[pType].removeEventListener('mouseout',nagioschecker.handleMouseOut,false);
       }
 
-//		  mainPanel.addEventListener('mouseover',nagioschecker.handleMouseOver,false);
-//		  mainPanel.addEventListener('mouseout',nagioschecker.handleMouseOut,false);
-
 dump('RESETOOLTIPS '+isAny+' '+this.pref.info_window_type+' '+this.isStopped+'\n');
-    if ((isAny) && (this.pref.info_window_type>0) && (!this.isStopped)) {
+    if ((isAny) && (this.pref.info_window_type>0) && (!this.isStopped) && ((!this.pref.one_window_only) || ((this.pref.one_window_only) && (this.isFirstWindow()))))  {
       if (this.pref.info_window_type==1) {
-//        mainPanel.setAttribute("tooltip", "nagioschecker-tooltip");
 dump('IWT:1\n');
 		  mainPanel.addEventListener('mouseover',nagioschecker.handleMouseOver,false);
 		  mainPanel.addEventListener('mouseout',nagioschecker.handleMouseOut,false);
 		  mainPanel.relatedPopup='nagioschecker-popup';
-//        for (var pType in fld) {
-//          fld[pType].removeAttribute("tooltip");
-//		  fld[pType].removeEventListener('mouseover',nagioschecker.handleMouseOver,false);
-//		  fld[pType].removeEventListener('mouseout',nagioschecker.handleMouseOut,false);
-//        } 
       }
       else {
 dump('IWT:<>1\n');
-//  		  mainPanel.removeAttribute("tooltip");
-//		  mainPanel.removeEventListener('mouseover',nagioschecker.handleMouseOver,false);
-//		  mainPanel.removeEventListener('mouseout',nagioschecker.handleMouseOut,false);
   		  
         for (var pType in fld) {
 		  fld[pType].addEventListener('mouseover',nagioschecker.handleMouseOver,false);
 		  fld[pType].addEventListener('mouseout',nagioschecker.handleMouseOut,false);
 		  fld[pType].relatedTarget='nagioschecker-popup-'+pType;
-//         fld[pType].setAttribute("tooltip", "nagioschecker-tooltip-"+pType);
         }
       }
-    }
-    else {
-//  	  mainPanel.removeAttribute("tooltip");
-//		  mainPanel.removeEventListener('mouseover',nagioschecker.handleMouseOver,false);
-//		  mainPanel.removeEventListener('mouseout',nagioschecker.handleMouseOut,false);
-//      for (var pType in fld) {
-//        fld[pType].removeAttribute("tooltip");
-//		  fld[pType].removeEventListener('mouseover',nagioschecker.handleMouseOver,false);
-//		  fld[pType].removeEventListener('mouseout',nagioschecker.handleMouseOut,false);
-//      }
     }
 
   },
