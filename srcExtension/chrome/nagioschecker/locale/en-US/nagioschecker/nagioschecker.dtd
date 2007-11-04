@@ -28,7 +28,7 @@
 <!ENTITY nch.prefs.worktime "Plugin working hours (hh:mm)">
 <!ENTITY nch.prefs.utilityrun "Utility Run">
 <!ENTITY nch.prefs.other "Other">
-<!ENTITY nch.prefs.onewindowonly "Run only in window opened first">
+<!ENTITY nch.prefs.onewindowonly "Run only in first opened window">
 
 <!ENTITY nch.about.original "Original title">
 <!ENTITY nch.about.version "Version">
