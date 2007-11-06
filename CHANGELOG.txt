@@ -3,6 +3,7 @@
 * NEW: Option to show/not show Attempt and Status solumns in information window
 * NEW: Option to specify the lowest level to play sound with (only for service alerts).
 * NEW: extremely short statusbar info (no No problem, colored background behind N-icon)
+* BUGFIX: Do not show empty popup when no alert available
 
 0.10.9 (testing)
 * INTERNAL: New version of popup - tooltip and popup mashup

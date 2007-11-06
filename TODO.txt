@@ -7,9 +7,6 @@ NEW: Save config in external file.
 NEW: New filtering system (Regexps)
 
 My targets:
-
-BUG: Colors only: clincking on logo = no popup
-BUG: Po prepnuti z Colors only zustava podbarvene logo
 BUG: Nefunguje spravne Run in first window only
 NEW: Percentage od download
 Sound file for unreachable

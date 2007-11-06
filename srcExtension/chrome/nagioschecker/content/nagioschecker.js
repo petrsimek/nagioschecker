@@ -1,4 +1,3 @@
-
 var _showTimerID = null;
 var _tab = null;
 var MAX_SERVERS=200;
@@ -10,6 +9,7 @@ var ev2pop = {
 			  'nagioschecker-popup-warning':'nagioschecker-popup-warning',
 			  'nagioschecker-popup-critical':'nagioschecker-popup-critical',
 			  'nagioschecker-panel':'nagioschecker-popup',
+			  'nagioschecker-img':'nagioschecker-popup',
 			  'nagioschecker-hosts-down':'nagioschecker-popup-down',
 			  'nagioschecker-hosts-unreachable':'nagioschecker-popup-unreachable',
 			  'nagioschecker-services-unknown':'nagioschecker-popup-unknown',
@@ -103,7 +103,7 @@ dump('\n'+nagioschecker.openedPops.length+' out'+aEvent.target.id);
 		return;
 	}
 dump('v')	;
-		if ((aEvent.target.id == "nagioschecker-panel")||(aEvent.target.localName == "label")||(aEvent.target.localName == "popup")) {
+		if ((aEvent.target.id == "nagioschecker-img")||(aEvent.target.id == "nagioschecker-panel")||(aEvent.target.localName == "label")||(aEvent.target.localName == "popup")) {
 dump(' '+aEvent.target.localName+":"+_tab+":"+ev2pop[aEvent.target.id]);
 		if (aEvent.target == _tab) {
 			return;
@@ -313,7 +313,7 @@ dump('x:'+x+' y:'+y+' ax:'+aScreenX+' ay:'+aScreenY+'\n');
       	
 	    win.document.getElementById('nagioschecker-stoprun').setAttribute("label",(firstWin.nagioschecker.isStopped) ? this.bundle.getString("runagain") : this.bundle.getString("stop"));
       }
-		win.nagioschecker.resetBehavior(true);
+		win.nagioschecker.resetBehavior();
       cnt++;
 	}
 
@@ -542,7 +542,7 @@ dump("SERVERSENABLED:"+this._serversEnabled);
       document.getElementById('menu-separe2').setAttribute('hidden','true');
     }
 
-    this.resetBehavior(true);    
+    this.resetBehavior();    
 		this.doUpdate();
 
 
@@ -631,7 +631,7 @@ dump("updatestatus\n");
 dump("stop\n");
           win.nagioschecker.setNoData("");
           win.nagioschecker.setIcon("stop");
-          win.nagioschecker.resetBehavior(true);
+          win.nagioschecker.resetBehavior();
         }
       }
       else {
@@ -951,7 +951,12 @@ dump("!win.nagioschecker\n");
   },
 
 
-  resetBehavior: function(isAny) {
+  resetBehavior: function() {
+
+	var alertCount = (this.results['all']) ? this.results['all'][1] : 0;
+
+dump('RESETBEHAVIOR:'+alertCount+'\n');
+
     var fld = {
               "down":document.getElementById('nagioschecker-hosts-down'),
               "unreachable": document.getElementById('nagioschecker-hosts-unreachable'),
@@ -965,6 +970,8 @@ dump("!win.nagioschecker\n");
 
     var mainPanel=document.getElementById('nagioschecker-panel');
     var mainPopup=document.getElementById('nagioschecker-popup');
+dump("infotype:"+this.pref.info_type+"\n");
+dump("clicktype:"+this.pref.click+"\n");
 
     switch (this.pref.click) {
 		  case 1:
@@ -972,6 +979,15 @@ dump("!win.nagioschecker\n");
 			  break;
 		  case 3:
 			if (!this.isStopped) {
+
+			if (this.pref.info_type==6) {
+dump('icoclik');
+				var ico = document.getElementById('nagioschecker-img');
+				ico.addEventListener('click',nagioschecker.handleMouseClick,false);
+				ico.addEventListener('mouseout',nagioschecker.handleMouseOut,false);
+				ico.relatedTarget='nagioschecker-popup';
+			}
+
 				mainPanel.addEventListener('click',nagioschecker.handleMouseClick,false);
 		  mainPanel.addEventListener('mouseout',nagioschecker.handleMouseOut,false);
 		  mainPanel.relatedPopup='nagioschecker-popup';
@@ -1005,20 +1021,28 @@ dump("!win.nagioschecker\n");
 	  }
 	  else {
 	      if ((this.pref.click==4) && (!this.isStopped)) {
-	        for (var pType in fld) {
-	          fld[pType].setAttribute("style","cursor:pointer");
 
-		  var pop = document.getElementById('nagioschecker-popup-'+pType);
-		  pop.addEventListener('mouseover',nagioschecker.handleMouseOver,false);
-		  pop.addEventListener('mouseout',nagioschecker.handleMouseOut,false);
+			if (this.pref.info_type==6) {
+dump('zebyclick?')				;
+				var ico = document.getElementById('nagioschecker-img');
+				ico.addEventListener('click',nagioschecker.handleMouseClick,false);
+				ico.addEventListener('mouseout',nagioschecker.handleMouseOut,false);
+				ico.relatedTarget='nagioschecker-popup';
+			}
+			else {
+	    	    for (var pType in fld) {
+		          fld[pType].setAttribute("style","cursor:pointer");
 
-		  fld[pType].addEventListener('click',nagioschecker.handleMouseClick,false);
-		  fld[pType].addEventListener('mouseout',nagioschecker.handleMouseOut,false);
-		  fld[pType].relatedTarget='nagioschecker-popup-'+pType;
+				  var pop = document.getElementById('nagioschecker-popup-'+pType);
+				  pop.addEventListener('mouseover',nagioschecker.handleMouseOver,false);
+				  pop.addEventListener('mouseout',nagioschecker.handleMouseOut,false);
+	
+				  fld[pType].addEventListener('click',nagioschecker.handleMouseClick,false);
+				  fld[pType].addEventListener('mouseout',nagioschecker.handleMouseOut,false);
+				  fld[pType].relatedTarget='nagioschecker-popup-'+pType;
 
-
-//	    	    fld[pType].setAttribute("onclick","nagioschecker.showNchPopup(this,event,'nagioschecker-popup-"+pType+"');");
-	        }
+		        }
+			}
 	      }
 	      else {
 	        for (var pType in fld) {
@@ -1035,6 +1059,7 @@ dump("!win.nagioschecker\n");
 
 	  mainPanel.removeEventListener('mouseover',nagioschecker.handleMouseOver,false);
 	  mainPanel.removeEventListener('mouseout',nagioschecker.handleMouseOut,false);
+
       for (var pType in fld) {
 		  var pop = document.getElementById('nagioschecker-popup-'+pType);
 		  pop.addEventListener('mouseover',nagioschecker.handleMouseOver,false);
@@ -1043,8 +1068,8 @@ dump("!win.nagioschecker\n");
 		  fld[pType].removeEventListener('mouseout',nagioschecker.handleMouseOut,false);
       }
 
-dump('RESETOOLTIPS '+isAny+' '+this.pref.info_window_type+' '+this.isStopped+'\n');
-    if ((isAny) && (this.pref.info_window_type>0) && (!this.isStopped) && ((!this.pref.one_window_only) || ((this.pref.one_window_only) && (this.isFirstWindow()))))  {
+dump('RESETOOLTIPS '+alertCount+' '+this.pref.info_window_type+' '+this.isStopped+'\n');
+    if ((alertCount>0) && (this.pref.info_window_type>0) && (!this.isStopped) && ((!this.pref.one_window_only) || ((this.pref.one_window_only) && (this.isFirstWindow()))))  {
       if (this.pref.info_window_type==1) {
 dump('IWT:1\n');
 		  mainPanel.addEventListener('mouseover',nagioschecker.handleMouseOver,false);
@@ -1071,7 +1096,7 @@ dump("createTooltip()\n");
 	paket.createTooltip(document);
 
 
-	this.resetBehavior(paket.isAtLeastOne());
+	this.resetBehavior();
 
     var fld = {
               "down":document.getElementById('nagioschecker-hosts-down'),
@@ -1108,6 +1133,7 @@ dump("createTooltip()\n");
         }
     	  fld[pType].setAttribute("value", this.getCorrectBundleString(paket.countProblemsByType(pType),infoTypes[pType][(this.infoType==3) ? 1 : 2],x));
       }
+		document.getElementById('nagioschecker-img').setAttribute("class","");
 
     }
     else {
@@ -1116,6 +1142,7 @@ dump("createTooltip()\n");
 		  fld["unknown"].setAttribute("value", this.getCorrectBundleString(paket.countProblemsByType("unknown"),infoTypes["unknown"][this.pref.info_type],""));
 		  fld["warning"].setAttribute("value", this.getCorrectBundleString(paket.countProblemsByType("warning"),infoTypes["warning"][this.pref.info_type],""));
 		  fld["critical"].setAttribute("value", this.getCorrectBundleString(paket.countProblemsByType("critical"),infoTypes["critical"][this.pref.info_type],""));
+		document.getElementById('nagioschecker-img').setAttribute("class","");
     }
 
     fld["down"].setAttribute("hidden", (((paket.countProblemsByType("down")==0) || (!this.showSb["down"]) || (this.pref.info_type==6)) ? "true" : "false"));
@@ -1292,6 +1319,7 @@ dump("createTooltip()\n");
 
   setIcon: function(type) {
     var ico = document.getElementById('nagioschecker-img');
+	if (type!="nagios") ico.setAttribute("class","");
 	switch (type) {
 		case "loading":
 			ico.setAttribute("src","chrome://nagioschecker/skin/Throbber.gif");
