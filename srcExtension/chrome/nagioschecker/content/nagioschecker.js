@@ -78,7 +78,7 @@ NCH.prototype = {
   soundBT:{},
   parser: null,
   pt:["down","unreachable","unknown","warning","critical"],
-  results:{},
+  results:null,
   isMoving : false,
   startX : -1,
   startY : -1,
@@ -185,6 +185,7 @@ dump('x:'+x+' y:'+y+' ax:'+aScreenX+' ay:'+aScreenY+'\n');
   _super: null,
   start : function() {
 	this._uid = Math.floor(Math.random()*10000);
+	this.results=new NCHPaket(this.pref);
 	if (gMini) {
    var resizer = document.getElementById('nagioschecker-mover');
 
@@ -558,8 +559,8 @@ dump("SERVERSENABLED:"+this._serversEnabled);
 			if (!this.isStopped) {
 				var firstWin = this.getFirstWindow();
 				if ((this.pref.one_window_only) && (firstWin!=window)  && (!gMini)) {
-				this.updateAllClients(this.results);
-//					this.setIcon("disabled");
+//				this.updateAllClients(this.results);
+					this.setIcon("disabled");
 				}
 				else {
 					firstWin.nagioschecker.setLoading(true);
@@ -612,38 +613,38 @@ dump("SERVERSENABLED:"+this._serversEnabled);
 dump("win.nagioschecker._uid:"+win.nagioschecker._uid+"\n");
         if (!this.isStopped) {        
           if ((this.pref.one_window_only) && (!win.isFirst) && (!win.gMini)) {
-dump("disabled\n");
+dump(win.nagioschecker._uid+" disabled\n");
           	win.nagioschecker.setNoData("");
             win.nagioschecker.setIcon("disabled");
           }
           else {
             if (paket==null) {
-dump("notset\n");
+dump(win.nagioschecker._uid+" notset\n");
               win.nagioschecker.setNoData("notSet");
             }
             else {
-dump("updatestatus\n");
+dump(win.nagioschecker._uid+" updatestatus\n");
               win.nagioschecker.updateStatus(paket,false);
             }
           }
         }
         else {
-dump("stop\n");
+dump(win.nagioschecker._uid+" stop\n");
           win.nagioschecker.setNoData("");
           win.nagioschecker.setIcon("stop");
           win.nagioschecker.resetBehavior();
         }
       }
       else {
-dump("disabled?\n");
-      	   	win.nagioschecker.setNoData("");
-            win.nagioschecker.setIcon("disabled");
+dump(win.nagioschecker._uid+" disabled?\n");
+//      	   	win.nagioschecker.setNoData("");
+//            win.nagioschecker.setIcon("disabled");
       	
       }
       cnt++;
     }
 
-dump("!win.nagioschecker\n");
+//dump("!win.nagioschecker\n");
 
 
   },
@@ -955,7 +956,7 @@ dump("!win.nagioschecker\n");
 
 	var alertCount = (this.results['all']) ? this.results['all'][1] : 0;
 
-dump('RESETBEHAVIOR:'+alertCount+'\n');
+dump(window.nagioschecker._uid+' RESETBEHAVIOR:'+alertCount+'\n');
 
     var fld = {
               "down":document.getElementById('nagioschecker-hosts-down'),
@@ -970,8 +971,8 @@ dump('RESETBEHAVIOR:'+alertCount+'\n');
 
     var mainPanel=document.getElementById('nagioschecker-panel');
     var mainPopup=document.getElementById('nagioschecker-popup');
-dump("infotype:"+this.pref.info_type+"\n");
-dump("clicktype:"+this.pref.click+"\n");
+//dump("infotype:"+this.pref.info_type+"\n");
+//dump("clicktype:"+this.pref.click+"\n");
 
     switch (this.pref.click) {
 		  case 1:
@@ -981,7 +982,7 @@ dump("clicktype:"+this.pref.click+"\n");
 			if (!this.isStopped) {
 
 			if (this.pref.info_type==6) {
-dump('icoclik');
+//dump('icoclik');
 				var ico = document.getElementById('nagioschecker-img');
 				ico.addEventListener('click',nagioschecker.handleMouseClick,false);
 				ico.addEventListener('mouseout',nagioschecker.handleMouseOut,false);
@@ -1023,7 +1024,7 @@ dump('icoclik');
 	      if ((this.pref.click==4) && (!this.isStopped)) {
 
 			if (this.pref.info_type==6) {
-dump('zebyclick?')				;
+//dump('zebyclick?')				;
 				var ico = document.getElementById('nagioschecker-img');
 				ico.addEventListener('click',nagioschecker.handleMouseClick,false);
 				ico.addEventListener('mouseout',nagioschecker.handleMouseOut,false);
@@ -1068,16 +1069,16 @@ dump('zebyclick?')				;
 		  fld[pType].removeEventListener('mouseout',nagioschecker.handleMouseOut,false);
       }
 
-dump('RESETOOLTIPS '+alertCount+' '+this.pref.info_window_type+' '+this.isStopped+'\n');
+//dump('RESETOOLTIPS '+alertCount+' '+this.pref.info_window_type+' '+this.isStopped+'\n');
     if ((alertCount>0) && (this.pref.info_window_type>0) && (!this.isStopped) && ((!this.pref.one_window_only) || ((this.pref.one_window_only) && (this.isFirstWindow()))))  {
       if (this.pref.info_window_type==1) {
-dump('IWT:1\n');
+//dump('IWT:1\n');
 		  mainPanel.addEventListener('mouseover',nagioschecker.handleMouseOver,false);
 		  mainPanel.addEventListener('mouseout',nagioschecker.handleMouseOut,false);
 		  mainPanel.relatedPopup='nagioschecker-popup';
       }
       else {
-dump('IWT:<>1\n');
+//dump('IWT:<>1\n');
   		  
         for (var pType in fld) {
 		  fld[pType].addEventListener('mouseover',nagioschecker.handleMouseOver,false);
@@ -1093,7 +1094,8 @@ dump('IWT:<>1\n');
 
   updateStatus: function(paket,firstRun) {
 dump("createTooltip()\n");
-	paket.createTooltip(document);
+
+	if (paket) paket.createTooltip(document);
 
 
 	this.resetBehavior();
@@ -1312,7 +1314,7 @@ dump("createTooltip()\n");
       var win = enumerator.getNext();
       if (win.nagioschecker) {
 			win.nagioschecker.setIcon((loading) ? "loading" : ((win.nagioschecker.isStopped) ? "stop" : "nagios"));
-			win.nagioschecker.resetBehavior(true);
+			win.nagioschecker.resetBehavior();
       }
     }
   },
