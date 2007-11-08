@@ -635,7 +635,6 @@ dump(win.nagioschecker._uid+" stop\n");
         }
       }
       else {
-dump(win.nagioschecker._uid+" disabled?\n");
       	
       }
       cnt++;
