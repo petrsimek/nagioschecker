@@ -32,14 +32,14 @@ var gMini=false;
   	    <menuseparator />  
         <menuitem label="&nch.about;..." oncommand="window.openDialog('chrome://nagioschecker/content/nagioschecker-about.xul','nagioschecker-about','centerscreen,dialog,chrome').focus();" />
       </menupopup>
-    <popup id="nagioschecker-popup" class="nagioschecker-popup" onpopupshown="nagioschecker.popupOpened();" onpopuphidden="nagioschecker.popupClosed();">
+    <popup id="nagioschecker-popup" class="nagioschecker-popup">
 </popup>    
 
-    <popup id="nagioschecker-popup-down" class="nagioschecker-popup" onpopupshown="nagioschecker.popupOpened();" onpopuphidden="nagioschecker.popupClosed();"/>
-    <popup id="nagioschecker-popup-unreachable" class="nagioschecker-popup" onpopupshown="nagioschecker.popupOpened();" onpopuphidden="nagioschecker.popupClosed();"/>
-    <popup id="nagioschecker-popup-unknown" class="nagioschecker-popup" onpopupshown="nagioschecker.popupOpened();" onpopuphidden="nagioschecker.popupClosed();"/>
-    <popup id="nagioschecker-popup-warning" class="nagioschecker-popup" onpopupshown="nagioschecker.popupOpened();" onpopuphidden="nagioschecker.popupClosed();"/>
-    <popup id="nagioschecker-popup-critical" class="nagioschecker-popup" onpopupshown="nagioschecker.popupOpened();" onpopuphidden="nagioschecker.popupClosed();"/>
+    <popup id="nagioschecker-popup-down" class="nagioschecker-popup"/>
+    <popup id="nagioschecker-popup-unreachable" class="nagioschecker-popup"/>
+    <popup id="nagioschecker-popup-unknown" class="nagioschecker-popup"/>
+    <popup id="nagioschecker-popup-warning" class="nagioschecker-popup"/>
+    <popup id="nagioschecker-popup-critical" class="nagioschecker-popup"/>
     </popupset>
   	<statusbarpanel
 		    context="nagioschecker-menu"

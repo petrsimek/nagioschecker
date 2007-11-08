@@ -7,7 +7,6 @@ NEW: Save config in external file.
 NEW: New filtering system (Regexps)
 
 My targets:
-BUG: Nefunguje spravne Run in first window only
 NEW: Percentage od download
 Sound file for unreachable
 Filter by duration

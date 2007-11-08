@@ -4,6 +4,7 @@
 * NEW: Option to specify the lowest level to play sound with (only for service alerts).
 * NEW: extremely short statusbar info (no No problem, colored background behind N-icon)
 * BUGFIX: Do not show empty popup when no alert available
+* BUGFIX: Fixed some bugs in Run only in first opened window
 
 0.10.9 (testing)
 * INTERNAL: New version of popup - tooltip and popup mashup

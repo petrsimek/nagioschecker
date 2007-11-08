@@ -446,7 +446,6 @@ dump('x:'+x+' y:'+y+' ax:'+aScreenX+' ay:'+aScreenY+'\n');
     catch(e) {
     }
 
-dump("SERVERSENABLED:"+this._serversEnabled);
     this.parser.setServers(this._servers);
 
 	this.isStopped = this.pref.stopped;
@@ -543,7 +542,7 @@ dump("SERVERSENABLED:"+this._serversEnabled);
       document.getElementById('menu-separe2').setAttribute('hidden','true');
     }
 
-    this.resetBehavior();    
+//    this.resetBehavior();    
 		this.doUpdate();
 
 
@@ -560,7 +559,7 @@ dump("SERVERSENABLED:"+this._serversEnabled);
 				var firstWin = this.getFirstWindow();
 				if ((this.pref.one_window_only) && (firstWin!=window)  && (!gMini)) {
 //				this.updateAllClients(this.results);
-					this.setIcon("disabled");
+					this.setIcon(window,"disabled");
 				}
 				else {
 					firstWin.nagioschecker.setLoading(true);
@@ -615,7 +614,7 @@ dump("win.nagioschecker._uid:"+win.nagioschecker._uid+"\n");
           if ((this.pref.one_window_only) && (!win.isFirst) && (!win.gMini)) {
 dump(win.nagioschecker._uid+" disabled\n");
           	win.nagioschecker.setNoData("");
-            win.nagioschecker.setIcon("disabled");
+            win.nagioschecker.setIcon(win,"disabled");
           }
           else {
             if (paket==null) {
@@ -631,49 +630,18 @@ dump(win.nagioschecker._uid+" updatestatus\n");
         else {
 dump(win.nagioschecker._uid+" stop\n");
           win.nagioschecker.setNoData("");
-          win.nagioschecker.setIcon("stop");
+          win.nagioschecker.setIcon(win,"stop");
           win.nagioschecker.resetBehavior();
         }
       }
       else {
 dump(win.nagioschecker._uid+" disabled?\n");
-//      	   	win.nagioschecker.setNoData("");
-//            win.nagioschecker.setIcon("disabled");
       	
       }
       cnt++;
     }
 
-//dump("!win.nagioschecker\n");
-
-
   },
-
-/*
-  handleProblems: function(probs) {
-	if (document) {
-		this.enumerateStatus(probs);
-		this.updateAllClients(this.results);
-		var reallyPlay=false;
-
-		for(var i=0;i<this.pt.length;i++) {
-			if ( 
-				((this.pref.play_sound==1) && (this.soundBT[this.pt[i]]) && (this.results[this.pt[i]][2]) && this.results.checkServiceAttempt(this.pref.play_sound_attempt))
-				||
-				((this.pref.play_sound==2) && (this.soundBT[this.pt[i]]) && (this.results[this.pt[i]][1]) && this.results.checkOldServiceAttempt(this.pref.play_sound_attempt))
-			) {
-				reallyPlay=true;
-			}
-		}
-
-		if (reallyPlay) {
-			this.playSound(this.results);
-		}
-		this.setNextCheck();
-
-	}
-	},
-*/
 
   createUrl: function(server,type) {
 		var url="";
@@ -708,12 +676,12 @@ dump(win.nagioschecker._uid+" disabled?\n");
 	this.timeoutId = setTimeout(
 			function() {
 				if (me.isCheckingTime()) {
-					me.setIcon("loading");
+					me.setIcon(window,"loading");
 					me.doUpdate();
 //					me.parser.fetchAllData(me,function(probs) {me.handleProblems(probs)});
 				} else {
 					me.setNextCheck();
-					me.setIcon("sleepy");
+					me.setIcon(window,"sleepy");
 				}
 			}
 			, this.pref.refresh*60000
@@ -748,23 +716,9 @@ dump(win.nagioschecker._uid+" disabled?\n");
 	   		}
   },
 
-  popupOpened: function() {
-  },
-  popupClosed: function() {
-  },
-
   hideNchPopup: function(popupId) {
 		document.getElementById(popupId).hidePopup();
   },
-  showNchPopup: function(miniElem, event, popupId) {	
-	  if(event.button == 0) {
-//alert('otevren'+popupId);
-		  document.getElementById(popupId).showPopup(miniElem,  -1, -1, 'popup', 'topleft' , 'bottomleft');
-	  }
-  },
-
-
-
 
   statusBarOnClick: function(event,what) {
     if ((event.button==0) && (this.pref.click)) {
@@ -971,8 +925,6 @@ dump(window.nagioschecker._uid+' RESETBEHAVIOR:'+alertCount+'\n');
 
     var mainPanel=document.getElementById('nagioschecker-panel');
     var mainPopup=document.getElementById('nagioschecker-popup');
-//dump("infotype:"+this.pref.info_type+"\n");
-//dump("clicktype:"+this.pref.click+"\n");
 
     switch (this.pref.click) {
 		  case 1:
@@ -982,7 +934,6 @@ dump(window.nagioschecker._uid+' RESETBEHAVIOR:'+alertCount+'\n');
 			if (!this.isStopped) {
 
 			if (this.pref.info_type==6) {
-//dump('icoclik');
 				var ico = document.getElementById('nagioschecker-img');
 				ico.addEventListener('click',nagioschecker.handleMouseClick,false);
 				ico.addEventListener('mouseout',nagioschecker.handleMouseOut,false);
@@ -993,7 +944,6 @@ dump(window.nagioschecker._uid+' RESETBEHAVIOR:'+alertCount+'\n');
 		  mainPanel.addEventListener('mouseout',nagioschecker.handleMouseOut,false);
 		  mainPanel.relatedPopup='nagioschecker-popup';
 
-//			  	mainPanel.setAttribute("onclick","nagioschecker.showNchPopup(this,event,'nagioschecker-popup');");
 			}
 			else {
 			  	mainPanel.setAttribute("onclick","void(0);");
@@ -1024,7 +974,6 @@ dump(window.nagioschecker._uid+' RESETBEHAVIOR:'+alertCount+'\n');
 	      if ((this.pref.click==4) && (!this.isStopped)) {
 
 			if (this.pref.info_type==6) {
-//dump('zebyclick?')				;
 				var ico = document.getElementById('nagioschecker-img');
 				ico.addEventListener('click',nagioschecker.handleMouseClick,false);
 				ico.addEventListener('mouseout',nagioschecker.handleMouseOut,false);
@@ -1069,17 +1018,13 @@ dump(window.nagioschecker._uid+' RESETBEHAVIOR:'+alertCount+'\n');
 		  fld[pType].removeEventListener('mouseout',nagioschecker.handleMouseOut,false);
       }
 
-//dump('RESETOOLTIPS '+alertCount+' '+this.pref.info_window_type+' '+this.isStopped+'\n');
     if ((alertCount>0) && (this.pref.info_window_type>0) && (!this.isStopped) && ((!this.pref.one_window_only) || ((this.pref.one_window_only) && (this.isFirstWindow()))))  {
       if (this.pref.info_window_type==1) {
-//dump('IWT:1\n');
 		  mainPanel.addEventListener('mouseover',nagioschecker.handleMouseOver,false);
 		  mainPanel.addEventListener('mouseout',nagioschecker.handleMouseOut,false);
 		  mainPanel.relatedPopup='nagioschecker-popup';
       }
-      else {
-//dump('IWT:<>1\n');
-  		  
+      else {		  
         for (var pType in fld) {
 		  fld[pType].addEventListener('mouseover',nagioschecker.handleMouseOver,false);
 		  fld[pType].addEventListener('mouseout',nagioschecker.handleMouseOut,false);
@@ -1093,9 +1038,8 @@ dump(window.nagioschecker._uid+' RESETBEHAVIOR:'+alertCount+'\n');
 
 
   updateStatus: function(paket,firstRun) {
-dump("createTooltip()\n");
 
-	if (paket) paket.createTooltip(document);
+	if (paket) paket.createTooltip(window);
 
 
 	this.resetBehavior();
@@ -1313,14 +1257,14 @@ dump("createTooltip()\n");
     while(enumerator.hasMoreElements()) {
       var win = enumerator.getNext();
       if (win.nagioschecker) {
-			win.nagioschecker.setIcon((loading) ? "loading" : ((win.nagioschecker.isStopped) ? "stop" : "nagios"));
+			win.nagioschecker.setIcon(window,(loading) ? "loading" : ((win.nagioschecker.isStopped) ? "stop" : "nagios"));
 			win.nagioschecker.resetBehavior();
       }
     }
   },
 
-  setIcon: function(type) {
-    var ico = document.getElementById('nagioschecker-img');
+  setIcon: function(w,type) {
+    var ico = w.document.getElementById('nagioschecker-img');
 	if (type!="nagios") ico.setAttribute("class","");
 	switch (type) {
 		case "loading":
@@ -1825,8 +1769,9 @@ dump("pricteno stav:"+this["all"][2]+"\n");
 	this.countOldProblemsByType = function(problemType) {
 	 	return this[problemType][2];
 	}
-	this.createTooltip = function(doc) {
-dump("uid:"+nagioschecker._uid+"\n");
+	this.createTooltip = function(win) {
+dump("uid:"+win.nagioschecker._uid+"\n");
+		var doc = win.document;
 		var ttall=new NCHToolTip(this.pref);
 dump("this.createTooltip - all\n");
 
@@ -1858,13 +1803,13 @@ dump("this.createTooltip - "+this.pt[i]+"\n");
 				for(var j in this[this.pt[i]][0]) {
 					switch (this[this.pt[i]][0][j]["type"]) {
 						case "header":			
-							ttall.addHeader(this[this.pt[i]][0][j]["data"],this[this.pt[i]][0][j]["serverPos"],this[this.pt[i]][0][j]["timeFetch"]);
+							ttpt.addHeader(this[this.pt[i]][0][j]["data"],this[this.pt[i]][0][j]["serverPos"],this[this.pt[i]][0][j]["timeFetch"]);
 							break;
 						case "error":			
-							ttall.addError();
+							ttpt.addError();
 							break;
 						case "problem":			
-							ttall.addRow(this[this.pt[i]][0][j]["data"],this[this.pt[i]][0][j]["aliasName"],this[this.pt[i]][0][j]["isNew"]);
+							ttpt.addRow(this[this.pt[i]][0][j]["data"],this[this.pt[i]][0][j]["aliasName"],this[this.pt[i]][0][j]["isNew"]);
 							break;
 					}
 				}
