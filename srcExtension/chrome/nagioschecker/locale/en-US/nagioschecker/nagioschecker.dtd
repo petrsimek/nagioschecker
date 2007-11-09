@@ -128,7 +128,7 @@
 <!ENTITY nch.prefs.reverseexp "reverse expression">
 
 <!ENTITY nch.prefs.showinfowindowcolumns "Show columns in information window">
-<!ENTITY nch.prefs.aliascolumn "Hos (alias)">
+<!ENTITY nch.prefs.aliascolumn "Host (alias)">
 <!ENTITY nch.prefs.infocolumn "Information">
 <!ENTITY nch.prefs.flagscolumn "Flags">
 <!ENTITY nch.prefs.statuscolumn "Status">
