@@ -1,5 +1,7 @@
 TODO
 
+URGENT: Password Manager problem in FF3
+
 FIX: Force saving password with special chars
 
 Bigger things:

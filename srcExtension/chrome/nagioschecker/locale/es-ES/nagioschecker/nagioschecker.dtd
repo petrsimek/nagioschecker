@@ -110,7 +110,12 @@
 <!ENTITY nch.prefs.makedonation "Realizar donación">
 <!ENTITY nch.prefs.hostsmatchingregexp "Equipos que concuerdan con expresión regular">
 <!ENTITY nch.prefs.servicesmatchingregexp "Servicios que concuerdan con expresión regular">
+<!ENTITY nch.prefs.allflapping "Todos los equipos y servicios intermitentes">
 <!ENTITY nch.prefs.disable "Deshabilitar">
 <!ENTITY nch.prefs.disabled "Deshabilitado">
 <!ENTITY nch.prefs.onaddons "En el sitio de agregados de Mozilla">
 <!ENTITY nch.prefs.projecthome "Hogar del projecto">
+<!ENTITY nch.prefs.moveup "Mover hacia arriba">
+<!ENTITY nch.prefs.movedown "Mover hacia abajo">
+<!ENTITY nch.prefs.showflagscolumn "Mostrar la columna de marcas en la ventana de informaciòn">
+<!ENTITY nch.prefs.reverseexp "revertir la expresiòn">

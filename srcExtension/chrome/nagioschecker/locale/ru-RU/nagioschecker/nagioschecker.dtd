@@ -110,7 +110,12 @@
 <!ENTITY nch.prefs.makedonation "Пожертвования">
 <!ENTITY nch.prefs.hostsmatchingregexp "Хосты, соответствующие рег.выражению">
 <!ENTITY nch.prefs.servicesmatchingregexp "Сервисы, соответствующие рег.выражению">
+<!ENTITY nch.prefs.allflapping "">
 <!ENTITY nch.prefs.disable "Отключить">
 <!ENTITY nch.prefs.disabled "Отключено">
 <!ENTITY nch.prefs.onaddons "На сайте дополнений организации Mozilla">
 <!ENTITY nch.prefs.projecthome "Сайт проекта">
+<!ENTITY nch.prefs.moveup "">
+<!ENTITY nch.prefs.movedown "">
+<!ENTITY nch.prefs.showflagscolumn "">
+<!ENTITY nch.prefs.reverseexp "">
