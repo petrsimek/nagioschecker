@@ -413,6 +413,10 @@ NCHParser.prototype = {
 
   parseNagiosServicesHtml: function(pos,doc) {
     if (doc!=null) {
+      var procstat = getElementsByClass("infoBoxBadProcStatus",doc,"div");
+      if (procstat[0]) {
+      	
+      }
       var ar = getElementsByClass("status",doc,"table");
       if (ar[0]) {
       var viptr = (ar[0].childNodes[1]) ? ar[0].childNodes[1].childNodes : ar[0].childNodes[0].childNodes;
