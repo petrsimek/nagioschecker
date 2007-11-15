@@ -41,11 +41,12 @@
     	<description class="nagioschecker-link" onclick="window.opener.nagioschecker.openTab('http://psimek.fxnet.cz/');window.close();">&nch.about.author;</description>
 		</vbox>
 		<vbox>
-		<image
-			class="nagioschecker-link"
-			onclick="window.opener.nagioschecker.openTab('https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&amp;business=petr%2esimek%40centrum%2ecz&amp;item_name=Nagios%20Checker&amp;no_shipping=0&amp;cn=Feedback&amp;tax=0&amp;currency_code=USD&amp;lc=CZ&amp;bn=PP%2dDonationsBF&amp;charset=UTF%2d8');window.close();"
-			src="chrome://nagioschecker/skin/pp-donate.gif"
-         	/>
+		<hbox>
+		<image src="chrome://nagioschecker/skin/pp-donate.gif"/>
+       	<button label="CZK" oncommand="window.opener.nagioschecker.openTab('https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&amp;business=petr%2esimek%40centrum%2ecz&amp;item_name=Nagios%20Checker&amp;no_shipping=0&amp;cn=Feedback&amp;tax=0&amp;currency_code=CZK&amp;lc=CZ&amp;bn=PP%2dDonationsBF&amp;charset=UTF%2d8');window.close();"/>
+       	<button label="EUR" oncommand="window.opener.nagioschecker.openTab('https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&amp;business=petr%2esimek%40centrum%2ecz&amp;item_name=Nagios%20Checker&amp;no_shipping=0&amp;cn=Feedback&amp;tax=0&amp;currency_code=EUR&amp;lc=CZ&amp;bn=PP%2dDonationsBF&amp;charset=UTF%2d8');window.close();"/>
+       	<button label="USD" oncommand="window.opener.nagioschecker.openTab('https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&amp;business=petr%2esimek%40centrum%2ecz&amp;item_name=Nagios%20Checker&amp;no_shipping=0&amp;cn=Feedback&amp;tax=0&amp;currency_code=USD&amp;lc=CZ&amp;bn=PP%2dDonationsBF&amp;charset=UTF%2d8');window.close();"/>
+       	</hbox>
 		</vbox>
 	</hbox>
       <separator class="thin"/>

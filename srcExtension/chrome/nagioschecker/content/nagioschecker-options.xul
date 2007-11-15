@@ -12,7 +12,7 @@
 	ondialogaccept="return gNCHOptions.savePref();"
 	buttons="accept,cancel,extra2"
   buttonlabelextra2="&nch.prefs.makedonation;..."
-  ondialogextra2="window.opener.nagioschecker.openTab('https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&amp;business=petr%2esimek%40centrum%2ecz&amp;item_name=Nagios%20Checker&amp;no_shipping=0&amp;cn=Feedback&amp;tax=0&amp;currency_code=USD&amp;lc=CZ&amp;bn=PP%2dDonationsBF&amp;charset=UTF%2d8');window.close();">
+  ondialogextra2="window.openDialog('chrome://nagioschecker/content/nagioschecker-about.xul','nagioschecker-about','centerscreen,dialog,chrome').focus();">
 
   <script type="application/x-javascript" src="chrome://nagioschecker/content/nagioschecker-passwords.js"/>
   <script type="application/x-javascript" src="chrome://nagioschecker/content/nagioschecker-options.js"/>
