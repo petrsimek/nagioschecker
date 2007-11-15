@@ -1,3 +1,6 @@
+0.10.9.3 (testing)
+* NEW: Filter option 'host and services whose notifications is disabled' now accept also global disabled notifications
+
 0.10.9.1 (testing)
 * NEW: Option to set status.cgi download timeout by user
 * NEW: Option to show/not show Attempt and Status solumns in information window
