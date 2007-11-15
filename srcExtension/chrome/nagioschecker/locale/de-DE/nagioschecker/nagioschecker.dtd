@@ -48,6 +48,7 @@
 <!ENTITY nch.prefs.long "Ausführlich">
 <!ENTITY nch.prefs.short "Kurz">
 <!ENTITY nch.prefs.numbersonly "Nur Zahlen">
+<!ENTITY nch.prefs.colorsonly "nur Farben">
 <!ENTITY nch.prefs.infowindowtype "Typ des Informationsfensters">
 <!ENTITY nch.prefs.allinonewindow "Alle Probleme innerhalb eines Fensters">
 <!ENTITY nch.prefs.individualwindows "Gesondertes Fenster für jeden Problemtyp">
@@ -58,7 +59,6 @@
 <!ENTITY nch.prefs.servicewarning "Service Warnung">
 <!ENTITY nch.prefs.serviceunknown "Service unbekannt">
 <!ENTITY nch.prefs.showininfowindow "Zeige in Informationsfenster">
-<!ENTITY nch.prefs.showinfocolumn "Zeige Informationsspalte im Informationsfenster">
 <!ENTITY nch.prefs.blinking "Blinken">
 <!ENTITY nch.prefs.off "Aus">
 <!ENTITY nch.prefs.onstatusupdateifnewproblemappears "Bei jedem Status-Update falls Probleme auftauchen">
@@ -93,7 +93,6 @@
 <!ENTITY nch.prefs.unreachable "Unerreichbar">
 <!ENTITY nch.prefs.replay "Wiederholen">
 <!ENTITY nch.prefs.getaliases "Alle Host Aliases herunterladen">
-<!ENTITY nch.prefs.showaliascolumn "Zeige Host-Alias-Zeile im Informationsfenster (Ist nur sinnvoll, wenn Sie den Download von Aliasen für mindestens einen Nagios-Server aktiviert haben)">
 <!ENTITY nch.prefs.shortwithservername "Kurz mit Servernamen">
 <!ENTITY nch.prefs.numbersonlywithservername "Nur Zahlen mit Servernamen">
 <!ENTITY nch.prefs.totalnumbers "Mit vollständigen Zahlen">
@@ -117,5 +116,13 @@
 <!ENTITY nch.prefs.projecthome "Projekt-WebSeite">
 <!ENTITY nch.prefs.moveup "nach oben">
 <!ENTITY nch.prefs.movedown "nach unten">
-<!ENTITY nch.prefs.showflagscolumn "Zeige Markierungsspalte im Informationsfenster">
 <!ENTITY nch.prefs.reverseexp "entgegengesetzter Ausdruck">
+<!ENTITY nch.prefs.showinfowindowcolumns "Zeige Spalten im Informationsfenster">
+<!ENTITY nch.prefs.aliascolumn "Host (Alias)">
+<!ENTITY nch.prefs.infocolumn "Information">
+<!ENTITY nch.prefs.flagscolumn "Markierungen">
+<!ENTITY nch.prefs.statuscolumn "Status">
+<!ENTITY nch.prefs.attemptcolumn "Versuch">
+<!ENTITY nch.prefs.minimalservicesattempt "Kleinester Service-Versuch um Sound abzuspielen">
+<!ENTITY nch.prefs.advanced "Erweitert">
+<!ENTITY nch.advanced.downloadtimeout "Zeitüberschreitung des Downloads von status.cgi (in Sekunden)">

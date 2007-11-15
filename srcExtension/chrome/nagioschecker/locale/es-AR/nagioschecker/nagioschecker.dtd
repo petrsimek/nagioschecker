@@ -48,6 +48,7 @@
 <!ENTITY nch.prefs.long "Largo">
 <!ENTITY nch.prefs.short "Corto">
 <!ENTITY nch.prefs.numbersonly "Números solamente">
+<!ENTITY nch.prefs.colorsonly "">
 <!ENTITY nch.prefs.infowindowtype "Clase de Ventana de Información">
 <!ENTITY nch.prefs.allinonewindow "Todos los problemas en una sola ventana">
 <!ENTITY nch.prefs.individualwindows "Ventanas individuales para cada clase de problema">
@@ -58,7 +59,6 @@
 <!ENTITY nch.prefs.servicewarning "Servicio en Alerta">
 <!ENTITY nch.prefs.serviceunknown "Servicio desconocido">
 <!ENTITY nch.prefs.showininfowindow "Mostrar en la Ventana de Información">
-<!ENTITY nch.prefs.showinfocolumn "Mostrar la columna de Información en la Ventana de Información">
 <!ENTITY nch.prefs.blinking "Parpadear">
 <!ENTITY nch.prefs.off "Apagado">
 <!ENTITY nch.prefs.onstatusupdateifnewproblemappears "Al actualizar el estado si aparecen nuevos problemas">
@@ -93,7 +93,6 @@
 <!ENTITY nch.prefs.unreachable "Inalcanzable">
 <!ENTITY nch.prefs.replay "Repetir">
 <!ENTITY nch.prefs.getaliases "Descargar alias de equipos">
-<!ENTITY nch.prefs.showaliascolumn "Mostrar la columna de alias de Equipos en la ventana de información (solo aplica si ha definido la opción de descargar los alias para al menos un servidor Nagios)">
 <!ENTITY nch.prefs.shortwithservername "Corto con los nombres de los servidores">
 <!ENTITY nch.prefs.numbersonlywithservername "Solo números con los nombres de servidores">
 <!ENTITY nch.prefs.totalnumbers "Con números totales">
@@ -117,5 +116,13 @@
 <!ENTITY nch.prefs.projecthome "Página principal del Proyecto">
 <!ENTITY nch.prefs.moveup "Subir">
 <!ENTITY nch.prefs.movedown "Bajar">
-<!ENTITY nch.prefs.showflagscolumn "Mostrar la columna de Banderas en la ventana de información">
 <!ENTITY nch.prefs.reverseexp "invertir la expresión">
+<!ENTITY nch.prefs.showinfowindowcolumns "">
+<!ENTITY nch.prefs.aliascolumn "">
+<!ENTITY nch.prefs.infocolumn "">
+<!ENTITY nch.prefs.flagscolumn "">
+<!ENTITY nch.prefs.statuscolumn "">
+<!ENTITY nch.prefs.attemptcolumn "">
+<!ENTITY nch.prefs.minimalservicesattempt "">
+<!ENTITY nch.prefs.advanced "">
+<!ENTITY nch.advanced.downloadtimeout "">

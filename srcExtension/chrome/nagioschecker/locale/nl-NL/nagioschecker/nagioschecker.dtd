@@ -34,13 +34,13 @@
 <!ENTITY nch.about.contributors "Bijdrages van">
 <!ENTITY nch.about.translators "Vertalers">
 <!ENTITY nch.about.author "Petr Simek">
-<!ENTITY nch.about.homepage "Homepage">
+<!ENTITY nch.about.homepage "Startpagina">
 <!ENTITY nch.about.copyrights "Copyrights">
 <!ENTITY nch.about.nagioscopyrights "Nagios en het Nagios logo zijn geregistreerde handelsnamen van Ethan Galstad.">
 <!ENTITY nch.about.codecontributors "Bijdragen aan de code van">
 <!ENTITY nch.about.ideasandbugreports "Ideeën en foutrapporten">
 <!ENTITY nch.prefs.display "Weergave">
-<!ENTITY nch.prefs.watchedsystems "Gevolgde Nagios pagina(s)">
+<!ENTITY nch.prefs.watchedsystems "Gevolgde Nagiospagina(s)">
 <!ENTITY nch.prefs.addnew "Nieuw toevoegen">
 <!ENTITY nch.prefs.edit "Bewerken">
 <!ENTITY nch.prefs.remove "Verwijderen">
@@ -48,6 +48,7 @@
 <!ENTITY nch.prefs.long "Lang">
 <!ENTITY nch.prefs.short "Kort">
 <!ENTITY nch.prefs.numbersonly "Alleen getallen">
+<!ENTITY nch.prefs.colorsonly "Alleen kleuren">
 <!ENTITY nch.prefs.infowindowtype "Type informatievenster">
 <!ENTITY nch.prefs.allinonewindow "Alle problemen in één venster">
 <!ENTITY nch.prefs.individualwindows "Individueel venster voor elk probleem">
@@ -58,14 +59,13 @@
 <!ENTITY nch.prefs.servicewarning "Servicewaarschuwing">
 <!ENTITY nch.prefs.serviceunknown "Service onbekend">
 <!ENTITY nch.prefs.showininfowindow "In informatievenster weergeven">
-<!ENTITY nch.prefs.showinfocolumn "Informatiekolom in informatievenster weergeven">
 <!ENTITY nch.prefs.blinking "Knipperend">
 <!ENTITY nch.prefs.off "Uit">
-<!ENTITY nch.prefs.onstatusupdateifnewproblemappears "Bij status-update als nieuw probleem ontstaat">
-<!ENTITY nch.prefs.oneverystatusupdateifatleastoneproblemexists "Bij elke status-update als tenminste één probleem bestaat">
+<!ENTITY nch.prefs.onstatusupdateifnewproblemappears "Bij statusupdate als nieuw probleem ontstaat">
+<!ENTITY nch.prefs.oneverystatusupdateifatleastoneproblemexists "Bij elke statusupdate als tenminste één probleem bestaat">
 <!ENTITY nch.prefs.sounds "Geluiden">
 <!ENTITY nch.prefs.soundsbytype "Geluiden per probleemtype">
-<!ENTITY nch.prefs.nagiossystem "Nagios systeem">
+<!ENTITY nch.prefs.nagiossystem "Nagiossysteem">
 <!ENTITY nch.prefs.seturlmanually "URL handmatig instellen">
 <!ENTITY nch.prefs.filterout "Uitfilteren">
 <!ENTITY nch.prefs.acknowledged "Hosts en services die zijn bevestigd">
@@ -93,7 +93,6 @@
 <!ENTITY nch.prefs.unreachable "Onbereikbaar">
 <!ENTITY nch.prefs.replay "Opnieuw afspelen">
 <!ENTITY nch.prefs.getaliases "Host aliases downloaden">
-<!ENTITY nch.prefs.showaliascolumn "Host alias kolom in informatievenster weergeven (dit heeft alleen maar zin als u de optie om aliases door ten minste één Nagios server te laten downloaden hebt geactiveerd)">
 <!ENTITY nch.prefs.shortwithservername "Kort met servernamen">
 <!ENTITY nch.prefs.numbersonlywithservername "Alleen aantallen met servernamen">
 <!ENTITY nch.prefs.totalnumbers "Met totale aantallen">
@@ -113,9 +112,17 @@
 <!ENTITY nch.prefs.allflapping "Alle onregelmatige hosts en services">
 <!ENTITY nch.prefs.disable "Uitschakelen">
 <!ENTITY nch.prefs.disabled "Uitgeschakeld">
-<!ENTITY nch.prefs.onaddons "Op de Mozilla Add-ons site">
-<!ENTITY nch.prefs.projecthome "Homepage van het project">
+<!ENTITY nch.prefs.onaddons "Op de Mozilla Add-onssite">
+<!ENTITY nch.prefs.projecthome "Startpagina van het project">
 <!ENTITY nch.prefs.moveup "Omhoog">
 <!ENTITY nch.prefs.movedown "Omlaag">
-<!ENTITY nch.prefs.showflagscolumn "Markeringskolom in informatievenster weergeven">
 <!ENTITY nch.prefs.reverseexp "omgedraaide expressie">
+<!ENTITY nch.prefs.showinfowindowcolumns "Kolommen in informatievenster weergeven">
+<!ENTITY nch.prefs.aliascolumn "Host (alias)">
+<!ENTITY nch.prefs.infocolumn "Informatie">
+<!ENTITY nch.prefs.flagscolumn "Labels">
+<!ENTITY nch.prefs.statuscolumn "Status">
+<!ENTITY nch.prefs.attemptcolumn "Poging">
+<!ENTITY nch.prefs.minimalservicesattempt "Minimaal poging van service om geluid af te spelen">
+<!ENTITY nch.prefs.advanced "Geavanceerd">
+<!ENTITY nch.advanced.downloadtimeout "Time-out voor downloaden status.cgi (in seconden)">
