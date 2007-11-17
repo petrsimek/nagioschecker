@@ -89,22 +89,22 @@ NCH.prototype = {
 
   handleMouseClick: function (aEvent) {
 	  if(aEvent.button == 0) {
-dump('\nCLICKout'+aEvent.target.id);
+//dump('\nCLICKout'+aEvent.target.id);
   	nagioschecker.abort();
-dump('\nCLICKover'+aEvent.target.id);
+//dump('\nCLICKover'+aEvent.target.id);
   	nagioschecker.handleMouseOver(aEvent);
 	  }
   },
 
 
   handleMouseOver: function (aEvent) {
-dump('\n'+nagioschecker.openedPops.length+' out'+aEvent.target.id);
+//dump('\n'+nagioschecker.openedPops.length+' out'+aEvent.target.id);
 	if (_showTimerID ) {
 		return;
 	}
-dump('v')	;
+//dump('v')	;
 		if ((aEvent.target.id == "nagioschecker-img")||(aEvent.target.id == "nagioschecker-panel")||(aEvent.target.localName == "label")||(aEvent.target.localName == "popup")) {
-dump(' '+aEvent.target.localName+":"+_tab+":"+ev2pop[aEvent.target.id]);
+//dump(' '+aEvent.target.localName+":"+_tab+":"+ev2pop[aEvent.target.id]);
 		if (aEvent.target == _tab) {
 			return;
 		}
@@ -112,7 +112,7 @@ dump(' '+aEvent.target.localName+":"+_tab+":"+ev2pop[aEvent.target.id]);
 		var relPopup=document.getElementById(ev2pop[aEvent.target.id]);
 		var callback = function(self) {
 			if (relPopup) {
-dump("OTEVREN:"+aEvent.target.id+" "+ev2pop[aEvent.target.id]);
+//dump("OTEVREN:"+aEvent.target.id+" "+ev2pop[aEvent.target.id]);
 				relPopup.showPopup(_tab,  -1, -1, 'popup', 'topleft' , 'bottomleft');
 				nagioschecker.openedPops.push(ev2pop[aEvent.target.id]);
 			}
@@ -123,7 +123,7 @@ dump("OTEVREN:"+aEvent.target.id+" "+ev2pop[aEvent.target.id]);
 
   openedPops : [],
   handleMouseOut: function (aEvent) {
-dump('\nout'+aEvent.target.id);
+//dump('\nout'+aEvent.target.id);
 	var rel = aEvent.relatedTarget;
 	var popupMain = document.getElementById('nagioschecker-popup');
 	var popupDown = document.getElementById('nagioschecker-popup-down');
@@ -134,12 +134,12 @@ dump('\nout'+aEvent.target.id);
 	
 	if (rel) {
 		while (rel) {
-dump(' '+rel.localName+':'+rel.id);
+//dump(' '+rel.localName+':'+rel.id);
 			if (rel == _tab || rel == popupMain || rel == popupDown || rel == popupUnreachable || rel == popupUnknown || rel == popupCritical || rel == popupWarning)
 				return;
 			rel = rel.parentNode;
 		}
-dump('['+aEvent.target.id+']');
+//dump('['+aEvent.target.id+']');
 		nagioschecker.abort();
 		return;
 	}
@@ -153,7 +153,7 @@ dump('['+aEvent.target.id+']');
 	nagioschecker.abort();   	
   },
   abort: function() {
-dump('ABORT');
+//dump('ABORT');
 	if (_showTimerID) {
 		window.clearTimeout(_showTimerID);
 		_showTimerID = null;
@@ -174,7 +174,7 @@ dump('ABORT');
 	var x = aElement.boxObject.screenX;
 	var y = aElement.boxObject.screenY;
 	var c = aAllowOnEdge ? 1 : 0;
-dump('x:'+x+' y:'+y+' ax:'+aScreenX+' ay:'+aScreenY+'\n');
+//dump('x:'+x+' y:'+y+' ax:'+aScreenX+' ay:'+aScreenY+'\n');
 	if (x < aScreenX - c && aScreenX < x + aElement.boxObject.width + c && 
 		y < aScreenY - c && aScreenY < y + aElement.boxObject.height + c) {
 		return true;
@@ -609,26 +609,26 @@ dump('x:'+x+' y:'+y+' ax:'+aScreenX+' ay:'+aScreenY+'\n');
     while(enumerator.hasMoreElements()) {
       var win = enumerator.getNext();
       if (win.nagioschecker) {
-dump("win.nagioschecker._uid:"+win.nagioschecker._uid+"\n");
+//dump("win.nagioschecker._uid:"+win.nagioschecker._uid+"\n");
         if (!this.isStopped) {        
           if ((this.pref.one_window_only) && (!win.isFirst) && (!win.gMini)) {
-dump(win.nagioschecker._uid+" disabled\n");
+//dump(win.nagioschecker._uid+" disabled\n");
           	win.nagioschecker.setNoData("");
             win.nagioschecker.setIcon(win,"disabled");
           }
           else {
             if (paket==null) {
-dump(win.nagioschecker._uid+" notset\n");
+//dump(win.nagioschecker._uid+" notset\n");
               win.nagioschecker.setNoData("notSet");
             }
             else {
-dump(win.nagioschecker._uid+" updatestatus\n");
+//dump(win.nagioschecker._uid+" updatestatus\n");
               win.nagioschecker.updateStatus(paket,false);
             }
           }
         }
         else {
-dump(win.nagioschecker._uid+" stop\n");
+//dump(win.nagioschecker._uid+" stop\n");
           win.nagioschecker.setNoData("");
           win.nagioschecker.setIcon(win,"stop");
           win.nagioschecker.resetBehavior();
@@ -909,7 +909,7 @@ dump(win.nagioschecker._uid+" stop\n");
 
 	var alertCount = (this.results['all']) ? this.results['all'][1] : 0;
 
-dump(window.nagioschecker._uid+' RESETBEHAVIOR:'+alertCount+'\n');
+//dump(window.nagioschecker._uid+' RESETBEHAVIOR:'+alertCount+'\n');
 
     var fld = {
               "down":document.getElementById('nagioschecker-hosts-down'),
@@ -1721,10 +1721,10 @@ function NCHPaket(pref) {
 	 	this[to][0].push({type:'error'});
 	}
 	this.addProblem = function(serverPos,problemType,isOld,problem,aliasName) {
-dump("ADDPROBLEM:"+serverPos+" "+problemType+" "+isOld+" "+problem+" "+aliasName+"\n");
+//dump("ADDPROBLEM:"+serverPos+" "+problemType+" "+isOld+" "+problem+" "+aliasName+"\n");
 		var tmp_a = 1;
 		if (!isOld) {
-dump("pricteno stav:"+this["all"][2]+"\n");
+//dump("pricteno stav:"+this["all"][2]+"\n");
 			this["all"][2] = (this["all"][2]) ? this["all"][2]+1 : 1;
 			this["all"][4][serverPos] = (this["all"][4][serverPos]) ? this["all"][4][serverPos]+1 : 1;
 			this[problemType][2] = (this[problemType][2]) ? this[problemType][2]+1 : 1;
@@ -1769,10 +1769,10 @@ dump("pricteno stav:"+this["all"][2]+"\n");
 	 	return this[problemType][2];
 	}
 	this.createTooltip = function(win) {
-dump("uid:"+win.nagioschecker._uid+"\n");
+//dump("uid:"+win.nagioschecker._uid+"\n");
 		var doc = win.document;
 		var ttall=new NCHToolTip(this.pref);
-dump("this.createTooltip - all\n");
+//dump("this.createTooltip - all\n");
 
 		for(var i in this["all"][0]) {
 			switch (this["all"][0][i]["type"]) {
@@ -1796,7 +1796,7 @@ dump("this.createTooltip - all\n");
     	for(var i=0;i<this.pt.length;i++) {
 //	      if ((this[this.pt[i]]) && (this[this.pt[i]][0])) {
 	      if (this[this.pt[i]]) {
-dump("this.createTooltip - "+this.pt[i]+"\n");
+//dump("this.createTooltip - "+this.pt[i]+"\n");
 				var ttpt=new NCHToolTip(this.pref);
 
 				for(var j in this[this.pt[i]][0]) {
