@@ -1,5 +1,10 @@
-0.10.9.3 (testing)
+0.11
+(public release of 0.10.9-0.10.9.4)
+
+0.10.9.4 (testing)
 * NEW: Filter option 'host and services whose notifications is disabled' now accept also global disabled notifications
+
+0.10.9.3 (for Babelzilla)
 
 0.10.9.1 (testing)
 * NEW: Option to set status.cgi download timeout by user
