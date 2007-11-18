@@ -48,6 +48,7 @@
 <!ENTITY nch.prefs.long "Длинный формат">
 <!ENTITY nch.prefs.short "Короткий формат">
 <!ENTITY nch.prefs.numbersonly "Только числа">
+<!ENTITY nch.prefs.colorsonly "">
 <!ENTITY nch.prefs.infowindowtype "Тип информационного окна">
 <!ENTITY nch.prefs.allinonewindow "Все виды проблем в одном окне">
 <!ENTITY nch.prefs.individualwindows "Отдельное окно для каждого вида проблем">
@@ -58,7 +59,6 @@
 <!ENTITY nch.prefs.servicewarning "Предупреждение по сервису">
 <!ENTITY nch.prefs.serviceunknown "Состояние сервиса неизвестно">
 <!ENTITY nch.prefs.showininfowindow "Отобразить в информационном окне">
-<!ENTITY nch.prefs.showinfocolumn "Отобразить данные в информационном окне">
 <!ENTITY nch.prefs.blinking "Режим мерцания">
 <!ENTITY nch.prefs.off "Отключен">
 <!ENTITY nch.prefs.onstatusupdateifnewproblemappears "Обновить состояние, если появляется новая проблема">
@@ -93,7 +93,6 @@
 <!ENTITY nch.prefs.unreachable "Недоступно">
 <!ENTITY nch.prefs.replay "Повтор">
 <!ENTITY nch.prefs.getaliases "Загрузить синонимы хостов">
-<!ENTITY nch.prefs.showaliascolumn "Показать в информационном окне столбец с алиасами хостов (имеет смысл только в случае включённой опции загрузки алиасов хотя бы для одного Nagios-сервера)">
 <!ENTITY nch.prefs.shortwithservername "Кратко с именами серверов">
 <!ENTITY nch.prefs.numbersonlywithservername "Числа только с именами серверов">
 <!ENTITY nch.prefs.totalnumbers "С общими числами">
@@ -110,7 +109,20 @@
 <!ENTITY nch.prefs.makedonation "Пожертвования">
 <!ENTITY nch.prefs.hostsmatchingregexp "Хосты, соответствующие рег.выражению">
 <!ENTITY nch.prefs.servicesmatchingregexp "Сервисы, соответствующие рег.выражению">
+<!ENTITY nch.prefs.allflapping "">
 <!ENTITY nch.prefs.disable "Отключить">
 <!ENTITY nch.prefs.disabled "Отключено">
 <!ENTITY nch.prefs.onaddons "На сайте дополнений организации Mozilla">
 <!ENTITY nch.prefs.projecthome "Сайт проекта">
+<!ENTITY nch.prefs.moveup "">
+<!ENTITY nch.prefs.movedown "">
+<!ENTITY nch.prefs.reverseexp "">
+<!ENTITY nch.prefs.showinfowindowcolumns "">
+<!ENTITY nch.prefs.aliascolumn "">
+<!ENTITY nch.prefs.infocolumn "">
+<!ENTITY nch.prefs.flagscolumn "">
+<!ENTITY nch.prefs.statuscolumn "">
+<!ENTITY nch.prefs.attemptcolumn "">
+<!ENTITY nch.prefs.minimalservicesattempt "">
+<!ENTITY nch.prefs.advanced "">
+<!ENTITY nch.advanced.downloadtimeout "">

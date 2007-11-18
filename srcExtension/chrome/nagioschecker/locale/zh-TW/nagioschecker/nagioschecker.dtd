@@ -48,6 +48,7 @@
 <!ENTITY nch.prefs.long "長">
 <!ENTITY nch.prefs.short "短">
 <!ENTITY nch.prefs.numbersonly "只顯示數字">
+<!ENTITY nch.prefs.colorsonly "只顯示數字顏色">
 <!ENTITY nch.prefs.infowindowtype "資訊視窗類型">
 <!ENTITY nch.prefs.allinonewindow "一個視窗顯示所有問題">
 <!ENTITY nch.prefs.individualwindows "獨立視窗顯示每種類型">
@@ -58,7 +59,6 @@
 <!ENTITY nch.prefs.servicewarning "服務警告">
 <!ENTITY nch.prefs.serviceunknown "未知服務">
 <!ENTITY nch.prefs.showininfowindow "在資訊視窗顯示">
-<!ENTITY nch.prefs.showinfocolumn "在資訊視窗顯示資訊欄">
 <!ENTITY nch.prefs.blinking "閃爍">
 <!ENTITY nch.prefs.off "關">
 <!ENTITY nch.prefs.onstatusupdateifnewproblemappears "當狀態更新及新問題出現時使用">
@@ -93,7 +93,6 @@
 <!ENTITY nch.prefs.unreachable "未能連接">
 <!ENTITY nch.prefs.replay "重播">
 <!ENTITY nch.prefs.getaliases "下載的主機別稱">
-<!ENTITY nch.prefs.showaliascolumn "在資訊視窗顯示主機別稱列(適用於已指定使用至少一個Nagios伺服器的下載主機的別稱)">
 <!ENTITY nch.prefs.shortwithservername "只顯示伺服器名稱">
 <!ENTITY nch.prefs.numbersonlywithservername "數字只顯示於有伺服器名稱">
 <!ENTITY nch.prefs.totalnumbers "包含總數">
@@ -117,5 +116,13 @@
 <!ENTITY nch.prefs.projecthome "主頁">
 <!ENTITY nch.prefs.moveup "向上">
 <!ENTITY nch.prefs.movedown "向下">
-<!ENTITY nch.prefs.showflagscolumn "在資訊視窗顯示旗幟列">
 <!ENTITY nch.prefs.reverseexp "相反表達式">
+<!ENTITY nch.prefs.showinfowindowcolumns "顯示資訊視窗的欄">
+<!ENTITY nch.prefs.aliascolumn "主機(別稱)">
+<!ENTITY nch.prefs.infocolumn "資訊">
+<!ENTITY nch.prefs.flagscolumn "旗幟">
+<!ENTITY nch.prefs.statuscolumn "狀態">
+<!ENTITY nch.prefs.attemptcolumn "嘗試">
+<!ENTITY nch.prefs.minimalservicesattempt "播放音樂的最少服務嘗試次數">
+<!ENTITY nch.prefs.advanced "進階">
+<!ENTITY nch.advanced.downloadtimeout "Status.cgi 下載逾時(秒)">

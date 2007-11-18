@@ -40,7 +40,7 @@
 <!ENTITY nch.about.codecontributors "Сътрудници по писането на кода">
 <!ENTITY nch.about.ideasandbugreports "Идеи и Доклади за грешки">
 <!ENTITY nch.prefs.display "Изглед">
-<!ENTITY nch.prefs.watchedsystems "Набюдавани Нагиос системи">
+<!ENTITY nch.prefs.watchedsystems "Наблюдавани Нагиос системи">
 <!ENTITY nch.prefs.addnew "Добавяне на нова">
 <!ENTITY nch.prefs.edit "Редактиране">
 <!ENTITY nch.prefs.remove "Премахване">
@@ -48,6 +48,7 @@
 <!ENTITY nch.prefs.long "Дълъг">
 <!ENTITY nch.prefs.short "Къс">
 <!ENTITY nch.prefs.numbersonly "Само цифри">
+<!ENTITY nch.prefs.colorsonly "Само цветове">
 <!ENTITY nch.prefs.infowindowtype "Тип прозорец за информация">
 <!ENTITY nch.prefs.allinonewindow "Всички проблеми в един прозорец">
 <!ENTITY nch.prefs.individualwindows "Отделен прозорец за всеки проблем">
@@ -58,7 +59,6 @@
 <!ENTITY nch.prefs.servicewarning "Предупреждение за услуга">
 <!ENTITY nch.prefs.serviceunknown "Непозната услуга">
 <!ENTITY nch.prefs.showininfowindow "Показване в информационния прозорец">
-<!ENTITY nch.prefs.showinfocolumn "Показване колона за Информация в информационния прозорец">
 <!ENTITY nch.prefs.blinking "Премигване">
 <!ENTITY nch.prefs.off "Изключено">
 <!ENTITY nch.prefs.onstatusupdateifnewproblemappears "При обновяване, ако има нов проблем">
@@ -77,7 +77,7 @@
 <!ENTITY nch.prefs.services_on_acknowledged_hosts "Услуги на обекти, които са долу или са на недостъпни и приети такива">
 <!ENTITY nch.prefs.note "Забележка">
 <!ENTITY nch.prefs.note_sound "Ако Nagios Checker бъде стартиран в повече от един прозорец, то звук ще бъде пуснат само в първият отворен такъв.">
-<!ENTITY nch.prefs.after_click_statusbar "След цъкване на статусбар">
+<!ENTITY nch.prefs.after_click_statusbar "След цъкване на статусбара">
 <!ENTITY nch.prefs.do_nothing "Не прави нищо">
 <!ENTITY nch.prefs.goto_main_nagios "Отиване на основната страница на Нагиос">
 <!ENTITY nch.prefs.goto_nagios_section "Отиване на секцията на страницата на Нагиос съответстваща на цъкнатия вид проблем">
@@ -93,7 +93,6 @@
 <!ENTITY nch.prefs.unreachable "Недостъпен">
 <!ENTITY nch.prefs.replay "Повтори">
 <!ENTITY nch.prefs.getaliases "Сваляне адресите на обектите">
-<!ENTITY nch.prefs.showaliascolumn "Показване колона с адрес на обекта в информационният прозорец (има смисъл само ако сте определили опция за сваляне на адресите от поне един Нагиос сървър)">
 <!ENTITY nch.prefs.shortwithservername "Накратко с имена на сървъри">
 <!ENTITY nch.prefs.numbersonlywithservername "Числа само с имена на сървъри">
 <!ENTITY nch.prefs.totalnumbers "С общи числа">
@@ -117,5 +116,13 @@
 <!ENTITY nch.prefs.projecthome "Дома на проекта">
 <!ENTITY nch.prefs.moveup "Премести нагоре">
 <!ENTITY nch.prefs.movedown "Премести надолу">
-<!ENTITY nch.prefs.showflagscolumn "Покажи колоната Флагове в инфо прозореца">
 <!ENTITY nch.prefs.reverseexp "обратен израз">
+<!ENTITY nch.prefs.showinfowindowcolumns "Покажи колоните в инфо прозореца">
+<!ENTITY nch.prefs.aliascolumn "Обект (реален адрес)">
+<!ENTITY nch.prefs.infocolumn "Информация">
+<!ENTITY nch.prefs.flagscolumn "Флагове">
+<!ENTITY nch.prefs.statuscolumn "Положение">
+<!ENTITY nch.prefs.attemptcolumn "Опит">
+<!ENTITY nch.prefs.minimalservicesattempt "Минимален опит на услугата да изсвири звук">
+<!ENTITY nch.prefs.advanced "Задълбочено">
+<!ENTITY nch.advanced.downloadtimeout "Макс. време за сваляне на Status.cgi (в сек.)">

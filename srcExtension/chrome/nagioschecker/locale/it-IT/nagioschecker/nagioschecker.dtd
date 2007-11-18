@@ -48,6 +48,7 @@
 <!ENTITY nch.prefs.long "dimensioni lunghe">
 <!ENTITY nch.prefs.short "dimensioni corte">
 <!ENTITY nch.prefs.numbersonly "solo numeri">
+<!ENTITY nch.prefs.colorsonly "solo colori">
 <!ENTITY nch.prefs.infowindowtype "Tipo di finestra delle informazioni">
 <!ENTITY nch.prefs.allinonewindow "una finestra per tutti i problemi">
 <!ENTITY nch.prefs.individualwindows "una finestra individuale per ogni tipo di problema">
@@ -58,7 +59,6 @@
 <!ENTITY nch.prefs.servicewarning "Avviso">
 <!ENTITY nch.prefs.serviceunknown "Servizio sconosciuto">
 <!ENTITY nch.prefs.showininfowindow "Elementi da mostrare nella finestra delle informazioni">
-<!ENTITY nch.prefs.showinfocolumn "Mostra la colonna delle informazioni nella finestra delle informazioni">
 <!ENTITY nch.prefs.blinking "Lampeggiamento">
 <!ENTITY nch.prefs.off "disattivato">
 <!ENTITY nch.prefs.onstatusupdateifnewproblemappears "per lo stato di aggiornamento se si presenta un nuovo problema">
@@ -93,7 +93,6 @@
 <!ENTITY nch.prefs.unreachable "Irraggiungibile">
 <!ENTITY nch.prefs.replay "Riproduci">
 <!ENTITY nch.prefs.getaliases "Scarica alias dei server">
-<!ENTITY nch.prefs.showaliascolumn "Mostra la colonna &apos;Alias&apos; nella finestra delle informazioni (selezionare solo se si è impostato di scaricare gli alias almeno da un server Nagios)">
 <!ENTITY nch.prefs.shortwithservername "nomi brevi dei server">
 <!ENTITY nch.prefs.numbersonlywithservername "solo numeri per i nomi dei server">
 <!ENTITY nch.prefs.totalnumbers "Numeri totali">
@@ -110,12 +109,20 @@
 <!ENTITY nch.prefs.makedonation "Effettua una donazione">
 <!ENTITY nch.prefs.hostsmatchingregexp "Server corrispondenti ad espressioni regolari">
 <!ENTITY nch.prefs.servicesmatchingregexp "Servizi corrispondenti ad espressioni regolari">
-<!ENTITY nch.prefs.allflapping "Tutti i server e servizi instabili">
+<!ENTITY nch.prefs.allflapping "Tutti i server ed i servizi instabili">
 <!ENTITY nch.prefs.disable "Disattiva">
 <!ENTITY nch.prefs.disabled "Disattivato">
 <!ENTITY nch.prefs.onaddons "Nagios Checker su addons.mozilla.org">
 <!ENTITY nch.prefs.projecthome "Sito web di Nagios Checker">
 <!ENTITY nch.prefs.moveup "Sposta su">
 <!ENTITY nch.prefs.movedown "Sposta giù">
-<!ENTITY nch.prefs.showflagscolumn "Mostra la colonna degli indicatori nella finestra delle informazioni">
-<!ENTITY nch.prefs.reverseexp "Inverti l&apos;espressione">
+<!ENTITY nch.prefs.reverseexp "Inverti espressione">
+<!ENTITY nch.prefs.showinfowindowcolumns "Colonne da mostrare nella finestra delle informazioni">
+<!ENTITY nch.prefs.aliascolumn "Server (alias)">
+<!ENTITY nch.prefs.infocolumn "Informazioni">
+<!ENTITY nch.prefs.flagscolumn "Contrassegni">
+<!ENTITY nch.prefs.statuscolumn "Stato">
+<!ENTITY nch.prefs.attemptcolumn "Tentativo">
+<!ENTITY nch.prefs.minimalservicesattempt "Numero minimo di tentativi prima di emettere il suono">
+<!ENTITY nch.prefs.advanced "Avanzate">
+<!ENTITY nch.advanced.downloadtimeout "Timeout del download di Status.cgi (in secondi)">

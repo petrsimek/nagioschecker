@@ -83,6 +83,7 @@ function NCHParser() {};
 
 NCHParser.prototype = {
   _servers:[],
+  callback:null,
   problems: [],
   manager:null,
   timeout:30,
@@ -95,8 +96,10 @@ NCHParser.prototype = {
   setTimeout: function (t) {
     this.timeout=t;
   },
-  fetchAllData: function(manager) {
+//  fetchAllData: function(manager) {
+  fetchAllData: function(manager,callback) {
     if (this._servers.length>0) {
+  		this.callback=callback;
   	 this.manager=manager;
     this.problems = [];
     this.fetchServer(0);
@@ -120,7 +123,8 @@ NCHParser.prototype = {
 				me.loadMissingAlias(0,pos,user,pass,function () {
 					me.problems[pos]["_time"]=new Date();
 					if (me._servers.length==pos+1) {
-						me.manager.handleProblems(me.problems);
+//						me.manager.handleProblems(me.problems);
+						me.callback(me.problems);
 					}
 					else {
 						me.fetchServer(pos+1);
@@ -131,7 +135,8 @@ NCHParser.prototype = {
      }
      else {
 		if (this._servers.length==pos+1) {
-			this.manager.handleProblems(this.problems);
+//			this.manager.handleProblems(this.problems);
+			this.callback(this.problems);
 		}
 		else {
 			this.fetchServer(pos+1);
@@ -408,6 +413,9 @@ NCHParser.prototype = {
 
   parseNagiosServicesHtml: function(pos,doc) {
     if (doc!=null) {
+      var procstat = getElementsByClass("infoBoxBadProcStatus",doc,"div");
+      var disnotifs_global=((procstat[0]) && (procstat[0].childNodes[0]) && (procstat[0].childNodes[0].nodeValue) && (procstat[0].childNodes[0].nodeValue.match("Notifications are disabled"))) ? true : false;
+//dump ("DISNOT_G:"+disnotifs_global+"\n");
       var ar = getElementsByClass("status",doc,"table");
       if (ar[0]) {
       var viptr = (ar[0].childNodes[1]) ? ar[0].childNodes[1].childNodes : ar[0].childNodes[0].childNodes;
@@ -447,7 +455,7 @@ NCHParser.prototype = {
             var acknowledged=false;
             var dischecks=false;
             var onlypass=false;
-            var disnotifs=false;
+            var disnotifs=disnotifs_global;
             var downtime=false;
             var flapping=false;
 
@@ -491,16 +499,18 @@ NCHParser.prototype = {
             var attempt  = getUglyNodeValue(viptd[5],[0]);
             var info  = getUglyNodeValue(viptd[6],[0]);
 
+
             var isSoft = false;
             var sto = new RegExp('([0-9]+)\/([0-9]+)','mig').exec(attempt);
             if ((sto) && (parseInt(sto[1])<parseInt(sto[2]))) {
               isSoft=true;
             }         
+			var attemptInt = (sto) ? parseInt(sto[1]) : 0;
 			if (host_downtime) {
 				downtime=true;
 			}
             if ((status=="UNKNOWN") || (status=="WARNING") || (status=="CRITICAL")) {
-              var tmpo ={"type":"s","host": host,"service":service,"status":this.toLower[status],"lastCheck":lastCheck,"durationSec":durationSec,"duration":duration,"attempt":attempt,"info":info,"acknowledged":acknowledged,"dischecks":dischecks,"disnotifs":disnotifs,"isSoft":isSoft,"downtime":downtime,"flapping":flapping,"onlypass":onlypass};
+              var tmpo ={"type":"s","host": host,"service":service,"status":this.toLower[status],"lastCheck":lastCheck,"durationSec":durationSec,"duration":duration,"attempt":attempt,"attemptInt":attemptInt,"info":info,"acknowledged":acknowledged,"dischecks":dischecks,"disnotifs":disnotifs,"isSoft":isSoft,"downtime":downtime,"flapping":flapping,"onlypass":onlypass};
 	            this.problems[pos][this.toLower[status]].push(tmpo);
   					  if ((this.manager._servers[pos].getAliases) && (!this.manager._servers[pos].aliases[host])) {
 						    this.missingAliases[pos].push(host);
@@ -581,7 +591,7 @@ NCHParser.prototype = {
             var durationSec  = this.nagiosDurationToSeconds(tmp_dur);
             var info  = getUglyNodeValue(viptd[4],[0]);
 				    if ((status=="DOWN") || (status=="UNREACHABLE")) {
-            	this.problems[pos][this.toLower[status]].push({"type":"h","host": host,"service":null,"status":this.toLower[status],"lastCheck":lastCheck,"durationSec":durationSec,"duration":duration,"attempt":null,"info":info,"acknowledged":acknowledged,"dischecks":dischecks,"disnotifs":disnotifs,"isSoft":false,"downtime":downtime,"flapping":flapping,"onlypass":false});
+            	this.problems[pos][this.toLower[status]].push({"type":"h","host": host,"service":null,"status":this.toLower[status],"lastCheck":lastCheck,"durationSec":durationSec,"duration":duration,"attempt":null,"attemptInt":null,"info":info,"acknowledged":acknowledged,"dischecks":dischecks,"disnotifs":disnotifs,"isSoft":false,"downtime":downtime,"flapping":flapping,"onlypass":false});
 					    if ((this.manager._servers[pos].getAliases) && (!this.manager._servers[pos].aliases[host])) {
 						    this.missingAliases[pos].push(host);
 					    }

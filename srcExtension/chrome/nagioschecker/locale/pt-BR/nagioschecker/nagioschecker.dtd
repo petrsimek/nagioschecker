@@ -48,6 +48,7 @@
 <!ENTITY nch.prefs.long "Longa">
 <!ENTITY nch.prefs.short "Curta">
 <!ENTITY nch.prefs.numbersonly "Somente números">
+<!ENTITY nch.prefs.colorsonly "Somente cores">
 <!ENTITY nch.prefs.infowindowtype "Tipo de informação">
 <!ENTITY nch.prefs.allinonewindow "Todos problemas em uma janela">
 <!ENTITY nch.prefs.individualwindows "Janela individual para cada tipo de problema">
@@ -58,7 +59,6 @@
 <!ENTITY nch.prefs.servicewarning "Serviço alertado">
 <!ENTITY nch.prefs.serviceunknown "Serviço desconhecido">
 <!ENTITY nch.prefs.showininfowindow "Mostrar na janela de informação">
-<!ENTITY nch.prefs.showinfocolumn "Mostrar coluna de informação na janela de informação">
 <!ENTITY nch.prefs.blinking "Piscar">
 <!ENTITY nch.prefs.off "Desligar">
 <!ENTITY nch.prefs.onstatusupdateifnewproblemappears "Atualizar status se novos problemas aparecerem">
@@ -93,7 +93,6 @@
 <!ENTITY nch.prefs.unreachable "Inalcançável">
 <!ENTITY nch.prefs.replay "Replay">
 <!ENTITY nch.prefs.getaliases "Download apelido do host">
-<!ENTITY nch.prefs.showaliascolumn "Mostrar coluna de apelido de host na janela de informação (Somente habilite se foi definido efetuar download do apelido do host configurado no servidor Nagios)">
 <!ENTITY nch.prefs.shortwithservername "Classificar pelo nome dos servidores">
 <!ENTITY nch.prefs.numbersonlywithservername "Número somente com nomes dos servidores">
 <!ENTITY nch.prefs.totalnumbers "Com números totais">
@@ -117,5 +116,13 @@
 <!ENTITY nch.prefs.projecthome "Página do projeto">
 <!ENTITY nch.prefs.moveup "Mover para cima">
 <!ENTITY nch.prefs.movedown "Mover para baixo">
-<!ENTITY nch.prefs.showflagscolumn "Mostrar coluna de sinalização da janela de informação">
 <!ENTITY nch.prefs.reverseexp "expressão reversa">
+<!ENTITY nch.prefs.showinfowindowcolumns "Mostrar colunas na janela de informação">
+<!ENTITY nch.prefs.aliascolumn "Host (alias)">
+<!ENTITY nch.prefs.infocolumn "Informação">
+<!ENTITY nch.prefs.flagscolumn "Flags">
+<!ENTITY nch.prefs.statuscolumn "Status">
+<!ENTITY nch.prefs.attemptcolumn "Tentativa">
+<!ENTITY nch.prefs.minimalservicesattempt "Serviço de tentativa de reproduzir o som">
+<!ENTITY nch.prefs.advanced "Avançado">
+<!ENTITY nch.advanced.downloadtimeout "Tempo expirado no download do Status.cgi  (em segundos)">

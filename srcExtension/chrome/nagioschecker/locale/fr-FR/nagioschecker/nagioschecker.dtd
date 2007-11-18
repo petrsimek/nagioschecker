@@ -48,6 +48,7 @@
 <!ENTITY nch.prefs.long "Complet">
 <!ENTITY nch.prefs.short "Abrégé">
 <!ENTITY nch.prefs.numbersonly "Uniquement les chiffres">
+<!ENTITY nch.prefs.colorsonly "Couleurs uniquement">
 <!ENTITY nch.prefs.infowindowtype "Type de fenêtre pour les informations">
 <!ENTITY nch.prefs.allinonewindow "Tous les problèmes dans une fenêtre">
 <!ENTITY nch.prefs.individualwindows "Une fenêtre pour chaque type de problème">
@@ -58,7 +59,6 @@
 <!ENTITY nch.prefs.servicewarning "Service en alerte">
 <!ENTITY nch.prefs.serviceunknown "Service inconnu">
 <!ENTITY nch.prefs.showininfowindow "Afficher dans la fenêtre d&apos;information">
-<!ENTITY nch.prefs.showinfocolumn "Afficher la colonne &apos;Information&apos; dans la fenêtre d&apos;information">
 <!ENTITY nch.prefs.blinking "Clignotement">
 <!ENTITY nch.prefs.off "Arrêté">
 <!ENTITY nch.prefs.onstatusupdateifnewproblemappears "Lors d&apos;une mise à jour si un nouveau problème apparaît">
@@ -93,7 +93,6 @@
 <!ENTITY nch.prefs.unreachable "Injoignable">
 <!ENTITY nch.prefs.replay "Rejouer">
 <!ENTITY nch.prefs.getaliases "Télécharger les alias des hôtes">
-<!ENTITY nch.prefs.showaliascolumn "Afficher la colonne &quot;alias des hôtes&quot; dans la fenêtre d&apos;information (n&apos;a d&apos;intérêt que si vous avez activé l&apos;option de téléchargement des alias sur au moins un serveur Nagios)">
 <!ENTITY nch.prefs.shortwithservername "Abrégé avec les noms des serveurs">
 <!ENTITY nch.prefs.numbersonlywithservername "Uniquement les chiffres avec les noms des serveurs">
 <!ENTITY nch.prefs.totalnumbers "Avec tous les chiffres">
@@ -117,5 +116,13 @@
 <!ENTITY nch.prefs.projecthome "Page web du projet">
 <!ENTITY nch.prefs.moveup "Monter">
 <!ENTITY nch.prefs.movedown "Descendre">
-<!ENTITY nch.prefs.showflagscolumn "Afficher la colonne marquage dans la fenêtre d&apos;information">
 <!ENTITY nch.prefs.reverseexp "expression inverse">
+<!ENTITY nch.prefs.showinfowindowcolumns "Colonnes à afficher dans la fenêtre d&apos;information">
+<!ENTITY nch.prefs.aliascolumn "Hôte (alias)">
+<!ENTITY nch.prefs.infocolumn "Information">
+<!ENTITY nch.prefs.flagscolumn "Marquage">
+<!ENTITY nch.prefs.statuscolumn "État">
+<!ENTITY nch.prefs.attemptcolumn "Tentative">
+<!ENTITY nch.prefs.minimalservicesattempt "Minimum de tentatives pour les services avant de jouer le son">
+<!ENTITY nch.prefs.advanced "Avancé">
+<!ENTITY nch.advanced.downloadtimeout "Délai maximum pour télécharger &quot;Status.cgi&quot; (en secondes)">

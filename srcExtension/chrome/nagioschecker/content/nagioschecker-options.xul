@@ -12,7 +12,7 @@
 	ondialogaccept="return gNCHOptions.savePref();"
 	buttons="accept,cancel,extra2"
   buttonlabelextra2="&nch.prefs.makedonation;..."
-  ondialogextra2="window.opener.nagioschecker.openTab('https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&amp;business=petr%2esimek%40centrum%2ecz&amp;item_name=Nagios%20Checker&amp;no_shipping=0&amp;cn=Feedback&amp;tax=0&amp;currency_code=USD&amp;lc=CZ&amp;bn=PP%2dDonationsBF&amp;charset=UTF%2d8');window.close();">
+  ondialogextra2="window.openDialog('chrome://nagioschecker/content/nagioschecker-about.xul','nagioschecker-about','centerscreen,dialog,chrome').focus();">
 
   <script type="application/x-javascript" src="chrome://nagioschecker/content/nagioschecker-passwords.js"/>
   <script type="application/x-javascript" src="chrome://nagioschecker/content/nagioschecker-options.js"/>
@@ -31,6 +31,7 @@
       <tab label="&nch.prefs.display;"/>
       <tab label="&nch.prefs.behavior;"/>
       <tab label="&nch.prefs.sounds;"/>
+      <tab label="&nch.prefs.advanced;"/>
     </tabs>
     <tabpanels flex="1">
       <tabpanel  orient="vertical">
@@ -103,6 +104,7 @@
               <radio id="nch-view-info_type-0" label="&nch.prefs.long;" value="0"/>
               <radio id="nch-view-info_type-1" label="&nch.prefs.short;" value="1"/>
               <radio id="nch-view-info_type-2" label="&nch.prefs.numbersonly;" value="2"/>
+              <radio id="nch-view-info_type-6" label="&nch.prefs.colorsonly;" value="6"/>
               </vbox>
               <vbox>
               <label>&nch.prefs.totalnumbersforeveryserver;:</label>
@@ -133,14 +135,21 @@
               <checkbox prefstring="extensions.nagioschecker.show_statusbar_unknown" id="nch-view-show_statusbar_unknown" label="&nch.prefs.serviceunknown;"/>
             </vbox>
           </groupbox>
+		      <groupbox flex="1">
+		        <caption class="nch" label="&nch.prefs.showinfowindowcolumns;"/>	
+            <vbox>
+            <checkbox prefstring="extensions.nagioschecker.show_window_column_information" id="nch-view-show_window_column_information" label="&nch.prefs.infocolumn;"/>
+            <checkbox prefstring="extensions.nagioschecker.show_window_column_alias" id="nch-view-show_window_column_alias" label="&nch.prefs.aliascolumn;"/>
+            <checkbox prefstring="extensions.nagioschecker.show_window_column_flags" id="nch-view-show_window_column_flags" label="&nch.prefs.flagscolumn;"/>
+            <checkbox prefstring="extensions.nagioschecker.show_window_column_attempt" id="nch-view-show_window_column_attempt" label="&nch.prefs.attemptcolumn;"/>
+            <checkbox prefstring="extensions.nagioschecker.show_window_column_status" id="nch-view-show_window_column_status" label="&nch.prefs.statuscolumn;"/>
+            </vbox>
+          </groupbox>
         </hbox>
 		    <groupbox flex="1">
 		      <caption class="nch" label="&nch.prefs.other;"/>	
           <vbox>
             <checkbox prefstring="extensions.nagioschecker.one_window_only" id="nch-general-one_window_only" label="&nch.prefs.onewindowonly;"/>
-            <checkbox prefstring="extensions.nagioschecker.show_window_column_information" id="nch-view-show_window_column_information" label="&nch.prefs.showinfocolumn;"/>
-            <checkbox prefstring="extensions.nagioschecker.show_window_column_alias" id="nch-view-show_window_column_alias" label="&nch.prefs.showaliascolumn;"/>
-            <checkbox prefstring="extensions.nagioschecker.show_window_column_flags" id="nch-view-show_window_column_flags" label="&nch.prefs.showflagscolumn;"/>
           </vbox>
         </groupbox>
       </tabpanel>
@@ -196,6 +205,19 @@
             <radio id="nch-behavior-play_sound-1" label="&nch.prefs.onstatusupdateifnewproblemappears;" value="1" oncommand="gNCHOptions.disableSoundCheckboxes();"/>
             <radio id="nch-behavior-play_sound-2" label="&nch.prefs.oneverystatusupdateifatleastoneproblemexists;" value="2" oncommand="gNCHOptions.disableSoundCheckboxes();"/>
           </radiogroup>
+          <separator class="thin"/>
+<vbox>
+<hbox>          
+<label>&nch.prefs.minimalservicesattempt;:</label>
+ <menulist prefstring="extensions.nagioschecker.play_sound_attempt" id="nch-sounds-play_sound_attempt">  
+	<menupopup>
+	  <menuitem id="nch-sounds-play_sound_attempt-1" label="1" value="1"/>
+	  <menuitem id="nch-sounds-play_sound_attempt-2" label="2" value="2"/>
+	  <menuitem id="nch-sounds-play_sound_attempt-3" label="3+" value="3"/>
+	</menupopup>
+  </menulist> 
+</hbox>
+</vbox>
           <separator class="thin"/>
           <description class="nch"><html:strong>&nch.prefs.note;:</html:strong> &nch.prefs.note_sound;</description>
         </groupbox>
@@ -259,6 +281,22 @@
           </groupbox>
       </vbox>
       </tabpanel>
+
+      <tabpanel orient="vertical">
+
+		    <groupbox flex="1">
+		      <caption class="nch" label="&nch.prefs.advanced;"/>	
+			<vbox>
+				<label value="&nch.advanced.downloadtimeout;:" control="nch-advanced-downloadtimeout"/>
+				<hbox>
+				<textbox prefstring="extensions.nagioschecker.timeout" id="nch-advanced-timeout" size="4"/> 
+				</hbox>
+			</vbox>
+        </groupbox>
+      </tabpanel>
+
+
+
 
     </tabpanels>
   </tabbox>

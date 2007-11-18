@@ -28,7 +28,7 @@
 <!ENTITY nch.prefs.worktime "Plugin working hours (hh:mm)">
 <!ENTITY nch.prefs.utilityrun "Utility Run">
 <!ENTITY nch.prefs.other "Other">
-<!ENTITY nch.prefs.onewindowonly "Run only in window opened first">
+<!ENTITY nch.prefs.onewindowonly "Run only in first opened window">
 
 <!ENTITY nch.about.original "Original title">
 <!ENTITY nch.about.version "Version">
@@ -52,6 +52,7 @@
 <!ENTITY nch.prefs.long "Long">
 <!ENTITY nch.prefs.short "Short">
 <!ENTITY nch.prefs.numbersonly "Numbers only">
+<!ENTITY nch.prefs.colorsonly "Colors only">
 <!ENTITY nch.prefs.infowindowtype "Information Window Type">
 <!ENTITY nch.prefs.allinonewindow "All problems in one window">
 <!ENTITY nch.prefs.individualwindows "Individual window for each problem type">
@@ -62,7 +63,6 @@
 <!ENTITY nch.prefs.servicewarning "Service warning">
 <!ENTITY nch.prefs.serviceunknown "Service unknown">
 <!ENTITY nch.prefs.showininfowindow "Show in Information Window">
-<!ENTITY nch.prefs.showinfocolumn "Show Information column in information window">
 <!ENTITY nch.prefs.blinking "Blinking">
 <!ENTITY nch.prefs.off "Off">
 <!ENTITY nch.prefs.onstatusupdateifnewproblemappears "On status update if new problem appears">
@@ -98,7 +98,6 @@
 <!ENTITY nch.prefs.unreachable "Unreachable">
 <!ENTITY nch.prefs.replay "Replay">
 <!ENTITY nch.prefs.getaliases "Download host aliases">
-<!ENTITY nch.prefs.showaliascolumn "Show Host alias column in information window (only make sense if you have defined the option to download the aliases by at least one Nagios server)">
 <!ENTITY nch.prefs.shortwithservername "Short with server names">
 <!ENTITY nch.prefs.numbersonlywithservername "Numbers only with server names">
 <!ENTITY nch.prefs.totalnumbers "With total numbers">
@@ -126,5 +125,15 @@
 <!ENTITY nch.prefs.moveup "Move up">
 <!ENTITY nch.prefs.movedown "Move down">
 
-<!ENTITY nch.prefs.showflagscolumn "Show Flags column in information window">
 <!ENTITY nch.prefs.reverseexp "reverse expression">
+
+<!ENTITY nch.prefs.showinfowindowcolumns "Show columns in information window">
+<!ENTITY nch.prefs.aliascolumn "Host (alias)">
+<!ENTITY nch.prefs.infocolumn "Information">
+<!ENTITY nch.prefs.flagscolumn "Flags">
+<!ENTITY nch.prefs.statuscolumn "Status">
+<!ENTITY nch.prefs.attemptcolumn "Attempt">
+<!ENTITY nch.prefs.minimalservicesattempt "Minimal service's attempt to play the sound">
+
+<!ENTITY nch.prefs.advanced "Advanced">
+<!ENTITY nch.advanced.downloadtimeout "Status.cgi download timeout (in seconds)">

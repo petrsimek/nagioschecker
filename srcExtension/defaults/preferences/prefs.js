@@ -15,6 +15,8 @@ pref("extensions.nagioschecker.show_statusbar_critical", true);
 pref("extensions.nagioschecker.show_window_column_information", true);
 pref("extensions.nagioschecker.show_window_column_alias", false);
 pref("extensions.nagioschecker.show_window_column_flags", false);
+pref("extensions.nagioschecker.show_window_column_attempt", false);
+pref("extensions.nagioschecker.show_window_column_status", true);
 
 pref("extensions.nagioschecker.sounds_by_type_down", true);
 pref("extensions.nagioschecker.sounds_by_type_unreachable", true);
@@ -29,6 +31,7 @@ pref("extensions.nagioschecker.worktimeto", "23:59");
 pref("extensions.nagioschecker.one_window_only", true);
 pref("extensions.nagioschecker.blinking", 2);
 pref("extensions.nagioschecker.play_sound", 2);
+pref("extensions.nagioschecker.play_sound_attempt", 1);
 pref("extensions.nagioschecker.click", 0);
 
 pref("extensions.nagioschecker.filter_out_acknowledged", true);

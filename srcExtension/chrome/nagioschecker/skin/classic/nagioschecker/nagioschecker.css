@@ -29,7 +29,7 @@ statusbarpanel .nagioschecker-box {
 }
 
 .nagioschecker-label-new {
-  font-weight: bold;
+  font-weight: bold;  
   background-color:white;
   color: red;
   padding-left:2px;
@@ -38,14 +38,16 @@ statusbarpanel .nagioschecker-box {
   margin:0;
 }
 
+
+.nagioschecker-down-image {
+  background-color:#CC0000;
+}
+
 .nagioschecker-down-value {
   margin-left:2px;
   margin-right:2px;
   font-weight: bold;
   color: #BDBDBD;
-/*
-  background-color:#700000;
-*/
   background-color:#CC0000;
 
   padding-left:2px;
@@ -66,6 +68,9 @@ statusbarpanel .nagioschecker-box {
   border: 1px #ffffff solid;
 }
 
+.nagioschecker-unreachable-image {
+  background-color:#CC0000;	
+}
 .nagioschecker-unreachable-value {
   margin-left:2px;
   margin-right:2px;
@@ -90,6 +95,9 @@ statusbarpanel .nagioschecker-box {
   border: 1px #ffffff solid;
 }
 
+.nagioschecker-warning-image {
+  background-color:#E6E600;
+}
 .nagioschecker-warning-value {
   margin-left:2px;
   margin-right:2px;
@@ -100,6 +108,10 @@ statusbarpanel .nagioschecker-box {
   padding-right:2px;
   -moz-border-radius: 3px;
   border: 1px #E6E600 solid;
+}
+
+.nagioschecker-allok-image {
+  background-color:#44CC00;
 }
 
 .nagioschecker-allok-value {
@@ -126,6 +138,9 @@ statusbarpanel .nagioschecker-box {
   border: 1px black solid;
 }
 
+.nagioschecker-unknown-image {
+  background-color:#FF8B3D;
+}
 .nagioschecker-unknown-value {
   margin-left:2px;
   margin-right:2px;
@@ -149,6 +164,9 @@ statusbarpanel .nagioschecker-box {
   border: 1px black solid;
 }
 
+.nagioschecker-critical-image {
+  background-color: #FF0000;
+}
 .nagioschecker-critical-value {
   margin-left:2px;
   margin-right:2px;
@@ -189,7 +207,6 @@ statusbarpanel .nagioschecker-box {
   font-size: 1.2em;
   margin-bottom: 4px;
  -moz-border-radius:3px;
-  background-color:#FFFFFF;
 }
 
 .nagioschecker-tooltip-title-date {
@@ -212,6 +229,9 @@ statusbarpanel .nagioschecker-box {
   background-color:#B30000;
 	border:1px #B30000 solid;
 }
+
+
+
 
 .nagioschecker-tooltip-unreachable-row {
 	font-weight: bold;
@@ -241,7 +261,6 @@ statusbarpanel .nagioschecker-box {
 }
 
 .nagioschecker-tooltip-row {
-/*  font-size: 10px;*/
   padding:0;
   margin:0;
 }
@@ -249,15 +268,14 @@ statusbarpanel .nagioschecker-box {
 .nagioschecker-tooltip {
 	-moz-appearance:none;
 	background-color: infobackground;
-/*	border:none;*/
-/*  max-width: 500;*/
 }
 
 .nagioschecker-popup {
 	-moz-appearance:none;
-	background-color: infobackground;
-/*	border:none;*/
+		background-color: infobackground;
 }
+
+
 
 .nagioschecker-tooltip-warning-row {
   font-weight: bold;
@@ -318,4 +336,3 @@ label.error {
 	font-style: italic;
 	color:silver;
 }
-

@@ -48,6 +48,7 @@
 <!ENTITY nch.prefs.long "Largo">
 <!ENTITY nch.prefs.short "Corto">
 <!ENTITY nch.prefs.numbersonly "Solo números">
+<!ENTITY nch.prefs.colorsonly "Solo colores">
 <!ENTITY nch.prefs.infowindowtype "Tipo de ventana de información">
 <!ENTITY nch.prefs.allinonewindow "Todos los problemas en una ventana">
 <!ENTITY nch.prefs.individualwindows "Ventanas individuales para cada tipo de problema">
@@ -58,7 +59,6 @@
 <!ENTITY nch.prefs.servicewarning "Advertencia de Servicio">
 <!ENTITY nch.prefs.serviceunknown "Servicio desconocido">
 <!ENTITY nch.prefs.showininfowindow "Mostrar en ventana de informacion">
-<!ENTITY nch.prefs.showinfocolumn "Mostrar columna de informacion en ventana de informacion">
 <!ENTITY nch.prefs.blinking "Intermitente">
 <!ENTITY nch.prefs.off "Apagado">
 <!ENTITY nch.prefs.onstatusupdateifnewproblemappears "En estado de actualizar si hay nuevos problemas">
@@ -93,7 +93,6 @@
 <!ENTITY nch.prefs.unreachable "Inalcanzable">
 <!ENTITY nch.prefs.replay "Replay">
 <!ENTITY nch.prefs.getaliases "Descargar los alias de equipos">
-<!ENTITY nch.prefs.showaliascolumn "Mostrar columna de alias del equipo en la ventana de información (solo tiene sentido si definió la opción de descargar los alias en al menos un servisor Nagios)">
 <!ENTITY nch.prefs.shortwithservername "Corto con nombres de servidores">
 <!ENTITY nch.prefs.numbersonlywithservername "Solo numeros con nombres de servidores">
 <!ENTITY nch.prefs.totalnumbers "Con numeros totales">
@@ -110,7 +109,20 @@
 <!ENTITY nch.prefs.makedonation "Realizar donación">
 <!ENTITY nch.prefs.hostsmatchingregexp "Equipos que concuerdan con expresión regular">
 <!ENTITY nch.prefs.servicesmatchingregexp "Servicios que concuerdan con expresión regular">
+<!ENTITY nch.prefs.allflapping "Todos los equipos y servicios intermitentes">
 <!ENTITY nch.prefs.disable "Deshabilitar">
 <!ENTITY nch.prefs.disabled "Deshabilitado">
 <!ENTITY nch.prefs.onaddons "En el sitio de agregados de Mozilla">
 <!ENTITY nch.prefs.projecthome "Hogar del projecto">
+<!ENTITY nch.prefs.moveup "Mover hacia arriba">
+<!ENTITY nch.prefs.movedown "Mover hacia abajo">
+<!ENTITY nch.prefs.reverseexp "revertir la expresiòn">
+<!ENTITY nch.prefs.showinfowindowcolumns "Mostrar columnas en ventana de informacion">
+<!ENTITY nch.prefs.aliascolumn "Equipo (alias)">
+<!ENTITY nch.prefs.infocolumn "Informacion">
+<!ENTITY nch.prefs.flagscolumn "Marcas">
+<!ENTITY nch.prefs.statuscolumn "Estado">
+<!ENTITY nch.prefs.attemptcolumn "Intento">
+<!ENTITY nch.prefs.minimalservicesattempt "Intento minimo del servicio para reproducir el sonido">
+<!ENTITY nch.prefs.advanced "Avanzado">
+<!ENTITY nch.advanced.downloadtimeout "Timeout de descarga Status.cgi (en segundos)">

@@ -1,4 +1,5 @@
 var gNCHOptions = null;
+var MAX_SERVERS=200;
 
 var nchoptionsLoad = function() {
 
@@ -40,7 +41,7 @@ NCHOptions.prototype = {
 
   _servers: [],
   _tree: null,
-  _origServerCount: 20,
+  _origServerCount: MAX_SERVERS,
   bundle:null,
 
   addServer: function(server) {
@@ -314,6 +315,8 @@ NCHOptions.prototype = {
         "nch-view-show_window_column_information",
         "nch-view-show_window_column_alias",
         "nch-view-show_window_column_flags",
+        "nch-view-show_window_column_attempt",
+        "nch-view-show_window_column_status",
         "nch-general-one_window_only",
         "nch-general-filter_out_acknowledged",
         "nch-general-filter_out_disabled_notifications",
@@ -343,13 +346,17 @@ NCHOptions.prototype = {
        "nch-behavior-oneclick",
        "nch-sounds-warning",
        "nch-sounds-critical",
-       "nch-sounds-down"
+       "nch-sounds-down",
+       "nch-sounds-play_sound_attempt"
        ];
     for (var i = 0; i < radios.length; ++i) {
   		var radiogroup = document.getElementById(radios[i]);
 		  prefs.setIntPref(radiogroup.getAttribute("prefstring"), radiogroup.selectedItem.value);
 		}		
-		var INTtextboxes = ["nch-general-refresh"];
+		  var INTtextboxes = [
+		  	"nch-general-refresh",
+		  	"nch-advanced-timeout"
+		  	];
   	for (var i = 0; i < INTtextboxes.length; ++i) {
 		  var textbox = document.getElementById(INTtextboxes[i]);
 		  prefs.setIntPref(textbox.getAttribute("prefstring"), textbox.value);
@@ -460,6 +467,8 @@ NCHOptions.prototype = {
         "nch-view-show_window_column_information",
         "nch-view-show_window_column_alias",
         "nch-view-show_window_column_flags",
+        "nch-view-show_window_column_attempt",
+        "nch-view-show_window_column_status",
         "nch-general-one_window_only",
         "nch-general-filter_out_acknowledged",
         "nch-general-filter_out_disabled_notifications",
@@ -487,14 +496,18 @@ NCHOptions.prototype = {
        "nch-behavior-oneclick",
        "nch-sounds-warning",
        "nch-sounds-critical",
-       "nch-sounds-down"
+       "nch-sounds-down",
+       "nch-sounds-play_sound_attempt"
         ];
 		  for (var i = 0; i < radios.length; ++i) {
   			var radiogroup = document.getElementById(radios[i]);
         var radioid = radios[i]+'-'+prefs.getIntPref(radiogroup.getAttribute("prefstring"));
 			  radiogroup.selectedItem=document.getElementById(radioid);
 		  }	
-		  var INTtextboxes = ["nch-general-refresh"];
+		  var INTtextboxes = [
+		  	"nch-general-refresh",
+		  	"nch-advanced-timeout"
+		  	];
 		  for (var i = 0; i < INTtextboxes.length; ++i) {
   			var textbox = document.getElementById(INTtextboxes[i]);
 			  var prefstring = textbox.getAttribute("prefstring");
@@ -521,7 +534,7 @@ NCHOptions.prototype = {
    
 
 
-      for(var i=0;i<20;i++) {
+      for(var i=0;i<MAX_SERVERS;i++) {
         try {
           var surl = prefs.getCharPref("extensions.nagioschecker."+(i+1)+".url");
         try {

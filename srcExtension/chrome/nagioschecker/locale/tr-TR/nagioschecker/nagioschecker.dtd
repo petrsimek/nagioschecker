@@ -48,6 +48,7 @@
 <!ENTITY nch.prefs.long "Uzun">
 <!ENTITY nch.prefs.short "Kısa">
 <!ENTITY nch.prefs.numbersonly "Yalnızca sayılar">
+<!ENTITY nch.prefs.colorsonly "">
 <!ENTITY nch.prefs.infowindowtype "Bilgi penceresi tipi">
 <!ENTITY nch.prefs.allinonewindow "Tüm sorunlar tek pencerede">
 <!ENTITY nch.prefs.individualwindows "Her sorun tipi için özel pencere">
@@ -58,7 +59,6 @@
 <!ENTITY nch.prefs.servicewarning "Hizmet uyarısı">
 <!ENTITY nch.prefs.serviceunknown "Hizmet bilinmiyor">
 <!ENTITY nch.prefs.showininfowindow "Bilgi penceresinde göster">
-<!ENTITY nch.prefs.showinfocolumn "Bilgi sütununu bilgi penceresinde göster">
 <!ENTITY nch.prefs.blinking "Kırpma">
 <!ENTITY nch.prefs.off "Kapalı">
 <!ENTITY nch.prefs.onstatusupdateifnewproblemappears "Durum çubuğunu eğer yeni bir sorun belirirse güncelle">
@@ -93,7 +93,6 @@
 <!ENTITY nch.prefs.unreachable "Erişilemez">
 <!ENTITY nch.prefs.replay "Cevapla">
 <!ENTITY nch.prefs.getaliases "Ana bilgisayar takma adı indir.">
-<!ENTITY nch.prefs.showaliascolumn "Bilgi penceresinde Ana bilgisayar takma adı sütununu göster (Eğer en azından bir Nagios sunucusu için takma adları indir seçeneğini işaretlemişseniz)">
 <!ENTITY nch.prefs.shortwithservername "Sunucu isimleri ile birlikte kısalt">
 <!ENTITY nch.prefs.numbersonlywithservername "Yalnızca sunucu adları ile numaralar">
 <!ENTITY nch.prefs.totalnumbers "Toplam numaralarla birlikte">
@@ -117,5 +116,13 @@
 <!ENTITY nch.prefs.projecthome "Projenin ev sayfası">
 <!ENTITY nch.prefs.moveup "Yurkarı taşı">
 <!ENTITY nch.prefs.movedown "Aşağı taşı">
-<!ENTITY nch.prefs.showflagscolumn "Bilgi penceresinde Bayraklar dikeçini göster">
 <!ENTITY nch.prefs.reverseexp "ters ifade">
+<!ENTITY nch.prefs.showinfowindowcolumns "">
+<!ENTITY nch.prefs.aliascolumn "">
+<!ENTITY nch.prefs.infocolumn "">
+<!ENTITY nch.prefs.flagscolumn "">
+<!ENTITY nch.prefs.statuscolumn "">
+<!ENTITY nch.prefs.attemptcolumn "">
+<!ENTITY nch.prefs.minimalservicesattempt "">
+<!ENTITY nch.prefs.advanced "">
+<!ENTITY nch.advanced.downloadtimeout "">

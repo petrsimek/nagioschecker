@@ -1,0 +1,16 @@
+TODO
+
+URGENT: Password Manager problem in FF3
+
+FIX: Force saving password with special chars
+
+Bigger things:
+NEW: Save config in external file.
+NEW: New filtering system (Regexps)
+
+My targets:
+NEW: Percentage od download
+Sound file for unreachable
+Filter by duration
+Filter by attempt ?
+Filtr na rozmezi duration
