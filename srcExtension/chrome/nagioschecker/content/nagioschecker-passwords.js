@@ -1,3 +1,6 @@
+
+
+
 function NCHPass() {
 
 };
@@ -69,10 +72,25 @@ if (CC_passwordManager != null) {
 }
 else if (CC_loginManager!= null) {
 
+alert('save:'+pos);
+alert(username+':'+password);
+var nsLoginInfo = new Components.Constructor("@mozilla.org/login-manager/loginInfo;1",
+                                             Components.interfaces.nsILoginInfo,
+                                             "init");
+
  var authLoginInfo = new nsLoginInfo('nagioschecker-url-'+pos,
-                       null, '',
+                       null, 'x',
                        username, password, null, null);
-	CC_loginManager.addLogin(authLoginInfo);
+      try {
+
+   var loginManager = CC_loginManager.getService(Components.interfaces.nsILoginManager);
+                       
+	var x = loginManager.addLogin(authLoginInfo);
+alert(x);	
+      }
+      catch (e) {
+      	alert(e);
+      }
 
 	
 }
@@ -111,6 +129,7 @@ else if (CC_loginManager!= null) {
    
    var loginManager = CC_loginManager.getService(Components.interfaces.nsILoginManager);
       // Find users for the given parameters
+      
    var logins = loginManager.findLogins({}, "nagioschecker-url-"+pos, null, '');
   if (logins[0]) {
 alert(logins[0].username);

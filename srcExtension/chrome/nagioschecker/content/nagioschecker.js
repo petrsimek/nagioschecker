@@ -1,3 +1,4 @@
+
 var _showTimerID = null;
 var _tab = null;
 var MAX_SERVERS=200;
@@ -184,6 +185,43 @@ NCH.prototype = {
   
   _super: null,
   start : function() {
+/*
+// example values
+var hostname = 'http://developer.mozilla.org';
+var formSubmitURL = null;
+var httprealm = "";
+var username = 'mikeshk';
+
+try {
+alert('start');
+   // Get Login Manager 
+   var passwordManager = Components.classes["@mozilla.org/login-manager;1"]
+                         .getService(Components.interfaces.nsILoginManager);
+ 
+   // Find users for this extension 
+//   var logins = passwordManager.findLogins({}, hostname, formSubmitURL, httprealm);
+   var logins = passwordManager.getAllLogins({});
+alert(logins.length);      
+   for (var i = 0; i < logins.length; i++) {
+alert(i+':'+logins[i].username+'\n');
+      if (logins[i].username == username) {
+//         passwordManager.removeLogin(logins[i]);
+//         break;
+      }
+   }
+alert('end');
+
+}
+catch(ex) {
+alert('catch');
+	
+   // This will only happen if there is no nsILoginManager component class
+}
+
+*/
+
+
+
 	this._uid = Math.floor(Math.random()*10000);
 	this.results=new NCHPaket(this.pref);
 	if (gMini) {
