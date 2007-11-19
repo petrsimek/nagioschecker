@@ -21,7 +21,7 @@ var gMini=false;
 
 	<statusbar id="status-bar">	
     <popupset>
-      <menupopup id="nagioschecker-menu">
+      <menupopup id="nagioschecker-menu" position="after_start">
   	    <menuseparator id="menu-separe" />  
         <menuitem id="nagioschecker-stoprun" label="" oncommand="nagioschecker.switchStop();" />
         <menuitem id="nagioschecker-reload" label="&nch.menu.updatenow;" oncommand="nagioschecker.doUpdate();" />

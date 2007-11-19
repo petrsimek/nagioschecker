@@ -2,7 +2,22 @@
 var _showTimerID = null;
 var _tab = null;
 var MAX_SERVERS=200;
-var ev2pop = {
+var ev2pop1 = {
+			  'nagioschecker-popup':'nagioschecker-popup',
+			  'nagioschecker-popup-down':'nagioschecker-popup-down',
+			  'nagioschecker-popup-unreachable':'nagioschecker-popup-unreachable',
+			  'nagioschecker-popup-unknown':'nagioschecker-popup-unknown',
+			  'nagioschecker-popup-warning':'nagioschecker-popup-warning',
+			  'nagioschecker-popup-critical':'nagioschecker-popup-critical',
+			  'nagioschecker-panel':'nagioschecker-popup',
+			  'nagioschecker-img':'nagioschecker-popup',
+			  'nagioschecker-hosts-down':'nagioschecker-popup',
+			  'nagioschecker-hosts-unreachable':'nagioschecker-popup',
+			  'nagioschecker-services-unknown':'nagioschecker-popup',
+			  'nagioschecker-services-warning':'nagioschecker-popup',
+			  'nagioschecker-services-critical':'nagioschecker-popup'};
+
+var ev2pop2 = {
 			  'nagioschecker-popup':'nagioschecker-popup',
 			  'nagioschecker-popup-down':'nagioschecker-popup-down',
 			  'nagioschecker-popup-unreachable':'nagioschecker-popup-unreachable',
@@ -16,6 +31,7 @@ var ev2pop = {
 			  'nagioschecker-services-unknown':'nagioschecker-popup-unknown',
 			  'nagioschecker-services-warning':'nagioschecker-popup-warning',
 			  'nagioschecker-services-critical':'nagioschecker-popup-critical'};
+var ev2pop=ev2pop1;
 
 var isFirst = null;
 var nagioschecker = null;
@@ -962,6 +978,7 @@ alert('catch');
 
     var mainPanel=document.getElementById('nagioschecker-panel');
     var mainPopup=document.getElementById('nagioschecker-popup');
+    ev2pop=ev2pop1;
 
     switch (this.pref.click) {
 		  case 1:
@@ -1062,6 +1079,7 @@ alert('catch');
 		  mainPanel.relatedPopup='nagioschecker-popup';
       }
       else {		  
+        ev2pop=ev2pop2;
         for (var pType in fld) {
 		  fld[pType].addEventListener('mouseover',nagioschecker.handleMouseOver,false);
 		  fld[pType].addEventListener('mouseout',nagioschecker.handleMouseOut,false);
