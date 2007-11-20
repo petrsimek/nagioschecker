@@ -1,4 +1,3 @@
-
 var _showTimerID = null;
 var _tab = null;
 var MAX_SERVERS=200;

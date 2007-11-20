@@ -33,19 +33,12 @@ NCHPass.prototype = {
 	else if (CC_loginManager!= null) {
 		try {
 
-		var loginManager = CC_loginManager.getService(Components.interfaces.nsILoginManager);
-
-
-		var logins = loginManager.findLogins({}, "nagioschecker-url-"+pos, null, '');
-		if (logins[0]) {
-			alert('mazu:'+logins[0].username);
-			loginManager.removeLogin(logins[0]);
-		}       
-
+			var loginManager = CC_loginManager.getService(Components.interfaces.nsILoginManager);
+			var logins = loginManager.findLogins({}, "nagioschecker-url-"+pos, null, '');
+			if (logins[0]) loginManager.removeLogin(logins[0]);
 			
 		}
 		catch (e) {
-			alert(e);
 		}
 		
 	}
@@ -80,8 +73,6 @@ NCHPass.prototype = {
 	}
 	else if (CC_loginManager!= null) {
 
-		alert('save:'+pos);
-		alert(username+':'+password);
 		var nsLoginInfo = new Components.Constructor("@mozilla.org/login-manager/loginInfo;1",
                                              Components.interfaces.nsILoginInfo,
                                              "init");
@@ -91,11 +82,10 @@ NCHPass.prototype = {
                        username, password, null, null);
 		try {
 			var loginManager = CC_loginManager.getService(Components.interfaces.nsILoginManager);
-			var x = loginManager.addLogin(authLoginInfo);
-			alert(x);	
+			loginManager.removeLogin(authLoginInfo);
+			loginManager.addLogin(authLoginInfo);
 		}
       	catch (e) {
-      		alert(e);
       	}
 	}
 
@@ -131,7 +121,6 @@ NCHPass.prototype = {
       
 		var logins = loginManager.findLogins({}, "nagioschecker-url-"+pos, null, '');
 		if (logins[0]) {
-			alert(logins[0].username);
 			ret.user = logins[0].username;
 			ret.password = logins[0].password;
 		}       
