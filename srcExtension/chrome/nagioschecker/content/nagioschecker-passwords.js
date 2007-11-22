@@ -116,15 +116,44 @@ NCHPass.prototype = {
 	}
 	else if (CC_loginManager!= null) {
    
-   
+   		try {
 		var loginManager = CC_loginManager.getService(Components.interfaces.nsILoginManager);
-      
+/*		
+		var nsLoginInfo = new Components.Constructor("@mozilla.org/login-manager/loginInfo;1",
+                                             Components.interfaces.nsILoginInfo,
+                                             "init");
+*/
+
+		var x = loginManager.getAllLogins({});
+		
+		
+		for(var i =0;i<x.length;x++) {
+		alert('cnt:'+x.length);
+		alert(x[i]);
+		alert(x[i].username);
+			if ((!x[i].httpRealm) && (x[i].hostname.match('nagioschecker-url-'))) {
+				var newlogin = x[i];
+//				var newlogin = new nsLoginInfo(x[i].hostname,null,'x',x[i].username,x[i].password,null,null);
+				newlogin.httpRealm='x';
+				loginManager.modifyLogin(x[i],newlogin);
+			}
+		}      
+		var loginManager = CC_loginManager.getService(Components.interfaces.nsILoginManager);
 		var logins = loginManager.findLogins({}, "nagioschecker-url-"+pos, null, '');
+		alert('cnt:'+logins.length);
+		alert(logins[0]);
+		alert(logins[0].username);
+		alert(logins[0].httpRealm);
 		if (logins[0]) {
 			ret.user = logins[0].username;
 			ret.password = logins[0].password;
 		}       
+   		}
+   		catch (e) {
+   			alert(e);
+   		}
 	}
+	
 
     return ret;
   }
