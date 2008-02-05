@@ -60,3 +60,4 @@ pref("extensions.nagioschecker.sound_critical", 0);
 pref("extensions.nagioschecker.sound_critical_path", "");
 pref("extensions.nagioschecker.sound_down", 0);
 pref("extensions.nagioschecker.sound_down_path", "");
+pref("extensions.nagioschecker.version", "");

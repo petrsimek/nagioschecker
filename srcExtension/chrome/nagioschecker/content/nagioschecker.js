@@ -1,3 +1,6 @@
+var NCH_VERSION = "0.11.1.2";
+
+var nch_branch = "extensions.nagioschecker.";
 var _showTimerID = null;
 var _tab = null;
 var MAX_SERVERS=200;
@@ -36,11 +39,13 @@ var isFirst = null;
 var nagioschecker = null;
 var nagioscheckerLoad = function() {
 
+
   nagioschecker = new NCH();
 
   Components.classes["@mozilla.org/observer-service;1"]
             .getService(Components.interfaces.nsIObserverService)
             .addObserver(nagioschecker, "nagioschecker:preferences-changed", false);
+
 
 
   nagioschecker.start();
@@ -102,6 +107,61 @@ NCH.prototype = {
   pref:{},
   _showTimerID: null,
   _refreshTimer: null,
+
+
+  getVersion: function() {
+  	var value = "";
+  	try {
+   		var RDFService = Components.classes["@mozilla.org/rdf/rdf-service;1"]
+             .getService(Components.interfaces.nsIRDFService);
+   		var extensionDS= Components.classes["@mozilla.org/extensions/manager;1"].getService(Components.interfaces.nsIExtensionManager).datasource;
+   		var target = extensionDS.GetTarget(RDFService.GetResource("urn:mozilla:item:{123b2220-59cb-11db-b0de-0800200c9a66}"), RDFService.GetResource("http://www.mozilla.org/2004/em-rdf#version"), true);
+   		value = target.QueryInterface(Components.interfaces.nsIRDFLiteral).Value;
+  	} catch(e) {
+  	}
+  	return value;
+  },
+
+  isNewVersion: function() {
+
+	var currVer = this.getVersion();
+   		
+  	try {
+   		
+  	  if ((!this.preferences.prefHasUserValue(nch_branch+"version")) 
+  	  		|| 
+  	  		(this.preferences.getCharPref(nch_branch+"version") == "")
+  	  		||
+  	  		(currVer!=this.preferences.getCharPref(nch_branch+"version"))
+  	  		) {
+		this.preferences.setCharPref(nch_branch+"version", currVer); 
+  	  	return true; 
+	  }  	
+  	} catch(e) {
+  	}
+
+	return false;  	
+  
+  },
+
+  isFF3: function() {
+   try {
+        var app = Components.classes["@mozilla.org/xre/app-info;1"]
+                   .getService(Components.interfaces.nsIXULAppInfo)
+                   .QueryInterface(Components.interfaces.nsIXULRuntime);
+		return (
+			(app.ID == '{ec8030f7-c20a-464f-9b0e-13a3a9e97384}') 
+			&&
+			(app.version.match(new RegExp('^3')))
+			);
+        
+    } catch(e) {
+    }
+
+	return false;
+  
+  
+  }, 
 
   handleMouseClick: function (aEvent) {
 	  if(aEvent.button == 0) {
@@ -200,41 +260,14 @@ NCH.prototype = {
   
   _super: null,
   start : function() {
-/*
-// example values
-var hostname = 'http://developer.mozilla.org';
-var formSubmitURL = null;
-var httprealm = "";
-var username = 'mikeshk';
-
-try {
-alert('start');
-   // Get Login Manager 
-   var passwordManager = Components.classes["@mozilla.org/login-manager;1"]
-                         .getService(Components.interfaces.nsILoginManager);
- 
-   // Find users for this extension 
-//   var logins = passwordManager.findLogins({}, hostname, formSubmitURL, httprealm);
-   var logins = passwordManager.getAllLogins({});
-alert(logins.length);      
-   for (var i = 0; i < logins.length; i++) {
-alert(i+':'+logins[i].username+'\n');
-      if (logins[i].username == username) {
-//         passwordManager.removeLogin(logins[i]);
-//         break;
-      }
-   }
-alert('end');
-
-}
-catch(ex) {
-alert('catch');
-	
-   // This will only happen if there is no nsILoginManager component class
-}
-
-*/
-
+	if (this.isNewVersion()) {
+		if (this.isFF3()) {
+		alert('If you have upgraded from Firefox version 2 and you have saved\n'
+		       +'any password of Nagios server in Nagios Checker securely\n'
+		       +'then you have to re-save your credentials for this Nagios server again\n'
+		       +'due to some internal changes of Firefox Password Manager.');
+		}
+	}
 
 
 	this._uid = Math.floor(Math.random()*10000);
@@ -905,7 +938,29 @@ alert('catch');
 					    &&
 					    ((!this.pref.filter_out_services_on_acknowledged_hosts) || ((this.pref.filter_out_services_on_acknowledged_hosts) && ((!probls[j].service) || ((probls[j].service) && (!isAck[probls[j].host])))))
 					    &&
-					    ((!this.pref.filter_out_regexp_hosts) || ((this.pref.filter_out_regexp_hosts) && (probls[j].host) &&  (((!this.pref.filter_out_regexp_hosts_reverse) && (!probls[j].host.match(new RegExp(this.pref.filter_out_regexp_hosts_value)))) || ((this.pref.filter_out_regexp_hosts_reverse) && (probls[j].host.match(new RegExp(this.pref.filter_out_regexp_hosts_value)))))))
+					    (
+					    	(!this.pref.filter_out_regexp_hosts) 
+					    	|| 
+					    	(
+					    		(this.pref.filter_out_regexp_hosts) 
+					    		&& 
+					    		(probls[j].host) 
+					    		&&  
+					    		(
+					    			(
+					    				(!this.pref.filter_out_regexp_hosts_reverse) 
+					    				&& 
+					    				(!probls[j].host.match(new RegExp(this.pref.filter_out_regexp_hosts_value)))
+					    			) 
+					    			|| 
+					    			(
+					    				(this.pref.filter_out_regexp_hosts_reverse) 
+					    				&& 
+					    				(probls[j].host.match(new RegExp(this.pref.filter_out_regexp_hosts_value)))
+					    			)
+					    		)
+					    	)
+					    )
 					    &&
 					    (
 					    	(!this.pref.filter_out_regexp_services)
