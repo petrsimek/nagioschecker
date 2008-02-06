@@ -39,6 +39,7 @@ NCHPass.prototype = {
 			
 		}
 		catch (e) {
+		alert(e);
 		}
 		
 	}
@@ -76,23 +77,31 @@ NCHPass.prototype = {
 		var nsLoginInfo = new Components.Constructor("@mozilla.org/login-manager/loginInfo;1",
                                              Components.interfaces.nsILoginInfo,
                                              "init");
-alert(username+':'+password);
+
 		var authLoginInfo = new nsLoginInfo('nagioschecker-url-'+pos,
                        'Nagios Login', null,
                        username, password, true, true);
+
+
                        
 		var loginManager = CC_loginManager.getService(Components.interfaces.nsILoginManager);
+
+		var logins = loginManager.findLogins({}, "nagioschecker-url-"+pos, 'Nagios Login', null);
+
 		try {
-			loginManager.removeLogin(authLoginInfo);
+			if (logins[0]) {
+				loginManager.removeLogin(logins[0]);
+			}
+		
 		}
       	catch (e) {
-      	alert(e);
+//      	alert(e);
       	}
 		try {
 			loginManager.addLogin(authLoginInfo);
 		}
       	catch (e) {
-      	alert(e);
+//      	alert(e);
       	}
 	}
 
@@ -125,18 +134,8 @@ alert(username+':'+password);
 		var loginManager = CC_loginManager.getService(Components.interfaces.nsILoginManager);
    
    		try {
-/*		
-		var nsLoginInfo = new Components.Constructor("@mozilla.org/login-manager/loginInfo;1",
-                                             Components.interfaces.nsILoginInfo,
-                                             "init");
-*/
 
 		var logins = loginManager.findLogins({}, "nagioschecker-url-"+pos, 'Nagios Login', null);
-//		alert('cnt:'+logins.length);
-//		alert(logins[0]);
-//		alert(logins[0].username);
-//		alert(logins[0].password);
-	//alert(logins[0].httpRealm);
 		if (logins[0]) {
 			ret.user = logins[0].username;
 			ret.password = logins[0].password;
@@ -144,43 +143,9 @@ alert(username+':'+password);
 
    		}
    		catch (e) {
-   			alert(e);
+//   			alert(e);
    		}
 
-/*
-		if (!logins[0]) {
-			var x = loginManager.getAllLogins({});
-			for(var i =0;i<x.length;x++) {
-//		alert('allcnt:'+x.length);
-//		alert(x[i]);
-//		alert(x[i].username);
-//		alert(x[i].password);
-				if (x[i].hostname.match('nagioschecker-url-'+pos)) {
-//					var newlogin = x[i];
-//				var newlogin = new nsLoginInfo(x[i].hostname,null,'x',x[i].username,x[i].password,null,null);
-//					newlogin.httpRealm='x';
-//					loginManager.modifyLogin(x[i],newlogin);
-					
-					ret.user = x[i].username;
-					ret.password = x[i].password;
-				}
-			}      
-		}
-*/			
-
-
-	/*	
-		
-		var logins = loginManager.findLogins({}, "nagioschecker-url-"+pos, null, '');
-		alert('cnt:'+logins.length);
-		alert(logins[0]);
-		alert(logins[0].username);
-		alert(logins[0].httpRealm);
-		if (logins[0]) {
-			ret.user = logins[0].username;
-			ret.password = logins[0].password;
-		}       
-*/		
 	}
 	
 
