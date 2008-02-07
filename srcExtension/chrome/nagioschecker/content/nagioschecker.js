@@ -261,19 +261,17 @@ NCH.prototype = {
   _super: null,
   start : function() {
     this.bundle = document.getElementById("nch-strings");
+/*
 	if (this.isNewVersion()) {
 		if (this.isFF3()) {
 		  var prompts = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].createInstance(Components.interfaces.nsIPromptService);
-  		  var result = prompts.alert(this.win, this.bundle.getString('upgradeWarning'), this.bundle.getString('alertResaveFF3'));
-/*
-		alert('If you have upgraded from Firefox version 2 and you have saved\n'
+  		  var result = prompts.alert(this.win, 'Upgrade warning','If you have upgraded from Firefox version 2 and you have saved\n'
 		       +'any password of Nagios server in Nagios Checker securely\n'
 		       +'then you have to re-save your credentials for this Nagios server again\n'
 		       +'due to some internal changes of Firefox Password Manager.');
-*/		
 		}
 	}
-
+*/
 
 	this._uid = Math.floor(Math.random()*10000);
 	this.results=new NCHPaket(this.pref);
