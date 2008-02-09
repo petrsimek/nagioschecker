@@ -109,86 +109,26 @@ NCH.prototype = {
   _refreshTimer: null,
 
 
-  getVersion: function() {
-  	var value = "";
-  	try {
-   		var RDFService = Components.classes["@mozilla.org/rdf/rdf-service;1"]
-             .getService(Components.interfaces.nsIRDFService);
-   		var extensionDS= Components.classes["@mozilla.org/extensions/manager;1"].getService(Components.interfaces.nsIExtensionManager).datasource;
-   		var target = extensionDS.GetTarget(RDFService.GetResource("urn:mozilla:item:{123b2220-59cb-11db-b0de-0800200c9a66}"), RDFService.GetResource("http://www.mozilla.org/2004/em-rdf#version"), true);
-   		value = target.QueryInterface(Components.interfaces.nsIRDFLiteral).Value;
-  	} catch(e) {
-  	}
-  	return value;
-  },
-
-  isNewVersion: function() {
-
-	var currVer = this.getVersion();
-   		
-  	try {
-   		
-  	  if ((!this.preferences.prefHasUserValue(nch_branch+"version")) 
-  	  		|| 
-  	  		(this.preferences.getCharPref(nch_branch+"version") == "")
-  	  		||
-  	  		(currVer!=this.preferences.getCharPref(nch_branch+"version"))
-  	  		) {
-		this.preferences.setCharPref(nch_branch+"version", currVer); 
-  	  	return true; 
-	  }  	
-  	} catch(e) {
-  	}
-
-	return false;  	
-  
-  },
-
-  isFF3: function() {
-   try {
-        var app = Components.classes["@mozilla.org/xre/app-info;1"]
-                   .getService(Components.interfaces.nsIXULAppInfo)
-                   .QueryInterface(Components.interfaces.nsIXULRuntime);
-		return (
-			(app.ID == '{ec8030f7-c20a-464f-9b0e-13a3a9e97384}') 
-			&&
-			(app.version.match(new RegExp('^3')))
-			);
-        
-    } catch(e) {
-    }
-
-	return false;
-  
-  
-  }, 
-
   handleMouseClick: function (aEvent) {
 	  if(aEvent.button == 0) {
-//dump('\nCLICKout'+aEvent.target.id);
-  	nagioschecker.abort();
-//dump('\nCLICKover'+aEvent.target.id);
-  	nagioschecker.handleMouseOver(aEvent);
+		nagioschecker.abort();
+  		nagioschecker.handleMouseOver(aEvent);
 	  }
   },
 
 
   handleMouseOver: function (aEvent) {
-//dump('\n'+nagioschecker.openedPops.length+' out'+aEvent.target.id);
 	if (_showTimerID ) {
 		return;
 	}
-//dump('v')	;
 		if ((aEvent.target.id == "nagioschecker-img")||(aEvent.target.id == "nagioschecker-panel")||(aEvent.target.localName == "label")||(aEvent.target.localName == "popup")) {
-//dump(' '+aEvent.target.localName+":"+_tab+":"+ev2pop[aEvent.target.id]);
-		if (aEvent.target == _tab) {
-			return;
-		}
-		_tab = aEvent.target;
-		var relPopup=document.getElementById(ev2pop[aEvent.target.id]);
-		var callback = function(self) {
+			if (aEvent.target == _tab) {
+				return;
+			}
+			_tab = aEvent.target;
+			var relPopup=document.getElementById(ev2pop[aEvent.target.id]);
+			var callback = function(self) {
 			if (relPopup) {
-//dump("OTEVREN:"+aEvent.target.id+" "+ev2pop[aEvent.target.id]);
 				relPopup.showPopup(_tab,  -1, -1, 'popup', 'topleft' , 'bottomleft');
 				nagioschecker.openedPops.push(ev2pop[aEvent.target.id]);
 			}
@@ -199,7 +139,6 @@ NCH.prototype = {
 
   openedPops : [],
   handleMouseOut: function (aEvent) {
-//dump('\nout'+aEvent.target.id);
 	var rel = aEvent.relatedTarget;
 	var popupMain = document.getElementById('nagioschecker-popup');
 	var popupDown = document.getElementById('nagioschecker-popup-down');
@@ -210,12 +149,10 @@ NCH.prototype = {
 	
 	if (rel) {
 		while (rel) {
-//dump(' '+rel.localName+':'+rel.id);
 			if (rel == _tab || rel == popupMain || rel == popupDown || rel == popupUnreachable || rel == popupUnknown || rel == popupCritical || rel == popupWarning)
 				return;
 			rel = rel.parentNode;
 		}
-//dump('['+aEvent.target.id+']');
 		nagioschecker.abort();
 		return;
 	}
@@ -228,8 +165,8 @@ NCH.prototype = {
 		return;
 	nagioschecker.abort();   	
   },
+
   abort: function() {
-//dump('ABORT');
 	if (_showTimerID) {
 		window.clearTimeout(_showTimerID);
 		_showTimerID = null;
@@ -250,7 +187,6 @@ NCH.prototype = {
 	var x = aElement.boxObject.screenX;
 	var y = aElement.boxObject.screenY;
 	var c = aAllowOnEdge ? 1 : 0;
-//dump('x:'+x+' y:'+y+' ax:'+aScreenX+' ay:'+aScreenY+'\n');
 	if (x < aScreenX - c && aScreenX < x + aElement.boxObject.width + c && 
 		y < aScreenY - c && aScreenY < y + aElement.boxObject.height + c) {
 		return true;
@@ -259,19 +195,9 @@ NCH.prototype = {
   },
   
   _super: null,
+
   start : function() {
     this.bundle = document.getElementById("nch-strings");
-/*
-	if (this.isNewVersion()) {
-		if (this.isFF3()) {
-		  var prompts = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].createInstance(Components.interfaces.nsIPromptService);
-  		  var result = prompts.alert(this.win, 'Upgrade warning','If you have upgraded from Firefox version 2 and you have saved\n'
-		       +'any password of Nagios server in Nagios Checker securely\n'
-		       +'then you have to re-save your credentials for this Nagios server again\n'
-		       +'due to some internal changes of Firefox Password Manager.');
-		}
-	}
-*/
 
 	this._uid = Math.floor(Math.random()*10000);
 	this.results=new NCHPaket(this.pref);
@@ -697,26 +623,21 @@ NCH.prototype = {
     while(enumerator.hasMoreElements()) {
       var win = enumerator.getNext();
       if (win.nagioschecker) {
-//dump("win.nagioschecker._uid:"+win.nagioschecker._uid+"\n");
         if (!this.isStopped) {        
           if ((this.pref.one_window_only) && (!win.isFirst) && (!win.gMini)) {
-//dump(win.nagioschecker._uid+" disabled\n");
           	win.nagioschecker.setNoData("");
             win.nagioschecker.setIcon(win,"disabled");
           }
           else {
             if (paket==null) {
-//dump(win.nagioschecker._uid+" notset\n");
               win.nagioschecker.setNoData("notSet");
             }
             else {
-//dump(win.nagioschecker._uid+" updatestatus\n");
               win.nagioschecker.updateStatus(paket,false);
             }
           }
         }
         else {
-//dump(win.nagioschecker._uid+" stop\n");
           win.nagioschecker.setNoData("");
           win.nagioschecker.setIcon(win,"stop");
           win.nagioschecker.resetBehavior();
@@ -1018,8 +939,6 @@ NCH.prototype = {
   resetBehavior: function() {
 
 	var alertCount = (this.results['all']) ? this.results['all'][1] : 0;
-
-//dump(window.nagioschecker._uid+' RESETBEHAVIOR:'+alertCount+'\n');
 
     var fld = {
               "down":document.getElementById('nagioschecker-hosts-down'),
@@ -1443,7 +1362,63 @@ NCH.prototype = {
 	      }
 		}
 		return result;
-	}
+	},
+
+
+  getVersion: function() {
+  	var value = "";
+  	try {
+   		var RDFService = Components.classes["@mozilla.org/rdf/rdf-service;1"]
+             .getService(Components.interfaces.nsIRDFService);
+   		var extensionDS= Components.classes["@mozilla.org/extensions/manager;1"].getService(Components.interfaces.nsIExtensionManager).datasource;
+   		var target = extensionDS.GetTarget(RDFService.GetResource("urn:mozilla:item:{123b2220-59cb-11db-b0de-0800200c9a66}"), RDFService.GetResource("http://www.mozilla.org/2004/em-rdf#version"), true);
+   		value = target.QueryInterface(Components.interfaces.nsIRDFLiteral).Value;
+  	} catch(e) {
+  	}
+  	return value;
+  },
+
+  isNewVersion: function() {
+
+	var currVer = this.getVersion();
+   		
+  	try {
+   		
+  	  if ((!this.preferences.prefHasUserValue(nch_branch+"version")) 
+  	  		|| 
+  	  		(this.preferences.getCharPref(nch_branch+"version") == "")
+  	  		||
+  	  		(currVer!=this.preferences.getCharPref(nch_branch+"version"))
+  	  		) {
+		this.preferences.setCharPref(nch_branch+"version", currVer); 
+  	  	return true; 
+	  }  	
+  	} catch(e) {
+  	}
+
+	return false;  	
+  
+  },
+
+  isFF3: function() {
+   try {
+        var app = Components.classes["@mozilla.org/xre/app-info;1"]
+                   .getService(Components.interfaces.nsIXULAppInfo)
+                   .QueryInterface(Components.interfaces.nsIXULRuntime);
+		return (
+			(app.ID == '{ec8030f7-c20a-464f-9b0e-13a3a9e97384}') 
+			&&
+			(app.version.match(new RegExp('^3')))
+			);
+        
+    } catch(e) {
+    }
+
+	return false;
+  
+  
+  } 
+
 
 }
 
@@ -1786,33 +1761,12 @@ function NCHToolTip(pref) {
 
 }
 
-//function NCHPaket(sci,sca,scf) {
 function NCHPaket(pref) {
 	this.pref = pref;
 
-/*	
-	this.showColInfo = sci;
-	this.showColAlias = sca;
-	this.showColFlags = scf;
-*/ 
 	this.pt = ["down","unreachable","unknown","warning","critical"];
 	this.ttip = [];
-/*
-	this.all = [new NCHToolTip(this.showColInfo,this.showColAlias,this.showColFlags),0,0,[],[],0,0];
-	this.down = [new NCHToolTip(this.showColInfo,this.showColAlias,this.showColFlags),0,0,[],[]];
-	this.unreachable = [new NCHToolTip(this.showColInfo,this.showColAlias,this.showColFlags),0,0,[],[]];
-	this.unknown = [new NCHToolTip(this.showColInfo,this.showColAlias,this.showColFlags),0,0,[],[]];
-	this.warning = [new NCHToolTip(this.showColInfo,this.showColAlias,this.showColFlags),0,0,[],[]];
-	this.critical = [new NCHToolTip(this.showColInfo,this.showColAlias,this.showColFlags),0,0,[],[]];
-*/
-/*
-	this.all = [new NCHToolTip(this.pref),0,0,[],[],0,0];
-	this.down = [new NCHToolTip(this.pref),0,0,[],[]];
-	this.unreachable = [new NCHToolTip(this.pref),0,0,[],[]];
-	this.unknown = [new NCHToolTip(this.pref),0,0,[],[]];
-	this.warning = [new NCHToolTip(this.pref),0,0,[],[]];
-	this.critical = [new NCHToolTip(this.pref),0,0,[],[]];
-*/
+
 	this.all = [new Array(),0,0,[],[],0,0];
 	this.down = [new Array(),0,0,[],[]];
 	this.unreachable = [new Array(),0,0,[],[]];
@@ -1824,19 +1778,15 @@ function NCHPaket(pref) {
 	this.sa = [null,[0,0],[0,0],[0,0]];
 	this.addTooltipHeader = function(to,header,serverPos,timeFetch) {
 		this.ttip.push({type:'header',data:header});
-//	 	this[to][0].addHeader(header,serverPos,timeFetch);
 	 	this[to][0].push({type:'header',data:header,serverPos:serverPos,timeFetch:timeFetch});
 	}
 	this.addError = function(to) {
-//		this[to][0].addError();
 		this["isError"]=true;
 	 	this[to][0].push({type:'error'});
 	}
 	this.addProblem = function(serverPos,problemType,isOld,problem,aliasName) {
-//dump("ADDPROBLEM:"+serverPos+" "+problemType+" "+isOld+" "+problem+" "+aliasName+"\n");
 		var tmp_a = 1;
 		if (!isOld) {
-//dump("pricteno stav:"+this["all"][2]+"\n");
 			this["all"][2] = (this["all"][2]) ? this["all"][2]+1 : 1;
 			this["all"][4][serverPos] = (this["all"][4][serverPos]) ? this["all"][4][serverPos]+1 : 1;
 			this[problemType][2] = (this[problemType][2]) ? this[problemType][2]+1 : 1;
@@ -1853,10 +1803,8 @@ function NCHPaket(pref) {
 		this.ttip.push({type:'problem',data:problem});
 		this[problemType][1] = (this[problemType][1]) ? this[problemType][1]+1 : 1;
 		this[problemType][3][serverPos] = (this[problemType][3][serverPos]) ? this[problemType][3][serverPos]+1 : 1;
-//		this["all"][0].addRow(problem,aliasName,(!isOld));
 	 	this["all"][0].push({type:'problem',data:problem,aliasName:aliasName,isNew:(!isOld)});
 
-//		this[problemType][0].addRow(problem,aliasName,(!isOld));
 	 	this[problemType][0].push({type:'problem',data:problem,aliasName:aliasName,isNew:(!isOld)});
 		this["all"][1] = (this["all"][1]) ? this["all"][1]+1 : 1;
 		this["all"][3][serverPos] = (this["all"][3][serverPos]) ? this["all"][3][serverPos]+1 : 1;
@@ -1881,10 +1829,8 @@ function NCHPaket(pref) {
 	 	return this[problemType][2];
 	}
 	this.createTooltip = function(win) {
-//dump("uid:"+win.nagioschecker._uid+"\n");
 		var doc = win.document;
 		var ttall=new NCHToolTip(this.pref);
-//dump("this.createTooltip - all\n");
 
 		for(var i in this["all"][0]) {
 			switch (this["all"][0][i]["type"]) {
@@ -1901,14 +1847,8 @@ function NCHPaket(pref) {
 		}
 
         ttall.create(doc.getElementById('nagioschecker-popup'));
-/*
-	    if (this["all"][0]) {
-	    }
- */
     	for(var i=0;i<this.pt.length;i++) {
-//	      if ((this[this.pt[i]]) && (this[this.pt[i]][0])) {
 	      if (this[this.pt[i]]) {
-//dump("this.createTooltip - "+this.pt[i]+"\n");
 				var ttpt=new NCHToolTip(this.pref);
 
 				for(var j in this[this.pt[i]][0]) {
@@ -1925,7 +1865,6 @@ function NCHPaket(pref) {
 					}
 				}
 
-//	        this[this.pt[i]][0].create(document.getElementById('nagioschecker-popup-'+this.pt[i]));
 	        ttpt.create(doc.getElementById('nagioschecker-popup-'+this.pt[i]));
 	      }
 	    }
