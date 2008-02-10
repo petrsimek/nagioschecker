@@ -82,6 +82,7 @@ NCH.prototype = {
   url: null,
   worktime_from:null,
   worktime_to:null,
+  workdays:[],
   _servers:[],
   _serversEnabled:0,
   urlSide: "",
@@ -105,6 +106,7 @@ NCH.prototype = {
   startY : -1,
   undockedWindow : null,
   pref:{},
+  
   _showTimerID: null,
   _refreshTimer: null,
 
@@ -402,12 +404,21 @@ NCH.prototype = {
 			play_sound_attempt:['int',1],
 			blinking:['int',2],
 			click:['int',0],
-			one_window_only:['bool',false]
+			one_window_only:['bool',false],
+			workday_0:['bool',true],
+			workday_1:['bool',true],
+			workday_2:['bool',true],
+			workday_3:['bool',true],
+			workday_4:['bool',true],
+			workday_5:['bool',true],
+			workday_6:['bool',true]
 			});
 
     if (gMini) {
 		this.adjustSize(null,true);
     }
+
+	this.workdays = [this.pref.workday_0,this.pref.workday_1,this.pref.workday_2,this.pref.workday_3,this.pref.workday_4,this.pref.workday_5,this.pref.workday_6];
 
     this._servers=[];
 	this._serversEnabled = 0;
@@ -556,9 +567,8 @@ NCH.prototype = {
       document.getElementById('menu-separe2').setAttribute('hidden','true');
     }
 
-//    this.resetBehavior();    
-		this.doUpdate();
-
+//	this.doUpdate();
+	this.setNextCheck(true);
 
   },
 
@@ -679,7 +689,9 @@ NCH.prototype = {
 	},
 
   // plan next check
-  setNextCheck: function(){
+  setNextCheck: function(instant){
+  	var refresh_time = (instant == null) ? this.pref.refresh*60000 : 500;
+  
 	var me = this;
 	this.timeoutId = setTimeout(
 			function() {
@@ -692,7 +704,7 @@ NCH.prototype = {
 					me.setIcon(window,"sleepy");
 				}
 			}
-			, this.pref.refresh*60000
+			, refresh_time
 		);
   },
 
@@ -1329,12 +1341,11 @@ NCH.prototype = {
 	var now = (new Date()).getTime() / 1000; // actual tim in sec
 	now = now - (new Date()).getTimezoneOffset()*60; // TZ offset
 	now = Math.round(now % 86400); // atual hour in sec (without date information)
-
 	if (this.worktime_from > this.worktime_to) {
 		this.worktime_from -= 24*60*60;
 	}
-
-	bRet = (now > this.worktime_from) && (now < this.worktime_to);
+	var tDay = (new Date).getDay();
+	bRet = (now > this.worktime_from) && (now < this.worktime_to) && (this.workdays[tDay]);
 	return bRet;
   },
   

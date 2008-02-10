@@ -172,6 +172,20 @@
 				</hbox>
 			</vbox>
 		</hbox>
+		<hbox>
+			<vbox>
+				<label value="&nch.prefs.working_days;:" control="nch-general-workdays"/>
+				<hbox>
+              	<checkbox prefstring="extensions.nagioschecker.workday_1" id="nch-general-workday_1" label="&nch.prefs.monday_short;"/>
+              	<checkbox prefstring="extensions.nagioschecker.workday_2" id="nch-general-workday_2" label="&nch.prefs.tuesday_short;"/>
+              	<checkbox prefstring="extensions.nagioschecker.workday_3" id="nch-general-workday_3" label="&nch.prefs.wednesday_short;"/>
+              	<checkbox prefstring="extensions.nagioschecker.workday_4" id="nch-general-workday_4" label="&nch.prefs.thursday_short;"/>
+              	<checkbox prefstring="extensions.nagioschecker.workday_5" id="nch-general-workday_5" label="&nch.prefs.friday_short;"/>
+              	<checkbox prefstring="extensions.nagioschecker.workday_6" id="nch-general-workday_6" label="&nch.prefs.saturday_short;"/>
+              	<checkbox prefstring="extensions.nagioschecker.workday_0" id="nch-general-workday_0" label="&nch.prefs.sunday_short;"/>
+				</hbox>
+			</vbox>
+		</hbox>
 	</groupbox>
 	  	  <groupbox>
 		      <caption class="nch" label="&nch.prefs.after_click_statusbar;"/>	

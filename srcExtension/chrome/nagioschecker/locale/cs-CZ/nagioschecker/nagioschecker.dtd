@@ -136,3 +136,12 @@
 
 <!ENTITY nch.prefs.advanced "Pokročilé">
 <!ENTITY nch.advanced.downloadtimeout "Časový limit stahování status.cgi (ve vteřinách)">
+
+<!ENTITY nch.prefs.working_days "Pracovní dny">
+<!ENTITY nch.prefs.monday_short "Pon">
+<!ENTITY nch.prefs.tuesday_short "Úte">
+<!ENTITY nch.prefs.wednesday_short "Stř">
+<!ENTITY nch.prefs.thursday_short "Čtv">
+<!ENTITY nch.prefs.friday_short "Pát">
+<!ENTITY nch.prefs.saturday_short "Sob">
+<!ENTITY nch.prefs.sunday_short "Ned">

@@ -1,12 +1,11 @@
 TODO
-URGENT: Password Manager problem in FF3
-
 
 BUG: popup menu in corner on linux
 BUG: sometimes wrong onmouseover
 
-
 FIX: Force saving password with special chars
+
+NEW: working days (Mo, Tu, ...)
 
 Bigger things:
 NEW: Save config in external file.

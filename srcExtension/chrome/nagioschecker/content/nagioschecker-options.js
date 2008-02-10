@@ -330,7 +330,14 @@ NCHOptions.prototype = {
         "nch-behavior-sounds_by_type_unreachable",
         "nch-behavior-sounds_by_type_critical",
         "nch-behavior-sounds_by_type_warning",
-        "nch-behavior-sounds_by_type_unknown"
+        "nch-behavior-sounds_by_type_unknown",
+        "nch-general-workday_1",
+        "nch-general-workday_2",
+        "nch-general-workday_3",
+        "nch-general-workday_4",
+        "nch-general-workday_5",
+        "nch-general-workday_6",
+        "nch-general-workday_0"
         ];
 	
   	for (var i = 0; i < checkboxes.length; ++i) {
@@ -482,7 +489,14 @@ NCHOptions.prototype = {
         "nch-behavior-sounds_by_type_unreachable",
         "nch-behavior-sounds_by_type_critical",
         "nch-behavior-sounds_by_type_warning",
-        "nch-behavior-sounds_by_type_unknown"
+        "nch-behavior-sounds_by_type_unknown",
+        "nch-general-workday_1",
+        "nch-general-workday_2",
+        "nch-general-workday_3",
+        "nch-general-workday_4",
+        "nch-general-workday_5",
+        "nch-general-workday_6",
+        "nch-general-workday_0"
         ];
 		  for (var i = 0; i < checkboxes.length; ++i) {
   			var checkbox = document.getElementById(checkboxes[i]);
