@@ -48,7 +48,7 @@
 <!ENTITY nch.prefs.long "Uzun">
 <!ENTITY nch.prefs.short "Kısa">
 <!ENTITY nch.prefs.numbersonly "Yalnızca sayılar">
-<!ENTITY nch.prefs.colorsonly "">
+<!ENTITY nch.prefs.colorsonly "Yalnızca renkler">
 <!ENTITY nch.prefs.infowindowtype "Bilgi penceresi tipi">
 <!ENTITY nch.prefs.allinonewindow "Tüm sorunlar tek pencerede">
 <!ENTITY nch.prefs.individualwindows "Her sorun tipi için özel pencere">
@@ -117,12 +117,12 @@
 <!ENTITY nch.prefs.moveup "Yurkarı taşı">
 <!ENTITY nch.prefs.movedown "Aşağı taşı">
 <!ENTITY nch.prefs.reverseexp "ters ifade">
-<!ENTITY nch.prefs.showinfowindowcolumns "">
-<!ENTITY nch.prefs.aliascolumn "">
-<!ENTITY nch.prefs.infocolumn "">
-<!ENTITY nch.prefs.flagscolumn "">
-<!ENTITY nch.prefs.statuscolumn "">
-<!ENTITY nch.prefs.attemptcolumn "">
-<!ENTITY nch.prefs.minimalservicesattempt "">
-<!ENTITY nch.prefs.advanced "">
-<!ENTITY nch.advanced.downloadtimeout "">
+<!ENTITY nch.prefs.showinfowindowcolumns "Bilgi penceresinde sütunları göster">
+<!ENTITY nch.prefs.aliascolumn "Ana sistemler (takma isimler)">
+<!ENTITY nch.prefs.infocolumn "Bilgi">
+<!ENTITY nch.prefs.flagscolumn "Bayraklar">
+<!ENTITY nch.prefs.statuscolumn "Durum">
+<!ENTITY nch.prefs.attemptcolumn "Girişim">
+<!ENTITY nch.prefs.minimalservicesattempt "Sesli uyarı için en az hizmet girişimi">
+<!ENTITY nch.prefs.advanced "İleri Seviye">
+<!ENTITY nch.advanced.downloadtimeout "Status.cgi indirmesi zamanaşımı (saniyeler)">

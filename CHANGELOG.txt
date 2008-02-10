@@ -1,3 +1,13 @@
+0.11.1
+(public release of 0.11.0.1-0.11.0.2) 
+
+0.11.0.2
+* NEW: Can finally be run in Firefox 3.0
+
+0.11.0.1
+* BUGFIX: Sometimes opened wrong type of information window
+* LANG: Re-added tr-TR
+
 0.11
 (public release of 0.10.9-0.10.9.4)
 
