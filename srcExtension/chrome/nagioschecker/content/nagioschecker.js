@@ -1,4 +1,6 @@
-var NCH_VERSION = "0.11.1.2";
+var NCH_VERSION = "0.11.1.9";
+var NCH_GUID = "{123b2220-59cb-11db-b0de-0800200c9a66}";
+var NCH_CONFIGFILE="nagioschecker.xml";
 
 var nch_branch = "extensions.nagioschecker.";
 var _showTimerID = null;
@@ -712,6 +714,60 @@ NCH.prototype = {
 
   observe : function(subject, topic, data) {
   	if (topic == "nagioschecker:preferences-changed") {
+  	
+    try {
+		var nch_branch = this.preferences.getBranch('extensions.nagioschecker.');
+		var childs = nch_branch.getChildList("", {});
+		
+		var doc = document.implementation.createDocument("", "", null);
+		var root = doc.createElement('preferences');
+		root.setAttribute('branch', 'extensions.nagioschecker.');
+		for(var i in childs) {
+			var item = doc.createElement('pref');
+			item.setAttribute('name', childs[i]);
+		
+			switch (nch_branch.getPrefType(childs[i])) {
+				case nch_branch.PREF_STRING:
+					item.setAttribute('type', 'string');
+					item.setAttribute('value', nch_branch.getCharPref(childs[i]));
+					break;
+				case nch_branch.PREF_INT:
+					item.setAttribute('type', 'int');
+					item.setAttribute('value', nch_branch.getIntPref(childs[i]));
+					break;
+				case nch_branch.PREF_BOOL:
+					item.setAttribute('type', 'bool');
+					item.setAttribute('value', nch_branch.getBoolPref(childs[i]));
+					break;
+			}
+			root.appendChild(item);			
+		}
+		doc.appendChild(root);
+    }
+    catch (e) {
+		alert(e);
+    }
+
+	try {
+		var serializer = new XMLSerializer();
+		var foStream = Components.classes["@mozilla.org/network/file-output-stream;1"]
+               .createInstance(Components.interfaces.nsIFileOutputStream);
+		var file = Components.classes["@mozilla.org/file/directory_service;1"]
+           .getService(Components.interfaces.nsIProperties)
+           .get("ProfD", Components.interfaces.nsIFile);
+		file.append("extensions");
+		file.append(NCH_GUID);
+		file.append(NCH_CONFIGFILE);
+		foStream.init(file, 0x02 | 0x08 | 0x20, 0664, 0);
+		serializer.serializeToStream(doc, foStream, "");
+		foStream.close();			
+    }
+    catch (e) {
+		alert(e);
+    }
+  	
+  	
+  	
   		setTimeout("if (nagioschecker != null) nagioschecker.reload(false);", 300);
   	}
   },
@@ -1350,6 +1406,36 @@ NCH.prototype = {
   },
   
 	loadPref: function(branch,conf) {
+/*	
+		var xml = "";
+		var fstream = Components.classes["@mozilla.org/network/file-input-stream;1"]
+                        .createInstance(Components.interfaces.nsIFileInputStream);
+		var sstream = Components.classes["@mozilla.org/scriptableinputstream;1"]
+                        .createInstance(Components.interfaces.nsIScriptableInputStream);
+                        
+		var file = Components.classes["@mozilla.org/file/directory_service;1"]
+           .getService(Components.interfaces.nsIProperties)
+           .get("ProfD", Components.interfaces.nsIFile); // get profile folder
+		file.append("extensions");
+		file.append(NCH_GUID);
+		file.append(NCH_CONFIGFILE);
+                        
+		fstream.init(file, -1, 0, 0);
+		sstream.init(fstream); 
+		var str = sstream.read(4096);
+		while (str.length > 0) {
+  			xml += str;
+  			str = sstream.read(4096);
+		}
+		sstream.close();
+		fstream.close();
+
+		var domParser = new DOMParser();
+		var dom = domParser.parseFromString(xml, "text/xml");
+	
+		var prfs = dom.getElementsByTagName("pref");
+		alert(prfs);
+*/		
 		var result = {};
 		for (var i in conf) {
 			try {
@@ -1374,6 +1460,7 @@ NCH.prototype = {
 		}
 		return result;
 	},
+
 
 
   getVersion: function() {

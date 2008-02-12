@@ -35,6 +35,7 @@ function GetTreeSelections(tree) {
 }
 
 
+
 function NCHOptions() {};
 
 NCHOptions.prototype = {
@@ -418,6 +419,8 @@ NCHOptions.prototype = {
     }
 
 
+/**************************/
+
     Components.classes["@mozilla.org/observer-service;1"]
          .getService(Components.interfaces.nsIObserverService)
          .notifyObservers(window, "nagioschecker:preferences-changed", null);
@@ -425,6 +428,8 @@ NCHOptions.prototype = {
 
     return true;
   },
+
+
 
   replaySoundFile: function(type,wav) {
   	
@@ -608,5 +613,7 @@ NCHOptions.prototype = {
     return true;
 
   }
+
+
 
 }

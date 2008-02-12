@@ -1,7 +1,8 @@
 0.12b
 * NEW: Working days
 * INTERNAL: setNextCheck now used on start (sleepy icon works from start)
-
+* NEW/UNCOMPLETE: Saving XML config
+ 
 0.11.1
 (public release of 0.11.0.1-0.11.0.2) 
 
