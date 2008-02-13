@@ -1406,12 +1406,8 @@ NCH.prototype = {
   },
   
 	loadPref: function(branch,conf) {
-/*	
+	
 		var xml = "";
-		var fstream = Components.classes["@mozilla.org/network/file-input-stream;1"]
-                        .createInstance(Components.interfaces.nsIFileInputStream);
-		var sstream = Components.classes["@mozilla.org/scriptableinputstream;1"]
-                        .createInstance(Components.interfaces.nsIScriptableInputStream);
                         
 		var file = Components.classes["@mozilla.org/file/directory_service;1"]
            .getService(Components.interfaces.nsIProperties)
@@ -1419,23 +1415,34 @@ NCH.prototype = {
 		file.append("extensions");
 		file.append(NCH_GUID);
 		file.append(NCH_CONFIGFILE);
-                        
-		fstream.init(file, -1, 0, 0);
-		sstream.init(fstream); 
-		var str = sstream.read(4096);
-		while (str.length > 0) {
-  			xml += str;
-  			str = sstream.read(4096);
-		}
-		sstream.close();
-		fstream.close();
 
-		var domParser = new DOMParser();
-		var dom = domParser.parseFromString(xml, "text/xml");
+		if(file.exists()) {		
+
+			var fstream = Components.classes["@mozilla.org/network/file-input-stream;1"]
+                        .createInstance(Components.interfaces.nsIFileInputStream);
+			var sstream = Components.classes["@mozilla.org/scriptableinputstream;1"]
+                        .createInstance(Components.interfaces.nsIScriptableInputStream);
+
+			fstream.init(file, -1, 0, 0);
+			sstream.init(fstream); 
+			var str = sstream.read(4096);
+			while (str.length > 0) {
+	  			xml += str;
+  				str = sstream.read(4096);
+			}
+			sstream.close();
+			fstream.close();
+			var domParser = new DOMParser();
+			var dom = domParser.parseFromString(xml, "text/xml");
 	
-		var prfs = dom.getElementsByTagName("pref");
-		alert(prfs);
-*/		
+			var prfs = dom.getElementsByTagName("pref");
+			alert(prfs);
+			
+			for (var i = 0; i < prfs.length; i++) {
+			}
+			
+		}
+		
 		var result = {};
 		for (var i in conf) {
 			try {
