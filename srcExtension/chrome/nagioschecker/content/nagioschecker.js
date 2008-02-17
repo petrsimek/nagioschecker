@@ -413,8 +413,9 @@ NCH.prototype = {
 			workday_3:['bool',true],
 			workday_4:['bool',true],
 			workday_5:['bool',true],
-			workday_6:['bool',true]
-			});
+			workday_6:['bool',true],
+			prefer_text_config:['bool',false]
+			},firstRun);
 
     if (gMini) {
 		this.adjustSize(null,true);
@@ -1405,18 +1406,28 @@ NCH.prototype = {
 	return bRet;
   },
   
-	loadPref: function(branch,conf) {
+	loadPref: function(branch,conf,firstRun) {
+		try {
+			var preferFile = this.preferences.getBoolPref('extensions.nagioschecker.prefer_text_config');
+		}
+		catch (e) {
+			var preferFile = false;
+		}
 	
-		var xml = "";
-                        
-		var file = Components.classes["@mozilla.org/file/directory_service;1"]
-           .getService(Components.interfaces.nsIProperties)
-           .get("ProfD", Components.interfaces.nsIFile); // get profile folder
-		file.append("extensions");
-		file.append(NCH_GUID);
-		file.append(NCH_CONFIGFILE);
+//		if(file.exists() && firstRun) {		
+		if((preferFile) && (firstRun)) {		
 
-		if(file.exists()) {		
+			var xml = "";
+                        	
+			var file = Components.classes["@mozilla.org/file/directory_service;1"]
+           	.getService(Components.interfaces.nsIProperties)
+           	.get("ProfD", Components.interfaces.nsIFile); // get profile folder
+			file.append("extensions");
+			file.append(NCH_GUID);
+			file.append(NCH_CONFIGFILE);
+		}
+		
+		if((preferFile) && (firstRun) && (file.exists())) {		
 
 			var fstream = Components.classes["@mozilla.org/network/file-input-stream;1"]
                         .createInstance(Components.interfaces.nsIFileInputStream);
@@ -1436,13 +1447,49 @@ NCH.prototype = {
 			var dom = domParser.parseFromString(xml, "text/xml");
 	
 			var prfs = dom.getElementsByTagName("pref");
-			alert(prfs);
+			//alert(prfs);
 			
+			var tmp_prf  = {};
+			var al ='';
 			for (var i = 0; i < prfs.length; i++) {
+				switch(prfs[i].getAttribute('type')) {
+					case 'bool':
+						al+='boo'+prfs[i].getAttribute('name')+'\n';
+						tmp_prf[prfs[i].getAttribute('name')]=(prfs[i].getAttribute('value')=='true') ? true : false;	
+						break;
+					case 'int':
+						al+='int'+prfs[i].getAttribute('name')+'\n';
+						tmp_prf[prfs[i].getAttribute('name')]=parseInt(prfs[i].getAttribute('value'));	
+						break;
+					default:
+						al+='str'+prfs[i].getAttribute('name')+'\n';
+						tmp_prf[prfs[i].getAttribute('name')]=prfs[i].getAttribute('value');	
+						break;						
+				}
+				
 			}
+			alert(al);
 			
+			var result = {};
+			var al ='';
+			for (var i in conf) {
+				if (tmp_prf[i]) {
+					result[i] = tmp_prf[i]; 
+					if (conf[i][0]=='char') {
+						if ((result[i]=='') && (conf[i][1]!='')) {
+							result[i]=conf[i][1];
+						}
+					}
+					
+				}
+				else {
+					result[i] = conf[i][1];
+				}
+				al+=i+' '+result[i]+'\n';
+			}
+			alert(al);
 		}
-		
+		else {		
 		var result = {};
 		for (var i in conf) {
 			try {
@@ -1464,6 +1511,7 @@ NCH.prototype = {
 	      catch(e) {
 				result[i] = conf[i][1];
 	      }
+		}
 		}
 		return result;
 	},

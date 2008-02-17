@@ -338,7 +338,8 @@ NCHOptions.prototype = {
         "nch-general-workday_4",
         "nch-general-workday_5",
         "nch-general-workday_6",
-        "nch-general-workday_0"
+        "nch-general-workday_0",
+        "nch-advanced-prefer_text_config"
         ];
 	
   	for (var i = 0; i < checkboxes.length; ++i) {
@@ -501,7 +502,8 @@ NCHOptions.prototype = {
         "nch-general-workday_4",
         "nch-general-workday_5",
         "nch-general-workday_6",
-        "nch-general-workday_0"
+        "nch-general-workday_0",
+        "nch-advanced-prefer_text_config"
         ];
 		  for (var i = 0; i < checkboxes.length; ++i) {
   			var checkbox = document.getElementById(checkboxes[i]);
@@ -598,8 +600,6 @@ NCHOptions.prototype = {
         }
         }
         catch (e) {}
-
-
         }
         catch (e) {
           break;

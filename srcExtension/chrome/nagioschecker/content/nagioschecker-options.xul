@@ -305,6 +305,11 @@
 				<hbox>
 				<textbox prefstring="extensions.nagioschecker.timeout" id="nch-advanced-timeout" size="4"/> 
 				</hbox>
+
+				<hbox>
+	              <checkbox prefstring="extensions.nagioschecker.prefer_text_config" id="nch-advanced-prefer_text_config" label="Prefer text config"/>
+				</hbox>
+
 			</vbox>
         </groupbox>
       </tabpanel>
