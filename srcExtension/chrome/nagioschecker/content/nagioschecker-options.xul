@@ -305,10 +305,12 @@
 				<hbox>
 				<textbox prefstring="extensions.nagioschecker.timeout" id="nch-advanced-timeout" size="4"/> 
 				</hbox>
-
+          <separator class="thin"/>
 				<hbox>
-	              <checkbox prefstring="extensions.nagioschecker.prefer_text_config" id="nch-advanced-prefer_text_config" label="Prefer text config"/>
+	              <checkbox class="nch" prefstring="extensions.nagioschecker.prefer_text_config" id="nch-advanced-prefer_text_config" label="&nch.advanced.prefertextconfig;"/>
 				</hbox>
+          <description class="nch"><html:strong>&nch.prefs.note;:</html:strong> &nch.advanced.note_prefertextconfig;</description>
+				
 
 			</vbox>
         </groupbox>

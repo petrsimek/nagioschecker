@@ -421,6 +421,8 @@ NCH.prototype = {
 		this.adjustSize(null,true);
     }
 
+//	alert(this.pref.play_sound);
+
 	this.workdays = [this.pref.workday_0,this.pref.workday_1,this.pref.workday_2,this.pref.workday_3,this.pref.workday_4,this.pref.workday_5,this.pref.workday_6];
 
     this._servers=[];
@@ -1407,6 +1409,9 @@ NCH.prototype = {
   },
   
 	loadPref: function(branch,conf,firstRun) {
+
+		var result = {};
+
 		try {
 			var preferFile = this.preferences.getBoolPref('extensions.nagioschecker.prefer_text_config');
 		}
@@ -1450,68 +1455,65 @@ NCH.prototype = {
 			//alert(prfs);
 			
 			var tmp_prf  = {};
-			var al ='';
+//			var al ='';
 			for (var i = 0; i < prfs.length; i++) {
 				switch(prfs[i].getAttribute('type')) {
 					case 'bool':
-						al+='boo'+prfs[i].getAttribute('name')+'\n';
+//						al+='boo'+prfs[i].getAttribute('name')+'\n';
 						tmp_prf[prfs[i].getAttribute('name')]=(prfs[i].getAttribute('value')=='true') ? true : false;	
 						break;
 					case 'int':
-						al+='int'+prfs[i].getAttribute('name')+'\n';
+//						al+='int'+prfs[i].getAttribute('name')+'\n';
 						tmp_prf[prfs[i].getAttribute('name')]=parseInt(prfs[i].getAttribute('value'));	
 						break;
 					default:
-						al+='str'+prfs[i].getAttribute('name')+'\n';
-						tmp_prf[prfs[i].getAttribute('name')]=prfs[i].getAttribute('value');	
+//						al+='str'+prfs[i].getAttribute('name')+'\n';
+						tmp_prf[prfs[i].getAttribute('name')]=(prfs[i].getAttribute('value')) ? prfs[i].getAttribute('value') : '';	
 						break;						
 				}
 				
 			}
-			alert(al);
+//			alert(al);
 			
-			var result = {};
-			var al ='';
+//			var al ='';
 			for (var i in conf) {
-				if (tmp_prf[i]) {
+				if (tmp_prf[i]!=undefined) {
 					result[i] = tmp_prf[i]; 
-					if (conf[i][0]=='char') {
-						if ((result[i]=='') && (conf[i][1]!='')) {
+					if ((conf[i][0]=='char') && (result[i]=='') && (conf[i][1]!='') ){
 							result[i]=conf[i][1];
-						}
 					}
+//					al+='ok '+i+' '+result[i]+'\n';
 					
 				}
 				else {
+//					al+='conf '+i+' '+result[i]+'\n';
 					result[i] = conf[i][1];
 				}
-				al+=i+' '+result[i]+'\n';
 			}
-			alert(al);
+//			alert(al);
 		}
 		else {		
-		var result = {};
-		for (var i in conf) {
-			try {
-				switch (conf[i][0]) {
-					case 'int':
-						result[i] = this.preferences.getIntPref(branch+i);
-						break;
-					case 'bool':
-						result[i] = this.preferences.getBoolPref(branch+i);
-						break;
-					case 'char':
-						result[i] = this.preferences.getCharPref(branch+i);
-						if ((result[i]=='') && (conf[i][1]!='')) {
-							result[i]=conf[i][1];
-						}
-						break;
-				}
-	      }
-	      catch(e) {
-				result[i] = conf[i][1];
-	      }
-		}
+			for (var i in conf) {
+				try {
+					switch (conf[i][0]) {
+						case 'int':
+							result[i] = this.preferences.getIntPref(branch+i);
+							break;
+						case 'bool':
+							result[i] = this.preferences.getBoolPref(branch+i);
+							break;
+						case 'char':
+							result[i] = this.preferences.getCharPref(branch+i);
+							if ((result[i]=='') && (conf[i][1]!='')) {
+								result[i]=conf[i][1];
+							}
+							break;
+					}
+	      		}
+	      		catch(e) {
+					result[i] = conf[i][1];
+	      		}
+			}
 		}
 		return result;
 	},

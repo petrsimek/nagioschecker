@@ -1,14 +1,19 @@
 TODO
 
+BUG: can't stop
+
+FORGOT: import Servers from config file
+
+BUG: Expect to have a sound played for all types of problems when they are new. Instead, status bar flashes
+	 as instructed to, but no sound is played.
+
 BUG: popup menu in corner on linux
 BUG: sometimes wrong onmouseover
 
 FIX: Force saving password with special chars
 
-NEW: working days (Mo, Tu, ...)
-
 Bigger things:
-NEW: Save config in external file.
+NEW: Export/import config
 NEW: New filtering system (Regexps)
 
 My targets:

@@ -137,6 +137,8 @@
 
 <!ENTITY nch.prefs.advanced "Advanced">
 <!ENTITY nch.advanced.downloadtimeout "Status.cgi download timeout (in seconds)">
+<!ENTITY nch.advanced.prefertextconfig "Prefer loading of settings from an external text file rather than the Firefox internal configuration.">
+<!ENTITY nch.advanced.note_prefertextconfig "Could be useful when Firefox is terminated abnormaly and the unsaved preferences are lost. The configuration file will be loaded only when a Firefox window is opened first time.">
 
 <!ENTITY nch.prefs.working_days "Working days">
 <!ENTITY nch.prefs.monday_short "Mon">

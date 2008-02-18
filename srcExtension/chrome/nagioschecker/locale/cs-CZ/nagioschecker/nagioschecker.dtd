@@ -136,6 +136,8 @@
 
 <!ENTITY nch.prefs.advanced "Pokročilé">
 <!ENTITY nch.advanced.downloadtimeout "Časový limit stahování status.cgi (ve vteřinách)">
+<!ENTITY nch.advanced.prefertextconfig "Preferovat nahrání nastavení z externího textového souboru místo z interního konfiguračního systému.">
+<!ENTITY nch.advanced.note_prefertextconfig "Toto může být užitečné pokud je aplikace ukončena neočekávaně a nastavení uložené v aplikace může být ztraceno.  Konfigurační soubor je nahrávan pouze při prvním otevření okna aplikace.">
 
 <!ENTITY nch.prefs.working_days "Pracovní dny">
 <!ENTITY nch.prefs.monday_short "Pon">
