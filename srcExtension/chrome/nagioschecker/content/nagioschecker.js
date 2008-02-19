@@ -225,7 +225,7 @@ NCH.prototype = {
 
 		var me = this;
 		setTimeout(function() {
-			me.reload(true);
+			me.reload(true,true);
 		},1000);
   },
 
@@ -340,7 +340,7 @@ NCH.prototype = {
     firstWin.nagioschecker.reload(true);
   },
 
-  reload : function(firstRun) {
+  reload : function(firstRun,reallyFirstRun) {
 
     var wm = Components.classes["@mozilla.org/appshell/window-mediator;1"]
                    .getService(Components.interfaces.nsIWindowMediator);
@@ -353,6 +353,8 @@ NCH.prototype = {
 	  cnt++;
     }
 
+    this._servers=[];
+	this._serversEnabled = 0;
 
   	this.pref = this.loadPref("extensions.nagioschecker.",{
 			sound_warning:['int',0],
@@ -415,7 +417,7 @@ NCH.prototype = {
 			workday_5:['bool',true],
 			workday_6:['bool',true],
 			prefer_text_config:['bool',false]
-			},firstRun);
+			},reallyFirstRun);
 
     if (gMini) {
 		this.adjustSize(null,true);
@@ -425,56 +427,11 @@ NCH.prototype = {
 
 	this.workdays = [this.pref.workday_0,this.pref.workday_1,this.pref.workday_2,this.pref.workday_3,this.pref.workday_4,this.pref.workday_5,this.pref.workday_6];
 
-    this._servers=[];
-	this._serversEnabled = 0;
-    var pm = new  NCHPass();
 
     this.emptyInfo=[];
 
-    try {
 
-
-      for(var i=0;i<MAX_SERVERS;i++) {
-        
-        var surl = this.preferences.getCharPref("extensions.nagioschecker."+(i+1)+".url");
-        if (surl) {
-        try {
-          var pPass = this.preferences.getBoolPref("extensions.nagioschecker."+(i+1)+".plainpass");
-        }
-        catch (e2) {
-          var pPass=false;
-        }
-        try {
-          var gAli = this.preferences.getBoolPref("extensions.nagioschecker."+(i+1)+".getaliases");
-        }
-        catch (e2) {
-          var gAli=false;
-        }
-        try {
-          var gDis = this.preferences.getBoolPref("extensions.nagioschecker."+(i+1)+".disabled");
-        }
-        catch (e2) {
-          var gDis=false;
-        }
-          var auth = pm.getAuth((i+1));
-          this._servers.push({
-                  url:surl,
-                  name:this.preferences.getCharPref("extensions.nagioschecker."+(i+1)+".name"),
-                  urlstatus:this.preferences.getCharPref("extensions.nagioschecker."+(i+1)+".urlstatus"),
-                  username:(pPass) ? this.preferences.getCharPref("extensions.nagioschecker."+(i+1)+".username") : ((auth.user) ? auth.user : ''),
-                  password:(pPass) ? this.preferences.getCharPref("extensions.nagioschecker."+(i+1)+".password") : ((auth.password) ? auth.password : ''),
-                  versionOlderThan20:this.preferences.getBoolPref("extensions.nagioschecker."+(i+1)+".vot20"),
-                  getAliases:gAli,
-                  aliases:{},
-                  disabled:gDis
-                  });
-		   if (!gDis) this._serversEnabled++;
-           
-        }
-      }
-    }
-    catch(e) {
-    }
+//alert(this._servers.length);
 
     this.parser.setServers(this._servers);
 
@@ -1411,6 +1368,7 @@ NCH.prototype = {
 	loadPref: function(branch,conf,firstRun) {
 
 		var result = {};
+    var pm = new  NCHPass();
 
 		try {
 			var preferFile = this.preferences.getBoolPref('extensions.nagioschecker.prefer_text_config');
@@ -1452,45 +1410,62 @@ NCH.prototype = {
 			var dom = domParser.parseFromString(xml, "text/xml");
 	
 			var prfs = dom.getElementsByTagName("pref");
-			//alert(prfs);
-			
+		
 			var tmp_prf  = {};
-//			var al ='';
 			for (var i = 0; i < prfs.length; i++) {
 				switch(prfs[i].getAttribute('type')) {
 					case 'bool':
-//						al+='boo'+prfs[i].getAttribute('name')+'\n';
 						tmp_prf[prfs[i].getAttribute('name')]=(prfs[i].getAttribute('value')=='true') ? true : false;	
 						break;
 					case 'int':
-//						al+='int'+prfs[i].getAttribute('name')+'\n';
 						tmp_prf[prfs[i].getAttribute('name')]=parseInt(prfs[i].getAttribute('value'));	
 						break;
 					default:
-//						al+='str'+prfs[i].getAttribute('name')+'\n';
 						tmp_prf[prfs[i].getAttribute('name')]=(prfs[i].getAttribute('value')) ? prfs[i].getAttribute('value') : '';	
 						break;						
 				}
 				
 			}
-//			alert(al);
-			
-//			var al ='';
 			for (var i in conf) {
 				if (tmp_prf[i]!=undefined) {
 					result[i] = tmp_prf[i]; 
 					if ((conf[i][0]=='char') && (result[i]=='') && (conf[i][1]!='') ){
 							result[i]=conf[i][1];
 					}
-//					al+='ok '+i+' '+result[i]+'\n';
-					
+				
 				}
 				else {
-//					al+='conf '+i+' '+result[i]+'\n';
 					result[i] = conf[i][1];
 				}
 			}
-//			alert(al);
+			
+			
+      for(var i=0;i<MAX_SERVERS;i++) {
+        
+        var surl = tmp_prf[(i+1)+".url"];
+        if (surl) {
+       	  	var pPass = tmp_prf[(i+1)+".plainpass"];
+       		var gAli = tmp_prf[(i+1)+".getaliases"];
+       		var gDis = tmp_prf[(i+1)+".disabled"];
+        	
+          	var auth = pm.getAuth((i+1));
+          	this._servers.push({
+                  url:surl,
+                  name:tmp_prf[(i+1)+".name"],
+                  urlstatus:tmp_prf[(i+1)+".urlstatus"],
+                  username:(pPass) ? tmp_prf[(i+1)+".username"] : ((auth.user) ? auth.user : ''),
+                  password:(pPass) ? tmp_prf[(i+1)+".password"] : ((auth.password) ? auth.password : ''),
+                  versionOlderThan20:tmp_prf[(i+1)+".vot20"],
+                  getAliases:gAli,
+                  aliases:{},
+                  disabled:gDis
+                  });
+		   	if (!gDis) this._serversEnabled++;
+           
+		}
+      }
+			
+			
 		}
 		else {		
 			for (var i in conf) {
@@ -1514,7 +1489,64 @@ NCH.prototype = {
 					result[i] = conf[i][1];
 	      		}
 			}
+			
+			
+
+
+    try {
+
+
+      for(var i=0;i<MAX_SERVERS;i++) {
+        
+        var surl = this.preferences.getCharPref("extensions.nagioschecker."+(i+1)+".url");
+        if (surl) {
+	        try {
+        	  	var pPass = this.preferences.getBoolPref("extensions.nagioschecker."+(i+1)+".plainpass");
+        	}
+        	catch (e2) {
+	          	var pPass=false;
+        	}
+        	try {
+          		var gAli = this.preferences.getBoolPref("extensions.nagioschecker."+(i+1)+".getaliases");
+        	}
+        	catch (e2) {
+          		var gAli=false;
+        	}
+        	try {
+          		var gDis = this.preferences.getBoolPref("extensions.nagioschecker."+(i+1)+".disabled");
+        	}
+        	catch (e2) {
+          		var gDis=false;
+        	}
+          	var auth = pm.getAuth((i+1));
+          	this._servers.push({
+                  url:surl,
+                  name:this.preferences.getCharPref("extensions.nagioschecker."+(i+1)+".name"),
+                  urlstatus:this.preferences.getCharPref("extensions.nagioschecker."+(i+1)+".urlstatus"),
+                  username:(pPass) ? this.preferences.getCharPref("extensions.nagioschecker."+(i+1)+".username") : ((auth.user) ? auth.user : ''),
+                  password:(pPass) ? this.preferences.getCharPref("extensions.nagioschecker."+(i+1)+".password") : ((auth.password) ? auth.password : ''),
+                  versionOlderThan20:this.preferences.getBoolPref("extensions.nagioschecker."+(i+1)+".vot20"),
+                  getAliases:gAli,
+                  aliases:{},
+                  disabled:gDis
+                  });
+		   	if (!gDis) this._serversEnabled++;
+           
 		}
+      }
+    }
+    catch(e) {
+    }
+
+			
+			
+			
+		}
+		
+		
+		
+		
+		
 		return result;
 	},
 

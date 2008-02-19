@@ -1,8 +1,6 @@
 TODO
 
-BUG: can't stop
-
-FORGOT: import Servers from config file
+UNTESTED: import Servers from config file
 
 BUG: Expect to have a sound played for all types of problems when they are new. Instead, status bar flashes
 	 as instructed to, but no sound is played.
