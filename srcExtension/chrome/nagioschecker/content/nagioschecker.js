@@ -559,15 +559,16 @@ NCH.prototype = {
 							var reallyPlay=false;
 
 							for(var i=0;i<me.pt.length;i++) {
+								dump('me.pt[i]: '+me.pt[i]+' me.soundBT['+me.pt[i]+']:'+me.soundBT[me.pt[i]]+' me.results['+me.pt[i]+'][1]:'+me.results[me.pt[i]][1]+' me.results['+me.pt[i]+'][2]:'+me.results[me.pt[i]][2]+'\n');
 								if ( 
-									((me.pref.play_sound==1) && (me.soundBT[me.pt[i]]) && (me.results[me.pt[i]][2]) && me.results.checkServiceAttempt(me.pref.play_sound_attempt))
+									((me.pref.play_sound==1) && (me.soundBT[me.pt[i]]) && me.results.checkServiceAttempt(me.pt[i],me.pref.play_sound_attempt))
 									||
-									((me.pref.play_sound==2) && (me.soundBT[me.pt[i]]) && (me.results[me.pt[i]][1]) && me.results.checkOldServiceAttempt(me.pref.play_sound_attempt))
+									((me.pref.play_sound==2) && (me.soundBT[me.pt[i]]) && me.results.isAtLeastOneByProblemType(me.pt[i]))
 								) {
 									reallyPlay=true;
 								}
 							}
-
+dump('reallyPlay:'+reallyPlay+' '+me.pref.play_sound+' ');
 							if (reallyPlay) {
 								me.playSound(me.results);
 							}
@@ -1962,7 +1963,14 @@ function NCHPaket(pref) {
 	this.critical = [new Array(),0,0,[],[]];
 
 	this.isError = false;
-	this.sa = [null,[0,0],[0,0],[0,0]];
+	this.sa = {
+		all:[null,[0,0],[0,0],[0,0]],
+		down:[null,[0,0],[0,0],[0,0]],
+		unreachable:[null,[0,0],[0,0],[0,0]],
+		unknown:[null,[0,0],[0,0],[0,0]],
+		warning:[null,[0,0],[0,0],[0,0]],
+		critical:[null,[0,0],[0,0],[0,0]]
+		};
 	this.addTooltipHeader = function(to,header,serverPos,timeFetch) {
 		this.ttip.push({type:'header',data:header});
 	 	this[to][0].push({type:'header',data:header,serverPos:serverPos,timeFetch:timeFetch});
@@ -1980,12 +1988,14 @@ function NCHPaket(pref) {
 			this[problemType][4][serverPos] = (this[problemType][4][serverPos]) ? this[problemType][4][serverPos]+1 : 1;
 			if (problem.attemptInt>0) {
 				tmp_a = (problem.attemptInt>3) ? 3 : problem.attemptInt;
-				if (this.sa[tmp_a]) this.sa[tmp_a][1]++;
+				this.sa[problemType][tmp_a][1]++;
+				this.sa['all'][tmp_a][1]++;
 			}
 		}
 		if (problem.attemptInt>0) {
 			tmp_a = (problem.attemptInt>3) ? 3 : problem.attemptInt;
-			if (this.sa[tmp_a]) this.sa[tmp_a][0]++;
+			this.sa[problemType][tmp_a][0]++;
+			this.sa['all'][tmp_a][0]++;
 		}
 		this.ttip.push({type:'problem',data:problem});
 		this[problemType][1] = (this[problemType][1]) ? this[problemType][1]+1 : 1;
@@ -1996,15 +2006,11 @@ function NCHPaket(pref) {
 		this["all"][1] = (this["all"][1]) ? this["all"][1]+1 : 1;
 		this["all"][3][serverPos] = (this["all"][3][serverPos]) ? this["all"][3][serverPos]+1 : 1;
 	}
-	this.checkServiceAttempt = function(value) {
-		var cntSa = 0;
-		for (var i = value; i < this.sa.length; i++) cntSa += this.sa[i][0];
-		return (cntSa==this["all"][1]);		
+	this.checkServiceAttempt = function(problemType,value) {
+		return (this.sa[problemType][value][1]>0);
 	}
-	this.checkOldServiceAttempt = function(value) {
-		var cntSa = 0;
-		for (var i = value; i < this.sa.length; i++) cntSa += this.sa[i][1];
-		return (cntSa==this["all"][2]);		
+	this.checkOldServiceAttempt = function(problemType,value) {
+		return (this.sa[problemType][value][0]>0);
 	}
 	this.getProblemsByType = function(problemType) {
 	 	return this[problemType][3];
@@ -2058,6 +2064,9 @@ function NCHPaket(pref) {
 	}
 	this.isAtLeastOne =  function() {
 		return (this["all"][1]>0);
+	}
+	this.isAtLeastOneByProblemType =  function(problemType) {
+		return (this[problemType][1]>0);
 	}
 }
 

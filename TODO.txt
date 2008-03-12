@@ -2,11 +2,10 @@ TODO
 
 UNTESTED: import Servers from config file
 
-BUG: Expect to have a sound played for all types of problems when they are new. Instead, status bar flashes
-	 as instructed to, but no sound is played.
-
 BUG: popup menu in corner on linux
 BUG: sometimes wrong onmouseover
+
+TRY: not showpopup when firefox window does not have focus
 
 FIX: Force saving password with special chars
 
