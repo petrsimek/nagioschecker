@@ -953,6 +953,9 @@ dump('reallyPlay:'+reallyPlay+' '+me.pref.play_sound+' ');
 					    if (probls[j].acknowledged) {
 						    isAck[probls[j].host]=true;
 					    }
+					    if (probls[j].downtime) {
+						    isSched[probls[j].host]=true;
+					    }
 				    }
 			    }
 			}

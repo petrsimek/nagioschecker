@@ -17,7 +17,7 @@
 
   <vbox>
       <label value="&nch.title;"  class="nagioschecker-about-product-name"/>
-      <description class="nch">&nch.about.version; 0.11.9</description>
+      <description class="nch">&nch.about.version; 0.11.9.1</description>
   </vbox>
       <separator class="thin"/>
 
@@ -68,7 +68,7 @@
   <groupbox flex="1" class="nagioschecker-about-box">
 
       <label value="&nch.about.codecontributors;:" class="nagioschecker-about-sub-title"/>
-      <description class="nch">Ivo Musil (CZ), Michal Sviba (CZ)</description>
+      <description class="nch">Ivo Musil (CZ), Michal Sviba (CZ), moorereason</description>
       <separator class="thin"/>
       <label value="&nch.about.ideasandbugreports;:" class="nagioschecker-about-sub-title"/>
       <description class="nch">Marcus Barczak, Carlos Basura, batzel, cloudyster, Daniele (IT), Mike Freitas (US), Andrea Gabellini (IT), Raphael Gangneux (UK), gionenn, Jörgen Hägg (SW), Douglas Hank (US), Axel Jäger (DE), jody.longtin1177, Michael Jewett (CA), Robbert Kouprie (NL), Bernard Li (CA), Geoffrey Lemaire (BE), Erwin Lubbers (NL), malcolmrmclean, Tiago Martins (PT), palloberg, Aleš Petrovický (CZ), Oliver Regellmann (DE), Phil Wenzlawski (DE)</description>
