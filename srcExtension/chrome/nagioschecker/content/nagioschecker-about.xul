@@ -68,7 +68,7 @@
   <groupbox flex="1" class="nagioschecker-about-box">
 
       <label value="&nch.about.codecontributors;:" class="nagioschecker-about-sub-title"/>
-      <description class="nch">Ivo Musil (CZ), Michal Sviba (CZ), moorereason</description>
+      <description class="nch">Cameron Moore (US), Ivo Musil (CZ), Michal Sviba (CZ)</description>
       <separator class="thin"/>
       <label value="&nch.about.ideasandbugreports;:" class="nagioschecker-about-sub-title"/>
       <description class="nch">Marcus Barczak, Carlos Basura, batzel, cloudyster, Daniele (IT), Mike Freitas (US), Andrea Gabellini (IT), Raphael Gangneux (UK), gionenn, Jörgen Hägg (SW), Douglas Hank (US), Axel Jäger (DE), jody.longtin1177, Michael Jewett (CA), Robbert Kouprie (NL), Bernard Li (CA), Geoffrey Lemaire (BE), Erwin Lubbers (NL), malcolmrmclean, Tiago Martins (PT), palloberg, Aleš Petrovický (CZ), Oliver Regellmann (DE), Phil Wenzlawski (DE)</description>
