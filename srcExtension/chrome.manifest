@@ -20,6 +20,7 @@ locale	nagioschecker	cs-CZ	chrome/nagioschecker/locale/cs-CZ/nagioschecker/
 #locale	nagioschecker	de-DE	chrome/nagioschecker/locale/de-DE/nagioschecker/
 #locale	nagioschecker	fr-FR	chrome/nagioschecker/locale/fr-FR/nagioschecker/
 #locale	nagioschecker	es-AR	chrome/nagioschecker/locale/es-AR/nagioschecker/
+#locale	nagioschecker	nb-NO	chrome/nagioschecker/locale/nb-NO/nagioschecker/
 
 
 skin	nagioschecker	classic/1.0	chrome/nagioschecker/skin/classic/nagioschecker/

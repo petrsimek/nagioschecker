@@ -42,6 +42,9 @@
 <!ENTITY nch.about.nagioscopyrights "Nagios a Nagios logo jsou registrované obchodní známky Ethana Galstada.">
 <!ENTITY nch.about.codecontributors "Přispěvatelé kódu">
 <!ENTITY nch.about.ideasandbugreports "Nápady a hlášení chyb">
+<!ENTITY nch.about.fordonators "Pro sponzory">
+<!ENTITY nch.about.donators "Sponzoři">
+<!ENTITY nch.about.alphabeticallylisted "Abecedně řazení">
 
 <!ENTITY nch.prefs.display "Zobrazení">
 <!ENTITY nch.prefs.watchedsystems "Sledované systémy Nagios">

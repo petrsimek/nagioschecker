@@ -42,6 +42,9 @@
 <!ENTITY nch.about.nagioscopyrights "Nagios and Nagios logo are registered trademarks of Ethan Galstad.">
 <!ENTITY nch.about.codecontributors "Code Contributors">
 <!ENTITY nch.about.ideasandbugreports "Ideas and Bug Reports">
+<!ENTITY nch.about.fordonators "For donators">
+<!ENTITY nch.about.donators "Donators">
+<!ENTITY nch.about.alphabeticallylisted "Alphabetically listed">
 
 <!ENTITY nch.prefs.display "Display">
 <!ENTITY nch.prefs.watchedsystems "Nagios Page(s) to Watch">

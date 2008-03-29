@@ -17,7 +17,7 @@
 
   <vbox>
       <label value="&nch.title;"  class="nagioschecker-about-product-name"/>
-      <description class="nch">&nch.about.version; 0.11.9.1</description>
+      <description class="nch">&nch.about.version; 0.11.9.2</description>
   </vbox>
       <separator class="thin"/>
 
@@ -38,8 +38,14 @@
 	<hbox flex="1">
 		<vbox>
     <label value="&nch.about.created;:" class="nagioschecker-about-sub-title"/>
-    	<description class="nagioschecker-link" onclick="window.opener.nagioschecker.openTab('http://psimek.fxnet.cz/');window.close();">&nch.about.author;</description>
+    	<description class="nagioschecker-link" onclick="window.opener.nagioschecker.openTab('http://www.petrsimek.cz/');window.close();">&nch.about.author;</description>
+    	<image src="chrome://nagioschecker/skin/linkedin.jpg" onclick="window.opener.nagioschecker.openTab('http://www.linkedin.com/pub/1/61/61a');window.close();"/>
 		</vbox>
+		</hbox>
+	<separator class="thin"/>
+	<hbox flex="1">
+		<vbox>
+    <label value="&nch.about.fordonators;:" class="nagioschecker-about-sub-title"/>
 		<vbox>
 		<hbox>
 		<image src="chrome://nagioschecker/skin/pp-donate.gif"/>
@@ -47,6 +53,7 @@
        	<button label="EUR" oncommand="window.opener.nagioschecker.openTab('https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&amp;business=petr%2esimek%40centrum%2ecz&amp;item_name=Nagios%20Checker&amp;no_shipping=0&amp;cn=Feedback&amp;tax=0&amp;currency_code=EUR&amp;lc=CZ&amp;bn=PP%2dDonationsBF&amp;charset=UTF%2d8');window.close();"/>
        	<button label="USD" oncommand="window.opener.nagioschecker.openTab('https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&amp;business=petr%2esimek%40centrum%2ecz&amp;item_name=Nagios%20Checker&amp;no_shipping=0&amp;cn=Feedback&amp;tax=0&amp;currency_code=USD&amp;lc=CZ&amp;bn=PP%2dDonationsBF&amp;charset=UTF%2d8');window.close();"/>
        	</hbox>
+		</vbox>
 		</vbox>
 	</hbox>
       <separator class="thin"/>
@@ -66,9 +73,12 @@
 
 
   <groupbox flex="1" class="nagioschecker-about-box">
-
+	  <caption class="nch" label="&nch.about.alphabeticallylisted;"/>	
       <label value="&nch.about.codecontributors;:" class="nagioschecker-about-sub-title"/>
       <description class="nch">Cameron Moore (US), Ivo Musil (CZ), Michal Sviba (CZ)</description>
+      <separator class="thin"/>
+      <label value="&nch.about.donators;:" class="nagioschecker-about-sub-title"/>
+      <description class="nch">A. Aleksandrovs (LA), A. Artigues (US), J. Avery (UK), J. Batzel (US), C. Carluccio (UR), M. Cintolesi (IT), A. Davies (UK), G. Hernandez (ME), E. Martucci (US), X. Potel (FR), PSS Hosting.com (US), D. Rubel (US), A. Smith (US), K. Snorrason (IC), M. Tancil (US), J. Wigle (US), K. Wong (US)</description>
       <separator class="thin"/>
       <label value="&nch.about.ideasandbugreports;:" class="nagioschecker-about-sub-title"/>
       <description class="nch">Marcus Barczak, Carlos Basura, batzel, cloudyster, Daniele (IT), Mike Freitas (US), Andrea Gabellini (IT), Raphael Gangneux (UK), gionenn, Jörgen Hägg (SW), Douglas Hank (US), Axel Jäger (DE), jody.longtin1177, Michael Jewett (CA), Robbert Kouprie (NL), Bernard Li (CA), Geoffrey Lemaire (BE), Erwin Lubbers (NL), malcolmrmclean, Tiago Martins (PT), palloberg, Aleš Petrovický (CZ), Oliver Regellmann (DE), Phil Wenzlawski (DE)</description>

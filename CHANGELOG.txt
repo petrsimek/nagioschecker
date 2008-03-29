@@ -1,12 +1,16 @@
-0.11.9.1
-* BUGFIX: Corrected displaying of hosts scheduled down (by moorereason) 
+0.11.9.2 (beta)
+* BUGFIX: Fixed displaying of hosts scheduled down (by Cameron Moore)
+* INTERNAL: Updated About window (donators). 
+
+0.11.9.1 (beta)
+* BUGFIX: Fixed resolving disabled notification state (by Cameron Moore) 
 
 0.11.9 (beta)
 * NEW: Working days
 * INTERNAL: setNextCheck now used on start (sleepy icon works from start)
 * NEW: Saving XML config, optionally prefer loading of this file
 * BUGFIX: Not working option to play sound only when NEW problems are found 
- 
+
 0.11.1
 (public release of 0.11.0.1-0.11.0.2) 
 
