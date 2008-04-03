@@ -39,6 +39,9 @@
 <!ENTITY nch.about.nagioscopyrights "Nagios y el logo de Nagios son marcas registradas de Ethan Galstad.">
 <!ENTITY nch.about.codecontributors "Contribuyeron en la programación">
 <!ENTITY nch.about.ideasandbugreports "Ideas y Reportes de Errores">
+<!ENTITY nch.about.fordonators "For donators">
+<!ENTITY nch.about.donators "Donators">
+<!ENTITY nch.about.alphabeticallylisted "Alphabetically listed">
 <!ENTITY nch.prefs.display "Mostrar">
 <!ENTITY nch.prefs.watchedsystems "Página(s) de Nagios a Mostrar">
 <!ENTITY nch.prefs.addnew "Agregar nuevo">
@@ -126,3 +129,13 @@
 <!ENTITY nch.prefs.minimalservicesattempt "">
 <!ENTITY nch.prefs.advanced "">
 <!ENTITY nch.advanced.downloadtimeout "">
+<!ENTITY nch.advanced.prefertextconfig "Prefer loading of settings from an external text file rather than the Firefox internal configuration.">
+<!ENTITY nch.advanced.note_prefertextconfig "Could be useful when Firefox is terminated abnormaly and the unsaved preferences are lost. The configuration file will be loaded only when a Firefox window is opened first time.">
+<!ENTITY nch.prefs.working_days "Working days">
+<!ENTITY nch.prefs.monday_short "Mon">
+<!ENTITY nch.prefs.tuesday_short "Tue">
+<!ENTITY nch.prefs.wednesday_short "Wed">
+<!ENTITY nch.prefs.thursday_short "Thu">
+<!ENTITY nch.prefs.friday_short "Fri">
+<!ENTITY nch.prefs.saturday_short "Sat">
+<!ENTITY nch.prefs.sunday_short "Sun">

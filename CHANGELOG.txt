@@ -7,7 +7,7 @@
 
 0.11.9 (beta)
 * NEW: Working days
-* INTERNAL: setNextCheck now used on start (sleepy icon works from start)
+* INTERNAL: setNextCheck now used on start (sleepy icon is working from start)
 * NEW: Saving XML config, optionally prefer loading of this file
 * BUGFIX: Not working option to play sound only when NEW problems are found 
 
