@@ -76,6 +76,18 @@ var nagioscheckerUnload = function() {
   nagioschecker = null;
 }
 
+var nagioscheckerBlur = function() {
+  if (nagioschecker != null) {
+	nagioschecker.setActive(false);
+  }
+}
+var nagioscheckerFocus = function() {
+  if (nagioschecker != null) {
+	nagioschecker.setActive(true);
+  }
+}
+
+
 function NCH() {};
 
 NCH.prototype = {
@@ -111,6 +123,12 @@ NCH.prototype = {
   
   _showTimerID: null,
   _refreshTimer: null,
+
+  isActive: false,
+  setActive: function(yes) {
+  	dump('ISACTIVE:'+yes+'\n');
+  	this.isActive = yes;
+  },
 
 
   handleMouseClick: function (aEvent) {
