@@ -54,10 +54,10 @@ statusbarpanel .nagioschecker-box {
   font-weight: bold;
   color: #BDBDBD;
   background-color:#CC0000;
-
+     font-size:11px;
   padding-left:2px;
   padding-right:2px;
-  -moz-border-radius: 3px;
+  /*   -moz-border-radius: 3px;*/
   border: 1px #CC0000 solid;
 }
 
@@ -67,10 +67,11 @@ statusbarpanel .nagioschecker-box {
   margin-right:2px;
   font-weight: bold;
   color: #700000;
+     font-size:11px;
   background-color:#ffffff;
   padding-left:2px;
   padding-right:2px;
-  -moz-border-radius: 3px;
+  /*   -moz-border-radius: 3px;*/
   border: 1px #ffffff solid;
 }
 
@@ -83,10 +84,11 @@ statusbarpanel .nagioschecker-box {
   margin-right:2px;
   font-weight: bold;
   color: #ffffff;
+     font-size:11px;
   background-color:#CC0000;
   padding-left:2px;
   padding-right:2px;
-  -moz-border-radius: 3px;
+  /*   -moz-border-radius: 3px;*/
   border: 1px #CC0000 solid;
 }
 
@@ -96,10 +98,11 @@ statusbarpanel .nagioschecker-box {
   margin-right:2px;
   font-weight: bold;
   color: #A30000;
+     font-size:11px;
   background-color:#ffffff;
   padding-left:2px;
   padding-right:2px;
-  -moz-border-radius: 3px;
+  /*   -moz-border-radius: 3px;*/
   border: 1px #ffffff solid;
 }
 
@@ -112,10 +115,11 @@ statusbarpanel .nagioschecker-box {
   margin-right:2px;
   font-weight: bold;
   color: black;
+     font-size:11px;
   background-color:#E6E600;
   padding-left:2px;
   padding-right:2px;
-  -moz-border-radius: 3px;
+  /*   -moz-border-radius: 3px;*/
   border: 1px #E6E600 solid;
 }
 
@@ -129,10 +133,11 @@ statusbarpanel .nagioschecker-box {
   margin-right:2px;
   font-weight: bold;
   color: white;
+     font-size:11px;
   background-color:#44CC00;
   padding-left:2px;
   padding-right:2px;
-  -moz-border-radius: 3px;
+  /*   -moz-border-radius: 3px;*/
   border: 1px #44CC00 solid;
 }
 
@@ -142,10 +147,11 @@ statusbarpanel .nagioschecker-box {
   margin-right:2px;
   font-weight: bold;
   color: #E6E600;
+     font-size:11px;
   background-color:black;
   padding-left:2px;
   padding-right:2px;
-  -moz-border-radius: 3px;
+  /*   -moz-border-radius: 3px;*/
   border: 1px black solid;
 }
 
@@ -158,10 +164,11 @@ statusbarpanel .nagioschecker-box {
   margin-right:2px;
   font-weight: bold;
   color: black;
+     font-size:11px;
   background-color:#FF8B3D;
   padding-left:2px;
   padding-right:2px;
-  -moz-border-radius: 3px;
+  /*   -moz-border-radius: 3px;*/
   border: 1px #FF8B3D solid;
 }
 .nagioschecker-unknown-value-inverted {
@@ -170,10 +177,11 @@ statusbarpanel .nagioschecker-box {
   margin-right:2px;
   font-weight: bold;
   color: #FF8B3D;
+     font-size:11px;
   background-color:black;
   padding-left:2px;
   padding-right:2px;
-  -moz-border-radius: 3px;
+  /*   -moz-border-radius: 3px;*/
   border: 1px black solid;
 }
 
@@ -182,28 +190,34 @@ statusbarpanel .nagioschecker-box {
 }
 .nagioschecker-critical-value {
   margin:0;
+  /* padding:0;
+  border:0;*/
   margin-left:2px;
   margin-right:2px;
   font-weight: bold;
+  font-size:11px;
   color: white;
   background-color: #FF0000;
   padding-left: 2px;
   padding-right: 2px;
-  -moz-border-radius: 3px;
-  border: 1px #FF0000 solid;
+  /* -moz-border-radius: 4px;*/
+  border: 1px #FF0000 solid; 
 }
 
 .nagioschecker-critical-value-inverted {
   margin:0;
+ /* padding:0;
+  border:0; */
   margin-left:2px;
   margin-right:2px;
   font-weight: bold;
   color: #EB0000;
+  font-size:11px;
   background-color:white;
   padding-left:2px;
   padding-right:2px;
-  -moz-border-radius: 3px;
-  border: 1px white solid;
+   /* -moz-border-radius: 4px;*/
+   border: 1px white solid; 
 }
 
 #nagioschecker-panel-hosts,#nagioschecker-panel-services,#nagioschecker-panel-info {
@@ -244,9 +258,6 @@ statusbarpanel .nagioschecker-box {
   background-color:#B30000;
 	border:1px #B30000 solid;
 }
-
-
-
 
 .nagioschecker-tooltip-unreachable-row {
 	font-weight: bold;
