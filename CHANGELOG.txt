@@ -1,4 +1,4 @@
-0.12 (unreleased yet)
+0.12
 * BUGFIX: rounded statusbar box corners removed due to fix displaying these boxes on various OSes
 
 0.11.9.3 (beta)
