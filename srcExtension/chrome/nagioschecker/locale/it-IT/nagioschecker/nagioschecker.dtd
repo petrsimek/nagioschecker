@@ -39,6 +39,9 @@
 <!ENTITY nch.about.nagioscopyrights "Nagios ed il logo Nagios sono marchi registrati di Ethan Galstad">
 <!ENTITY nch.about.codecontributors "Codice">
 <!ENTITY nch.about.ideasandbugreports "Idee e segnalazioni di bug">
+<!ENTITY nch.about.fordonators "Effettua una donazione">
+<!ENTITY nch.about.donators "Donazioni effettuate">
+<!ENTITY nch.about.alphabeticallylisted "In ordine alfabetico">
 <!ENTITY nch.prefs.display "Aspetto">
 <!ENTITY nch.prefs.watchedsystems "Sistemi di Nagios osservati">
 <!ENTITY nch.prefs.addnew "Aggiungi...">
@@ -60,9 +63,9 @@
 <!ENTITY nch.prefs.serviceunknown "Servizio sconosciuto">
 <!ENTITY nch.prefs.showininfowindow "Elementi da mostrare nella finestra delle informazioni">
 <!ENTITY nch.prefs.blinking "Lampeggiamento">
-<!ENTITY nch.prefs.off "disattivato">
-<!ENTITY nch.prefs.onstatusupdateifnewproblemappears "per lo stato di aggiornamento se si presenta un nuovo problema">
-<!ENTITY nch.prefs.oneverystatusupdateifatleastoneproblemexists "per ogni stato di aggiornamento se si presenta almeno un problema">
+<!ENTITY nch.prefs.off "Disattiva">
+<!ENTITY nch.prefs.onstatusupdateifnewproblemappears "Attiva per gli aggiornamenti se si presenta un nuovo problema">
+<!ENTITY nch.prefs.oneverystatusupdateifatleastoneproblemexists "Attiva per gli aggiornamenti se si presenta almeno un problema">
 <!ENTITY nch.prefs.sounds "Emissione di un suono">
 <!ENTITY nch.prefs.soundsbytype "Emissione di un suono per tipo di problema">
 <!ENTITY nch.prefs.nagiossystem "Sistema di Nagios">
@@ -77,13 +80,13 @@
 <!ENTITY nch.prefs.services_on_acknowledged_hosts "Servizi di server giù, irraggiungibili e riconosciuti">
 <!ENTITY nch.prefs.note "Nota">
 <!ENTITY nch.prefs.note_sound "se sono aperte più finestre del browser dove è attiva Nagios Checker, il suono verrà emesso solo nella prima finestra aperta">
-<!ENTITY nch.prefs.after_click_statusbar "Dopo aver fatto clic sulla barra di stato">
-<!ENTITY nch.prefs.do_nothing "non fare niente">
-<!ENTITY nch.prefs.goto_main_nagios "apri il sito web di Nagios">
-<!ENTITY nch.prefs.goto_nagios_section "apri la pagina web di Nagios inerente al tipo di problema selezionato">
-<!ENTITY nch.prefs.open_fullinfowindow "apri la finestra statica delle informazioni con tutti i problemi">
-<!ENTITY nch.prefs.open_infowindowbytype "apri finestre statiche delle informazioni inerenti al tipo di problema selezionato">
-<!ENTITY nch.prefs.open_infowindow "apri la finestra delle informazioni">
+<!ENTITY nch.prefs.after_click_statusbar "Azione da effettuare dopo aver fatto clic sulla barra di stato">
+<!ENTITY nch.prefs.do_nothing "Non fare niente">
+<!ENTITY nch.prefs.goto_main_nagios "Apri il sito web di Nagios">
+<!ENTITY nch.prefs.goto_nagios_section "Apri la pagina web di Nagios inerente al tipo di problema selezionato">
+<!ENTITY nch.prefs.open_fullinfowindow "Apri la finestra statica delle informazioni con tutti i problemi">
+<!ENTITY nch.prefs.open_infowindowbytype "Apri finestre statiche delle informazioni inerenti al tipo di problema selezionato">
+<!ENTITY nch.prefs.open_infowindow "Apri la finestra delle informazioni">
 <!ENTITY nch.prefs.soundfiles "File audio">
 <!ENTITY nch.prefs.standardnagiosfile "File predefinito di Nagios">
 <!ENTITY nch.prefs.customfile "File personalizzato">
@@ -102,9 +105,9 @@
 <!ENTITY nch.prefs.allwarningservices "Tutti gli avvisi">
 <!ENTITY nch.prefs.allunknownservices "Tutti i servizi sconosciuti">
 <!ENTITY nch.prefs.allcriticalservices "Tutti i servizi critici">
-<!ENTITY nch.prefs.blinkalltypesonstatusupdateifnewproblemappears "per ogni servizio ed avviso se si presenta un nuovo problema">
-<!ENTITY nch.prefs.blinkaffectedtypesonstatusupdateifnewproblemappears "per il servizio o l&apos;avviso selezionato se si presenta un nuovo problema">
-<!ENTITY nch.prefs.blinkalltypesoneverystatusupdateifatleastoneproblemexists "per ogni servizio ed avviso se si presenta almeno un problema">
+<!ENTITY nch.prefs.blinkalltypesonstatusupdateifnewproblemappears "Attiva per ogni servizio ed avviso se si presenta un nuovo problema">
+<!ENTITY nch.prefs.blinkaffectedtypesonstatusupdateifnewproblemappears "Attiva per il servizio o l&apos;avviso selezionato se si presenta un nuovo problema">
+<!ENTITY nch.prefs.blinkalltypesoneverystatusupdateifatleastoneproblemexists "Attiva per ogni servizio ed avviso se si presenta almeno un problema">
 <!ENTITY nch.prefs.aliases "Alias">
 <!ENTITY nch.prefs.makedonation "Effettua una donazione">
 <!ENTITY nch.prefs.hostsmatchingregexp "Server corrispondenti ad espressioni regolari">
@@ -126,3 +129,13 @@
 <!ENTITY nch.prefs.minimalservicesattempt "Numero minimo di tentativi prima di emettere il suono">
 <!ENTITY nch.prefs.advanced "Avanzate">
 <!ENTITY nch.advanced.downloadtimeout "Timeout del download di Status.cgi (in secondi)">
+<!ENTITY nch.advanced.prefertextconfig "Carica le impostazioni da un file di testo esterno piuttosto che dal file di configurazione di Firefox">
+<!ENTITY nch.advanced.note_prefertextconfig "potrebbe essere utile quando Firefox viene terminato in maniera anomala e le impostazioni non salvate vengono perdute. Il file delle impostazioni viene caricato solo quando la finestra di Firefox viene aperta per la prima volta">
+<!ENTITY nch.prefs.working_days "Giorni di funzionamento">
+<!ENTITY nch.prefs.monday_short "Lun">
+<!ENTITY nch.prefs.tuesday_short "Mar">
+<!ENTITY nch.prefs.wednesday_short "Mer">
+<!ENTITY nch.prefs.thursday_short "Gio">
+<!ENTITY nch.prefs.friday_short "Ven">
+<!ENTITY nch.prefs.saturday_short "Sab">
+<!ENTITY nch.prefs.sunday_short "Dom">

@@ -35,6 +35,7 @@ function GetTreeSelections(tree) {
 }
 
 
+
 function NCHOptions() {};
 
 NCHOptions.prototype = {
@@ -330,7 +331,15 @@ NCHOptions.prototype = {
         "nch-behavior-sounds_by_type_unreachable",
         "nch-behavior-sounds_by_type_critical",
         "nch-behavior-sounds_by_type_warning",
-        "nch-behavior-sounds_by_type_unknown"
+        "nch-behavior-sounds_by_type_unknown",
+        "nch-general-workday_1",
+        "nch-general-workday_2",
+        "nch-general-workday_3",
+        "nch-general-workday_4",
+        "nch-general-workday_5",
+        "nch-general-workday_6",
+        "nch-general-workday_0",
+        "nch-advanced-prefer_text_config"
         ];
 	
   	for (var i = 0; i < checkboxes.length; ++i) {
@@ -411,6 +420,8 @@ NCHOptions.prototype = {
     }
 
 
+/**************************/
+
     Components.classes["@mozilla.org/observer-service;1"]
          .getService(Components.interfaces.nsIObserverService)
          .notifyObservers(window, "nagioschecker:preferences-changed", null);
@@ -418,6 +429,8 @@ NCHOptions.prototype = {
 
     return true;
   },
+
+
 
   replaySoundFile: function(type,wav) {
   	
@@ -482,7 +495,15 @@ NCHOptions.prototype = {
         "nch-behavior-sounds_by_type_unreachable",
         "nch-behavior-sounds_by_type_critical",
         "nch-behavior-sounds_by_type_warning",
-        "nch-behavior-sounds_by_type_unknown"
+        "nch-behavior-sounds_by_type_unknown",
+        "nch-general-workday_1",
+        "nch-general-workday_2",
+        "nch-general-workday_3",
+        "nch-general-workday_4",
+        "nch-general-workday_5",
+        "nch-general-workday_6",
+        "nch-general-workday_0",
+        "nch-advanced-prefer_text_config"
         ];
 		  for (var i = 0; i < checkboxes.length; ++i) {
   			var checkbox = document.getElementById(checkboxes[i]);
@@ -579,8 +600,6 @@ NCHOptions.prototype = {
         }
         }
         catch (e) {}
-
-
         }
         catch (e) {
           break;
@@ -594,5 +613,7 @@ NCHOptions.prototype = {
     return true;
 
   }
+
+
 
 }

@@ -1,0 +1,141 @@
+<!ENTITY nch.title "Nagios sjekker">
+<!ENTITY nch.aboutextension "Om &nch.title;">
+<!ENTITY nch.about "Om">
+<!ENTITY nch.close "Lukk">
+<!ENTITY nch.hosts "Verter">
+<!ENTITY nch.services "Tjenester">
+<!ENTITY nch.menu.options "Innstillinger">
+<!ENTITY nch.menu.updatenow "Oppdater nå">
+<!ENTITY nch.prefs.title "&nch.title; innstillinger">
+<!ENTITY nch.prefs.general "Generelt">
+<!ENTITY nch.prefs.filtering "Filtrering">
+<!ENTITY nch.prefs.behavior "Oppførsel">
+<!ENTITY nch.prefs.name "Navn">
+<!ENTITY nch.prefs.fullurl "Nagios webgrensesnitt url">
+<!ENTITY nch.prefs.webinterface "Nagios webgrensesnitt">
+<!ENTITY nch.prefs.username "Brukernavn">
+<!ENTITY nch.prefs.password "Passord">
+<!ENTITY nch.prefs.versionolderthan20 "Nagios versjon eldre enn 2.0">
+<!ENTITY nch.prefs.plainpass "Ikke lagre brukernavn og passord i nettleseren">
+<!ENTITY nch.prefs.exampleurl "F.eks.: http://www.dittfirma.no/nagios">
+<!ENTITY nch.prefs.examplestatusurl "F.eks.: http://dittfirma.no/cgi-bin/status.cgi">
+<!ENTITY nch.prefs.statusurl "Statusskript url">
+<!ENTITY nch.prefs.foundstatusurl "Funnet url">
+<!ENTITY nch.prefs.locateurl "Finn url">
+<!ENTITY nch.prefs.updateinterval "Oppdateringsintervall (i minutter)">
+<!ENTITY nch.prefs.worktime "Virksomhetstid for tillegg (tt:mm)">
+<!ENTITY nch.prefs.utilityrun "Kjør verktøy">
+<!ENTITY nch.prefs.other "Andre">
+<!ENTITY nch.prefs.onewindowonly "Kjør først i åpnet vindu">
+<!ENTITY nch.about.original "Opprinnelig titel">
+<!ENTITY nch.about.version "Versjon">
+<!ENTITY nch.about.created "Opphavsmann">
+<!ENTITY nch.about.description "Nagios Checker provides an expandable status bar indicator of Nagios-reported events. This information is parsed from the Nagios web interface and can monitor multiple Nagios servers simultaneously. Nagios Checker runs in the background, does not require an open Nagios web page for operation, and allows selective filtering of results.">
+<!ENTITY nch.about.contributors "Bidragsytere">
+<!ENTITY nch.about.translators "Oversettere">
+<!ENTITY nch.about.author "Petr Simek">
+<!ENTITY nch.about.homepage "Hjemmeside">
+<!ENTITY nch.about.copyrights "Kopirettigheter">
+<!ENTITY nch.about.nagioscopyrights "Nagios og Nagios logen er registrerte varemerker av Ethan Galstad">
+<!ENTITY nch.about.codecontributors "Kodebidragsytere">
+<!ENTITY nch.about.ideasandbugreports "Ideer og feilrapporter">
+<!ENTITY nch.about.fordonators "For donatorer">
+<!ENTITY nch.about.donators "Dontatorer">
+<!ENTITY nch.about.alphabeticallylisted "Alfabetisk rekkefølge">
+<!ENTITY nch.prefs.display "Visning">
+<!ENTITY nch.prefs.watchedsystems "Nagioside(r) å vise">
+<!ENTITY nch.prefs.addnew "Legg til ny">
+<!ENTITY nch.prefs.edit "Endre">
+<!ENTITY nch.prefs.remove "Fjern">
+<!ENTITY nch.prefs.statusbardetaillevel "Statuslinje detaljnivå">
+<!ENTITY nch.prefs.long "Lang">
+<!ENTITY nch.prefs.short "Kort">
+<!ENTITY nch.prefs.numbersonly "Bare nummere">
+<!ENTITY nch.prefs.colorsonly "Bare farger">
+<!ENTITY nch.prefs.infowindowtype "Informasjonsvindustype">
+<!ENTITY nch.prefs.allinonewindow "Alle problemer i ett vindu">
+<!ENTITY nch.prefs.individualwindows "Et vindu for hver problemtype">
+<!ENTITY nch.prefs.showinstatusbar "Vis i statuslinjen">
+<!ENTITY nch.prefs.hostdown "Vert er nede">
+<!ENTITY nch.prefs.hostunreachable "Vert kan ikke nåes">
+<!ENTITY nch.prefs.servicecritical "Tjeneste kritisk">
+<!ENTITY nch.prefs.servicewarning "Tjeneste varsel">
+<!ENTITY nch.prefs.serviceunknown "Tjeneste ukjent">
+<!ENTITY nch.prefs.showininfowindow "Vis i informasjonsvinduet">
+<!ENTITY nch.prefs.blinking "Blinkende">
+<!ENTITY nch.prefs.off "Av">
+<!ENTITY nch.prefs.onstatusupdateifnewproblemappears "På statusoppdatering hvis nytt problem har oppstått">
+<!ENTITY nch.prefs.oneverystatusupdateifatleastoneproblemexists "På hver statusoppdatering hvis minst et problem eksiterer">
+<!ENTITY nch.prefs.sounds "Lyder">
+<!ENTITY nch.prefs.soundsbytype "Lyder etter problemtype">
+<!ENTITY nch.prefs.nagiossystem "Nagios system">
+<!ENTITY nch.prefs.seturlmanually "Sett url manuelt">
+<!ENTITY nch.prefs.filterout "Filtrer ut">
+<!ENTITY nch.prefs.acknowledged "Verter og tjenester som har blitt godkjent">
+<!ENTITY nch.prefs.disabled_notifications "Verter og tjenester hvor varsler er deaktivert">
+<!ENTITY nch.prefs.disabled_checks "Verter og tjenester hvor sjekker er deaktivert">
+<!ENTITY nch.prefs.soft_states "Tjenester i «soft states»">
+<!ENTITY nch.prefs.scheduled_downtime "Verter og tjenester i planlagt nedetid">
+<!ENTITY nch.prefs.services_on_down_hosts "Tjenester som er på verter som er nede eller som ikke kan nåes">
+<!ENTITY nch.prefs.services_on_acknowledged_hosts "Tjenester som er på verter som er nede eller som ikke kan nåes og godkjente verter">
+<!ENTITY nch.prefs.note "Bemerkning">
+<!ENTITY nch.prefs.note_sound "Hvis Nagios Checker kjører i mer enn et vindu vil lyden bli spilt i det først åpnede vinduet.">
+<!ENTITY nch.prefs.after_click_statusbar "Klikking på statuslinjen gjør">
+<!ENTITY nch.prefs.do_nothing "Ingenting">
+<!ENTITY nch.prefs.goto_main_nagios "Gå til Nagios hovedsiden">
+<!ENTITY nch.prefs.goto_nagios_section "Go to Nagios web section respective to the clicked problem type">
+<!ENTITY nch.prefs.open_fullinfowindow "Åpne statisk informasjonsvindu med alle problemer">
+<!ENTITY nch.prefs.open_infowindowbytype "Åpne statisk informasjonsvindu avhengig av hvilken type man klikker på">
+<!ENTITY nch.prefs.open_infowindow "Åpne informasjonsvindu">
+<!ENTITY nch.prefs.soundfiles "Lydfiler">
+<!ENTITY nch.prefs.standardnagiosfile "Nagios standardfil">
+<!ENTITY nch.prefs.customfile "Brukerdefinert fil">
+<!ENTITY nch.prefs.critical "Kritisk">
+<!ENTITY nch.prefs.warning "Advarsel">
+<!ENTITY nch.prefs.down "Nede">
+<!ENTITY nch.prefs.unreachable "Kan ikke nåes">
+<!ENTITY nch.prefs.replay "Spill på nytt">
+<!ENTITY nch.prefs.getaliases "Last ned vert aliaser">
+<!ENTITY nch.prefs.shortwithservername "Forkort med servernavn">
+<!ENTITY nch.prefs.numbersonlywithservername "Bare tall med servernavn">
+<!ENTITY nch.prefs.totalnumbers "Med totalt tall">
+<!ENTITY nch.prefs.totalnumbersforeveryserver "Med totalt tall for hver server">
+<!ENTITY nch.prefs.alldownhosts "Alle verter nede">
+<!ENTITY nch.prefs.allunreachablehosts "Alle verter som ikke kan nåes">
+<!ENTITY nch.prefs.allwarningservices "Alle tjenester med advarsel">
+<!ENTITY nch.prefs.allunknownservices "Alle ukjente tjenester">
+<!ENTITY nch.prefs.allcriticalservices "Alle kritiske tjenester">
+<!ENTITY nch.prefs.blinkalltypesonstatusupdateifnewproblemappears "Blink for alle typer hvis nytt problem oppstår">
+<!ENTITY nch.prefs.blinkaffectedtypesonstatusupdateifnewproblemappears "Blink på typen der nytt problem oppstår">
+<!ENTITY nch.prefs.blinkalltypesoneverystatusupdateifatleastoneproblemexists "Blink i alle typer hvis minst et problem eksisterer">
+<!ENTITY nch.prefs.aliases "Aliaser">
+<!ENTITY nch.prefs.makedonation "Gi donasjon">
+<!ENTITY nch.prefs.hostsmatchingregexp "Verter som samsvarer med vanlig utrykk">
+<!ENTITY nch.prefs.servicesmatchingregexp "Tjenester som samsvarer med vanlig utrykk">
+<!ENTITY nch.prefs.allflapping "All flapping hosts and services">
+<!ENTITY nch.prefs.disable "Deaktiver">
+<!ENTITY nch.prefs.disabled "Deaktivert">
+<!ENTITY nch.prefs.onaddons "På Mozilla utvidelsesside">
+<!ENTITY nch.prefs.projecthome "Prosjektets hjem">
+<!ENTITY nch.prefs.moveup "Flytt opp">
+<!ENTITY nch.prefs.movedown "Flytt ned">
+<!ENTITY nch.prefs.reverseexp "reversert utrykk">
+<!ENTITY nch.prefs.showinfowindowcolumns "Hvis koloner i informasjonsvindu">
+<!ENTITY nch.prefs.aliascolumn "Vert (alias)">
+<!ENTITY nch.prefs.infocolumn "Informasjon">
+<!ENTITY nch.prefs.flagscolumn "Flag">
+<!ENTITY nch.prefs.statuscolumn "Status">
+<!ENTITY nch.prefs.attemptcolumn "Forsøk">
+<!ENTITY nch.prefs.minimalservicesattempt "Minimal service&apos;s attempt to play the sound">
+<!ENTITY nch.prefs.advanced "Avansert">
+<!ENTITY nch.advanced.downloadtimeout "Status.cgi download timeout (in seconds)">
+<!ENTITY nch.advanced.prefertextconfig "Prefer loading of settings from an external text file rather than the Firefox internal configuration.">
+<!ENTITY nch.advanced.note_prefertextconfig "Could be useful when Firefox is terminated abnormaly and the unsaved preferences are lost. The configuration file will be loaded only when a Firefox window is opened first time.">
+<!ENTITY nch.prefs.working_days "Arbeidsdager">
+<!ENTITY nch.prefs.monday_short "Man">
+<!ENTITY nch.prefs.tuesday_short "Tir">
+<!ENTITY nch.prefs.wednesday_short "Ons">
+<!ENTITY nch.prefs.thursday_short "Tor">
+<!ENTITY nch.prefs.friday_short "Fre">
+<!ENTITY nch.prefs.saturday_short "Lør">
+<!ENTITY nch.prefs.sunday_short "Søn">

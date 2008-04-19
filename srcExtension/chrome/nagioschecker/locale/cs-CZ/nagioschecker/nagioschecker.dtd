@@ -42,6 +42,9 @@
 <!ENTITY nch.about.nagioscopyrights "Nagios a Nagios logo jsou registrované obchodní známky Ethana Galstada.">
 <!ENTITY nch.about.codecontributors "Přispěvatelé kódu">
 <!ENTITY nch.about.ideasandbugreports "Nápady a hlášení chyb">
+<!ENTITY nch.about.fordonators "Pro sponzory">
+<!ENTITY nch.about.donators "Sponzoři">
+<!ENTITY nch.about.alphabeticallylisted "Abecedně řazení">
 
 <!ENTITY nch.prefs.display "Zobrazení">
 <!ENTITY nch.prefs.watchedsystems "Sledované systémy Nagios">
@@ -136,3 +139,14 @@
 
 <!ENTITY nch.prefs.advanced "Pokročilé">
 <!ENTITY nch.advanced.downloadtimeout "Časový limit stahování status.cgi (ve vteřinách)">
+<!ENTITY nch.advanced.prefertextconfig "Preferovat nahrání nastavení z externího textového souboru místo z interního konfiguračního systému.">
+<!ENTITY nch.advanced.note_prefertextconfig "Toto může být užitečné pokud je aplikace ukončena neočekávaně a nastavení uložené v aplikace může být ztraceno.  Konfigurační soubor je nahrávan pouze při prvním otevření okna aplikace.">
+
+<!ENTITY nch.prefs.working_days "Pracovní dny">
+<!ENTITY nch.prefs.monday_short "Pon">
+<!ENTITY nch.prefs.tuesday_short "Úte">
+<!ENTITY nch.prefs.wednesday_short "Stř">
+<!ENTITY nch.prefs.thursday_short "Čtv">
+<!ENTITY nch.prefs.friday_short "Pát">
+<!ENTITY nch.prefs.saturday_short "Sob">
+<!ENTITY nch.prefs.sunday_short "Ned">

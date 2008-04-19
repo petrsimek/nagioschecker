@@ -28,6 +28,14 @@ pref("extensions.nagioschecker.sounds_by_type_critical", true);
 pref("extensions.nagioschecker.refresh", 5);
 pref("extensions.nagioschecker.worktimefrom", "0:00");
 pref("extensions.nagioschecker.worktimeto", "23:59");
+pref("extensions.nagioschecker.workday_0", true); //sunday
+pref("extensions.nagioschecker.workday_1", true); 
+pref("extensions.nagioschecker.workday_2", true);
+pref("extensions.nagioschecker.workday_3", true);
+pref("extensions.nagioschecker.workday_4", true);
+pref("extensions.nagioschecker.workday_5", true);
+pref("extensions.nagioschecker.workday_6", true);
+
 pref("extensions.nagioschecker.one_window_only", true);
 pref("extensions.nagioschecker.blinking", 2);
 pref("extensions.nagioschecker.play_sound", 2);
@@ -61,3 +69,5 @@ pref("extensions.nagioschecker.sound_critical_path", "");
 pref("extensions.nagioschecker.sound_down", 0);
 pref("extensions.nagioschecker.sound_down_path", "");
 pref("extensions.nagioschecker.version", "");
+
+pref("extensions.nagioschecker.prefer_text_config", false);

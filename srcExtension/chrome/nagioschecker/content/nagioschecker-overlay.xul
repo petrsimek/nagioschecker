@@ -13,6 +13,8 @@ var gMini=false;
 	<script type="application/x-javascript">
 		window.addEventListener("load", nagioscheckerLoad, false);
     window.addEventListener("unload", nagioscheckerUnload, false);
+    window.addEventListener("blur", nagioscheckerBlur, false);
+    window.addEventListener("focus", nagioscheckerFocus, false);
 	</script>
 
   <stringbundleset id="stringbundleset">

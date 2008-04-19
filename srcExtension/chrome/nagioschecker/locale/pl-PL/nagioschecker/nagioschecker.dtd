@@ -1,0 +1,141 @@
+<!ENTITY nch.title "Nagios Checker">
+<!ENTITY nch.aboutextension "&nch.title; - informacje">
+<!ENTITY nch.about "Informacje">
+<!ENTITY nch.close "Zamknij">
+<!ENTITY nch.hosts "Serwery">
+<!ENTITY nch.services "Usługi">
+<!ENTITY nch.menu.options "Ustawienia">
+<!ENTITY nch.menu.updatenow "Zaktualizuj teraz">
+<!ENTITY nch.prefs.title "&nch.title; - ustawienia">
+<!ENTITY nch.prefs.general "Ogólne">
+<!ENTITY nch.prefs.filtering "Filtrowanie">
+<!ENTITY nch.prefs.behavior "Zachowanie">
+<!ENTITY nch.prefs.name "Nazwa">
+<!ENTITY nch.prefs.fullurl "Nagios web interface url">
+<!ENTITY nch.prefs.webinterface "Nagios Web Interface">
+<!ENTITY nch.prefs.username "Nazwa użytkownika">
+<!ENTITY nch.prefs.password "Hasło">
+<!ENTITY nch.prefs.versionolderthan20 "Nagios version older than 2.0">
+<!ENTITY nch.prefs.plainpass "Do not store these credentials using browser&apos;s Password Manager">
+<!ENTITY nch.prefs.exampleurl "Np.: http://www.twojafirma.pl/nagios/">
+<!ENTITY nch.prefs.examplestatusurl "Np.: http://www.twojafirma.pl/nagios/cgi-bin/status.cgi">
+<!ENTITY nch.prefs.statusurl "Status Script Url">
+<!ENTITY nch.prefs.foundstatusurl "Located url">
+<!ENTITY nch.prefs.locateurl "Locate url">
+<!ENTITY nch.prefs.updateinterval "Update interval (in minutes)">
+<!ENTITY nch.prefs.worktime "Plugin working hours (hh:mm)">
+<!ENTITY nch.prefs.utilityrun "Utility Run">
+<!ENTITY nch.prefs.other "Pozostałe">
+<!ENTITY nch.prefs.onewindowonly "Run only in first opened window">
+<!ENTITY nch.about.original "Oryginalny tytuł">
+<!ENTITY nch.about.version "Wersja">
+<!ENTITY nch.about.created "Autor">
+<!ENTITY nch.about.description "Nagios Checker provides an expandable status bar indicator of Nagios-reported events. This information is parsed from the Nagios web interface and can monitor multiple Nagios servers simultaneously. Nagios Checker runs in the background, does not require an open Nagios web page for operation, and allows selective filtering of results.">
+<!ENTITY nch.about.contributors "Współautorzy">
+<!ENTITY nch.about.translators "Tłumacze">
+<!ENTITY nch.about.author "Petr Simek">
+<!ENTITY nch.about.homepage "Strona domowa">
+<!ENTITY nch.about.copyrights "Prawa autorskie">
+<!ENTITY nch.about.nagioscopyrights "Nagios and Nagios logo are registered trademarks of Ethan Galstad.">
+<!ENTITY nch.about.codecontributors "Code Contributors">
+<!ENTITY nch.about.ideasandbugreports "Ideas and Bug Reports">
+<!ENTITY nch.about.fordonators "Dla ofiarodawców">
+<!ENTITY nch.about.donators "Ofiarodawcy">
+<!ENTITY nch.about.alphabeticallylisted "W porządku alfabetycznym">
+<!ENTITY nch.prefs.display "Wyświetl">
+<!ENTITY nch.prefs.watchedsystems "Nagios Page(s) to Watch">
+<!ENTITY nch.prefs.addnew "Dodaj nowy">
+<!ENTITY nch.prefs.edit "Edytuj">
+<!ENTITY nch.prefs.remove "Usuń">
+<!ENTITY nch.prefs.statusbardetaillevel "Ilość detali na pasku stanu">
+<!ENTITY nch.prefs.long "Wiele">
+<!ENTITY nch.prefs.short "Mało">
+<!ENTITY nch.prefs.numbersonly "Tylko liczby">
+<!ENTITY nch.prefs.colorsonly "Tylko kolory">
+<!ENTITY nch.prefs.infowindowtype "Typ okna informacyjnego">
+<!ENTITY nch.prefs.allinonewindow "Wszystkie problemy w jednym oknie">
+<!ENTITY nch.prefs.individualwindows "Individual window for each problem type">
+<!ENTITY nch.prefs.showinstatusbar "Pokaż na pasku stanu">
+<!ENTITY nch.prefs.hostdown "Serwer nie działa">
+<!ENTITY nch.prefs.hostunreachable "Serwer jest nieosiągalny">
+<!ENTITY nch.prefs.servicecritical "Stan usługi jest krytyczny">
+<!ENTITY nch.prefs.servicewarning "Ostrzeżenie dot. usługi">
+<!ENTITY nch.prefs.serviceunknown "Usługa nieznana">
+<!ENTITY nch.prefs.showininfowindow "Pokaż w oknie informacyjnym">
+<!ENTITY nch.prefs.blinking "Miganie">
+<!ENTITY nch.prefs.off "Wyłączone">
+<!ENTITY nch.prefs.onstatusupdateifnewproblemappears "On status update if new problem appears">
+<!ENTITY nch.prefs.oneverystatusupdateifatleastoneproblemexists "On every status update if at least one problem exists">
+<!ENTITY nch.prefs.sounds "Dźwięki">
+<!ENTITY nch.prefs.soundsbytype "Sounds by problem type">
+<!ENTITY nch.prefs.nagiossystem "System Nagios">
+<!ENTITY nch.prefs.seturlmanually "Set url manually">
+<!ENTITY nch.prefs.filterout "Przefiltruj">
+<!ENTITY nch.prefs.acknowledged "Hosts and services that have been acknowledged">
+<!ENTITY nch.prefs.disabled_notifications "Hosts and services whose notifications have been disabled">
+<!ENTITY nch.prefs.disabled_checks "Hosts and services whose checks have been disabled">
+<!ENTITY nch.prefs.soft_states "Services in SOFT states">
+<!ENTITY nch.prefs.scheduled_downtime "Hosts and services in scheduled downtime">
+<!ENTITY nch.prefs.services_on_down_hosts "Services on down or unreachable hosts">
+<!ENTITY nch.prefs.services_on_acknowledged_hosts "Services on down or unreachable and acknowledged hosts">
+<!ENTITY nch.prefs.note "Uwaga">
+<!ENTITY nch.prefs.note_sound "If Nagios Checker runs in more than one window then sound will be played only in first opened window.">
+<!ENTITY nch.prefs.after_click_statusbar "Klikanie element na pasku stanu">
+<!ENTITY nch.prefs.do_nothing "Nie robi nic">
+<!ENTITY nch.prefs.goto_main_nagios "Przechodzi na stronę główną Nagios">
+<!ENTITY nch.prefs.goto_nagios_section "Go to Nagios web section respective to the clicked problem type">
+<!ENTITY nch.prefs.open_fullinfowindow "Open static information window with all problems">
+<!ENTITY nch.prefs.open_infowindowbytype "Open static information windows depending on type clicked">
+<!ENTITY nch.prefs.open_infowindow "Otwiera okno z informacjami">
+<!ENTITY nch.prefs.soundfiles "Pliki dźwiękowe">
+<!ENTITY nch.prefs.standardnagiosfile "Standardowy plik Nagios">
+<!ENTITY nch.prefs.customfile "Własny plik">
+<!ENTITY nch.prefs.critical "Krytyczny problem">
+<!ENTITY nch.prefs.warning "Ostrzeżenie">
+<!ENTITY nch.prefs.down "Nie działa">
+<!ENTITY nch.prefs.unreachable "Nieosiągalny">
+<!ENTITY nch.prefs.replay "Odtwórz ponownie">
+<!ENTITY nch.prefs.getaliases "Download host aliases">
+<!ENTITY nch.prefs.shortwithservername "Short with server names">
+<!ENTITY nch.prefs.numbersonlywithservername "Numbers only with server names">
+<!ENTITY nch.prefs.totalnumbers "With total numbers">
+<!ENTITY nch.prefs.totalnumbersforeveryserver "With total numbers for every server">
+<!ENTITY nch.prefs.alldownhosts "All down hosts">
+<!ENTITY nch.prefs.allunreachablehosts "All unreachable hosts">
+<!ENTITY nch.prefs.allwarningservices "All warning services">
+<!ENTITY nch.prefs.allunknownservices "All unknown services">
+<!ENTITY nch.prefs.allcriticalservices "All critical services">
+<!ENTITY nch.prefs.blinkalltypesonstatusupdateifnewproblemappears "Blink all types if a new problem appears">
+<!ENTITY nch.prefs.blinkaffectedtypesonstatusupdateifnewproblemappears "Blink the type where a new problem appears">
+<!ENTITY nch.prefs.blinkalltypesoneverystatusupdateifatleastoneproblemexists "Blink all types if at least one problem exists">
+<!ENTITY nch.prefs.aliases "Aliasy">
+<!ENTITY nch.prefs.makedonation "Dokonaj dotacji">
+<!ENTITY nch.prefs.hostsmatchingregexp "Hosts matching regular expression">
+<!ENTITY nch.prefs.servicesmatchingregexp "Services matching regular expression">
+<!ENTITY nch.prefs.allflapping "All flapping hosts and services">
+<!ENTITY nch.prefs.disable "Wyłącz">
+<!ENTITY nch.prefs.disabled "Wyłączone">
+<!ENTITY nch.prefs.onaddons "On Mozilla Add-ons site">
+<!ENTITY nch.prefs.projecthome "Strona domowa projektu">
+<!ENTITY nch.prefs.moveup "Przenieś do góry">
+<!ENTITY nch.prefs.movedown "Przenieś na dół">
+<!ENTITY nch.prefs.reverseexp "reverse expression">
+<!ENTITY nch.prefs.showinfowindowcolumns "Show columns in information window">
+<!ENTITY nch.prefs.aliascolumn "Serwer (alias)">
+<!ENTITY nch.prefs.infocolumn "Informacje">
+<!ENTITY nch.prefs.flagscolumn "Flagi">
+<!ENTITY nch.prefs.statuscolumn "Stan">
+<!ENTITY nch.prefs.attemptcolumn "Spróbuj">
+<!ENTITY nch.prefs.minimalservicesattempt "Minimal service&apos;s attempt to play the sound">
+<!ENTITY nch.prefs.advanced "Zaawansowane">
+<!ENTITY nch.advanced.downloadtimeout "Status.cgi download timeout (in seconds)">
+<!ENTITY nch.advanced.prefertextconfig "Prefer loading of settings from an external text file rather than the Firefox internal configuration.">
+<!ENTITY nch.advanced.note_prefertextconfig "Could be useful when Firefox is terminated abnormaly and the unsaved preferences are lost. The configuration file will be loaded only when a Firefox window is opened first time.">
+<!ENTITY nch.prefs.working_days "Dni robocze">
+<!ENTITY nch.prefs.monday_short "Pon">
+<!ENTITY nch.prefs.tuesday_short "Wt">
+<!ENTITY nch.prefs.wednesday_short "Śr">
+<!ENTITY nch.prefs.thursday_short "Czw">
+<!ENTITY nch.prefs.friday_short "Pt">
+<!ENTITY nch.prefs.saturday_short "Sob">
+<!ENTITY nch.prefs.sunday_short "Nie">

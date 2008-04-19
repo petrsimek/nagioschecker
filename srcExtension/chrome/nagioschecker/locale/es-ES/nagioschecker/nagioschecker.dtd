@@ -35,10 +35,13 @@
 <!ENTITY nch.about.translators "Traductores">
 <!ENTITY nch.about.author "Petr Simek">
 <!ENTITY nch.about.homepage "Página de Inicio">
-<!ENTITY nch.about.copyrights "Copyrights">
+<!ENTITY nch.about.copyrights "Derechos de autor">
 <!ENTITY nch.about.nagioscopyrights "Nagios y el logo Nagios son marcas registradas de Ethen Galstad.">
 <!ENTITY nch.about.codecontributors "Contribuidores de código">
 <!ENTITY nch.about.ideasandbugreports "Ideas y reportes de fallas">
+<!ENTITY nch.about.fordonators "Para donantes">
+<!ENTITY nch.about.donators "Donantes">
+<!ENTITY nch.about.alphabeticallylisted "Listado alfabético">
 <!ENTITY nch.prefs.display "Mostrar">
 <!ENTITY nch.prefs.watchedsystems "Paginas Nagios a observar">
 <!ENTITY nch.prefs.addnew "Agregar nuevo">
@@ -126,3 +129,13 @@
 <!ENTITY nch.prefs.minimalservicesattempt "Intento minimo del servicio para reproducir el sonido">
 <!ENTITY nch.prefs.advanced "Avanzado">
 <!ENTITY nch.advanced.downloadtimeout "Timeout de descarga Status.cgi (en segundos)">
+<!ENTITY nch.advanced.prefertextconfig "Prefiero cargar los ajustes de un archivo externo y no de la configuración interna de Firefox.">
+<!ENTITY nch.advanced.note_prefertextconfig "Puede ser util cuando Firefox sea terminado abnormalmente y las preferencias no guardadas se pierdan. El archivo de configuración solo cuando una ventana de Firefox sea abierta por primera vez.">
+<!ENTITY nch.prefs.working_days "Días de trabajo">
+<!ENTITY nch.prefs.monday_short "Lun">
+<!ENTITY nch.prefs.tuesday_short "Mar">
+<!ENTITY nch.prefs.wednesday_short "Mie">
+<!ENTITY nch.prefs.thursday_short "Jue">
+<!ENTITY nch.prefs.friday_short "Vie">
+<!ENTITY nch.prefs.saturday_short "Sab">
+<!ENTITY nch.prefs.sunday_short "Dom">

@@ -39,6 +39,9 @@
 <!ENTITY nch.about.nagioscopyrights "Nagios 與 Nagios 圖示 均屬 Ethan Galstad 的已註冊商標">
 <!ENTITY nch.about.codecontributors "程式貢獻者">
 <!ENTITY nch.about.ideasandbugreports "意見及問題回報">
+<!ENTITY nch.about.fordonators "給捐贈者">
+<!ENTITY nch.about.donators "捐贈者">
+<!ENTITY nch.about.alphabeticallylisted "按字母排列">
 <!ENTITY nch.prefs.display "顯示">
 <!ENTITY nch.prefs.watchedsystems "已監測的Nagios 系統">
 <!ENTITY nch.prefs.addnew "加入">
@@ -122,7 +125,17 @@
 <!ENTITY nch.prefs.infocolumn "資訊">
 <!ENTITY nch.prefs.flagscolumn "旗幟">
 <!ENTITY nch.prefs.statuscolumn "狀態">
-<!ENTITY nch.prefs.attemptcolumn "嘗試">
+<!ENTITY nch.prefs.attemptcolumn "嘗試次數">
 <!ENTITY nch.prefs.minimalservicesattempt "播放音樂的最少服務嘗試次數">
 <!ENTITY nch.prefs.advanced "進階">
 <!ENTITY nch.advanced.downloadtimeout "Status.cgi 下載逾時(秒)">
+<!ENTITY nch.advanced.prefertextconfig "選擇從文字檔案匯入設定，而不選擇Firefox內建設定">
+<!ENTITY nch.advanced.note_prefertextconfig "當Firefox不正常關閉或設定未存檔時很有用；設定檔只會在第一次開啟Firefox視窗時才載入。">
+<!ENTITY nch.prefs.working_days "工作日">
+<!ENTITY nch.prefs.monday_short "一">
+<!ENTITY nch.prefs.tuesday_short "二">
+<!ENTITY nch.prefs.wednesday_short "三">
+<!ENTITY nch.prefs.thursday_short "四">
+<!ENTITY nch.prefs.friday_short "五">
+<!ENTITY nch.prefs.saturday_short "六">
+<!ENTITY nch.prefs.sunday_short "日">

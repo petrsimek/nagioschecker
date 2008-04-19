@@ -538,6 +538,8 @@ NCHParser.prototype = {
 
   parseNagiosHostsHtml: function(pos,doc) {
     if (doc!=null) {
+      var procstat = getElementsByClass("infoBoxBadProcStatus",doc,"div");
+      var disnotifs_global=((procstat[0]) && (procstat[0].childNodes[0]) && (procstat[0].childNodes[0].nodeValue) && (procstat[0].childNodes[0].nodeValue.match("Notifications are disabled"))) ? true : false;     	
       var ar = getElementsByClass("status",doc,"table");
       if (ar[0]) {
       var viptr = (ar[0].childNodes[1]) ? ar[0].childNodes[1].childNodes : ar[0].childNodes[0].childNodes;
@@ -550,7 +552,7 @@ NCHParser.prototype = {
             if (!host) host=lastHost;
             var acknowledged=false;
             var dischecks=false;
-            var disnotifs=false;
+            var disnotifs=disnotifs_global;
             var downtime=false;
             var flapping=false;
 

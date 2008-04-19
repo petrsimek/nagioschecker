@@ -39,12 +39,15 @@
 <!ENTITY nch.about.nagioscopyrights "Nagios и логото Nagios са запазена марка на Ethan Galstad.">
 <!ENTITY nch.about.codecontributors "Сътрудници по писането на кода">
 <!ENTITY nch.about.ideasandbugreports "Идеи и Доклади за грешки">
+<!ENTITY nch.about.fordonators "За дарители">
+<!ENTITY nch.about.donators "Дарители">
+<!ENTITY nch.about.alphabeticallylisted "Азбучно изредени">
 <!ENTITY nch.prefs.display "Изглед">
 <!ENTITY nch.prefs.watchedsystems "Наблюдавани Нагиос системи">
 <!ENTITY nch.prefs.addnew "Добавяне на нова">
 <!ENTITY nch.prefs.edit "Редактиране">
 <!ENTITY nch.prefs.remove "Премахване">
-<!ENTITY nch.prefs.statusbardetaillevel "Ниво Подробности на Статусбара">
+<!ENTITY nch.prefs.statusbardetaillevel "Ниво подробности на Статусбара">
 <!ENTITY nch.prefs.long "Дълъг">
 <!ENTITY nch.prefs.short "Къс">
 <!ENTITY nch.prefs.numbersonly "Само цифри">
@@ -126,3 +129,13 @@
 <!ENTITY nch.prefs.minimalservicesattempt "Минимален опит на услугата да изсвири звук">
 <!ENTITY nch.prefs.advanced "Задълбочено">
 <!ENTITY nch.advanced.downloadtimeout "Макс. време за сваляне на Status.cgi (в сек.)">
+<!ENTITY nch.advanced.prefertextconfig "Предпочитам зареждане на настройки от външен текстов файл вместо от вътрешната конфигурация на Файърфокс">
+<!ENTITY nch.advanced.note_prefertextconfig "Може да е полезно, когато Файърфокс е прекратен ненормално и незапазените предпочитания са загубени. Конфигурационният файл ще бъде зареден само когато Файърфокс прозорец е отворен за първи път.">
+<!ENTITY nch.prefs.working_days "Работни дни">
+<!ENTITY nch.prefs.monday_short "Пон">
+<!ENTITY nch.prefs.tuesday_short "Вт">
+<!ENTITY nch.prefs.wednesday_short "Ср">
+<!ENTITY nch.prefs.thursday_short "Чет">
+<!ENTITY nch.prefs.friday_short "Пет">
+<!ENTITY nch.prefs.saturday_short "Съб">
+<!ENTITY nch.prefs.sunday_short "Нед">
