@@ -1,3 +1,7 @@
+0.12.1
+* LANG: Removed  bad uncomplete pl-PL locale
+* LANG: Updated nb-NO locale
+
 0.12
 * BUGFIX: rounded statusbar box corners removed due to fix displaying these boxes on various OSes
 

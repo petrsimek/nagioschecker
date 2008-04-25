@@ -1,4 +1,4 @@
-<!ENTITY nch.title "Nagios sjekker">
+<!ENTITY nch.title "Nagios Checker">
 <!ENTITY nch.aboutextension "Om &nch.title;">
 <!ENTITY nch.about "Om">
 <!ENTITY nch.close "Lukk">
@@ -36,11 +36,11 @@
 <!ENTITY nch.about.author "Petr Simek">
 <!ENTITY nch.about.homepage "Hjemmeside">
 <!ENTITY nch.about.copyrights "Kopirettigheter">
-<!ENTITY nch.about.nagioscopyrights "Nagios og Nagios logen er registrerte varemerker av Ethan Galstad">
+<!ENTITY nch.about.nagioscopyrights "Nagios og Nagios logoen er registrerte varemerker av Ethan Galstad">
 <!ENTITY nch.about.codecontributors "Kodebidragsytere">
 <!ENTITY nch.about.ideasandbugreports "Ideer og feilrapporter">
-<!ENTITY nch.about.fordonators "For donatorer">
-<!ENTITY nch.about.donators "Dontatorer">
+<!ENTITY nch.about.fordonators "For donorer">
+<!ENTITY nch.about.donators "Donorer">
 <!ENTITY nch.about.alphabeticallylisted "Alfabetisk rekkefølge">
 <!ENTITY nch.prefs.display "Visning">
 <!ENTITY nch.prefs.watchedsystems "Nagioside(r) å vise">
@@ -50,7 +50,7 @@
 <!ENTITY nch.prefs.statusbardetaillevel "Statuslinje detaljnivå">
 <!ENTITY nch.prefs.long "Lang">
 <!ENTITY nch.prefs.short "Kort">
-<!ENTITY nch.prefs.numbersonly "Bare nummere">
+<!ENTITY nch.prefs.numbersonly "Bare tall">
 <!ENTITY nch.prefs.colorsonly "Bare farger">
 <!ENTITY nch.prefs.infowindowtype "Informasjonsvindustype">
 <!ENTITY nch.prefs.allinonewindow "Alle problemer i ett vindu">
@@ -131,7 +131,7 @@
 <!ENTITY nch.advanced.downloadtimeout "Status.cgi download timeout (in seconds)">
 <!ENTITY nch.advanced.prefertextconfig "Prefer loading of settings from an external text file rather than the Firefox internal configuration.">
 <!ENTITY nch.advanced.note_prefertextconfig "Could be useful when Firefox is terminated abnormaly and the unsaved preferences are lost. The configuration file will be loaded only when a Firefox window is opened first time.">
-<!ENTITY nch.prefs.working_days "Arbeidsdager">
+<!ENTITY nch.prefs.working_days "Virksomhetsdager">
 <!ENTITY nch.prefs.monday_short "Man">
 <!ENTITY nch.prefs.tuesday_short "Tir">
 <!ENTITY nch.prefs.wednesday_short "Ons">
