@@ -1,4 +1,7 @@
-0.12.1
+0.12.1.1
+- second try
+
+0.12.1 (AMO sandbox only - I am fool)
 * LANG: Removed  bad uncomplete pl-PL locale
 * LANG: Updated nb-NO locale
 
