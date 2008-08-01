@@ -38,6 +38,13 @@
       <textbox id="nch-general-url" size="50" oninput="nchControlPreferences();" onchange="document.getElementById('nch-general-urlstatus').value='';"/>
       <label value="&nch.prefs.exampleurl;"/>
       <checkbox id="nch-general-vot20" label="&nch.prefs.versionolderthan20;"/>
+      <radiogroup id="nch-general-server_type">
+      <hbox>
+          <radio id="nch-general-server_type-0" label="Nagios" value="0"/>
+          <radio id="nch-general-server_type-1" label="Opsview" value="1"/>
+          
+      </hbox>
+      </radiogroup>
 			<hbox align="center">
         <label value="&nch.prefs.username;:" control="nch-general-username"/>
         <textbox id="nch-general-username" size="10" value=""/>

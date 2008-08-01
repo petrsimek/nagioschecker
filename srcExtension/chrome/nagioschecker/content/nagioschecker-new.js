@@ -6,6 +6,7 @@ function doOK() {
     username: document.getElementById('nch-general-username').value,
     password: document.getElementById('nch-general-password').value,
     versionOlderThan20: document.getElementById('nch-general-vot20').checked,
+    serverType: document.getElementById('nch-general-server_type').selectedItem.value,
     plainPass: document.getElementById('nch-general-plainpass').checked,
     getAliases: document.getElementById('nch-general-getaliases').checked,
     disabled: document.getElementById('nch-general-disabled').checked
@@ -104,6 +105,7 @@ function nchLoadPreferences() {
     document.getElementById('nch-general-username').value=server.username;
     document.getElementById('nch-general-password').value=server.password;
     document.getElementById('nch-general-vot20').checked=server.versionOlderThan20;
+    document.getElementById('nch-general-server_type').selectedIndex=server.serverType;
     document.getElementById('nch-general-plainpass').checked=server.plainPass;
     document.getElementById('nch-general-getaliases').checked=server.getAliases;
     document.getElementById('nch-general-disabled').checked=server.disabled;

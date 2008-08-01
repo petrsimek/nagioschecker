@@ -17,7 +17,7 @@
 
   <vbox>
       <label value="&nch.title;"  class="nagioschecker-about-product-name"/>
-      <description class="nch">&nch.about.version; 0.12.2</description>
+      <description class="nch">&nch.about.version; 0.12.9</description>
   </vbox>
       <separator class="thin"/>
 
@@ -75,7 +75,7 @@
   <groupbox flex="1" class="nagioschecker-about-box">
 	  <caption class="nch" label="&nch.about.alphabeticallylisted;"/>	
       <label value="&nch.about.codecontributors;:" class="nagioschecker-about-sub-title"/>
-      <description class="nch">Cameron Moore (US), Ivo Musil (CZ), Michal Sviba (CZ)</description>
+      <description class="nch">Jose Luis Martinez, Cameron Moore (US), Ivo Musil (CZ), Michal Sviba (CZ)</description>
       <separator class="thin"/>
       <label value="&nch.about.donators;:" class="nagioschecker-about-sub-title"/>
       <description class="nch">A. Aleksandrovs (LA), A. Artigues (US), J. Avery (UK), J. Batzel (US), C. Carluccio (UR), M. Cintolesi (IT), A. Davies (UK), G. Hernandez (ME), E. Martucci (US), X. Potel (FR), PSS Hosting.com (US), D. Rubel (US), A. Smith (US), K. Snorrason (IC), M. Tancil (US), J. Wigle (US), K. Wong (US)</description>

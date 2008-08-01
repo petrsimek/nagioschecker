@@ -1478,6 +1478,7 @@ dump('reallyPlay:'+reallyPlay+' '+me.pref.play_sound+' ');
                   username:(pPass) ? tmp_prf[(i+1)+".username"] : ((auth.user) ? auth.user : ''),
                   password:(pPass) ? tmp_prf[(i+1)+".password"] : ((auth.password) ? auth.password : ''),
                   versionOlderThan20:tmp_prf[(i+1)+".vot20"],
+                  serverType: tmp_prf[(i+1)+".servertype"],
                   getAliases:gAli,
                   aliases:{},
                   disabled:gDis
@@ -1548,6 +1549,7 @@ dump('reallyPlay:'+reallyPlay+' '+me.pref.play_sound+' ');
                   username:(pPass) ? this.preferences.getCharPref("extensions.nagioschecker."+(i+1)+".username") : ((auth.user) ? auth.user : ''),
                   password:(pPass) ? this.preferences.getCharPref("extensions.nagioschecker."+(i+1)+".password") : ((auth.password) ? auth.password : ''),
                   versionOlderThan20:this.preferences.getBoolPref("extensions.nagioschecker."+(i+1)+".vot20"),
+                  serverType:this.preferences.getIntPref("extensions.nagioschecker."+(i+1)+".servertype"),
                   getAliases:gAli,
                   aliases:{},
                   disabled:gDis

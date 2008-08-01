@@ -106,21 +106,40 @@ NCHParser.prototype = {
     }
   },
 
+  loginToOpsview: function(pos) {
+    var login_auth = new XMLHttpRequest();
+    var login_url = this._servers[pos].url + '/login' + 
+                    '?login_username=' + this._servers[pos].username + 
+                    '&login_password=' + this._servers[pos].password
+
+    login_auth.open("POST", login_url, false);
+    login_auth.send(null);
+
+    this._servers[pos]._ssoLoggedIn = 1;
+  },
+
   fetchServer: function(pos) {
 	this.problems[pos]={"down":[],"unreachable":[],"unknown":[],"warning":[],"critical":[],"_error":false,"_time":null};
 	this.missingAliases[pos]=[];			
 	if (!this._servers[pos].disabled) {
 		var urlServices = (this._servers[pos].versionOlderThan20) ? this._servers[pos].urlstatus+"?host=all&servicestatustypes=248" : this._servers[pos].urlstatus+"?host=all&servicestatustypes=28";
+		if (this._servers[pos].serverType == 1){
+			if (this._servers[pos]._ssoLoggedIn != 1){
+				this.loginToOpsview(pos);
+			}
+		}
+		
 		var urlHosts = this._servers[pos].urlstatus+"?hostgroup=all&style=hostdetail&hoststatustypes=12";
 		var urlExt = this._servers[pos].urlstatus.replace(/status\.cgi/,"extinfo.cgi");
-		var user = this._servers[pos].username;
-		var pass = this._servers[pos].password;
+                var server = this._servers[pos];
 		var me = this;
-		this.loadDataAsync(urlHosts,user,pass,false,function (doc1) {
+		
+		this.loadDataAsync(urlHosts,server,false,function (doc1) {
+			
 			me.parseNagiosHostsHtml(pos,doc1);
-            me.loadDataAsync(urlServices,user,pass,false,function (doc2) {
+            me.loadDataAsync(urlServices,server,false,function (doc2) {
             	me.parseNagiosServicesHtml(pos,doc2);
-				me.loadMissingAlias(0,pos,user,pass,function () {
+				me.loadMissingAlias(0,pos,server,function () {
 					me.problems[pos]["_time"]=new Date();
 					if (me._servers.length==pos+1) {
 //						me.manager.handleProblems(me.problems);
@@ -144,15 +163,15 @@ NCHParser.prototype = {
      }
   },
 
-  loadMissingAlias: function(apos,pos,username,password,callback) {
+  loadMissingAlias: function(apos,pos,server,callback) {
 	if (this.missingAliases[pos][apos]) {
 		var extinfo = this._servers[pos].urlstatus.replace(/status\.cgi/,"extinfo.cgi");
 		var urlExt = extinfo+"?type=1&host="+this.missingAliases[pos][apos];
 		var me=this;
-		this.loadDataAsync(urlExt,username,password,false,function (doc2) {
+		this.loadDataAsync(urlExt,server,false,function (doc2) {
 				me.parseAlias(pos,me.missingAliases[pos][apos],doc2);
 				me.manager._servers[pos][me.missingAliases[pos][apos]]=me.missingAliases[pos][apos];
-				me.loadMissingAlias(apos+1,pos,username,password,callback);				
+				me.loadMissingAlias(apos+1,pos,server,callback);				
 			},false);
 	}
 	else {
@@ -160,12 +179,16 @@ NCHParser.prototype = {
 	}
   },
 
-  loadDataAsync: function(url,username,password,rettext,callback,remove_nl) {
+  loadDataAsync: function(url,server,rettext,callback,remove_nl) {
     var doc=null;
     if (url) {
 	    var request=new XMLHttpRequest();
 
-   	  request.open("GET",url,true,username,password);
+      if (server.serverType == 1) {
+   		request.open("GET",url,true);
+      } else {
+      	request.open("GET",url,true,server.username,server.password);
+      }
       var requestTimer = setTimeout(function() {
                                       request.abort();
                                     }, this.timeout*1000); //pulminuty
@@ -211,17 +234,17 @@ NCHParser.prototype = {
 
 
 
-  downloadStatus: function(url,username,password,callback) {
+  downloadStatus: function(url,server,callback) {
 
 	var mainUri = parseUri(url);
 	if (mainUri.path=="") {
 		url+="/";
 	}
     var me = this;
-    this.loadDataAsync(url,username,password,true,function (doc1) {
+    this.loadDataAsync(url,server,true,function (doc1) {
 		var nuvola = me.parseNuvolaJs(doc1,url);
 		if (nuvola!="") {
-	    	me.loadDataAsync(nuvola,username,password,true,function(par) {
+	    	me.loadDataAsync(nuvola,server,true,function(par) {
 			var urlst = me.parseNuvolaJsStatus(par,url);
 						callback(urlst);
 					},false);
@@ -230,7 +253,7 @@ NCHParser.prototype = {
 
 			var side = me.parseFrame(doc1,url);
 			if (side!="") {
-		    	me.loadDataAsync(side,username,password,true,function(par) {
+		    	me.loadDataAsync(side,server,true,function(par) {
 					var urlst = me.parseSide(par,url,side);
 						callback(urlst);
 					},false);

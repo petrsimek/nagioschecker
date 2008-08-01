@@ -394,6 +394,7 @@ NCHOptions.prototype = {
           prefs.setCharPref("extensions.nagioschecker."+(i+1)+".name",this._servers[j].name);
           prefs.setCharPref("extensions.nagioschecker."+(i+1)+".urlstatus",this._servers[j].urlstatus);
           prefs.setBoolPref("extensions.nagioschecker."+(i+1)+".vot20",this._servers[j].versionOlderThan20);
+          prefs.setIntPref("extensions.nagioschecker."+(i+1)+".servertype",this._servers[j].serverType);
           prefs.setBoolPref("extensions.nagioschecker."+(i+1)+".plainpass",this._servers[j].plainPass);
           prefs.setBoolPref("extensions.nagioschecker."+(i+1)+".getaliases",this._servers[j].getAliases);
           prefs.setCharPref("extensions.nagioschecker."+(i+1)+".username",(this._servers[j].plainPass) ? this._servers[j].username : "");
@@ -565,6 +566,12 @@ NCHOptions.prototype = {
           var vot20 = false;
         }
         try {
+          var servertype = prefs.getIntPref("extensions.nagioschecker."+(i+1)+".servertype");
+        }
+        catch (e) {
+          var servertype = 0;
+        }
+        try {
           var pPass = prefs.getBoolPref("extensions.nagioschecker."+(i+1)+".plainpass");
         }
         catch (e) {
@@ -591,6 +598,7 @@ NCHOptions.prototype = {
                   name:prefs.getCharPref("extensions.nagioschecker."+(i+1)+".name"),
                   urlstatus:prefs.getCharPref("extensions.nagioschecker."+(i+1)+".urlstatus"),
                   versionOlderThan20:vot20,
+                  serverType:servertype,
                   plainPass:pPass,
                   getAliases:getAli,
                   disabled:getDis,
