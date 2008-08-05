@@ -1,5 +1,7 @@
 0.13 (unreleased yet)
 * Opsview authentization support (by Jose Luis Martinez)
+* updated pl-PL
+* Fixed playing custom wav files
 
 0.12.2
 - Updated appVersion to 3.0.* to be compatible with rc and final version of FF3

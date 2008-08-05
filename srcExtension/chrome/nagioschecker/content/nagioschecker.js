@@ -1252,13 +1252,13 @@ dump('reallyPlay:'+reallyPlay+' '+me.pref.play_sound+' ');
  playSound: function(paket) {
 	var wav = null;
 	if (paket.countProblemsByType("down")>0) {
-		wav = this.pref.sound_down_path;
+		wav = (this.pref.sound_down==0) ? "chrome://nagioschecker/content/hostdown.wav" : "file:///"+this.pref.sound_down_path;
 	}
 	else if (paket.countProblemsByType("critical")>0) {
-		wav = this.pref.sound_critical_path;
+		wav = (this.pref.sound_critical==0) ? "chrome://nagioschecker/content/critical.wav" : "file:///"+this.pref.sound_critical_path;
 	}
 	else if (paket.countProblemsByType("warning")>0) {
-		wav = this.pref.sound_warning_path;
+		wav = (this.pref.sound_warning==0) ? "chrome://nagioschecker/content/warning.wav" : "file:///"+this.pref.sound_warning_path;
 	}
 	if (wav!=null) {
     try {
