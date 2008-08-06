@@ -1,6 +1,6 @@
 0.13 (unreleased yet)
 * Opsview authentization support (by Jose Luis Martinez)
-* updated pl-PL
+* Updated pl-PL, ru-RU, es-AR
 * Fixed playing custom wav files
 
 0.12.2

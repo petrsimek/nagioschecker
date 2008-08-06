@@ -51,7 +51,7 @@
 <!ENTITY nch.prefs.long "Largo">
 <!ENTITY nch.prefs.short "Corto">
 <!ENTITY nch.prefs.numbersonly "Números solamente">
-<!ENTITY nch.prefs.colorsonly "">
+<!ENTITY nch.prefs.colorsonly "Colors only">
 <!ENTITY nch.prefs.infowindowtype "Clase de Ventana de Información">
 <!ENTITY nch.prefs.allinonewindow "Todos los problemas en una sola ventana">
 <!ENTITY nch.prefs.individualwindows "Ventanas individuales para cada clase de problema">
@@ -120,15 +120,15 @@
 <!ENTITY nch.prefs.moveup "Subir">
 <!ENTITY nch.prefs.movedown "Bajar">
 <!ENTITY nch.prefs.reverseexp "invertir la expresión">
-<!ENTITY nch.prefs.showinfowindowcolumns "">
-<!ENTITY nch.prefs.aliascolumn "">
-<!ENTITY nch.prefs.infocolumn "">
-<!ENTITY nch.prefs.flagscolumn "">
-<!ENTITY nch.prefs.statuscolumn "">
-<!ENTITY nch.prefs.attemptcolumn "">
-<!ENTITY nch.prefs.minimalservicesattempt "">
-<!ENTITY nch.prefs.advanced "">
-<!ENTITY nch.advanced.downloadtimeout "">
+<!ENTITY nch.prefs.showinfowindowcolumns "Show columns in information window">
+<!ENTITY nch.prefs.aliascolumn "Host (alias)">
+<!ENTITY nch.prefs.infocolumn "Information">
+<!ENTITY nch.prefs.flagscolumn "Flags">
+<!ENTITY nch.prefs.statuscolumn "Status">
+<!ENTITY nch.prefs.attemptcolumn "Attempt">
+<!ENTITY nch.prefs.minimalservicesattempt "Minimal service&apos;s attempt to play the sound">
+<!ENTITY nch.prefs.advanced "Advanced">
+<!ENTITY nch.advanced.downloadtimeout "Status.cgi download timeout (in seconds)">
 <!ENTITY nch.advanced.prefertextconfig "Prefer loading of settings from an external text file rather than the Firefox internal configuration.">
 <!ENTITY nch.advanced.note_prefertextconfig "Could be useful when Firefox is terminated abnormaly and the unsaved preferences are lost. The configuration file will be loaded only when a Firefox window is opened first time.">
 <!ENTITY nch.prefs.working_days "Working days">
