@@ -39,8 +39,9 @@
       <label value="&nch.prefs.exampleurl;"/>
       <checkbox id="nch-general-vot20" label="&nch.prefs.versionolderthan20;"/>
       <radiogroup id="nch-general-server_type">
+      <label value="&nch.prefs.servertype;:"/>
       <hbox>
-          <radio id="nch-general-server_type-0" label="Nagios" value="0"/>
+          <radio id="nch-general-server_type-0" label="&nch.prefs.standalonenagios;" value="0"/>
           <radio id="nch-general-server_type-1" label="Opsview" value="1"/>
           
       </hbox>

@@ -17,6 +17,8 @@
 <!ENTITY nch.prefs.username "Přihl. jméno">
 <!ENTITY nch.prefs.password "Heslo">
 <!ENTITY nch.prefs.versionolderthan20 "Verze Nagiosu starší než 2.0">
+<!ENTITY nch.prefs.servertype "Typ serveru">
+<!ENTITY nch.prefs.standalonenagios "Samostatný Nagios">
 <!ENTITY nch.prefs.plainpass "Neukládat přihlašovací údaje pomocí Správce hesel prohlížeče">
 <!ENTITY nch.prefs.fullurl "Adresa webového rozhraní Nagiosu">
 <!ENTITY nch.prefs.exampleurl "Např.: http://www.vasefirma.cz/nagios/">
