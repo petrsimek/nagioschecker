@@ -16,6 +16,8 @@
 <!ENTITY nch.prefs.username "Nombre de usuario">
 <!ENTITY nch.prefs.password "Contraseña">
 <!ENTITY nch.prefs.versionolderthan20 "Version de Nagios anterior a 2.0">
+<!ENTITY nch.prefs.servertype "Tipo de servidor">
+<!ENTITY nch.prefs.standalonenagios "Nagios independiente">
 <!ENTITY nch.prefs.plainpass "No almacene estas credenciales usando el Administrador de Contraseñas">
 <!ENTITY nch.prefs.exampleurl "Ej: http://www.tuempresa.com/nagios/">
 <!ENTITY nch.prefs.examplestatusurl "Ej: http://www.tuempresa.com/nagios/cgi-bin/status.cgi">

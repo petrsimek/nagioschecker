@@ -16,6 +16,8 @@
 <!ENTITY nch.prefs.username "Nazwa użytkownika">
 <!ENTITY nch.prefs.password "Hasło">
 <!ENTITY nch.prefs.versionolderthan20 "Wersja Nagios starsza niż 2.0">
+<!ENTITY nch.prefs.servertype "Typ serwera">
+<!ENTITY nch.prefs.standalonenagios "Wolno stojący serwer Nagios">
 <!ENTITY nch.prefs.plainpass "Nie przechowuj tych danych w menedżerze haseł przeglądarki">
 <!ENTITY nch.prefs.exampleurl "Np.: http://www.twojafirma.pl/nagios/">
 <!ENTITY nch.prefs.examplestatusurl "Np.: http://www.twojafirma.pl/nagios/cgi-bin/status.cgi">

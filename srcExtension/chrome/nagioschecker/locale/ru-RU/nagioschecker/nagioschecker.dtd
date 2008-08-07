@@ -16,6 +16,8 @@
 <!ENTITY nch.prefs.username "Имя">
 <!ENTITY nch.prefs.password "Пароль">
 <!ENTITY nch.prefs.versionolderthan20 "Версия Nagios старее чем 2.0">
+<!ENTITY nch.prefs.servertype "Тип сервера">
+<!ENTITY nch.prefs.standalonenagios "Автономный Nagios">
 <!ENTITY nch.prefs.plainpass "Не храните эти учётные данные используя Менеджер Паролей">
 <!ENTITY nch.prefs.exampleurl "Например: http://www.yourcompany.ru/nagios/">
 <!ENTITY nch.prefs.examplestatusurl "Например: http://www.yourcompany.com/nagios/cgi-bin/status.cgi">

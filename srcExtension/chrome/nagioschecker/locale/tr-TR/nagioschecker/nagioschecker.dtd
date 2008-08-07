@@ -16,6 +16,8 @@
 <!ENTITY nch.prefs.username "Kullanıcı">
 <!ENTITY nch.prefs.password "Şifre">
 <!ENTITY nch.prefs.versionolderthan20 "Nagios sürümü 2.0&apos;dan daha eski">
+<!ENTITY nch.prefs.servertype "Server type">
+<!ENTITY nch.prefs.standalonenagios "Standalone Nagios">
 <!ENTITY nch.prefs.plainpass "Bu güven belgelerini tarayıcının Şifre Yöneticisini kullanarak saklama">
 <!ENTITY nch.prefs.exampleurl "Ör.: http://www.alanadi.cz/nagios">
 <!ENTITY nch.prefs.examplestatusurl "Ör.: http://www.yourcompany.com/nagios/cgi-bin/status.cgi">

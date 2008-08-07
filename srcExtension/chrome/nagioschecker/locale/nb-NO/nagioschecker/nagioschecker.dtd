@@ -16,6 +16,8 @@
 <!ENTITY nch.prefs.username "Brukernavn">
 <!ENTITY nch.prefs.password "Passord">
 <!ENTITY nch.prefs.versionolderthan20 "Nagios versjon eldre enn 2.0">
+<!ENTITY nch.prefs.servertype "Server type">
+<!ENTITY nch.prefs.standalonenagios "Standalone Nagios">
 <!ENTITY nch.prefs.plainpass "Ikke lagre brukernavn og passord i nettleseren">
 <!ENTITY nch.prefs.exampleurl "F.eks.: http://www.dittfirma.no/nagios">
 <!ENTITY nch.prefs.examplestatusurl "F.eks.: http://dittfirma.no/cgi-bin/status.cgi">

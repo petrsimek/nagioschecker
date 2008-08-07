@@ -16,6 +16,8 @@
 <!ENTITY nch.prefs.username "Gebruikersnaam">
 <!ENTITY nch.prefs.password "Wachtwoord">
 <!ENTITY nch.prefs.versionolderthan20 "Nagios-versie ouder dan 2.0">
+<!ENTITY nch.prefs.servertype "Servertype">
+<!ENTITY nch.prefs.standalonenagios "Stand-alone nagios">
 <!ENTITY nch.prefs.plainpass "Deze referenties niet opslaan met de Wachtwoordbeheerder van de browser">
 <!ENTITY nch.prefs.exampleurl "Bijv.: http://www.uwbedrijf.net/nagios/">
 <!ENTITY nch.prefs.examplestatusurl "Bijv.: http://www.uwbedrijf.com/nagios/cgi-bin/status.cgi">

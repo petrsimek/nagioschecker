@@ -16,6 +16,8 @@
 <!ENTITY nch.prefs.username "Utilisateur">
 <!ENTITY nch.prefs.password "Mot de passe">
 <!ENTITY nch.prefs.versionolderthan20 "La version de Nagios est inférieure à 2.0">
+<!ENTITY nch.prefs.servertype "Type de serveur">
+<!ENTITY nch.prefs.standalonenagios "Nagios autonome">
 <!ENTITY nch.prefs.plainpass "Ne pas utiliser le gestionnaire des mots de passe de Firefox pour sauvegarder les accréditations">
 <!ENTITY nch.prefs.exampleurl "Ex. : http://www.votrecompagnie.fr/nagios/">
 <!ENTITY nch.prefs.examplestatusurl "Ex. : http://www.votrecompagnie.fr/nagios/cgi-bin/status.cgi">
