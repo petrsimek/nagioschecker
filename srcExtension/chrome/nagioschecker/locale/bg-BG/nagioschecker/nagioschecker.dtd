@@ -16,8 +16,8 @@
 <!ENTITY nch.prefs.username "Потребител">
 <!ENTITY nch.prefs.password "Парола">
 <!ENTITY nch.prefs.versionolderthan20 "Нагиос версия по-стара от 2.0">
-<!ENTITY nch.prefs.servertype "Server type">
-<!ENTITY nch.prefs.standalonenagios "Standalone Nagios">
+<!ENTITY nch.prefs.servertype "Тип сървър">
+<!ENTITY nch.prefs.standalonenagios "Самостоятелен Нагиос">
 <!ENTITY nch.prefs.plainpass "Да не се съхраняват тези акридитиви чрез Мениджъра за Пароли на браузъра.">
 <!ENTITY nch.prefs.exampleurl "Т.е.: http://www.твоятакомпания.bg/nagios/">
 <!ENTITY nch.prefs.examplestatusurl "Т.е.: http://www.вашатакомпания.com/nagios/cgi-bin/status.cgi">
