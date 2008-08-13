@@ -19,3 +19,25 @@ Sound file for unreachable
 Filter by duration
 Filter by attempt ?
 Filtr na rozmezi duration
+
+-----
+Paul:
+Hi Petr
+Thanks for writing the Nagios checker.  I have a suggestion for you.
+Some background.  The company I work for leases 16 dedicated servers and
+has many shared hosting accounts with many other hosting companies, all
+for hundreds of domains of varying degrees of importance to our operations.
+(BTW, this domain is hosted with the company I used to work for).
+I have the sound effects configured to alert me on update if a new problem
+appears.  With as many things as we're monitoring there's always several
+critical services, service warnings and hosts down.  The problem is that
+it seems that the sound file chosen is not that appropriate to the worst
+kind of problem that has appeared since the previous check but to the worst
+kind of problem of all those displayed.
+As an example, I have some services down and one host down.  The checker
+updates and there's a new service down.  But the sound file chosen is not
+that for a service being down (which is the only new thing to appear) but
+for a host being down (which is old news).
+I don't know if that was a deliberate decision on your part of a coding
+error.  If deliberate, could you add an option for the sound file to
+reflect only new problems rather than the worst problem? 
