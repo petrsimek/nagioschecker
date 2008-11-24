@@ -1637,7 +1637,7 @@ dump('reallyPlay:'+reallyPlay+' '+me.pref.play_sound+' ');
 //function NCHToolTip(showColInfo,showColAlias,showColFlags) {
 function NCHToolTip(pref) {
   this._rows=null;
-  this.title=title;
+  this.title=document.title;
   this._vbox=null;
   this.headers = [];
   this.pref = pref;
