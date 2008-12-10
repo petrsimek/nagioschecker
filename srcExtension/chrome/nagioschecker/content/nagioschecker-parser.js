@@ -216,12 +216,24 @@ NCHParser.prototype = {
             else {
   		        if (result != null) {
 			          var iframe=document.createElement('iframe');
-			          iframe.style.visibility='hidden';
-			          iframe.style.width="0";
-			          iframe.style.height="0";
-			          document.documentElement.appendChild(iframe);
+
+			          iframe.style.display = "inline";
+			          iframe.style.visibility = "hidden";
+				      iframe.style.position = "absolute";
+      		          iframe.style.width='0px';
+      		          iframe.style.top='0px';
+      		          iframe.style.left='0px';
+			          iframe.style.height='0px';
+			          iframe.style.border='0px';
+			          iframe.style.margin='0 0 0 0';
+			          iframe.style.frameBorder=0;
+			          iframe.style.padding='0px';
+			          
+			          var d = document.getElementById('nagioschecker-panel');
+			          
+			          d.appendChild(iframe);
 			          doc=iframe.contentDocument;
-   		          document.documentElement.removeChild(iframe);
+			          d.removeChild(iframe);
 			          doc.documentElement.innerHTML=result;
 				      }
             } 
