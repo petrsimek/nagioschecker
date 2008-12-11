@@ -628,7 +628,7 @@ NCHParser.prototype = {
             var durationSec  = this.nagiosDurationToSeconds(tmp_dur);
             var info  = getUglyNodeValue(viptd[4],[0]);
 				    if ((status=="DOWN") || (status=="UNREACHABLE")) {
-            	this.problems[pos][this.toLower[status]].push({"type":"h","host": host,"service":null,"status":this.toLower[status],"lastCheck":lastCheck,"durationSec":durationSec,"duration":duration,"attempt":null,"attemptInt":null,"info":info,"acknowledged":acknowledged,"dischecks":dischecks,"disnotifs":disnotifs,"isSoft":false,"downtime":downtime,"flapping":flapping,"onlypass":false});
+            	this.problems[pos][this.toLower[status]].push({"type":"h","host": host,"service":null,"status":this.toLower[status],"lastCheck":lastCheck,"durationSec":durationSec,"duration":duration,"attempt":'1/1',"attemptInt":1,"info":info,"acknowledged":acknowledged,"dischecks":dischecks,"disnotifs":disnotifs,"isSoft":false,"downtime":downtime,"flapping":flapping,"onlypass":false});
 					    if ((this.manager._servers[pos].getAliases) && (!this.manager._servers[pos].aliases[host])) {
 						    this.missingAliases[pos].push(host);
 					    }
