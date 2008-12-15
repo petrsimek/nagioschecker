@@ -161,7 +161,9 @@
 			<vbox>
 				<label value="&nch.prefs.updateinterval;:" control="nch-general-refresh"/>
 				<hbox>
-				<textbox prefstring="extensions.nagioschecker.refresh" id="nch-general-refresh" size="4"/> 
+				<textbox prefstring="extensions.nagioschecker.refresh" id="nch-general-refresh" size="4"/>
+				: 
+				<textbox prefstring="extensions.nagioschecker.refreshsec" id="nch-general-refreshsec" size="4"/> 
 				</hbox>
 			</vbox>
 			<vbox>

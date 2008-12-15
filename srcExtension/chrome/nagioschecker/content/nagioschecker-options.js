@@ -364,6 +364,7 @@ NCHOptions.prototype = {
 		}		
 		  var INTtextboxes = [
 		  	"nch-general-refresh",
+		  	"nch-general-refreshsec",
 		  	"nch-advanced-timeout"
 		  	];
   	for (var i = 0; i < INTtextboxes.length; ++i) {
@@ -528,6 +529,7 @@ NCHOptions.prototype = {
 		  }	
 		  var INTtextboxes = [
 		  	"nch-general-refresh",
+		  	"nch-general-refreshsec",
 		  	"nch-advanced-timeout"
 		  	];
 		  for (var i = 0; i < INTtextboxes.length; ++i) {

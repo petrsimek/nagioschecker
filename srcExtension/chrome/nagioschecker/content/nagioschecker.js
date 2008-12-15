@@ -420,6 +420,7 @@ NCH.prototype = {
 			filter_out_regexp_services_reverse:['bool',false],
 			filter_out_flapping:['bool',false],
 			refresh:['int',5],
+			refreshsec:['int',0],
 			worktimefrom:['char','08:00'],
 			worktimeto:['char','18:00'],
 			play_sound:['int',2],
@@ -671,7 +672,7 @@ dump('reallyPlay:'+reallyPlay+' '+me.pref.play_sound+' ');
 
   // plan next check
   setNextCheck: function(instant){
-  	var refresh_time = (instant == null) ? this.pref.refresh*60000 : 500;
+  	var refresh_time = (instant == null) ? this.pref.refresh*60000+this.pref.refreshsec*1000 : 500;
   
 	var me = this;
 	this.timeoutId = setTimeout(

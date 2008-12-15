@@ -1,3 +1,9 @@
+0.13.9 (beta)
+* Fixed window.title bug.
+* Little improved strange "jumping" of information in statusbar in FF 3.1
+* Fixed not playing sound when new hostdown/unreachable appears although option was set.
+* Allowed using seconds in update interval
+
 0.13
 * Opsview authentization support (by Jose Luis Martinez)
 * Updated langs

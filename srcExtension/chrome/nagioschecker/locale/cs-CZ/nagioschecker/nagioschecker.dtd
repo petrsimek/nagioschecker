@@ -26,7 +26,7 @@
 <!ENTITY nch.prefs.statusurl "Adresa stavového skriptu">
 <!ENTITY nch.prefs.foundstatusurl "Zjištěná adresa">
 <!ENTITY nch.prefs.locateurl "Zjistit adresu">
-<!ENTITY nch.prefs.updateinterval "Interval aktualizace (v minutách)">
+<!ENTITY nch.prefs.updateinterval "Interval aktualizace (mm:ss)">
 <!ENTITY nch.prefs.worktime "Pracovní hodiny pluginu (hh:mm)">
 <!ENTITY nch.prefs.utilityrun "Běh programu">
 <!ENTITY nch.prefs.other "Ostatní">

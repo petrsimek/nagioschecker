@@ -26,6 +26,7 @@ pref("extensions.nagioschecker.sounds_by_type_critical", true);
 
 
 pref("extensions.nagioschecker.refresh", 5);
+pref("extensions.nagioschecker.refreshsec", 0);
 pref("extensions.nagioschecker.worktimefrom", "0:00");
 pref("extensions.nagioschecker.worktimeto", "23:59");
 pref("extensions.nagioschecker.workday_0", true); //sunday
