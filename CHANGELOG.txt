@@ -1,13 +1,14 @@
 0.13.9 (beta)
-* Fixed window.title bug.
-* Little improved strange "jumping" of information in statusbar in FF 3.1
-* Fixed not playing sound when new hostdown/unreachable appears although option was set.
-* Allowed using seconds in update interval
+* BUGFIX: Fixed window.title bug (thanks to pplusdomain)
+* BUGFIX: Little improved strange "jumping" of information in statusbar in FF 3.1
+* BUGFIX: Fixed not playing sound when new hostdown/unreachable appears although option was set.
+* NEW: Allowed using seconds in update interval
+* FIX: filtering scheduled downtime (by moorereason) Issue 40
 
 0.13
-* Opsview authentization support (by Jose Luis Martinez)
-* Updated langs
-* Fixed playing custom wav files
+* NEW: Opsview authentization support (by Jose Luis Martinez)
+* LANG: Updated langs
+* BUGFIX: Fixed playing custom wav files
 
 0.12.2
 - Updated appVersion to 3.0.* to be compatible with rc and final version of FF3

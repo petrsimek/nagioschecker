@@ -516,6 +516,7 @@ NCHParser.prototype = {
                     }
                     if (tit.match("scheduled downtime")) {
                       downtime=true;
+                      lastHostDowntime=host_downtime; 
                     }
                     if (tit.match("flapping")) {
                       flapping=true;
