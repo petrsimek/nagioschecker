@@ -16,8 +16,8 @@
 <!ENTITY nch.prefs.username "Nome utente">
 <!ENTITY nch.prefs.password "Password">
 <!ENTITY nch.prefs.versionolderthan20 "Versione di Nagios precedente alla 2.0">
-<!ENTITY nch.prefs.servertype "Server type">
-<!ENTITY nch.prefs.standalonenagios "Standalone Nagios">
+<!ENTITY nch.prefs.servertype "Tipo di server">
+<!ENTITY nch.prefs.standalonenagios "Nagios indipendente">
 <!ENTITY nch.prefs.plainpass "Non memorizzare questi dati di accesso tramite Gestione password del browser">
 <!ENTITY nch.prefs.exampleurl "Es: http://www.yourcompany.cz/nagios/">
 <!ENTITY nch.prefs.examplestatusurl "Es: http://www.yourcompany.com/nagios/cgi-bin/status.cgi">

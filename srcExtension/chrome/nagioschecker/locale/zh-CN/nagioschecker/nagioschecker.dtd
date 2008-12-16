@@ -1,0 +1,143 @@
+<!ENTITY nch.title "Nagios Checker">
+<!ENTITY nch.aboutextension "关于 &nch.title;">
+<!ENTITY nch.about "关于">
+<!ENTITY nch.close "关闭">
+<!ENTITY nch.hosts "主机">
+<!ENTITY nch.services "服务">
+<!ENTITY nch.menu.options "设置">
+<!ENTITY nch.menu.updatenow "现在更新">
+<!ENTITY nch.prefs.title "&nch.title; 设置">
+<!ENTITY nch.prefs.general "一般">
+<!ENTITY nch.prefs.filtering "过滤">
+<!ENTITY nch.prefs.behavior "属性">
+<!ENTITY nch.prefs.name "名称">
+<!ENTITY nch.prefs.fullurl "Nagios 网页接口地址">
+<!ENTITY nch.prefs.webinterface "Nagios 网页界面">
+<!ENTITY nch.prefs.username "用户名称">
+<!ENTITY nch.prefs.password "密码">
+<!ENTITY nch.prefs.versionolderthan20 "Nagios 版本旧于2.0">
+<!ENTITY nch.prefs.servertype "Server type">
+<!ENTITY nch.prefs.standalonenagios "Standalone Nagios">
+<!ENTITY nch.prefs.plainpass "不用浏览器的密码管理员储存此凭证">
+<!ENTITY nch.prefs.exampleurl "例如: http://www.yourcompany.cz/nagios/">
+<!ENTITY nch.prefs.examplestatusurl "例如: http://www.yourcompany.com/nagios/cgi-bin/status.cgi">
+<!ENTITY nch.prefs.statusurl "状态信息地址">
+<!ENTITY nch.prefs.foundstatusurl "已查找URL">
+<!ENTITY nch.prefs.locateurl "查找URL">
+<!ENTITY nch.prefs.updateinterval "更新间隔 (分钟)">
+<!ENTITY nch.prefs.worktime "插件运行时数(hh:mm)">
+<!ENTITY nch.prefs.utilityrun "程序运行">
+<!ENTITY nch.prefs.other "其它">
+<!ENTITY nch.prefs.onewindowonly "只在窗口开启后运行">
+<!ENTITY nch.about.original "原标题">
+<!ENTITY nch.about.version "版本">
+<!ENTITY nch.about.created "作者">
+<!ENTITY nch.about.description "Nagios Checker 提供一个可延伸的状态栏提示器去报告 Nagios 事件。此等信息是剖析自 Nagios 网页接口及可以同时监控数个 Nagios 服务器。Nagios Checker 在背景执行，不需要开启 Nagios 网页，同时也可以加设结果过滤器。">
+<!ENTITY nch.about.contributors "贡献者">
+<!ENTITY nch.about.translators "翻译者">
+<!ENTITY nch.about.author "Petr Simek">
+<!ENTITY nch.about.homepage "主页">
+<!ENTITY nch.about.copyrights "版权">
+<!ENTITY nch.about.nagioscopyrights "Nagios 与 Nagios 图示 均属 Ethan Galstad 的已注册商标">
+<!ENTITY nch.about.codecontributors "程序贡献者">
+<!ENTITY nch.about.ideasandbugreports "意见及问题回报">
+<!ENTITY nch.about.fordonators "给捐赠者">
+<!ENTITY nch.about.donators "捐赠者">
+<!ENTITY nch.about.alphabeticallylisted "按字母排列">
+<!ENTITY nch.prefs.display "显示">
+<!ENTITY nch.prefs.watchedsystems "已监测的Nagios 系统">
+<!ENTITY nch.prefs.addnew "加入">
+<!ENTITY nch.prefs.edit "编辑">
+<!ENTITY nch.prefs.remove "移除">
+<!ENTITY nch.prefs.statusbardetaillevel "状态栏信息程度">
+<!ENTITY nch.prefs.long "长">
+<!ENTITY nch.prefs.short "短">
+<!ENTITY nch.prefs.numbersonly "只显示数字">
+<!ENTITY nch.prefs.colorsonly "只显示数字颜色">
+<!ENTITY nch.prefs.infowindowtype "信息窗口类型">
+<!ENTITY nch.prefs.allinonewindow "一个窗口显示所有问题">
+<!ENTITY nch.prefs.individualwindows "独立窗口显示每种类型">
+<!ENTITY nch.prefs.showinstatusbar "在状态栏显示">
+<!ENTITY nch.prefs.hostdown "主机当掉">
+<!ENTITY nch.prefs.hostunreachable "主机不能连接">
+<!ENTITY nch.prefs.servicecritical "重要服务">
+<!ENTITY nch.prefs.servicewarning "服务警告">
+<!ENTITY nch.prefs.serviceunknown "未知服务">
+<!ENTITY nch.prefs.showininfowindow "在信息窗口显示">
+<!ENTITY nch.prefs.blinking "闪烁">
+<!ENTITY nch.prefs.off "关">
+<!ENTITY nch.prefs.onstatusupdateifnewproblemappears "当状态更新及新问题出现时使用">
+<!ENTITY nch.prefs.oneverystatusupdateifatleastoneproblemexists "当状态更新及最少一个问题存在时使用">
+<!ENTITY nch.prefs.sounds "播放声音">
+<!ENTITY nch.prefs.soundsbytype "根据问题类型播放声音">
+<!ENTITY nch.prefs.nagiossystem "Nagios系统">
+<!ENTITY nch.prefs.seturlmanually "手动设置url">
+<!ENTITY nch.prefs.filterout "过滤">
+<!ENTITY nch.prefs.acknowledged "允许的主机及服务">
+<!ENTITY nch.prefs.disabled_notifications "停用提示后的主机及服务">
+<!ENTITY nch.prefs.disabled_checks "停用检查后的主机及服务">
+<!ENTITY nch.prefs.soft_states "SOFT 状态的服务">
+<!ENTITY nch.prefs.scheduled_downtime "主机及服务暂停">
+<!ENTITY nch.prefs.services_on_down_hosts "服务暂停或主机不能连接">
+<!ENTITY nch.prefs.services_on_acknowledged_hosts "服务暂停或主机不能连接及允许">
+<!ENTITY nch.prefs.note "注意">
+<!ENTITY nch.prefs.note_sound "如果Nagios Checker于多过一个窗口运作，只有第一个被开启的窗口才会有声音">
+<!ENTITY nch.prefs.after_click_statusbar "当点击状态栏后">
+<!ENTITY nch.prefs.do_nothing "无动作">
+<!ENTITY nch.prefs.goto_main_nagios "到 Nagios 主页">
+<!ENTITY nch.prefs.goto_nagios_section "到 Nagios 问题类型分页">
+<!ENTITY nch.prefs.open_fullinfowindow "开启信息窗口显示所有问题">
+<!ENTITY nch.prefs.open_infowindowbytype "开启信息窗口显示所选种类的问题">
+<!ENTITY nch.prefs.open_infowindow "开启信息窗口">
+<!ENTITY nch.prefs.soundfiles "音效文件">
+<!ENTITY nch.prefs.standardnagiosfile "Nagios 标准档案">
+<!ENTITY nch.prefs.customfile "自定义文件">
+<!ENTITY nch.prefs.critical "重要">
+<!ENTITY nch.prefs.warning "警告">
+<!ENTITY nch.prefs.down "当掉">
+<!ENTITY nch.prefs.unreachable "未能连接">
+<!ENTITY nch.prefs.replay "回放">
+<!ENTITY nch.prefs.getaliases "下载的主机别名">
+<!ENTITY nch.prefs.shortwithservername "只显示服务器名称">
+<!ENTITY nch.prefs.numbersonlywithservername "数字只显示于有服务器名称">
+<!ENTITY nch.prefs.totalnumbers "包含总数">
+<!ENTITY nch.prefs.totalnumbersforeveryserver "每个服务器包含总数">
+<!ENTITY nch.prefs.alldownhosts "所有当掉的主机">
+<!ENTITY nch.prefs.allunreachablehosts "所有未能连接的主机">
+<!ENTITY nch.prefs.allwarningservices "所有警告的主机">
+<!ENTITY nch.prefs.allunknownservices "所有未知的主机">
+<!ENTITY nch.prefs.allcriticalservices "所有重要的主机">
+<!ENTITY nch.prefs.blinkalltypesonstatusupdateifnewproblemappears "当有新问题时闪烁所有种类">
+<!ENTITY nch.prefs.blinkaffectedtypesonstatusupdateifnewproblemappears "当有新问题时闪烁该种类">
+<!ENTITY nch.prefs.blinkalltypesoneverystatusupdateifatleastoneproblemexists "当有至少一个问题时闪烁所有种类">
+<!ENTITY nch.prefs.aliases "别名">
+<!ENTITY nch.prefs.makedonation "贡献给作者">
+<!ENTITY nch.prefs.hostsmatchingregexp "主机符合指定表达式">
+<!ENTITY nch.prefs.servicesmatchingregexp "服务符合指定表达式">
+<!ENTITY nch.prefs.allflapping "全部移动的主机及服务">
+<!ENTITY nch.prefs.disable "停用">
+<!ENTITY nch.prefs.disabled "已停用">
+<!ENTITY nch.prefs.onaddons "于Mozilla 的附加组件页">
+<!ENTITY nch.prefs.projecthome "主页">
+<!ENTITY nch.prefs.moveup "向上">
+<!ENTITY nch.prefs.movedown "向下">
+<!ENTITY nch.prefs.reverseexp "相反表达式">
+<!ENTITY nch.prefs.showinfowindowcolumns "显示信息窗口的栏">
+<!ENTITY nch.prefs.aliascolumn "主机(别名)">
+<!ENTITY nch.prefs.infocolumn "信息">
+<!ENTITY nch.prefs.flagscolumn "旗帜">
+<!ENTITY nch.prefs.statuscolumn "状态">
+<!ENTITY nch.prefs.attemptcolumn "尝试次数">
+<!ENTITY nch.prefs.minimalservicesattempt "播放音乐的最少服务尝试次数">
+<!ENTITY nch.prefs.advanced "进阶">
+<!ENTITY nch.advanced.downloadtimeout "Status.cgi 下载逾时(秒)">
+<!ENTITY nch.advanced.prefertextconfig "选择从文本文件汇入设置，而不选择Firefox内建设置">
+<!ENTITY nch.advanced.note_prefertextconfig "当Firefox不正常关闭或设置未存档时很有用；设置文件只会在第一次开启Firefox窗口时才加载。">
+<!ENTITY nch.prefs.working_days "工作日">
+<!ENTITY nch.prefs.monday_short "一">
+<!ENTITY nch.prefs.tuesday_short "二">
+<!ENTITY nch.prefs.wednesday_short "三">
+<!ENTITY nch.prefs.thursday_short "四">
+<!ENTITY nch.prefs.friday_short "五">
+<!ENTITY nch.prefs.saturday_short "六">
+<!ENTITY nch.prefs.sunday_short "日">

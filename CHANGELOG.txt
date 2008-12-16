@@ -4,6 +4,8 @@
 * BUGFIX: Fixed not playing sound when new hostdown/unreachable appears although option was set.
 * NEW: Allowed using seconds in update interval
 * FIX: filtering scheduled downtime (by moorereason) Issue 40
+* LANG: updated it-IT, tr-TR and zh-TW from BabelZilla
+* LANG: added zh-CN (by farmer.luo)
 
 0.13
 * NEW: Opsview authentization support (by Jose Luis Martinez)
