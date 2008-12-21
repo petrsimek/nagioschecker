@@ -1,4 +1,9 @@
+0.13.9.1 (beta)
+* LANG: updated zh-CN (by farmer.luo)
+* INTERNAL: install.rdf updated for Thunderbird 3.0 beta
+
 0.13.9 (beta)
+* INTERNAL: install.rdf updated for Firefox 3.1 beta
 * BUGFIX: Fixed window.title bug (thanks to pplusdomain)
 * BUGFIX: Little improved strange "jumping" of information in statusbar in FF 3.1
 * BUGFIX: Fixed not playing sound when new hostdown/unreachable appears although option was set.
