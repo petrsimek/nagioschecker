@@ -1,4 +1,4 @@
-var NCH_VERSION = "0.11.1.9";
+var NCH_VERSION = "0.13.9.1";
 var NCH_GUID = "{123b2220-59cb-11db-b0de-0800200c9a66}";
 var NCH_CONFIGFILE="nagioschecker.xml";
 
@@ -663,7 +663,7 @@ dump('reallyPlay:'+reallyPlay+' '+me.pref.play_sound+' ');
 
 	createUrlDevice: function(i,host,service) {
 		var extinfo = this._servers[i].urlstatus.replace(/status\.cgi/,"extinfo.cgi");
-		var url = extinfo+"?type="+((service) ? "2" : "1")+"&host="+escape(host);
+		var url = extinfo+((extinfo.search(/\?/)==-1) ? "?" : "&")+"type="+((service) ? "2" : "1")+"&host="+escape(host);
 		if (service) {
 			url+="&service="+escape(service);
 		}

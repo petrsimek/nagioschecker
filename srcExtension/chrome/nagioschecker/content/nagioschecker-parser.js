@@ -122,14 +122,15 @@ NCHParser.prototype = {
 	this.problems[pos]={"down":[],"unreachable":[],"unknown":[],"warning":[],"critical":[],"_error":false,"_time":null};
 	this.missingAliases[pos]=[];			
 	if (!this._servers[pos].disabled) {
-		var urlServices = (this._servers[pos].versionOlderThan20) ? this._servers[pos].urlstatus+"?host=all&servicestatustypes=248" : this._servers[pos].urlstatus+"?host=all&servicestatustypes=28";
+		var urlServices = (this._servers[pos].versionOlderThan20) ? this._servers[pos].urlstatus+((this._servers[pos].urlstatus.search(/\?/)==-1) ? "?" : "&")+"host=all&servicestatustypes=248" : this._servers[pos].urlstatus+((this._servers[pos].urlstatus.search(/\?/)==-1) ? "?" : "&")+"host=all&servicestatustypes=28";
+
 		if (this._servers[pos].serverType == 1){
 			if (this._servers[pos]._ssoLoggedIn != 1){
 				this.loginToOpsview(pos);
 			}
 		}
 		
-		var urlHosts = this._servers[pos].urlstatus+"?hostgroup=all&style=hostdetail&hoststatustypes=12";
+		var urlHosts = this._servers[pos].urlstatus+((this._servers[pos].urlstatus.search(/\?/)==-1) ? "?" : "&")+"hostgroup=all&style=hostdetail&hoststatustypes=12";
 		var urlExt = this._servers[pos].urlstatus.replace(/status\.cgi/,"extinfo.cgi");
                 var server = this._servers[pos];
 		var me = this;
@@ -166,7 +167,7 @@ NCHParser.prototype = {
   loadMissingAlias: function(apos,pos,server,callback) {
 	if (this.missingAliases[pos][apos]) {
 		var extinfo = this._servers[pos].urlstatus.replace(/status\.cgi/,"extinfo.cgi");
-		var urlExt = extinfo+"?type=1&host="+this.missingAliases[pos][apos];
+		var urlExt = extinfo+((extinfo.search(/\?/)==-1) ? "?" : "&")+"type=1&host="+this.missingAliases[pos][apos];
 		var me=this;
 		this.loadDataAsync(urlExt,server,false,function (doc2) {
 				me.parseAlias(pos,me.missingAliases[pos][apos],doc2);

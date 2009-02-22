@@ -1,3 +1,6 @@
+0.14
+* BUGFIX: correct handling status url with parameters (Issue 111)
+
 0.13.9.1 (beta)
 * LANG: updated zh-CN (by farmer.luo)
 * INTERNAL: install.rdf updated for Thunderbird 3.0 beta
