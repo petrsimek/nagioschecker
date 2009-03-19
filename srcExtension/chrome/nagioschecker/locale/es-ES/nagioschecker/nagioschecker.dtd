@@ -15,7 +15,7 @@
 <!ENTITY nch.prefs.webinterface "interfaz web Nagios">
 <!ENTITY nch.prefs.username "Nombre de usuario">
 <!ENTITY nch.prefs.password "Contraseña">
-<!ENTITY nch.prefs.versionolderthan20 "Version de Nagios anterior a 2.0">
+<!ENTITY nch.prefs.versionolderthan20 "Versión de Nagios anterior a 2.0">
 <!ENTITY nch.prefs.servertype "Tipo de servidor">
 <!ENTITY nch.prefs.standalonenagios "Nagios independiente">
 <!ENTITY nch.prefs.plainpass "No almacene estas credenciales usando el Administrador de Contraseñas">
@@ -32,7 +32,7 @@
 <!ENTITY nch.about.original "Titulo original">
 <!ENTITY nch.about.version "Versión">
 <!ENTITY nch.about.created "Autor">
-<!ENTITY nch.about.description "Nagios Checker provee un indicador en la barra de estado expansible de los eventos reportados por Nagios. Esta información es enviada de la interfaz web de Nagios y puede monitorear varios servidores Nagios simultaneamente. Nagios Checker se ejecuta en 2do plano, no requiere una pagina web de Nagios abierta y permite filtrado selectivo de los eventos.">
+<!ENTITY nch.about.description "Nagios Checker provee un indicador en la barra de estado expansible de los eventos reportados por Nagios. Esta información es enviada de la interfaz web de Nagios y puede monitorear varios servidores Nagios simultáneamente. Nagios Checker se ejecuta en 2do plano, no requiere una pagina web de Nagios abierta y permite filtrado selectivo de los eventos.">
 <!ENTITY nch.about.contributors "Contribuidores">
 <!ENTITY nch.about.translators "Traductores">
 <!ENTITY nch.about.author "Petr Simek">
@@ -63,7 +63,7 @@
 <!ENTITY nch.prefs.servicecritical "Servicio crítico">
 <!ENTITY nch.prefs.servicewarning "Advertencia de Servicio">
 <!ENTITY nch.prefs.serviceunknown "Servicio desconocido">
-<!ENTITY nch.prefs.showininfowindow "Mostrar en ventana de informacion">
+<!ENTITY nch.prefs.showininfowindow "Mostrar en ventana de información">
 <!ENTITY nch.prefs.blinking "Intermitente">
 <!ENTITY nch.prefs.off "Apagado">
 <!ENTITY nch.prefs.onstatusupdateifnewproblemappears "En estado de actualizar si hay nuevos problemas">
@@ -77,9 +77,9 @@
 <!ENTITY nch.prefs.disabled_notifications "Equipos y servicios cuyas notificaciones han sido deshabilitadas">
 <!ENTITY nch.prefs.disabled_checks "Equipos y servicios cuyas revisiones han sido deshabilitadas">
 <!ENTITY nch.prefs.soft_states "Servicios en estado SOFT">
-<!ENTITY nch.prefs.scheduled_downtime "Equipos y servicios en tiempo caido programado">
-<!ENTITY nch.prefs.services_on_down_hosts "Servicios en equipos caidos o inalcanzables">
-<!ENTITY nch.prefs.services_on_acknowledged_hosts "Servicios en equipos caidos o inalcanzables reconocidos">
+<!ENTITY nch.prefs.scheduled_downtime "Equipos y servicios en tiempo caído programado">
+<!ENTITY nch.prefs.services_on_down_hosts "Servicios en equipos caídos o inalcanzables">
+<!ENTITY nch.prefs.services_on_acknowledged_hosts "Servicios en equipos caídos o inalcanzables reconocidos">
 <!ENTITY nch.prefs.note "Nota">
 <!ENTITY nch.prefs.note_sound "Si Nagios Checker se ejecuta en mas de una ventana, el sonido solo se escuchara en la primera ventana.">
 <!ENTITY nch.prefs.after_click_statusbar "Hacer click en la barra de estado implica">
@@ -90,23 +90,23 @@
 <!ENTITY nch.prefs.open_infowindowbytype "Abrir ventana de información estática dependiendo del tipo">
 <!ENTITY nch.prefs.open_infowindow "Abrir ventana de información">
 <!ENTITY nch.prefs.soundfiles "Archivos de Sonido">
-<!ENTITY nch.prefs.standardnagiosfile "Archvivo estandar Nagios">
+<!ENTITY nch.prefs.standardnagiosfile "Archivo estándar Nagios">
 <!ENTITY nch.prefs.customfile "Archivo personalizado">
 <!ENTITY nch.prefs.critical "Critico">
 <!ENTITY nch.prefs.warning "Advertencia">
-<!ENTITY nch.prefs.down "Caido">
+<!ENTITY nch.prefs.down "Caído">
 <!ENTITY nch.prefs.unreachable "Inalcanzable">
 <!ENTITY nch.prefs.replay "Replay">
 <!ENTITY nch.prefs.getaliases "Descargar los alias de equipos">
 <!ENTITY nch.prefs.shortwithservername "Corto con nombres de servidores">
-<!ENTITY nch.prefs.numbersonlywithservername "Solo numeros con nombres de servidores">
-<!ENTITY nch.prefs.totalnumbers "Con numeros totales">
-<!ENTITY nch.prefs.totalnumbersforeveryserver "Con numeros totales para cada servidor">
-<!ENTITY nch.prefs.alldownhosts "Todos los equipos caidos">
+<!ENTITY nch.prefs.numbersonlywithservername "Solo números con nombres de servidores">
+<!ENTITY nch.prefs.totalnumbers "Con números totales">
+<!ENTITY nch.prefs.totalnumbersforeveryserver "Con números totales para cada servidor">
+<!ENTITY nch.prefs.alldownhosts "Todos los equipos caídos">
 <!ENTITY nch.prefs.allunreachablehosts "Todos los equipos inalcanzables">
 <!ENTITY nch.prefs.allwarningservices "Todas las advertencias de servicios">
 <!ENTITY nch.prefs.allunknownservices "Todos los servicios desconocidos">
-<!ENTITY nch.prefs.allcriticalservices "Todos los servicios criticos">
+<!ENTITY nch.prefs.allcriticalservices "Todos los servicios críticos">
 <!ENTITY nch.prefs.blinkalltypesonstatusupdateifnewproblemappears "Intermitencia en todos los tipos si aparecen nuevos problemas">
 <!ENTITY nch.prefs.blinkaffectedtypesonstatusupdateifnewproblemappears "Intermitencia en el tipo donde aparece un nuevo problema">
 <!ENTITY nch.prefs.blinkalltypesoneverystatusupdateifatleastoneproblemexists "Intermitencia en todos los tipos si existe al menos un problema">
@@ -118,17 +118,17 @@
 <!ENTITY nch.prefs.disable "Deshabilitar">
 <!ENTITY nch.prefs.disabled "Deshabilitado">
 <!ENTITY nch.prefs.onaddons "En el sitio de agregados de Mozilla">
-<!ENTITY nch.prefs.projecthome "Hogar del projecto">
+<!ENTITY nch.prefs.projecthome "Hogar del proyecto">
 <!ENTITY nch.prefs.moveup "Mover hacia arriba">
 <!ENTITY nch.prefs.movedown "Mover hacia abajo">
-<!ENTITY nch.prefs.reverseexp "revertir la expresiòn">
-<!ENTITY nch.prefs.showinfowindowcolumns "Mostrar columnas en ventana de informacion">
+<!ENTITY nch.prefs.reverseexp "revertir la expresión">
+<!ENTITY nch.prefs.showinfowindowcolumns "Mostrar columnas en ventana de información">
 <!ENTITY nch.prefs.aliascolumn "Equipo (alias)">
-<!ENTITY nch.prefs.infocolumn "Informacion">
+<!ENTITY nch.prefs.infocolumn "Información">
 <!ENTITY nch.prefs.flagscolumn "Marcas">
 <!ENTITY nch.prefs.statuscolumn "Estado">
 <!ENTITY nch.prefs.attemptcolumn "Intento">
-<!ENTITY nch.prefs.minimalservicesattempt "Intento minimo del servicio para reproducir el sonido">
+<!ENTITY nch.prefs.minimalservicesattempt "Intento mínimo del servicio para reproducir el sonido">
 <!ENTITY nch.prefs.advanced "Avanzado">
 <!ENTITY nch.advanced.downloadtimeout "Timeout de descarga Status.cgi (en segundos)">
 <!ENTITY nch.advanced.prefertextconfig "Prefiero cargar los ajustes de un archivo externo y no de la configuración interna de Firefox.">

@@ -24,7 +24,7 @@
 <!ENTITY nch.prefs.statusurl "Indirizzo web dello script">
 <!ENTITY nch.prefs.foundstatusurl "Indirizzo web individuato">
 <!ENTITY nch.prefs.locateurl "Individua indirizzo web">
-<!ENTITY nch.prefs.updateinterval "Intervallo di aggiornamento (in minuti)">
+<!ENTITY nch.prefs.updateinterval "Intervallo di aggiornamento (mm:ss)">
 <!ENTITY nch.prefs.worktime "Orario di funzionamento (hh:mm)">
 <!ENTITY nch.prefs.utilityrun "Tempo di esecuzione della utility">
 <!ENTITY nch.prefs.other "Varie">
@@ -46,8 +46,8 @@
 <!ENTITY nch.about.alphabeticallylisted "In ordine alfabetico">
 <!ENTITY nch.prefs.display "Aspetto">
 <!ENTITY nch.prefs.watchedsystems "Sistemi di Nagios osservati">
-<!ENTITY nch.prefs.addnew "Aggiungi...">
-<!ENTITY nch.prefs.edit "Modifica...">
+<!ENTITY nch.prefs.addnew "Aggiungi…">
+<!ENTITY nch.prefs.edit "Modifica…">
 <!ENTITY nch.prefs.remove "Elimina">
 <!ENTITY nch.prefs.statusbardetaillevel "Visualizzazione informazioni nella barra di stato">
 <!ENTITY nch.prefs.long "dimensioni lunghe">

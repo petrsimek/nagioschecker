@@ -3,7 +3,7 @@
 <!ENTITY nch.about "Over">
 <!ENTITY nch.close "Sluiten">
 <!ENTITY nch.hosts "Hosts">
-<!ENTITY nch.services "Services">
+<!ENTITY nch.services "Diensten">
 <!ENTITY nch.menu.options "Instellingen">
 <!ENTITY nch.menu.updatenow "Nu bijwerken">
 <!ENTITY nch.prefs.title "&nch.title; instellingen">
@@ -17,7 +17,7 @@
 <!ENTITY nch.prefs.password "Wachtwoord">
 <!ENTITY nch.prefs.versionolderthan20 "Nagios-versie ouder dan 2.0">
 <!ENTITY nch.prefs.servertype "Servertype">
-<!ENTITY nch.prefs.standalonenagios "Stand-alone nagios">
+<!ENTITY nch.prefs.standalonenagios "Stand-alone Nagios">
 <!ENTITY nch.prefs.plainpass "Deze referenties niet opslaan met de Wachtwoordbeheerder van de browser">
 <!ENTITY nch.prefs.exampleurl "Bijv.: http://www.uwbedrijf.net/nagios/">
 <!ENTITY nch.prefs.examplestatusurl "Bijv.: http://www.uwbedrijf.com/nagios/cgi-bin/status.cgi">
@@ -37,7 +37,7 @@
 <!ENTITY nch.about.translators "Vertalers">
 <!ENTITY nch.about.author "Petr Simek">
 <!ENTITY nch.about.homepage "Startpagina">
-<!ENTITY nch.about.copyrights "Copyrights">
+<!ENTITY nch.about.copyrights "Auteursrechten">
 <!ENTITY nch.about.nagioscopyrights "Nagios en het Nagios logo zijn geregistreerde handelsnamen van Ethan Galstad.">
 <!ENTITY nch.about.codecontributors "Bijdragen aan de code van">
 <!ENTITY nch.about.ideasandbugreports "Ideeën en foutrapporten">
@@ -45,7 +45,7 @@
 <!ENTITY nch.about.donators "Donateurs">
 <!ENTITY nch.about.alphabeticallylisted "Alfabetisch gerangschikt">
 <!ENTITY nch.prefs.display "Weergave">
-<!ENTITY nch.prefs.watchedsystems "Gevolgde Nagiospagina(s)">
+<!ENTITY nch.prefs.watchedsystems "Gevolgde Nagiospagina(’s)">
 <!ENTITY nch.prefs.addnew "Nieuw toevoegen">
 <!ENTITY nch.prefs.edit "Bewerken">
 <!ENTITY nch.prefs.remove "Verwijderen">
@@ -60,9 +60,9 @@
 <!ENTITY nch.prefs.showinstatusbar "In statusbalk weergeven">
 <!ENTITY nch.prefs.hostdown "Host plat">
 <!ENTITY nch.prefs.hostunreachable "Host onbereikbaar">
-<!ENTITY nch.prefs.servicecritical "Service kritiek">
-<!ENTITY nch.prefs.servicewarning "Servicewaarschuwing">
-<!ENTITY nch.prefs.serviceunknown "Service onbekend">
+<!ENTITY nch.prefs.servicecritical "Dienst kritiek">
+<!ENTITY nch.prefs.servicewarning "Dienstwaarschuwing">
+<!ENTITY nch.prefs.serviceunknown "Dienst onbekend">
 <!ENTITY nch.prefs.showininfowindow "In informatievenster weergeven">
 <!ENTITY nch.prefs.blinking "Knipperend">
 <!ENTITY nch.prefs.off "Uit">
@@ -73,19 +73,19 @@
 <!ENTITY nch.prefs.nagiossystem "Nagiossysteem">
 <!ENTITY nch.prefs.seturlmanually "URL handmatig instellen">
 <!ENTITY nch.prefs.filterout "Uitfilteren">
-<!ENTITY nch.prefs.acknowledged "Hosts en services die zijn bevestigd">
-<!ENTITY nch.prefs.disabled_notifications "Hosts en services waarvan de notificaties zijn uitgeschakeld">
-<!ENTITY nch.prefs.disabled_checks "Hosts en services waarvan de checks zijn uitgeschakeld">
-<!ENTITY nch.prefs.soft_states "Services in SOFT status">
-<!ENTITY nch.prefs.scheduled_downtime "Hosts en services die volgens schema plat liggen">
-<!ENTITY nch.prefs.services_on_down_hosts "Services of hosts die plat liggen of niet bereikbaar zijn">
+<!ENTITY nch.prefs.acknowledged "Hosts en diensten die zijn bevestigd">
+<!ENTITY nch.prefs.disabled_notifications "Hosts en diensten waarvan de notificaties zijn uitgeschakeld">
+<!ENTITY nch.prefs.disabled_checks "Hosts en diensten waarvan de checks zijn uitgeschakeld">
+<!ENTITY nch.prefs.soft_states "Diensten in SOFT status">
+<!ENTITY nch.prefs.scheduled_downtime "Hosts en diensten die volgens schema plat liggen">
+<!ENTITY nch.prefs.services_on_down_hosts "Diensten of hosts die plat liggen of niet bereikbaar zijn">
 <!ENTITY nch.prefs.services_on_acknowledged_hosts "Services op hosts die plat liggen of niet bereikbaar zijn waarvan dit bevestigd is">
 <!ENTITY nch.prefs.note "Opmerking">
 <!ENTITY nch.prefs.note_sound "Als Nagios Checker in meer dan één venster draait dan wordt geluid alleen in het eerst geopende venster afgespeeld.">
 <!ENTITY nch.prefs.after_click_statusbar "Na klikken op de statusbalk">
 <!ENTITY nch.prefs.do_nothing "Niets doen">
-<!ENTITY nch.prefs.goto_main_nagios "Naar de Nagios websitestartpagina gaan">
-<!ENTITY nch.prefs.goto_nagios_section "Naar de Nagios websitesectie gaan die gerelateerd is aan het aangeklikte probleemtype">
+<!ENTITY nch.prefs.goto_main_nagios "Naar de Nagios-webpagina gaan">
+<!ENTITY nch.prefs.goto_nagios_section "Naar de Nagios-websitesectie gaan die gerelateerd is aan het aangeklikte probleemtype">
 <!ENTITY nch.prefs.open_fullinfowindow "Statisch informatievenster openen met alle problemen">
 <!ENTITY nch.prefs.open_infowindowbytype "Statische informatievensters openen afhankelijk van aangeklikt type">
 <!ENTITY nch.prefs.open_infowindow "Informatievenster openen">
@@ -104,17 +104,17 @@
 <!ENTITY nch.prefs.totalnumbersforeveryserver "Met totale aantallen voor elke server">
 <!ENTITY nch.prefs.alldownhosts "Alle hosts die plat liggen">
 <!ENTITY nch.prefs.allunreachablehosts "Alle onbereikbare hosts">
-<!ENTITY nch.prefs.allwarningservices "Alle waarschuwingsservices">
-<!ENTITY nch.prefs.allunknownservices "Alle onbekende services">
-<!ENTITY nch.prefs.allcriticalservices "Alle kritieke services">
+<!ENTITY nch.prefs.allwarningservices "Alle waarschuwingsdiensten">
+<!ENTITY nch.prefs.allunknownservices "Alle onbekende diensten">
+<!ENTITY nch.prefs.allcriticalservices "Alle kritieke diensten">
 <!ENTITY nch.prefs.blinkalltypesonstatusupdateifnewproblemappears "Alle types laten knipperen als een nieuw probleem optreedt">
 <!ENTITY nch.prefs.blinkaffectedtypesonstatusupdateifnewproblemappears "Het type waar een nieuw probleem optreedt laten knipperen">
 <!ENTITY nch.prefs.blinkalltypesoneverystatusupdateifatleastoneproblemexists "Alle types laten knipperen als tenminste één probleem bestaat">
 <!ENTITY nch.prefs.aliases "Aliases">
 <!ENTITY nch.prefs.makedonation "Doneren">
 <!ENTITY nch.prefs.hostsmatchingregexp "Hosts die overeenkomen met een reguliere expressie">
-<!ENTITY nch.prefs.servicesmatchingregexp "Services die overeenkomen met een reguliere expressie">
-<!ENTITY nch.prefs.allflapping "Alle onregelmatige hosts en services">
+<!ENTITY nch.prefs.servicesmatchingregexp "Diensten die overeenkomen met een reguliere expressie">
+<!ENTITY nch.prefs.allflapping "Alle onregelmatige hosts en diensten">
 <!ENTITY nch.prefs.disable "Uitschakelen">
 <!ENTITY nch.prefs.disabled "Uitgeschakeld">
 <!ENTITY nch.prefs.onaddons "Op de Mozilla Add-onssite">
@@ -128,16 +128,16 @@
 <!ENTITY nch.prefs.flagscolumn "Labels">
 <!ENTITY nch.prefs.statuscolumn "Status">
 <!ENTITY nch.prefs.attemptcolumn "Poging">
-<!ENTITY nch.prefs.minimalservicesattempt "Minimaal poging van service om geluid af te spelen">
+<!ENTITY nch.prefs.minimalservicesattempt "Minimaal poging van dienst om geluid af te spelen">
 <!ENTITY nch.prefs.advanced "Geavanceerd">
 <!ENTITY nch.advanced.downloadtimeout "Time-out voor downloaden status.cgi (in seconden)">
 <!ENTITY nch.advanced.prefertextconfig "Voorkeur geven aan laden van instellingen vanuit een extern tekstbestand boven de interne configuratie van Firefox.">
 <!ENTITY nch.advanced.note_prefertextconfig "Kan nuttig zijn wanneer Firefox onverwacht wordt afgesloten en niet-opgeslagen voorkeursinstellingen verloren gaan. Het configuratiebestand wordt alleen geladen wanneer voor het eerst een Firefoxvenster wordt geopend.">
 <!ENTITY nch.prefs.working_days "Werkdagen">
-<!ENTITY nch.prefs.monday_short "Maa">
-<!ENTITY nch.prefs.tuesday_short "Din">
-<!ENTITY nch.prefs.wednesday_short "Woe">
+<!ENTITY nch.prefs.monday_short "Ma">
+<!ENTITY nch.prefs.tuesday_short "Di">
+<!ENTITY nch.prefs.wednesday_short "Wo">
 <!ENTITY nch.prefs.thursday_short "Do">
-<!ENTITY nch.prefs.friday_short "Vrij">
-<!ENTITY nch.prefs.saturday_short "Zat">
-<!ENTITY nch.prefs.sunday_short "Zon">
+<!ENTITY nch.prefs.friday_short "Vr">
+<!ENTITY nch.prefs.saturday_short "Za">
+<!ENTITY nch.prefs.sunday_short "Zo">

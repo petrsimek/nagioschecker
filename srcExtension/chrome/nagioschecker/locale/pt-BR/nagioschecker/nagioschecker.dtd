@@ -131,7 +131,7 @@
 <!ENTITY nch.prefs.minimalservicesattempt "Serviço de tentativa de reproduzir o som">
 <!ENTITY nch.prefs.advanced "Avançado">
 <!ENTITY nch.advanced.downloadtimeout "Tempo expirado no download do Status.cgi  (em segundos)">
-<!ENTITY nch.advanced.prefertextconfig "Carregar configurações de uma arquivo externo ao invés das configurações internas do Firefox">
+<!ENTITY nch.advanced.prefertextconfig "Carregar configurações de uma arquivo externo ao invés das configurações internas do Firefox.">
 <!ENTITY nch.advanced.note_prefertextconfig "Poderá ser útil quando o Firefox terminar de forma anormal e as configurações não salvas forem perdidas. O arquivo de configuração será carregado somente quando o Firefox for iniciado a primeira vez.">
 <!ENTITY nch.prefs.working_days "Dias">
 <!ENTITY nch.prefs.monday_short "Seg">
