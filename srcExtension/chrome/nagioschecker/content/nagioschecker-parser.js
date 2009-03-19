@@ -122,7 +122,7 @@ NCHParser.prototype = {
 	this.problems[pos]={"down":[],"unreachable":[],"unknown":[],"warning":[],"critical":[],"_error":false,"_time":null};
 	this.missingAliases[pos]=[];			
 	if (!this._servers[pos].disabled) {
-		var urlServices = (this._servers[pos].versionOlderThan20) ? this._servers[pos].urlstatus+((this._servers[pos].urlstatus.search(/\?/)==-1) ? "?" : "&")+"host=all&servicestatustypes=248" : this._servers[pos].urlstatus+((this._servers[pos].urlstatus.search(/\?/)==-1) ? "?" : "&")+"host=all&servicestatustypes=28";
+		var urlServices = (this._servers[pos].versionOlderThan20) ? this._servers[pos].urlstatus+((this._servers[pos].urlstatus.search(/\?/)==-1) ? "?" : "&")+"servicestatustypes=248" : this._servers[pos].urlstatus+((this._servers[pos].urlstatus.search(/\?/)==-1) ? "?" : "&")+"servicestatustypes=28";
 
 		if (this._servers[pos].serverType == 1){
 			if (this._servers[pos]._ssoLoggedIn != 1){
@@ -130,7 +130,7 @@ NCHParser.prototype = {
 			}
 		}
 		
-		var urlHosts = this._servers[pos].urlstatus+((this._servers[pos].urlstatus.search(/\?/)==-1) ? "?" : "&")+"hostgroup=all&style=hostdetail&hoststatustypes=12";
+		var urlHosts = this._servers[pos].urlstatus+((this._servers[pos].urlstatus.search(/\?/)==-1) ? "?" : "&")+"style=hostdetail&hoststatustypes=12";
 		var urlExt = this._servers[pos].urlstatus.replace(/status\.cgi/,"extinfo.cgi");
                 var server = this._servers[pos];
 		var me = this;

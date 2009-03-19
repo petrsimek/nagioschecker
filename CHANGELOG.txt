@@ -1,3 +1,7 @@
+0.13.9.3 (beta)
+* LANG: updated languages es-ES, it-IT, nl-NL, pt-BR, zh-CN from BabelZilla
+* BUGFIX: correct handling status url with parameters (Issue 111)
+
 0.13.9.2 (beta)
 * INTERNAL: install.rdf updated for Firefox 3.5 beta
 * BUGFIX: correct handling status url with parameters (Issue 111)

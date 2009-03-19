@@ -1,4 +1,4 @@
-var NCH_VERSION = "0.13.9.1";
+var NCH_VERSION = "0.13.9.3";
 var NCH_GUID = "{123b2220-59cb-11db-b0de-0800200c9a66}";
 var NCH_CONFIGFILE="nagioschecker.xml";
 
@@ -647,14 +647,14 @@ dump('reallyPlay:'+reallyPlay+' '+me.pref.play_sound+' ');
 		var url="";
 		switch (type) {
 			case "host_problems":
-	        url = server.urlstatus+"?hostgroup=all&style=hostdetail&hoststatustypes=12";
+	        url = server.urlstatus+((server.urlstatus.search(/\?/)==-1) ? "?" : "&")+"style=hostdetail&hoststatustypes=12";
 			break;
 			case "service_problems":
 	        if (server.versionOlderThan20) {
-	          url = server.urlstatus+"?host=all&servicestatustypes=248";
+	          url = server.urlstatus+((server.urlstatus.search(/\?/)==-1) ? "?" : "&")+"?servicestatustypes=248";
 	        }
 	        else {
-	          url = server.urlstatus+"?host=all&servicestatustypes=28";
+	          url = server.urlstatus+((server.urlstatus.search(/\?/)==-1) ? "?" : "&")+"?servicestatustypes=28";
 	        }
 			break;
 		}
