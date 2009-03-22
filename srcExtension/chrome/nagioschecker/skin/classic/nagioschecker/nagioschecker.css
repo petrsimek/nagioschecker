@@ -1,11 +1,11 @@
 @namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
 
 checkbox.nch {
-	width: 400px;
+	width: 350px;
 }
 
 description.nch {
-	width: 400px;
+	width: 350px;
 }
 
 .nagioschecker-link {

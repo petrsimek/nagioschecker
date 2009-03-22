@@ -154,3 +154,9 @@
 <!ENTITY nch.prefs.saturday_short "Sat">
 <!ENTITY nch.prefs.sunday_short "Sun">
 
+<!ENTITY nch.about.license "License">
+<!ENTITY nch.prefs.nagiossystems "Nagios Systems">
+<!ENTITY nch.prefs.detaillevel "Detail Level">
+<!ENTITY nch.prefs.windowtype "Window Type">
+<!ENTITY nch.prefs.statusbar "StatusBar">
+<!ENTITY nch.prefs.infowindow "Information Window">

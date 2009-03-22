@@ -152,3 +152,10 @@
 <!ENTITY nch.prefs.friday_short "Pát">
 <!ENTITY nch.prefs.saturday_short "Sob">
 <!ENTITY nch.prefs.sunday_short "Ned">
+
+<!ENTITY nch.about.license "Licence">
+<!ENTITY nch.prefs.nagiossystems "Systémy Nagios">
+<!ENTITY nch.prefs.detaillevel "Úroveň zobrazení">
+<!ENTITY nch.prefs.windowtype "Typ okna">
+<!ENTITY nch.prefs.statusbar "Stavový řádek">
+<!ENTITY nch.prefs.infowindow "Informační okno">

@@ -81,8 +81,7 @@ NCHPass.prototype = {
 		var authLoginInfo = new nsLoginInfo('nagioschecker-url-'+pos,
                        'Nagios Login', null,
                        username, password, true, true);
-
-
+		if (username!='' && password!='') {
                        
 		var loginManager = CC_loginManager.getService(Components.interfaces.nsILoginManager);
 
@@ -102,7 +101,9 @@ NCHPass.prototype = {
 		}
       	catch (e) {
 //      	alert(e);
+      	
       	}
+		}
 	}
 
   },

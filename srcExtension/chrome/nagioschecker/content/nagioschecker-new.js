@@ -65,11 +65,7 @@ function warnPlainPass() {
     alertMessage("securityWarning","warningPlainPass");
   }
 }
-function alertMessage(header,mess) {
-  var bundle = document.getElementById("nch-strings");
-  var prompts = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].createInstance(Components.interfaces.nsIPromptService);
-  var result = prompts.alert(window, bundle.getString(header), bundle.getString(mess));
-}
+
 
 
 function nchAcceptPreferences() {

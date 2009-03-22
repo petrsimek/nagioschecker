@@ -12,7 +12,9 @@
 	ondialogaccept="return gNCHOptions.savePref();"
 	buttons="accept,cancel,extra2"
   buttonlabelextra2="&nch.prefs.makedonation;..."
-  ondialogextra2="window.openDialog('chrome://nagioschecker/content/nagioschecker-about.xul','nagioschecker-about','centerscreen,dialog,chrome').focus();">
+  ondialogextra2="gNCHOptions.showAbout(3);">
+
+  <script type="application/x-javascript" src="chrome://nagioschecker/content/utils.js"/>
 
   <script type="application/x-javascript" src="chrome://nagioschecker/content/nagioschecker-passwords.js"/>
   <script type="application/x-javascript" src="chrome://nagioschecker/content/nagioschecker-options.js"/>
@@ -24,20 +26,35 @@
   <stringbundleset id="stringbundleset">
     <stringbundle id="nch-strings" src="chrome://nagioschecker/locale/nagioschecker.properties"/>
   </stringbundleset>
-  <tabbox maxwidth="500px">
+  
+  <popupset>
+   <popup id="treemenu">
+      <menuitem id="edit-menuitem" label="&nch.prefs.edit;..." oncommand="gNCHOptions.editSelectedServer();" disabled="true"/>
+      <menuitem id="able-menuitem" label="&nch.prefs.disable;" oncommand="gNCHOptions.actionOnSelectedServer('able');" disabled="true"/>
+      <menuitem id="remove-menuitem" label="&nch.prefs.remove;" oncommand="gNCHOptions.removeSelectedServer();" disabled="true"/>
+   </popup>
+</popupset>
+
+  
+  
+  
+  <tabbox id="settings_tb">
     <tabs>
-      <tab label="&nch.prefs.general;"/>
+  <tab label="&nch.prefs.nagiossystems;"/> 
       <tab label="&nch.prefs.filtering;"/>
       <tab label="&nch.prefs.display;"/>
       <tab label="&nch.prefs.behavior;"/>
       <tab label="&nch.prefs.sounds;"/>
       <tab label="&nch.prefs.advanced;"/>
+      <tab label="&nch.about;"/>
     </tabs>
-    <tabpanels flex="1">
+   
+    <tabpanels  style="max-height: 250px;" flex="1">
+    
+
       <tabpanel  orient="vertical">
-        <groupbox flex="2">
-		      <caption class="nch" label="&nch.prefs.watchedsystems;"/>	
-          <tree flex="2" id="hostList" hidecolumnpicker="true" onselect="gNCHOptions.hostSelected();"	seltype="single">
+      
+          <tree flex="2" id="hostList" hidecolumnpicker="true" onselect="gNCHOptions.hostSelected();" ondblclick="gNCHOptions.actionOnSelectedServer('able');"	seltype="single" context="treemenu">
             <treecols>
               <treecol id="nameCol" label="&nch.prefs.name;" flex="1"/>
               <splitter class="tree-splitter"/>
@@ -51,19 +68,16 @@
           </tree>
           <separator class="thin"/>
           <hbox>
-            <button id="add-new-button" label="&nch.prefs.addnew;" oncommand="gNCHOptions.addNewServer();"/>
-	          <button id="edit-button" label="&nch.prefs.edit;" oncommand="gNCHOptions.editSelectedServer();" disabled="true"/>
-	          <button id="able-button" label="&nch.prefs.disable;" oncommand="gNCHOptions.actionOnSelectedServer('able');" disabled="true"/>
-	          <button id="remove-button" label="&nch.prefs.remove;" oncommand="gNCHOptions.removeSelectedServer();" disabled="true"/>
+            <button id="add-new-button" label="&nch.prefs.addnew;..." oncommand="gNCHOptions.addNewServer();"/>
 	          <button id="up-button" label="&nch.prefs.moveup;" oncommand="gNCHOptions.actionOnSelectedServer('up');" disabled="true"/>
 	          <button id="down-button" label="&nch.prefs.movedown;" oncommand="gNCHOptions.actionOnSelectedServer('down');" disabled="true"/>
           </hbox>
-        </groupbox>
+        
       </tabpanel>
-      <tabpanel  orient="vertical">
-	      <groupbox>
-  		      <caption class="nch" label="&nch.prefs.filterout;"/>	
-            <vbox>
+ 
+      <tabpanel >
+            <vbox flex="1" style="overflow:auto">
+            <label>&nch.prefs.filterout;:</label>
               <checkbox prefstring="extensions.nagioschecker.filter_out_acknowledged" id="nch-general-filter_out_acknowledged" label="&nch.prefs.acknowledged;"/>
               <checkbox prefstring="extensions.nagioschecker.filter_out_disabled_notifications" id="nch-general-filter_out_disabled_notifications" label="&nch.prefs.disabled_notifications;"/>
               <checkbox prefstring="extensions.nagioschecker.filter_out_disabled_checks" id="nch-general-filter_out_disabled_checks" label="&nch.prefs.disabled_checks;"/>
@@ -90,11 +104,23 @@
 				</hbox>
 
             </vbox>
-          </groupbox>
+   
 
       </tabpanel>
       <tabpanel orient="vertical">
-        <hbox>
+      
+      
+		<tabbox>
+   			<tabs>
+      			<tab label="&nch.prefs.detaillevel;"/>
+      			<tab label="&nch.prefs.windowtype;"/>
+      			<tab label="&nch.prefs.statusbar;"/>
+      			<tab label="&nch.prefs.infowindow;"/>
+      			<tab label="&nch.prefs.other;"/>
+    		</tabs>
+    		<tabpanels flex="1">
+     			 <tabpanel  orient="vertical">
+      
   		    <groupbox flex="1">
 		        <caption class="nch" label="&nch.prefs.statusbardetaillevel;"/>	
             <radiogroup id="nch-view-info_type" prefstring="extensions.nagioschecker.info_type">
@@ -115,6 +141,10 @@
               </hbox>
             </radiogroup>
           </groupbox>
+          
+          		</tabpanel>
+          		<tabpanel  orient="vertical">
+          
 		      <groupbox flex="1">
 		        <caption class="nch" label="&nch.prefs.infowindowtype;"/>	
             <radiogroup id="nch-view-info_window_type" prefstring="extensions.nagioschecker.info_window_type">
@@ -123,8 +153,10 @@
               <radio id="nch-view-info_window_type-2" label="&nch.prefs.individualwindows;" value="2"/>
             </radiogroup>
           </groupbox>
-        </hbox>
-        <hbox>
+          
+          		</tabpanel>
+          		<tabpanel  orient="vertical">
+          
 		      <groupbox flex="1">
 		        <caption class="nch" label="&nch.prefs.showinstatusbar;"/>	
             <vbox>
@@ -135,6 +167,11 @@
               <checkbox prefstring="extensions.nagioschecker.show_statusbar_unknown" id="nch-view-show_statusbar_unknown" label="&nch.prefs.serviceunknown;"/>
             </vbox>
           </groupbox>
+          
+           		</tabpanel>
+          		<tabpanel  orient="vertical">
+          
+          
 		      <groupbox flex="1">
 		        <caption class="nch" label="&nch.prefs.showinfowindowcolumns;"/>	
             <vbox>
@@ -145,19 +182,31 @@
             <checkbox prefstring="extensions.nagioschecker.show_window_column_status" id="nch-view-show_window_column_status" label="&nch.prefs.statuscolumn;"/>
             </vbox>
           </groupbox>
-        </hbox>
-		    <groupbox flex="1">
-		      <caption class="nch" label="&nch.prefs.other;"/>	
-          <vbox>
-            <checkbox prefstring="extensions.nagioschecker.one_window_only" id="nch-general-one_window_only" label="&nch.prefs.onewindowonly;"/>
-          </vbox>
-        </groupbox>
+
+           		</tabpanel>
+          		<tabpanel  orient="vertical">
+
+					<vbox>
+						<checkbox prefstring="extensions.nagioschecker.one_window_only" id="nch-general-one_window_only" label="&nch.prefs.onewindowonly;"/>
+					</vbox>
+
+           		</tabpanel>
+           	</tabpanels>
+		</tabbox>
+
+
       </tabpanel>
       <tabpanel orient="vertical">
-      <vbox>
-	<groupbox>
-		<caption class="nch" label="&nch.prefs.utilityrun;"/>	
-		<hbox>
+      
+		<tabbox>
+   			<tabs>
+      			<tab label="&nch.prefs.utilityrun;"/>
+      			<tab label="&nch.prefs.after_click_statusbar;"/>
+      			<tab label="&nch.prefs.blinking;"/>
+    		</tabs>
+    		<tabpanels flex="1">
+     			 <tabpanel  orient="vertical">      
+      
 			<vbox>
 				<label value="&nch.prefs.updateinterval;:" control="nch-general-refresh"/>
 				<hbox>
@@ -165,17 +214,13 @@
 				: 
 				<textbox prefstring="extensions.nagioschecker.refreshsec" id="nch-general-refreshsec" size="4"/> 
 				</hbox>
-			</vbox>
-			<vbox>
+
 				<label value="&nch.prefs.worktime;:" control="nch-general-worktime"/>
 				<hbox>
 				<textbox prefstring="extensions.nagioschecker.worktimefrom" id="nch-general-worktime-from" size="5"/>
 				<textbox prefstring="extensions.nagioschecker.worktimeto" id="nch-general-worktime-to" size="5"/> 
 				</hbox>
-			</vbox>
-		</hbox>
-		<hbox>
-			<vbox>
+
 				<label value="&nch.prefs.working_days;:" control="nch-general-workdays"/>
 				<hbox>
               	<checkbox prefstring="extensions.nagioschecker.workday_1" id="nch-general-workday_1" label="&nch.prefs.monday_short;"/>
@@ -186,11 +231,13 @@
               	<checkbox prefstring="extensions.nagioschecker.workday_6" id="nch-general-workday_6" label="&nch.prefs.saturday_short;"/>
               	<checkbox prefstring="extensions.nagioschecker.workday_0" id="nch-general-workday_0" label="&nch.prefs.sunday_short;"/>
 				</hbox>
+
 			</vbox>
-		</hbox>
-	</groupbox>
-	  	  <groupbox>
-		      <caption class="nch" label="&nch.prefs.after_click_statusbar;"/>	
+
+				</tabpanel>
+     			<tabpanel  orient="vertical">      
+
+	  	 
           <radiogroup prefstring="extensions.nagioschecker.click" id="nch-behavior-oneclick">
             <radio id="nch-behavior-oneclick-0" label="&nch.prefs.do_nothing;" value="0"/>
             <radio id="nch-behavior-oneclick-1" label="&nch.prefs.goto_main_nagios;" value="1"/>
@@ -198,104 +245,142 @@
             <radio id="nch-behavior-oneclick-3" label="&nch.prefs.open_fullinfowindow;" value="3"/>
             <radio id="nch-behavior-oneclick-4" label="&nch.prefs.open_infowindowbytype;" value="4"/>
           </radiogroup>
-        </groupbox>
-	        <groupbox>
-		      <caption class="nch" label="&nch.prefs.blinking;"/>	
+       
+        
+				</tabpanel>
+     			<tabpanel  orient="vertical">      
+        
+        
+	        	
           <radiogroup prefstring="extensions.nagioschecker.blinking" id="nch-behavior-blinking">
             <radio id="nch-behavior-blinking-0" label="&nch.prefs.off;" value="0"/>
             <radio id="nch-behavior-blinking-1" label="&nch.prefs.blinkalltypesonstatusupdateifnewproblemappears;" value="1"/>
             <radio id="nch-behavior-blinking-3" label="&nch.prefs.blinkaffectedtypesonstatusupdateifnewproblemappears;" value="3"/>
             <radio id="nch-behavior-blinking-2" label="&nch.prefs.blinkalltypesoneverystatusupdateifatleastoneproblemexists;" value="2"/>
           </radiogroup>
-        </groupbox>
-      </vbox>
+       
+        
+        		</tabpanel>
+        	</tabpanels>
+        </tabbox>
+        
       </tabpanel>
 
       <tabpanel orient="vertical">
-      <vbox>
-        <hbox>
-	  	  <groupbox>
-		      <caption class="nch" label="&nch.prefs.sounds;"/>	
-          <radiogroup prefstring="extensions.nagioschecker.play_sound" id="nch-behavior-play_sound">
-            <radio id="nch-behavior-play_sound-0" label="&nch.prefs.off;" value="0" oncommand="gNCHOptions.disableSoundCheckboxes();"/>
-            <radio id="nch-behavior-play_sound-1" label="&nch.prefs.onstatusupdateifnewproblemappears;" value="1" oncommand="gNCHOptions.disableSoundCheckboxes();"/>
-            <radio id="nch-behavior-play_sound-2" label="&nch.prefs.oneverystatusupdateifatleastoneproblemexists;" value="2" oncommand="gNCHOptions.disableSoundCheckboxes();"/>
-          </radiogroup>
-          <separator class="thin"/>
-<vbox>
-<hbox>          
-<label>&nch.prefs.minimalservicesattempt;:</label>
- <menulist prefstring="extensions.nagioschecker.play_sound_attempt" id="nch-sounds-play_sound_attempt">  
-	<menupopup>
-	  <menuitem id="nch-sounds-play_sound_attempt-1" label="1" value="1"/>
-	  <menuitem id="nch-sounds-play_sound_attempt-2" label="2" value="2"/>
-	  <menuitem id="nch-sounds-play_sound_attempt-3" label="3+" value="3"/>
-	</menupopup>
-  </menulist> 
-</hbox>
-</vbox>
-          <separator class="thin"/>
-          <description class="nch"><html:strong>&nch.prefs.note;:</html:strong> &nch.prefs.note_sound;</description>
-        </groupbox>
-  		    <groupbox flex="1">
-		        <caption class="nch" label="&nch.prefs.soundsbytype;"/>	
-            <vbox>
-              <checkbox prefstring="extensions.nagioschecker.sounds_by_type_down" id="nch-behavior-sounds_by_type_down" label="&nch.prefs.hostdown;"/>
-              <checkbox prefstring="extensions.nagioschecker.sounds_by_type_unreachable" id="nch-behavior-sounds_by_type_unreachable" label="&nch.prefs.hostunreachable;"/>
-              <checkbox prefstring="extensions.nagioschecker.sounds_by_type_critical" id="nch-behavior-sounds_by_type_critical" label="&nch.prefs.servicecritical;"/>
-              <checkbox prefstring="extensions.nagioschecker.sounds_by_type_warning" id="nch-behavior-sounds_by_type_warning" label="&nch.prefs.servicewarning;"/>
-              <checkbox prefstring="extensions.nagioschecker.sounds_by_type_unknown" id="nch-behavior-sounds_by_type_unknown" label="&nch.prefs.serviceunknown;"/>
-            </vbox>
-          </groupbox>
-        </hbox>
-  		    <groupbox flex="1">
-		        <caption class="nch" label="&nch.prefs.soundfiles;"/>	
-            <vbox>
-              <label>&nch.prefs.warning;:</label>
-              <radiogroup prefstring="extensions.nagioschecker.sound_warning" id="nch-sounds-warning">
-                <hbox>
-                <vbox>
-                <radio id="nch-sounds-warning-0" label="&nch.prefs.standardnagiosfile; (warning.wav)" value="0" oncommand="gNCHOptions.disableSoundRadios();"/>
-                <hbox>
-                  <radio id="nch-sounds-warning-1" label="&nch.prefs.customfile;:" value="1" oncommand="gNCHOptions.disableSoundRadios();"/>
-                  <textbox prefstring="extensions.nagioschecker.sound_warning_path" id="nch-sounds-warning-custom-path" size="50"/>
-                  <button id="nch-sounds-warning-custom-select" label="..." oncommand="gNCHOptions.selectFile('nch-sounds-warning-custom-path');"/>
-                </hbox>
-                </vbox>
-                <button id="nch-sounds-warning-replay" label="&nch.prefs.replay;" oncommand="gNCHOptions.replaySoundFile('warning','warning.wav');"/>
-                </hbox>
-              </radiogroup>
-              <radiogroup prefstring="extensions.nagioschecker.sound_critical" id="nch-sounds-critical">
-                <label>&nch.prefs.critical;:</label>
-                <hbox>
-                <vbox>
-                <radio id="nch-sounds-critical-0" label="&nch.prefs.standardnagiosfile; (critical.wav)" value="0" oncommand="gNCHOptions.disableSoundRadios();"/>
-                <hbox>
-                  <radio id="nch-sounds-critical-1" label="&nch.prefs.customfile;:" value="1" oncommand="gNCHOptions.disableSoundRadios();"/>
-                  <textbox prefstring="extensions.nagioschecker.sound_critical_path" id="nch-sounds-critical-custom-path" size="50"/>
-                  <button id="nch-sounds-critical-custom-select" label="..." oncommand="gNCHOptions.selectFile('nch-sounds-critical-custom-path');"/>
-                </hbox>
-                </vbox>
-                <button id="nch-sounds-critical-replay" label="&nch.prefs.replay;" oncommand="gNCHOptions.replaySoundFile('critical','critical.wav');"/>
-                </hbox>
-              </radiogroup>
-              <radiogroup prefstring="extensions.nagioschecker.sound_down" id="nch-sounds-down">
-                <label>&nch.prefs.down;/&nch.prefs.unreachable;:</label>
-                <hbox>
-                <vbox>
-                <radio id="nch-sounds-down-0" label="&nch.prefs.standardnagiosfile; (hostdown.wav)" value="0" oncommand="gNCHOptions.disableSoundRadios();"/>
-                <hbox>
-                  <radio id="nch-sounds-down-1" label="&nch.prefs.customfile;:" value="1" oncommand="gNCHOptions.disableSoundRadios();"/>
-                  <textbox prefstring="extensions.nagioschecker.sound_down_path" id="nch-sounds-down-custom-path" size="50"/>
-                  <button id="nch-sounds-down-custom-select" label="..." oncommand="gNCHOptions.selectFile('nch-sounds-down-custom-path');"/>
-                </hbox>
-                </vbox>
-                <button id="nch-sounds-down-replay" label="&nch.prefs.replay;" oncommand="gNCHOptions.replaySoundFile('down','hostdown.wav');"/>
-                </hbox>
-              </radiogroup>
-            </vbox>
-          </groupbox>
-      </vbox>
+      
+		<tabbox>
+   			<tabs>
+      			<tab label="&nch.prefs.sounds;"/>
+      			<tab label="&nch.prefs.soundsbytype;"/>
+      			<tab label="&nch.prefs.soundfiles;"/>
+    		</tabs>
+    		<tabpanels flex="1">
+     			 <tabpanel  orient="vertical">
+
+	  	  
+	  	
+          			<radiogroup prefstring="extensions.nagioschecker.play_sound" id="nch-behavior-play_sound">
+            			<radio id="nch-behavior-play_sound-0" label="&nch.prefs.off;" value="0" oncommand="gNCHOptions.disableSoundCheckboxes();"/>
+            			<radio id="nch-behavior-play_sound-1" label="&nch.prefs.onstatusupdateifnewproblemappears;" value="1" oncommand="gNCHOptions.disableSoundCheckboxes();"/>
+            			<radio id="nch-behavior-play_sound-2" label="&nch.prefs.oneverystatusupdateifatleastoneproblemexists;" value="2" oncommand="gNCHOptions.disableSoundCheckboxes();"/>
+          			</radiogroup>
+          			<separator class="thin"/>
+					<vbox>
+						<hbox>          
+							<label>&nch.prefs.minimalservicesattempt;:</label>
+ 							<menulist prefstring="extensions.nagioschecker.play_sound_attempt" id="nch-sounds-play_sound_attempt">  
+								<menupopup>
+	  								<menuitem id="nch-sounds-play_sound_attempt-1" label="1" value="1"/>
+	  								<menuitem id="nch-sounds-play_sound_attempt-2" label="2" value="2"/>
+	  								<menuitem id="nch-sounds-play_sound_attempt-3" label="3+" value="3"/>
+								</menupopup>
+  							</menulist> 
+						</hbox>
+					</vbox>
+          			<separator class="thin"/>
+          			<description class="nch"><html:strong>&nch.prefs.note;:</html:strong> &nch.prefs.note_sound;</description>
+        		</tabpanel>
+             	
+             	<tabpanel  orient="vertical">
+		            <vbox>
+              			<checkbox prefstring="extensions.nagioschecker.sounds_by_type_down" id="nch-behavior-sounds_by_type_down" label="&nch.prefs.hostdown;"/>
+              			<checkbox prefstring="extensions.nagioschecker.sounds_by_type_unreachable" id="nch-behavior-sounds_by_type_unreachable" label="&nch.prefs.hostunreachable;"/>
+              			<checkbox prefstring="extensions.nagioschecker.sounds_by_type_critical" id="nch-behavior-sounds_by_type_critical" label="&nch.prefs.servicecritical;"/>
+              			<checkbox prefstring="extensions.nagioschecker.sounds_by_type_warning" id="nch-behavior-sounds_by_type_warning" label="&nch.prefs.servicewarning;"/>
+              			<checkbox prefstring="extensions.nagioschecker.sounds_by_type_unknown" id="nch-behavior-sounds_by_type_unknown" label="&nch.prefs.serviceunknown;"/>
+            		</vbox>
+        		</tabpanel>
+				
+				<tabpanel  orient="vertical">
+
+					<tabbox>
+   						<tabs>
+      						<tab label="&nch.prefs.warning;"/>
+      						<tab label="&nch.prefs.critical;"/>
+      						<tab label="&nch.prefs.down;/&nch.prefs.unreachable;"/>
+    					</tabs>
+    					<tabpanels flex="1">
+
+							<tabpanel  orient="vertical">
+
+              					<radiogroup prefstring="extensions.nagioschecker.sound_warning" id="nch-sounds-warning">
+                					<vbox>
+                						<radio id="nch-sounds-warning-0" label="&nch.prefs.standardnagiosfile; (warning.wav)" value="0" oncommand="gNCHOptions.disableSoundRadios();"/>
+               							<radio id="nch-sounds-warning-1" label="&nch.prefs.customfile;:" value="1" oncommand="gNCHOptions.disableSoundRadios();"/>
+                						<hbox>
+                  							<textbox prefstring="extensions.nagioschecker.sound_warning_path" id="nch-sounds-warning-custom-path" size="50"/>
+                  							<button id="nch-sounds-warning-custom-select" label="..." oncommand="gNCHOptions.selectFile('nch-sounds-warning-custom-path');"/>
+                						</hbox>
+                						<separator class="thin"/>
+	                					<hbox>
+	                						<button id="nch-sounds-warning-replay" label="&nch.prefs.replay;" oncommand="gNCHOptions.replaySoundFile('warning','warning.wav');"/>
+	                					</hbox>
+                					</vbox>
+              					</radiogroup>
+
+							</tabpanel>
+							<tabpanel  orient="vertical">
+
+              					<radiogroup prefstring="extensions.nagioschecker.sound_critical" id="nch-sounds-critical">
+                					<vbox>
+                						<radio id="nch-sounds-critical-0" label="&nch.prefs.standardnagiosfile; (critical.wav)" value="0" oncommand="gNCHOptions.disableSoundRadios();"/>
+                  						<radio id="nch-sounds-critical-1" label="&nch.prefs.customfile;:" value="1" oncommand="gNCHOptions.disableSoundRadios();"/>
+                  						<hbox>
+                  							<textbox prefstring="extensions.nagioschecker.sound_critical_path" id="nch-sounds-critical-custom-path" size="50"/>
+                  							<button id="nch-sounds-critical-custom-select" label="..." oncommand="gNCHOptions.selectFile('nch-sounds-critical-custom-path');"/>
+                						</hbox>
+                						<separator class="thin"/>
+               							<hbox>
+	                						<button id="nch-sounds-critical-replay" label="&nch.prefs.replay;" oncommand="gNCHOptions.replaySoundFile('critical','critical.wav');"/>
+                						</hbox>
+                					</vbox>
+              					</radiogroup>
+              
+              				</tabpanel>
+							<tabpanel  orient="vertical">
+              
+              					<radiogroup prefstring="extensions.nagioschecker.sound_down" id="nch-sounds-down">
+                					<vbox>
+                						<radio id="nch-sounds-down-0" label="&nch.prefs.standardnagiosfile; (hostdown.wav)" value="0" oncommand="gNCHOptions.disableSoundRadios();"/>
+                						<radio id="nch-sounds-down-1" label="&nch.prefs.customfile;:" value="1" oncommand="gNCHOptions.disableSoundRadios();"/>
+                  						<hbox>
+                  							<textbox prefstring="extensions.nagioschecker.sound_down_path" id="nch-sounds-down-custom-path" size="50"/>
+                  							<button id="nch-sounds-down-custom-select" label="..." oncommand="gNCHOptions.selectFile('nch-sounds-down-custom-path');"/>
+                						</hbox>
+                						<separator class="thin"/>
+                 						<hbox>
+                 							<button id="nch-sounds-down-replay" label="&nch.prefs.replay;" oncommand="gNCHOptions.replaySoundFile('down','hostdown.wav');"/>
+                						</hbox>
+                					</vbox>
+              					</radiogroup>
+
+              				</tabpanel>
+						</tabpanels>
+					</tabbox>
+				</tabpanel>
+			</tabpanels>
+		</tabbox>
+      
       </tabpanel>
 
       <tabpanel orient="vertical">
@@ -318,6 +403,109 @@
         </groupbox>
       </tabpanel>
 
+      <tabpanel orient="vertical">
+
+  		<tabbox id="about_tb">
+   			<tabs>
+      			<tab label="&nch.about;"/>
+      			<tab label="&nch.about.copyrights;"/>
+      			<tab label="&nch.about.contributors;"/>
+      			<tab label="&nch.about.donators;"/>
+      			<tab label="&nch.about.translators;"/>
+    		</tabs>
+    		<tabpanels flex="1">
+     			 <tabpanel  orient="vertical">
+
+					<hbox>
+
+						<vbox>
+      				<label value="&nch.title;"  class="nagioschecker-about-product-name"/>
+     		 		<description class="nch">&nch.about.version; 0.13.9.3</description>
+
+					<separator class="thin"/>
+					
+							<label value="&nch.about;:" class="nagioschecker-about-sub-title"/>
+							<description class="nch">&nch.about.description;</description>
+    						<separator class="thin"/>
+						</vbox>
+						<vbox>
+    						<label value="&nch.about.created;:" class="nagioschecker-about-sub-title"/>
+    						<description class="nagioschecker-link" onclick="window.opener.nagioschecker.openTab('http://www.petrsimek.cz/');window.close();">&nch.about.author;</description>
+    						<hbox>
+    							<image src="chrome://nagioschecker/skin/linkedin.gif" onclick="window.opener.nagioschecker.openTab('http://www.linkedin.com/pub/1/61/61a');window.close();"/>
+    						</hbox>
+    						<separator class="thin"/>
+							<label value="&nch.about.homepage;:" class="nagioschecker-about-sub-title"/>
+							<description  class="nagioschecker-link" onclick="window.opener.nagioschecker.openTab('https://addons.mozilla.org/firefox/3607/');window.close();">&nch.prefs.onaddons;</description>
+      						<description  class="nagioschecker-link" onclick="window.opener.nagioschecker.openTab('http://code.google.com/p/nagioschecker/');window.close();">&nch.prefs.projecthome;</description>
+    						<label value="&nch.about.license;:" class="nagioschecker-about-sub-title"/>
+    						<description class="nagioschecker-link" onclick="window.opener.nagioschecker.openTab('http://www.mozilla.org/MPL/MPL-1.1.html');window.close();">Mozilla Public License 1.1</description>
+						</vbox>
+											
+						
+					</hbox>
+
+
+      			</tabpanel>
+      			<tabpanel  orient="vertical">
+
+      				<label value="&nch.about.copyrights;:" class="nagioschecker-about-sub-title"/>
+      				<description class="nch">&nch.about.nagioscopyrights;</description>
+      				<description class="nagioschecker-link" onclick="window.opener.nagioschecker.openTab('http://www.nagios.org/');window.close();">www.nagios.org</description>
+
+      			</tabpanel>
+
+      			<tabpanel  orient="vertical">
+
+      				<description class="nch">(&nch.about.alphabeticallylisted;)</description>
+
+      				<label value="&nch.about.codecontributors;:" class="nagioschecker-about-sub-title"/>
+      				<description class="nch">Jose Luis Martinez, Cameron Moore (US), Ivo Musil (CZ), Michal Sviba (CZ)</description>
+     				<separator class="thin"/>
+      				<label value="&nch.about.ideasandbugreports;:" class="nagioschecker-about-sub-title"/>
+      				<description class="nch">Marcus Barczak, Carlos Basura, batzel, cloudyster, Daniele (IT), Mike Freitas (US), Andrea Gabellini (IT), Raphael Gangneux (UK), gionenn, Jörgen Hägg (SW), Douglas Hank (US), Axel Jäger (DE), jody.longtin1177, Michael Jewett (CA), Robbert Kouprie (NL), Bernard Li (CA), Geoffrey Lemaire (BE), Erwin Lubbers (NL), malcolmrmclean, Tiago Martins (PT), pplusdomain, palloberg, Aleš Petrovický (CZ), Oliver Regellmann (DE), Johannes Weiser, Phil Wenzlawski (DE)</description>
+     				
+      			</tabpanel>
+      			
+      			<tabpanel  orient="vertical">
+
+      				<description class="nch">(&nch.about.alphabeticallylisted;)</description>
+
+     				<separator class="thin"/>
+      				<label value="&nch.about.donators;:" class="nagioschecker-about-sub-title"/>
+      				<description class="nch">A. Aleksandrovs (LA), A. Artigues (US), J. Avery (UK), J. Batzel (US), C. Carluccio (UR), M. Cintolesi (IT), A. Davies (UK), G. Hernandez (ME), E. Martucci (US), X. Potel (FR), PSS Hosting.com (US), D. Rubel (US), A. Smith (US), K. Snorrason (IC), M. Tancil (US), J. Wigle (US), K. Wong (US), Zedcore Systems Ltd (UK)</description>
+					<separator class="thin"/>
+					<hbox flex="1">
+						<vbox>
+    						<label value="&nch.about.fordonators;:" class="nagioschecker-about-sub-title"/>
+							<vbox>
+								<hbox>
+									<image src="chrome://nagioschecker/skin/pp-donate.gif"/>
+       								<button label="CZK" oncommand="window.opener.nagioschecker.openTab('https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&amp;business=petr%2esimek%40centrum%2ecz&amp;item_name=Nagios%20Checker&amp;no_shipping=0&amp;cn=Feedback&amp;tax=0&amp;currency_code=CZK&amp;lc=CZ&amp;bn=PP%2dDonationsBF&amp;charset=UTF%2d8');window.close();"/>
+       								<button label="EUR" oncommand="window.opener.nagioschecker.openTab('https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&amp;business=petr%2esimek%40centrum%2ecz&amp;item_name=Nagios%20Checker&amp;no_shipping=0&amp;cn=Feedback&amp;tax=0&amp;currency_code=EUR&amp;lc=CZ&amp;bn=PP%2dDonationsBF&amp;charset=UTF%2d8');window.close();"/>
+       								<button label="USD" oncommand="window.opener.nagioschecker.openTab('https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&amp;business=petr%2esimek%40centrum%2ecz&amp;item_name=Nagios%20Checker&amp;no_shipping=0&amp;cn=Feedback&amp;tax=0&amp;currency_code=USD&amp;lc=CZ&amp;bn=PP%2dDonationsBF&amp;charset=UTF%2d8');window.close();"/>
+       							</hbox>
+							</vbox>
+						</vbox>
+					</hbox>
+      			</tabpanel>
+      			
+      			<tabpanel  orient="vertical">
+
+      				<description class="nch">(&nch.about.alphabeticallylisted;)</description>
+
+     				<separator class="thin"/>
+      				<label value="&nch.about.translators;:" class="nagioschecker-about-sub-title"/>
+      				<description class="nch">Celikbas (tr-TR), emz (bg-BG), farmer.luo (zh-CN), kennith (zh-TW), markh (nl-NL), MatrixIsAllOver (it-IT), Okaryn (fr-FR), pjf (de-DE), sanchezpaa (es-ES), Humberto Sartini (pt-BR), stalker48 (ru-RU), stian3555 (nb-NO)</description>
+
+      			</tabpanel>
+
+
+    		</tabpanels>
+  		</tabbox>
+					
+
+      </tabpanel>
 
 
 

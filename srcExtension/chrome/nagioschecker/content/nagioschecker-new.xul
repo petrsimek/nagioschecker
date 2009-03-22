@@ -11,6 +11,7 @@
 	onload="nchLoadPreferences()"
 	ondialogaccept="return nchAcceptPreferences()"
 	buttons="accept,cancel">
+  <script type="application/x-javascript" src="chrome://nagioschecker/content/utils.js"/>
 
   <script type="application/x-javascript" src="chrome://nagioschecker/content/nagioschecker-passwords.js"/>
   <script type="application/x-javascript" src="chrome://nagioschecker/content/nagioschecker-parser.js"/>
@@ -23,6 +24,8 @@
   <tabbox maxwidth="500px">
     <tabs>
       <tab label="&nch.prefs.general;"/>
+      <tab label="&nch.prefs.webinterface;"/>
+      <tab label="&nch.prefs.statusurl;"/>
       <tab label="&nch.prefs.other;"/>
     </tabs>
     <tabpanels flex="1">
@@ -31,6 +34,8 @@
     <label value="&nch.prefs.name;:" control="nch-general-name"/>
     <textbox id="nch-general-name" flex="1" size="50"/>
   </vbox>
+      </tabpanel>
+      <tabpanel  orient="vertical">
   <groupbox>
 	  <caption class="nch" label="&nch.prefs.webinterface;"/>	
     <vbox>
@@ -55,6 +60,8 @@
       <checkbox id="nch-general-plainpass" label="&nch.prefs.plainpass;" oncommand="warnPlainPass();"/>
     </vbox>
   </groupbox>
+      </tabpanel>
+      <tabpanel  orient="vertical">
 	<groupbox>
 	  <caption class="nch" label="&nch.prefs.statusurl; (status.cgi)"/>	
     <label value="&nch.prefs.foundstatusurl;:" control="nch-general-urlstatus"/>

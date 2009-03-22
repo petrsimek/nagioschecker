@@ -1,84 +1,3 @@
-/* parseUri JS v0.1, by Steven Levithan (http://badassery.blogspot.com)
- * Splits any well-formed URI into the following parts (all are optional):
- * ----------------------
- * source (since the exec() method returns backreference 0 [i.e., the entire match] as key 0, we might as well use it)
- * protocol (scheme)
- * authority (includes both the domain and port)
- * domain (part of the authority; can be an IP address)
- * port (part of the authority)
- * path (includes both the directory path and filename)
- * directoryPath (part of the path; supports directories with periods, and without a trailing backslash)
- * fileName (part of the path)
- * query (does not include the leading question mark)
- * anchor (fragment)
- */
-function parseUri(sourceUri){
-    var uriPartNames = ["source","protocol","authority","domain","port","path","directoryPath","fileName","query","anchor"];
-    var uriParts = new RegExp("^(?:([^:/?#.]+):)?(?://)?(([^:/?#]*)(?::(\\d*))?)?((/(?:[^?#](?![^?#/]*\\.[^?#/.]+(?:[\\?#]|$)))*/?)?([^?#/]*))?(?:\\?([^#]*))?(?:#(.*))?").exec(sourceUri);
-    var uri = {};
-    
-    for(var i = 0; i < 10; i++){
-        uri[uriPartNames[i]] = (uriParts[i] ? uriParts[i] : "");
-    }
-    
-    // Always end directoryPath with a trailing backslash if a path was present in the source URI
-    // Note that a trailing backslash is NOT automatically inserted within or appended to the "path" key
-    if(uri.directoryPath.length > 0){
-        uri.directoryPath = uri.directoryPath.replace(/\/?$/, "/");
-    }
-    
-    return uri;
-}
-
-function getUglyNodeValue(node,ids) {
-  var tmp = node;
-  for (var i=0;i<ids.length;i++) {
-    try {
-      tmp=tmp.childNodes[ids[i]];
-    }
-    catch (e) {
-      return false;
-    }
-  }
-  return tmp.nodeValue;
-}
-
-function getUglyNode(node,ids) {
-  var tmp = node;
-  for (var i=0;i<ids.length;i++) {
-    try {
-      tmp=tmp.childNodes[ids[i]];
-    }
-    catch (e) {
-      return false;
-    }
-  }
-  return tmp;
-}
-
-/*
- *
- * http://www.dustindiaz.com/getelementsbyclass/
- *
- */
-function getElementsByClass(searchClass,node,tag) {
-	var classElements = new Array();
-	if ( node == null )
-		node = document;
-	if ( tag == null )
-		tag = '*';
-	var els = node.getElementsByTagName(tag);
-	var elsLen = els.length;
-	var pattern = new RegExp("(^|\\s)"+searchClass+"(\\s|$)");
-	for (var i = 0, j = 0; i < elsLen; i++) {
-		if ( pattern.test(els[i].className) ) {
-			classElements[j] = els[i];
-			j++;
-		}
-	}
-	return classElements;
-}
-
 function NCHParser() {};
 
 NCHParser.prototype = {
@@ -96,7 +15,6 @@ NCHParser.prototype = {
   setTimeout: function (t) {
     this.timeout=t;
   },
-//  fetchAllData: function(manager) {
   fetchAllData: function(manager,callback) {
     if (this._servers.length>0) {
   		this.callback=callback;
@@ -122,7 +40,9 @@ NCHParser.prototype = {
 	this.problems[pos]={"down":[],"unreachable":[],"unknown":[],"warning":[],"critical":[],"_error":false,"_time":null};
 	this.missingAliases[pos]=[];			
 	if (!this._servers[pos].disabled) {
-		var urlServices = (this._servers[pos].versionOlderThan20) ? this._servers[pos].urlstatus+((this._servers[pos].urlstatus.search(/\?/)==-1) ? "?" : "&")+"servicestatustypes=248" : this._servers[pos].urlstatus+((this._servers[pos].urlstatus.search(/\?/)==-1) ? "?" : "&")+"servicestatustypes=28";
+
+		var urlServices = createNagiosUrl(this._servers[pos],'service_problems');
+		
 
 		if (this._servers[pos].serverType == 1){
 			if (this._servers[pos]._ssoLoggedIn != 1){
@@ -130,9 +50,10 @@ NCHParser.prototype = {
 			}
 		}
 		
-		var urlHosts = this._servers[pos].urlstatus+((this._servers[pos].urlstatus.search(/\?/)==-1) ? "?" : "&")+"style=hostdetail&hoststatustypes=12";
-		var urlExt = this._servers[pos].urlstatus.replace(/status\.cgi/,"extinfo.cgi");
-                var server = this._servers[pos];
+		var urlHosts = createNagiosUrl(this._servers[pos],'host_problems');
+		
+		
+        var server = this._servers[pos];
 		var me = this;
 		
 		this.loadDataAsync(urlHosts,server,false,function (doc1) {
@@ -143,7 +64,6 @@ NCHParser.prototype = {
 				me.loadMissingAlias(0,pos,server,function () {
 					me.problems[pos]["_time"]=new Date();
 					if (me._servers.length==pos+1) {
-//						me.manager.handleProblems(me.problems);
 						me.callback(me.problems);
 					}
 					else {
@@ -155,7 +75,6 @@ NCHParser.prototype = {
      }
      else {
 		if (this._servers.length==pos+1) {
-//			this.manager.handleProblems(this.problems);
 			this.callback(this.problems);
 		}
 		else {
@@ -166,8 +85,8 @@ NCHParser.prototype = {
 
   loadMissingAlias: function(apos,pos,server,callback) {
 	if (this.missingAliases[pos][apos]) {
-		var extinfo = this._servers[pos].urlstatus.replace(/status\.cgi/,"extinfo.cgi");
-		var urlExt = extinfo+((extinfo.search(/\?/)==-1) ? "?" : "&")+"type=1&host="+this.missingAliases[pos][apos];
+		var urlExt = createNagiosUrl(this._servers[pos],'detail',this.missingAliases[pos][apos])
+		
 		var me=this;
 		this.loadDataAsync(urlExt,server,false,function (doc2) {
 				me.parseAlias(pos,me.missingAliases[pos][apos],doc2);
@@ -281,7 +200,7 @@ NCHParser.prototype = {
   nagiosDateToTimestamp: function(ndate) {
     var token = new RegExp('(\d{1,2})\-(\d{1,2})\-(\d{4})\s(\d{1,2}):(\d{1,2}):(\d{1,2})', 'g').exec(ndate);
     var date = new Date();
-	  if (token) {
+    if (token) {
       date.setFullYear(token[3]);
       date.setDate(token[1]);
       date.setMonth(token[2]);
@@ -289,44 +208,35 @@ NCHParser.prototype = {
       date.setMinutes(token[5]);
       date.setSeconds(token[6]);
       return date.getMiliseconds();
-	  }
+    }
     return ndate;
   },
 
   nagiosDurationToDuration: function(ndur) {
-    var pattern = /(\s*)([0-9]*)d(\s*)([0-9]*)h(\s*)([0-9]*)m(\s*)([0-9]*)s/g;
-    var token = ndur.split(pattern);
-    var str = "";
-	  if (token) {
+	if (!ndur) return ''; 
+  
+    var token = ndur.split(/(\s*)([0-9]*)d(\s*)([0-9]*)h(\s*)([0-9]*)m(\s*)([0-9]*)s/g);
+    if (token) {
       var days = token[2];
       var hours = token[4];
       var minutes = token[6];
       var seconds = token[8];
-      var str="";
-      if (days>0) str+=days+"d";
-      if (hours>0) {
-        if (str!="") str+=" ";
-        str+=hours+"h";
-      }
-      if (minutes>0) {
-        if (str!="") str+=" ";
-        str+=minutes+"m";
-      }
-      if (seconds>0) {
-        if (str!="") str+=" ";
-        str+=seconds+"s";
-      }
+      var str='';
+      if (days>0) str+=days+'d';
+      if (hours>0) str+=((str!='') ? ' ' : '')+hours+'h';
+      if (minutes>0) str+=((str!='') ? ' ' : '')+minutes+'m';
+      if (seconds>0) str+=((str!='') ? ' ' : '')+seconds+'s';
       return str;  
-	  }
+    }
+
     return ndur;
   },
+  
   nagiosDurationToSeconds: function(ndur) {
-    var pattern = /(\s*)([0-9]*)d(\s*)([0-9]*)h(\s*)([0-9]*)m(\s*)([0-9]*)s/g;
-    var token = ndur.split(pattern);
+	if (!ndur) return 0;  
+    var token = ndur.split(/(\s*)([0-9]*)d(\s*)([0-9]*)h(\s*)([0-9]*)m(\s*)([0-9]*)s/g);
     var sec = 0;
-		if (token) {
-		sec=parseInt(token[2])*86400 + parseInt(token[4])*3600 + parseInt(token[6])*60 + parseInt(token[8]);
-	  }
+    if (token) sec=parseInt(token[2])*86400 + parseInt(token[4])*3600 + parseInt(token[6])*60 + parseInt(token[8]);
     return sec;
   },
 

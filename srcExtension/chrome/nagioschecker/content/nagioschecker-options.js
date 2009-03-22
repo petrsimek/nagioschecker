@@ -4,7 +4,14 @@ var MAX_SERVERS=200;
 var nchoptionsLoad = function() {
 
   gNCHOptions = new NCHOptions();
-
+  
+  if (window.arguments && window.arguments[0]) {
+	  gNCHOptions.showAbout(0);
+	  //gNCHOptions.setTab('settings_tb',window.arguments[0]);
+	  //gNCHOptions.setTab('about_tb',3);
+  }
+  
+  
   gNCHOptions.loadPref();
   gNCHOptions.disableSoundCheckboxes();
   gNCHOptions.disableSoundRadios();
@@ -52,24 +59,46 @@ NCHOptions.prototype = {
     this._servers[pos]=server;
   },
 
+  setTab: function(id,pos) {
+	  document.getElementById(id).selectedIndex=pos;  
+  },
+  
+  showAbout: function(subtab) {
+	  gNCHOptions.setTab('settings_tb',6);
+	  gNCHOptions.setTab('about_tb',subtab);  
+  },
+  
   removeServer: function(pos) {
-    var tmp = [];
-    for(var i=0;i<this._servers.length;i++) {
-      if (i!=pos) {
-         tmp.push(this._servers[i]);
-      }  
-    }
-    this._servers=tmp;
+	  
+	if (confirmMessage('confirmation','reallyWantToDoThisAction')) {  
+//		var tmp = [];
+//		for(var i=0;i<this._servers.length;i++) {
+//			if (i!=pos) {
+//				tmp.push(this._servers[i]);
+//			}  
+//		}
+//		this._servers=tmp;
+	}
   },
 
+ 
+  
   hostSelected: function() {
     var selections = GetTreeSelections(this._tree);
-    document.getElementById("remove-button").disabled = (selections.length < 1);
-    document.getElementById("edit-button").disabled = (selections.length < 1);
-    document.getElementById("able-button").disabled = (selections.length < 1);
+
+    document.getElementById("remove-menuitem").disabled = (selections.length < 1);
+    document.getElementById("edit-menuitem").disabled = (selections.length < 1);
+    document.getElementById("able-menuitem").disabled = (selections.length < 1);
+
+    
+    //document.getElementById("remove-button").disabled = (selections.length < 1);
+    //document.getElementById("edit-button").disabled = (selections.length < 1);
+    //document.getElementById("able-button").disabled = (selections.length < 1);
 
     var i = selections[0];
-	document.getElementById("able-button").setAttribute("label",(this._servers[i].disabled) ? gNCHOptions.bundle.getString("enable") : gNCHOptions.bundle.getString("disable"));
+	//document.getElementById("able-button").setAttribute("label",(this._servers[i].disabled) ? gNCHOptions.bundle.getString("enable") : gNCHOptions.bundle.getString("disable"));
+
+	document.getElementById("able-menuitem").setAttribute("label",(this._servers[i].disabled) ? gNCHOptions.bundle.getString("enable") : gNCHOptions.bundle.getString("disable"));
 
 ///    alert(i+";"+this._servers.length);
 
@@ -154,7 +183,7 @@ NCHOptions.prototype = {
   		case "able":
 			this._servers[i].disabled=!this._servers[i].disabled;
 		    this._tree.treeBoxObject.invalidate();
-			document.getElementById("able-button").setAttribute("label",(this._servers[i].disabled) ? gNCHOptions.bundle.getString("enable") : gNCHOptions.bundle.getString("disable"));    
+			document.getElementById("able-menuitem").setAttribute("label",(this._servers[i].disabled) ? gNCHOptions.bundle.getString("enable") : gNCHOptions.bundle.getString("disable"));    
   			break;
   		case "up":
 		    if (i>0) {
@@ -196,6 +225,8 @@ NCHOptions.prototype = {
   },
 
   removeSelectedServer: function() {
+	  if (confirmMessage('confirmation','reallyWantToDoThisAction')) { 
+	  
     this._tree.treeBoxObject.view.selection.selectEventsSuppressed = true;
     var selections = GetTreeSelections(this._tree);
     for (var s=selections.length-1; s>= 0; s--) {
@@ -222,11 +253,13 @@ NCHOptions.prototype = {
 
     }
     else {
-      document.getElementById('remove-button').setAttribute("disabled", "true")
+      document.getElementById('remove-menuitem').setAttribute("disabled", "true")
 
     }
 
     this._tree.treeBoxObject.view.selection.selectEventsSuppressed = false;
+    
+	  }
   },
 
 

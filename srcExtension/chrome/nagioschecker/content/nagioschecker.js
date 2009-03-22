@@ -519,7 +519,7 @@ NCH.prototype = {
         }
         var gotoS = document.createElement("menuitem");
         gotoS.setAttribute("label",  (srvlen>1) ? this._servers[i].name : this.bundle.getString("goto")+" "+this.bundle.getString("services"));    
-        gotoS.setAttribute("oncommand", "nagioschecker.openTab('"+this.createUrl(this._servers[i],'service_problems')+"');");    
+        gotoS.setAttribute("oncommand", "nagioschecker.openTab('"+createNagiosUrl(this._servers[i],'service_problems')+"');");    
         if (srvlen>1) {
           mp2.appendChild(gotoS);
         }
@@ -529,7 +529,7 @@ NCH.prototype = {
 
         var gotoH = document.createElement("menuitem");
         gotoH.setAttribute("label",  (srvlen>1) ? this._servers[i].name : this.bundle.getString("goto")+" "+this.bundle.getString("hosts"));    
-        gotoH.setAttribute("oncommand", "nagioschecker.openTab('"+this.createUrl(this._servers[i],'host_problems')+"');");    
+        gotoH.setAttribute("oncommand", "nagioschecker.openTab('"+createNagiosUrl(this._servers[i],'host_problems')+"');");    
         if (srvlen>1) {
           mp3.appendChild(gotoH);
         }
@@ -587,7 +587,6 @@ NCH.prototype = {
 									reallyPlay=true;
 								}
 							}
-dump('reallyPlay:'+reallyPlay+' '+me.pref.play_sound+' ');
 							if (reallyPlay) {
 								me.playSound(me.results);
 							}
@@ -643,31 +642,10 @@ dump('reallyPlay:'+reallyPlay+' '+me.pref.play_sound+' ');
 
   },
 
-  createUrl: function(server,type) {
-		var url="";
-		switch (type) {
-			case "host_problems":
-	        url = server.urlstatus+((server.urlstatus.search(/\?/)==-1) ? "?" : "&")+"style=hostdetail&hoststatustypes=12";
-			break;
-			case "service_problems":
-	        if (server.versionOlderThan20) {
-	          url = server.urlstatus+((server.urlstatus.search(/\?/)==-1) ? "?" : "&")+"?servicestatustypes=248";
-	        }
-	        else {
-	          url = server.urlstatus+((server.urlstatus.search(/\?/)==-1) ? "?" : "&")+"?servicestatustypes=28";
-	        }
-			break;
-		}
-		return url;
-	},
+  
 
 	createUrlDevice: function(i,host,service) {
-		var extinfo = this._servers[i].urlstatus.replace(/status\.cgi/,"extinfo.cgi");
-		var url = extinfo+((extinfo.search(/\?/)==-1) ? "?" : "&")+"type="+((service) ? "2" : "1")+"&host="+escape(host);
-		if (service) {
-			url+="&service="+escape(service);
-		}
-		return url;
+	  	return createNagiosUrl(this._servers[i],'detail',host,service);
 	},
 
   // plan next check
@@ -680,7 +658,6 @@ dump('reallyPlay:'+reallyPlay+' '+me.pref.play_sound+' ');
 				if (me.isCheckingTime()) {
 					me.setIcon(window,"loading");
 					me.doUpdate();
-//					me.parser.fetchAllData(me,function(probs) {me.handleProblems(probs)});
 				} else {
 					me.setNextCheck();
 					me.setIcon(window,"sleepy");
@@ -757,12 +734,12 @@ dump('reallyPlay:'+reallyPlay+' '+me.pref.play_sound+' ');
 		        switch (what) {
 		          case "hosts":
                 if ((this.results["down"][3][i]>0) || (this.results["unreachable"][3][i]>0)) {
-		              this.openTab(this.createUrl(this._servers[i],'host_problems'));
+		              this.openTab(createNagiosUrl(this._servers[i],'host_problems'));
                 }
 		          break;
           		 case "services":
                 if ((this.results["critical"][3][i]>0) || (this.results["warning"][3][i]>0) || (this.results["unknown"][3][i]>0)) {
-						      this.openTab(this.createUrl(this._servers[i],'service_problems'));
+						      this.openTab(createNagiosUrl(this._servers[i],'service_problems'));
                 }
             	 break;
           		 default:
@@ -1633,7 +1610,6 @@ dump('reallyPlay:'+reallyPlay+' '+me.pref.play_sound+' ');
 }
 
 
-//function NCHToolTip(showColInfo,showColAlias,showColFlags) {
 function NCHToolTip(pref) {
   this._rows=null;
   this.title=document.title;

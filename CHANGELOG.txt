@@ -1,3 +1,10 @@
+next (beta)
+* INTERNAL: rewritten tool for constructing status url with parameters
+* NEW: redesigned options dialog to be smaller for using on smaller displays (netbooks etc.)
+* NEW: removed buttons for edit, enable/disable and remove server in Settings dialog and context menu used instead.
+* NEW: double click on server enable/disable it
+* NEW: About dialog moved into Settings dialog
+
 0.13.9.3 (beta)
 * LANG: updated languages es-ES, it-IT, nl-NL, pt-BR, zh-CN from BabelZilla
 * BUGFIX: correct handling status url with parameters (Issue 111)
