@@ -1,4 +1,4 @@
-next (beta)
+0.13.9.4 (beta)
 * INTERNAL: rewritten tool for constructing status url with parameters
 * NEW: redesigned options dialog to be smaller for using on smaller displays (netbooks etc.)
 * NEW: removed buttons for edit, enable/disable and remove server in Settings dialog and context menu used instead.

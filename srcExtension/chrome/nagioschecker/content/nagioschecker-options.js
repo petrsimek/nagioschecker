@@ -11,7 +11,8 @@ var nchoptionsLoad = function() {
 	  //gNCHOptions.setTab('about_tb',3);
   }
   
-  
+  document.getElementById('nch_version').value=getExtensionVersion();
+
   gNCHOptions.loadPref();
   gNCHOptions.disableSoundCheckboxes();
   gNCHOptions.disableSoundRadios();

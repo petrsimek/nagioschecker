@@ -220,7 +220,6 @@ NCH.prototype = {
 
   start : function() {
     this.bundle = document.getElementById("nch-strings");
-
 	this._uid = Math.floor(Math.random()*10000);
 	this.results=new NCHPaket(this.pref);
 	if (gMini) {
@@ -1552,22 +1551,10 @@ NCH.prototype = {
 
 
 
-  getVersion: function() {
-  	var value = "";
-  	try {
-   		var RDFService = Components.classes["@mozilla.org/rdf/rdf-service;1"]
-             .getService(Components.interfaces.nsIRDFService);
-   		var extensionDS= Components.classes["@mozilla.org/extensions/manager;1"].getService(Components.interfaces.nsIExtensionManager).datasource;
-   		var target = extensionDS.GetTarget(RDFService.GetResource("urn:mozilla:item:{123b2220-59cb-11db-b0de-0800200c9a66}"), RDFService.GetResource("http://www.mozilla.org/2004/em-rdf#version"), true);
-   		value = target.QueryInterface(Components.interfaces.nsIRDFLiteral).Value;
-  	} catch(e) {
-  	}
-  	return value;
-  },
 
   isNewVersion: function() {
 
-	var currVer = this.getVersion();
+	var currVer = getExtensionVersion();
    		
   	try {
    		

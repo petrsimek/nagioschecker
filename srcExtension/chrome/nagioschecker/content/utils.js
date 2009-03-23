@@ -130,3 +130,18 @@ function confirmMessage(header,mess) {
 	var prompts = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].createInstance(Components.interfaces.nsIPromptService);
 	return prompts.confirm(window, bundle.getString(header), bundle.getString(mess));
 }
+
+function getExtensionVersion() {
+  	var value = "";
+  	try {
+   		var RDFService = Components.classes["@mozilla.org/rdf/rdf-service;1"]
+             .getService(Components.interfaces.nsIRDFService);
+   		var extensionDS= Components.classes["@mozilla.org/extensions/manager;1"].getService(Components.interfaces.nsIExtensionManager).datasource;
+   		var target = extensionDS.GetTarget(RDFService.GetResource("urn:mozilla:item:{123b2220-59cb-11db-b0de-0800200c9a66}"), RDFService.GetResource("http://www.mozilla.org/2004/em-rdf#version"), true);
+   		value = target.QueryInterface(Components.interfaces.nsIRDFLiteral).Value;
+  	} catch(e) {
+  	}
+  	return value;
+ }
+
+
