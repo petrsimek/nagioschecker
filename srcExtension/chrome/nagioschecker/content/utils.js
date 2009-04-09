@@ -68,6 +68,10 @@ function createNagiosUrl(server,type,host,service) {
 			params.push('hostgroup='+escape(parsed.queryKey['hostgroup']));
 			params.push('style=detail');
 		}
+		else if (parsed.queryKey['servicegroup']) {
+			params.push('servicegroup='+escape(parsed.queryKey['servicegroup']));
+			params.push('style=detail');			
+		}
 		else params.push('host=all');
 	}
 	else url = url.replace(/status\.cgi/,'extinfo.cgi');

@@ -148,6 +148,9 @@ NCHOptions.prototype = {
     var ch_s = (document.getElementById('nch-general-filter_out_regexp_services').checked);
     document.getElementById('nch-general-filter_out_regexp_services_value').disabled = (!ch_s);
     document.getElementById('nch-general-filter_out_regexp_services_reverse').disabled = (!ch_s);
+    var ch_s = (document.getElementById('nch-general-filter_out_regexp_info').checked);
+    document.getElementById('nch-general-filter_out_regexp_info_value').disabled = (!ch_s);
+    document.getElementById('nch-general-filter_out_regexp_info_reverse').disabled = (!ch_s);
   	
   },
   removeAllServers: function() {
@@ -345,8 +348,10 @@ NCHOptions.prototype = {
         "nch-general-filter_out_all_unknown",
         "nch-general-filter_out_regexp_hosts",
         "nch-general-filter_out_regexp_services",
+        "nch-general-filter_out_regexp_info",
         "nch-general-filter_out_regexp_hosts_reverse",
         "nch-general-filter_out_regexp_services_reverse",
+        "nch-general-filter_out_regexp_info_reverse",
         "nch-view-show_window_column_information",
         "nch-view-show_window_column_alias",
         "nch-view-show_window_column_flags",
@@ -412,7 +417,8 @@ NCHOptions.prototype = {
        "nch-general-worktime-from",
        "nch-general-worktime-to",
         "nch-general-filter_out_regexp_hosts_value",
-        "nch-general-filter_out_regexp_services_value"
+        "nch-general-filter_out_regexp_services_value",
+        "nch-general-filter_out_regexp_info_value"
         ];
 	  for (var i = 0; i < STRtextboxes.length; ++i) {
   		var textbox = document.getElementById(STRtextboxes[i]);
@@ -511,8 +517,10 @@ NCHOptions.prototype = {
         "nch-general-filter_out_all_unknown",
         "nch-general-filter_out_regexp_hosts",
         "nch-general-filter_out_regexp_services",
+        "nch-general-filter_out_regexp_info",
         "nch-general-filter_out_regexp_hosts_reverse",
         "nch-general-filter_out_regexp_services_reverse",
+        "nch-general-filter_out_regexp_info_reverse",
         "nch-view-show_window_column_information",
         "nch-view-show_window_column_alias",
         "nch-view-show_window_column_flags",
@@ -578,7 +586,8 @@ NCHOptions.prototype = {
        "nch-general-worktime-from",
        "nch-general-worktime-to",
         "nch-general-filter_out_regexp_hosts_value",
-        "nch-general-filter_out_regexp_services_value"
+        "nch-general-filter_out_regexp_services_value",
+        "nch-general-filter_out_regexp_info_value"
        ];
 		  for (var i = 0; i < STRtextboxes.length; ++i) {
   			var textbox = document.getElementById(STRtextboxes[i]);

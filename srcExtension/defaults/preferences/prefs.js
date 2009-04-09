@@ -57,10 +57,13 @@ pref("extensions.nagioschecker.filter_out_all_warning", false);
 pref("extensions.nagioschecker.filter_out_all_critical", false);
 pref("extensions.nagioschecker.filter_out_regexp_hosts", false);
 pref("extensions.nagioschecker.filter_out_regexp_services", false);
+pref("extensions.nagioschecker.filter_out_regexp_info", false);
 pref("extensions.nagioschecker.filter_out_regexp_hosts_value", "");
 pref("extensions.nagioschecker.filter_out_regexp_hosts_reverse", false);
 pref("extensions.nagioschecker.filter_out_regexp_services_value", "");
 pref("extensions.nagioschecker.filter_out_regexp_services_reverse", false);
+pref("extensions.nagioschecker.filter_out_regexp_info_value", "");
+pref("extensions.nagioschecker.filter_out_regexp_info_reverse", false);
 pref("extensions.nagioschecker.filter_out_flapping", false);
 
 pref("extensions.nagioschecker.sound_warning", 0);

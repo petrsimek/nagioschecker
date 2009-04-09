@@ -417,6 +417,9 @@ NCH.prototype = {
 			filter_out_regexp_services:['bool',false],
 			filter_out_regexp_services_value:['char',''],
 			filter_out_regexp_services_reverse:['bool',false],
+			filter_out_regexp_info:['bool',false],
+			filter_out_regexp_info_value:['char',''],
+			filter_out_regexp_info_reverse:['bool',false],
 			filter_out_flapping:['bool',false],
 			refresh:['int',5],
 			refreshsec:['int',0],
@@ -938,6 +941,32 @@ NCH.prototype = {
 							    )
 						    )
 					    )
+
+					    &&
+					    (
+					    	(!this.pref.filter_out_regexp_info) 
+					    	|| 
+					    	(
+					    		(this.pref.filter_out_regexp_info) 
+					    		&& 
+					    		(probls[j].info) 
+					    		&&  
+					    		(
+					    			(
+					    				(!this.pref.filter_out_regexp_info_reverse) 
+					    				&& 
+					    				(!probls[j].info.match(new RegExp(this.pref.filter_out_regexp_info_value)))
+					    			) 
+					    			|| 
+					    			(
+					    				(this.pref.filter_out_regexp_info_reverse) 
+					    				&& 
+					    				(probls[j].info.match(new RegExp(this.pref.filter_out_regexp_info_value)))
+					    			)
+					    		)
+					    	)
+					    )
+					    
 					    ) {
 							var uniq = this._servers[i].name+"-"+probls[j].host+"-"+probls[j].service+"-"+probls[j].status;
 							newProblems[uniq]=probls[j];

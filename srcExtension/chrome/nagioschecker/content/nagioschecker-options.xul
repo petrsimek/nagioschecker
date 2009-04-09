@@ -102,6 +102,11 @@
 					<textbox prefstring="extensions.nagioschecker.filter_out_regexp_services_value" id="nch-general-filter_out_regexp_services_value" size="20"/>
         			<checkbox prefstring="extensions.nagioschecker.filter_out_regexp_services_reverse" id="nch-general-filter_out_regexp_services_reverse" label="&nch.prefs.reverseexp;"/>
 				</hbox>
+				<hbox>
+        			<checkbox prefstring="extensions.nagioschecker.filter_out_regexp_info" id="nch-general-filter_out_regexp_info" label="&nch.prefs.infomatchingregexp;:" oncommand="gNCHOptions.updateRECheckboxes();"/>
+					<textbox prefstring="extensions.nagioschecker.filter_out_regexp_info_value" id="nch-general-filter_out_regexp_info_value" size="20"/>
+        			<checkbox prefstring="extensions.nagioschecker.filter_out_regexp_info_reverse" id="nch-general-filter_out_regexp_info_reverse" label="&nch.prefs.reverseexp;"/>
+				</hbox>
 
             </vbox>
    
@@ -463,7 +468,7 @@
       				<description class="nch">Jose Luis Martinez, Cameron Moore (US), Ivo Musil (CZ), Michal Sviba (CZ)</description>
      				<separator class="thin"/>
       				<label value="&nch.about.ideasandbugreports;:" class="nagioschecker-about-sub-title"/>
-      				<description class="nch">Marcus Barczak, Carlos Basura, batzel, cloudyster, Daniele (IT), Mike Freitas (US), Andrea Gabellini (IT), Raphael Gangneux (UK), gionenn, Jörgen Hägg (SW), Douglas Hank (US), Axel Jäger (DE), jody.longtin1177, Michael Jewett (CA), Robbert Kouprie (NL), Bernard Li (CA), Geoffrey Lemaire (BE), Erwin Lubbers (NL), malcolmrmclean, Tiago Martins (PT), pplusdomain, palloberg, Aleš Petrovický (CZ), Oliver Regellmann (DE), Johannes Weiser, Phil Wenzlawski (DE)</description>
+      				<description class="nch">Marcus Barczak, Carlos Basura, batzel, cloudyster, Daniele (IT), emir.imamagic, Mike Freitas (US), Andrea Gabellini (IT), Raphael Gangneux (UK), gionenn, Jörgen Hägg (SW), Douglas Hank (US), Axel Jäger (DE), jody.longtin1177, Michael Jewett (CA), Robbert Kouprie (NL), Bernard Li (CA), Geoffrey Lemaire (BE), Erwin Lubbers (NL), malcolmrmclean, Tiago Martins (PT), pplusdomain, palloberg, Aleš Petrovický (CZ), Oliver Regellmann (DE), tblanchin, Johannes Weiser, Phil Wenzlawski (DE)</description>
      				
       			</tabpanel>
       			
@@ -473,7 +478,7 @@
 
      				<separator class="thin"/>
       				<label value="&nch.about.donators;:" class="nagioschecker-about-sub-title"/>
-      				<description class="nch">A. Aleksandrovs (LA), A. Artigues (US), J. Avery (UK), J. Batzel (US), C. Carluccio (UR), M. Cintolesi (IT), A. Davies (UK), G. Hernandez (ME), E. Martucci (US), X. Potel (FR), PSS Hosting.com (US), D. Rubel (US), A. Smith (US), K. Snorrason (IC), M. Tancil (US), J. Wigle (US), K. Wong (US), Zedcore Systems Ltd (UK)</description>
+      				<description class="nch">A. Aleksandrovs (LA), A. Artigues (US), J. Avery (UK), J. Batzel (US), C. Carluccio (UR), M. Cintolesi (IT), A. Davies (UK), G. Hernandez (ME), KLASiKAHL Source Servers (US), E. Martucci (US), X. Potel (FR), PSS Hosting.com (US), D. Rubel (US), A. Smith (US), K. Snorrason (IC), P. Stern (US), M. Walster (UK), M. Tancil (US), J. Wigle (US), K. Wong (US), Zedcore Systems Ltd (UK)</description>
 					<separator class="thin"/>
 					<hbox flex="1">
 						<vbox>

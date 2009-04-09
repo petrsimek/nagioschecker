@@ -1,3 +1,8 @@
+0.13.9.5 (beta)
+* NEW: Allowed servicegroup in status.cgi
+* NEW: Regexp filtering of Information column
+* BUGFIX: Freezed sometimes while showing Unknown alerts (*.properties translation bug)
+
 0.13.9.4 (beta)
 * INTERNAL: rewritten tool for constructing status url with parameters
 * NEW: redesigned options dialog to be smaller for using on smaller displays (netbooks etc.)
