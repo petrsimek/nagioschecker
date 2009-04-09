@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?><RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:em="http://www.mozilla.org/2004/em-rdf#">
 
   <Description about="urn:mozilla:install-manifest">
     <em:id>{123b2220-59cb-11db-b0de-0800200c9a66}</em:id>
-    <em:version>0.13.9.4</em:version>
+    <em:version>0.13.9.5</em:version>
     <em:type>2</em:type>
 
     <!-- Firefox --> 
@@ -29,5 +29,5 @@
     <em:creator>Petr Simek</em:creator>
     <em:optionsURL>chrome://nagioschecker/content/nagioschecker-options.xul</em:optionsURL>
     <!-- Packages, Skins and Locales that this extension registers -->
-	  <em:homepageURL>http://code.google.com/p/nagioschecker/</em:homepageURL></Description>
+	  <em:homepageURL>http://code.google.com/p/nagioschecker/</em:homepageURL><em:aboutURL/><em:iconURL/><em:updateURL/><em:updateKey/><em:hidden/></Description>
 </RDF>
