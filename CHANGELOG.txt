@@ -1,5 +1,22 @@
 0.14
-- versions 0.13.9-0.13.9.5 released to public
+- beta versions 0.13.9-0.13.9.5 released to public:
+* NEW: Allowed servicegroup in status.cgi
+* NEW: Regexp filtering of Information column
+* BUGFIX: Freezed sometimes while showing Unknown alerts (*.properties translation bug)
+* INTERNAL: rewritten tool for constructing status url with parameters
+* NEW: redesigned options dialog to be smaller for using on smaller displays (netbooks etc.)
+* NEW: removed buttons for edit, enable/disable and remove server in Settings dialog and context menu used instead.
+* NEW: double click on server enable/disable it
+* NEW: About dialog moved into Settings dialog
+* BUGFIX: correct handling status url with parameters
+* INTERNAL: install.rdf updated for Thunderbird 3.0 beta
+* INTERNAL: install.rdf updated for Firefox 3.5 beta, minVersion 3.0
+* BUGFIX: Fixed window.title bug (thanks to pplusdomain)
+* BUGFIX: Little improved strange "jumping" of information in statusbar in FF 3.1
+* BUGFIX: Fixed not playing sound when new hostdown/unreachable appears although option was set.
+* NEW: Allowed using seconds in update interval
+* FIX: filtering scheduled downtime (by moorereason)
+* LANG: added zh-CN (by farmer.luo) + updated others
 
 0.13.9.5 (beta)
 * NEW: Allowed servicegroup in status.cgi
