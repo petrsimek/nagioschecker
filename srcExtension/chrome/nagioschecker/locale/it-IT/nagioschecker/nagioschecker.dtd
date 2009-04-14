@@ -46,17 +46,17 @@
 <!ENTITY nch.about.alphabeticallylisted "In ordine alfabetico">
 <!ENTITY nch.prefs.display "Aspetto">
 <!ENTITY nch.prefs.watchedsystems "Sistemi di Nagios osservati">
-<!ENTITY nch.prefs.addnew "Aggiungi…">
-<!ENTITY nch.prefs.edit "Modifica…">
+<!ENTITY nch.prefs.addnew "Aggiungi">
+<!ENTITY nch.prefs.edit "Modifica">
 <!ENTITY nch.prefs.remove "Elimina">
-<!ENTITY nch.prefs.statusbardetaillevel "Visualizzazione informazioni nella barra di stato">
-<!ENTITY nch.prefs.long "dimensioni lunghe">
-<!ENTITY nch.prefs.short "dimensioni corte">
-<!ENTITY nch.prefs.numbersonly "solo numeri">
-<!ENTITY nch.prefs.colorsonly "solo colori">
-<!ENTITY nch.prefs.infowindowtype "Tipo di finestra delle informazioni">
-<!ENTITY nch.prefs.allinonewindow "una finestra per tutti i problemi">
-<!ENTITY nch.prefs.individualwindows "una finestra individuale per ogni tipo di problema">
+<!ENTITY nch.prefs.statusbardetaillevel "Dettagli da visualizzare nella barra di stato">
+<!ENTITY nch.prefs.long "Dimensioni lunghe">
+<!ENTITY nch.prefs.short "Dimensioni corte">
+<!ENTITY nch.prefs.numbersonly "Solo numeri">
+<!ENTITY nch.prefs.colorsonly "Solo colori">
+<!ENTITY nch.prefs.infowindowtype "Pop-up delle informazioni da visualizzare">
+<!ENTITY nch.prefs.allinonewindow "Mostra un pop-up unico per tutti i problemi">
+<!ENTITY nch.prefs.individualwindows "Mostra un pop-up individuale per ogni tipo di problema">
 <!ENTITY nch.prefs.showinstatusbar "Elementi da mostrare nella barra di stato">
 <!ENTITY nch.prefs.hostdown "Server giù">
 <!ENTITY nch.prefs.hostunreachable "Server irraggiungibile">
@@ -98,8 +98,8 @@
 <!ENTITY nch.prefs.unreachable "Irraggiungibile">
 <!ENTITY nch.prefs.replay "Riproduci">
 <!ENTITY nch.prefs.getaliases "Scarica alias dei server">
-<!ENTITY nch.prefs.shortwithservername "nomi brevi dei server">
-<!ENTITY nch.prefs.numbersonlywithservername "solo numeri per i nomi dei server">
+<!ENTITY nch.prefs.shortwithservername "Nomi brevi dei server">
+<!ENTITY nch.prefs.numbersonlywithservername "Solo numeri per i nomi dei server">
 <!ENTITY nch.prefs.totalnumbers "Numeri totali">
 <!ENTITY nch.prefs.totalnumbersforeveryserver "Numeri totali per ogni server">
 <!ENTITY nch.prefs.alldownhosts "Tutti i server giù">
@@ -114,6 +114,7 @@
 <!ENTITY nch.prefs.makedonation "Effettua una donazione">
 <!ENTITY nch.prefs.hostsmatchingregexp "Server corrispondenti ad espressioni regolari">
 <!ENTITY nch.prefs.servicesmatchingregexp "Servizi corrispondenti ad espressioni regolari">
+<!ENTITY nch.prefs.infomatchingregexp "Informazioni sulla colonna delle espressioni regolari">
 <!ENTITY nch.prefs.allflapping "Tutti i server ed i servizi instabili">
 <!ENTITY nch.prefs.disable "Disattiva">
 <!ENTITY nch.prefs.disabled "Disattivato">
@@ -141,3 +142,9 @@
 <!ENTITY nch.prefs.friday_short "Ven">
 <!ENTITY nch.prefs.saturday_short "Sab">
 <!ENTITY nch.prefs.sunday_short "Dom">
+<!ENTITY nch.about.license "Licenza">
+<!ENTITY nch.prefs.nagiossystems "Sistemi Nagios">
+<!ENTITY nch.prefs.detaillevel "Dettagli da visualizzare">
+<!ENTITY nch.prefs.windowtype "Tipo di pop-up">
+<!ENTITY nch.prefs.statusbar "Barra di stato">
+<!ENTITY nch.prefs.infowindow "Finestra delle informazioni">

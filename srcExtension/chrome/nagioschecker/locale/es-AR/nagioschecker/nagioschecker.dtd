@@ -16,6 +16,8 @@
 <!ENTITY nch.prefs.username "Nombre de Usuarios">
 <!ENTITY nch.prefs.password "Contraseña">
 <!ENTITY nch.prefs.versionolderthan20 "Versión de Nagios anterior a la 2.0">
+<!ENTITY nch.prefs.servertype "Server type">
+<!ENTITY nch.prefs.standalonenagios "Standalone Nagios">
 <!ENTITY nch.prefs.plainpass "NO almacenar estas credenciales utilizando el Administrador de Claves del navegador">
 <!ENTITY nch.prefs.exampleurl "Ej.: http://www.sucompania.com/nagios/">
 <!ENTITY nch.prefs.examplestatusurl "Ej.: http://www.sucompania.com/nagios/cgi-bin/status.cgi">
@@ -35,9 +37,13 @@
 <!ENTITY nch.about.translators "Traductores">
 <!ENTITY nch.about.author "Petr Simek">
 <!ENTITY nch.about.homepage "Página principal">
+<!ENTITY nch.about.copyrights "Copyrights">
 <!ENTITY nch.about.nagioscopyrights "Nagios y el logo de Nagios son marcas registradas de Ethan Galstad.">
 <!ENTITY nch.about.codecontributors "Contribuyeron en la programación">
 <!ENTITY nch.about.ideasandbugreports "Ideas y Reportes de Errores">
+<!ENTITY nch.about.fordonators "For donators">
+<!ENTITY nch.about.donators "Donators">
+<!ENTITY nch.about.alphabeticallylisted "Alphabetically listed">
 <!ENTITY nch.prefs.display "Mostrar">
 <!ENTITY nch.prefs.watchedsystems "Página(s) de Nagios a Mostrar">
 <!ENTITY nch.prefs.addnew "Agregar nuevo">
@@ -47,6 +53,7 @@
 <!ENTITY nch.prefs.long "Largo">
 <!ENTITY nch.prefs.short "Corto">
 <!ENTITY nch.prefs.numbersonly "Números solamente">
+<!ENTITY nch.prefs.colorsonly "Colors only">
 <!ENTITY nch.prefs.infowindowtype "Clase de Ventana de Información">
 <!ENTITY nch.prefs.allinonewindow "Todos los problemas en una sola ventana">
 <!ENTITY nch.prefs.individualwindows "Ventanas individuales para cada clase de problema">
@@ -107,6 +114,7 @@
 <!ENTITY nch.prefs.makedonation "Hacer una donación">
 <!ENTITY nch.prefs.hostsmatchingregexp "Equipos que coinciden con la expresión regular">
 <!ENTITY nch.prefs.servicesmatchingregexp "Servicios que coinciden con la expresión regular">
+<!ENTITY nch.prefs.infomatchingregexp "Information column matching regular expression">
 <!ENTITY nch.prefs.allflapping "Todos los equipos y servicios que cambiaron">
 <!ENTITY nch.prefs.disable "Deshabilitar">
 <!ENTITY nch.prefs.disabled "Deshabilitado">
@@ -116,3 +124,27 @@
 <!ENTITY nch.prefs.movedown "Bajar">
 <!ENTITY nch.prefs.reverseexp "invertir la expresión">
 <!ENTITY nch.prefs.showinfowindowcolumns "Show columns in information window">
+<!ENTITY nch.prefs.aliascolumn "Host (alias)">
+<!ENTITY nch.prefs.infocolumn "Information">
+<!ENTITY nch.prefs.flagscolumn "Flags">
+<!ENTITY nch.prefs.statuscolumn "Status">
+<!ENTITY nch.prefs.attemptcolumn "Attempt">
+<!ENTITY nch.prefs.minimalservicesattempt "Minimal service&apos;s attempt to play the sound">
+<!ENTITY nch.prefs.advanced "Advanced">
+<!ENTITY nch.advanced.downloadtimeout "Status.cgi download timeout (in seconds)">
+<!ENTITY nch.advanced.prefertextconfig "Prefer loading of settings from an external text file rather than the Firefox internal configuration.">
+<!ENTITY nch.advanced.note_prefertextconfig "Could be useful when Firefox is terminated abnormaly and the unsaved preferences are lost. The configuration file will be loaded only when a Firefox window is opened first time.">
+<!ENTITY nch.prefs.working_days "Working days">
+<!ENTITY nch.prefs.monday_short "Mon">
+<!ENTITY nch.prefs.tuesday_short "Tue">
+<!ENTITY nch.prefs.wednesday_short "Wed">
+<!ENTITY nch.prefs.thursday_short "Thu">
+<!ENTITY nch.prefs.friday_short "Fri">
+<!ENTITY nch.prefs.saturday_short "Sat">
+<!ENTITY nch.prefs.sunday_short "Sun">
+<!ENTITY nch.about.license "License">
+<!ENTITY nch.prefs.nagiossystems "Nagios Systems">
+<!ENTITY nch.prefs.detaillevel "Detail Level">
+<!ENTITY nch.prefs.windowtype "Window Type">
+<!ENTITY nch.prefs.statusbar "StatusBar">
+<!ENTITY nch.prefs.infowindow "Information Window">

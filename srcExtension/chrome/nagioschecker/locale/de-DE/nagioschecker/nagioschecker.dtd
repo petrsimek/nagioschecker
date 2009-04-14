@@ -114,6 +114,7 @@
 <!ENTITY nch.prefs.makedonation "Spenden">
 <!ENTITY nch.prefs.hostsmatchingregexp "Hosts die einem regulärem Ausdruck entsprechen">
 <!ENTITY nch.prefs.servicesmatchingregexp "Services die einem regulärem Ausdruck entsprechen">
+<!ENTITY nch.prefs.infomatchingregexp "Information column matching regular expression">
 <!ENTITY nch.prefs.allflapping "Alle schwankenden Hosts und Services">
 <!ENTITY nch.prefs.disable "Deaktivieren">
 <!ENTITY nch.prefs.disabled "Deaktiviert">
@@ -141,3 +142,9 @@
 <!ENTITY nch.prefs.friday_short "Fr">
 <!ENTITY nch.prefs.saturday_short "Sa">
 <!ENTITY nch.prefs.sunday_short "So">
+<!ENTITY nch.about.license "License">
+<!ENTITY nch.prefs.nagiossystems "Nagios Systems">
+<!ENTITY nch.prefs.detaillevel "Detail Level">
+<!ENTITY nch.prefs.windowtype "Window Type">
+<!ENTITY nch.prefs.statusbar "StatusBar">
+<!ENTITY nch.prefs.infowindow "Information Window">

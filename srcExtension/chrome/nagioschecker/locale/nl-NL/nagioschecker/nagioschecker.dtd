@@ -97,7 +97,7 @@
 <!ENTITY nch.prefs.down "Plat">
 <!ENTITY nch.prefs.unreachable "Onbereikbaar">
 <!ENTITY nch.prefs.replay "Opnieuw afspelen">
-<!ENTITY nch.prefs.getaliases "Host aliases downloaden">
+<!ENTITY nch.prefs.getaliases "Hostaliases downloaden">
 <!ENTITY nch.prefs.shortwithservername "Kort met servernamen">
 <!ENTITY nch.prefs.numbersonlywithservername "Alleen aantallen met servernamen">
 <!ENTITY nch.prefs.totalnumbers "Met totale aantallen">
@@ -114,6 +114,7 @@
 <!ENTITY nch.prefs.makedonation "Doneren">
 <!ENTITY nch.prefs.hostsmatchingregexp "Hosts die overeenkomen met een reguliere expressie">
 <!ENTITY nch.prefs.servicesmatchingregexp "Diensten die overeenkomen met een reguliere expressie">
+<!ENTITY nch.prefs.infomatchingregexp "Informatiekolom die overeenkomt met reguliere expressie">
 <!ENTITY nch.prefs.allflapping "Alle onregelmatige hosts en diensten">
 <!ENTITY nch.prefs.disable "Uitschakelen">
 <!ENTITY nch.prefs.disabled "Uitgeschakeld">
@@ -141,3 +142,9 @@
 <!ENTITY nch.prefs.friday_short "Vr">
 <!ENTITY nch.prefs.saturday_short "Za">
 <!ENTITY nch.prefs.sunday_short "Zo">
+<!ENTITY nch.about.license "Licentie">
+<!ENTITY nch.prefs.nagiossystems "Nagios systemen">
+<!ENTITY nch.prefs.detaillevel "Detailniveau">
+<!ENTITY nch.prefs.windowtype "Venstertype">
+<!ENTITY nch.prefs.statusbar "Statusbalk">
+<!ENTITY nch.prefs.infowindow "Informatievenster">

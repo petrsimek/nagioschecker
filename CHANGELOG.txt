@@ -1,3 +1,6 @@
+0.14
+- versions 0.13.9-0.13.9.5 released to public
+
 0.13.9.5 (beta)
 * NEW: Allowed servicegroup in status.cgi
 * NEW: Regexp filtering of Information column

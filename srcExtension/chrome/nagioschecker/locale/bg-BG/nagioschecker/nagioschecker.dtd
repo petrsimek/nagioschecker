@@ -114,6 +114,7 @@
 <!ENTITY nch.prefs.makedonation "Направете дарение">
 <!ENTITY nch.prefs.hostsmatchingregexp "Обекти отговарящи на следната фраза">
 <!ENTITY nch.prefs.servicesmatchingregexp "Услуги отговарящи на следната фраза">
+<!ENTITY nch.prefs.infomatchingregexp "Информационна колона съответстваща на обичаен израз">
 <!ENTITY nch.prefs.allflapping "Всички нестабилни обекти и услуги">
 <!ENTITY nch.prefs.disable "Забраняване">
 <!ENTITY nch.prefs.disabled "Забранен">
@@ -141,3 +142,9 @@
 <!ENTITY nch.prefs.friday_short "Пет">
 <!ENTITY nch.prefs.saturday_short "Съб">
 <!ENTITY nch.prefs.sunday_short "Нед">
+<!ENTITY nch.about.license "Лиценз">
+<!ENTITY nch.prefs.nagiossystems "Нагиос Системи">
+<!ENTITY nch.prefs.detaillevel "Подробно Ниво">
+<!ENTITY nch.prefs.windowtype "Тип Прозорци">
+<!ENTITY nch.prefs.statusbar "СтатусБар">
+<!ENTITY nch.prefs.infowindow "Инфо Прозорец">

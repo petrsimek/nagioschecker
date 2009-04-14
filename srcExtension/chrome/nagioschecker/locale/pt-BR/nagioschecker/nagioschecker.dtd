@@ -114,6 +114,7 @@
 <!ENTITY nch.prefs.makedonation "Faça uma doação">
 <!ENTITY nch.prefs.hostsmatchingregexp "Hosts que combinam com a expressão regular">
 <!ENTITY nch.prefs.servicesmatchingregexp "Serviços que combinam com a expressão regular">
+<!ENTITY nch.prefs.infomatchingregexp "Coluna de informação combina com expressão regular">
 <!ENTITY nch.prefs.allflapping "Sinalizar todos os hosts e serviços">
 <!ENTITY nch.prefs.disable "Desabilitar">
 <!ENTITY nch.prefs.disabled "Desabilitado">
@@ -141,3 +142,9 @@
 <!ENTITY nch.prefs.friday_short "Sex">
 <!ENTITY nch.prefs.saturday_short "Sab">
 <!ENTITY nch.prefs.sunday_short "Dom">
+<!ENTITY nch.about.license "Licença">
+<!ENTITY nch.prefs.nagiossystems "Sistema Nagios">
+<!ENTITY nch.prefs.detaillevel "Nível de Detalhes">
+<!ENTITY nch.prefs.windowtype "Tipo de Janela">
+<!ENTITY nch.prefs.statusbar "Barra de Status">
+<!ENTITY nch.prefs.infowindow "Janela de Informação">

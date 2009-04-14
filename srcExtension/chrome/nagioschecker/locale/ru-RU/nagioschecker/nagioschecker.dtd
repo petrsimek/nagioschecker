@@ -114,6 +114,7 @@
 <!ENTITY nch.prefs.makedonation "Пожертвования">
 <!ENTITY nch.prefs.hostsmatchingregexp "Хосты, соответствующие рег.выражению">
 <!ENTITY nch.prefs.servicesmatchingregexp "Сервисы, соответствующие рег.выражению">
+<!ENTITY nch.prefs.infomatchingregexp "Information column matching regular expression">
 <!ENTITY nch.prefs.allflapping "Все flapping хосты и сервисы">
 <!ENTITY nch.prefs.disable "Отключить">
 <!ENTITY nch.prefs.disabled "Отключено">
@@ -141,3 +142,9 @@
 <!ENTITY nch.prefs.friday_short "Пт">
 <!ENTITY nch.prefs.saturday_short "Сб">
 <!ENTITY nch.prefs.sunday_short "Вс">
+<!ENTITY nch.about.license "License">
+<!ENTITY nch.prefs.nagiossystems "Nagios Systems">
+<!ENTITY nch.prefs.detaillevel "Detail Level">
+<!ENTITY nch.prefs.windowtype "Window Type">
+<!ENTITY nch.prefs.statusbar "StatusBar">
+<!ENTITY nch.prefs.infowindow "Information Window">

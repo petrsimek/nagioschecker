@@ -16,6 +16,8 @@
 <!ENTITY nch.prefs.username "Brukernavn">
 <!ENTITY nch.prefs.password "Passord">
 <!ENTITY nch.prefs.versionolderthan20 "Nagios versjon eldre enn 2.0">
+<!ENTITY nch.prefs.servertype "Server type">
+<!ENTITY nch.prefs.standalonenagios "Standalone Nagios">
 <!ENTITY nch.prefs.plainpass "Ikke lagre brukernavn og passord i nettleseren">
 <!ENTITY nch.prefs.exampleurl "F.eks.: http://www.dittfirma.no/nagios">
 <!ENTITY nch.prefs.examplestatusurl "F.eks.: http://dittfirma.no/cgi-bin/status.cgi">
@@ -112,6 +114,8 @@
 <!ENTITY nch.prefs.makedonation "Gi donasjon">
 <!ENTITY nch.prefs.hostsmatchingregexp "Verter som samsvarer med vanlig utrykk">
 <!ENTITY nch.prefs.servicesmatchingregexp "Tjenester som samsvarer med vanlig utrykk">
+<!ENTITY nch.prefs.infomatchingregexp "Information column matching regular expression">
+<!ENTITY nch.prefs.allflapping "All flapping hosts and services">
 <!ENTITY nch.prefs.disable "Deaktiver">
 <!ENTITY nch.prefs.disabled "Deaktivert">
 <!ENTITY nch.prefs.onaddons "På Mozilla utvidelsesside">
@@ -122,8 +126,14 @@
 <!ENTITY nch.prefs.showinfowindowcolumns "Hvis koloner i informasjonsvindu">
 <!ENTITY nch.prefs.aliascolumn "Vert (alias)">
 <!ENTITY nch.prefs.infocolumn "Informasjon">
+<!ENTITY nch.prefs.flagscolumn "Flags">
+<!ENTITY nch.prefs.statuscolumn "Status">
 <!ENTITY nch.prefs.attemptcolumn "Forsøk">
+<!ENTITY nch.prefs.minimalservicesattempt "Minimal service&apos;s attempt to play the sound">
 <!ENTITY nch.prefs.advanced "Avansert">
+<!ENTITY nch.advanced.downloadtimeout "Status.cgi download timeout (in seconds)">
+<!ENTITY nch.advanced.prefertextconfig "Prefer loading of settings from an external text file rather than the Firefox internal configuration.">
+<!ENTITY nch.advanced.note_prefertextconfig "Could be useful when Firefox is terminated abnormaly and the unsaved preferences are lost. The configuration file will be loaded only when a Firefox window is opened first time.">
 <!ENTITY nch.prefs.working_days "Virksomhetsdager">
 <!ENTITY nch.prefs.monday_short "Man">
 <!ENTITY nch.prefs.tuesday_short "Tir">
@@ -132,3 +142,9 @@
 <!ENTITY nch.prefs.friday_short "Fre">
 <!ENTITY nch.prefs.saturday_short "Lør">
 <!ENTITY nch.prefs.sunday_short "Søn">
+<!ENTITY nch.about.license "License">
+<!ENTITY nch.prefs.nagiossystems "Nagios Systems">
+<!ENTITY nch.prefs.detaillevel "Detail Level">
+<!ENTITY nch.prefs.windowtype "Window Type">
+<!ENTITY nch.prefs.statusbar "StatusBar">
+<!ENTITY nch.prefs.infowindow "Information Window">

@@ -114,6 +114,7 @@
 <!ENTITY nch.prefs.makedonation "Faire une donation">
 <!ENTITY nch.prefs.hostsmatchingregexp "Hôtes correspondant à cette expression régulière">
 <!ENTITY nch.prefs.servicesmatchingregexp "Services correspondant à cette expression régulière">
+<!ENTITY nch.prefs.infomatchingregexp "Colonne information correspondant à cette expression régulière">
 <!ENTITY nch.prefs.allflapping "Tous les hôtes et services instables">
 <!ENTITY nch.prefs.disable "Désactiver">
 <!ENTITY nch.prefs.disabled "Désactivé">
@@ -141,3 +142,9 @@
 <!ENTITY nch.prefs.friday_short "Ven">
 <!ENTITY nch.prefs.saturday_short "Sam">
 <!ENTITY nch.prefs.sunday_short "Dim">
+<!ENTITY nch.about.license "Licence">
+<!ENTITY nch.prefs.nagiossystems "Systèmes Nagios">
+<!ENTITY nch.prefs.detaillevel "Niveau de détail">
+<!ENTITY nch.prefs.windowtype "Type de fenêtre">
+<!ENTITY nch.prefs.statusbar "Barre d&apos;état">
+<!ENTITY nch.prefs.infowindow "Fenêtre d&apos;information">

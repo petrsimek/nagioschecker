@@ -114,6 +114,7 @@
 <!ENTITY nch.prefs.makedonation "贡献给作者">
 <!ENTITY nch.prefs.hostsmatchingregexp "主机符合指定表达式">
 <!ENTITY nch.prefs.servicesmatchingregexp "服务符合指定表达式">
+<!ENTITY nch.prefs.infomatchingregexp "Information column matching regular expression">
 <!ENTITY nch.prefs.allflapping "全部移动的主机及服务">
 <!ENTITY nch.prefs.disable "停用">
 <!ENTITY nch.prefs.disabled "已停用">
@@ -141,3 +142,9 @@
 <!ENTITY nch.prefs.friday_short "五">
 <!ENTITY nch.prefs.saturday_short "六">
 <!ENTITY nch.prefs.sunday_short "日">
+<!ENTITY nch.about.license "License">
+<!ENTITY nch.prefs.nagiossystems "Nagios Systems">
+<!ENTITY nch.prefs.detaillevel "Detail Level">
+<!ENTITY nch.prefs.windowtype "Window Type">
+<!ENTITY nch.prefs.statusbar "StatusBar">
+<!ENTITY nch.prefs.infowindow "Information Window">
