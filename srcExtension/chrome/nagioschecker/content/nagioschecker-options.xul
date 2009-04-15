@@ -12,7 +12,9 @@
 	ondialogaccept="return gNCHOptions.savePref();"
 	buttons="accept,cancel,extra2"
   buttonlabelextra2="&nch.prefs.makedonation;..."
-  ondialogextra2="gNCHOptions.showAbout(3);">
+  ondialogextra2="gNCHOptions.showAbout(3);"
+
+  >
 
   <script type="application/x-javascript" src="chrome://nagioschecker/content/utils.js"/>
 
@@ -49,12 +51,12 @@
       <tab label="&nch.about;"/>
     </tabs>
    
-    <tabpanels  style="max-height: 250px;" flex="1">
+    <tabpanels flex="1">
     
 
       <tabpanel  orient="vertical">
       
-          <tree flex="2" id="hostList" hidecolumnpicker="true" onselect="gNCHOptions.hostSelected();" ondblclick="gNCHOptions.actionOnSelectedServer('able');"	seltype="single" context="treemenu">
+          <tree flex="1" id="hostList" hidecolumnpicker="true" onselect="gNCHOptions.hostSelected();" ondblclick="gNCHOptions.actionOnSelectedServer('able');"	seltype="single" context="treemenu">
             <treecols>
               <treecol id="nameCol" label="&nch.prefs.name;" flex="1"/>
               <splitter class="tree-splitter"/>
@@ -76,7 +78,7 @@
       </tabpanel>
  
       <tabpanel >
-            <vbox flex="1" style="overflow:auto">
+            <vbox flex="1" style="overflow:auto" maxheight="250">
             <label>&nch.prefs.filterout;:</label>
               <checkbox prefstring="extensions.nagioschecker.filter_out_acknowledged" id="nch-general-filter_out_acknowledged" label="&nch.prefs.acknowledged;"/>
               <checkbox prefstring="extensions.nagioschecker.filter_out_disabled_notifications" id="nch-general-filter_out_disabled_notifications" label="&nch.prefs.disabled_notifications;"/>

@@ -29,9 +29,9 @@ var gMini=false;
         <menuitem id="nagioschecker-stoprun" label="" oncommand="nagioschecker.switchStop();" />
         <menuitem id="nagioschecker-reload" label="&nch.menu.updatenow;" oncommand="nagioschecker.doUpdate();" />
   	    <menuseparator id="menu-separe2"/>  
-        <menuitem label="&nch.menu.options;..." oncommand="openDialog('chrome://nagioschecker/content/nagioschecker-options.xul','nagioschecker-options','centerscreen,dialog,chrome,dependent').focus();" />
+        <menuitem label="&nch.menu.options;..." oncommand="openDialog('chrome://nagioschecker/content/nagioschecker-options.xul','nagioschecker-options','centerscreen,dialog,chrome,dependent,resizable').focus();" />
   	    <menuseparator />
-        <menuitem label="&nch.about;..." oncommand="openDialog('chrome://nagioschecker/content/nagioschecker-options.xul','nagioschecker-options','centerscreen,dialog,chrome,dependent',true).focus();" />
+        <menuitem label="&nch.about;..." oncommand="openDialog('chrome://nagioschecker/content/nagioschecker-options.xul','nagioschecker-options','centerscreen,dialog,chrome,dependent,resizable',true).focus();" />
       </menupopup>
     <popup id="nagioschecker-popup" class="nagioschecker-popup">
 </popup>    
