@@ -1,3 +1,6 @@
+0.14.1
+* BUGFIX: Bad status.cgi parameters for Host problems page
+
 0.14
 - beta versions 0.13.9-0.13.9.5 released to public:
 * NEW: Allowed servicegroup in status.cgi
