@@ -1,3 +1,6 @@
+0.14.2
+* BUGFIX: Fixed construction status.cgi with hardcoded params after 0.14.1 bugfix.  
+
 0.14.1
 * BUGFIX: Bad status.cgi parameters for Host problems page
 
