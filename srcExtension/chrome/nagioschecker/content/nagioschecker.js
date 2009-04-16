@@ -1801,10 +1801,6 @@ function NCHToolTip(pref) {
     if (doc) {
 		
 
-		var separator = doc.createElement("separator");
-		separator.setAttribute("class", "groove-thin");
-		this._rows.appendChild(separator);
-
     var hbd = doc.createElement("hbox");
 		this._rows.appendChild(hbd);
 
@@ -1816,9 +1812,6 @@ function NCHToolTip(pref) {
 		sp.setAttribute("flex", "1");
 		hbd.appendChild(sp);
 
-		var separator = doc.createElement("separator");
-		separator.setAttribute("class", "groove-thin");
-		this._rows.appendChild(separator);
 
     }
 
