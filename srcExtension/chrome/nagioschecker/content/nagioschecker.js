@@ -977,7 +977,9 @@ NCH.prototype = {
 					    if (probls[j].acknowledged) {
 						    isAck[probls[j].host]=true;
 					    }
-					   
+					    if (probls[j].downtime) {
+						    isSched[probls[j].host]=true;
+					    }
 				    }
 			    }
 			}

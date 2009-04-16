@@ -117,7 +117,7 @@
       <tabpanel orient="vertical">
       
       
-		<tabbox>
+		<tabbox flex="1">
    			<tabs>
       			<tab label="&nch.prefs.detaillevel;"/>
       			<tab label="&nch.prefs.windowtype;"/>
@@ -205,7 +205,7 @@
       </tabpanel>
       <tabpanel orient="vertical">
       
-		<tabbox>
+		<tabbox flex="1">
    			<tabs>
       			<tab label="&nch.prefs.utilityrun;"/>
       			<tab label="&nch.prefs.after_click_statusbar;"/>
@@ -275,7 +275,7 @@
 
       <tabpanel orient="vertical">
       
-		<tabbox>
+		<tabbox flex="1">
    			<tabs>
       			<tab label="&nch.prefs.sounds;"/>
       			<tab label="&nch.prefs.soundsbytype;"/>
@@ -320,7 +320,7 @@
 				
 				<tabpanel  orient="vertical">
 
-					<tabbox>
+					<tabbox flex="1">
    						<tabs>
       						<tab label="&nch.prefs.warning;"/>
       						<tab label="&nch.prefs.critical;"/>
@@ -412,7 +412,7 @@
 
       <tabpanel orient="vertical">
 
-  		<tabbox id="about_tb">
+  		<tabbox id="about_tb" flex="1">
    			<tabs>
       			<tab label="&nch.about;"/>
       			<tab label="&nch.about.copyrights;"/>
