@@ -78,7 +78,7 @@
       </tabpanel>
  
       <tabpanel >
-            <vbox flex="1" style="overflow:auto" maxheight="250">
+            <vbox flex="1" style="overflow:auto">
             <label>&nch.prefs.filterout;:</label>
               <checkbox prefstring="extensions.nagioschecker.filter_out_acknowledged" id="nch-general-filter_out_acknowledged" label="&nch.prefs.acknowledged;"/>
               <checkbox prefstring="extensions.nagioschecker.filter_out_disabled_notifications" id="nch-general-filter_out_disabled_notifications" label="&nch.prefs.disabled_notifications;"/>

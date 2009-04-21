@@ -1,7 +1,8 @@
 0.14.3 (unreleased yet)
-* BUGFIX: Settings dialog was not correctly displayed on some OSes
+* BUGFIX: Settings dialog was not correctly displayed on some Linuxes, cancelled maxheight
 * BUGFIX: Filtering services on host with scheduled downtime didn't work
 * BUGFIX: Removed useless separators in popup window headers (causing huge headers in FF3.5)
+* LANG: updated translations from BabelZilla
 
 0.14.2
 * BUGFIX: Fixed construction status.cgi with hardcoded params after 0.14.1 bugfix.  

@@ -114,7 +114,7 @@
 <!ENTITY nch.prefs.makedonation "貢獻給作者">
 <!ENTITY nch.prefs.hostsmatchingregexp "主機符合指定運算式">
 <!ENTITY nch.prefs.servicesmatchingregexp "服務符合指定運算式">
-<!ENTITY nch.prefs.infomatchingregexp "Information column matching regular expression">
+<!ENTITY nch.prefs.infomatchingregexp "資料欄符合指定運算式">
 <!ENTITY nch.prefs.allflapping "全部移動的主機及服務">
 <!ENTITY nch.prefs.disable "停用">
 <!ENTITY nch.prefs.disabled "已停用">
@@ -142,9 +142,9 @@
 <!ENTITY nch.prefs.friday_short "五">
 <!ENTITY nch.prefs.saturday_short "六">
 <!ENTITY nch.prefs.sunday_short "日">
-<!ENTITY nch.about.license "License">
-<!ENTITY nch.prefs.nagiossystems "Nagios Systems">
-<!ENTITY nch.prefs.detaillevel "Detail Level">
-<!ENTITY nch.prefs.windowtype "Window Type">
-<!ENTITY nch.prefs.statusbar "StatusBar">
-<!ENTITY nch.prefs.infowindow "Information Window">
+<!ENTITY nch.about.license "授權">
+<!ENTITY nch.prefs.nagiossystems "Nagios 系統">
+<!ENTITY nch.prefs.detaillevel "詳細程度">
+<!ENTITY nch.prefs.windowtype "視窗類型">
+<!ENTITY nch.prefs.statusbar "狀態列">
+<!ENTITY nch.prefs.infowindow "資訊視窗">

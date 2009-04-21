@@ -114,7 +114,7 @@
 <!ENTITY nch.prefs.makedonation "Bağış yap">
 <!ENTITY nch.prefs.hostsmatchingregexp "Düzenli ifadeyle eşleşen ana sistemler">
 <!ENTITY nch.prefs.servicesmatchingregexp "Düzenli ifadeyle eşleşen hizmetler">
-<!ENTITY nch.prefs.infomatchingregexp "Information column matching regular expression">
+<!ENTITY nch.prefs.infomatchingregexp "Düzenli ifade ile eşleşen bilgi sütunu">
 <!ENTITY nch.prefs.allflapping "Tüm dalgalanan ana bilisayar ve hizmetler">
 <!ENTITY nch.prefs.disable "Etkisiz kıl">
 <!ENTITY nch.prefs.disabled "Etkisiz kılındı">
@@ -142,9 +142,9 @@
 <!ENTITY nch.prefs.friday_short "Cum">
 <!ENTITY nch.prefs.saturday_short "Cmt">
 <!ENTITY nch.prefs.sunday_short "Paz">
-<!ENTITY nch.about.license "License">
-<!ENTITY nch.prefs.nagiossystems "Nagios Systems">
-<!ENTITY nch.prefs.detaillevel "Detail Level">
-<!ENTITY nch.prefs.windowtype "Window Type">
-<!ENTITY nch.prefs.statusbar "StatusBar">
-<!ENTITY nch.prefs.infowindow "Information Window">
+<!ENTITY nch.about.license "Lisans">
+<!ENTITY nch.prefs.nagiossystems "Nagios Sistemleri">
+<!ENTITY nch.prefs.detaillevel "Ayrıntı Seviyesi">
+<!ENTITY nch.prefs.windowtype "Pencere Türü">
+<!ENTITY nch.prefs.statusbar "Durum Çubuğu">
+<!ENTITY nch.prefs.infowindow "Bilgi Penceresi">
