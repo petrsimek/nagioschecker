@@ -8,7 +8,7 @@
 	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
   xmlns:html="http://www.w3.org/1999/xhtml"
 	title="&nch.prefs.title;"
-	orient="vertical"
+	
 	ondialogaccept="return gNCHOptions.savePref();"
 	buttons="accept,cancel,extra2"
   buttonlabelextra2="&nch.prefs.makedonation;..."
@@ -480,7 +480,7 @@
 
      				<separator class="thin"/>
       				<label value="&nch.about.donators;:" class="nagioschecker-about-sub-title"/>
-      				<description class="nch">A. Aleksandrovs (LA), A. Artigues (US), J. Avery (UK), J. Batzel (US), C. Carluccio (UR), M. Cintolesi (IT), A. Davies (UK), G. Hernandez (ME), KLASiKAHL Source Servers (US), E. Martucci (US), X. Potel (FR), PSS Hosting.com (US), D. Rubel (US), A. Smith (US), K. Snorrason (IC), P. Stern (US), M. Walster (UK), M. Tancil (US), J. Wigle (US), K. Wong (US), Zedcore Systems Ltd (UK)</description>
+      				<description class="nch">A. Aleksandrovs (LA), A. Artigues (US), J. Avery (UK), J. Batzel (US), C. Carluccio (UR), M. Cintolesi (IT), A. Davies (UK), G. Hernandez (ME), KLASiKAHL Source Servers (US), E. Martucci (US), X. Potel (FR), PSS Hosting.com (US), D. Rubel (US), A. Smith (US), K. Snorrason (IC), P. Stern (US), M. Walster (UK), M. Tancil (US), J. Wigle (US), Wavecon GmbH (DE), K. Wong (US), Zedcore Systems Ltd (UK)</description>
 					<separator class="thin"/>
 					<hbox flex="1">
 						<vbox>
