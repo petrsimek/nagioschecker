@@ -29,5 +29,5 @@
     <em:creator>Petr Simek</em:creator>
     <em:optionsURL>chrome://nagioschecker/content/nagioschecker-options.xul</em:optionsURL>
     <!-- Packages, Skins and Locales that this extension registers -->
-	  <em:homepageURL>http://code.google.com/p/nagioschecker/</em:homepageURL><em:aboutURL/><em:iconURL/><em:updateURL/><em:updateKey/><em:hidden/></Description>
+	  <em:homepageURL>http://code.google.com/p/nagioschecker/</em:homepageURL></Description>
 </RDF>
