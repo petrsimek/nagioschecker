@@ -65,11 +65,11 @@ function createNagiosUrl(server,type,host,service) {
 
 	if (type!='detail') {
 		if (parsed.queryKey['hostgroup']) {
-			params.push('hostgroup='+escape(parsed.queryKey['hostgroup']));
+			params.push('hostgroup='+nagios_escape(parsed.queryKey['hostgroup']));
 			params.push('style=detail');
 		}
 		else if (parsed.queryKey['servicegroup']) {
-			params.push('servicegroup='+escape(parsed.queryKey['servicegroup']));
+			params.push('servicegroup='+nagios_escape(parsed.queryKey['servicegroup']));
 			params.push('style=detail');			
 		}
 		else {
@@ -90,8 +90,8 @@ function createNagiosUrl(server,type,host,service) {
 		break;
 		case 'detail':
 			params.push('type='+((service) ? '2' : '1'));
-			params.push('host='+escape(host));
-			if (service) params.push('service='+escape(service));
+			params.push('host='+nagios_escape(host));
+			if (service) params.push('service='+nagios_escape(service));
 		break;
 	}
 	
@@ -100,6 +100,9 @@ function createNagiosUrl(server,type,host,service) {
 	return url;
 }
 
+function nagios_escape(url) {
+	return escape(url.replace(/ /,'+'));
+}
 
 function getUglyNodeValue(node,ids) {
   var tmp = node;
