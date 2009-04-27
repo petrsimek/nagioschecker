@@ -1876,8 +1876,8 @@ function NCHToolTip(pref) {
         status_text = nagioschecker.bundle.getString("alertCritical1")
         break;
     }
-
-		row.setAttribute("onclick","nagioschecker.hideNchPopup('"+this._tooltip.id+"');nagioschecker.openTab(nagioschecker.createUrlDevice('"+serPo+"','"+problem.host+"',"+((problem.service) ? "'"+problem.service+"'" : "null")+"))");
+   
+		row.setAttribute("onclick","nagioschecker.hideNchPopup('"+this._tooltip.id+"');nagioschecker.openTab(nagioschecker.createUrlDevice('"+serPo+"','"+problem.host.replace(/\\/,'\\\\')+"',"+((problem.service) ? "'"+problem.service.replace(/\\/,'\\\\')+"'" : "null")+"))");
 
  		this._rows.appendChild(row);
 

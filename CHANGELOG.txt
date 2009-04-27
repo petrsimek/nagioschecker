@@ -1,3 +1,6 @@
+0.14.4 (not released yet)
+* BUGFIX: escaping service name with backslash
+
 0.14.3
 * BUGFIX: Settings dialog was not correctly displayed on some Linuxes, cancelled maxheight
 * BUGFIX: Filtering services on host with scheduled downtime didn't work
