@@ -1,5 +1,6 @@
-0.14.4 (not released yet)
+0.14.4
 * BUGFIX: escaping service name with backslash
+* INTERNAL: update maxVersion to 3.5.*
 
 0.14.3
 * BUGFIX: Settings dialog was not correctly displayed on some Linuxes, cancelled maxheight
