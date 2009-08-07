@@ -18,6 +18,9 @@ pref("extensions.nagioschecker.show_window_column_flags", false);
 pref("extensions.nagioschecker.show_window_column_attempt", false);
 pref("extensions.nagioschecker.show_window_column_status", true);
 
+pref("extensions.nagioschecker.statuses_translation", 0);
+
+
 pref("extensions.nagioschecker.sounds_by_type_down", true);
 pref("extensions.nagioschecker.sounds_by_type_unreachable", true);
 pref("extensions.nagioschecker.sounds_by_type_unknown", true);

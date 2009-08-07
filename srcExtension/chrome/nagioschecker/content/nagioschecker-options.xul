@@ -189,7 +189,16 @@
             <checkbox prefstring="extensions.nagioschecker.show_window_column_status" id="nch-view-show_window_column_status" label="&nch.prefs.statuscolumn;"/>
             </vbox>
           </groupbox>
+          
+		      <groupbox flex="1">
+		        <caption class="nch" label="&nch.prefs.statusestranslation;"/>
+		    <radiogroup id="nch-view-statuses_translation" prefstring="extensions.nagioschecker.statuses_translation">
+              <radio id="nch-view-statuses_translation-0" label="&nch.prefs.usetranslatednames;" value="0"/>
+              <radio id="nch-view-statuses_translation-1" label="&nch.prefs.useenglishnames;" value="1"/>
+            </radiogroup>
+		        
 
+          </groupbox>
            		</tabpanel>
           		<tabpanel  orient="vertical">
 

@@ -395,7 +395,8 @@ NCHOptions.prototype = {
        "nch-sounds-warning",
        "nch-sounds-critical",
        "nch-sounds-down",
-       "nch-sounds-play_sound_attempt"
+       "nch-sounds-play_sound_attempt",
+       "nch-view-statuses_translation"
        ];
     for (var i = 0; i < radios.length; ++i) {
   		var radiogroup = document.getElementById(radios[i]);
@@ -562,7 +563,8 @@ NCHOptions.prototype = {
        "nch-sounds-warning",
        "nch-sounds-critical",
        "nch-sounds-down",
-       "nch-sounds-play_sound_attempt"
+       "nch-sounds-play_sound_attempt",
+       "nch-view-statuses_translation"
         ];
 		  for (var i = 0; i < radios.length; ++i) {
   			var radiogroup = document.getElementById(radios[i]);

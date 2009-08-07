@@ -404,6 +404,7 @@ NCH.prototype = {
 			show_window_column_alias:['bool',false],
 			show_window_column_attempt:['bool',false],
 			show_window_column_status:['bool',true],
+			statuses_translation:['int',0],
 			filter_out_acknowledged:['bool',true],
 			filter_out_disabled_notifications:['bool',true],
 			filter_out_disabled_checks:['bool',true],
@@ -812,18 +813,71 @@ NCH.prototype = {
   },
 
   getCorrectBundleString: function(num,part_bundle_id,fake_num) {
+	  
+	var useEnglish = (nagioschecker.pref.statuses_translation==1);
+	var real_num = (fake_num) ? fake_num : num;
+	   var english = {
+			   "alertDown1":"down",
+			   "alertDown2to4":"down",
+			   "alertDown5more":"down",
+			   "alertUnreachable1":"unreachable",
+			   "alertUnreachable2to4":"unreachable",
+			   "alertUnreachable5more":"unreachable",
+			   "alertWarning1":"warning",
+			   "alertWarning2to4":"warnings",
+			   "alertWarning5more":"warnings",
+			   "alertCritical1":"critical",
+			   "alertCritical2to4":"critical",
+			   "alertCritical5more":"critical",
+			   "alertUnknown1":"unknown",
+			   "alertUnknown2to4":"unknown",
+			   "alertUnknown5more":"unknown",
+			   "shortAlertDown1":real_num+" down",
+			   "shortAlertDown2to4":real_num+" down",
+			   "shortAlertDown5more":real_num+" down",
+			   "shortAlertUnreachable1":real_num+" unreachable",
+			   "shortAlertUnreachable2to4":real_num+" unreachable",
+			   "shortAlertUnreachable5more":real_num+" unreachable",
+			   "shortAlertWarning1":real_num+" warning",
+			   "shortAlertWarning2to4":real_num+" warnings",
+			   "shortAlertWarning5more":real_num+" warnings",
+			   "shortAlertCritical1":real_num+" critical",
+			   "shortAlertCritical2to4":real_num+" critical",
+			   "shortAlertCritical5more":real_num+" critical",
+			   "shortAlertUnknown1":real_num+" unknown",
+			   "shortAlertUnknown2to4":real_num+" unknown",
+			   "shortAlertUnknown5more":real_num+" unknown",
+			   "fullAlertDown1":real_num+" host down",
+			   "fullAlertDown2to4":real_num+" hosts down",
+			   "fullAlertDown5more":real_num+" hosts down",
+			   "fullAlertUnreachable1":real_num+" host unreachable",
+			   "fullAlertUnreachable2to4":real_num+" hosts unreachable",
+			   "fullAlertUnreachable5more":real_num+" hosts unreachable",
+			   "fullAlertWarning1":real_num+" service warning",
+			   "fullAlertWarning2to4":real_num+" service warnings",
+			   "fullAlertWarning5more":real_num+" service warnings",
+			   "fullAlertCritical1":real_num+" critical service",
+			   "fullAlertCritical2to4":real_num+" critical services",
+			   "fullAlertCritical5more":real_num+" critical services",
+			   "fullAlertUnknown1":real_num+" unknown service",
+			   "fullAlertUnknown2to4":real_num+" unknown services",
+			   "fullAlertUnknown5more":real_num+" unknown services"
+	   };
+
+	  
+  
     if (part_bundle_id=="") {
       return (fake_num) ? fake_num : "  "+num+"  ";
     }
     else {
     if (num==1) {
-      return this.bundle.getFormattedString(part_bundle_id+"1",[(fake_num) ? fake_num : num])
+      return (useEnglish) ? english[part_bundle_id+"1"] : this.bundle.getFormattedString(part_bundle_id+"1",[(fake_num) ? fake_num : num])
     }
     else if ((num>=2) && (num<=4)) {
-      return this.bundle.getFormattedString(part_bundle_id+"2to4",[(fake_num) ? fake_num : num])
+      return (useEnglish) ? english[part_bundle_id+"2to4"] : this.bundle.getFormattedString(part_bundle_id+"2to4",[(fake_num) ? fake_num : num])
     }
     else if (num>=5) {
-      return this.bundle.getFormattedString(part_bundle_id+"5more",[(fake_num) ? fake_num : num])
+      return (useEnglish) ? english[part_bundle_id+"5more"] : this.bundle.getFormattedString(part_bundle_id+"5more",[(fake_num) ? fake_num : num])
     }
     else {
       return "";
@@ -1854,26 +1908,27 @@ function NCHToolTip(pref) {
 	var row = document.createElement("row");
 		
     var status_text = "";
+    var useEnglish = (nagioschecker.pref.statuses_translation==1);
     switch (problem.status) {
       case "down":
     		row.setAttribute("class", "nagioschecker-tooltip-row nagioschecker-tooltip-down-row");
-        status_text = nagioschecker.bundle.getString("alertDown1")
+        status_text = (useEnglish) ? "down" : nagioschecker.bundle.getString("alertDown1")
         break;
       case "unreachable":
     		row.setAttribute("class", "nagioschecker-tooltip-row nagioschecker-tooltip-unreachable-row");
-        status_text = nagioschecker.bundle.getString("alertUnreachable1")
+        status_text = (useEnglish) ? "unreachable" : nagioschecker.bundle.getString("alertUnreachable1")
         break;
       case "unknown":
     		row.setAttribute("class", "nagioschecker-tooltip-row nagioschecker-tooltip-unknown-row");
-        status_text = nagioschecker.bundle.getString("alertUnknown1")
+        status_text = (useEnglish) ? "unknown" : nagioschecker.bundle.getString("alertUnknown1")
         break;
       case "warning":
     		row.setAttribute("class", "nagioschecker-tooltip-row nagioschecker-tooltip-warning-row");
-        status_text = nagioschecker.bundle.getString("alertWarning1")
+        status_text = (useEnglish) ? "warning" : nagioschecker.bundle.getString("alertWarning1")
         break;
       case "critical":
     		row.setAttribute("class", "nagioschecker-tooltip-row nagioschecker-tooltip-critical-row");
-        status_text = nagioschecker.bundle.getString("alertCritical1")
+        status_text = (useEnglish) ? "critical" : nagioschecker.bundle.getString("alertCritical1")
         break;
     }
    

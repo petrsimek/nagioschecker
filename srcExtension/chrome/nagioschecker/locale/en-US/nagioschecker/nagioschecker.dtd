@@ -161,3 +161,7 @@
 <!ENTITY nch.prefs.windowtype "Window Type">
 <!ENTITY nch.prefs.statusbar "StatusBar">
 <!ENTITY nch.prefs.infowindow "Information Window">
+
+<!ENTITY nch.prefs.statusestranslation "Statuses Translation">
+<!ENTITY nch.prefs.usetranslatednames "Use translated names (if translation exists)">
+<!ENTITY nch.prefs.useenglishnames "Use English names">

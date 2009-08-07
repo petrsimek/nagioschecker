@@ -160,3 +160,7 @@
 <!ENTITY nch.prefs.windowtype "Typ okna">
 <!ENTITY nch.prefs.statusbar "Stavový řádek">
 <!ENTITY nch.prefs.infowindow "Informační okno">
+
+<!ENTITY nch.prefs.statusestranslation "Překlad stavů">
+<!ENTITY nch.prefs.usetranslatednames "Použít přeložené názvy (pokud překlad existuje)">
+<!ENTITY nch.prefs.useenglishnames "Použít anglické názvy">

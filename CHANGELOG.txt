@@ -1,3 +1,6 @@
+0.14.9 (beta)
+* NEW: Option to choose between localized and English status names 
+
 0.14.4
 * BUGFIX: escaping service name with backslash
 * INTERNAL: update maxVersion to 3.5.*
