@@ -1197,8 +1197,8 @@ NCH.prototype = {
 	var showLong = (this.pref.info_type==0 || this.pref.info_type==1 || this.pref.info_type==3);
 	if (countErrors>0) {
 		fldErrors.setAttribute("value",(showLong) ? countErrors+" "+this.getCorrectBundleString(countErrors,"error","") : "! "+countErrors);
-		fldErrors.setAttribute("hidden",false);
 	}
+	fldErrors.setAttribute("hidden",(countErrors==0));
 	
 	
     var fld = {
