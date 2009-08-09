@@ -53,6 +53,7 @@ var gMini=false;
          src="chrome://nagioschecker/skin/nagios16.png"
          style="width:16px;height:16px;margin-left:0px;margin-right:2px;"
          />
+		  <label id="nagioschecker-errors" hidden="true" value="" class="nagioschecker-errors"/>
 		  <label id="nagioschecker-hosts-down" hidden="true" value="" class="nagioschecker-down-value"/>
 		  <label id="nagioschecker-hosts-unreachable" hidden="true" class="nagioschecker-unreachable-value" value=""/>
 		  <label id="nagioschecker-services-unknown" hidden="true" class="nagioschecker-unknown-value" value=""/>

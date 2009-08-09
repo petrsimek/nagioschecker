@@ -1,4 +1,4 @@
-var NCH_VERSION = "0.13.9.3";
+var NCH_VERSION = "0.14.9";
 var NCH_GUID = "{123b2220-59cb-11db-b0de-0800200c9a66}";
 var NCH_CONFIGFILE="nagioschecker.xml";
 
@@ -221,7 +221,7 @@ NCH.prototype = {
   start : function() {
     this.bundle = document.getElementById("nch-strings");
 	this._uid = Math.floor(Math.random()*10000);
-	this.results=new NCHPaket(this.pref);
+	this.results=new NCHPaket(this.pref,0);
 	if (gMini) {
    var resizer = document.getElementById('nagioschecker-mover');
 
@@ -861,7 +861,10 @@ NCH.prototype = {
 			   "fullAlertCritical5more":real_num+" critical services",
 			   "fullAlertUnknown1":real_num+" unknown service",
 			   "fullAlertUnknown2to4":real_num+" unknown services",
-			   "fullAlertUnknown5more":real_num+" unknown services"
+			   "fullAlertUnknown5more":real_num+" unknown services",
+			   "error1":real_num+" error",
+			   "error2to4":real_num+" errors",
+			   "error5more":real_num+" errors"
 	   };
 
 	  
@@ -887,8 +890,7 @@ NCH.prototype = {
 
 
   enumerateStatus: function(problems) {
-
-	var paket = new NCHPaket(this.pref);
+	var paket = new NCHPaket(this.pref,0);
 
     var newProblems={};
     for(var i=0;i<problems.length;i++) {
@@ -1190,6 +1192,15 @@ NCH.prototype = {
 
 	this.resetBehavior();
 
+	var countErrors = paket.getCountErrors();
+	var fldErrors = document.getElementById('nagioschecker-errors');
+	var showLong = (this.pref.info_type==0 || this.pref.info_type==1 || this.pref.info_type==3);
+	if (countErrors>0) {
+		fldErrors.setAttribute("value",(showLong) ? countErrors+" "+this.getCorrectBundleString(countErrors,"error","") : "! "+countErrors);
+		fldErrors.setAttribute("hidden",false);
+	}
+	
+	
     var fld = {
               "down":document.getElementById('nagioschecker-hosts-down'),
 	           	"unreachable": document.getElementById('nagioschecker-hosts-unreachable'),
@@ -2019,7 +2030,7 @@ function NCHToolTip(pref) {
 
 }
 
-function NCHPaket(pref) {
+function NCHPaket(pref,cntErrors) {
 	this.pref = pref;
 
 	this.pt = ["down","unreachable","unknown","warning","critical"];
@@ -2032,6 +2043,8 @@ function NCHPaket(pref) {
 	this.warning = [new Array(),0,0,[],[]];
 	this.critical = [new Array(),0,0,[],[]];
 
+	this.countErrors = cntErrors;
+	
 	this.isError = false;
 	this.sa = {
 		all:[null,[0,0],[0,0],[0,0]],
@@ -2048,6 +2061,8 @@ function NCHPaket(pref) {
 	this.addError = function(to) {
 		this["isError"]=true;
 	 	this[to][0].push({type:'error'});
+	 	if (to=="all") this.countErrors++;
+	 	
 	}
 	this.addProblem = function(serverPos,problemType,isOld,problem,aliasName) {
 		var tmp_a = 1;
@@ -2084,6 +2099,12 @@ function NCHPaket(pref) {
 	}
 	this.getProblemsByType = function(problemType) {
 	 	return this[problemType][3];
+	}
+	this.setCountErrors = function(num) {
+	 	this.countErrors=num;
+	}
+	this.getCountErrors = function() {
+	 	return this.countErrors;
 	}
 	this.countProblemsByType = function(problemType) {
  		return this[problemType][1];

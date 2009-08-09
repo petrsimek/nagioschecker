@@ -1,6 +1,7 @@
 0.14.9 (beta)
 * NEW: Option to choose between localized and English status names 
 * NEW: Another options for Clicking on Statusbar Does (Go to Service Problems and Go to Host Problems)
+* NEW: Show number of Errors downloading data on all servers in status bar
 
 0.14.4
 * BUGFIX: escaping service name with backslash
