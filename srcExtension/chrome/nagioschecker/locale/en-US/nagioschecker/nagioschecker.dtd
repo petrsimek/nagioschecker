@@ -89,6 +89,8 @@
 <!ENTITY nch.prefs.after_click_statusbar "Clicking on Status Bar Does">
 <!ENTITY nch.prefs.do_nothing "Nothing">
 <!ENTITY nch.prefs.goto_main_nagios "Go to main Nagios web page">
+<!ENTITY nch.prefs.goto_service_problems "Go to Service Problems">
+<!ENTITY nch.prefs.goto_host_problems "Go to Host Problems">
 <!ENTITY nch.prefs.goto_nagios_section "Go to Nagios web section respective to the clicked problem type">
 
 <!ENTITY nch.prefs.open_fullinfowindow "Open static information window with all problems">

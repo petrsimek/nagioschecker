@@ -1,5 +1,6 @@
 0.14.9 (beta)
 * NEW: Option to choose between localized and English status names 
+* NEW: Another options for Clicking on Statusbar Does (Go to Service Problems and Go to Host Problems)
 
 0.14.4
 * BUGFIX: escaping service name with backslash

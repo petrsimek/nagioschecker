@@ -257,6 +257,8 @@
           <radiogroup prefstring="extensions.nagioschecker.click" id="nch-behavior-oneclick">
             <radio id="nch-behavior-oneclick-0" label="&nch.prefs.do_nothing;" value="0"/>
             <radio id="nch-behavior-oneclick-1" label="&nch.prefs.goto_main_nagios;" value="1"/>
+            <radio id="nch-behavior-oneclick-5" label="&nch.prefs.goto_service_problems;" value="5"/>
+            <radio id="nch-behavior-oneclick-6" label="&nch.prefs.goto_host_problems;" value="6"/>
             <radio id="nch-behavior-oneclick-2" label="&nch.prefs.goto_nagios_section;" value="2"/>
             <radio id="nch-behavior-oneclick-3" label="&nch.prefs.open_fullinfowindow;" value="3"/>
             <radio id="nch-behavior-oneclick-4" label="&nch.prefs.open_infowindowbytype;" value="4"/>

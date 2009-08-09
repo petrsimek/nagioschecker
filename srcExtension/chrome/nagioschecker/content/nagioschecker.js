@@ -1069,6 +1069,12 @@ NCH.prototype = {
 		  case 1:
 			  mainPanel.setAttribute("onclick","nagioschecker.statusBarOnClick(event,'main');");
 			  break;
+		  case 5:
+			  mainPanel.setAttribute("onclick","nagioschecker.statusBarOnClick(event,'services');");
+			  break;
+		  case 6:
+			  mainPanel.setAttribute("onclick","nagioschecker.statusBarOnClick(event,'hosts');");
+			  break;
 		  case 3:
 			if (!this.isStopped) {
 

@@ -88,7 +88,9 @@
 <!ENTITY nch.prefs.note_sound "Pokud Nagios Checker běží ve více oknech, pak bude zvuk přehráván pouze v okně otevřeném jako prvním.">
 <!ENTITY nch.prefs.after_click_statusbar "Po kliknutí na stavový řádek">
 <!ENTITY nch.prefs.do_nothing "Neprovádět žádnou akci">
-<!ENTITY nch.prefs.goto_main_nagios "Přejít na hlavní stranu systému Nagios">
+<!ENTITY nch.prefs.goto_main_nagios "Přejít na hlavní stránku systému Nagios">
+<!ENTITY nch.prefs.goto_service_problems "Přejít na Chyby služeb">
+<!ENTITY nch.prefs.goto_host_problems "Přejít na Chyby hostitelů">
 <!ENTITY nch.prefs.goto_nagios_section "Přejít na sekci systému Nagios podle kliknutí na příslušný typ problému">
 
 <!ENTITY nch.prefs.open_fullinfowindow "Otevřít statické informační okno se všemi problémy">
