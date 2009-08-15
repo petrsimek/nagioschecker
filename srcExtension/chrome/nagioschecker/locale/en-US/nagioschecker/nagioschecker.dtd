@@ -144,8 +144,14 @@
 <!ENTITY nch.prefs.minimalservicesattempt "Minimal service's attempt to play the sound">
 
 <!ENTITY nch.prefs.advanced "Advanced">
+<!ENTITY nch.advanced.download "Download">
 <!ENTITY nch.advanced.downloadtimeout "Status.cgi download timeout (in seconds)">
-<!ENTITY nch.advanced.prefertextconfig "Prefer loading of settings from an external text file rather than the Firefox internal configuration.">
+<!ENTITY nch.advanced.externalconfigfile "External configuration file">
+<!ENTITY nch.advanced.prefertextconfig "Prefer loading of settings from an external configuration file rather than zour application internal configuration">
+<!ENTITY nch.advanced.notuseexternalfile "Do not use external configuration file">
+<!ENTITY nch.advanced.usefileinextensiondir "Use file in &nch.title; extension directory in your application profile directory">
+<!ENTITY nch.advanced.usefileinprofiledir "Use file in your application profile directory">
+<!ENTITY nch.advanced.finalfilepath "Final configuration file path">
 <!ENTITY nch.advanced.note_prefertextconfig "Could be useful when Firefox is terminated abnormaly and the unsaved preferences are lost. The configuration file will be loaded only when a Firefox window is opened first time.">
 
 <!ENTITY nch.prefs.working_days "Working days">

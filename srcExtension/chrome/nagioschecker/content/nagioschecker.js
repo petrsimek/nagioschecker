@@ -438,7 +438,8 @@ NCH.prototype = {
 			workday_4:['bool',true],
 			workday_5:['bool',true],
 			workday_6:['bool',true],
-			prefer_text_config:['bool',false]
+			prefer_text_config:['bool',false],
+			prefer_text_config_type:['int',0]
 			},reallyFirstRun);
 
     if (gMini) {
@@ -674,7 +675,17 @@ NCH.prototype = {
 
   observe : function(subject, topic, data) {
   	if (topic == "nagioschecker:preferences-changed") {
-  	
+  		
+		try {
+			var preferFileType = this.preferences.getIntPref('extensions.nagioschecker.prefer_text_config_type');
+		}
+		catch (e) {
+			var preferFileType = false;
+		}
+	
+
+  	if (preferFileType!=0) { 		
+  		
     try {
 		var nch_branch = this.preferences.getBranch('extensions.nagioschecker.');
 		var childs = nch_branch.getChildList("", {});
@@ -712,12 +723,22 @@ NCH.prototype = {
 		var serializer = new XMLSerializer();
 		var foStream = Components.classes["@mozilla.org/network/file-output-stream;1"]
                .createInstance(Components.interfaces.nsIFileOutputStream);
-		var file = Components.classes["@mozilla.org/file/directory_service;1"]
-           .getService(Components.interfaces.nsIProperties)
-           .get("ProfD", Components.interfaces.nsIFile);
-		file.append("extensions");
-		file.append(NCH_GUID);
-		file.append(NCH_CONFIGFILE);
+		
+		if (preferFileType==1) {
+			var file = Components.classes["@mozilla.org/file/directory_service;1"]
+			                              .getService(Components.interfaces.nsIProperties)
+			                              .get("ProfD", Components.interfaces.nsIFile);
+			file.append("extensions");
+			file.append(NCH_GUID);
+			file.append(NCH_CONFIGFILE);
+		}
+		else if (preferFileType==2) {
+			var file = Components.classes["@mozilla.org/file/directory_service;1"]
+			                             	.getService(Components.interfaces.nsIProperties)
+			                             	.get("DefProfRt", Components.interfaces.nsIFile); // get profile folder
+			file.append(NCH_CONFIGFILE);
+		}
+		
 		foStream.init(file, 0x02 | 0x08 | 0x20, 0664, 0);
 		serializer.serializeToStream(doc, foStream, "");
 		foStream.close();			
@@ -727,6 +748,7 @@ NCH.prototype = {
     }
   	
   	
+  	}
   	
   		setTimeout("if (nagioschecker != null) nagioschecker.reload(false);", 300);
   	}
@@ -1470,26 +1492,38 @@ NCH.prototype = {
     var pm = new  NCHPass();
 
 		try {
-			var preferFile = this.preferences.getBoolPref('extensions.nagioschecker.prefer_text_config');
+			var preferFileType = this.preferences.getIntPref('extensions.nagioschecker.prefer_text_config_type');
 		}
 		catch (e) {
-			var preferFile = false;
+			var preferFileType = false;
 		}
 	
-//		if(file.exists() && firstRun) {		
-		if((preferFile) && (firstRun)) {		
+		if((preferFileType!=0) && (firstRun)) {		
 
 			var xml = "";
-                        	
-			var file = Components.classes["@mozilla.org/file/directory_service;1"]
-           	.getService(Components.interfaces.nsIProperties)
-           	.get("ProfD", Components.interfaces.nsIFile); // get profile folder
-			file.append("extensions");
-			file.append(NCH_GUID);
-			file.append(NCH_CONFIGFILE);
+			
+			if (preferFileType==1) {
+			
+				var file = Components.classes["@mozilla.org/file/directory_service;1"]
+				                              .getService(Components.interfaces.nsIProperties)
+				                              .get("ProfD", Components.interfaces.nsIFile); // get profile folder
+				file.append("extensions");
+				file.append(NCH_GUID);
+				file.append(NCH_CONFIGFILE);
+			}
+			else if (preferFileType==2) {
+				var file = Components.classes["@mozilla.org/file/directory_service;1"]
+				                             	.getService(Components.interfaces.nsIProperties)
+				                             	.get("DefProfRt", Components.interfaces.nsIFile); // get profile folder
+				                  			
+				file.append(NCH_CONFIGFILE);
+				
+			}
+		
+		
 		}
 		
-		if((preferFile) && (firstRun) && (file.exists())) {		
+		if((preferFileType!=0) && (firstRun) && (file.exists())) {		
 
 			var fstream = Components.classes["@mozilla.org/network/file-input-stream;1"]
                         .createInstance(Components.interfaces.nsIFileInputStream);

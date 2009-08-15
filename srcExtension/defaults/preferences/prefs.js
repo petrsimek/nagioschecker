@@ -78,3 +78,4 @@ pref("extensions.nagioschecker.sound_down_path", "");
 pref("extensions.nagioschecker.version", "");
 
 pref("extensions.nagioschecker.prefer_text_config", false);
+pref("extensions.nagioschecker.prefer_text_config_type", 0);

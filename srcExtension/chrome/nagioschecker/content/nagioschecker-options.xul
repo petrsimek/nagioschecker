@@ -404,16 +404,28 @@
       <tabpanel orient="vertical">
 
 		    <groupbox flex="1">
-		      <caption class="nch" label="&nch.prefs.advanced;"/>	
+		      <caption class="nch" label="&nch.advanced.download;"/>	
 			<vbox>
 				<label value="&nch.advanced.downloadtimeout;:" control="nch-advanced-downloadtimeout"/>
 				<hbox>
 				<textbox prefstring="extensions.nagioschecker.timeout" id="nch-advanced-timeout" size="4"/> 
 				</hbox>
-          <separator class="thin"/>
-				<hbox>
-	              <checkbox class="nch" prefstring="extensions.nagioschecker.prefer_text_config" id="nch-advanced-prefer_text_config" label="&nch.advanced.prefertextconfig;"/>
-				</hbox>
+				</vbox>
+				</groupbox>
+     <groupbox flex="1">
+		      <caption class="nch" label="&nch.advanced.externalconfigfile;"/>	
+          <vbox>
+          <label value="&nch.advanced.prefertextconfig;:"/>
+            <radiogroup id="nch-advanced-prefertextconfig-type" prefstring="extensions.nagioschecker.prefer_text_config_type" >
+              <radio id="nch-advanced-prefertextconfig-type-0" label="&nch.advanced.notuseexternalfile;" value="0" oncommand="gNCHOptions.updateResultFilePath();"/>
+              <radio id="nch-advanced-prefertextconfig-type-1" label="&nch.advanced.usefileinextensiondir;" value="1" oncommand="gNCHOptions.updateResultFilePath();"/>
+              <radio id="nch-advanced-prefertextconfig-type-2" label="&nch.advanced.usefileinprofiledir;" value="2" oncommand="gNCHOptions.updateResultFilePath();"/>
+            </radiogroup>
+            <label value="&nch.advanced.finalfilepath;:"/>
+           		<textbox id="result_file_path" size="20" readonly="true"/>
+           		
+           		
+           		<separator class="thin"/>
           <description class="nch"><html:strong>&nch.prefs.note;:</html:strong> &nch.advanced.note_prefertextconfig;</description>
 				
 

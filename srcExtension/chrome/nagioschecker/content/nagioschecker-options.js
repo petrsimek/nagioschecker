@@ -1,5 +1,7 @@
 var gNCHOptions = null;
 var MAX_SERVERS=200;
+var NCH_CONFIGFILE="nagioschecker.xml";
+var NCH_GUID = "{123b2220-59cb-11db-b0de-0800200c9a66}"
 
 var nchoptionsLoad = function() {
 
@@ -17,6 +19,7 @@ var nchoptionsLoad = function() {
   gNCHOptions.disableSoundCheckboxes();
   gNCHOptions.disableSoundRadios();
   gNCHOptions.updateRECheckboxes();
+  gNCHOptions.updateResultFilePath();
 };
 
 var nchoptionsUnload = function() {
@@ -377,8 +380,8 @@ NCHOptions.prototype = {
         "nch-general-workday_4",
         "nch-general-workday_5",
         "nch-general-workday_6",
-        "nch-general-workday_0",
-        "nch-advanced-prefer_text_config"
+        "nch-general-workday_0"//,
+       // "nch-advanced-prefer_text_config"
         ];
 	
   	for (var i = 0; i < checkboxes.length; ++i) {
@@ -396,7 +399,8 @@ NCHOptions.prototype = {
        "nch-sounds-critical",
        "nch-sounds-down",
        "nch-sounds-play_sound_attempt",
-       "nch-view-statuses_translation"
+       "nch-view-statuses_translation",
+       "nch-advanced-prefertextconfig-type"
        ];
     for (var i = 0; i < radios.length; ++i) {
   		var radiogroup = document.getElementById(radios[i]);
@@ -497,6 +501,34 @@ NCHOptions.prototype = {
     }
 
   },
+  
+  updateResultFilePath: function() {
+	  
+	  var choosed = document.getElementById('nch-advanced-prefertextconfig-type').value;
+	  var path ="";
+	  switch (choosed) {
+	  case "2":
+		  var file = Components.classes["@mozilla.org/file/directory_service;1"]
+		                             	.getService(Components.interfaces.nsIProperties)
+		                             	.get("DefProfRt", Components.interfaces.nsIFile); // get profile folder
+		                  			
+		                  			file.append(NCH_CONFIGFILE);
+		                  			path=file.path;
+		  break;
+	  case "1":
+			var file = Components.classes["@mozilla.org/file/directory_service;1"]
+			                              .getService(Components.interfaces.nsIProperties)
+			                              .get("ProfD", Components.interfaces.nsIFile);
+			                   		file.append("extensions");
+			                   		file.append(NCH_GUID);
+			                   		file.append(NCH_CONFIGFILE);
+			                   		path=file.path;
+		  break;
+	  
+	  }
+
+	  document.getElementById('result_file_path').value=path;
+  },
 
   loadPref: function() {
 
@@ -547,8 +579,8 @@ NCHOptions.prototype = {
         "nch-general-workday_4",
         "nch-general-workday_5",
         "nch-general-workday_6",
-        "nch-general-workday_0",
-        "nch-advanced-prefer_text_config"
+        "nch-general-workday_0"//,
+       // "nch-advanced-prefer_text_config"
         ];
 		  for (var i = 0; i < checkboxes.length; ++i) {
   			var checkbox = document.getElementById(checkboxes[i]);
@@ -564,7 +596,8 @@ NCHOptions.prototype = {
        "nch-sounds-critical",
        "nch-sounds-down",
        "nch-sounds-play_sound_attempt",
-       "nch-view-statuses_translation"
+       "nch-view-statuses_translation",
+       "nch-advanced-prefertextconfig-type"
         ];
 		  for (var i = 0; i < radios.length; ++i) {
   			var radiogroup = document.getElementById(radios[i]);

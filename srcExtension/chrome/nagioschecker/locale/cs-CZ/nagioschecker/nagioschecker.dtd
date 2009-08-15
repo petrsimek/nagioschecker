@@ -143,8 +143,14 @@
 <!ENTITY nch.prefs.minimalservicesattempt "Minimální pokus (služby) k přehrání zvuku">
 
 <!ENTITY nch.prefs.advanced "Pokročilé">
+<!ENTITY nch.advanced.download "Stahování">
 <!ENTITY nch.advanced.downloadtimeout "Časový limit stahování status.cgi (ve vteřinách)">
-<!ENTITY nch.advanced.prefertextconfig "Preferovat nahrání nastavení z externího textového souboru místo z interního konfiguračního systému.">
+<!ENTITY nch.advanced.externalconfigfile "Externí konfigurační soubor">
+<!ENTITY nch.advanced.prefertextconfig "Preferovat nahrání nastavení z externího konfiguračního souboru místo z interního konfiguračního systému">
+<!ENTITY nch.advanced.notuseexternalfile "Nepoužívat externí konfigurační soubor">
+<!ENTITY nch.advanced.usefileinextensiondir "Použít soubor v adresáři rozšíření &nch.title; v profilovém adresáři vaší aplikace">
+<!ENTITY nch.advanced.usefileinprofiledir "Použít soubor v profilovém adresáři vaší aplikace">
+<!ENTITY nch.advanced.finalfilepath "Výsledná cesta ke konfiguračnímu souboru">
 <!ENTITY nch.advanced.note_prefertextconfig "Toto může být užitečné pokud je aplikace ukončena neočekávaně a nastavení uložené v aplikace může být ztraceno.  Konfigurační soubor je nahrávan pouze při prvním otevření okna aplikace.">
 
 <!ENTITY nch.prefs.working_days "Pracovní dny">

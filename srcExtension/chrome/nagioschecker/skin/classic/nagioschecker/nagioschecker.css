@@ -21,6 +21,12 @@ caption.nch {
 .nagioschecker-panel {
   padding:0;border:0;
 }
+
+label {
+	
+	cursor: pointer;
+	}
+
 .nagioschecker-panel label{
 }
 
@@ -244,6 +250,7 @@ statusbarpanel .nagioschecker-box {
 
 #nagioschecker-panel-services label {
   padding:0;
+   cursor: pointer;
 }
 
 .nagioschecker-tooltip-title {
@@ -298,7 +305,8 @@ statusbarpanel .nagioschecker-box {
 }
 .nagioschecker-tooltip-critical-row:hover {
   background-color:#E60000;
-	border:1px #E60000 solid;
+	border:1px  #E60000  solid;
+	cursor:pointer;
 }
 
 .nagioschecker-tooltip-row {
