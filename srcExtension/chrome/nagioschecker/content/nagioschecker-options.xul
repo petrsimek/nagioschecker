@@ -31,9 +31,9 @@
   
   <popupset>
    <popup id="treemenu">
-      <menuitem id="edit-menuitem" label="&nch.prefs.edit;..." oncommand="gNCHOptions.editSelectedServer();" disabled="true"/>
-      <menuitem id="able-menuitem" label="&nch.prefs.disable;" oncommand="gNCHOptions.actionOnSelectedServer('able');" disabled="true"/>
-      <menuitem id="remove-menuitem" label="&nch.prefs.remove;" oncommand="gNCHOptions.removeSelectedServer();" disabled="true"/>
+      <menuitem id="edit-menuitem" label="&nch.prefs.edit;..." oncommand="gNCHOptions.editSelectedServer();" />
+      <menuitem id="able-menuitem" label="&nch.prefs.disable;" oncommand="gNCHOptions.actionOnSelectedServer('able');" />
+      <menuitem id="remove-menuitem" label="&nch.prefs.remove;" oncommand="gNCHOptions.removeSelectedServer();" />
    </popup>
 </popupset>
 
