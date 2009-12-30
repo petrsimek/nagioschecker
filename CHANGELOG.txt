@@ -1,9 +1,11 @@
-0.15b1 (beta)
+0.15b1-b4
 * NEW: Option to choose between localized and English status names 
 * NEW: Another options for Clicking on Statusbar Does (Go to Service Problems and Go to Host Problems)
 * NEW: Show number of Errors downloading data on all servers in status bar
 * NEW: Option to choose location of external configuration file. Disabled by default.
-
+* BUGFIX: Greyed-out context menu items in server list on some OSes
+ INTERNAL: update TB maxVersion to 3.0.*
+ 
 0.14.4
 * BUGFIX: escaping service name with backslash
 * INTERNAL: update maxVersion to 3.5.*
