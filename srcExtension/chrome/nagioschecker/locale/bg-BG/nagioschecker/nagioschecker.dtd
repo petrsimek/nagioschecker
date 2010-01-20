@@ -85,6 +85,8 @@
 <!ENTITY nch.prefs.after_click_statusbar "След цъкване на статусбара">
 <!ENTITY nch.prefs.do_nothing "Не прави нищо">
 <!ENTITY nch.prefs.goto_main_nagios "Отиване на основната страница на Нагиос">
+<!ENTITY nch.prefs.goto_service_problems "Отиди към Проблеми с услуги">
+<!ENTITY nch.prefs.goto_host_problems "Отиване към Проблеми с Обекти">
 <!ENTITY nch.prefs.goto_nagios_section "Отиване на секцията на страницата на Нагиос съответстваща на цъкнатия вид проблем">
 <!ENTITY nch.prefs.open_fullinfowindow "Отваряне статичния информационен прозорец с всички проблеми">
 <!ENTITY nch.prefs.open_infowindowbytype "Отваряне статични информационни прозорци в зависимост от цъкнатият тип">
@@ -131,8 +133,14 @@
 <!ENTITY nch.prefs.attemptcolumn "Опит">
 <!ENTITY nch.prefs.minimalservicesattempt "Минимален опит на услугата да изсвири звук">
 <!ENTITY nch.prefs.advanced "Задълбочено">
+<!ENTITY nch.advanced.download "Сваляне">
 <!ENTITY nch.advanced.downloadtimeout "Макс. време за сваляне на Status.cgi (в сек.)">
+<!ENTITY nch.advanced.externalconfigfile "Външен конфигурационен файл">
 <!ENTITY nch.advanced.prefertextconfig "Предпочитам зареждане на настройки от външен текстов файл вместо от вътрешната конфигурация на Файърфокс">
+<!ENTITY nch.advanced.notuseexternalfile "Не използвай външен конфигурационен файл">
+<!ENTITY nch.advanced.usefileinextensiondir "Използвай &nch.title; разширителна директория за директорията на профила на приложението ви">
+<!ENTITY nch.advanced.usefileinprofiledir "Използване на файл в директорията на профила на приложението ви">
+<!ENTITY nch.advanced.finalfilepath "Краен път до конфигурационния файл">
 <!ENTITY nch.advanced.note_prefertextconfig "Може да е полезно, когато Файърфокс е прекратен ненормално и незапазените предпочитания са загубени. Конфигурационният файл ще бъде зареден само когато Файърфокс прозорец е отворен за първи път.">
 <!ENTITY nch.prefs.working_days "Работни дни">
 <!ENTITY nch.prefs.monday_short "Пон">
@@ -148,3 +156,6 @@
 <!ENTITY nch.prefs.windowtype "Тип Прозорци">
 <!ENTITY nch.prefs.statusbar "СтатусБар">
 <!ENTITY nch.prefs.infowindow "Инфо Прозорец">
+<!ENTITY nch.prefs.statusestranslation "Статут на Превода">
+<!ENTITY nch.prefs.usetranslatednames "Използване на преведени наименования (ако съществува превод)">
+<!ENTITY nch.prefs.useenglishnames "Използване на Английски наименования">

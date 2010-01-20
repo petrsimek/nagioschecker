@@ -85,6 +85,8 @@
 <!ENTITY nch.prefs.after_click_statusbar "Hacer click en la barra de estado implica">
 <!ENTITY nch.prefs.do_nothing "Nada">
 <!ENTITY nch.prefs.goto_main_nagios "Ir a la página principal de Nagios">
+<!ENTITY nch.prefs.goto_service_problems "Ir a Problemas de Servicio">
+<!ENTITY nch.prefs.goto_host_problems "Ir a Problemas de Dispositivos">
 <!ENTITY nch.prefs.goto_nagios_section "Ir a la sección de Nagios que corresponde al tipo de problema">
 <!ENTITY nch.prefs.open_fullinfowindow "Abrir ventana de información estática con todos los problemas">
 <!ENTITY nch.prefs.open_infowindowbytype "Abrir ventana de información estática dependiendo del tipo">
@@ -131,8 +133,14 @@
 <!ENTITY nch.prefs.attemptcolumn "Intento">
 <!ENTITY nch.prefs.minimalservicesattempt "Intento mínimo del servicio para reproducir el sonido">
 <!ENTITY nch.prefs.advanced "Avanzado">
+<!ENTITY nch.advanced.download "Descargar">
 <!ENTITY nch.advanced.downloadtimeout "Timeout de descarga Status.cgi (en segundos)">
+<!ENTITY nch.advanced.externalconfigfile "Archivo de configuracion externo">
 <!ENTITY nch.advanced.prefertextconfig "Prefiero cargar los ajustes de un archivo externo y no de la configuración interna de Firefox.">
+<!ENTITY nch.advanced.notuseexternalfile "No usar archivo de configuracion externo">
+<!ENTITY nch.advanced.usefileinextensiondir "Usar archivo en el directorio de extensiones &nch.title; en su directorio de perfil de aplicaciones">
+<!ENTITY nch.advanced.usefileinprofiledir "Usar archivo en su directorio de perfil de aplicaciones">
+<!ENTITY nch.advanced.finalfilepath "Ruta de archivo de configuracion final">
 <!ENTITY nch.advanced.note_prefertextconfig "Puede ser util cuando Firefox sea terminado abnormalmente y las preferencias no guardadas se pierdan. El archivo de configuración solo cuando una ventana de Firefox sea abierta por primera vez.">
 <!ENTITY nch.prefs.working_days "Días de trabajo">
 <!ENTITY nch.prefs.monday_short "Lun">
@@ -148,3 +156,6 @@
 <!ENTITY nch.prefs.windowtype "Tipo de Ventana">
 <!ENTITY nch.prefs.statusbar "Barra de Estado">
 <!ENTITY nch.prefs.infowindow "Ventana de Información">
+<!ENTITY nch.prefs.statusestranslation "Estado de traduccion">
+<!ENTITY nch.prefs.usetranslatednames "Usar nombres traducidos (si existe traduccion)">
+<!ENTITY nch.prefs.useenglishnames "Usar nombres en ingles">

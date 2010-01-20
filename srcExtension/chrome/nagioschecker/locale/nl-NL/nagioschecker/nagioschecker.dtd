@@ -85,6 +85,8 @@
 <!ENTITY nch.prefs.after_click_statusbar "Na klikken op de statusbalk">
 <!ENTITY nch.prefs.do_nothing "Niets doen">
 <!ENTITY nch.prefs.goto_main_nagios "Naar de Nagios-webpagina gaan">
+<!ENTITY nch.prefs.goto_service_problems "Naar dienstproblemen">
+<!ENTITY nch.prefs.goto_host_problems "Naar hostproblemen">
 <!ENTITY nch.prefs.goto_nagios_section "Naar de Nagios-websitesectie gaan die gerelateerd is aan het aangeklikte probleemtype">
 <!ENTITY nch.prefs.open_fullinfowindow "Statisch informatievenster openen met alle problemen">
 <!ENTITY nch.prefs.open_infowindowbytype "Statische informatievensters openen afhankelijk van aangeklikt type">
@@ -131,8 +133,14 @@
 <!ENTITY nch.prefs.attemptcolumn "Poging">
 <!ENTITY nch.prefs.minimalservicesattempt "Minimaal poging van dienst om geluid af te spelen">
 <!ENTITY nch.prefs.advanced "Geavanceerd">
+<!ENTITY nch.advanced.download "Downloaden">
 <!ENTITY nch.advanced.downloadtimeout "Time-out voor downloaden status.cgi (in seconden)">
+<!ENTITY nch.advanced.externalconfigfile "Extern instellingsbestand">
 <!ENTITY nch.advanced.prefertextconfig "Voorkeur geven aan laden van instellingen vanuit een extern tekstbestand boven de interne configuratie van Firefox.">
+<!ENTITY nch.advanced.notuseexternalfile "Extern instellingsbestand niet gebruiken">
+<!ENTITY nch.advanced.usefileinextensiondir "Bestand gebruiken in extensiemap van &nch.title; in de profielmap van uw toepassing">
+<!ENTITY nch.advanced.usefileinprofiledir "Bestand gebruiken in de profielmap van uw toepassing">
+<!ENTITY nch.advanced.finalfilepath "Definitief pad naar instellingsbestand">
 <!ENTITY nch.advanced.note_prefertextconfig "Kan nuttig zijn wanneer Firefox onverwacht wordt afgesloten en niet-opgeslagen voorkeursinstellingen verloren gaan. Het configuratiebestand wordt alleen geladen wanneer voor het eerst een Firefoxvenster wordt geopend.">
 <!ENTITY nch.prefs.working_days "Werkdagen">
 <!ENTITY nch.prefs.monday_short "Ma">
@@ -148,3 +156,6 @@
 <!ENTITY nch.prefs.windowtype "Venstertype">
 <!ENTITY nch.prefs.statusbar "Statusbalk">
 <!ENTITY nch.prefs.infowindow "Informatievenster">
+<!ENTITY nch.prefs.statusestranslation "Vertaling statussen">
+<!ENTITY nch.prefs.usetranslatednames "Vertaalde namen gebruiken (indien vertaling bestaat)">
+<!ENTITY nch.prefs.useenglishnames "Engelse namen gebruiken">

@@ -1,3 +1,6 @@
+0.15
+* LANG: updated bg-BG, nl-NL, es-ES from BabelZilla
+
 0.15b1-b4
 * NEW: Option to choose between localized and English status names 
 * NEW: Another options for Clicking on Statusbar Does (Go to Service Problems and Go to Host Problems)
