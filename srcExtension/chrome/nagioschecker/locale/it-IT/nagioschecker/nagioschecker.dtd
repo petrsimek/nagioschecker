@@ -85,6 +85,8 @@
 <!ENTITY nch.prefs.after_click_statusbar "Azione da effettuare dopo aver fatto clic sulla barra di stato">
 <!ENTITY nch.prefs.do_nothing "Non fare niente">
 <!ENTITY nch.prefs.goto_main_nagios "Apri il sito web di Nagios">
+<!ENTITY nch.prefs.goto_service_problems "Apri la pagina web di Nagios inerente ai problemi di servizio">
+<!ENTITY nch.prefs.goto_host_problems "Apri la pagina web di Nagios inerente ai problemi del server">
 <!ENTITY nch.prefs.goto_nagios_section "Apri la pagina web di Nagios inerente al tipo di problema selezionato">
 <!ENTITY nch.prefs.open_fullinfowindow "Apri la finestra statica delle informazioni con tutti i problemi">
 <!ENTITY nch.prefs.open_infowindowbytype "Apri finestre statiche delle informazioni inerenti al tipo di problema selezionato">
@@ -131,9 +133,15 @@
 <!ENTITY nch.prefs.attemptcolumn "Tentativo">
 <!ENTITY nch.prefs.minimalservicesattempt "Numero minimo di tentativi prima di emettere il suono">
 <!ENTITY nch.prefs.advanced "Avanzate">
+<!ENTITY nch.advanced.download "Download">
 <!ENTITY nch.advanced.downloadtimeout "Timeout del download di Status.cgi (in secondi)">
-<!ENTITY nch.advanced.prefertextconfig "Carica le impostazioni da un file di testo esterno piuttosto che dal file di configurazione di Firefox">
-<!ENTITY nch.advanced.note_prefertextconfig "potrebbe essere utile quando Firefox viene terminato in maniera anomala e le impostazioni non salvate vengono perdute. Il file delle impostazioni viene caricato solo quando la finestra di Firefox viene aperta per la prima volta">
+<!ENTITY nch.advanced.externalconfigfile "File di configurazione esterno">
+<!ENTITY nch.advanced.prefertextconfig "Selezionare quale azione effettuare">
+<!ENTITY nch.advanced.notuseexternalfile "non utilizzare il file di configurazione esterno">
+<!ENTITY nch.advanced.usefileinextensiondir "utilizza il file nella cartella di &nch.title; presente nella cartella 'extensions' del profilo">
+<!ENTITY nch.advanced.usefileinprofiledir "utilizza il file nella cartella del profilo">
+<!ENTITY nch.advanced.finalfilepath "Percorso del file di configurazione">
+<!ENTITY nch.advanced.note_prefertextconfig "le impostazioni sono presenti in un file di testo esterno, che potrebbe essere utile quando Firefox viene terminato in maniera anomala e le impostazioni non salvate vengono perdute. Il file delle impostazioni viene caricato solo quando la finestra di Firefox viene aperta per la prima volta">
 <!ENTITY nch.prefs.working_days "Giorni di funzionamento">
 <!ENTITY nch.prefs.monday_short "Lun">
 <!ENTITY nch.prefs.tuesday_short "Mar">
@@ -148,3 +156,6 @@
 <!ENTITY nch.prefs.windowtype "Tipo di pop-up">
 <!ENTITY nch.prefs.statusbar "Barra di stato">
 <!ENTITY nch.prefs.infowindow "Finestra delle informazioni">
+<!ENTITY nch.prefs.statusestranslation "Traduzione da utilizzare">
+<!ENTITY nch.prefs.usetranslatednames "Utilizza la versione localizzata (se esistente)">
+<!ENTITY nch.prefs.useenglishnames "Utilizza la versione inglese">

@@ -85,6 +85,8 @@
 <!ENTITY nch.prefs.after_click_statusbar "Nach einem Klick auf die Statuszeile">
 <!ENTITY nch.prefs.do_nothing "Tue gar nichts">
 <!ENTITY nch.prefs.goto_main_nagios "Gehe zur Nagios-Hauptseite">
+<!ENTITY nch.prefs.goto_service_problems "Go to Service Problems">
+<!ENTITY nch.prefs.goto_host_problems "Go to Host Problems">
 <!ENTITY nch.prefs.goto_nagios_section "Gehe zur Nagios-Seite mit dem entsprechenden Problemtyp">
 <!ENTITY nch.prefs.open_fullinfowindow "Öffne das statische Informationsfenster mit allen Problemen">
 <!ENTITY nch.prefs.open_infowindowbytype "Öffne das statische Informationsfenster für den ausgewählten Typ">
@@ -131,8 +133,14 @@
 <!ENTITY nch.prefs.attemptcolumn "Versuch">
 <!ENTITY nch.prefs.minimalservicesattempt "Kleinester Service-Versuch um Sound abzuspielen">
 <!ENTITY nch.prefs.advanced "Erweitert">
+<!ENTITY nch.advanced.download "Download">
 <!ENTITY nch.advanced.downloadtimeout "Zeitüberschreitung des Downloads von status.cgi (in Sekunden)">
+<!ENTITY nch.advanced.externalconfigfile "External configuration file">
 <!ENTITY nch.advanced.prefertextconfig "Bevorzuge das Laden der Einstellungen aus einer Textdatei anstelle der internen Firefoxkonfiguration.">
+<!ENTITY nch.advanced.notuseexternalfile "Do not use external configuration file">
+<!ENTITY nch.advanced.usefileinextensiondir "Use file in &nch.title; extension directory in your application profile directory">
+<!ENTITY nch.advanced.usefileinprofiledir "Use file in your application profile directory">
+<!ENTITY nch.advanced.finalfilepath "Final configuration file path">
 <!ENTITY nch.advanced.note_prefertextconfig "Kann nützlich sein, wenn Firefox unerwartet beendet wurde und die gespeicherten Einstellungen verloren gingen. Die Konfigurationsdatei wird dann geladen, wenn das Firefox-Fenster das erste Mal gestartet wird.">
 <!ENTITY nch.prefs.working_days "Arbeitstage">
 <!ENTITY nch.prefs.monday_short "Mo">
@@ -148,3 +156,6 @@
 <!ENTITY nch.prefs.windowtype "Window Type">
 <!ENTITY nch.prefs.statusbar "StatusBar">
 <!ENTITY nch.prefs.infowindow "Information Window">
+<!ENTITY nch.prefs.statusestranslation "Statuses Translation">
+<!ENTITY nch.prefs.usetranslatednames "Use translated names (if translation exists)">
+<!ENTITY nch.prefs.useenglishnames "Use English names">

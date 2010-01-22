@@ -85,6 +85,8 @@
 <!ENTITY nch.prefs.after_click_statusbar "当点击状态栏后">
 <!ENTITY nch.prefs.do_nothing "无动作">
 <!ENTITY nch.prefs.goto_main_nagios "到 Nagios 主页">
+<!ENTITY nch.prefs.goto_service_problems "Go to Service Problems">
+<!ENTITY nch.prefs.goto_host_problems "Go to Host Problems">
 <!ENTITY nch.prefs.goto_nagios_section "到 Nagios 问题类型分页">
 <!ENTITY nch.prefs.open_fullinfowindow "打开消息窗口显示所有问题">
 <!ENTITY nch.prefs.open_infowindowbytype "打开消息窗口显示所选种类的问题">
@@ -131,8 +133,14 @@
 <!ENTITY nch.prefs.attemptcolumn "尝试次数">
 <!ENTITY nch.prefs.minimalservicesattempt "播放音乐的最少服务尝试次数">
 <!ENTITY nch.prefs.advanced "高级">
+<!ENTITY nch.advanced.download "Download">
 <!ENTITY nch.advanced.downloadtimeout "Status.cgi 下载超时时间(秒)">
+<!ENTITY nch.advanced.externalconfigfile "External configuration file">
 <!ENTITY nch.advanced.prefertextconfig "选择从文本文件导入配置，而不选择Firefox默认配置">
+<!ENTITY nch.advanced.notuseexternalfile "Do not use external configuration file">
+<!ENTITY nch.advanced.usefileinextensiondir "Use file in &nch.title; extension directory in your application profile directory">
+<!ENTITY nch.advanced.usefileinprofiledir "Use file in your application profile directory">
+<!ENTITY nch.advanced.finalfilepath "Final configuration file path">
 <!ENTITY nch.advanced.note_prefertextconfig "当Firefox不正常关闭或配置未保存时很有用；配置文件只会在第一次打开Firefox窗口时才加载。">
 <!ENTITY nch.prefs.working_days "工作日">
 <!ENTITY nch.prefs.monday_short "一">
@@ -148,3 +156,6 @@
 <!ENTITY nch.prefs.windowtype "Window Type">
 <!ENTITY nch.prefs.statusbar "StatusBar">
 <!ENTITY nch.prefs.infowindow "Information Window">
+<!ENTITY nch.prefs.statusestranslation "Statuses Translation">
+<!ENTITY nch.prefs.usetranslatednames "Use translated names (if translation exists)">
+<!ENTITY nch.prefs.useenglishnames "Use English names">

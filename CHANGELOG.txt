@@ -1,3 +1,6 @@
+0.15.1
+* LANG: updated it-IT, nl-NL and repaired previous ones
+
 0.15
 * LANG: updated bg-BG, nl-NL, es-ES from BabelZilla
 
