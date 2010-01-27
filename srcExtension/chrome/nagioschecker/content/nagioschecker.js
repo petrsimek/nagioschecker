@@ -1,12 +1,15 @@
-var NCH_VERSION = "0.14.9";
-var NCH_GUID = "{123b2220-59cb-11db-b0de-0800200c9a66}";
-var NCH_CONFIGFILE="nagioschecker.xml";
+if (!cz) var cz = {};
+if (!cz.petrsimek) cz.petrsimek={};
 
-var nch_branch = "extensions.nagioschecker.";
-var _showTimerID = null;
-var _tab = null;
-var MAX_SERVERS=200;
-var ev2pop1 = {
+cz.petrsimek.NCH_VERSION = "0.14.9";
+cz.petrsimek.NCH_GUID = "{123b2220-59cb-11db-b0de-0800200c9a66}";
+cz.petrsimek.NCH_CONFIGFILE="nagioschecker.xml";
+
+cz.petrsimek.nch_branch = "extensions.nagioschecker.";
+cz.petrsimek._showTimerID = null;
+cz.petrsimek._tab = null;
+cz.petrsimek.MAX_SERVERS=200;
+cz.petrsimek.ev2pop1 = {
 			  'nagioschecker-popup':'nagioschecker-popup',
 			  'nagioschecker-popup-down':'nagioschecker-popup-down',
 			  'nagioschecker-popup-unreachable':'nagioschecker-popup-unreachable',
@@ -21,7 +24,7 @@ var ev2pop1 = {
 			  'nagioschecker-services-warning':'nagioschecker-popup',
 			  'nagioschecker-services-critical':'nagioschecker-popup'};
 
-var ev2pop2 = {
+cz.petrsimek.ev2pop2 = {
 			  'nagioschecker-popup':'nagioschecker-popup',
 			  'nagioschecker-popup-down':'nagioschecker-popup-down',
 			  'nagioschecker-popup-unreachable':'nagioschecker-popup-unreachable',
@@ -35,55 +38,56 @@ var ev2pop2 = {
 			  'nagioschecker-services-unknown':'nagioschecker-popup-unknown',
 			  'nagioschecker-services-warning':'nagioschecker-popup-warning',
 			  'nagioschecker-services-critical':'nagioschecker-popup-critical'};
-var ev2pop=ev2pop1;
+cz.petrsimek.ev2pop=cz.petrsimek.ev2pop1;
 
-var isFirst = null;
-var nagioschecker = null;
-var nagioscheckerLoad = function() {
+cz.petrsimek.isFirst = null;
+cz.petrsimek.nagioschecker = null;
+cz.petrsimek.nagioscheckerLoad = function() {
 
 
-  nagioschecker = new NCH();
+	cz.petrsimek.nagioschecker = new NCH();
 
   Components.classes["@mozilla.org/observer-service;1"]
             .getService(Components.interfaces.nsIObserverService)
-            .addObserver(nagioschecker, "nagioschecker:preferences-changed", false);
+            .addObserver(cz.petrsimek.nagioschecker, "nagioschecker:preferences-changed", false);
 
 
 
-  nagioschecker.start();
+  cz.petrsimek.nagioschecker.start();
 };
-var nagioscheckerUnload = function() {
+
+cz.petrsimek.nagioscheckerUnload = function() {
 	
   if (nagioschecker != null) {
     Components.classes["@mozilla.org/observer-service;1"]
             .getService(Components.interfaces.nsIObserverService)
-            .removeObserver(nagioschecker, "nagioschecker:preferences-changed");
-    nagioschecker.stop();
+            .removeObserver(cz.petrsimek.nagioschecker, "nagioschecker:preferences-changed");
+    cz.petrsimek.nagioschecker.stop();
     var wm = Components.classes["@mozilla.org/appshell/window-mediator;1"]
                    .getService(Components.interfaces.nsIWindowMediator);
     var enumerator = wm.getEnumerator("");
     while(enumerator.hasMoreElements()) {
       var win = enumerator.getNext();
-      if (win.nagioschecker) {
+      if (win.cz.petrsimek.nagioschecker) {
         win.setTimeout(function() {
-          win.nagioschecker.reload(true);          
+          win.cz.petrsimek.nagioschecker.reload(true);          
         },30);
 
       }
 
     }
   }
-  nagioschecker = null;
+  cz.petrsimek.nagioschecker = null;
 }
 
-var nagioscheckerBlur = function() {
-  if (nagioschecker != null) {
-	nagioschecker.setActive(false);
+cz.petrsimek.nagioscheckerBlur = function() {
+  if (cz.petrsimek.nagioschecker != null) {
+	  cz.petrsimek.nagioschecker.setActive(false);
   }
 }
-var nagioscheckerFocus = function() {
-  if (nagioschecker != null) {
-	nagioschecker.setActive(true);
+cz.petrsimek.nagioscheckerFocus = function() {
+  if (cz.petrsimek.nagioschecker != null) {
+	  cz.petrsimek.nagioschecker.setActive(true);
   }
 }
 
@@ -133,29 +137,29 @@ NCH.prototype = {
 
   handleMouseClick: function (aEvent) {
 	  if(aEvent.button == 0) {
-		nagioschecker.abort();
-  		nagioschecker.handleMouseOver(aEvent);
+		cz.petrsimek.nagioschecker.abort();
+		cz.petrsimek.nagioschecker.handleMouseOver(aEvent);
 	  }
   },
 
 
   handleMouseOver: function (aEvent) {
-	if (_showTimerID ) {
+	if (cz.petrsimek._showTimerID ) {
 		return;
 	}
 		if ((aEvent.target.id == "nagioschecker-img")||(aEvent.target.id == "nagioschecker-panel")||(aEvent.target.localName == "label")||(aEvent.target.localName == "popup")) {
-			if (aEvent.target == _tab) {
+			if (aEvent.target == cz.petrsimek._tab) {
 				return;
 			}
-			_tab = aEvent.target;
-			var relPopup=document.getElementById(ev2pop[aEvent.target.id]);
+			cz.petrsimek._tab = aEvent.target;
+			var relPopup=document.getElementById(cz.petrsimek.ev2pop[aEvent.target.id]);
 			var callback = function(self) {
 			if (relPopup) {
-				relPopup.showPopup(_tab,  -1, -1, 'popup', 'topleft' , 'bottomleft');
-				nagioschecker.openedPops.push(ev2pop[aEvent.target.id]);
+				relPopup.showPopup(cz.petrsimek._tab,  -1, -1, 'popup', 'topleft' , 'bottomleft');
+				cz.petrsimek.nagioschecker.openedPops.push(cz.petrsimek.ev2pop[aEvent.target.id]);
 			}
 		};
-		_showTimerID = window.setTimeout(callback, 10, this);
+		cz.petrsimek._showTimerID = window.setTimeout(callback, 10, this);
 	}
   },
 
@@ -171,38 +175,38 @@ NCH.prototype = {
 	
 	if (rel) {
 		while (rel) {
-			if (rel == _tab || rel == popupMain || rel == popupDown || rel == popupUnreachable || rel == popupUnknown || rel == popupCritical || rel == popupWarning)
+			if (rel == cz.petrsimek._tab || rel == popupMain || rel == popupDown || rel == popupUnreachable || rel == popupUnknown || rel == popupCritical || rel == popupWarning)
 				return;
 			rel = rel.parentNode;
 		}
-		nagioschecker.abort();
+		cz.petrsimek.nagioschecker.abort();
 		return;
 	}
 	var x = aEvent.screenX;
 	var y = aEvent.screenY;
-	if (nagioschecker.isEntering(x, y, popupMain, true) || nagioschecker.isEntering(x, y, popupDown, true) ||
-		nagioschecker.isEntering(x, y, popupUnreachable, true) || nagioschecker.isEntering(x, y, popupUnknown, true) ||	    
-		nagioschecker.isEntering(x, y, popupCritical, true) || nagioschecker.isEntering(x, y, popupWarning, true) ||	    
-		nagioschecker.isEntering(x, y, _tab, true))
+	if (cz.petrsimek.nagioschecker.isEntering(x, y, popupMain, true) || cz.petrsimek.nagioschecker.isEntering(x, y, popupDown, true) ||
+		cz.petrsimek.nagioschecker.isEntering(x, y, popupUnreachable, true) || cz.petrsimek.nagioschecker.isEntering(x, y, popupUnknown, true) ||	    
+		cz.petrsimek.nagioschecker.isEntering(x, y, popupCritical, true) || cz.petrsimek.nagioschecker.isEntering(x, y, popupWarning, true) ||	    
+		cz.petrsimek.nagioschecker.isEntering(x, y, cz.petrsimek._tab, true))
 		return;
-	nagioschecker.abort();   	
+	cz.petrsimek.nagioschecker.abort();   	
   },
 
   abort: function() {
-	if (_showTimerID) {
-		window.clearTimeout(_showTimerID);
-		_showTimerID = null;
+	if (cz.petrsimek._showTimerID) {
+		window.clearTimeout(cz.petrsimek._showTimerID);
+		cz.petrsimek._showTimerID = null;
 	}
-	if (_tab) {
-		for (var i in nagioschecker.openedPops) {
-			if (nagioschecker.openedPops[i])
-				document.getElementById(nagioschecker.openedPops[i]).hidePopup();
+	if (cz.petrsimek._tab) {
+		for (var i in cz.petrsimek.nagioschecker.openedPops) {
+			if (cz.petrsimek.nagioschecker.openedPops[i])
+				document.getElementById(cz.petrsimek.nagioschecker.openedPops[i]).hidePopup();
 				
 		}
-		nagioschecker.openedPops = [];
+		cz.petrsimek.nagioschecker.openedPops = [];
 		
 	}
-	_tab = null;  	
+	cz.petrsimek._tab = null;  	
   },
   
   isEntering: function(aScreenX,aScreenY,aElement,aAllowOnEdge) {
@@ -222,16 +226,7 @@ NCH.prototype = {
     this.bundle = document.getElementById("nch-strings");
 	this._uid = Math.floor(Math.random()*10000);
 	this.results=new NCHPaket(this.pref,0);
-	if (gMini) {
-   var resizer = document.getElementById('nagioschecker-mover');
-
-       window.addEventListener('mouseup', 
-                function(event) { nagioschecker.onUndockUp(event) }, false);
-       window.addEventListener('mousedown', 
-                function(event) { nagioschecker.onUndockDown(event) }, false);
-       window.addEventListener('mousemove', 
-                function(event) { nagioschecker.onUndockMove(event) }, false);
-	}
+	
     this.parser = new NCHParser();
     this.setNoData(null);
     try{
@@ -246,63 +241,7 @@ NCH.prototype = {
 		},1000);
   },
 
-  adjustSize : function(event, firstTime) {
-
-        var currentX = window.screenX;
-        var currentY = window.screenY;
-        var currentWidth = window.outerWidth;
-        var right = currentX + currentWidth; 
-        sizeToContent();
-
-        var newWidth = window.outerWidth;
-        var left = right - newWidth;
-        
-        moveTo(left, currentY);
-        
-        var me = this;
-        if (firstTime) {
-            // doing sizeToContent once often leaves the minimode in incorrect state
-            // let's do it one more time
-            setTimeout(function() { me.adjustSize(event); }, 100);
-        }
-
-    },
-
-  
-    onUndockMove : function(event) {
-       if (!this.isMoving) return;
-
-        var currentX = event.screenX;
-        var currentY = event.screenY;
-        var deltaX = currentX - this.startX;
-        var deltaY = currentY - this.startY;
-        this.undockedWindow.moveBy(deltaX, deltaY);
-
-        this.startX = currentX;
-        this.startY = currentY;
-
-
-    },
-
-    onUndockUp : function(event) {
-        if (!this.isMoving) return;
-        this.isMoving = false;
-    },
-
-    onUndockDown : function(event) {
-        if (event.target.tagName != 'titlebar') return;
-        if (this.isMoving) return;
-        this.isMoving = true;
-        this.startX = event.screenX;
-        this.startY = event.screenY;
-
-        var wm = Components.classes["@mozilla.org/appshell/window-mediator;1"]
-                    .getService(Components.interfaces.nsIWindowMediator);
-        this.undockedWindow = wm.getMostRecentWindow('nch:undocked');
-        if (!this.undockedWindow) return;
-
-    },
-
+ 
   isFirstWindow: function() {
   
     var wm = Components.classes["@mozilla.org/appshell/window-mediator;1"]
@@ -338,23 +277,23 @@ NCH.prototype = {
       var win = enumerator.getNext();
       if (cnt==0) {
       	firstWin=win;
-	    firstWin.nagioschecker.isStopped = (!firstWin.nagioschecker.isStopped);
+	    firstWin.cz.petrsimek.nagioschecker.isStopped = (!firstWin.cz.petrsimek.nagioschecker.isStopped);
       }
       else {
-      	if (win.nagioschecker) {
-	      	win.nagioschecker.isStopped = firstWin.nagioschecker.isStopped;
+      	if (win.cz.petrsimek.nagioschecker) {
+	      	win.cz.petrsimek.nagioschecker.isStopped = firstWin.cz.petrsimek.nagioschecker.isStopped;
       	}
       }
       if (win.document) {
       	
-	    win.document.getElementById('nagioschecker-stoprun').setAttribute("label",(firstWin.nagioschecker.isStopped) ? this.bundle.getString("runagain") : this.bundle.getString("stop"));
+	    win.document.getElementById('nagioschecker-stoprun').setAttribute("label",(firstWin.cz.petrsimek.nagioschecker.isStopped) ? this.bundle.getString("runagain") : this.bundle.getString("stop"));
       }
-		win.nagioschecker.resetBehavior();
+		win.cz.petrsimek.nagioschecker.resetBehavior();
       cnt++;
 	}
 
-    this.preferences.setBoolPref("extensions.nagioschecker.stopped",firstWin.nagioschecker.isStopped);
-    firstWin.nagioschecker.reload(true);
+    this.preferences.setBoolPref("extensions.nagioschecker.stopped",firstWin.cz.petrsimek.nagioschecker.isStopped);
+    firstWin.cz.petrsimek.nagioschecker.reload(true);
   },
 
   reload : function(firstRun,reallyFirstRun) {
@@ -366,7 +305,7 @@ NCH.prototype = {
     var cnt=0;
     while(enumerator.hasMoreElements()) {
       var win = enumerator.getNext();
-      win.isFirst = (cnt==0);
+      win.cz.petrsimek.isFirst = (cnt==0);
 	  cnt++;
     }
 
@@ -442,9 +381,7 @@ NCH.prototype = {
 			prefer_text_config_type:['int',0]
 			},reallyFirstRun);
 
-    if (gMini) {
-		this.adjustSize(null,true);
-    }
+
 
 //	alert(this.pref.play_sound);
 
@@ -513,7 +450,7 @@ NCH.prototype = {
 
         var gotoN = document.createElement("menuitem");
         gotoN.setAttribute("label", (srvlen>1) ? this._servers[i].name : this.bundle.getString("goto")+" Nagios");    
-        gotoN.setAttribute("oncommand", "nagioschecker.openTab('"+this._servers[i].url+"');");    
+        gotoN.setAttribute("oncommand", "cz.petrsimek.nagioschecker.openTab('"+this._servers[i].url+"');");    
 
         if (srvlen>1) {
           mp1.appendChild(gotoN);
@@ -523,7 +460,7 @@ NCH.prototype = {
         }
         var gotoS = document.createElement("menuitem");
         gotoS.setAttribute("label",  (srvlen>1) ? this._servers[i].name : this.bundle.getString("goto")+" "+this.bundle.getString("services"));    
-        gotoS.setAttribute("oncommand", "nagioschecker.openTab('"+createNagiosUrl(this._servers[i],'service_problems')+"');");    
+        gotoS.setAttribute("oncommand", "cz.petrsimek.nagioschecker.openTab('"+createNagiosUrl(this._servers[i],'service_problems')+"');");    
         if (srvlen>1) {
           mp2.appendChild(gotoS);
         }
@@ -533,7 +470,7 @@ NCH.prototype = {
 
         var gotoH = document.createElement("menuitem");
         gotoH.setAttribute("label",  (srvlen>1) ? this._servers[i].name : this.bundle.getString("goto")+" "+this.bundle.getString("hosts"));    
-        gotoH.setAttribute("oncommand", "nagioschecker.openTab('"+createNagiosUrl(this._servers[i],'host_problems')+"');");    
+        gotoH.setAttribute("oncommand", "cz.petrsimek.nagioschecker.openTab('"+createNagiosUrl(this._servers[i],'host_problems')+"');");    
         if (srvlen>1) {
           mp3.appendChild(gotoH);
         }
@@ -566,16 +503,16 @@ NCH.prototype = {
 		if (this._servers.length>0) {
 			if (!this.isStopped) {
 				var firstWin = this.getFirstWindow();
-				if ((this.pref.one_window_only) && (firstWin!=window)  && (!gMini)) {
+				if ((this.pref.one_window_only) && (firstWin!=window) ) {
 //				this.updateAllClients(this.results);
 					this.setIcon(window,"disabled");
 				}
 				else {
-					firstWin.nagioschecker.setLoading(true);
-//					firstWin.nagioschecker.parser.fetchAllData(nagioschecker,function(probs) {nagioschecker.handleProblems(probs)});
-					var me = firstWin.nagioschecker;
+					firstWin.cz.petrsimek.nagioschecker.setLoading(true);
+//					firstWin.cz.petrsimek.nagioschecker.parser.fetchAllData(cz.petrsimek.nagioschecker,function(probs) {cz.petrsimek.nagioschecker.handleProblems(probs)});
+					var me = firstWin.cz.petrsimek.nagioschecker;
 					var me2 = this;
-					firstWin.nagioschecker.parser.fetchAllData(nagioschecker,function(probs) {
+					firstWin.cz.petrsimek.nagioschecker.parser.fetchAllData(cz.petrsimek.nagioschecker,function(probs) {
 						if (document) {
 							me2.enumerateStatus(probs);
 							me.updateAllClients(me2.results);
@@ -617,25 +554,25 @@ NCH.prototype = {
     var cnt=0;
     while(enumerator.hasMoreElements()) {
       var win = enumerator.getNext();
-      if (win.nagioschecker) {
+      if (win.cz.petrsimek.nagioschecker) {
         if (!this.isStopped) {        
-          if ((this.pref.one_window_only) && (!win.isFirst) && (!win.gMini)) {
-          	win.nagioschecker.setNoData("");
-            win.nagioschecker.setIcon(win,"disabled");
+          if ((this.pref.one_window_only) && (!win.cz.petrsimek.isFirst) ) {
+          	win.cz.petrsimek.nagioschecker.setNoData("");
+            win.cz.petrsimek.nagioschecker.setIcon(win,"disabled");
           }
           else {
             if (paket==null) {
-              win.nagioschecker.setNoData("notSet");
+              win.cz.petrsimek.nagioschecker.setNoData("notSet");
             }
             else {
-              win.nagioschecker.updateStatus(paket,false);
+              win.cz.petrsimek.nagioschecker.updateStatus(paket,false);
             }
           }
         }
         else {
-          win.nagioschecker.setNoData("");
-          win.nagioschecker.setIcon(win,"stop");
-          win.nagioschecker.resetBehavior();
+          win.cz.petrsimek.nagioschecker.setNoData("");
+          win.cz.petrsimek.nagioschecker.setIcon(win,"stop");
+          win.cz.petrsimek.nagioschecker.resetBehavior();
         }
       }
       else {
@@ -700,7 +637,7 @@ NCH.prototype = {
 			switch (nch_branch.getPrefType(childs[i])) {
 				case nch_branch.PREF_STRING:
 					item.setAttribute('type', 'string');
-					item.setAttribute('value', nch_branch.getCharPref(childs[i]));
+					item.setAttribute('value',nch_branch.getCharPref(childs[i]));
 					break;
 				case nch_branch.PREF_INT:
 					item.setAttribute('type', 'int');
@@ -729,14 +666,14 @@ NCH.prototype = {
 			                              .getService(Components.interfaces.nsIProperties)
 			                              .get("ProfD", Components.interfaces.nsIFile);
 			file.append("extensions");
-			file.append(NCH_GUID);
-			file.append(NCH_CONFIGFILE);
+			file.append(cz.petrsimek.NCH_GUID);
+			file.append(cz.petrsimek.NCH_CONFIGFILE);
 		}
 		else if (preferFileType==2) {
 			var file = Components.classes["@mozilla.org/file/directory_service;1"]
 			                             	.getService(Components.interfaces.nsIProperties)
 			                             	.get("DefProfRt", Components.interfaces.nsIFile); // get profile folder
-			file.append(NCH_CONFIGFILE);
+			file.append(cz.petrsimek.NCH_CONFIGFILE);
 		}
 		
 		foStream.init(file, 0x02 | 0x08 | 0x20, 0664, 0);
@@ -750,7 +687,7 @@ NCH.prototype = {
   	
   	}
   	
-  		setTimeout("if (nagioschecker != null) nagioschecker.reload(false);", 300);
+  		setTimeout("if (cz.petrsimek.nagioschecker != null) cz.petrsimek.nagioschecker.reload(false);", 300);
   	}
   },
 
@@ -836,7 +773,7 @@ NCH.prototype = {
 
   getCorrectBundleString: function(num,part_bundle_id,fake_num) {
 	  
-	var useEnglish = (nagioschecker.pref.statuses_translation==1);
+	var useEnglish = (cz.petrsimek.nagioschecker.pref.statuses_translation==1);
 	var real_num = (fake_num) ? fake_num : num;
 	   var english = {
 			   "alertDown1":"down",
@@ -1081,36 +1018,34 @@ NCH.prototype = {
   	          "warning": document.getElementById('nagioschecker-services-warning'),
   	          "critical": document.getElementById('nagioschecker-services-critical')
               };
-    if (gMini) {
-		this.adjustSize(null,true);
-    }
+
 
     var mainPanel=document.getElementById('nagioschecker-panel');
     var mainPopup=document.getElementById('nagioschecker-popup');
-    ev2pop=ev2pop1;
+    cz.petrsimek.ev2pop=cz.petrsimek.ev2pop1;
 
     switch (this.pref.click) {
 		  case 1:
-			  mainPanel.setAttribute("onclick","nagioschecker.statusBarOnClick(event,'main');");
+			  mainPanel.setAttribute("onclick","cz.petrsimek.nagioschecker.statusBarOnClick(event,'main');");
 			  break;
 		  case 5:
-			  mainPanel.setAttribute("onclick","nagioschecker.statusBarOnClick(event,'services');");
+			  mainPanel.setAttribute("onclick","cz.petrsimek.nagioschecker.statusBarOnClick(event,'services');");
 			  break;
 		  case 6:
-			  mainPanel.setAttribute("onclick","nagioschecker.statusBarOnClick(event,'hosts');");
+			  mainPanel.setAttribute("onclick","cz.petrsimek.nagioschecker.statusBarOnClick(event,'hosts');");
 			  break;
 		  case 3:
 			if (!this.isStopped) {
 
 			if (this.pref.info_type==6) {
 				var ico = document.getElementById('nagioschecker-img');
-				ico.addEventListener('click',nagioschecker.handleMouseClick,false);
-				ico.addEventListener('mouseout',nagioschecker.handleMouseOut,false);
+				ico.addEventListener('click',cz.petrsimek.nagioschecker.handleMouseClick,false);
+				ico.addEventListener('mouseout',cz.petrsimek.nagioschecker.handleMouseOut,false);
 				ico.relatedTarget='nagioschecker-popup';
 			}
 
-				mainPanel.addEventListener('click',nagioschecker.handleMouseClick,false);
-		  mainPanel.addEventListener('mouseout',nagioschecker.handleMouseOut,false);
+				mainPanel.addEventListener('click',cz.petrsimek.nagioschecker.handleMouseClick,false);
+		  mainPanel.addEventListener('mouseout',cz.petrsimek.nagioschecker.handleMouseOut,false);
 		  mainPanel.relatedPopup='nagioschecker-popup';
 
 			}
@@ -1133,19 +1068,19 @@ NCH.prototype = {
 	      for (var pType in fld) {
 	        fld[pType].setAttribute("style","cursor:pointer");
 	      }
-	  	  fld["down"].setAttribute("onclick","nagioschecker.statusBarOnClick(event,'hosts');");
-	  	  fld["unreachable"].setAttribute("onclick","nagioschecker.statusBarOnClick(event,'hosts');");
-	  	  fld["unknown"].setAttribute("onclick","nagioschecker.statusBarOnClick(event,'services');");
-	  	  fld["warning"].setAttribute("onclick","nagioschecker.statusBarOnClick(event,'services');");
-	  	  fld["critical"].setAttribute("onclick","nagioschecker.statusBarOnClick(event,'services');");
+	  	  fld["down"].setAttribute("onclick","cz.petrsimek.nagioschecker.statusBarOnClick(event,'hosts');");
+	  	  fld["unreachable"].setAttribute("onclick","cz.petrsimek.nagioschecker.statusBarOnClick(event,'hosts');");
+	  	  fld["unknown"].setAttribute("onclick","cz.petrsimek.nagioschecker.statusBarOnClick(event,'services');");
+	  	  fld["warning"].setAttribute("onclick","cz.petrsimek.nagioschecker.statusBarOnClick(event,'services');");
+	  	  fld["critical"].setAttribute("onclick","cz.petrsimek.nagioschecker.statusBarOnClick(event,'services');");
 	  }
 	  else {
 	      if ((this.pref.click==4) && (!this.isStopped)) {
 
 			if (this.pref.info_type==6) {
 				var ico = document.getElementById('nagioschecker-img');
-				ico.addEventListener('click',nagioschecker.handleMouseClick,false);
-				ico.addEventListener('mouseout',nagioschecker.handleMouseOut,false);
+				ico.addEventListener('click',cz.petrsimek.nagioschecker.handleMouseClick,false);
+				ico.addEventListener('mouseout',cz.petrsimek.nagioschecker.handleMouseOut,false);
 				ico.relatedTarget='nagioschecker-popup';
 			}
 			else {
@@ -1153,11 +1088,11 @@ NCH.prototype = {
 		          fld[pType].setAttribute("style","cursor:pointer");
 
 				  var pop = document.getElementById('nagioschecker-popup-'+pType);
-				  pop.addEventListener('mouseover',nagioschecker.handleMouseOver,false);
-				  pop.addEventListener('mouseout',nagioschecker.handleMouseOut,false);
+				  pop.addEventListener('mouseover',cz.petrsimek.nagioschecker.handleMouseOver,false);
+				  pop.addEventListener('mouseout',cz.petrsimek.nagioschecker.handleMouseOut,false);
 	
-				  fld[pType].addEventListener('click',nagioschecker.handleMouseClick,false);
-				  fld[pType].addEventListener('mouseout',nagioschecker.handleMouseOut,false);
+				  fld[pType].addEventListener('click',cz.petrsimek.nagioschecker.handleMouseClick,false);
+				  fld[pType].addEventListener('mouseout',cz.petrsimek.nagioschecker.handleMouseOut,false);
 				  fld[pType].relatedTarget='nagioschecker-popup-'+pType;
 
 		        }
@@ -1173,31 +1108,31 @@ NCH.prototype = {
 	  }
 
 
-	mainPopup.addEventListener('mouseover',nagioschecker.handleMouseOver,false);
-	mainPopup.addEventListener('mouseout',nagioschecker.handleMouseOut,false);
+	mainPopup.addEventListener('mouseover',cz.petrsimek.nagioschecker.handleMouseOver,false);
+	mainPopup.addEventListener('mouseout',cz.petrsimek.nagioschecker.handleMouseOut,false);
 
-	  mainPanel.removeEventListener('mouseover',nagioschecker.handleMouseOver,false);
-	  mainPanel.removeEventListener('mouseout',nagioschecker.handleMouseOut,false);
+	  mainPanel.removeEventListener('mouseover',cz.petrsimek.nagioschecker.handleMouseOver,false);
+	  mainPanel.removeEventListener('mouseout',cz.petrsimek.nagioschecker.handleMouseOut,false);
 
       for (var pType in fld) {
 		  var pop = document.getElementById('nagioschecker-popup-'+pType);
-		  pop.addEventListener('mouseover',nagioschecker.handleMouseOver,false);
-		  pop.addEventListener('mouseout',nagioschecker.handleMouseOut,false);
-		  fld[pType].removeEventListener('mouseover',nagioschecker.handleMouseOver,false);
-		  fld[pType].removeEventListener('mouseout',nagioschecker.handleMouseOut,false);
+		  pop.addEventListener('mouseover',cz.petrsimek.nagioschecker.handleMouseOver,false);
+		  pop.addEventListener('mouseout',cz.petrsimek.nagioschecker.handleMouseOut,false);
+		  fld[pType].removeEventListener('mouseover',cz.petrsimek.nagioschecker.handleMouseOver,false);
+		  fld[pType].removeEventListener('mouseout',cz.petrsimek.nagioschecker.handleMouseOut,false);
       }
 
     if ((alertCount>0) && (this.pref.info_window_type>0) && (!this.isStopped) && ((!this.pref.one_window_only) || ((this.pref.one_window_only) && (this.isFirstWindow()))))  {
       if (this.pref.info_window_type==1) {
-		  mainPanel.addEventListener('mouseover',nagioschecker.handleMouseOver,false);
-		  mainPanel.addEventListener('mouseout',nagioschecker.handleMouseOut,false);
+		  mainPanel.addEventListener('mouseover',cz.petrsimek.nagioschecker.handleMouseOver,false);
+		  mainPanel.addEventListener('mouseout',cz.petrsimek.nagioschecker.handleMouseOut,false);
 		  mainPanel.relatedPopup='nagioschecker-popup';
       }
       else {		  
-        ev2pop=ev2pop2;
+    	  cz.petrsimek.ev2pop=cz.petrsimek.ev2pop2;
         for (var pType in fld) {
-		  fld[pType].addEventListener('mouseover',nagioschecker.handleMouseOver,false);
-		  fld[pType].addEventListener('mouseout',nagioschecker.handleMouseOut,false);
+		  fld[pType].addEventListener('mouseover',cz.petrsimek.nagioschecker.handleMouseOver,false);
+		  fld[pType].addEventListener('mouseout',cz.petrsimek.nagioschecker.handleMouseOut,false);
 		  fld[pType].relatedTarget='nagioschecker-popup-'+pType;
         }
       }
@@ -1301,12 +1236,7 @@ NCH.prototype = {
       }
     }
     
-    if (gMini) {
-      this.adjustSize(null,false);  
-//		sizeToContent();
-    }
-    
-    
+
   },
 
 
@@ -1393,7 +1323,7 @@ NCH.prototype = {
       		var mainPanel=document.getElementById('nagioschecker-panel');
       		mainPanel.removeAttribute("onclick");
 
-    		infoLabel.setAttribute("value",nagioschecker.bundle.getString(type));
+    		infoLabel.setAttribute("value",cz.petrsimek.nagioschecker.bundle.getString(type));
     	
     	}
     	else if (type=="noProblem") {
@@ -1415,7 +1345,7 @@ NCH.prototype = {
 		    		infoLabel.setAttribute("value"," 0 ");
 		  		}
 		  		else {
-		    		infoLabel.setAttribute("value",nagioschecker.bundle.getString(type));
+		    		infoLabel.setAttribute("value",cz.petrsimek.nagioschecker.bundle.getString(type));
 		  		}
 	  		}
     	}
@@ -1423,7 +1353,7 @@ NCH.prototype = {
 	  		if (type=="error") {
 	  			infoLabel.setAttribute("class", "nagioschecker-notset-value");
 	  		}
-	  		infoLabel.setAttribute("value",(type) ? nagioschecker.bundle.getString(type) : "");
+	  		infoLabel.setAttribute("value",(type) ? cz.petrsimek.nagioschecker.bundle.getString(type) : "");
 		}
   	}
  },
@@ -1435,9 +1365,9 @@ NCH.prototype = {
     var enumerator = wm.getEnumerator("");
     while(enumerator.hasMoreElements()) {
       var win = enumerator.getNext();
-      if (win.nagioschecker) {
-			win.nagioschecker.setIcon(window,(loading) ? "loading" : ((win.nagioschecker.isStopped) ? "stop" : "nagios"));
-			win.nagioschecker.resetBehavior();
+      if (win.cz.petrsimek.nagioschecker) {
+			win.cz.petrsimek.nagioschecker.setIcon(window,(loading) ? "loading" : ((win.cz.petrsimek.nagioschecker.isStopped) ? "stop" : "nagios"));
+			win.cz.petrsimek.nagioschecker.resetBehavior();
       }
     }
   },
@@ -1460,11 +1390,11 @@ NCH.prototype = {
 			break;
 		case "disabled":
 			ico.setAttribute("src","chrome://nagioschecker/skin/nag-disabled.png");
-		    ico.setAttribute("tooltiptext",nagioschecker.bundle.getString("disabledRun"));
+		    ico.setAttribute("tooltiptext",cz.petrsimek.nagioschecker.bundle.getString("disabledRun"));
 			break;
 		case "stop":
 			ico.setAttribute("src","chrome://nagioschecker/skin/nag-stop.png");
-		    ico.setAttribute("tooltiptext",nagioschecker.bundle.getString("stoppedRun"));
+		    ico.setAttribute("tooltiptext",cz.petrsimek.nagioschecker.bundle.getString("stoppedRun"));
 			break;
 	}
 
@@ -1508,15 +1438,15 @@ NCH.prototype = {
 				                              .getService(Components.interfaces.nsIProperties)
 				                              .get("ProfD", Components.interfaces.nsIFile); // get profile folder
 				file.append("extensions");
-				file.append(NCH_GUID);
-				file.append(NCH_CONFIGFILE);
+				file.append(cz.petrsimek.NCH_GUID);
+				file.append(cz.petrsimek.NCH_CONFIGFILE);
 			}
 			else if (preferFileType==2) {
 				var file = Components.classes["@mozilla.org/file/directory_service;1"]
 				                             	.getService(Components.interfaces.nsIProperties)
 				                             	.get("DefProfRt", Components.interfaces.nsIFile); // get profile folder
 				                  			
-				file.append(NCH_CONFIGFILE);
+				file.append(cz.petrsimek.NCH_CONFIGFILE);
 				
 			}
 		
@@ -1573,7 +1503,7 @@ NCH.prototype = {
 			}
 			
 			
-      for(var i=0;i<MAX_SERVERS;i++) {
+      for(var i=0;i<cz.petrsimek.MAX_SERVERS;i++) {
         
         var surl = tmp_prf[(i+1)+".url"];
         if (surl) {
@@ -1630,7 +1560,7 @@ NCH.prototype = {
     try {
 
 
-      for(var i=0;i<MAX_SERVERS;i++) {
+      for(var i=0;i<cz.petrsimek.MAX_SERVERS;i++) {
         
         var surl = this.preferences.getCharPref("extensions.nagioschecker."+(i+1)+".url");
         if (surl) {
@@ -1694,13 +1624,13 @@ NCH.prototype = {
    		
   	try {
    		
-  	  if ((!this.preferences.prefHasUserValue(nch_branch+"version")) 
+  	  if ((!this.preferences.prefHasUserValue(cz.petrsimek.nch_branch+"version")) 
   	  		|| 
-  	  		(this.preferences.getCharPref(nch_branch+"version") == "")
+  	  		(this.preferences.getCharPref(cz.petrsimek.nch_branch+"version") == "")
   	  		||
-  	  		(currVer!=this.preferences.getCharPref(nch_branch+"version"))
+  	  		(currVer!=this.preferences.getCharPref(cz.petrsimek.nch_branch+"version"))
   	  		) {
-		this.preferences.setCharPref(nch_branch+"version", currVer); 
+		this.preferences.setCharPref(cz.petrsimek.nch_branch+"version", currVer); 
   	  	return true; 
 	  }  	
   	} catch(e) {
@@ -1826,44 +1756,44 @@ function NCHToolTip(pref) {
 		row.appendChild(lNew);
 
 		var lHost = doc.createElement("label");
-		lHost.setAttribute("value", nagioschecker.bundle.getString("host"));
+		lHost.setAttribute("value", cz.petrsimek.nagioschecker.bundle.getString("host"));
 		row.appendChild(lHost);
 
 //    if (this.showColAlias) {
 		if (this.pref.show_window_column_alias) {
 			var lAlias = doc.createElement("label");
-			lAlias.setAttribute("value", nagioschecker.bundle.getString("hostAlias"));
+			lAlias.setAttribute("value", cz.petrsimek.nagioschecker.bundle.getString("hostAlias"));
 //		lAlias.setAttribute("maxwidth", "50px");
 			row.appendChild(lAlias);
 		}
  		var lServ = doc.createElement("label");
-	  lServ.setAttribute("value", nagioschecker.bundle.getString("service"));
+	  lServ.setAttribute("value", cz.petrsimek.nagioschecker.bundle.getString("service"));
 	  row.appendChild(lServ);
 
 //    if (this.showColFlags) {
 		if (this.pref.show_window_column_flags) {
  			var lFlags = doc.createElement("label");
-			  lFlags.setAttribute("value", nagioschecker.bundle.getString("flags"));
+			  lFlags.setAttribute("value", cz.petrsimek.nagioschecker.bundle.getString("flags"));
 			  row.appendChild(lFlags);
 	    }
 		if (this.pref.show_window_column_attempt) {
 	 		var lAttempt = doc.createElement("label");
-		  lAttempt.setAttribute("value", nagioschecker.bundle.getString("attempt"));
+		  lAttempt.setAttribute("value", cz.petrsimek.nagioschecker.bundle.getString("attempt"));
 		  row.appendChild(lAttempt);
 		}
 		if (this.pref.show_window_column_status) {
 			var lStat = doc.createElement("label");
-			lStat.setAttribute("value", nagioschecker.bundle.getString("status"));
+			lStat.setAttribute("value", cz.petrsimek.nagioschecker.bundle.getString("status"));
 			row.appendChild(lStat);
 		}
 		var lTime = doc.createElement("label");
-		lTime.setAttribute("value", nagioschecker.bundle.getString("duration"));
+		lTime.setAttribute("value", cz.petrsimek.nagioschecker.bundle.getString("duration"));
 		row.appendChild(lTime);
 
 		if (this.pref.show_window_column_information) {
 //    if (this.showColInfo) {
 			var lInfo = doc.createElement("label");
-			lInfo.setAttribute("value", nagioschecker.bundle.getString("information"));
+			lInfo.setAttribute("value", cz.petrsimek.nagioschecker.bundle.getString("information"));
 			row.appendChild(lInfo);
     	}
 
@@ -1933,7 +1863,7 @@ function NCHToolTip(pref) {
 
 		var lErr = document.createElement("label");
 		lErr.setAttribute("class","error");
-		lErr.setAttribute("value", nagioschecker.bundle.getString("downloadError"));
+		lErr.setAttribute("value", cz.petrsimek.nagioschecker.bundle.getString("downloadError"));
 		hbd.appendChild(lErr);
 
 
@@ -1959,31 +1889,31 @@ function NCHToolTip(pref) {
 	var row = document.createElement("row");
 		
     var status_text = "";
-    var useEnglish = (nagioschecker.pref.statuses_translation==1);
+    var useEnglish = (cz.petrsimek.nagioschecker.pref.statuses_translation==1);
     switch (problem.status) {
       case "down":
     		row.setAttribute("class", "nagioschecker-tooltip-row nagioschecker-tooltip-down-row");
-        status_text = (useEnglish) ? "down" : nagioschecker.bundle.getString("alertDown1")
+        status_text = (useEnglish) ? "down" : cz.petrsimek.nagioschecker.bundle.getString("alertDown1")
         break;
       case "unreachable":
     		row.setAttribute("class", "nagioschecker-tooltip-row nagioschecker-tooltip-unreachable-row");
-        status_text = (useEnglish) ? "unreachable" : nagioschecker.bundle.getString("alertUnreachable1")
+        status_text = (useEnglish) ? "unreachable" : cz.petrsimek.nagioschecker.bundle.getString("alertUnreachable1")
         break;
       case "unknown":
     		row.setAttribute("class", "nagioschecker-tooltip-row nagioschecker-tooltip-unknown-row");
-        status_text = (useEnglish) ? "unknown" : nagioschecker.bundle.getString("alertUnknown1")
+        status_text = (useEnglish) ? "unknown" : cz.petrsimek.nagioschecker.bundle.getString("alertUnknown1")
         break;
       case "warning":
     		row.setAttribute("class", "nagioschecker-tooltip-row nagioschecker-tooltip-warning-row");
-        status_text = (useEnglish) ? "warning" : nagioschecker.bundle.getString("alertWarning1")
+        status_text = (useEnglish) ? "warning" : cz.petrsimek.nagioschecker.bundle.getString("alertWarning1")
         break;
       case "critical":
     		row.setAttribute("class", "nagioschecker-tooltip-row nagioschecker-tooltip-critical-row");
-        status_text = (useEnglish) ? "critical" : nagioschecker.bundle.getString("alertCritical1")
+        status_text = (useEnglish) ? "critical" : cz.petrsimek.nagioschecker.bundle.getString("alertCritical1")
         break;
     }
    
-		row.setAttribute("onclick","nagioschecker.hideNchPopup('"+this._tooltip.id+"');nagioschecker.openTab(nagioschecker.createUrlDevice('"+serPo+"','"+problem.host.replace(/\\/,'\\\\')+"',"+((problem.service) ? "'"+problem.service.replace(/\\/,'\\\\')+"'" : "null")+"))");
+		row.setAttribute("onclick","cz.petrsimek.nagioschecker.hideNchPopup('"+this._tooltip.id+"');cz.petrsimek.nagioschecker.openTab(cz.petrsimek.nagioschecker.createUrlDevice('"+serPo+"','"+problem.host.replace(/\\/,'\\\\')+"',"+((problem.service) ? "'"+problem.service.replace(/\\/,'\\\\')+"'" : "null")+"))");
 
  		this._rows.appendChild(row);
 
@@ -1991,7 +1921,7 @@ function NCHToolTip(pref) {
 		var lNew = document.createElement("label");
     if (this.headers[i].news[problem.host]) {
 		  lNew.setAttribute("value", " ! ");
-		  lNew.setAttribute("tooltiptext", nagioschecker.bundle.getString("new"));
+		  lNew.setAttribute("tooltiptext", cz.petrsimek.nagioschecker.bundle.getString("new"));
 		  lNew.setAttribute("style", "font-weight:bold;");
     }
     else {

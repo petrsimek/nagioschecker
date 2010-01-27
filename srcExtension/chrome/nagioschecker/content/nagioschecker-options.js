@@ -1,29 +1,32 @@
-var gNCHOptions = null;
-var MAX_SERVERS=200;
-var NCH_CONFIGFILE="nagioschecker.xml";
-var NCH_GUID = "{123b2220-59cb-11db-b0de-0800200c9a66}"
+if (!cz) var cz = {};
+if (!cz.petrsimek) cz.petrsimek={};
 
-var nchoptionsLoad = function() {
+cz.petrsimek.gNCHOptions = null;
+cz.petrsimek.MAX_SERVERS=200;
+cz.petrsimek.NCH_CONFIGFILE="nagioschecker.xml";
+cz.petrsimek.NCH_GUID = "{123b2220-59cb-11db-b0de-0800200c9a66}"
 
-  gNCHOptions = new NCHOptions();
+cz.petrsimek.nchoptionsLoad = function() {
+
+  cz.petrsimek.gNCHOptions = new NCHOptions();
   
   if (window.arguments && window.arguments[0]) {
-	  gNCHOptions.showAbout(0);
-	  //gNCHOptions.setTab('settings_tb',window.arguments[0]);
-	  //gNCHOptions.setTab('about_tb',3);
+	  cz.petrsimek.gNCHOptions.showAbout(0);
+	  //cz.petrsimek.gNCHOptions.setTab('settings_tb',window.arguments[0]);
+	  //cz.petrsimek.gNCHOptions.setTab('about_tb',3);
   }
   
   document.getElementById('nch_version').value=getExtensionVersion();
 
-  gNCHOptions.loadPref();
-  gNCHOptions.disableSoundCheckboxes();
-  gNCHOptions.disableSoundRadios();
-  gNCHOptions.updateRECheckboxes();
-  gNCHOptions.updateResultFilePath();
+  cz.petrsimek.gNCHOptions.loadPref();
+  cz.petrsimek.gNCHOptions.disableSoundCheckboxes();
+  cz.petrsimek.gNCHOptions.disableSoundRadios();
+  cz.petrsimek.gNCHOptions.updateRECheckboxes();
+  cz.petrsimek.gNCHOptions.updateResultFilePath();
 };
 
-var nchoptionsUnload = function() {
-  gNCHOptions = null;
+cz.petrsimek.nchoptionsUnload = function() {
+	cz.petrsimek.gNCHOptions = null;
 }
 
 function GetTreeSelections(tree) {
@@ -53,7 +56,7 @@ NCHOptions.prototype = {
 
   _servers: [],
   _tree: null,
-  _origServerCount: MAX_SERVERS,
+  _origServerCount: cz.petrsimek.MAX_SERVERS,
   bundle:null,
 
   addServer: function(server) {
@@ -68,8 +71,8 @@ NCHOptions.prototype = {
   },
   
   showAbout: function(subtab) {
-	  gNCHOptions.setTab('settings_tb',6);
-	  gNCHOptions.setTab('about_tb',subtab);  
+	  cz.petrsimek.gNCHOptions.setTab('settings_tb',6);
+	  cz.petrsimek.gNCHOptions.setTab('about_tb',subtab);  
   },
   
   removeServer: function(pos) {
@@ -100,9 +103,9 @@ NCHOptions.prototype = {
     //document.getElementById("able-button").disabled = (selections.length < 1);
 
     var i = selections[0];
-	//document.getElementById("able-button").setAttribute("label",(this._servers[i].disabled) ? gNCHOptions.bundle.getString("enable") : gNCHOptions.bundle.getString("disable"));
+	//document.getElementById("able-button").setAttribute("label",(this._servers[i].disabled) ? cz.petrsimek.gNCHOptions.bundle.getString("enable") : cz.petrsimek.gNCHOptions.bundle.getString("disable"));
 
-	document.getElementById("able-menuitem").setAttribute("label",(this._servers[i].disabled) ? gNCHOptions.bundle.getString("enable") : gNCHOptions.bundle.getString("disable"));
+	document.getElementById("able-menuitem").setAttribute("label",(this._servers[i].disabled) ? cz.petrsimek.gNCHOptions.bundle.getString("enable") : cz.petrsimek.gNCHOptions.bundle.getString("disable"));
 
 ///    alert(i+";"+this._servers.length);
 
@@ -190,7 +193,7 @@ NCHOptions.prototype = {
   		case "able":
 			this._servers[i].disabled=!this._servers[i].disabled;
 		    this._tree.treeBoxObject.invalidate();
-			document.getElementById("able-menuitem").setAttribute("label",(this._servers[i].disabled) ? gNCHOptions.bundle.getString("enable") : gNCHOptions.bundle.getString("disable"));    
+			document.getElementById("able-menuitem").setAttribute("label",(this._servers[i].disabled) ? cz.petrsimek.gNCHOptions.bundle.getString("enable") : cz.petrsimek.gNCHOptions.bundle.getString("disable"));    
   			break;
   		case "up":
 		    if (i>0) {
@@ -278,13 +281,13 @@ NCHOptions.prototype = {
     getCellText: function (aRow, aColumn) {
       switch( typeof(aColumn)=="object" ? aColumn.id : aColumn ) {
         case "nameCol":
-          return (gNCHOptions._servers[aRow]==null) ? "" : gNCHOptions._servers[aRow].name;
+          return (cz.petrsimek.gNCHOptions._servers[aRow]==null) ? "" : cz.petrsimek.gNCHOptions._servers[aRow].name;
         case "urlCol":
-          return (gNCHOptions._servers[aRow]==null) ? "" : gNCHOptions._servers[aRow].url;
+          return (cz.petrsimek.gNCHOptions._servers[aRow]==null) ? "" : cz.petrsimek.gNCHOptions._servers[aRow].url;
         case "aliasCol":
-          return (gNCHOptions._servers[aRow]==null) ? "" : (gNCHOptions._servers[aRow].getAliases) ? gNCHOptions.bundle.getString("yes") : gNCHOptions.bundle.getString("no");
+          return (cz.petrsimek.gNCHOptions._servers[aRow]==null) ? "" : (cz.petrsimek.gNCHOptions._servers[aRow].getAliases) ? cz.petrsimek.gNCHOptions.bundle.getString("yes") : cz.petrsimek.gNCHOptions.bundle.getString("no");
         case "disCol":
-          return (gNCHOptions._servers[aRow]==null) ? "" : (gNCHOptions._servers[aRow].disabled) ? gNCHOptions.bundle.getString("yes") : gNCHOptions.bundle.getString("no");
+          return (cz.petrsimek.gNCHOptions._servers[aRow]==null) ? "" : (cz.petrsimek.gNCHOptions._servers[aRow].disabled) ? cz.petrsimek.gNCHOptions.bundle.getString("yes") : cz.petrsimek.gNCHOptions.bundle.getString("no");
         default:
           return null;
       }
@@ -302,7 +305,7 @@ NCHOptions.prototype = {
     getColumnProperties: function(aColumn, aColumnElement, aProperty) {},
     getCellProperties: function(aRow, aCol,aProperty) {
     
-		if (gNCHOptions._servers[aRow].disabled) {
+		if (cz.petrsimek.gNCHOptions._servers[aRow].disabled) {
 			var aserv=Components.classes["@mozilla.org/atom-service;1"].getService(Components.interfaces.nsIAtomService);
 			aProperty.AppendElement(aserv.getAtom("disServer"));
 		}
@@ -512,7 +515,7 @@ NCHOptions.prototype = {
 		                             	.getService(Components.interfaces.nsIProperties)
 		                             	.get("DefProfRt", Components.interfaces.nsIFile); // get profile folder
 		                  			
-		                  			file.append(NCH_CONFIGFILE);
+		                  			file.append(cz.petrsimek.NCH_CONFIGFILE);
 		                  			path=file.path;
 		  break;
 	  case "1":
@@ -520,8 +523,8 @@ NCHOptions.prototype = {
 			                              .getService(Components.interfaces.nsIProperties)
 			                              .get("ProfD", Components.interfaces.nsIFile);
 			                   		file.append("extensions");
-			                   		file.append(NCH_GUID);
-			                   		file.append(NCH_CONFIGFILE);
+			                   		file.append(cz.petrsimek.NCH_GUID);
+			                   		file.append(cz.petrsimek.NCH_CONFIGFILE);
 			                   		path=file.path;
 		  break;
 	  
@@ -636,7 +639,7 @@ NCHOptions.prototype = {
    
 
 
-      for(var i=0;i<MAX_SERVERS;i++) {
+      for(var i=0;i<cz.petrsimek.MAX_SERVERS;i++) {
         try {
           var surl = prefs.getCharPref("extensions.nagioschecker."+(i+1)+".url");
         try {

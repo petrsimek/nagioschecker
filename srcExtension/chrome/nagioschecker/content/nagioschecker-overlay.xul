@@ -4,18 +4,15 @@
 
 <overlay id="nagioscheckeroverlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 
-	<script type="application/x-javascript">
-var gMini=false;
-	</script>
   <script type="application/x-javascript" src="chrome://nagioschecker/content/utils.js"/>
   <script type="application/x-javascript" src="chrome://nagioschecker/content/nagioschecker-passwords.js"/>
 	<script type="application/x-javascript" src="chrome://nagioschecker/content/nagioschecker-parser.js" />
 	<script type="application/x-javascript" src="chrome://nagioschecker/content/nagioschecker.js" />
 	<script type="application/x-javascript">
-		window.addEventListener("load", nagioscheckerLoad, false);
-    window.addEventListener("unload", nagioscheckerUnload, false);
-    window.addEventListener("blur", nagioscheckerBlur, false);
-    window.addEventListener("focus", nagioscheckerFocus, false);
+		window.addEventListener("load", cz.petrsimek.nagioscheckerLoad, false);
+    window.addEventListener("unload", cz.petrsimek.nagioscheckerUnload, false);
+    window.addEventListener("blur", cz.petrsimek.nagioscheckerBlur, false);
+    window.addEventListener("focus", cz.petrsimek.nagioscheckerFocus, false);
 	</script>
 
   <stringbundleset id="stringbundleset">
@@ -26,8 +23,8 @@ var gMini=false;
     <popupset>
       <menupopup id="nagioschecker-menu" position="before_end">
   	    <menuseparator id="menu-separe" />  
-        <menuitem id="nagioschecker-stoprun" label="" oncommand="nagioschecker.switchStop();" />
-        <menuitem id="nagioschecker-reload" label="&nch.menu.updatenow;" oncommand="nagioschecker.doUpdate();" />
+        <menuitem id="nagioschecker-stoprun" label="" oncommand="cz.petrsimek.nagioschecker.switchStop();" />
+        <menuitem id="nagioschecker-reload" label="&nch.menu.updatenow;" oncommand="cz.petrsimek.nagioschecker.doUpdate();" />
   	    <menuseparator id="menu-separe2"/>  
         <menuitem label="&nch.menu.options;..." oncommand="openDialog('chrome://nagioschecker/content/nagioschecker-options.xul','nagioschecker-options','centerscreen,dialog,chrome,dependent,resizable').focus();" />
   	    <menuseparator />

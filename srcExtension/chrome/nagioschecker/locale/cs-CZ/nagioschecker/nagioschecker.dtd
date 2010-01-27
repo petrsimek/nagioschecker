@@ -4,10 +4,8 @@
 <!ENTITY nch.close "Zavřít">
 <!ENTITY nch.hosts "Hostitelé">
 <!ENTITY nch.services "Služby">
-
 <!ENTITY nch.menu.options "Nastavení">
 <!ENTITY nch.menu.updatenow "Ihned zaktualizovat">
-
 <!ENTITY nch.prefs.title "Nastavení &nch.title;">
 <!ENTITY nch.prefs.general "Obecné">
 <!ENTITY nch.prefs.filtering "Filtrování">
@@ -31,7 +29,6 @@
 <!ENTITY nch.prefs.utilityrun "Běh programu">
 <!ENTITY nch.prefs.other "Ostatní">
 <!ENTITY nch.prefs.onewindowonly "Spustit pouze v okně, otevřeném jako prvním">
-
 <!ENTITY nch.about.original "Původní název">
 <!ENTITY nch.about.version "Verze">
 <!ENTITY nch.about.created "Autor">
@@ -47,7 +44,6 @@
 <!ENTITY nch.about.fordonators "Pro sponzory">
 <!ENTITY nch.about.donators "Sponzoři">
 <!ENTITY nch.about.alphabeticallylisted "Abecedně řazení">
-
 <!ENTITY nch.prefs.display "Zobrazení">
 <!ENTITY nch.prefs.watchedsystems "Sledované systémy Nagios">
 <!ENTITY nch.prefs.addnew "Přidat nový">
@@ -92,9 +88,9 @@
 <!ENTITY nch.prefs.goto_service_problems "Přejít na Chyby služeb">
 <!ENTITY nch.prefs.goto_host_problems "Přejít na Chyby hostitelů">
 <!ENTITY nch.prefs.goto_nagios_section "Přejít na sekci systému Nagios podle kliknutí na příslušný typ problému">
-
 <!ENTITY nch.prefs.open_fullinfowindow "Otevřít statické informační okno se všemi problémy">
 <!ENTITY nch.prefs.open_infowindowbytype "Otevřít statické informační okno s problémy podle kliknutí na příslušný typ problému">
+<!ENTITY nch.prefs.open_infowindow "Otevřít informační okno">
 <!ENTITY nch.prefs.soundfiles "Zvukové soubory">
 <!ENTITY nch.prefs.standardnagiosfile "Standardní soubor z Nagiosu">
 <!ENTITY nch.prefs.customfile "Vlastní soubor">
@@ -108,7 +104,6 @@
 <!ENTITY nch.prefs.numbersonlywithservername "Pouze čísla s názvem serveru">
 <!ENTITY nch.prefs.totalnumbers "S celkovými čísly">
 <!ENTITY nch.prefs.totalnumbersforeveryserver "S celkovými čísly za každý server">
-
 <!ENTITY nch.prefs.alldownhosts "Všechny hostitele, kteří neběží">
 <!ENTITY nch.prefs.allunreachablehosts "Všechny nedosažitelné hostitele">
 <!ENTITY nch.prefs.allwarningservices "Všechny služby ve varovném stavu">
@@ -123,17 +118,13 @@
 <!ENTITY nch.prefs.servicesmatchingregexp "Služby odpovídající regulárnímu výrazu">
 <!ENTITY nch.prefs.infomatchingregexp "Všechny události se sloupcem Informace odpov. regulár. výrazu">
 <!ENTITY nch.prefs.allflapping "Všechny hostitele a služby, v kolísavém stavu (FLAPPING)">
-
 <!ENTITY nch.prefs.disable "Vypnout">
 <!ENTITY nch.prefs.disabled "Vypnutý">
 <!ENTITY nch.prefs.onaddons "Na webu Mozilla Add-ons">
 <!ENTITY nch.prefs.projecthome "Stránky projektu">
-
 <!ENTITY nch.prefs.moveup "Posunout nahoru">
 <!ENTITY nch.prefs.movedown "Posunout dolů">
-
 <!ENTITY nch.prefs.reverseexp "opak výrazu">
-
 <!ENTITY nch.prefs.showinfowindowcolumns "Zobrazovat v informačním okně sloupce">
 <!ENTITY nch.prefs.aliascolumn "Hostitel (alias)">
 <!ENTITY nch.prefs.infocolumn "Informace">
@@ -141,7 +132,6 @@
 <!ENTITY nch.prefs.statuscolumn "Stav">
 <!ENTITY nch.prefs.attemptcolumn "Pokus">
 <!ENTITY nch.prefs.minimalservicesattempt "Minimální pokus (služby) k přehrání zvuku">
-
 <!ENTITY nch.prefs.advanced "Pokročilé">
 <!ENTITY nch.advanced.download "Stahování">
 <!ENTITY nch.advanced.downloadtimeout "Časový limit stahování status.cgi (ve vteřinách)">
@@ -152,7 +142,6 @@
 <!ENTITY nch.advanced.usefileinprofiledir "Použít soubor v profilovém adresáři vaší aplikace">
 <!ENTITY nch.advanced.finalfilepath "Výsledná cesta ke konfiguračnímu souboru">
 <!ENTITY nch.advanced.note_prefertextconfig "Toto může být užitečné pokud je aplikace ukončena neočekávaně a nastavení uložené v aplikace může být ztraceno.  Konfigurační soubor je nahrávan pouze při prvním otevření okna aplikace.">
-
 <!ENTITY nch.prefs.working_days "Pracovní dny">
 <!ENTITY nch.prefs.monday_short "Pon">
 <!ENTITY nch.prefs.tuesday_short "Úte">
@@ -161,14 +150,12 @@
 <!ENTITY nch.prefs.friday_short "Pát">
 <!ENTITY nch.prefs.saturday_short "Sob">
 <!ENTITY nch.prefs.sunday_short "Ned">
-
 <!ENTITY nch.about.license "Licence">
 <!ENTITY nch.prefs.nagiossystems "Systémy Nagios">
 <!ENTITY nch.prefs.detaillevel "Úroveň zobrazení">
 <!ENTITY nch.prefs.windowtype "Typ okna">
 <!ENTITY nch.prefs.statusbar "Stavový řádek">
 <!ENTITY nch.prefs.infowindow "Informační okno">
-
 <!ENTITY nch.prefs.statusestranslation "Překlad stavů">
 <!ENTITY nch.prefs.usetranslatednames "Použít přeložené názvy (pokud překlad existuje)">
 <!ENTITY nch.prefs.useenglishnames "Použít anglické názvy">

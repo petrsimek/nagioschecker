@@ -1,6 +1,10 @@
+0.15.2
+* INTERNAL: added namespace to global variables
+* INTERNAL: Updated About window 
+
 0.15.1
 * LANG: updated it-IT, nl-NL and repaired previous ones
-
+* 
 0.15
 * LANG: updated bg-BG, nl-NL, es-ES from BabelZilla
 
@@ -10,7 +14,7 @@
 * NEW: Show number of Errors downloading data on all servers in status bar
 * NEW: Option to choose location of external configuration file. Disabled by default.
 * BUGFIX: Greyed-out context menu items in server list on some OSes
- INTERNAL: update TB maxVersion to 3.0.*, FF maxVersion to 3.6.*
+* INTERNAL: update TB maxVersion to 3.0.*, FF maxVersion to 3.6.*
  
 0.14.4
 * BUGFIX: escaping service name with backslash

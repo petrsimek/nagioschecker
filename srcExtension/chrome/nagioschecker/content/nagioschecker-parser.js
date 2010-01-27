@@ -223,9 +223,9 @@ NCHParser.prototype = {
       var seconds = token[8];
       var str='';
       if (days>0) str+=days+'d';
-      if (hours>0) str+=((str!='') ? ' ' : '')+hours+nagioschecker.bundle.getString("abbrHours");
-      if (minutes>0) str+=((str!='') ? ' ' : '')+minutes+nagioschecker.bundle.getString("abbrMinutes");
-      if (seconds>0) str+=((str!='') ? ' ' : '')+seconds+nagioschecker.bundle.getString("abbrSeconds");
+      if (hours>0) str+=((str!='') ? ' ' : '')+hours+cz.petrsimek.nagioschecker.bundle.getString("abbrHours");
+      if (minutes>0) str+=((str!='') ? ' ' : '')+minutes+cz.petrsimek.nagioschecker.bundle.getString("abbrMinutes");
+      if (seconds>0) str+=((str!='') ? ' ' : '')+seconds+cz.petrsimek.nagioschecker.bundle.getString("abbrSeconds");
       return str;  
     }
 
