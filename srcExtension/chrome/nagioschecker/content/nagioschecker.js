@@ -68,7 +68,7 @@ cz.petrsimek.nagioscheckerUnload = function() {
     var enumerator = wm.getEnumerator("");
     while(enumerator.hasMoreElements()) {
       var win = enumerator.getNext();
-      if (win.cz.petrsimek.nagioschecker) {
+      if (win.cz && win.cz.petrsimek.nagioschecker) {
         win.setTimeout(function() {
           win.cz.petrsimek.nagioschecker.reload(true);          
         },30);
@@ -248,8 +248,17 @@ NCH.prototype = {
                    .getService(Components.interfaces.nsIWindowMediator);
     var browserWindow = wm.getMostRecentWindow("navigator:browser");
     var enumerator = wm.getEnumerator("");
-    var win = enumerator.getNext();
-    return (win==window);
+    
+    while(enumerator.hasMoreElements()) {
+        var win = enumerator.getNext();
+        if (win.cz ) {
+        	 return (win==window);
+
+        }
+
+      }
+    return false;
+    
   },
 
   getFirstWindow: function() {
@@ -258,7 +267,17 @@ NCH.prototype = {
                    .getService(Components.interfaces.nsIWindowMediator);
     var browserWindow = wm.getMostRecentWindow("navigator:browser");
     var enumerator = wm.getEnumerator("");
-    return enumerator.getNext();
+    
+    while(enumerator.hasMoreElements()) {
+        var win = enumerator.getNext();
+        if (win.cz ) {
+        	 return win;
+
+        }
+
+      }
+    
+    return null;
   },
 
 
@@ -275,21 +294,30 @@ NCH.prototype = {
 	var firstWin = null;
     while(enumerator.hasMoreElements()) {
       var win = enumerator.getNext();
+      
+      if (win.cz) {
+      
       if (cnt==0) {
       	firstWin=win;
+      	if (firstWin.cz) {
 	    firstWin.cz.petrsimek.nagioschecker.isStopped = (!firstWin.cz.petrsimek.nagioschecker.isStopped);
+      	}
       }
       else {
       	if (win.cz.petrsimek.nagioschecker) {
 	      	win.cz.petrsimek.nagioschecker.isStopped = firstWin.cz.petrsimek.nagioschecker.isStopped;
       	}
       }
-      if (win.document) {
+      if (win.document && win.document.getElementById('nagioschecker-stoprun')) {
       	
 	    win.document.getElementById('nagioschecker-stoprun').setAttribute("label",(firstWin.cz.petrsimek.nagioschecker.isStopped) ? this.bundle.getString("runagain") : this.bundle.getString("stop"));
       }
+      if (win.cz.petrsimek.nagioschecker) {
 		win.cz.petrsimek.nagioschecker.resetBehavior();
+      }
       cnt++;
+      
+      }
 	}
 
     this.preferences.setBoolPref("extensions.nagioschecker.stopped",firstWin.cz.petrsimek.nagioschecker.isStopped);
@@ -305,8 +333,10 @@ NCH.prototype = {
     var cnt=0;
     while(enumerator.hasMoreElements()) {
       var win = enumerator.getNext();
+      if (win.cz) {
       win.cz.petrsimek.isFirst = (cnt==0);
 	  cnt++;
+      }
     }
 
     this._servers=[];
@@ -554,7 +584,7 @@ NCH.prototype = {
     var cnt=0;
     while(enumerator.hasMoreElements()) {
       var win = enumerator.getNext();
-      if (win.cz.petrsimek.nagioschecker) {
+      if (win.cz && win.cz.petrsimek.nagioschecker) {
         if (!this.isStopped) {        
           if ((this.pref.one_window_only) && (!win.cz.petrsimek.isFirst) ) {
           	win.cz.petrsimek.nagioschecker.setNoData("");
@@ -574,11 +604,8 @@ NCH.prototype = {
           win.cz.petrsimek.nagioschecker.setIcon(win,"stop");
           win.cz.petrsimek.nagioschecker.resetBehavior();
         }
+        cnt++;
       }
-      else {
-      	
-      }
-      cnt++;
     }
 
   },
@@ -1365,7 +1392,7 @@ NCH.prototype = {
     var enumerator = wm.getEnumerator("");
     while(enumerator.hasMoreElements()) {
       var win = enumerator.getNext();
-      if (win.cz.petrsimek.nagioschecker) {
+      if (win.cz && win.cz.petrsimek.nagioschecker) {
 			win.cz.petrsimek.nagioschecker.setIcon(window,(loading) ? "loading" : ((win.cz.petrsimek.nagioschecker.isStopped) ? "stop" : "nagios"));
 			win.cz.petrsimek.nagioschecker.resetBehavior();
       }

@@ -22,14 +22,6 @@ caption.nch {
   padding:0;border:0;
 }
 
-label {
-	
-	cursor: pointer;
-	}
-
-.nagioschecker-panel label{
-}
-
 statusbarpanel .nagioschecker-box {
   border-right: 1px solid ThreeDShadow
 }

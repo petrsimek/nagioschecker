@@ -1,3 +1,7 @@
+0.15.3
+* BUGFIX: errors when using Nagios Checker with Settings dialog opened 
+* BUGFIX: removed useless global css style for label
+
 0.15.2
 * INTERNAL: added namespace to global variables
 * INTERNAL: Updated About window 

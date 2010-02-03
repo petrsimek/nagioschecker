@@ -279,7 +279,8 @@ NCHOptions.prototype = {
       return this._rowCount; 
     },
     getCellText: function (aRow, aColumn) {
-      switch( typeof(aColumn)=="object" ? aColumn.id : aColumn ) {
+    	if (window.cz) {
+    	switch( typeof(aColumn)=="object" ? aColumn.id : aColumn ) {
         case "nameCol":
           return (cz.petrsimek.gNCHOptions._servers[aRow]==null) ? "" : cz.petrsimek.gNCHOptions._servers[aRow].name;
         case "urlCol":
@@ -291,6 +292,7 @@ NCHOptions.prototype = {
         default:
           return null;
       }
+    	}
     },
     isSeparator: function(aIndex) { return false; },
     isSorted: function() { return false; },
@@ -304,11 +306,12 @@ NCHOptions.prototype = {
     },
     getColumnProperties: function(aColumn, aColumnElement, aProperty) {},
     getCellProperties: function(aRow, aCol,aProperty) {
-    
+    	if (window.cz) {
 		if (cz.petrsimek.gNCHOptions._servers[aRow].disabled) {
 			var aserv=Components.classes["@mozilla.org/atom-service;1"].getService(Components.interfaces.nsIAtomService);
 			aProperty.AppendElement(aserv.getAtom("disServer"));
 		}
+    	}
     
     
     }
