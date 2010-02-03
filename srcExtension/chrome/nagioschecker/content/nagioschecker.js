@@ -210,12 +210,14 @@ NCH.prototype = {
   },
   
   isEntering: function(aScreenX,aScreenY,aElement,aAllowOnEdge) {
+	if (aElement) {
 	var x = aElement.boxObject.screenX;
 	var y = aElement.boxObject.screenY;
 	var c = aAllowOnEdge ? 1 : 0;
 	if (x < aScreenX - c && aScreenX < x + aElement.boxObject.width + c && 
 		y < aScreenY - c && aScreenY < y + aElement.boxObject.height + c) {
 		return true;
+	}
 	}
 	return false;   	
   },
