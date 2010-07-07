@@ -85,8 +85,8 @@
 <!ENTITY nch.prefs.after_click_statusbar "После клика в строке состояния">
 <!ENTITY nch.prefs.do_nothing "Ничего">
 <!ENTITY nch.prefs.goto_main_nagios "Перейти на сайт Nagios">
-<!ENTITY nch.prefs.goto_service_problems "Go to Service Problems">
-<!ENTITY nch.prefs.goto_host_problems "Go to Host Problems">
+<!ENTITY nch.prefs.goto_service_problems "Перейти к проблемам сервисов">
+<!ENTITY nch.prefs.goto_host_problems "Перейти к проблемам хостов">
 <!ENTITY nch.prefs.goto_nagios_section "На сайте Nagios перейти в раздел, соответствующий проблеме">
 <!ENTITY nch.prefs.open_fullinfowindow "Открыть стаичное информационное окно со всеми проблемами">
 <!ENTITY nch.prefs.open_infowindowbytype "Открыть статичные информационные окна в зависимости от типа клика(?)">
@@ -112,12 +112,12 @@
 <!ENTITY nch.prefs.blinkalltypesonstatusupdateifnewproblemappears "При появлении новой проблемы - мерцают все типы">
 <!ENTITY nch.prefs.blinkaffectedtypesonstatusupdateifnewproblemappears "Мерцает тип, для которого появилась проблема">
 <!ENTITY nch.prefs.blinkalltypesoneverystatusupdateifatleastoneproblemexists "Мерцают все типы появляется хотя бы одна проблема">
-<!ENTITY nch.prefs.aliases "Алиасы">
+<!ENTITY nch.prefs.aliases "Синонимы">
 <!ENTITY nch.prefs.makedonation "Пожертвования">
 <!ENTITY nch.prefs.hostsmatchingregexp "Хосты, соответствующие рег.выражению">
 <!ENTITY nch.prefs.servicesmatchingregexp "Сервисы, соответствующие рег.выражению">
-<!ENTITY nch.prefs.infomatchingregexp "Information column matching regular expression">
-<!ENTITY nch.prefs.allflapping "Все flapping хосты и сервисы">
+<!ENTITY nch.prefs.infomatchingregexp "Информационный столбец с регулярным выражением">
+<!ENTITY nch.prefs.allflapping "Все ненадёжные хосты и сервисы">
 <!ENTITY nch.prefs.disable "Отключить">
 <!ENTITY nch.prefs.disabled "Отключено">
 <!ENTITY nch.prefs.onaddons "На сайте дополнений организации Mozilla">
@@ -133,14 +133,14 @@
 <!ENTITY nch.prefs.attemptcolumn "Попытка">
 <!ENTITY nch.prefs.minimalservicesattempt "Мин.кол-во попыток для подачи сигнала">
 <!ENTITY nch.prefs.advanced "Дополнительно">
-<!ENTITY nch.advanced.download "Download">
+<!ENTITY nch.advanced.download "Загрузка">
 <!ENTITY nch.advanced.downloadtimeout "Таймаут загрузки Status.cgi (в секундах)">
-<!ENTITY nch.advanced.externalconfigfile "External configuration file">
+<!ENTITY nch.advanced.externalconfigfile "Внешний файл конфигурации">
 <!ENTITY nch.advanced.prefertextconfig "Преимущественная загрузка настроек из внешнего текстового файла перед внутренней конфигурацией Firefox.">
-<!ENTITY nch.advanced.notuseexternalfile "Do not use external configuration file">
-<!ENTITY nch.advanced.usefileinextensiondir "Use file in &nch.title; extension directory in your application profile directory">
-<!ENTITY nch.advanced.usefileinprofiledir "Use file in your application profile directory">
-<!ENTITY nch.advanced.finalfilepath "Final configuration file path">
+<!ENTITY nch.advanced.notuseexternalfile "Не использовать внешний файл конфигурации">
+<!ENTITY nch.advanced.usefileinextensiondir "Использовать файл &nch.title; каталог расширений в каталоге приложений вашего профиля">
+<!ENTITY nch.advanced.usefileinprofiledir "Использовать файл в каталоге приложений вашего профиля">
+<!ENTITY nch.advanced.finalfilepath "Местоположение файла конфигурации">
 <!ENTITY nch.advanced.note_prefertextconfig "Используется когда Firefox завершается аварийно и несохранённые настройки теряются. Конфигурационный файл будет загружен только в момент первого запуска Firefox.">
 <!ENTITY nch.prefs.working_days "Рабочие дни">
 <!ENTITY nch.prefs.monday_short "Пн">
@@ -150,12 +150,12 @@
 <!ENTITY nch.prefs.friday_short "Пт">
 <!ENTITY nch.prefs.saturday_short "Сб">
 <!ENTITY nch.prefs.sunday_short "Вс">
-<!ENTITY nch.about.license "License">
-<!ENTITY nch.prefs.nagiossystems "Nagios Systems">
-<!ENTITY nch.prefs.detaillevel "Detail Level">
-<!ENTITY nch.prefs.windowtype "Window Type">
-<!ENTITY nch.prefs.statusbar "StatusBar">
-<!ENTITY nch.prefs.infowindow "Information Window">
-<!ENTITY nch.prefs.statusestranslation "Statuses Translation">
-<!ENTITY nch.prefs.usetranslatednames "Use translated names (if translation exists)">
-<!ENTITY nch.prefs.useenglishnames "Use English names">
+<!ENTITY nch.about.license "Лицензия">
+<!ENTITY nch.prefs.nagiossystems "Система Nagios">
+<!ENTITY nch.prefs.detaillevel "Уровень детализации">
+<!ENTITY nch.prefs.windowtype "Тип окна">
+<!ENTITY nch.prefs.statusbar "Строка состояния">
+<!ENTITY nch.prefs.infowindow "Информационное окно">
+<!ENTITY nch.prefs.statusestranslation "Перевод статусов">
+<!ENTITY nch.prefs.usetranslatednames "Использовать переведённые имена (если есть перевод)">
+<!ENTITY nch.prefs.useenglishnames "Использовать английские имена">

@@ -4,7 +4,7 @@ overlay	chrome://browser/content/browser.xul	chrome://nagioschecker/content/nagi
 overlay chrome://messenger/content/messenger.xul chrome://nagioschecker/content/nagioschecker-overlay.xul
 
 
-content	nagioschecker	chrome/nagioschecker/content/ xpcnativewrappers=no
+content	nagioschecker	chrome/nagioschecker/content/ 
 
 locale	nagioschecker	en-US	chrome/nagioschecker/locale/en-US/nagioschecker/
 locale	nagioschecker	cs-CZ	chrome/nagioschecker/locale/cs-CZ/nagioschecker/

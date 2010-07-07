@@ -503,7 +503,7 @@
 
      				<separator class="thin"/>
       				<label value="&nch.about.donators;:" class="nagioschecker-about-sub-title"/>
-      				<description class="nch">A. Aleksandrovs (LA), A. Artigues (US), J. Avery (UK), J. Barnier (FR), J. Batzel (US), T. Becker (DE), C. Carluccio (UR), M. Cintolesi (IT), A. Davies (UK), L. Garcia (US), H. Heil (DE), G. Hernandez (ME), KLASiKAHL Source Servers (US), J. Kubek (PL), J. Luhan (CZ), E. Martucci (US), C. Parks (US), M. Polcarova (CZ), X. Potel (FR), PSS Hosting.com (US), Ravelry.com (US), D. Rubel (US), A. Smith (US), K. Snorrason (IC), H. Solans (SP), P. Stern (US), M. Walster (UK), M. Tancil (US), R. Terhaar (US), J. Wigle (US), Wavecon GmbH (DE), L. Wimmer (AT), K. Wong (US), young choon tae (KR), Zedcore Systems Ltd (UK)</description>
+      				<description class="nch">A. Aleksandrovs (LA), A. Artigues (US), J. Avery (UK), J. Barnier (FR), J. Batzel (US), T. Becker (DE), C. Carluccio (UR), M. Cintolesi (IT), A. Davies (UK), L. Garcia (US), H. Heil (DE), G. Hernandez (ME), KLASiKAHL Source Servers (US), J. Kubek (PL), J. Luhan (CZ), E. Martucci (US), V. Marzlin (FR), C. Parks (US), M. Polcarova (CZ), X. Potel (FR), PSS Hosting.com (US), Ravelry.com (US), D. Rubel (US), N. Schmitz (FR), A. Smith (US), K. Snorrason (IC), H. Solans (SP), P. Stern (US), M. Walster (UK), M. Tancil (US), R. Terhaar (US), J. Wigle (US), Wavecon GmbH (DE), M. Wellauer (SU), L. Wimmer (AT), K. Wong (US), Yang Hsiao I (TW), young choon tae (KR), Zedcore Systems Ltd (UK)</description>
 					<separator class="thin"/>
 					<hbox flex="1">
 						<vbox>

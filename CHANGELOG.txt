@@ -1,3 +1,8 @@
+0.15.4
+* INTERNAL: updated TB maxVersion to 3.1.*
+* LANG: updated pt-BR, ru-RU, tr-TR from babelzilla
+* INTERNAL: removed xpcnativewrappers=no due to security warning on AMO site, testing if it will work without it
+
 0.15.3
 * BUGFIX: errors when using Nagios Checker with Settings dialog opened 
 * BUGFIX: removed useless global css style for label
