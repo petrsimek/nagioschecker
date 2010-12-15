@@ -1,4 +1,5 @@
-overlay	chrome://browser/content/browser.xul	chrome://nagioschecker/content/nagioschecker-overlay.xul
+overlay	chrome://browser/content/browser.xul	chrome://nagioschecker/content/nagioschecker-overlay.xul appversion<4.0b7pre
+overlay chrome://browser/content/browser.xul  chrome://nagioschecker/content/nagioschecker-overlayNew.xul appversion>=4.0b7pre
 
 # Thunderbird
 overlay chrome://messenger/content/messenger.xul chrome://nagioschecker/content/nagioschecker-overlay.xul

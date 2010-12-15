@@ -2,7 +2,7 @@
 
   <Description about="urn:mozilla:install-manifest">
     <em:id>{123b2220-59cb-11db-b0de-0800200c9a66}</em:id>
-    <em:version>0.15.4</em:version>
+    <em:version>0.16b1</em:version>
     <em:type>2</em:type>
 
     <!-- Firefox --> 
@@ -10,7 +10,7 @@
       <Description>
         <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
         <em:minVersion>3.0</em:minVersion>
-        <em:maxVersion>3.6.*</em:maxVersion>
+        <em:maxVersion>4.0b9pre</em:maxVersion>
       </Description>
     </em:targetApplication>
 
@@ -29,5 +29,5 @@
     <em:creator>Petr Simek</em:creator>
     <em:optionsURL>chrome://nagioschecker/content/nagioschecker-options.xul</em:optionsURL>
     <!-- Packages, Skins and Locales that this extension registers -->
-	  <em:homepageURL>http://code.google.com/p/nagioschecker/</em:homepageURL><em:aboutURL/><em:iconURL/><em:hidden/></Description>
+	  <em:homepageURL>http://code.google.com/p/nagioschecker/</em:homepageURL><em:aboutURL/><em:iconURL/><em:hidden/><em:updateURL/><em:updateKey/></Description>
 </RDF>

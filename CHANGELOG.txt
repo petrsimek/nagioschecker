@@ -1,3 +1,7 @@
+0.16b1
+* INTERNAL: update FF maxVersion to 4.0pre9
+* FIX: changed working in FF4 addon toolbar instead in statusbar 
+
 0.15.4
 * INTERNAL: updated TB maxVersion to 3.1.*
 * LANG: updated pt-BR, ru-RU, tr-TR from babelzilla

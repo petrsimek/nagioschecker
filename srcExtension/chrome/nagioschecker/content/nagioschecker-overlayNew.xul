@@ -18,7 +18,7 @@
   <stringbundleset id="stringbundleset">
     <stringbundle id="nch-strings" src="chrome://nagioschecker/locale/nagioschecker.properties"/>
   </stringbundleset>
-
+    <toolbar id="addon-bar">
 
 	<statusbar id="status-bar">	
     <popupset>
@@ -60,5 +60,5 @@
 		  <label id="nagioschecker-info-label" class="nagioschecker-info-label" hidden="true" value=""/>
     </statusbarpanel>
 	</statusbar>
-	
+	</toolbar>
 </overlay>
