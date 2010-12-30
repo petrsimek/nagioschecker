@@ -1,3 +1,7 @@
+0.16
+* INTERNAL: update FF maxVersion to 4.0.*
+* LANG: updated zh-TW from babelzilla
+
 0.16b1
 * INTERNAL: update FF maxVersion to 4.0pre9
 * FIX: changed working in FF4 addon toolbar instead in statusbar 

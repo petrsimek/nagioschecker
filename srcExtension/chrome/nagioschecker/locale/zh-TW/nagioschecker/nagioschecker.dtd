@@ -85,8 +85,8 @@
 <!ENTITY nch.prefs.after_click_statusbar "當點擊狀態列後">
 <!ENTITY nch.prefs.do_nothing "無動作">
 <!ENTITY nch.prefs.goto_main_nagios "到 Nagios 主頁">
-<!ENTITY nch.prefs.goto_service_problems "Go to Service Problems">
-<!ENTITY nch.prefs.goto_host_problems "Go to Host Problems">
+<!ENTITY nch.prefs.goto_service_problems "到服務問題">
+<!ENTITY nch.prefs.goto_host_problems "到主機問題">
 <!ENTITY nch.prefs.goto_nagios_section "到 Nagios 問題類型分頁">
 <!ENTITY nch.prefs.open_fullinfowindow "開啟資訊視窗顯示所有問題">
 <!ENTITY nch.prefs.open_infowindowbytype "開啟資訊視窗顯示所選種類的問題">
@@ -133,14 +133,14 @@
 <!ENTITY nch.prefs.attemptcolumn "嘗試次數">
 <!ENTITY nch.prefs.minimalservicesattempt "播放音樂的最少服務嘗試次數">
 <!ENTITY nch.prefs.advanced "進階">
-<!ENTITY nch.advanced.download "Download">
+<!ENTITY nch.advanced.download "下載">
 <!ENTITY nch.advanced.downloadtimeout "Status.cgi 下載逾時(秒)">
-<!ENTITY nch.advanced.externalconfigfile "External configuration file">
+<!ENTITY nch.advanced.externalconfigfile "外置設定檔">
 <!ENTITY nch.advanced.prefertextconfig "選擇從文字檔案匯入設定，而不選擇Firefox內建設定">
-<!ENTITY nch.advanced.notuseexternalfile "Do not use external configuration file">
+<!ENTITY nch.advanced.notuseexternalfile "不使用外置設定檔">
 <!ENTITY nch.advanced.usefileinextensiondir "Use file in &nch.title; extension directory in your application profile directory">
 <!ENTITY nch.advanced.usefileinprofiledir "Use file in your application profile directory">
-<!ENTITY nch.advanced.finalfilepath "Final configuration file path">
+<!ENTITY nch.advanced.finalfilepath "最後設定檔位置">
 <!ENTITY nch.advanced.note_prefertextconfig "當Firefox不正常關閉或設定未存檔時很有用；設定檔只會在第一次開啟Firefox視窗時才載入。">
 <!ENTITY nch.prefs.working_days "工作日">
 <!ENTITY nch.prefs.monday_short "一">

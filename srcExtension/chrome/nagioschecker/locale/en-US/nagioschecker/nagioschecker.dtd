@@ -147,7 +147,7 @@
 <!ENTITY nch.advanced.download "Download">
 <!ENTITY nch.advanced.downloadtimeout "Status.cgi download timeout (in seconds)">
 <!ENTITY nch.advanced.externalconfigfile "External configuration file">
-<!ENTITY nch.advanced.prefertextconfig "Prefer loading of settings from an external configuration file rather than zour application internal configuration">
+<!ENTITY nch.advanced.prefertextconfig "Prefer loading of settings from an external configuration file rather than your application internal configuration">
 <!ENTITY nch.advanced.notuseexternalfile "Do not use external configuration file">
 <!ENTITY nch.advanced.usefileinextensiondir "Use file in &nch.title; extension directory in your application profile directory">
 <!ENTITY nch.advanced.usefileinprofiledir "Use file in your application profile directory">
